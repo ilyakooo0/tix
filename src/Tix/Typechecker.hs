@@ -32,7 +32,7 @@ import Data.Traversable
 import Nix.Atoms
 import Nix.Expr
 
-getType :: NExprLoc -> (Either UnifyingError NTypeS, [(SrcSpan, Errors)])
+getType :: NExprLoc -> (Either UnifyingError NType, [(SrcSpan, Errors)])
 getType exp =
   let (((t, srcs), cons), errs) =
         run
@@ -48,36 +48,20 @@ getType exp =
 newtype TypeVariable = TypeVariable Int
   deriving newtype (Show, Eq, Ord)
 
-data Constraint = !NTypeS :~ !NTypeS
+data Constraint = !NType :~ !NType
 
-type NType = Fix NTypeF
+newtype DeBrujin = DeBrujin {unDeBrujin :: Int}
+  deriving newtype (Eq, Ord)
+  deriving stock (Show)
 
-data NTypeF f
+data NType
   = NTypeVariable !TypeVariable
+  | NBrujin !DeBrujin
   | NAtomic !AtomicType
-  | List !f
-  | NAttrSet !(Map Text f)
-  | !f :-> !f
-  deriving stock (Functor, Eq, Ord, Show)
-
-instance Show1 NTypeF where
-  liftShowsPrec s _ p (NAtomic a) = (show a <>)
-  liftShowsPrec s _ p (NTypeVariable a) = (show a <>)
-  liftShowsPrec s _ p (List a) = ("[" <>) <> s p a <> ("]" <>)
-  liftShowsPrec s _ p (NAttrSet a) = ("{" <>) <> x <> ("}" <>)
-    where
-      x =
-        mconcat . fmap (\(k, v) -> (show k <>) <> (" :: " <>) <> s p v) $
-          M.toList a
-  liftShowsPrec s _ p (a :-> b) = s p a <> (" -> " <>) <> s p b
-
-instance Eq1 NTypeF where
-  liftEq _ (NTypeVariable x) (NTypeVariable y) = x == y
-  liftEq _ (NAtomic x) (NAtomic y) = x == y
-  liftEq eq (List x) (List y) = eq x y
-  liftEq eq (NAttrSet x) (NAttrSet y) = liftEq eq x y
-  liftEq eq (x1 :-> y1) (x2 :-> y2) = eq x1 x2 && eq y1 y2
-  liftEq _ _ _ = False
+  | List !NType
+  | NAttrSet !(Map Text NType)
+  | !NType :-> !NType
+  deriving stock (Eq, Ord, Show)
 
 data AtomicType
   = Integer
@@ -92,23 +76,14 @@ data AtomicType
 class Free s where
   free :: s -> Set TypeVariable
 
-instance Free f => Free (NTypeF f) where
+instance Free NType where
   free (NTypeVariable v) = S.singleton v
   free (NAtomic _) = S.empty
   free (List x) = free x
   free (NAttrSet attrs) = foldMap free . M.elems $ attrs
   free (x :-> y) = free x <> free y
 
-instance Free (f (Fix f)) => Free (Fix f) where
-  free (Fix f) = free f
-
-instance (Free (f (g x))) => Free (Compose f g x) where
-  free (Compose x) = free x
-
-instance Free f => Free (SchemeX f) where
-  free (Scheme vs x) = free x `S.difference` vs
-
-newtype Substitution = Substitution (Map TypeVariable NTypeS)
+newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
 
 instance Semigroup Substitution where
   x'@(Substitution x) <> (Substitution y) = Substitution (x <> fmap (sub x') y)
@@ -116,33 +91,30 @@ instance Semigroup Substitution where
 instance Monoid Substitution where
   mempty = Substitution mempty
 
-sub :: Substitution -> NTypeS -> NTypeS
-sub (Substitution s) r'@(Fix (Compose (Scheme tvs r))) = case r of
-  NAtomic _ -> r'
+sub :: Substitution -> NType -> NType
+sub s r = case r of
+  NAtomic _ -> r
   NTypeVariable x -> subTV x
-  List x -> rewrap . List $ sub' x
-  NAttrSet m -> rewrap . NAttrSet $ sub' <$> m
-  x :-> y -> rewrap $ sub' x :-> sub' y
+  List x -> List $ sub s x
+  NAttrSet m -> NAttrSet $ sub s <$> m
+  x :-> y -> sub s x :-> sub s y
   where
-    s' = s `M.withoutKeys` tvs
-    subTV x = M.findWithDefault r' x s'
-    sub' = sub $ Substitution s'
-    rewrap = Fix . Compose . Scheme tvs
+    subTV x = M.findWithDefault r x $ unSubstitution s
 
 subCon :: Substitution -> Constraint -> Constraint
 subCon s (x :~ y) = sub s x :~ sub s y
 
 (<<-) ::
   TypeVariable ->
-  NTypeF (NTypeS) ->
+  NType ->
   UnifyM Substitution
 v <<- (NTypeVariable x) | v == x = return mempty
-v <<- x | v `occursIn` x = throwError $ InfinityType $ normalType x
-v <<- x = return $ Substitution $ M.singleton v $ normalType x
+v <<- x | v `occursIn` x = throwError $ InfinityType x
+v <<- x = return $ Substitution $ M.singleton v x
 
 unify :: Constraint -> UnifyM Substitution
-unify (Fix (Compose (Scheme Sempty lhs')) :~ Fix (Compose (Scheme Sempty rhs'))) =
-  case (lhs', rhs') of
+unify (lhs :~ rhs) =
+  case (lhs, rhs) of
     (NAtomic x, NAtomic y) | x == y -> return mempty
     (NTypeVariable t, x) -> t <<- x
     (x, NTypeVariable t) -> t <<- x
@@ -163,23 +135,10 @@ solve (rest :|> c) = do
   s <- unify c
   solve $ fmap (subCon s) rest
 
--- type NormalizeM = Eff '[State (Map TypeVariable TypeVariable), State (Set TypeVariable), Fresh]
-
--- normalize :: NTypeS -> NormalizeM NTypeS
--- normalize (Fix (Compose u)) =
---   Fix . Compose <$> case u of
---     (Scheme tvs x) ->
-
--- normalize :: SchemeX (NTypeF NTypeS) -> SchemeX (NTypeF NTypeS)
--- normalize (Scheme tvs t) = case t of
---   (NTypeVariable t) -> if t `S.member` tvs then
-
 pattern Sempty <- (S.null -> True) where Sempty = S.empty
 
 occursIn :: Free x => TypeVariable -> x -> Bool
 occursIn t x = t `S.member` free x
-
-type NTypeS = Fix (Compose SchemeX NTypeF)
 
 data SchemeX x = Scheme (Set TypeVariable) x
   deriving stock (Eq, Ord, Show)
@@ -191,7 +150,7 @@ instance Show1 SchemeX where
 instance Eq1 SchemeX where
   liftEq eq (Scheme ts1 x1) (Scheme ts2 x2) = ts1 == ts2 && eq x1 x2
 
--- type SchemeS = SchemeX NTypeS
+-- type SchemeS = SchemeX NType
 
 data Errors
   = UndefinedVariable VarName
@@ -225,8 +184,8 @@ freshSrc = do
   return v
 
 data UnifyingError
-  = InfinityType NTypeS
-  | CanNotUnify (NTypeF NTypeS) (NTypeF NTypeS)
+  = InfinityType NType
+  | CanNotUnify NType NType
   deriving stock (Eq, Show)
 
 type UnifyM x = forall r. Members '[Error UnifyingError] r => Eff r x
@@ -265,18 +224,9 @@ throwSrcTV e = do
   throwSrc e
   freshSrc
 
-type VariableMap = Map VarName NTypeS
+type VariableMap = Map VarName NType
 
-normalType :: NTypeF NTypeS -> NTypeS
-normalType = Fix . Compose . Scheme S.empty
-
-atomicType :: AtomicType -> NTypeS
-atomicType = Fix . Compose . Scheme S.empty . NAtomic
-
-tv :: TypeVariable -> NTypeS
-tv = Fix . Compose . Scheme S.empty . NTypeVariable
-
-(~~) :: Member (Writer Constraint) r => NTypeS -> NTypeS -> Eff r ()
+(~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
 lhs ~~ rhs = tell $ lhs :~ rhs
 
 withBindings ::
@@ -286,27 +236,26 @@ withBindings ::
   Eff effs a
 withBindings bindings = local (bindings <>)
 
-infer :: NExprLoc -> InferM NTypeS
+infer :: NExprLoc -> InferM NType
 infer (Fix (Compose (Ann src x))) = runReader src $ case x of
-  NConstant a -> return . normalType $
-    NAtomic $ case a of
-      NURI {} -> URI
-      NInt {} -> Integer
-      NFloat {} -> Float
-      NBool {} -> Bool
-      NNull {} -> Null
-  NLiteralPath {} -> return . normalType . NAtomic $ Path
-  NEnvPath {} -> return . normalType . NAtomic $ Path
-  NStr {} -> return . normalType $ NAtomic String
+  NConstant a -> return . NAtomic $ case a of
+    NURI {} -> URI
+    NInt {} -> Integer
+    NFloat {} -> Float
+    NBool {} -> Bool
+    NNull {} -> Null
+  NLiteralPath {} -> return . NAtomic $ Path
+  NEnvPath {} -> return . NAtomic $ Path
+  NStr {} -> return $ NAtomic String
   NSym var ->
     ask @VariableMap
-      >>= maybe (tv <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
+      >>= maybe (NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
   NList xs -> do
     xs' <- traverse infer xs
     traverse_ tell . fmap (uncurry (:~)) $ zip xs' (tail xs')
     case xs' of
-      [] -> tv <$> freshSrc
-      y : _ -> return . normalType $ List y
+      [] -> NTypeVariable <$> freshSrc
+      y : _ -> return $ List y
   NUnary NNeg y -> do
     t <- infer y
     -- TODO: Infer either Float or Integer
@@ -314,7 +263,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     return t
   NUnary NNot y -> do
     t <- infer y
-    t ~~ atomicType Bool
+    t ~~ NAtomic Bool
     return t
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
@@ -323,18 +272,18 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     lhs' <- expectAttrSet lhsT
     rhs' <- expectAttrSet rhsT
     forM_ (M.toList $ M.intersectionWith (,) lhs' rhs') (\(_, (a, b)) -> a ~~ b)
-    return . normalType . NAttrSet $ rhs' <> lhs'
+    return . NAttrSet $ rhs' <> lhs'
   NBinary NApp lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    rest <- tv <$> freshSrc
-    lhst ~~ (normalType $ rhst :-> rest)
+    rest <- NTypeVariable <$> freshSrc
+    lhst ~~ (rhst :-> rest)
     return rhst
   NBinary NConcat lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    t <- tv <$> freshSrc
-    let listt = normalType (List t)
+    t <- NTypeVariable <$> freshSrc
+    let listt = List t
     lhst ~~ listt
     rhst ~~ listt
     return $ listt
@@ -342,33 +291,33 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     lhst <- infer lhs
     rhst <- infer rhs
     lhst ~~ rhst
-    return $ atomicType Bool
+    return $ NAtomic Bool
   NBinary op lhs rhs
     | op `elem` [NLt, NLte, NGt, NGte, NPlus, NMinus, NMult, NDiv] -> do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double
       lhst ~~ rhst
-      return $ atomicType Bool
+      return $ NAtomic Bool
   NBinary op lhs rhs | op `elem` [NAnd, NOr, NImpl] -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    rhst ~~ atomicType Bool
-    lhst ~~ atomicType Bool
-    return $ atomicType Bool
+    rhst ~~ NAtomic Bool
+    lhst ~~ NAtomic Bool
+    return $ NAtomic Bool
   NSelect r path' def -> do
     setT <- infer r
     path <- getPath path'
     resT <- case path of
       Just p -> lookupAttrSet p setT
-      Nothing -> tv <$> freshSrc
+      Nothing -> NTypeVariable <$> freshSrc
     case def of
       Nothing -> return ()
       Just defR -> do
         defT <- infer defR
         defT ~~ resT
     return resT
-  NSet NNonRecursive xs -> normalType . NAttrSet <$> inferBinding xs
+  NSet NNonRecursive xs -> NAttrSet <$> inferBinding xs
   NHasAttr attrSet path -> do
     setT <- infer attrSet
     expectAttrSet setT
@@ -377,26 +326,26 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     (paramT, varMap :: VariableMap) <- case param of
       Param name -> do
         t <- freshSrc
-        return (tv t, M.singleton name $ tv t)
+        return (NTypeVariable t, M.singleton name $ NTypeVariable t)
       ParamSet set variadic binding -> do
         setBindings <-
           M.fromList <$> set
             `for` ( \(name, def) -> do
                       t <- case def of
-                        Nothing -> tv <$> freshSrc
+                        Nothing -> NTypeVariable <$> freshSrc
                         Just def' -> infer def'
                       return (name, t)
                   )
-        let setT = normalType . NAttrSet $ setBindings
+        let setT = NAttrSet $ setBindings
         return (setT, maybe M.empty (`M.singleton` setT) binding <> setBindings)
     bodyT <- withBindings varMap $ infer body
-    return . normalType $ paramT :-> bodyT
+    return $ paramT :-> bodyT
   NLet bindings body -> do
     bindingsT <- inferBinding bindings
     withBindings bindingsT $ infer body
   NIf cond t f -> do
     condT <- infer cond
-    condT ~~ atomicType Bool
+    condT ~~ NAtomic Bool
     tT <- infer t
     fT <- infer f
     tT ~~ fT
@@ -407,11 +356,11 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     withBindings vars $ infer body
   NAssert cond body -> do
     condT <- infer cond
-    condT ~~ atomicType Bool
+    condT ~~ NAtomic Bool
     infer body
-  NSynHole _ -> tv <$> freshSrc
+  NSynHole _ -> NTypeVariable <$> freshSrc
 
-inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName NTypeS)
+inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName NType)
 inferBinding bindings = do
   bindings' <-
     bindings >>.= \case
@@ -420,7 +369,7 @@ inferBinding bindings = do
           Nothing -> return []
           Just name -> do
             t <- infer r
-            return $ [stack ((,) <$> name) (normalType . NAttrSet . uncurry M.singleton) t]
+            return $ [stack ((,) <$> name) (NAttrSet . uncurry M.singleton) t]
       Inherit attrSet keys src -> do
         vars <- case attrSet of
           Just attr -> do
@@ -435,13 +384,13 @@ inferBinding bindings = do
               Just r -> Just (name, r)
   return $ M.fromListWith mergeSetTypes bindings'
 
-expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NTypeS -> Eff r VariableMap
-expectAttrSet (Fix (Compose (Scheme _ (NAttrSet x)))) = return x
-expectAttrSet (Fix (Compose (Scheme _ g))) = do
+expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NType -> Eff r VariableMap
+expectAttrSet (NAttrSet x) = return x
+expectAttrSet g = do
   throwSrc
     UnexpectedType
-      { expected = Fix $ NAttrSet M.empty,
-        got = Fix $ const (Fix $ NAtomic Null) <$> g
+      { expected = NAttrSet M.empty,
+        got = g
       }
   return M.empty
 
@@ -458,9 +407,9 @@ stack (g :| gs) h x = g $ f gs
 (>>.=) :: (Applicative f, Monad t, Traversable t) => t a -> (a -> f (t b)) -> f (t b)
 ta >>.= f = join <$> traverse f ta
 
-mergeSetTypes :: NTypeS -> NTypeS -> NTypeS
-mergeSetTypes (Fix (Compose (Scheme ts (NAttrSet ks)))) (Fix (Compose (Scheme ts' (NAttrSet ks')))) =
-  Fix . Compose . Scheme (ts' <> ts) . NAttrSet $ M.unionWith mergeSetTypes ks ks'
+mergeSetTypes :: NType -> NType -> NType
+mergeSetTypes (NAttrSet ks) (NAttrSet ks') =
+  NAttrSet $ M.unionWith mergeSetTypes ks ks'
 mergeSetTypes _ x = x
 
 -- TODO: process variables
@@ -501,8 +450,8 @@ lookupAttrSet ::
      ]
     r =>
   AttrSetPath ->
-  NTypeS ->
-  Eff r NTypeS
+  NType ->
+  Eff r NType
 lookupAttrSet path = go (NE.toList path)
   where
     go ::
@@ -514,10 +463,10 @@ lookupAttrSet path = go (NE.toList path)
          ]
         r =>
       [VarName] ->
-      NTypeS ->
-      Eff r NTypeS
+      NType ->
+      Eff r NType
     go [] x = return x
     go (p : ps) x = do
       expectAttrSet x <&> M.lookup p >>= \case
-        Nothing -> tv <$> throwSrcTV (KeyNotPresent p)
+        Nothing -> NTypeVariable <$> throwSrcTV (KeyNotPresent p)
         Just t -> go ps t

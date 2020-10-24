@@ -68,4 +68,4 @@ extra-deps:
 # compiler-check: newer-minor
 
 ghc-options:
-  "$locals": -Weverything -Wno-implicit-prelude -Wno-missing-safe-haskell-mode -Wno-safe -Wno-prepositive-qualified-module -Wno-missing-import-lists -Wno-partial-fields
+  "$locals": -Weverything -Wno-implicit-prelude -Wno-missing-safe-haskell-mode -Wno-safe -Wno-prepositive-qualified-module -Wno-missing-import-lists -Wno-partial-fields -Wno-all-missed-specialisations

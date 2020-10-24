@@ -69,3 +69,4 @@ default-extensions:
   - UndecidableInstances
   - PatternSynonyms
   - ViewPatterns
+  - KindSignatures
