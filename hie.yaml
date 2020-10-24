@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "tix:lib"
+
+    - path: "./app/Main.hs"
+      component: "tix:exe:tix-exe"
+
+    - path: "./app/Paths_tix.hs"
+      component: "tix:exe:tix-exe"
+
+    - path: "./test"
+      component: "tix:test:tix-test"

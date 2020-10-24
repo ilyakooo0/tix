@@ -1,0 +1,71 @@
+name: tix
+version: 0.1.0.0
+github: "ilyakooo0/tix"
+license: BSD3
+author: "Ilya Kostyuchenko"
+maintainer: "ilyakooo0@gmail.com"
+copyright: "2020 Ilya Kostyuchenko"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/ilyakooo0/tix#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+  - freer-simple
+  - hnix
+  - containers
+  - text
+  - lens
+  - data-fix
+  - mono-traversable
+library:
+  source-dirs: src
+
+executables:
+  tix-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - tix
+
+tests:
+  tix-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - tix
+
+default-extensions:
+  - GADTs
+  - FlexibleContexts
+  - ScopedTypeVariables
+  - TypeOperators
+  - DataKinds
+  - RankNTypes
+  - TypeApplications
+  - LambdaCase
+  - OverloadedStrings
+  - DeriveFunctor
+  - DerivingStrategies
+  - GeneralizedNewtypeDeriving
+  - UndecidableInstances
+  - PatternSynonyms
+  - ViewPatterns
