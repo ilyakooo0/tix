@@ -28,39 +28,60 @@ import Data.Sequences
 import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
+import qualified Data.Text.Lazy.Builder as T
 import Data.Traversable
+import Debug.Trace
 import Nix.Atoms
 import Nix.Expr
 
-getType :: NExprLoc -> (Either UnifyingError NType, [(SrcSpan, Errors)])
-getType exp =
-  let (((t, srcs), cons), errs) =
+getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError])
+getType r =
+  let ((((t, unifying), srcs), constraints), errs) =
         run
           . runReader (M.empty :: VariableMap)
           . runSeqWriter @[(SrcSpan, Errors)]
           . runSeqWriter @(Seq Constraint)
           . runSeqWriter @[(TypeVariable, SrcSpan)]
+          . runSeqWriter @[UnifyingError]
           . runFresh
-          $ infer exp
-      s = run . runError @UnifyingError $ solve cons
-   in ((`sub` t) <$> s, errs)
+          $ getType' r
+   in (t, errs, unifying)
+
+getType' ::
+  Members
+    '[ Writer (SrcSpan, Errors),
+       Reader VariableMap,
+       Writer (TypeVariable, SrcSpan),
+       Writer UnifyingError,
+       Fresh
+     ]
+    r =>
+  NExprLoc ->
+  Eff r NType
+getType' r = do
+  (t, constraints) <-
+    runSeqWriter @(Seq Constraint) $
+      infer r
+  s <- solve (traceShowId constraints)
+  return . close $ sub s (traceShowId t)
 
 newtype TypeVariable = TypeVariable Int
   deriving newtype (Show, Eq, Ord)
 
 data Constraint = !NType :~ !NType
+  deriving stock (Eq, Ord, Show)
 
-newtype DeBrujin = DeBrujin {unDeBrujin :: Int}
-  deriving newtype (Eq, Ord)
-  deriving stock (Show)
+data DeBrujin = DeBrujin !Int !Int
+  deriving stock (Show, Eq, Ord)
 
 data NType
   = NTypeVariable !TypeVariable
   | NBrujin !DeBrujin
   | NAtomic !AtomicType
-  | List !NType
-  | NAttrSet !(Map Text NType)
   | !NType :-> !NType
+  | -- These two introduce a new De Brujin binding context
+    List !NType
+  | NAttrSet !(Map Text NType)
   deriving stock (Eq, Ord, Show)
 
 data AtomicType
@@ -72,6 +93,43 @@ data AtomicType
   | Null
   | URI
   deriving stock (Eq, Ord, Show)
+
+isClosed :: NType -> Bool
+isClosed (NTypeVariable _) = False
+isClosed (NBrujin _) = True
+isClosed (NAtomic _) = True
+isClosed (x :-> y) = isClosed x && isClosed y
+isClosed (List x) = isClosed x
+isClosed (NAttrSet xs) = all isClosed . M.elems $ xs
+
+close :: NType -> NType
+close =
+  run
+    . evalState @(Map TypeVariable DeBrujin) M.empty
+    . runReader @Int 0
+    . evalState @Int 0
+    . close'
+  where
+    -- State is the sequential number, Reader is the binding context number
+    close' :: NType -> Eff '[State Int, Reader Int, State (Map TypeVariable DeBrujin)] NType
+    close' x@(NAtomic _) = return x
+    close' x@(NBrujin _) = return x
+    close' (x :-> y) = (:->) <$> close' x <*> close' y
+    close' (NTypeVariable tv) = NBrujin <$> newbrujin tv
+    close' (List x) = bndCtx $ List <$> close' x
+    close' (NAttrSet x) = bndCtx $ NAttrSet <$> traverse close' x
+
+    bndCtx = local @Int (+ 1)
+    newbrujin t = do
+      get @(Map TypeVariable DeBrujin) <&> M.lookup t >>= \case
+        Nothing -> do
+          i <- ask
+          j <- get
+          modify @Int (+ 1)
+          let x = DeBrujin i j
+          modify @(Map TypeVariable DeBrujin) (M.insert t x)
+          return x
+        Just x -> return x
 
 class Free s where
   free :: s -> Set TypeVariable
@@ -94,6 +152,7 @@ instance Monoid Substitution where
 sub :: Substitution -> NType -> NType
 sub s r = case r of
   NAtomic _ -> r
+  NBrujin _ -> r
   NTypeVariable x -> subTV x
   List x -> List $ sub s x
   NAttrSet m -> NAttrSet $ sub s <$> m
@@ -109,7 +168,7 @@ subCon s (x :~ y) = sub s x :~ sub s y
   NType ->
   UnifyM Substitution
 v <<- (NTypeVariable x) | v == x = return mempty
-v <<- x | v `occursIn` x = throwError $ InfinityType x
+v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
 v <<- x = return $ Substitution $ M.singleton v x
 
 unify :: Constraint -> UnifyM Substitution
@@ -127,7 +186,7 @@ unify (lhs :~ rhs) =
       s <- unify (x1 :~ x2)
       s' <- unify $ subCon s $ y1 :~ y2
       return $ s' <> s
-    (x, y) -> throwError $ CanNotUnify x y
+    (x, y) -> tell (CanNotUnify x y) >> return mempty
 
 solve :: Seq Constraint -> UnifyM Substitution
 solve Empty = return mempty
@@ -156,6 +215,7 @@ data Errors
   = UndefinedVariable VarName
   | UnexpectedType {expected :: NType, got :: NType}
   | KeyNotPresent Text
+  deriving stock (Eq, Ord, Show)
 
 data Fresh x where
   Fresh :: Fresh TypeVariable
@@ -188,14 +248,15 @@ data UnifyingError
   | CanNotUnify NType NType
   deriving stock (Eq, Show)
 
-type UnifyM x = forall r. Members '[Error UnifyingError] r => Eff r x
+type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
 
 type InferEffs =
   '[ Fresh,
      Writer (TypeVariable, SrcSpan),
      Writer Constraint,
      Writer (SrcSpan, Errors),
-     Reader VariableMap
+     Reader VariableMap,
+     Writer UnifyingError
    ]
 
 type InferM x = forall r. Members InferEffs r => Eff r x

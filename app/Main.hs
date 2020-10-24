@@ -10,6 +10,8 @@ main = do
   inp <- Text.getContents
   case parseNixTextLoc inp of
     Failure err -> error $ show err
-    Success r -> case getType r of
-      (Right x, _) -> print x
-      (Left e, _) -> print e
+    Success r -> do
+      let (t, errs, uErrs) = getType r
+      print errs
+      print uErrs
+      print t
