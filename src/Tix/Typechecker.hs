@@ -4,6 +4,7 @@ module Tix.Typechecker
     runFresh,
     runSeqWriter,
     getType,
+    showNType,
   )
 where
 
@@ -28,6 +29,7 @@ import Data.Sequences
 import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
+import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
 import Data.Traversable
 import Debug.Trace
@@ -74,6 +76,42 @@ data Constraint = !NType :~ !NType
 data DeBrujin = DeBrujin !Int !Int
   deriving stock (Show, Eq, Ord)
 
+greek :: [T.Builder]
+greek = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"]
+
+variableNames :: [T.Builder]
+variableNames =
+  greek
+    <> (fmap (\(n, g) -> g <> T.fromString (show n)) $ zip [1 :: Int ..] greek)
+
+showNType :: NType -> Text
+showNType t = TL.toStrict . T.toLazyText $ showNType' t
+  where
+    greekVars = M.fromList $ zip (S.toList $ getDeBurjins t) variableNames
+    showNType' :: NType -> T.Builder
+    showNType' (NAtomic a) = showAtomicType a
+    showNType' (NBrujin b) = greekVars M.! b
+    showNType' (NTypeVariable _) = error "should not have free type variables at this point"
+    showNType' (x :-> y) = showNType' x <> " -> " <> showNType' y
+    showNType' (List x) = "[" <> showNType' x <> "]"
+    showNType' (NAttrSet x) =
+      "AttrSet {"
+        <> ( mconcat
+               . intersperse "; "
+               . fmap (\(k, v) -> T.fromText k <> " :: " <> showNType' v)
+               $ M.toList x
+           )
+        <> "}"
+
+showAtomicType :: AtomicType -> T.Builder
+showAtomicType Integer = "Integer"
+showAtomicType Float = "Float"
+showAtomicType Bool = "Bool"
+showAtomicType String = "String"
+showAtomicType Path = "Path"
+showAtomicType Null = "Null"
+showAtomicType URI = "URI"
+
 data NType
   = NTypeVariable !TypeVariable
   | NBrujin !DeBrujin
@@ -93,6 +131,14 @@ data AtomicType
   | Null
   | URI
   deriving stock (Eq, Ord, Show)
+
+getDeBurjins :: NType -> Set DeBrujin
+getDeBurjins (NTypeVariable _) = S.empty
+getDeBurjins (NBrujin x) = S.singleton x
+getDeBurjins (NAtomic _) = S.empty
+getDeBurjins (x :-> y) = getDeBurjins x <> getDeBurjins y
+getDeBurjins (List x) = getDeBurjins x
+getDeBurjins (NAttrSet xs) = foldMap getDeBurjins . M.elems $ xs
 
 isClosed :: NType -> Bool
 isClosed (NTypeVariable _) = False
@@ -192,7 +238,7 @@ solve :: Seq Constraint -> UnifyM Substitution
 solve Empty = return mempty
 solve (rest :|> c) = do
   s <- unify c
-  solve $ fmap (subCon s) rest
+  (<> s) <$> solve (fmap (subCon (traceShowId s)) rest)
 
 pattern Sempty <- (S.null -> True) where Sempty = S.empty
 
