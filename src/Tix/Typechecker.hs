@@ -185,16 +185,18 @@ newtype DeBrujinContext = DeBrujinContext (Sum Int)
 instance Act DeBrujinContext DeBrujin where
   act (DeBrujinContext (Sum n)) (DeBrujin i j) = DeBrujin (i + n) j
 
+type TDeBrujinMap = ShiftedMap DeBrujinContext TypeVariable DeBrujin
+
 close :: Range TypeVariable -> NType -> NType
 close range =
   run
-    . evalState @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) mempty
+    . evalState @TDeBrujinMap mempty
     . runReader @Int 0
     . evalState @Int 0
     . close'
   where
     -- State is the sequential number, Reader is the binding context number
-    close' :: NType -> Eff '[State Int, Reader Int, State (ShiftedMap DeBrujinContext TypeVariable DeBrujin)] NType
+    close' :: NType -> Eff '[State Int, Reader Int, State TDeBrujinMap] NType
     close' x@(NAtomic _) = return x
     close' x@(NBrujin _) = return x
     close' (NTypeVariable tv) | tv `R.member` range = NBrujin <$> newbrujin tv
@@ -203,18 +205,18 @@ close range =
     close' (NAttrSet x) = bndCtx $ NAttrSet <$> traverse close' x
 
     bndCtx m = do
-      modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.shift 1)
+      modify @TDeBrujinMap (SM.shift 1)
       x <- local @Int (+ 1) m
-      modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.shift (-1))
+      modify @TDeBrujinMap (SM.shift (-1))
       return x
     newbrujin t = do
-      get @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) <&> SM.lookup t >>= \case
+      get @TDeBrujinMap <&> SM.lookup t >>= \case
         Nothing -> do
           i <- ask
           j <- get
           modify @Int (+ 1)
           let x = DeBrujin i j
-          modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.insert t x)
+          modify @TDeBrujinMap (SM.insert t x)
           return x
         Just x -> return x
 
