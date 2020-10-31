@@ -24,6 +24,8 @@ import qualified Data.List.NonEmpty as NE
 import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
 import Data.MonoTraversable
+import Data.Range (Range (..))
+import qualified Data.Range as R
 import Data.Sequence (Seq (..))
 import Data.Sequences
 import Data.Set (Set)
@@ -61,11 +63,11 @@ getType' ::
   NExprLoc ->
   Eff r NType
 getType' r = do
-  (t, constraints) <-
-    runSeqWriter @(Seq Constraint) $
-      infer r
-  s <- solve (traceShowId constraints)
-  return . close $ sub s (traceShowId t)
+  ((t, s'), constraints) <-
+    runSeqWriter @(Seq Constraint) . runWriter @Substitution $
+      inferGeneral r
+  s <- solve (traceShowId . fmap (subCon s') $ constraints)
+  return . close InfiniteRange $ sub (s <> s') (traceShowId t)
 
 newtype TypeVariable = TypeVariable Int
   deriving newtype (Show, Eq, Ord)
@@ -85,23 +87,34 @@ variableNames =
     <> (fmap (\(n, g) -> g <> T.fromString (show n)) $ zip [1 :: Int ..] greek)
 
 showNType :: NType -> Text
-showNType t = TL.toStrict . T.toLazyText $ showNType' t
+showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
   where
-    greekVars = M.fromList $ zip (S.toList $ getDeBurjins t) variableNames
-    showNType' :: NType -> T.Builder
-    showNType' (NAtomic a) = showAtomicType a
-    showNType' (NBrujin b) = greekVars M.! b
-    showNType' (NTypeVariable _) = error "should not have free type variables at this point"
-    showNType' (x :-> y) = showNType' x <> " -> " <> showNType' y
-    showNType' (List x) = "[" <> showNType' x <> "]"
-    showNType' (NAttrSet x) =
-      "AttrSet {"
-        <> ( mconcat
-               . intersperse "; "
-               . fmap (\(k, v) -> T.fromText k <> " :: " <> showNType' v)
-               $ M.toList x
-           )
-        <> "}"
+    greekVars = M.fromList . traceShowId $ zip (S.toList $ getAllDeBurjins t) variableNames
+    showNType' :: Int -> NType -> T.Builder
+    showNType' depth u =
+      foralls <> case u of
+        (NAtomic a) -> showAtomicType a
+        (NBrujin (DeBrujin i j)) -> greekVars M.! (DeBrujin (i - depth) j)
+        (NTypeVariable _) -> error "should not have free type variables at this point"
+        (x :-> y) -> showNType' (depth + 1) x <> " -> " <> showNType' (depth + 1) y
+        (List x) -> "[" <> showNType' (depth + 1) x <> "]"
+        (NAttrSet x) ->
+          "{ "
+            <> ( mconcat
+                   . intersperse "; "
+                   . fmap (\(k, v) -> T.fromText k <> " = " <> showNType' (depth + 1) v)
+                   $ M.toList x
+               )
+            <> " }"
+      where
+        currBurjins = traceShowId . S.mapMonotonic (DeBrujin (- depth)) $ getDeBurjins 0 (traceShowId u)
+        foralls =
+          if S.null currBurjins
+            then ""
+            else
+              "∀ "
+                <> (mconcat . intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
+                <> ". "
 
 showAtomicType :: AtomicType -> T.Builder
 showAtomicType Integer = "Integer"
@@ -116,9 +129,9 @@ data NType
   = NTypeVariable !TypeVariable
   | NBrujin !DeBrujin
   | NAtomic !AtomicType
-  | !NType :-> !NType
   | -- These two introduce a new De Brujin binding context
-    List !NType
+    !NType :-> !NType
+  | List !NType
   | NAttrSet !(Map Text NType)
   deriving stock (Eq, Ord, Show)
 
@@ -132,13 +145,26 @@ data AtomicType
   | URI
   deriving stock (Eq, Ord, Show)
 
-getDeBurjins :: NType -> Set DeBrujin
-getDeBurjins (NTypeVariable _) = S.empty
-getDeBurjins (NBrujin x) = S.singleton x
-getDeBurjins (NAtomic _) = S.empty
-getDeBurjins (x :-> y) = getDeBurjins x <> getDeBurjins y
-getDeBurjins (List x) = getDeBurjins x
-getDeBurjins (NAttrSet xs) = foldMap getDeBurjins . M.elems $ xs
+getDeBurjins :: Int -> NType -> Set Int
+getDeBurjins _ (NTypeVariable _) = S.empty
+getDeBurjins _ (NAtomic _) = S.empty
+getDeBurjins n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
+getDeBurjins _ (NBrujin _) = S.empty
+getDeBurjins n (x :-> y) = getDeBurjins (n + 1) x <> getDeBurjins (n + 1) y
+getDeBurjins n (List x) = getDeBurjins (n + 1) x
+getDeBurjins n (NAttrSet xs) = foldMap (getDeBurjins (n + 1)) . M.elems $ xs
+
+getAllDeBurjins :: NType -> Set DeBrujin
+getAllDeBurjins =
+  traceShowId . \case
+    (NTypeVariable _) -> S.empty
+    (NAtomic _) -> S.empty
+    (NBrujin x) -> S.singleton x
+    (x :-> y) -> bncCtx $ getAllDeBurjins x <> getAllDeBurjins y
+    (List x) -> bncCtx $ getAllDeBurjins x
+    (NAttrSet xs) -> bncCtx . foldMap getAllDeBurjins . M.elems $ xs
+  where
+    bncCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
 
 isClosed :: NType -> Bool
 isClosed (NTypeVariable _) = False
@@ -148,8 +174,8 @@ isClosed (x :-> y) = isClosed x && isClosed y
 isClosed (List x) = isClosed x
 isClosed (NAttrSet xs) = all isClosed . M.elems $ xs
 
-close :: NType -> NType
-close =
+close :: Range TypeVariable -> NType -> NType
+close range =
   run
     . evalState @(Map TypeVariable DeBrujin) M.empty
     . runReader @Int 0
@@ -160,12 +186,16 @@ close =
     close' :: NType -> Eff '[State Int, Reader Int, State (Map TypeVariable DeBrujin)] NType
     close' x@(NAtomic _) = return x
     close' x@(NBrujin _) = return x
-    close' (x :-> y) = (:->) <$> close' x <*> close' y
-    close' (NTypeVariable tv) = NBrujin <$> newbrujin tv
+    close' (NTypeVariable tv) | tv `R.member` range = NBrujin <$> newbrujin tv
+    close' (x :-> y) = bndCtx $ (:->) <$> close' x <*> close' y
     close' (List x) = bndCtx $ List <$> close' x
     close' (NAttrSet x) = bndCtx $ NAttrSet <$> traverse close' x
 
-    bndCtx = local @Int (+ 1)
+    bndCtx m = do
+      modify @(Map TypeVariable DeBrujin) (fmap (\(DeBrujin i j) -> DeBrujin (i + 1) j))
+      x <- local @Int (+ 1) m
+      modify @(Map TypeVariable DeBrujin) (fmap (\(DeBrujin i j) -> DeBrujin (i - 1) j))
+      return x
     newbrujin t = do
       get @(Map TypeVariable DeBrujin) <&> M.lookup t >>= \case
         Nothing -> do
@@ -188,6 +218,7 @@ instance Free NType where
   free (x :-> y) = free x <> free y
 
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
+  deriving newtype (Eq, Ord, Show)
 
 instance Semigroup Substitution where
   x'@(Substitution x) <> (Substitution y) = Substitution (x <> fmap (sub x') y)
@@ -218,9 +249,21 @@ v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
 v <<- x = return $ Substitution $ M.singleton v x
 
 unify :: Constraint -> UnifyM Substitution
-unify (lhs :~ rhs) =
+unify = unifyWithPriority EmptyRange
+
+unifyWithPriority ::
+  -- | The range of type variables to interpret as being lower
+  -- priority (try to replace them if possible)
+  Range TypeVariable ->
+  Constraint ->
+  UnifyM Substitution
+unifyWithPriority range (lhs :~ rhs) =
   case (lhs, rhs) of
     (NAtomic x, NAtomic y) | x == y -> return mempty
+    (NTypeVariable x, NTypeVariable y) ->
+      if y `R.member` range
+        then x <<- NTypeVariable y
+        else y <<- NTypeVariable x
     (NTypeVariable t, x) -> t <<- x
     (x, NTypeVariable t) -> t <<- x
     (List x, List y) -> unify $ x :~ y
@@ -235,10 +278,18 @@ unify (lhs :~ rhs) =
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
 solve :: Seq Constraint -> UnifyM Substitution
-solve Empty = return mempty
-solve (rest :|> c) = do
-  s <- unify c
-  (<> s) <$> solve (fmap (subCon (traceShowId s)) rest)
+solve = solveWithPriority EmptyRange
+
+solveWithPriority ::
+  -- | The range of type variables to interpret as being lower
+  -- priority (try to replace them if possible)
+  Range TypeVariable ->
+  Seq Constraint ->
+  UnifyM Substitution
+solveWithPriority _ Empty = return mempty
+solveWithPriority range (rest :|> c) = do
+  s <- unifyWithPriority range c
+  (<> s) <$> solveWithPriority range (fmap (subCon (traceShowId s)) rest)
 
 pattern Sempty <- (S.null -> True) where Sempty = S.empty
 
@@ -265,6 +316,10 @@ data Errors
 
 data Fresh x where
   Fresh :: Fresh TypeVariable
+  -- | Inclusive
+  MinFreshFromNow :: Fresh TypeVariable
+  -- | Inclusive
+  MaxFreshUntilNow :: Fresh TypeVariable
 
 data ResumableExceptions x
 
@@ -274,11 +329,23 @@ runFresh :: Runner Fresh
 runFresh =
   evalState (TypeVariable 0)
     . reinterpret
-      ( \Fresh -> do
-          (TypeVariable old) <- get
-          put (TypeVariable $ old + 1)
-          return (TypeVariable old)
+      ( \case
+          Fresh -> do
+            (TypeVariable x) <- get
+            put (TypeVariable $ x + 1)
+            return (TypeVariable x)
+          MinFreshFromNow -> get
+          MaxFreshUntilNow -> do
+            (TypeVariable new) <- get
+            return $ TypeVariable (new - 1)
       )
+
+registerTypeVariables :: Member Fresh r => Eff r a -> Eff r (a, Range TypeVariable)
+registerTypeVariables m = do
+  l <- send MinFreshFromNow
+  a <- m
+  r <- send MaxFreshUntilNow
+  return (a, Range l r)
 
 freshSrc ::
   Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan)] r =>
@@ -302,7 +369,8 @@ type InferEffs =
      Writer Constraint,
      Writer (SrcSpan, Errors),
      Reader VariableMap,
-     Writer UnifyingError
+     Writer UnifyingError,
+     Writer Substitution
    ]
 
 type InferM x = forall r. Members InferEffs r => Eff r x
@@ -475,7 +543,7 @@ inferBinding bindings = do
         getPath path >>= \case
           Nothing -> return []
           Just name -> do
-            t <- infer r
+            t <- inferGeneral r
             return $ [stack ((,) <$> name) (NAttrSet . uncurry M.singleton) t]
       Inherit attrSet keys src -> do
         vars <- case attrSet of
@@ -490,6 +558,17 @@ inferBinding bindings = do
               Nothing -> Nothing
               Just r -> Just (name, r)
   return $ M.fromListWith mergeSetTypes bindings'
+
+inferGeneral :: NExprLoc -> InferM NType
+inferGeneral x = do
+  ((t, cs), range) <- registerTypeVariables . runSeqWriter @(Seq Constraint) $ infer x
+  s <- solveWithPriority range cs
+  -- Filter for optimization purposes
+  tell . Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
+  return . close range $ sub s t
+
+-- appAll :: (a -> b -> b) -> [a] -> b -> b
+-- appAll f xs = appEndo (mconcat $ Endo . f <$> xs)
 
 expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NType -> Eff r VariableMap
 expectAttrSet (NAttrSet x) = return x
