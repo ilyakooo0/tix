@@ -15,15 +15,20 @@ import Control.Monad.Freer.Internal (handleRelayS)
 import Control.Monad.Freer.Reader
 import Control.Monad.Freer.State
 import Control.Monad.Freer.Writer
+import Data.Act
 import Data.Fix
 import Data.Foldable
 import Data.Functor
 import Data.Functor.Classes
+import Data.Group
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
+import Data.Map.Shifted.Strict (ShiftedMap (..))
+import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
 import Data.MonoTraversable
+import Data.Monoid
 import Data.Range (Range (..))
 import qualified Data.Range as R
 import Data.Sequence (Seq (..))
@@ -174,16 +179,22 @@ isClosed (x :-> y) = isClosed x && isClosed y
 isClosed (List x) = isClosed x
 isClosed (NAttrSet xs) = all isClosed . M.elems $ xs
 
+newtype DeBrujinContext = DeBrujinContext (Sum Int)
+  deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
+
+instance Act DeBrujinContext DeBrujin where
+  act (DeBrujinContext (Sum n)) (DeBrujin i j) = DeBrujin (i + n) j
+
 close :: Range TypeVariable -> NType -> NType
 close range =
   run
-    . evalState @(Map TypeVariable DeBrujin) M.empty
+    . evalState @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) mempty
     . runReader @Int 0
     . evalState @Int 0
     . close'
   where
     -- State is the sequential number, Reader is the binding context number
-    close' :: NType -> Eff '[State Int, Reader Int, State (Map TypeVariable DeBrujin)] NType
+    close' :: NType -> Eff '[State Int, Reader Int, State (ShiftedMap DeBrujinContext TypeVariable DeBrujin)] NType
     close' x@(NAtomic _) = return x
     close' x@(NBrujin _) = return x
     close' (NTypeVariable tv) | tv `R.member` range = NBrujin <$> newbrujin tv
@@ -192,18 +203,18 @@ close range =
     close' (NAttrSet x) = bndCtx $ NAttrSet <$> traverse close' x
 
     bndCtx m = do
-      modify @(Map TypeVariable DeBrujin) (fmap (\(DeBrujin i j) -> DeBrujin (i + 1) j))
+      modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.shift 1)
       x <- local @Int (+ 1) m
-      modify @(Map TypeVariable DeBrujin) (fmap (\(DeBrujin i j) -> DeBrujin (i - 1) j))
+      modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.shift (-1))
       return x
     newbrujin t = do
-      get @(Map TypeVariable DeBrujin) <&> M.lookup t >>= \case
+      get @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) <&> SM.lookup t >>= \case
         Nothing -> do
           i <- ask
           j <- get
           modify @Int (+ 1)
           let x = DeBrujin i j
-          modify @(Map TypeVariable DeBrujin) (M.insert t x)
+          modify @(ShiftedMap DeBrujinContext TypeVariable DeBrujin) (SM.insert t x)
           return x
         Just x -> return x
 

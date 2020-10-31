@@ -28,6 +28,8 @@ dependencies:
   - lens
   - data-fix
   - mono-traversable
+  - acts
+  - groups
 library:
   source-dirs: src
 
@@ -70,3 +72,4 @@ default-extensions:
   - PatternSynonyms
   - ViewPatterns
   - KindSignatures
+  - MultiParamTypeClasses
