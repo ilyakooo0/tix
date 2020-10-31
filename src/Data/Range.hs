@@ -5,7 +5,7 @@ module Data.Range
   )
 where
 
--- | Includes both ends included
+-- | Left included, right excluded
 data Range a
   = Range' !a !a
   | InfiniteRange
@@ -14,7 +14,7 @@ data Range a
 member :: Ord a => a -> Range a -> Bool
 member _ InfiniteRange = True
 member _ EmptyRange = False
-member a (Range' l r) = a >= l && a <= r
+member a (Range' l r) = a >= l && a < r
 {-# INLINE member #-}
 
 notMember :: Ord a => a -> Range a -> Bool

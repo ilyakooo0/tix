@@ -23,6 +23,7 @@ import Data.Functor.Classes
 import Data.Group
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
+import qualified Data.Map.Extra as M
 import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
@@ -94,31 +95,35 @@ variableNames =
 showNType :: NType -> Text
 showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
   where
-    greekVars = M.fromList . traceShowId $ zip (S.toList $ getAllDeBurjins t) variableNames
+    greekVars = M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames
     showNType' :: Int -> NType -> T.Builder
     showNType' depth u =
       foralls <> case u of
         (NAtomic a) -> showAtomicType a
         (NBrujin (DeBrujin i j)) -> greekVars M.! (DeBrujin (i - depth) j)
         (NTypeVariable _) -> error "should not have free type variables at this point"
-        (x :-> y) -> showNType' (depth + 1) x <> " -> " <> showNType' (depth + 1) y
-        (List x) -> "[" <> showNType' (depth + 1) x <> "]"
+        (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
+        (List x) -> "[" <> showNextNType' x <> "]"
         (NAttrSet x) ->
           "{ "
             <> ( mconcat
                    . intersperse "; "
-                   . fmap (\(k, v) -> T.fromText k <> " = " <> showNType' (depth + 1) v)
+                   . fmap (\(k, v) -> T.fromText k <> " = " <> showNextNType' v)
                    $ M.toList x
                )
             <> " }"
       where
-        currBurjins = traceShowId . S.mapMonotonic (DeBrujin (- depth)) $ getDeBurjins 0 (traceShowId u)
+        showNextNType' = showNType' $ depth + 1
+        currBurjins =
+          M.restrictKeysToRange
+            (Range (DeBrujin (- depth) 0) (DeBrujin (- depth + 1) 0))
+            greekVars
         foralls =
-          if S.null currBurjins
+          if M.null currBurjins
             then ""
             else
               "∀ "
-                <> (mconcat . intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
+                <> (mconcat . intersperse " " . M.elems $ currBurjins)
                 <> ". "
 
 showAtomicType :: AtomicType -> T.Builder
@@ -150,34 +155,38 @@ data AtomicType
   | URI
   deriving stock (Eq, Ord, Show)
 
-getDeBurjins :: Int -> NType -> Set Int
-getDeBurjins _ (NTypeVariable _) = S.empty
-getDeBurjins _ (NAtomic _) = S.empty
-getDeBurjins n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
-getDeBurjins _ (NBrujin _) = S.empty
-getDeBurjins n (x :-> y) = getDeBurjins (n + 1) x <> getDeBurjins (n + 1) y
-getDeBurjins n (List x) = getDeBurjins (n + 1) x
-getDeBurjins n (NAttrSet xs) = foldMap (getDeBurjins (n + 1)) . M.elems $ xs
+-- | Get all De Brujin type variables that were bound in the the outermost
+-- (current) binding context.
+-- Only returns the second indexes.
+getDeBurjins :: NType -> Set Int
+getDeBurjins = getDeBurjins' 0
 
+-- | Gets all De Brujin variables with the given binding context offset.
+-- Only returns the second indexes.
+getDeBurjins' :: Int -> NType -> Set Int
+getDeBurjins' _ (NTypeVariable _) = S.empty
+getDeBurjins' _ (NAtomic _) = S.empty
+getDeBurjins' n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
+getDeBurjins' _ (NBrujin _) = S.empty
+getDeBurjins' n (x :-> y) = getDeBurjins' (n + 1) x <> getDeBurjins' (n + 1) y
+getDeBurjins' n (List x) = getDeBurjins' (n + 1) x
+getDeBurjins' n (NAttrSet xs) = foldMap (getDeBurjins' (n + 1)) . M.elems $ xs
+
+-- | Returns the set of all De Brujin type variables relative to the outermost
+-- (current) binding context.
+-- So variables that are bound in one of the inner contexts will have a negative
+-- binding context number.
 getAllDeBurjins :: NType -> Set DeBrujin
 getAllDeBurjins =
   traceShowId . \case
     (NTypeVariable _) -> S.empty
     (NAtomic _) -> S.empty
     (NBrujin x) -> S.singleton x
-    (x :-> y) -> bncCtx $ getAllDeBurjins x <> getAllDeBurjins y
-    (List x) -> bncCtx $ getAllDeBurjins x
-    (NAttrSet xs) -> bncCtx . foldMap getAllDeBurjins . M.elems $ xs
+    (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
+    (List x) -> bndCtx $ getAllDeBurjins x
+    (NAttrSet xs) -> bndCtx . foldMap getAllDeBurjins . M.elems $ xs
   where
-    bncCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
-
-isClosed :: NType -> Bool
-isClosed (NTypeVariable _) = False
-isClosed (NBrujin _) = True
-isClosed (NAtomic _) = True
-isClosed (x :-> y) = isClosed x && isClosed y
-isClosed (List x) = isClosed x
-isClosed (NAttrSet xs) = all isClosed . M.elems $ xs
+    bndCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
 
 newtype DeBrujinContext = DeBrujinContext (Sum Int)
   deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
@@ -331,8 +340,6 @@ data Fresh x where
   Fresh :: Fresh TypeVariable
   -- | Inclusive
   MinFreshFromNow :: Fresh TypeVariable
-  -- | Inclusive
-  MaxFreshUntilNow :: Fresh TypeVariable
 
 data ResumableExceptions x
 
@@ -348,16 +355,13 @@ runFresh =
             put (TypeVariable $ x + 1)
             return (TypeVariable x)
           MinFreshFromNow -> get
-          MaxFreshUntilNow -> do
-            (TypeVariable new) <- get
-            return $ TypeVariable (new - 1)
       )
 
 registerTypeVariables :: Member Fresh r => Eff r a -> Eff r (a, Range TypeVariable)
 registerTypeVariables m = do
   l <- send MinFreshFromNow
   a <- m
-  r <- send MaxFreshUntilNow
+  r <- send MinFreshFromNow
   return (a, Range l r)
 
 freshSrc ::
