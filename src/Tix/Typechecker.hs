@@ -114,16 +114,13 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
             <> " }"
       where
         showNextNType' = showNType' $ depth + 1
-        currBurjins =
-          M.restrictKeysToRange
-            (Range (DeBrujin (- depth) 0) (DeBrujin (- depth + 1) 0))
-            greekVars
+        currBurjins = S.mapMonotonic (DeBrujin (- depth)) $ getDeBurjins u
         foralls =
-          if M.null currBurjins
+          if S.null currBurjins
             then ""
             else
               "∀ "
-                <> (mconcat . intersperse " " . M.elems $ currBurjins)
+                <> (mconcat . intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
                 <> ". "
 
 showAtomicType :: AtomicType -> T.Builder
