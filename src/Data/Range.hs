@@ -11,6 +11,11 @@ data Range a
   | InfiniteRange
   | EmptyRange
 
+instance Show a => Show (Range a) where
+  show InfiniteRange = "∞"
+  show EmptyRange = "∅"
+  show (Range' l r) = show l <> "..<" <> show r
+
 member :: Ord a => a -> Range a -> Bool
 member _ InfiniteRange = True
 member _ EmptyRange = False
@@ -23,19 +28,3 @@ notMember a r = not $ member a r
 
 pattern Range :: Ord a => a -> a -> Range a
 pattern Range x y <- Range' x y where Range x y = Range' (min x y) (max x y)
-
--- pattern EmptyRange :: Range a
--- pattern EmptyRange = Range' []
-
--- pattern Range :: Ord a => a -> a -> Range a -> Range a
--- pattern Range l r rest <-
---   ( ( \x -> case x of
---         Range' ((a, b) : rest) -> Just (a, b, Range' rest)
---         _ -> Nothing
---     ) ->
---       Just (l, r, rest)
---     )
-
--- addToRange :: Ord a => a -> a -> Range a -> Range a
--- addToRange _ _ InfiniteRange = InfiniteRange
--- addToRange l r (Range' rs) =

@@ -10,7 +10,6 @@ where
 
 import Control.Monad
 import Control.Monad.Freer
-import Control.Monad.Freer.Error
 import Control.Monad.Freer.Internal (handleRelayS)
 import Control.Monad.Freer.Reader
 import Control.Monad.Freer.State
@@ -19,7 +18,6 @@ import Data.Act
 import Data.Fix
 import Data.Foldable
 import Data.Functor
-import Data.Functor.Classes
 import Data.Group
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
@@ -40,43 +38,48 @@ import Data.Text (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
 import Data.Traversable
-import Debug.Trace
 import Nix.Atoms
 import Nix.Expr
 
+runConstraintEnv ::
+  Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
+  Eff effs ((a, Substitution), Seq Constraint)
+runConstraintEnv =
+  runState @(Seq Constraint) Empty
+    . interpret @(Writer Constraint) (\(Tell x) -> modify (x :<|))
+    . runWriter @Substitution
+    . interpret @(SubstituteEnv)
+      ( \(SubstituteEnv x) -> do
+          modify @(Seq Constraint) (subCon x <$>)
+          tell x
+          return ()
+      )
+
 getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError])
 getType r =
-  let ((((t, unifying), srcs), constraints), errs) =
+  let (((((t, unifying), errs), srcs), subs), _) =
         run
-          . runReader (M.empty :: VariableMap)
+          . runConstraintEnv
+          . runState @[(TypeVariable, SrcSpan)] []
+          . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
           . runSeqWriter @[(SrcSpan, Errors)]
-          . runSeqWriter @(Seq Constraint)
-          . runSeqWriter @[(TypeVariable, SrcSpan)]
           . runSeqWriter @[UnifyingError]
+          . runReader (M.empty :: VariableMap)
           . runFresh
-          $ getType' r
-   in (t, errs, unifying)
+          $ inferGeneral r
+   in (sub subs t, errs, unifying)
 
-getType' ::
-  Members
-    '[ Writer (SrcSpan, Errors),
-       Reader VariableMap,
-       Writer (TypeVariable, SrcSpan),
-       Writer UnifyingError,
-       Fresh
-     ]
-    r =>
-  NExprLoc ->
-  Eff r NType
-getType' r = do
-  ((t, s'), constraints) <-
-    runSeqWriter @(Seq Constraint) . runWriter @Substitution $
-      inferGeneral r
-  s <- solve (traceShowId . fmap (subCon s') $ constraints)
-  return . close InfiniteRange $ sub (s <> s') (traceShowId t)
+data SubstituteEnv a where
+  SubstituteEnv :: Substitution -> SubstituteEnv ()
+
+subEnv :: Member SubstituteEnv r => Substitution -> Eff r ()
+subEnv = send . SubstituteEnv
 
 newtype TypeVariable = TypeVariable Int
-  deriving newtype (Show, Eq, Ord)
+  deriving newtype (Eq, Ord)
+
+instance Show TypeVariable where
+  show (TypeVariable n) = "〚" <> show n <> "〛"
 
 data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
@@ -175,7 +178,7 @@ getDeBurjins' n (NAttrSet xs) = foldMap (getDeBurjins' (n + 1)) . M.elems $ xs
 -- binding context number.
 getAllDeBurjins :: NType -> Set DeBrujin
 getAllDeBurjins =
-  traceShowId . \case
+  \case
     (NTypeVariable _) -> S.empty
     (NAtomic _) -> S.empty
     (NBrujin x) -> S.singleton x
@@ -206,6 +209,7 @@ close range =
     close' x@(NAtomic _) = return x
     close' x@(NBrujin _) = return x
     close' (NTypeVariable tv) | tv `R.member` range = NBrujin <$> newbrujin tv
+    close' x@(NTypeVariable _) = return x
     close' (x :-> y) = bndCtx $ (:->) <$> close' x <*> close' y
     close' (List x) = bndCtx $ List <$> close' x
     close' (NAttrSet x) = bndCtx $ NAttrSet <$> traverse close' x
@@ -239,6 +243,7 @@ instance Free NType where
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
 
+-- | Prefers the left
 instance Semigroup Substitution where
   x'@(Substitution x) <> (Substitution y) = Substitution (x <> fmap (sub x') y)
 
@@ -308,24 +313,12 @@ solveWithPriority ::
 solveWithPriority _ Empty = return mempty
 solveWithPriority range (rest :|> c) = do
   s <- unifyWithPriority range c
-  (<> s) <$> solveWithPriority range (fmap (subCon (traceShowId s)) rest)
+  (<> s) <$> solveWithPriority range (fmap (subCon s) rest)
 
-pattern Sempty <- (S.null -> True) where Sempty = S.empty
+-- pattern Sempty <- (S.null -> True) where Sempty = S.empty
 
 occursIn :: Free x => TypeVariable -> x -> Bool
 occursIn t x = t `S.member` free x
-
-data SchemeX x = Scheme (Set TypeVariable) x
-  deriving stock (Eq, Ord, Show)
-
-instance Show1 SchemeX where
-  liftShowsPrec s _ p (Scheme Sempty x) = s p x
-  liftShowsPrec s _ p (Scheme tvs x) = ((("forall " <> show tvs)) <>) <> s p x
-
-instance Eq1 SchemeX where
-  liftEq eq (Scheme ts1 x1) (Scheme ts2 x2) = ts1 == ts2 && eq x1 x2
-
--- type SchemeS = SchemeX NType
 
 data Errors
   = UndefinedVariable VarName
@@ -337,8 +330,6 @@ data Fresh x where
   Fresh :: Fresh TypeVariable
   -- | Inclusive
   MinFreshFromNow :: Fresh TypeVariable
-
-data ResumableExceptions x
 
 type Runner effect = forall effs a. Eff (effect ': effs) a -> Eff effs a
 
@@ -384,7 +375,7 @@ type InferEffs =
      Writer (SrcSpan, Errors),
      Reader VariableMap,
      Writer UnifyingError,
-     Writer Substitution
+     SubstituteEnv
    ]
 
 type InferM x = forall r. Members InferEffs r => Eff r x
@@ -482,12 +473,19 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     lhst ~~ rhst
     return $ NAtomic Bool
   NBinary op lhs rhs
-    | op `elem` [NLt, NLte, NGt, NGte, NPlus, NMinus, NMult, NDiv] -> do
+    | op `elem` [NLt, NLte, NGt, NGte] -> do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double
       lhst ~~ rhst
       return $ NAtomic Bool
+  NBinary op lhs rhs
+    | op `elem` [NPlus, NMinus, NMult, NDiv] -> do
+      lhst <- infer lhs
+      rhst <- infer rhs
+      -- TODO: Infer lhst and rhst are either Integer or Double
+      lhst ~~ rhst
+      return $ lhst
   NBinary op lhs rhs | op `elem` [NAnd, NOr, NImpl] -> do
     lhst <- infer lhs
     rhst <- infer rhs
@@ -573,16 +571,24 @@ inferBinding bindings = do
               Just r -> Just (name, r)
   return $ M.fromListWith mergeSetTypes bindings'
 
+-- traceShowMStack :: (HasCallStack, Applicative f, Show a) => a -> f ()
+-- traceShowMStack = withFrozenCallStack $ traceShowMStack' ""
+
+-- traceShowMStack' :: (HasCallStack, Applicative f, Show a) => String -> a -> f ()
+-- traceShowMStack' s a = withFrozenCallStack $ do
+--   case getCallStack callStack of
+--     (_ : (x, _) : _) -> traceM $ x <> " " <> s <> " \t" <> show a
+--     _ -> traceM $ s <> " \t" <> show a
+
 inferGeneral :: NExprLoc -> InferM NType
 inferGeneral x = do
-  ((t, cs), range) <- registerTypeVariables . runSeqWriter @(Seq Constraint) $ infer x
-  s <- solveWithPriority range cs
+  (((t, subs), cs), range) <- registerTypeVariables . runConstraintEnv $ infer x
+  s' <- solveWithPriority range cs
+  let s = subs <> s'
+      returnedS = Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
   -- Filter for optimization purposes
-  tell . Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
+  subEnv returnedS
   return . close range $ sub s t
-
--- appAll :: (a -> b -> b) -> [a] -> b -> b
--- appAll f xs = appEndo (mconcat $ Endo . f <$> xs)
 
 expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NType -> Eff r VariableMap
 expectAttrSet (NAttrSet x) = return x
