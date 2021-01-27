@@ -18,7 +18,7 @@ import Data.Act
 import Data.Fix
 import Data.Foldable
 import Data.Functor
-import Data.Group
+import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
 import qualified Data.Map.Extra as M
