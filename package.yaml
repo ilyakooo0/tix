@@ -30,6 +30,12 @@ dependencies:
   - mono-traversable
   - acts
   - groups
+  - yaml
+  - aeson
+  - vector
+  - unordered-containers
+  - bytestring
+  - prettyprinter
 library:
   source-dirs: src
 

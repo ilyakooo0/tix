@@ -5,6 +5,7 @@ module Tix.Typechecker
     runSeqWriter,
     getType,
     showNType,
+    runNoTreeTracer,
   )
 where
 
@@ -15,13 +16,14 @@ import Control.Monad.Freer.Reader
 import Control.Monad.Freer.State
 import Control.Monad.Freer.Writer
 import Data.Act
+import qualified Data.Aeson as A
 import Data.Fix
 import Data.Foldable
 import Data.Functor
 import Data.Group hiding ((~~))
+import qualified Data.HashMap.Strict as HM
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
-import qualified Data.Map.Extra as M
 import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
@@ -37,9 +39,13 @@ import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
+import Data.Text.Prettyprint.Doc as P
+import Data.Text.Prettyprint.Doc.Render.Text
 import Data.Traversable
+import qualified Data.Vector as V
 import Nix.Atoms
 import Nix.Expr
+import Nix.Pretty
 
 runConstraintEnv ::
   Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
@@ -55,9 +61,9 @@ runConstraintEnv =
           return ()
       )
 
-getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError])
+getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError], A.Object)
 getType r =
-  let (((((t, unifying), errs), srcs), subs), _) =
+  let ((((((t, traceTree), unifying), errs), srcs), subs), _) =
         run
           . runConstraintEnv
           . runState @[(TypeVariable, SrcSpan)] []
@@ -66,8 +72,9 @@ getType r =
           . runSeqWriter @[UnifyingError]
           . runReader (M.empty :: VariableMap)
           . runFresh
+          . runTreeTracer
           $ inferGeneral r
-   in (sub subs t, errs, unifying)
+   in (sub subs t, errs, unifying, traceTree)
 
 data SubstituteEnv a where
   SubstituteEnv :: Substitution -> SubstituteEnv ()
@@ -83,6 +90,9 @@ instance Show TypeVariable where
 
 data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
+
+instance Pretty Constraint where
+  pretty (x :~ y) = pretty x <+> "~" <+> pretty y
 
 data DeBrujin = DeBrujin !Int !Int
   deriving stock (Show, Eq, Ord)
@@ -240,8 +250,31 @@ instance Free NType where
   free (NAttrSet attrs) = foldMap free . M.elems $ attrs
   free (x :-> y) = free x <> free y
 
+instance Pretty NType where
+  pretty (NTypeVariable t) = pretty $ prettyTypeVariable t
+  pretty (NBrujin (DeBrujin i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
+  pretty (NAtomic a) = viaShow a
+  pretty (x :-> y) = sep [pretty x, "->" <+> pretty y]
+  pretty (List x) = "[" <> align (pretty x) <> "]"
+  pretty (NAttrSet x) =
+    sep
+      [ flatAlt "{ " "{"
+          <+> align
+            ( sep . zipWith (<+>) ("" : repeat ";")
+                . map (\(k, v) -> pretty k <+> "=" <+> align (pretty v))
+                $ M.toList x
+            ),
+        "}"
+      ]
+
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
+
+prettyTypeVariable :: TypeVariable -> TL.Text
+prettyTypeVariable (TypeVariable n) = "⟦" <> (TL.pack . show) n <> "⟧"
+
+prettySubstitution :: Substitution -> A.Value
+prettySubstitution = A.toJSON . M.mapKeysMonotonic prettyTypeVariable . fmap renderPretty . unSubstitution
 
 -- | Prefers the left
 instance Semigroup Substitution where
@@ -375,7 +408,8 @@ type InferEffs =
      Writer (SrcSpan, Errors),
      Reader VariableMap,
      Writer UnifyingError,
-     SubstituteEnv
+     SubstituteEnv,
+     TreeTracer
    ]
 
 type InferM x = forall r. Members InferEffs r => Eff r x
@@ -580,15 +614,29 @@ inferBinding bindings = do
 --     (_ : (x, _) : _) -> traceM $ x <> " " <> s <> " \t" <> show a
 --     _ -> traceM $ s <> " \t" <> show a
 
+renderPretty :: Pretty x => x -> TL.Text
+renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
+
+showExpr :: Fix NExprLocF -> Text
+showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix . stripAnnotation
+
 inferGeneral :: NExprLoc -> InferM NType
-inferGeneral x = do
-  (((t, subs), cs), range) <- registerTypeVariables . runConstraintEnv $ infer x
+inferGeneral x = traceSubtree (showExpr x) $ do
+  (((t, subs), cs), range) <-
+    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
+  traceValue "received_type" $ renderPretty t
+  traceValue "received_substitutions" $ prettySubstitution subs
+  traceValue "received_constraints" $ fmap renderPretty cs
   s' <- solveWithPriority range cs
+  traceValue "substitutions_after_solving" $ prettySubstitution s'
   let s = subs <> s'
       returnedS = Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
+  traceValue "returned_substitutions" $ prettySubstitution returnedS
   -- Filter for optimization purposes
   subEnv returnedS
-  return . close range $ sub s t
+  let retT = close range $ sub s t
+  traceValue "returned_type" $ renderPretty retT
+  return retT
 
 expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NType -> Eff r VariableMap
 expectAttrSet (NAttrSet x) = return x
@@ -676,3 +724,26 @@ lookupAttrSet path = go (NE.toList path)
       expectAttrSet x <&> M.lookup p >>= \case
         Nothing -> NTypeVariable <$> throwSrcTV (KeyNotPresent p)
         Just t -> go ps t
+
+data TreeTracer a where
+  TraceTree :: A.Object -> TreeTracer ()
+
+traceValue :: (A.ToJSON v, Member TreeTracer eff) => Text -> v -> Eff eff ()
+traceValue k v = send $ TraceTree $ k A..= v
+
+traceSubtree :: Member TreeTracer eff => Text -> Eff eff a -> Eff eff a
+traceSubtree k = interpose (\(TraceTree o) -> send $ TraceTree (k A..= o))
+
+runTreeTracer :: Eff (TreeTracer ': eff) a -> Eff eff (a, A.Object)
+runTreeTracer = handleRelayS HM.empty (\s x -> pure (x, s)) $ \s (TraceTree o) k ->
+  k (HM.unionWith unionToList s o) ()
+  where
+    unionToList :: A.Value -> A.Value -> A.Value
+    unionToList (A.Array x) (A.Array y) = A.Array $ x <> y
+    unionToList (A.Array x) y = A.Array $ V.snoc x y
+    unionToList x (A.Array y) = A.Array $ V.cons x y
+    unionToList (A.Object x) (A.Object y) = A.Object $ HM.unionWith unionToList x y
+    unionToList x y = A.Array $ V.fromList [x, y]
+
+runNoTreeTracer :: Eff (TreeTracer ': eff) a -> Eff eff a
+runNoTreeTracer = interpret (\(TraceTree _) -> return ())
