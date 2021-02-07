@@ -20,6 +20,7 @@ import qualified Data.Aeson as A
 import Data.Fix
 import Data.Foldable
 import Data.Functor
+import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import qualified Data.HashMap.Strict as HM
 import Data.List.NonEmpty (NonEmpty (..))
@@ -48,15 +49,17 @@ import Nix.Expr
 import Nix.Pretty
 
 runConstraintEnv ::
+  Member (State VariableMap) effs =>
   Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
   Eff effs ((a, Substitution), Seq Constraint)
 runConstraintEnv =
   runState @(Seq Constraint) Empty
     . interpret @(Writer Constraint) (\(Tell x) -> modify (x :<|))
     . runWriter @Substitution
-    . interpret @(SubstituteEnv)
+    . interpret @SubstituteEnv
       ( \(SubstituteEnv x) -> do
           modify @(Seq Constraint) (subCon x <$>)
+          modify @VariableMap (sub x <$>)
           tell x
           return ()
       )
@@ -65,12 +68,12 @@ getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError], A.Object)
 getType r =
   let ((((((t, traceTree), unifying), errs), srcs), subs), _) =
         run
+          . evalState (M.empty :: VariableMap)
           . runConstraintEnv
           . runState @[(TypeVariable, SrcSpan)] []
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
           . runSeqWriter @[(SrcSpan, Errors)]
           . runSeqWriter @[UnifyingError]
-          . runReader (M.empty :: VariableMap)
           . runFresh
           . runTreeTracer
           $ inferGeneral r
@@ -206,8 +209,8 @@ instance Act DeBrujinContext DeBrujin where
 
 type TDeBrujinMap = ShiftedMap DeBrujinContext TypeVariable DeBrujin
 
-close :: Range TypeVariable -> NType -> NType
-close range =
+close :: Predicate TypeVariable -> NType -> NType
+close (Predicate f) =
   run
     . evalState @TDeBrujinMap mempty
     . runReader @Int 0
@@ -218,7 +221,7 @@ close range =
     close' :: NType -> Eff '[State Int, Reader Int, State TDeBrujinMap] NType
     close' x@(NAtomic _) = return x
     close' x@(NBrujin _) = return x
-    close' (NTypeVariable tv) | tv `R.member` range = NBrujin <$> newbrujin tv
+    close' (NTypeVariable tv) | f tv = NBrujin <$> newbrujin tv
     close' x@(NTypeVariable _) = return x
     close' (x :-> y) = bndCtx $ (:->) <$> close' x <*> close' y
     close' (List x) = bndCtx $ List <$> close' x
@@ -267,6 +270,12 @@ instance Pretty NType where
         "}"
       ]
 
+instance Free a => Free [a] where
+  free = foldMap free
+
+instance Free Substitution where
+  free (Substitution s) = free . M.elems $ s
+
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
 
@@ -276,9 +285,9 @@ prettyTypeVariable (TypeVariable n) = "⟦" <> (TL.pack . show) n <> "⟧"
 prettySubstitution :: Substitution -> A.Value
 prettySubstitution = A.toJSON . M.mapKeysMonotonic prettyTypeVariable . fmap renderPretty . unSubstitution
 
--- | Prefers the left
+-- | @older <> newer@
 instance Semigroup Substitution where
-  x'@(Substitution x) <> (Substitution y) = Substitution (x <> fmap (sub x') y)
+  (Substitution x) <> y'@(Substitution y) = Substitution (y <> fmap (sub y') x)
 
 instance Monoid Substitution where
   mempty = Substitution mempty
@@ -406,7 +415,7 @@ type InferEffs =
      Writer (TypeVariable, SrcSpan),
      Writer Constraint,
      Writer (SrcSpan, Errors),
-     Reader VariableMap,
+     State VariableMap,
      Writer UnifyingError,
      SubstituteEnv,
      TreeTracer
@@ -444,11 +453,15 @@ type VariableMap = Map VarName NType
 lhs ~~ rhs = tell $ lhs :~ rhs
 
 withBindings ::
-  (Member (Reader r) effs, Semigroup r) =>
-  r ->
+  (Member (State VariableMap) effs) =>
+  VariableMap ->
   Eff effs a ->
   Eff effs a
-withBindings bindings = local (bindings <>)
+withBindings bindings m = do
+  modify (bindings <>)
+  a <- m
+  modify @VariableMap (`M.difference` bindings)
+  return a
 
 infer :: NExprLoc -> InferM NType
 infer (Fix (Compose (Ann src x))) = runReader src $ case x of
@@ -462,7 +475,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NEnvPath {} -> return . NAtomic $ Path
   NStr {} -> return $ NAtomic String
   NSym var ->
-    ask @VariableMap
+    get @VariableMap
       >>= maybe (NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
   NList xs -> do
     xs' <- traverse infer xs
@@ -596,7 +609,7 @@ inferBinding bindings = do
           Just attr -> do
             t <- infer attr
             expectAttrSet t
-          Nothing -> ask @VariableMap
+          Nothing -> get @VariableMap
         names <- catMaybes <$> traverse getKeyName keys
         return $
           catMaybes $
@@ -624,19 +637,21 @@ inferGeneral :: NExprLoc -> InferM NType
 inferGeneral x = traceSubtree (showExpr x) $ do
   (((t, subs), cs), range) <-
     traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
-  traceValue "received_type" $ renderPretty t
-  traceValue "received_substitutions" $ prettySubstitution subs
-  traceValue "received_constraints" $ fmap renderPretty cs
+  traceSubtree "received" $ do
+    traceValue "type" $ renderPretty t
+    traceValue "substitutions" $ prettySubstitution subs
+    traceValue "constraints" $ fmap renderPretty cs
   s' <- solveWithPriority range cs
   traceValue "substitutions_after_solving" $ prettySubstitution s'
   let s = subs <> s'
       returnedS = Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
-  traceValue "returned_substitutions" $ prettySubstitution returnedS
-  -- Filter for optimization purposes
-  subEnv returnedS
-  let retT = close range $ sub s t
-  traceValue "returned_type" $ renderPretty retT
-  return retT
+  traceSubtree "returned" $ do
+    traceValue "substitutions" $ prettySubstitution returnedS
+    -- Filter for optimization purposes
+    subEnv returnedS
+    let retT = close (Predicate (`R.member` range) <> Predicate (`S.notMember` free returnedS)) $ sub s t
+    traceValue "type" $ renderPretty retT
+    return retT
 
 expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => NType -> Eff r VariableMap
 expectAttrSet (NAttrSet x) = return x
