@@ -11,9 +11,11 @@ where
 
 import Control.Monad
 import Control.Monad.Freer
+import Control.Monad.Freer.Fresh
 import Control.Monad.Freer.Internal (handleRelayS)
 import Control.Monad.Freer.Reader
 import Control.Monad.Freer.State
+import Control.Monad.Freer.TreeTracer
 import Control.Monad.Freer.Writer
 import Data.Act
 import qualified Data.Aeson as A
@@ -22,7 +24,6 @@ import Data.Foldable
 import Data.Functor
 import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
-import qualified Data.HashMap.Strict as HM
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
 import Data.Map.Shifted.Strict (ShiftedMap (..))
@@ -39,14 +40,28 @@ import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text.Lazy as TL
-import qualified Data.Text.Lazy.Builder as T
 import Data.Text.Prettyprint.Doc as P
 import Data.Text.Prettyprint.Doc.Render.Text
 import Data.Traversable
-import qualified Data.Vector as V
 import Nix.Atoms
 import Nix.Expr
 import Nix.Pretty
+import Tix.Types
+
+getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError], A.Object)
+getType r =
+  let ((((((t, traceTree), unifying), errs), srcs), subs), _) =
+        run
+          . evalState (M.empty :: VariableMap)
+          . runConstraintEnv
+          . runState @[(TypeVariable, SrcSpan)] []
+          . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
+          . runSeqWriter @[(SrcSpan, Errors)]
+          . runSeqWriter @[UnifyingError]
+          . runFresh
+          . runTreeTracer
+          $ inferGeneral r
+   in (sub subs t, errs, unifying, traceTree)
 
 runConstraintEnv ::
   Member (State VariableMap) effs =>
@@ -64,142 +79,17 @@ runConstraintEnv =
           return ()
       )
 
-getType :: NExprLoc -> (NType, [(SrcSpan, Errors)], [UnifyingError], A.Object)
-getType r =
-  let ((((((t, traceTree), unifying), errs), srcs), subs), _) =
-        run
-          . evalState (M.empty :: VariableMap)
-          . runConstraintEnv
-          . runState @[(TypeVariable, SrcSpan)] []
-          . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
-          . runSeqWriter @[(SrcSpan, Errors)]
-          . runSeqWriter @[UnifyingError]
-          . runFresh
-          . runTreeTracer
-          $ inferGeneral r
-   in (sub subs t, errs, unifying, traceTree)
-
 data SubstituteEnv a where
   SubstituteEnv :: Substitution -> SubstituteEnv ()
 
 subEnv :: Member SubstituteEnv r => Substitution -> Eff r ()
 subEnv = send . SubstituteEnv
 
-newtype TypeVariable = TypeVariable Int
-  deriving newtype (Eq, Ord)
-
-instance Show TypeVariable where
-  show (TypeVariable n) = "〚" <> show n <> "〛"
-
 data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
 
 instance Pretty Constraint where
   pretty (x :~ y) = pretty x <+> "~" <+> pretty y
-
-data DeBrujin = DeBrujin !Int !Int
-  deriving stock (Show, Eq, Ord)
-
-greek :: [T.Builder]
-greek = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"]
-
-variableNames :: [T.Builder]
-variableNames =
-  greek
-    <> (fmap (\(n, g) -> g <> T.fromString (show n)) $ zip [1 :: Int ..] greek)
-
-showNType :: NType -> Text
-showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
-  where
-    greekVars = M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames
-    showNType' :: Int -> NType -> T.Builder
-    showNType' depth u =
-      foralls <> case u of
-        (NAtomic a) -> showAtomicType a
-        (NBrujin (DeBrujin i j)) -> greekVars M.! (DeBrujin (i - depth) j)
-        (NTypeVariable _) -> error "should not have free type variables at this point"
-        (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
-        (List x) -> "[" <> showNextNType' x <> "]"
-        (NAttrSet x) ->
-          "{ "
-            <> ( mconcat
-                   . intersperse "; "
-                   . fmap (\(k, v) -> T.fromText k <> " = " <> showNextNType' v)
-                   $ M.toList x
-               )
-            <> " }"
-      where
-        showNextNType' = showNType' $ depth + 1
-        currBurjins = S.mapMonotonic (DeBrujin (- depth)) $ getDeBurjins u
-        foralls =
-          if S.null currBurjins
-            then ""
-            else
-              "∀ "
-                <> (mconcat . intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
-                <> ". "
-
-showAtomicType :: AtomicType -> T.Builder
-showAtomicType Integer = "Integer"
-showAtomicType Float = "Float"
-showAtomicType Bool = "Bool"
-showAtomicType String = "String"
-showAtomicType Path = "Path"
-showAtomicType Null = "Null"
-showAtomicType URI = "URI"
-
-data NType
-  = NTypeVariable !TypeVariable
-  | NBrujin !DeBrujin
-  | NAtomic !AtomicType
-  | -- These two introduce a new De Brujin binding context
-    !NType :-> !NType
-  | List !NType
-  | NAttrSet !(Map Text NType)
-  deriving stock (Eq, Ord, Show)
-
-data AtomicType
-  = Integer
-  | Float
-  | Bool
-  | String
-  | Path
-  | Null
-  | URI
-  deriving stock (Eq, Ord, Show)
-
--- | Get all De Brujin type variables that were bound in the the outermost
--- (current) binding context.
--- Only returns the second indexes.
-getDeBurjins :: NType -> Set Int
-getDeBurjins = getDeBurjins' 0
-
--- | Gets all De Brujin variables with the given binding context offset.
--- Only returns the second indexes.
-getDeBurjins' :: Int -> NType -> Set Int
-getDeBurjins' _ (NTypeVariable _) = S.empty
-getDeBurjins' _ (NAtomic _) = S.empty
-getDeBurjins' n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
-getDeBurjins' _ (NBrujin _) = S.empty
-getDeBurjins' n (x :-> y) = getDeBurjins' (n + 1) x <> getDeBurjins' (n + 1) y
-getDeBurjins' n (List x) = getDeBurjins' (n + 1) x
-getDeBurjins' n (NAttrSet xs) = foldMap (getDeBurjins' (n + 1)) . M.elems $ xs
-
--- | Returns the set of all De Brujin type variables relative to the outermost
--- (current) binding context.
--- So variables that are bound in one of the inner contexts will have a negative
--- binding context number.
-getAllDeBurjins :: NType -> Set DeBrujin
-getAllDeBurjins =
-  \case
-    (NTypeVariable _) -> S.empty
-    (NAtomic _) -> S.empty
-    (NBrujin x) -> S.singleton x
-    (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
-    (List x) -> bndCtx $ getAllDeBurjins x
-    (NAttrSet xs) -> bndCtx . foldMap getAllDeBurjins . M.elems $ xs
-  where
-    bndCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
 
 newtype DeBrujinContext = DeBrujinContext (Sum Int)
   deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
@@ -252,23 +142,7 @@ instance Free NType where
   free (List x) = free x
   free (NAttrSet attrs) = foldMap free . M.elems $ attrs
   free (x :-> y) = free x <> free y
-
-instance Pretty NType where
-  pretty (NTypeVariable t) = pretty $ prettyTypeVariable t
-  pretty (NBrujin (DeBrujin i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
-  pretty (NAtomic a) = viaShow a
-  pretty (x :-> y) = sep [pretty x, "->" <+> pretty y]
-  pretty (List x) = "[" <> align (pretty x) <> "]"
-  pretty (NAttrSet x) =
-    sep
-      [ flatAlt "{ " "{"
-          <+> align
-            ( sep . zipWith (<+>) ("" : repeat ";")
-                . map (\(k, v) -> pretty k <+> "=" <+> align (pretty v))
-                $ M.toList x
-            ),
-        "}"
-      ]
+  free (NBrujin _) = S.empty
 
 instance Free a => Free [a] where
   free = foldMap free
@@ -279,11 +153,8 @@ instance Free Substitution where
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
 
-prettyTypeVariable :: TypeVariable -> TL.Text
-prettyTypeVariable (TypeVariable n) = "⟦" <> (TL.pack . show) n <> "⟧"
-
 prettySubstitution :: Substitution -> A.Value
-prettySubstitution = A.toJSON . M.mapKeysMonotonic prettyTypeVariable . fmap renderPretty . unSubstitution
+prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap renderPretty . unSubstitution
 
 -- | @older <> newer@
 instance Semigroup Substitution where
@@ -357,8 +228,6 @@ solveWithPriority range (rest :|> c) = do
   s <- unifyWithPriority range c
   (<> s) <$> solveWithPriority range (fmap (subCon s) rest)
 
--- pattern Sempty <- (S.null -> True) where Sempty = S.empty
-
 occursIn :: Free x => TypeVariable -> x -> Bool
 occursIn t x = t `S.member` free x
 
@@ -367,32 +236,6 @@ data Errors
   | UnexpectedType {expected :: NType, got :: NType}
   | KeyNotPresent Text
   deriving stock (Eq, Ord, Show)
-
-data Fresh x where
-  Fresh :: Fresh TypeVariable
-  -- | Inclusive
-  MinFreshFromNow :: Fresh TypeVariable
-
-type Runner effect = forall effs a. Eff (effect ': effs) a -> Eff effs a
-
-runFresh :: Runner Fresh
-runFresh =
-  evalState (TypeVariable 0)
-    . reinterpret
-      ( \case
-          Fresh -> do
-            (TypeVariable x) <- get
-            put (TypeVariable $ x + 1)
-            return (TypeVariable x)
-          MinFreshFromNow -> get
-      )
-
-registerTypeVariables :: Member Fresh r => Eff r a -> Eff r (a, Range TypeVariable)
-registerTypeVariables m = do
-  l <- send MinFreshFromNow
-  a <- m
-  r <- send MinFreshFromNow
-  return (a, Range l r)
 
 freshSrc ::
   Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan)] r =>
@@ -618,15 +461,6 @@ inferBinding bindings = do
               Just r -> Just (name, r)
   return $ M.fromListWith mergeSetTypes bindings'
 
--- traceShowMStack :: (HasCallStack, Applicative f, Show a) => a -> f ()
--- traceShowMStack = withFrozenCallStack $ traceShowMStack' ""
-
--- traceShowMStack' :: (HasCallStack, Applicative f, Show a) => String -> a -> f ()
--- traceShowMStack' s a = withFrozenCallStack $ do
---   case getCallStack callStack of
---     (_ : (x, _) : _) -> traceM $ x <> " " <> s <> " \t" <> show a
---     _ -> traceM $ s <> " \t" <> show a
-
 renderPretty :: Pretty x => x -> TL.Text
 renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
 
@@ -739,26 +573,3 @@ lookupAttrSet path = go (NE.toList path)
       expectAttrSet x <&> M.lookup p >>= \case
         Nothing -> NTypeVariable <$> throwSrcTV (KeyNotPresent p)
         Just t -> go ps t
-
-data TreeTracer a where
-  TraceTree :: A.Object -> TreeTracer ()
-
-traceValue :: (A.ToJSON v, Member TreeTracer eff) => Text -> v -> Eff eff ()
-traceValue k v = send $ TraceTree $ k A..= v
-
-traceSubtree :: Member TreeTracer eff => Text -> Eff eff a -> Eff eff a
-traceSubtree k = interpose (\(TraceTree o) -> send $ TraceTree (k A..= o))
-
-runTreeTracer :: Eff (TreeTracer ': eff) a -> Eff eff (a, A.Object)
-runTreeTracer = handleRelayS HM.empty (\s x -> pure (x, s)) $ \s (TraceTree o) k ->
-  k (HM.unionWith unionToList s o) ()
-  where
-    unionToList :: A.Value -> A.Value -> A.Value
-    unionToList (A.Array x) (A.Array y) = A.Array $ x <> y
-    unionToList (A.Array x) y = A.Array $ V.snoc x y
-    unionToList x (A.Array y) = A.Array $ V.cons x y
-    unionToList (A.Object x) (A.Object y) = A.Object $ HM.unionWith unionToList x y
-    unionToList x y = A.Array $ V.fromList [x, y]
-
-runNoTreeTracer :: Eff (TreeTracer ': eff) a -> Eff eff a
-runNoTreeTracer = interpret (\(TraceTree _) -> return ())

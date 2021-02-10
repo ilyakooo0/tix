@@ -4,7 +4,6 @@ import Data.Aeson ((.=))
 import qualified Data.ByteString.Char8 as BSC
 import qualified Data.Text.IO as T
 import qualified Data.Yaml as YAML
-import Lib
 import Nix.Parser
 import Tix.Typechecker
 
