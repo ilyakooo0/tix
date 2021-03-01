@@ -41,7 +41,7 @@ data DeBrujin = DeBrujin !Int !Int
   deriving stock (Show, Eq, Ord)
 
 newtype TypeVariable = TypeVariable Int
-  deriving newtype (Eq, Ord)
+  deriving newtype (Eq, Ord, Enum, Bounded)
 
 instance Show TypeVariable where
   show (TypeVariable n) = "〚" <> show n <> "〛"

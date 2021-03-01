@@ -7,7 +7,7 @@ where
 
 import Control.Monad.Freer
 import Control.Monad.Freer.State
-import Data.Range
+import qualified Data.RangeSet.Map as RS
 import Tix.Types
 
 data Fresh x where
@@ -29,9 +29,9 @@ runFresh =
           MinFreshFromNow -> get
       )
 
-registerTypeVariables :: Member Fresh r => Eff r a -> Eff r (a, Range TypeVariable)
+registerTypeVariables :: Member Fresh r => Eff r a -> Eff r (a, RS.RSet TypeVariable)
 registerTypeVariables m = do
   l <- send MinFreshFromNow
   a <- m
   r <- send MinFreshFromNow
-  return (a, Range l r)
+  return (a, RS.singletonRange (l, pred r))

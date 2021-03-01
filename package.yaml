@@ -36,6 +36,7 @@ dependencies:
   - unordered-containers
   - bytestring
   - prettyprinter
+  - range-set-list
 library:
   source-dirs: src
 

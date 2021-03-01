@@ -32,8 +32,7 @@ import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
 import Data.MonoTraversable
 import Data.Monoid
-import Data.Range (Range (..))
-import qualified Data.Range as R
+import qualified Data.RangeSet.Map as RS
 import Data.Sequence (Seq (..))
 import Data.Sequences
 import Data.Set (Set)
@@ -186,19 +185,19 @@ v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
 v <<- x = return $ Substitution $ M.singleton v x
 
 unify :: Constraint -> UnifyM Substitution
-unify = unifyWithPriority EmptyRange
+unify = unifyWithPriority RS.empty
 
 unifyWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  Range TypeVariable ->
+  RS.RSet TypeVariable ->
   Constraint ->
   UnifyM Substitution
 unifyWithPriority range (lhs :~ rhs) =
   case (lhs, rhs) of
     (NAtomic x, NAtomic y) | x == y -> return mempty
     (NTypeVariable x, NTypeVariable y) ->
-      if y `R.member` range
+      if y `RS.member` range
         then x <<- NTypeVariable y
         else y <<- NTypeVariable x
     (NTypeVariable t, x) -> t <<- x
@@ -215,12 +214,12 @@ unifyWithPriority range (lhs :~ rhs) =
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
 solve :: Seq Constraint -> UnifyM Substitution
-solve = solveWithPriority EmptyRange
+solve = solveWithPriority RS.empty
 
 solveWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  Range TypeVariable ->
+  RS.RSet TypeVariable ->
   Seq Constraint ->
   UnifyM Substitution
 solveWithPriority _ Empty = return mempty
@@ -478,12 +477,12 @@ inferGeneral x = traceSubtree (showExpr x) $ do
   s' <- solveWithPriority range cs
   traceValue "substitutions_after_solving" $ prettySubstitution s'
   let s = subs <> s'
-      returnedS = Substitution . M.filterWithKey (\k _ -> k `R.notMember` range) . unSubstitution $ s
+      returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
   traceSubtree "returned" $ do
     traceValue "substitutions" $ prettySubstitution returnedS
     -- Filter for optimization purposes
     subEnv returnedS
-    let retT = close (Predicate (`R.member` range) <> Predicate (`S.notMember` free returnedS)) $ sub s t
+    let retT = close (Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)) $ sub s t
     traceValue "type" $ renderPretty retT
     return retT
 

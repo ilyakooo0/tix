@@ -5,10 +5,9 @@ where
 
 import qualified Data.Map as M
 import Data.Map.Strict (Map)
-import Data.Range (Range (..))
-import qualified Data.Range as R
+import qualified Data.RangeSet.Map as RS
 
-restrictKeysToRange :: Ord k => Range k -> Map k v -> Map k v
+restrictKeysToRange :: Ord k => RS.RSet k -> Map k v -> Map k v
 restrictKeysToRange range =
-  M.takeWhileAntitone (`R.member` range)
-    . M.dropWhileAntitone (`R.notMember` range)
+  M.takeWhileAntitone (`RS.member` range)
+    . M.dropWhileAntitone (`RS.notMember` range)
