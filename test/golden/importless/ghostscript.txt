@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { fonts = { fonts = [String] } }; options = { fonts = { enableGhostscriptFonts = { default = Bool; description = String; type = ∀ α. α } } } }

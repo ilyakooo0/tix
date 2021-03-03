@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { user = { services = { canto-daemon = { after = [String]; description = String; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } } }; options = { services = { canto-daemon = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

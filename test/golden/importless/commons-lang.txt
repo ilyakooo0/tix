@@ -1,0 +1,1 @@
+∀ β. { fetchMaven = { artifactId = String; groupId = String; sha512 = ∀ α. α; type = ∀ α. α; version = String } -> β } -> { commonsLang_2_1 = [{ sha512 = String; type = String }]; commonsLang_2_3 = [{ sha512 = String; type = String }]; commonsLang_2_6 = [{ sha512 = String; type = String }] }

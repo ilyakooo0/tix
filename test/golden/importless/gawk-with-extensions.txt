@@ -1,0 +1,1 @@
+∀ α β. { extensions = [α]; gawk = α; makeWrapper = α; runCommand = String -> β } -> String

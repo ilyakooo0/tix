@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ ι κ. { bazel = α; bazel-examples = β; bazelTest = { bazelPkg = α; bazelScript = String; name = String } -> γ; distDir = δ; gccStdenv = ε; lib = ζ; runLocal = String -> η; runtimeShell = θ; writeScript = String -> ι; writeText = κ } -> { bazelPkg = α; bazelScript = String; name = String }

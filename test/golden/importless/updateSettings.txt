@@ -1,0 +1,1 @@
+∀ α β γ. { jq = α; lib = β; writeShellScriptBin = String -> γ } -> { createIfDoesNotExists = Bool; settings = {  }; symlinkFromUserSetting = Bool; userSettingsFolder = String; vscodeSettingsFile = String } -> String

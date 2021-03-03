@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { variables = { GTK_IM_MODULE = String; QT_IM_MODULE = String; XMODIFIERS = String } }; i18n = { inputMethod = { package = ∀ α. α } }; services = { xserver = { displayManager = { sessionCommands = String } } } } }

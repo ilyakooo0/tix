@@ -1,0 +1,1 @@
+∀ α β γ. { fetchurl = { name = String; sha256 = String; url = String } -> α; mecab-nodic = β; stdenv = γ } -> { buildInputs = [β]; configurePhase = String; pname = String; src = { name = String; sha256 = String; url = String }; version = String }

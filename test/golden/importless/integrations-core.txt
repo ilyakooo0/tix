@@ -1,0 +1,1 @@
+∀ γ δ. { extraIntegrations = {  }; pkgs = γ; python = δ } -> { datadog_checks_base = { pname = String; propagatedBuildInputs = ∀ α. [α]; sourceRoot = String }; python = ∀ β. β -> ∀ α. α }

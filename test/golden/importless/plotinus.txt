@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { variables = { GTK3_MODULES = [String]; XDG_DATA_DIRS = [String] } } }; meta = { doc = Path; maintainers = ∀ β. β }; options = { programs = { plotinus = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

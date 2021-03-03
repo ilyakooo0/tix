@@ -1,0 +1,1 @@
+∀ β γ δ. { haskellLib = β } -> γ -> δ -> { ghcjs = String; haddock-library-ghcjs = ∀ α. α; system-fileio = ∀ α. α }

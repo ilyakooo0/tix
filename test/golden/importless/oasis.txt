@@ -1,0 +1,1 @@
+∀ β γ δ ε. { findlib = β; ocaml = β; ocaml_oasis = β; ocamlbuild = β; stdenv = γ } -> { buildInputs = [β]; createFindlibDestdir = Bool; dontStrip = Bool; meta = { platforms = ∀ α. α }; minimumOCamlVersion = Null; pname = δ; version = ε } -> String

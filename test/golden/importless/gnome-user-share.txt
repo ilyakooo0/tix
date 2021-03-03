@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ α. [α] }; systemd = { packages = ∀ α. [α] } }; meta = { maintainers = ∀ β. β }; options = { services = { gnome3 = { gnome-user-share = { enable = String } } } } }

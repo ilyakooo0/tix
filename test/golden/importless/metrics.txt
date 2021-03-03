@@ -1,0 +1,1 @@
+∀ α β. { nixpkgs = α; pkgs = β } -> String

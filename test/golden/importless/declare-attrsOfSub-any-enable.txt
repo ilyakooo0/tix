@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { attrsOfSub = { default = {  }; description = String; example = {  }; type = [{  } -> { options = { enable = { default = Bool; description = String; example = Bool; type = ∀ α. α } } }] } } }

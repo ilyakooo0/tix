@@ -1,0 +1,1 @@
+∀ α β. { busybox = α; stdenv = β } -> { enableMinimal = Bool; enableStatic = Bool; extraConfig = String }

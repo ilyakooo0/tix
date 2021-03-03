@@ -1,0 +1,1 @@
+∀ α β. { diskImage = α; name = String; src = Bool; vmTools = β } -> { meta = { description = String }; name = String; postInstall = String; preBuild = String }

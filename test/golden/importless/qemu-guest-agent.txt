@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = [{ services = { udev = { extraRules = String } }; systemd = { services = { qemu-guest-agent = { description = String; serviceConfig = { ExecStart = String; Restart = String; RestartSec = Integer } } } } }]; options = { services = { qemuGuest = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

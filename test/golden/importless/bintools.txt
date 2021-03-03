@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { lld = α; llvm = β; runCommand = String -> γ; stdenv = δ; version = ε } -> String

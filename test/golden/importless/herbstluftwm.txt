@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { xserver = { windowManager = { session = { name = String; start = String } } } } }; options = { services = { xserver = { windowManager = { herbstluftwm = { configFile = { default = Null; description = String; type = ∀ α. α }; enable = String } } } } } }

@@ -1,0 +1,1 @@
+∀ α β. { callPackage = Path -> α; perl = β; texinfo = β } -> { buildInputs = [β]; buildPhase = String; configureFlags = [String]; installPhase = String; meta = { description = String }; name = String; outputs = [String] }

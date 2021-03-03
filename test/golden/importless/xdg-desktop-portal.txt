@@ -1,0 +1,1 @@
+∀ γ δ. { makeInstalledTest = { meta = { broken = Bool }; tested = ∀ α. α } -> γ; pkgs = δ } -> { meta = { broken = Bool }; tested = ∀ β. β }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { fetchurl = { downloadToTemp = Bool; name = String; postFetch = String; recursiveHash = Bool; url = String } -> α; lib = β; unzip = γ } -> { crateName = Null; pname = Null; sha256 = δ; version = ε } -> ζ -> { nativeBuildInputs = [γ] }

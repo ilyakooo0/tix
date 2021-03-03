@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ α. [α] }; systemd = { services = { novacomd = { description = String; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } }; meta = { maintainers = ∀ β. [β] }; options = { services = { novacomd = { enable = String } } } }

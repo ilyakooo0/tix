@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { wavemon = { capabilities = String; source = String } } } }; options = { programs = { wavemon = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

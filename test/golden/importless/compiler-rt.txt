@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { cmake = α; fetch = String -> β; libcxxabi = γ; llvm = α; python3 = α; stdenv = δ; version = ε } -> { NIX_CFLAGS_COMPILE = [String]; buildInputs = γ; cmakeFlags = [String]; enableParallelBuilding = Bool; nativeBuildInputs = [α]; outputs = [String]; patches = [Path]; pname = String; postInstall = String; postPatch = String; src = String; version = ε }

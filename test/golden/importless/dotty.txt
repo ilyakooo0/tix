@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { callPackage = Path -> α; fetchurl = β; jre = γ; makeWrapper = δ; stdenv = ε } -> { dontUnpack = Bool; installPhase = String; name = String }

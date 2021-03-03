@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { assertions = { assertion = String; message = String }; hardware = { firmware = ∀ β. [β] } }; options = { networking = { enableB43Firmware = { default = Bool; description = String; type = ∀ α. α } } } }

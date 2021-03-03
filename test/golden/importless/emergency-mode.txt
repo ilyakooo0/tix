@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { systemd = { additionalUpstreamSystemUnits = [String] } }; options = { systemd = { enableEmergencyMode = { default = Bool; description = String; type = ∀ α. α } } } }

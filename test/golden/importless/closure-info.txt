@@ -1,0 +1,1 @@
+∀ α β γ. { buildPackages = α; stdenv = β } -> { rootPaths = γ } -> { PATH = String; __structuredAttrs = Bool; builder = String; exportReferencesGraph = { closure = γ }; name = String; preferLocalBuild = Bool }

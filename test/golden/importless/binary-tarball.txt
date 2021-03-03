@@ -1,0 +1,1 @@
+∀ α. { name = String; src = Bool; stdenv = α } -> { distPhase = String; doCheck = Bool; doDist = Bool; finalPhase = String; meta = { description = String }; name = String; postHook = String; postPhases = String; prefix = String; showBuildStats = Bool; src = Bool; stdenv = α }

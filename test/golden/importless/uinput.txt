@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { boot = { kernelModules = [String] }; services = { udev = { extraRules = String } }; users = { groups = { uinput = {  } } } }; options = { hardware = { uinput = { enable = String } } } }

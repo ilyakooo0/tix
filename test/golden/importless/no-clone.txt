@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { boot = { loader = { grub = { device = String } } }; specialisation = {  } }

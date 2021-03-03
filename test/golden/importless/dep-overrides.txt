@@ -1,0 +1,1 @@
+∀ γ δ ε. { haskellLib = γ } -> δ -> ε -> { ghc-api-ghcjs = { happy = ∀ α. α }; ghcjs = { shelly = ∀ α. α }; haddock-api-ghcjs = ∀ β. β; haddock-library-ghcjs = ∀ β. β }

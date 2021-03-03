@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; security = { wrappers = { iftop = { capabilities = String; source = String } } } }; options = { programs = { iftop = { enable = String } } } }

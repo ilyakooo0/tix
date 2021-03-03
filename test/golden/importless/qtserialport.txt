@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { lib = α; qtModule = { NIX_CFLAGS_COMPILE = String; name = String; qtInputs = [β] } -> γ; qtbase = β; stdenv = δ; systemd = ε } -> { NIX_CFLAGS_COMPILE = String; name = String; qtInputs = [β] }

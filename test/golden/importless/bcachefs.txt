@@ -1,0 +1,1 @@
+∀ β γ δ ε. { config = β; lib = γ; pkgs = δ; utils = ε } -> { config = [{ boot = { kernelPackages = ∀ α. α }; system = { fsPackages = ∀ α. [α] } }] }

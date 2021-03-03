@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ. { file = β; lib = γ; mumble = δ; mumble_i686 = ε; stdenv = ζ; which = β } -> { installPhase = String; meta = { broken = Bool; platforms = ∀ α. α }; name = String; phases = [String] }

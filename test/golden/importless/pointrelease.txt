@@ -1,0 +1,1 @@
+∀ β γ. { fetchurl = { sha256 = String; url = String } -> β; stdenv = γ } -> { buildCommand = String; meta = { description = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; pname = String; preferLocalBuild = Bool; src = { sha256 = String; url = String }; version = String }

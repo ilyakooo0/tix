@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { checkinstall = α; debProvides = β; debRequires = γ; diskImage = δ; fsTranslation = Bool; name = String; src = Bool; stdenv = ε; vmTools = ζ } -> { doCheck = Bool; installExtraDebsPhase = String; installPhase = String; meta = { description = String }; name = String; postHook = String; prePhases = String; prefix = String; sysInfoPhase = String }

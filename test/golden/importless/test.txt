@@ -1,0 +1,1 @@
+∀ α β. { alcotest = α; buildDunePackage = { meta = { description = String }; pname = String; propagatedBuildInputs = [α]; useDune2 = Bool } -> β; cmdliner = α; irmin = α; metrics-unix = α; mtime = α } -> { meta = { description = String }; pname = String; propagatedBuildInputs = [α]; useDune2 = Bool }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { buildPackages = α; fetchurl = { executable = Bool; sha256 = String; url = String } -> β; lib = γ; runCommand = String -> δ; stdenv = ε; toolchainName = ζ; writeText = η } -> String

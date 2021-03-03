@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { pathsToLink = [String]; systemPackages = ∀ β. [β] }; programs = { bash = { interactiveShellInit = String }; fish = { interactiveShellInit = String }; zsh = { interactiveShellInit = String } } }; options = { programs = { autojump = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

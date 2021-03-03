@@ -1,0 +1,1 @@
+∀ α β γ δ. { lndir = α; msp430GccSupport = β; newlib = γ; stdenvNoCC = δ } -> { allowSubstitutes = Bool; buildCommand = String; meta = { platforms = [String] }; msp430GccSupport = β; name = String; newlib = γ; passthru = {  }; preferLocalBuild = Bool }

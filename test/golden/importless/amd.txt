@@ -1,0 +1,1 @@
+∀ β γ δ. { firmwareLinuxNonfree = β; libarchive = γ; stdenv = δ } -> { buildInputs = [γ]; buildPhase = String; installPhase = String; meta = { description = String; homepage = String; license = ∀ α. α; platforms = ∀ α. α }; name = String; sourceRoot = String; src = β }

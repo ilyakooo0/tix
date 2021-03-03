@@ -1,0 +1,1 @@
+∀ β γ. { make = β; makeWrapper = β; stdenv = γ; which = β } -> { buildInputs = [β] } -> { GNUSTEP_MAKEFILES = String; buildInputs = [β]; builder = Path; meta = { homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; setupHook = Path }

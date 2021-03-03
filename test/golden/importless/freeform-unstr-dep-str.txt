@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { foo = ∀ β. β }; options = { value = { default = Null; type = ∀ α. α } } }

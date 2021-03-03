@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; security = { wrappers = [String] } }; options = { programs = { liboping = { enable = String } } } }

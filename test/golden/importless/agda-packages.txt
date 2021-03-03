@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { Agda = α; callPackage = Path -> β; lib = γ; newScope = δ -> ε; pkgs = ζ } -> δ

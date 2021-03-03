@@ -1,0 +1,1 @@
+∀ α β. { config = α; lib = β } -> { config = { assertions = { assertion = Bool; message = String }; services = { udev = { extraRules = String } } }; options = { powerManagement = { scsiLinkPolicy = { default = Null; description = String; type = [String] } } } }

@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { systemd = { packages = ∀ β. [β]; services = { mcelog = { serviceConfig = { PrivateNetwork = Bool; PrivateTmp = Bool; ProtectHome = Bool }; wantedBy = [String] } } } }; meta = { maintainers = ∀ γ. [γ] }; options = { hardware = { mcelog = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

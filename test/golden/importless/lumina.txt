@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { pathsToLink = [String]; systemPackages = ∀ γ. [γ] }; services = { xserver = { displayManager = { sessionPackages = ∀ β. [β] } } } }; options = { services = { xserver = { desktopManager = { lumina = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } } }

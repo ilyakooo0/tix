@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { etc = { lenovo_fix.conf = { source = String } } }; systemd = { packages = ∀ β. [β]; services = { lenovo_fix = { wantedBy = [String] } } } }; options = { services = { throttled = { enable = String; extraConfig = { default = String; description = String; type = ∀ α. α } } } } }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { dejavu_fonts = α; fontDirectories = [β]; fontconfig = γ; libxslt = δ; runCommand = String -> ε } -> String

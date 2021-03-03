@@ -1,0 +1,1 @@
+∀ δ. { lib = δ } -> { haskellPathsInDir = String -> ∀ α. { name = α; value = String }; locateDominatingFile = ∀ β γ. β -> γ -> Path -> Path }

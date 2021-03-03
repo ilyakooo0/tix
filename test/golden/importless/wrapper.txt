@@ -1,0 +1,1 @@
+∀ α β γ. { buildEnv = { buildInputs = [α]; name = String; paths = [β]; pathsToLink = [String]; postBuild = String } -> γ; makeWrapper = α; zeroad-data = β; zeroad-unwrapped = β } -> { buildInputs = [α]; name = String; paths = [β]; pathsToLink = [String]; postBuild = String }

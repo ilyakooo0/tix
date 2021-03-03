@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { dbus = { packages = ∀ α. [α] } }; systemd = { packages = ∀ β. [β] } }; options = { services = { blueman = { enable = String } } } }

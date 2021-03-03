@@ -1,0 +1,1 @@
+∀ α β γ δ. { bluez = α; qtModule = { buildInputs = α; name = String; outputs = [String]; qtInputs = [β] } -> γ; qtbase = β; qtdeclarative = β; stdenv = δ } -> { buildInputs = α; name = String; outputs = [String]; qtInputs = [β] }

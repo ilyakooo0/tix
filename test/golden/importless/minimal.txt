@@ -1,0 +1,1 @@
+∀ α β. { config = α; lib = β } -> { documentation = { enable = Bool; nixos = { enable = Bool } }; environment = { noXlibs = Bool }; i18n = { supportedLocales = [String] } }

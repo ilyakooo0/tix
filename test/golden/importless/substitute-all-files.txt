@@ -1,0 +1,1 @@
+∀ β. { stdenv = β } -> Bool -> { allowSubstitutes = Bool; builder = String; name = ∀ α. α; preferLocalBuild = Bool }

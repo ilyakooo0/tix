@@ -1,0 +1,1 @@
+∀ β γ δ. { fetchurl = { sha256 = String; url = String } -> β; lib = γ; stdenv = δ } -> { buildPhase = String; meta = { description = String; homepage = String; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; phases = [String]; src = { sha256 = String; url = String } }

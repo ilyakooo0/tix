@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { gmp = α; idris-no-deps = β; lib = γ; makeWrapper = δ; stdenv = ε; symlinkJoin = { buildInputs = [δ]; paths = [β]; postBuild = String } -> ζ } -> { buildInputs = [δ]; paths = [β]; postBuild = String }

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { services = { dbus = { packages = ∀ α. [α] } }; systemd = { user = { services = { nm-applet = { description = String; partOf = [String]; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } } }; meta = { maintainers = ∀ β. β }; options = { programs = { nm-applet = { enable = String } } } }

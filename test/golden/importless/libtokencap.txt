@@ -1,0 +1,1 @@
+∀ γ δ. { aflplusplus = γ; stdenv = δ } -> { makeFlags = [String]; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α] }; pname = String; postInstall = String; postUnpack = String; preInstall = String; sourceRoot = String; src = ∀ β. β; version = γ }

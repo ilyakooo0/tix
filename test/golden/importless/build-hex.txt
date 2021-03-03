@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ η θ. { buildRebar3 = β; fetchHex = { pkg = γ; sha256 = δ; version = ε } -> ζ; stdenv = η } -> { builder = β; hexPkg = γ; name = θ; sha256 = δ; version = ε } -> ∀ α. α -> { builder = β; hexPkg = γ; name = θ; sha256 = δ; src = { pkg = γ; sha256 = δ; version = ε }; version = ε }

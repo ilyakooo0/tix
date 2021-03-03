@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { etc = { security/pam_mount.conf.xml = { source = String } }; systemPackages = ∀ β. [β] } }; options = { security = { pam = { mount = { enable = { default = Bool; description = String; type = ∀ α. α }; extraVolumes = { default = ∀ α. α; description = String; type = ∀ α. α } } } } } }

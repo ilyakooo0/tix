@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { udev = { packages = ∀ α. [α] } } }; options = { hardware = { wooting = { enable = String } } } }

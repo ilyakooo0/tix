@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { dict = α; lib = β; stdenv = γ } -> { allowList = [String]; denyList = δ; dictlist = ε } -> { buildInputs = [α]; installPhase = String; name = String; phases = [String] }

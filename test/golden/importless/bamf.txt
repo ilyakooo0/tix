@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { services = { dbus = { packages = ∀ α. [α] } }; systemd = { packages = ∀ β. [β] } }; meta = { maintainers = ∀ γ. [γ] }; options = { services = { bamf = { enable = String } } } }

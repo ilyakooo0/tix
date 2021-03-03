@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { etc = { zmap/blacklist.conf = { source = String }; zmap/zmap.conf = { source = String } }; systemPackages = ∀ α. [α] } }; options = { programs = { zmap = { enable = String } } } }

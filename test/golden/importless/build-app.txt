@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ. { ant = α; composeAndroidPackages = β -> γ; gawk = δ; gnumake = ε; jdk = α; lib = ζ; stdenv = η } -> { antFlags = String; keyAlias = Null; keyAliasPassword = Null; keyStore = Null; keyStorePassword = Null; name = θ; release = Bool } -> { ANDROID_HOME = String; buildInputs = [α]; buildPhase = String; installPhase = String; name = θ }

@@ -1,0 +1,1 @@
+∀ α β γ δ. { buildEnv = { ignoreCollisions = Bool; name = String; paths = [α]; pathsToLink = [String] } -> β; drivers = [γ]; libwebcam = α; makeWrapper = α; runCommand = String -> δ; udevDebug = Bool } -> String

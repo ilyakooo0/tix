@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { fetchsvn = γ; lib = δ; linux = ε; scripts = { rev = String; sha256 = String; url = String }; stdenv = ζ } -> { argsOverride = { isLibre = Bool; maintainers = ∀ β. [β]; modDirVersion = String; passthru = { updateScript = Path }; src = { buildPhase = String; checkPhase = String; installPhase = String; name = String; src = ∀ α. α } } }

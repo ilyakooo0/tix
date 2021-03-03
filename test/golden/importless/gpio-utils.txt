@@ -1,0 +1,1 @@
+∀ β γ δ. { lib = β; linux = γ; stdenv = δ } -> { installFlags = [String]; meta = { description = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; preConfigure = String; separateDebugInfo = Bool }

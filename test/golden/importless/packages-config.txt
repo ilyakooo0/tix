@@ -1,0 +1,1 @@
+{ allowAliases = Bool; packageOverrides = ∀ β. β -> { haskellPackages = ∀ α. α; rPackages = ∀ α. α } }

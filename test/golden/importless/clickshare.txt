@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { udev = { packages = ∀ α. [α] } }; users = { groups = { clickshare = {  } } } }; meta = { maintainers = ∀ γ. [γ] }; options = { programs = { clickshare-csc1 = { enable = String } } } }

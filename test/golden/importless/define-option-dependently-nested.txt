@@ -1,0 +1,1 @@
+∀ α. { lib = α; options = Bool } -> { config = { set = { enable = Bool; value = Integer } } }

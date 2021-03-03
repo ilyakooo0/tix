@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { pmount = { source = String }; pumount = { source = String } } } }; options = { security = { pam = { usb = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } }

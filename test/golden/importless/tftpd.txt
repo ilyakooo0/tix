@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { services = { xinetd = { enable = Bool; services = { name = String; protocol = String; server = String; serverArgs = String } } } }; options = { services = { tftpd = { enable = { default = Bool; description = String; type = ∀ α. α }; path = { default = String; description = String; type = ∀ α. α } } } } }

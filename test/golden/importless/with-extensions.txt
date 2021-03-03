@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { buildEnv = { name = String; paths = α } -> β; lib = γ; makeWrapper = δ; runCommand = String -> ε; vscode = δ; vscodeExtensions = α } -> String

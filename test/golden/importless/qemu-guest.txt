@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { boot = { initrd = { availableKernelModules = [String]; kernelModules = [String]; postDeviceCommands = String } }; security = { rngd = { enable = Bool } } }

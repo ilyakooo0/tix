@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ ι. { boehmgc = α; lib = β; libunwind = γ; llvmPackages = δ; makeWrapper = ε; re2 = ζ; sbt = η; zlib = θ } -> ι -> { nativeBuildInputs = [ε]; postFixup = String; sha256 = String; version = String }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { alex = α; autoconf = α; automake = α; cabal-install = α; gcc = β; ghc = α; ghcjsSrc = γ; happy = α; lib = δ; perl = β; python3 = α; runCommand = String -> ε; stdenv = ζ } -> String

@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ. { cmake = β; fetch = String -> γ; llvm = δ; stdenv = ε; version = ζ } -> { buildInputs = [δ]; enableParallelBuilding = Bool; meta = { badPlatforms = [String]; description = String; homepage = String; license = ∀ α. α; platforms = ∀ α. α }; nativeBuildInputs = [β]; outputs = [String]; pname = String; postInstall = String; src = String; version = ζ }

@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { extra-cmake-modules = γ; kcoreaddons = δ; kdoctools = γ; kio = δ; lib = ε; mkDerivation = { buildInputs = [δ]; meta = { license = ∀ α. [α] }; name = String; nativeBuildInputs = [γ]; outputs = [String] } -> ζ; qtxmlpatterns = δ } -> { buildInputs = [δ]; meta = { license = ∀ β. [β] }; name = String; nativeBuildInputs = [γ]; outputs = [String] }

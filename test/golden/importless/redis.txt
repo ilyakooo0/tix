@@ -1,0 +1,1 @@
+∀ α β γ δ. { config = α; lib = β; options = γ; pkgs = δ } -> { port = Integer; serviceOpts = { serviceConfig = { ExecStart = String } } }

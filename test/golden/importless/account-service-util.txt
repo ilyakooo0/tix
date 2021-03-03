@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { accountsservice = γ; glib = γ; gobject-introspection = δ; lib = ε; python3 = ζ; wrapGAppsHook = δ } -> { buildInputs = [γ]; dontUnpack = Bool; format = String; installPhase = String; meta = { maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [δ]; propagatedBuildInputs = ∀ β. [β]; src = Path; strictDeps = Bool }

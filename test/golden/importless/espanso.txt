@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; systemd = { user = { services = { espanso = { description = String; path = ∀ α. [α]; serviceConfig = { ExecStart = String; Restart = String }; wantedBy = [String] } } } } }; meta = { maintainers = ∀ γ. [γ] }; options = { services = { espanso = { enable = String } } } }

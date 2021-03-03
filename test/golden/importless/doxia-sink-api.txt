@@ -1,0 +1,1 @@
+∀ β. { fetchMaven = { artifactId = String; groupId = String; sha512 = ∀ α. α; type = ∀ α. α; version = String } -> β } -> { mavenDoxiaSinkApi_1_0_alpha10 = [{ sha512 = String; type = String }]; mavenDoxiaSinkApi_1_0_alpha6 = [{ sha512 = String; type = String }]; mavenDoxiaSinkApi_1_0_alpha7 = [{ sha512 = String; type = String }] }

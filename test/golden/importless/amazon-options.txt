@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { options = { ec2 = { efi = { default = ∀ α. α; description = String; internal = Bool }; hvm = { default = String; description = String; internal = Bool } } } }

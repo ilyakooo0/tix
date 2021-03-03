@@ -1,0 +1,1 @@
+∀ β γ δ. { attemptoClex = β; callPackage = Path -> γ; stdenv = δ } -> { description = String; lexiconPath = String; license = ∀ α. [α]; pname = String }

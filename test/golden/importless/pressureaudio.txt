@@ -1,0 +1,1 @@
+∀ β γ δ ε. { apulse = β; autoreconfHook = γ; intltool = γ; libpulseaudio = δ; pkgconfig = γ; stdenv = ε } -> { buildPhase = String; dontConfigure = Bool; installPhase = String; meta = { description = String; longDescription = String }; name = String; nativeBuildInputs = [γ]; src = ∀ α. α }

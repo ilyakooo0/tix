@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { accounts-daemon = { enable = Bool }; dbus = { packages = ∀ α. [α] } } }; options = { services = { malcontent = { enable = String } } } }

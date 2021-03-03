@@ -1,0 +1,1 @@
+∀ δ ε ζ. { lib = δ; makeInstalledTest = { testConfig = { environment = { systemPackages = ∀ α. [α] } }; tested = ∀ β. β } -> ε; pkgs = ζ } -> { testConfig = { environment = { systemPackages = ∀ β. [β] } }; tested = ∀ γ. γ }

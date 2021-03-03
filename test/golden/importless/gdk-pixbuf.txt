@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { variables = { GDK_PIXBUF_MODULE_FILE = String } } }; options = { services = { xserver = { gdk-pixbuf = { modulePackages = { default = ∀ α. α; description = String; type = ∀ α. α } } } } } }

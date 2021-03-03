@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { security = { wrappers = { iotop = { capabilities = String; source = String } } } }; options = { programs = { iotop = { enable = String } } } }

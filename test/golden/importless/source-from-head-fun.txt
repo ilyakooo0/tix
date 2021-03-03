@@ -1,0 +1,1 @@
+∀ α β. { config = α } -> β -> String -> String

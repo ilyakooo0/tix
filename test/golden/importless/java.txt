@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { shellInit = String; systemPackages = ∀ β. [β] } }; options = { programs = { java = { enable = { description = String }; package = { default = ∀ α. α; defaultText = String; description = String; type = ∀ α. α } } } } }

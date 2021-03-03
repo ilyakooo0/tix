@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { extra-cmake-modules = γ; ffmpeg_3 = δ; kio = δ; lib = ε; mkDerivation = { buildInputs = [δ]; meta = { license = ∀ α. [α]; maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [γ] } -> ζ } -> { buildInputs = [δ]; meta = { license = ∀ β. [β]; maintainers = ∀ β. [β] }; name = String; nativeBuildInputs = [γ] }

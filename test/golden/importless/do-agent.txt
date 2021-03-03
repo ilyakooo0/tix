@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { packages = ∀ α. [α]; services = { do-agent = { serviceConfig = { DynamicUser = Bool; ExecStart = [String] }; wantedBy = [String] } } } }; options = { services = { do-agent = { enable = String } } } }

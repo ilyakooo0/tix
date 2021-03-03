@@ -1,0 +1,1 @@
+∀ α β γ δ. { closureInfo = α; comp = String; squashfsTools = β; stdenv = γ; storeContents = δ } -> { buildCommand = String; name = String; nativeBuildInputs = [β] }

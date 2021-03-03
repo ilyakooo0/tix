@@ -1,0 +1,1 @@
+∀ γ δ ε. { file = γ; stdenv = δ; writeScript = String -> ε } -> { checkForRemainingFiles = String; commonFileActions = ∀ α β. { docFiles = α; noiseFiles = β } -> String }

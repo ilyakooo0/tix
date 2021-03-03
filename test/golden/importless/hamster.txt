@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { dbus = { packages = ∀ α. [α] } } }; meta = { maintainers = ∀ γ. γ }; options = { programs = { hamster = { enable = String } } } }

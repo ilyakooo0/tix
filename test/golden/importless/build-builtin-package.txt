@@ -1,0 +1,1 @@
+∀ α β γ δ. { build-idris-package = { idrisDeps = α; meta = { description = String }; name = β; noBase = Bool; noPrelude = Bool; postUnpack = String } -> γ; idris = δ } -> β -> α -> { idrisDeps = α; meta = { description = String }; name = β; noBase = Bool; noPrelude = Bool; postUnpack = String }

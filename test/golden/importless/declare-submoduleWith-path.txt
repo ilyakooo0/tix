@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { config = { submodule = Path }; options = { submodule = { default = {  }; type = { modules = [Path] } } } }

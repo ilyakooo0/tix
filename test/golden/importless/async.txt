@@ -1,0 +1,1 @@
+∀ α β γ δ. { async = α; buildDunePackage = { buildInputs = [β]; meta = { description = String }; pname = String; propagatedBuildInputs = [α]; useDune2 = Bool } -> γ; cohttp = String; conduit-async = α; logs = α; magic-mime = α; ppx_sexp_conv = β; stdenv = δ; uri = α } -> String

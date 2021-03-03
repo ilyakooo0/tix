@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { etc = { nanorc = { text = [String] } } } }; options = { programs = { nano = { nanorc = { default = String; description = String; example = String; type = ∀ α. α }; syntaxHighlight = { default = Bool; description = String; type = ∀ α. α } } } } }

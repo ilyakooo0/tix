@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { gdomap = { after = [String]; description = String; path = ∀ α. [α]; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } }; options = { services = { gdomap = { enable = String } } } }

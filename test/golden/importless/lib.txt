@@ -1,0 +1,1 @@
+∀ δ ε. { config = δ; lib = ε } -> { cellServDBConfig = { dnsname = { default = String; description = String; example = String; type = ∀ α. α }; ip = { default = String; description = String; example = String; type = ∀ α. α } }; mkCellServDB = ∀ β γ. β -> γ -> String; openafsBin = ∀ β. β; openafsMod = ∀ β. β; openafsSrv = ∀ β. β }

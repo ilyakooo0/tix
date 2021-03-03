@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { editablePackageSources = α; lib = β; pkgs = γ; poetryLib = δ; pyProject = ε; python = ζ } -> String

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; systemd = { packages = ∀ β. [β]; services = { rpcbind = { wantedBy = [String] } } }; users = { users = { rpc = { group = String; uid = ∀ α. α } } } }; options = { services = { rpcbind = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

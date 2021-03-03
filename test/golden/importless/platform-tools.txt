@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { autoPatchelfHook = α; deployAndroidPackage = { buildInputs = [β]; os = γ; package = δ; patchInstructions = String } -> ε; lib = ζ; os = String; package = δ; pkgs = η } -> { buildInputs = [α]; os = String; package = δ; patchInstructions = String }

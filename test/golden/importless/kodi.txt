@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; services = { xserver = { desktopManager = { session = [{ name = String; start = String }] } } } }; options = { services = { xserver = { desktopManager = { kodi = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } } }

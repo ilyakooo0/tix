@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { lib = α; runCommand = String -> β; sdkName = γ; toolchainName = δ; version = ε; writeText = ζ; xcodePlatform = η } -> String

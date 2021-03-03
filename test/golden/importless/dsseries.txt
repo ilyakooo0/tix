@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { kernelModules = [String] }; hardware = { sane = { extraBackends = ∀ α. [α] } }; services = { udev = { packages = ∀ α. [α] } } }; options = { hardware = { sane = { dsseries = { enable = { description = String } } } } } }

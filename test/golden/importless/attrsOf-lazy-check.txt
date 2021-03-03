@@ -1,0 +1,1 @@
+∀ α β. { config = α; lib = β } -> { config = { value = { bar = String } }; options = { isLazy = { default = Bool } } }

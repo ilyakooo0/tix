@@ -1,0 +1,1 @@
+∀ β γ δ ε. { nixpkgs = β; pkgs = γ; version = δ; versionSuffix = ε } -> { buildInputs = ∀ α. [α]; distPhase = String; name = String; officialRelease = Bool; src = β; version = δ; versionSuffix = ε }

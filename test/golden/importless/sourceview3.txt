@@ -1,0 +1,1 @@
+∀ α β γ. { buildDunePackage = { buildInputs = [α]; pname = String; propagatedBuildInputs = [β] } -> γ; gtksourceview = α; lablgtk3 = β } -> { buildInputs = [α]; pname = String; propagatedBuildInputs = [β] }

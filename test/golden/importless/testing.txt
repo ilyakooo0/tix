@@ -1,0 +1,1 @@
+{ failed = ∀ α. α -> { description = α; result = String }; passed = ∀ α. α -> { description = α; result = String }; run = ∀ α β. α -> β -> Bool -> [String] -> [String] }

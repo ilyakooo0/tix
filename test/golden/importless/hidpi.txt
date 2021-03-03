@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { boot = { loader = { systemd-boot = { consoleMode = String } } }; console = { earlySetup = Bool; font = String } }; options = { hardware = { video = { hidpi = { enable = String } } } } }

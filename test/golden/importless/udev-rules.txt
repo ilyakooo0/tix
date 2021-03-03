@@ -1,0 +1,1 @@
+∀ α β. { group = String; nitrokey-app = α; stdenv = β } -> { dontBuild = Bool; installPhase = String; meta = { description = String }; name = String; patchPhase = String }

@@ -1,0 +1,1 @@
+∀ β γ δ. { fetchurl = { sha256 = String; url = String } -> β; libdvdcss = γ; stdenv = δ } -> { NIX_LDFLAGS = String; buildInputs = [γ]; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; postInstall = String; src = { sha256 = String; url = String } }

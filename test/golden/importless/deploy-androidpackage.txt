@@ -1,0 +1,1 @@
+∀ γ δ ε. { stdenv = γ; unzip = δ } -> { buildInputs = [δ]; meta = {  }; os = Null; package = ε; patchInstructions = String } -> { buildInputs = [δ]; dontAutoPatchelf = Bool; dontPatchELF = Bool; dontStrip = Bool; installPhase = String; meta = { description = ∀ α. α }; pname = ∀ β. β; preferLocalBuild = Bool; src = ∀ β. β; unpackPhase = String; version = ∀ β. β }

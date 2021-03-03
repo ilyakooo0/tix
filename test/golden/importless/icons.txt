@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { environment = { pathsToLink = [String]; profileRelativeSessionVariables = { XCURSOR_PATH = [String] }; sessionVariables = { XCURSOR_PATH = [String] } } }; meta = { maintainers = ∀ β. β }; options = { xdg = { icons = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

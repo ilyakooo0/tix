@@ -1,0 +1,1 @@
+∀ β γ. { fetchzip = { sha256 = String; stripRoot = Bool; url = String } -> β; stdenv = γ } -> { installPhase = String; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = [String] }; pname = String; src = { sha256 = String; stripRoot = Bool; url = String }; version = String }

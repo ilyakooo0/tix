@@ -1,0 +1,1 @@
+∀ α β. { raspberrypifw = α; stdenvNoCC = β } -> { buildCommand = String; meta = { description = String }; name = String; nativeBuildInputs = [α]; passthru = { overlays = String } }

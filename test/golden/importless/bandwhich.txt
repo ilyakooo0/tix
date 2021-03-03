@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { bandwhich = { capabilities = String; source = String } } } }; meta = { maintainers = ∀ γ. [γ] }; options = { programs = { bandwhich = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { system = { build = { installBootLoader = { isExecutable = Bool; path = ∀ β. [β]; src = Path } } } }; options = { boot = { loader = { initScript = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } }

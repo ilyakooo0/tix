@@ -1,0 +1,1 @@
+∀ α β γ. { extra-cmake-modules = α; ki18n = β; mkDerivation = { broken = Bool; buildInputs = [β]; meta = { broken = Bool }; name = String; nativeBuildInputs = [α]; outputs = [String] } -> γ; qtbase = β } -> { broken = Bool; buildInputs = [β]; meta = { broken = Bool }; name = String; nativeBuildInputs = [α]; outputs = [String] }

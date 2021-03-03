@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { haskellLib = γ; pkgs = δ } -> ε -> ζ -> { tensorflow = { libtensorflow = ∀ α. α }; tensorflow-core-ops = ∀ β. β; tensorflow-logging = ∀ β. β; tensorflow-opgen = ∀ β. β; tensorflow-ops = ∀ β. β; tensorflow-proto = ∀ β. β }

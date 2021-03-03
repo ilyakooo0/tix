@@ -1,0 +1,1 @@
+∀ γ δ ε ζ η. { clang = γ; gcc32 = δ; gcc64 = ε; glibc_multi = ζ; runCommand = String -> η } -> { bintools = { libc = ∀ α. α }; extraBuildCommands = String; libc = ∀ β. β }

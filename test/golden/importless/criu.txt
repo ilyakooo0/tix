@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { boot = { kernel = { features = { criu = Bool } } }; environment = { systemPackages = ∀ β. [β] }; system = { requiredKernelConfig = [String] } }; options = { programs = { criu = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

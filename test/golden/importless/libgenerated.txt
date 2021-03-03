@@ -1,0 +1,1 @@
+∀ ε ζ. ε -> ζ -> { melpaDerivation = ∀ β γ δ. { commit = Null; ename = String; fetcher = ∀ α. α -> β; sha256 = Null } -> γ -> { commit = Null; ename = {  } -> δ; fetcher = ∀ α. α -> β; sha256 = Null } -> {  } }

@@ -1,0 +1,1 @@
+∀ γ δ. { lib = γ; pkgs = δ } -> { options = { systemd = { services = { type = ∀ α β. { config = α; name = α -> β } -> { config = { runner = α }; options = { runner = { description = String; internal = Bool } } } } } } }

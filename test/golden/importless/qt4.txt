@@ -1,0 +1,1 @@
+∀ β γ δ ε. { backintime-common = β; gettext = γ; makeWrapper = β; python3 = γ; python3Packages = δ; stdenv = ε } -> { buildInputs = [β]; configureFlags = ∀ α. α; dontAddPrefix = Bool; meta = { broken = Bool }; pname = String; preConfigure = String; preFixup = String }

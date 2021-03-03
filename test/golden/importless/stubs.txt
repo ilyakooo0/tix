@@ -1,0 +1,1 @@
+∀ γ δ. { callPackage = Path -> γ; lib = δ; ruby = { stdenv = ∀ β. β; stubbed = Bool }; stdenv = { stubbed = Bool } } -> { buildRubyGem = { fetchurl = ∀ β. { url = String; urls = β } -> String; ruby = { stdenv = ∀ α. α; stubbed = Bool } }; ruby = { stdenv = ∀ β. β; stubbed = Bool }; stdenv = { stubbed = Bool } }

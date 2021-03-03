@@ -1,0 +1,1 @@
+∀ α β γ. { camlp4 = α; fetchurl = { sha256 = String; url = String } -> β; findlib = α; ocaml = α; stdenv = γ } -> String

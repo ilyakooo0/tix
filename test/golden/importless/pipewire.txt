@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; systemd = { packages = ∀ β. [β]; user = { sockets = { pipewire = { wantedBy = [String] } } } } }; meta = { maintainers = ∀ γ. γ }; options = { services = { pipewire = { enable = String; socketActivation = { default = Bool; description = String; type = ∀ α. α } } } } }

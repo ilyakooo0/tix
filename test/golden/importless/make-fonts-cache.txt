@@ -1,0 +1,1 @@
+∀ α β γ δ. { fontDirectories = α; fontconfig = β; lib = γ; runCommand = String -> δ } -> String

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { mtr-packet = { capabilities = String; source = String } } } }; options = { programs = { mtr = { enable = { default = Bool; description = String; type = ∀ α. α }; package = { default = ∀ α. α; description = String; type = ∀ α. α } } } } }

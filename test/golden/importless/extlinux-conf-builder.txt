@@ -1,0 +1,1 @@
+∀ β. { pkgs = β } -> { isExecutable = Bool; path = ∀ α. [α]; src = Path }

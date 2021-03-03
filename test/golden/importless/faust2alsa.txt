@@ -1,0 +1,1 @@
+∀ α β. { alsaLib = α; atk = α; cairo = α; faust = β; fontconfig = α; freetype = α; gdk-pixbuf = α; glib = α; gtk2 = α; pango = α } -> { baseName = String; propagatedBuildInputs = [α] }

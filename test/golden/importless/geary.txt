@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ α. [α] }; programs = { dconf = { enable = Bool } }; services = { gnome3 = { gnome-keyring = { enable = Bool }; gnome-online-accounts = { enable = Bool } } } }; meta = { maintainers = ∀ β. β }; options = { programs = { geary = { enable = String } } } }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { composeAndroidPackages = α -> β; lib = γ; runtimeShell = δ; stdenv = ε } -> { abiVersion = String; activity = Null; app = Null; avdHomeDir = Null; enableGPU = Bool; extraAVDFiles = ζ; name = η; package = Null; platformVersion = String; sdkExtraArgs = {  }; systemImageType = String } -> { buildCommand = String; name = η }

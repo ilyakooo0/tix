@@ -1,0 +1,1 @@
+∀ β γ δ. { crystal = β; lib = γ; nix-prefetch-git = δ } -> { crystalBinaries = { crystal2nix = { src = String } }; doInstallCheck = Bool; format = String; meta = { description = String; license = ∀ α. α; maintainers = ∀ α. [α] }; nixPrefetchGit = String; pname = String; unpackPhase = String; version = String }

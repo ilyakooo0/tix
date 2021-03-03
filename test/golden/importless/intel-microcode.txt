@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { initrd = { prepend = [String] } } }; options = { hardware = { cpu = { intel = { updateMicrocode = { default = Bool; description = String; type = ∀ α. α } } } } } }

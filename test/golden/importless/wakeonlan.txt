@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { powerManagement = { powerDownCommands = ∀ β. β } }; options = { services = { wakeonlan = { interfaces = { default = ∀ α. α; description = String; example = [{ interface = String; method = String; password = String }] } } } } }

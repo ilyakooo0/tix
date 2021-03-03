@@ -1,0 +1,1 @@
+∀ γ δ. { ireplace = Integer -> γ; lib = δ } -> { satisfiesSemver = ∀ α β. α -> β -> String -> Bool }

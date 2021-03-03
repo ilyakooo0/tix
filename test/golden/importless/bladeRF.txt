@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { services = { udev = { packages = ∀ β. [β] } }; users = { groups = { bladerf = {  } } } }; options = { hardware = { bladeRF = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

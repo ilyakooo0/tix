@@ -1,0 +1,1 @@
+∀ α β γ δ. { coreutils = α; gnupg = β; stdenv = γ; writeScript = String -> δ } -> { builder = String; meta = { description = String; priority = Integer }; name = String }

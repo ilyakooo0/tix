@@ -1,0 +1,1 @@
+∀ α. { stdenv = α } -> { version = String; xcodeBaseDir = String } -> { buildCommand = String; name = String }

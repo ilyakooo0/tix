@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { buildEnv = { ignoreCollisions = Bool; name = String; paths = [{ bundler = ∀ α. α }]; pathsToLink = [String] } -> γ; bundix = δ; bundler = ε; ruby = ζ } -> { ignoreCollisions = Bool; name = String; paths = [{ bundler = ∀ β. β }]; pathsToLink = [String] }

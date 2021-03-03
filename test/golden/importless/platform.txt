@@ -1,0 +1,1 @@
+∀ β γ δ. { cmake = β; fetchurl = { sha256 = String; url = String } -> γ; stdenv = δ } -> { meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α; repositories = { git = String } }; nativeBuildInputs = [β]; pname = String; src = { sha256 = String; url = String }; version = String }

@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { boot = { kernel = { sysctl = { kernel.poweroff_cmd = String } } }; systemd = { services = { save-hwclock = { description = String; serviceConfig = { ExecStart = String; Type = String }; unitConfig = { ConditionPathExists = String; DefaultDependencies = Bool }; wantedBy = [String] } } } }

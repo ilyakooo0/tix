@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ γ. [γ] }; services = { dbus = { packages = ∀ β. [β] } } }; options = { services = { dleyna-server = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

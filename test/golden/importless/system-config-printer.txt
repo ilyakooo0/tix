@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { services = { dbus = { packages = ∀ α. [α] }; packagekit = { enable = Bool }; udev = { packages = ∀ α. [α] } }; systemd = { packages = ∀ β. [β] } }; options = { services = { system-config-printer = { enable = String } } } }

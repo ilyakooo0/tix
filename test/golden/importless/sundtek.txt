@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; systemd = { services = { sundtek = { description = String; serviceConfig = { ExecStart = String; ExecStop = String; RemainAfterExit = Bool; Type = String }; wantedBy = [String] } } } }; options = { services = { sundtek = { enable = String } } } }

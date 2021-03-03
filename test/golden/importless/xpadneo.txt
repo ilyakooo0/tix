@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { boot = { extraModprobeConfig = String; extraModulePackages = ∀ α. [α]; kernelModules = [String] } }; meta = { maintainers = ∀ β. [β] }; options = { hardware = { xpadneo = { enable = String } } } }

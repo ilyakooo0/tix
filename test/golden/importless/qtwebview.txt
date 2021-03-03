@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { darwin = γ; qtModule = { NIX_LDFLAGS = String; buildInputs = ∀ α. [α]; name = String; outputs = [String]; qtInputs = [δ] } -> ε; qtdeclarative = δ; qtwebengine = δ; stdenv = ζ } -> { NIX_LDFLAGS = String; buildInputs = ∀ β. [β]; name = String; outputs = [String]; qtInputs = [δ] }

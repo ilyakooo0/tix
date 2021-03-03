@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { etc = { X11/xorg.conf.d/70-wacom.conf = { source = String } }; systemPackages = ∀ γ. [γ] }; services = { udev = { packages = ∀ β. [β] }; xserver = { modules = ∀ β. [β] } } }; options = { services = { xserver = { wacom = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } }

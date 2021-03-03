@@ -1,0 +1,1 @@
+∀ β. { fetchMaven = { artifactId = String; groupId = String; sha512 = ∀ α. α; type = ∀ α. α; version = String } -> β } -> { plexusCompilerManager_2_2 = [{ sha512 = String; type = String }] }

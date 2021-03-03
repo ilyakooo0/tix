@@ -1,0 +1,1 @@
+∀ γ δ ε ζ η. { extra-cmake-modules = γ; kconfig = δ; kdoctools = γ; kio = ε; ktextwidgets = ε; lib = ζ; libkdegames = ε; mkDerivation = { buildInputs = [ε]; meta = { license = ∀ α. [α]; maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [γ] } -> η } -> { buildInputs = [ε]; meta = { license = ∀ β. [β]; maintainers = ∀ β. [β] }; name = String; nativeBuildInputs = [γ] }

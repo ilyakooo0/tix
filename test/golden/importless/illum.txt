@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { illum = { description = String; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } }; options = { services = { illum = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

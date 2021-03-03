@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ η. { rebar3 = β; stdenv = γ } -> { meta = {  }; name = δ; sha256 = ε; src = ζ; version = η } -> { downloadPhase = String; impureEnvVars = ∀ α. α; installPhase = String; meta = {  }; name = String; outputHash = ε; outputHashAlgo = String; outputHashMode = String; phases = [String] }

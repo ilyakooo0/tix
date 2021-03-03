@@ -1,0 +1,1 @@
+∀ δ. { lib = δ } -> { config = { submodule = ∀ γ. [{ lib = γ } -> { options = { outer = { default = Bool; type = ∀ β. β } } }] }; options = { submodule = { default = {  }; type = { modules = [{ options = { inner = { default = Bool; type = ∀ α. α } } }] } } } }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { common-updater-scripts = α; coreutils = β; gnugrep = γ; gnused = δ; nix = ε; stdenv = ζ; writeScript = String -> η } -> { attrPath = String; ignoredVersions = String; odd-unstable = Bool; patchlevel-unstable = Bool; pname = String; rev-prefix = String; version = String; versionLister = String } -> [String]

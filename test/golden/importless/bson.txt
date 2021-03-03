@@ -1,0 +1,1 @@
+∀ α β. { buildDunePackage = { meta = { description = String }; pname = String; propagatedBuildInputs = [α] } -> β; ocplib-endian = α; ocplib-json-typed = α } -> { meta = { description = String }; pname = String; propagatedBuildInputs = [α] }

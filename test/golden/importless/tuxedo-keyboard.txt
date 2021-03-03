@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { extraModulePackages = [∀ α. α]; kernelModules = [String] } }; options = { hardware = { tuxedo-keyboard = { enable = String } } } }

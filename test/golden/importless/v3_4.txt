@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ η θ ι. { CoreFoundation = β; Security = γ; boost = δ; callPackage = Path -> ε; cctools = ζ; lib = η; sasl = θ; stdenv = ι } -> { license = ∀ α. α; patches = [Path]; sha256 = String; version = String }

@@ -1,0 +1,1 @@
+∀ α β γ δ. { runCommand = String -> α } -> { pname = β; src = γ; version = δ } -> String

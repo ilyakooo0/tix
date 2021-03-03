@@ -1,0 +1,1 @@
+∀ β. { fetchMaven = { artifactId = String; groupId = String; sha512 = ∀ α. α; type = ∀ α. α; version = String } -> β } -> { mavenSurefireApi_2_12_4 = [{ sha512 = String; type = String }]; mavenSurefireApi_2_17 = [{ sha512 = String; type = String }] }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ ι κ. { baseName = String; basePath = String; baseUrl = α; channel = String; coreutils = β; curl = γ; gnugrep = δ; gnupg = ε; gnused = ζ; name = η; runtimeShell = θ; writeScript = String -> ι; xidel = κ } -> String

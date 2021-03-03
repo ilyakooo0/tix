@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { environment = { etc = { odbcinst.ini = ∀ α. { text = α } } } }; options = { environment = { unixODBCDrivers = { default = ∀ α. α; description = String; example = String; type = ∀ α. α } } } }

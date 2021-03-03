@@ -1,0 +1,1 @@
+∀ β γ δ. { binutils = β; gccRaw = γ; stdenv = δ } -> { installPhase = String; meta = { platforms = ∀ α. α }; name = String; phases = [String] }

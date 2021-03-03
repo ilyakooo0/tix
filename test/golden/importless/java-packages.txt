@@ -1,0 +1,1 @@
+∀ α. { pkgs = α } -> { fetchMaven = {  }; mavenPlugins = {  }; mavenbuild = {  } }

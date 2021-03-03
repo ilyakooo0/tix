@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { environment = { pathsToLink = [String] } }; meta = { maintainers = ∀ β. β }; options = { xdg = { autostart = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

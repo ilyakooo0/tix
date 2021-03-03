@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { api = { default = Bool; description = String; type = ∀ α. α }; healthmon = { default = Bool; description = String; type = ∀ α. α }; proxyproto = { default = Bool; description = String; type = ∀ α. α }; sni-fwd = { default = Bool; description = String; type = ∀ α. α }; tls = { default = String; description = String; type = [String] } } }

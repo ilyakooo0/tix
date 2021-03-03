@@ -1,0 +1,1 @@
+∀ β γ. { fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> β; stdenv = γ } -> { installPhase = String; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platform = ∀ α. α }; name = String; src = { owner = String; repo = String; rev = String; sha256 = String }; version = String }

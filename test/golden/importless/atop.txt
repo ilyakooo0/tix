@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { environment = { etc = { atoprc = { text = ∀ α. α } } } }; options = { programs = { atop = { settings = { default = {  }; description = String; example = { flags = String; interval = Integer }; type = ∀ α. α } } } } }

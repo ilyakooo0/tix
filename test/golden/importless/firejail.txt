@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { firejail = { source = String } } } }; meta = { maintainers = ∀ γ. [γ] }; options = { programs = { firejail = { enable = String; wrappedBinaries = { default = {  }; description = String; example = String; type = ∀ α. α } } } } }

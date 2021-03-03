@@ -1,0 +1,1 @@
+∀ α β γ δ. { makeWrapper = α; runCommand = String -> β; stdenv = γ; symlinkJoin = δ; why3 = α } -> [α] -> { buildInputs = [α]; buildPhase = String; installPhase = String; name = String; phases = [String] }

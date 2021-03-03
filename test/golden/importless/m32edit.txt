@@ -1,0 +1,1 @@
+∀ α. { callPackage = Path -> α } -> { brand = String; callPackage = Path -> α; homepage = String; sha256 = String; type = String; version = String }

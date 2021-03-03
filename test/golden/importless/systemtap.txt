@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { boot = { kernel = { features = { debug = Bool } } }; environment = { systemPackages = ∀ β. [β] }; system = { requiredKernelConfig = [String] } }; options = { programs = { systemtap = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

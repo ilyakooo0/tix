@@ -1,0 +1,1 @@
+∀ β. { crossStageStatic = Bool; langD = Bool; libcCross = Null; stdenv = β; threadsCross = Null } -> { EXTRA_FLAGS_FOR_TARGET = ∀ α. [α]; EXTRA_LDFLAGS_FOR_TARGET = ∀ α. [α] }

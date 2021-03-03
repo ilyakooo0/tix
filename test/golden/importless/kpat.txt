@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { extra-cmake-modules = γ; freecell-solver = δ; knewstuff = δ; lib = ε; libkdegames = δ; mkDerivation = { buildInputs = [δ]; meta = { license = ∀ α. [α]; maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [γ] } -> ζ; shared-mime-info = γ } -> { buildInputs = [δ]; meta = { license = ∀ β. [β]; maintainers = ∀ β. [β] }; name = String; nativeBuildInputs = [γ] }

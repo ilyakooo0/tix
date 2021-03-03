@@ -1,0 +1,1 @@
+∀ β γ δ ε. { fetchurl = { sha256 = String; url = String } -> β; makeWrapper = γ; python2 = δ; stdenv = ε } -> { buildInputs = [γ]; installPhase = String; meta = { description = String; hydraPlatforms = ∀ α. α; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; phases = [String]; pname = String; src = { sha256 = String; url = String }; version = String }

@@ -1,0 +1,1 @@
+∀ α β γ δ. { additionalSpace = String; bootSize = String; config = α; configFile = Null; contents = β; diskSize = String; format = String; fsType = String; label = String; lib = γ; name = String; partitionTableType = String; pkgs = δ; postVM = String } -> String

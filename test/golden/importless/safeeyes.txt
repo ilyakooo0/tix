@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { systemd = { user = { services = { safeeyes = { description = String; partOf = [String]; serviceConfig = { ExecStart = String; Restart = String; RestartSec = Integer; StartLimitBurst = Integer; StartLimitInterval = Integer }; wantedBy = [String] } } } } }; options = { services = { safeeyes = { enable = String } } } }

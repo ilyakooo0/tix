@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { fetchurl = { meta = { homepage = String }; url = String } -> α; lib = β; registryDat = γ; stdenv = δ } -> ε -> String -> String

@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { svnserve = { after = [String]; preStart = String; script = String; wantedBy = [String] } } } }; options = { services = { svnserve = { enable = { default = Bool; description = String; type = ∀ α. α }; svnBaseDir = { default = String; description = String } } } } }

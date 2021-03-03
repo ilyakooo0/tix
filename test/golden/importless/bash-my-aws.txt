@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; programs = { bash = { interactiveShellInit = String } } }; options = { programs = { bash-my-aws = { enable = String } } } }

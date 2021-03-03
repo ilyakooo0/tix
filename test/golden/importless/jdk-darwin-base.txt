@@ -1,0 +1,1 @@
+∀ β γ δ. β -> { fetchurl = {  } -> γ; stdenv = δ; swingSupport = Bool } -> { dontStrip = Integer; installPhase = String; meta = { description = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = [String] }; name = String; passthru = { home = ∀ α. α; jre = ∀ α. α }; src = {  } }

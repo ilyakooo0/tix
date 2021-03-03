@@ -1,0 +1,1 @@
+∀ γ δ. { lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ β. [β] }; systemd = { services = { prepare-kexec = { before = [String]; description = String; path = ∀ α. [α]; script = String; serviceConfig = { Type = String }; unitConfig = { DefaultDependencies = Bool }; wantedBy = [String] } } } } }

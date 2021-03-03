@@ -1,0 +1,1 @@
+∀ β. β -> { buildCommand = String; meta = { description = String; maintainers = ∀ α. [α] }; name = String }

@@ -1,0 +1,1 @@
+∀ β. { fetchurl = { sha256 = String; url = String } -> β } -> { asdFilesToKeep = [String]; baseName = String; deps = ∀ α. α; description = String; overrides = ∀ α. α -> α; packageName = String; src = { sha256 = String; url = String }; version = String }

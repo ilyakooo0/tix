@@ -1,0 +1,1 @@
+∀ α β γ. { qtModule = { name = String; outputs = [String]; qmakeFlags = [String]; qtInputs = [α] } -> β; qtbase = α; qtmultimedia = α; stdenv = γ } -> { name = String; outputs = [String]; qmakeFlags = [String]; qtInputs = [α] }

@@ -1,0 +1,1 @@
+∀ δ ε ζ. { isLinux = Bool; lib = δ; python = ε; stdenv = ζ } -> { isPyVersionCompatible = ∀ β γ. β -> β -> γ; selectWheel = ∀ β. β -> ∀ α. α; toWheelAttrs = ∀ β. β -> { abi = Integer; pkgName = Integer; pkgVer = Integer; platform = Integer; pyVer = Integer } }

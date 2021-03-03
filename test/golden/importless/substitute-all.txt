@@ -1,0 +1,1 @@
+∀ β. { stdenvNoCC = β } -> Bool -> { allowSubstitutes = Bool; builder = Path; name = ∀ α. α; preferLocalBuild = Bool }

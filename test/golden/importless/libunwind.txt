@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { cmake = α; enableShared = Bool; fetch = String -> β; fetchpatch = { sha256 = String; url = String } -> γ; stdenv = δ; version = ε } -> { cmakeFlags = String; enableParallelBuilding = Bool; nativeBuildInputs = [α]; patches = [{ sha256 = String; url = String }]; pname = String; src = String; version = ε }

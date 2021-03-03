@@ -1,0 +1,1 @@
+∀ α β. { mingw_w64 = α; stdenvNoCC = β } -> { name = String; preConfigure = String }

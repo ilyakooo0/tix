@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { logkeys = { description = String; serviceConfig = { ExecStart = String; ExecStop = String; Type = String }; wantedBy = [String] } } } }; options = { services = { logkeys = { device = { default = Null; description = String; example = String; type = ∀ α. α }; enable = String } } } }

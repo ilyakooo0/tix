@@ -1,0 +1,1 @@
+∀ α β γ. { extra-cmake-modules = α; karchive = β; ki18n = β; kio = β; knewstuff = β; libXcursor = β; libXdmcp = β; libpthreadstubs = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; qtquickcontrols2 = β; qtx11extras = β; shared-mime-info = α } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α] }

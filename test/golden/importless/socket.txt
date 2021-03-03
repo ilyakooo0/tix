@@ -1,0 +1,1 @@
+∀ α β γ. { buildDunePackage = { doCheck = Bool; meta = { description = String }; pname = String; propagatedBuildInputs = [α] } -> β; lib = γ; posix-base = α } -> { doCheck = Bool; meta = { description = String }; pname = String; propagatedBuildInputs = [α] }

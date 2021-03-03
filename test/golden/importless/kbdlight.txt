@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; security = { wrappers = { kbdlight = { source = String } } } }; options = { programs = { kbdlight = { enable = String } } } }

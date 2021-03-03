@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { descent1-assets = α; descent2-assets = β; dxx-rebirth = γ; makeWrapper = δ; stdenv = ε } -> { d1x-rebirth-full = α; d2x-rebirth-full = β }

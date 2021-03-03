@@ -1,0 +1,1 @@
+∀ γ δ ε. { qtModule = { meta = { maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; qtInputs = [γ] } -> δ; qtbase = γ; stdenv = ε } -> { meta = { maintainers = ∀ β. [β]; platforms = ∀ β. β }; name = String; qtInputs = [γ] }

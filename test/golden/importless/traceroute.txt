@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { security = { wrappers = { traceroute = { capabilities = String; source = String } } } }; options = { programs = { traceroute = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

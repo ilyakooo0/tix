@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { dosfstools = α; mtools = β; stdenv = γ; writeText = String -> δ } -> { cygwinPackages = [String]; cygwinRepository = String; cygwinRoot = String; cygwinSetup = String; productKey = ε; shExecAfterwards = String } -> { buildCommand = String; name = String }

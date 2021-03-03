@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { compressImage = Bool; e2fsprogs = α; fakeroot = β; lib = γ; libfaketime = β; perl = β; pkgs = δ; populateImageCommands = String; storePaths = ε; uuid = String; volumeLabel = ζ; zstd = [β] } -> { buildCommand = String; name = String; nativeBuildInputs = [β] }

@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { powertop = { after = [String]; description = String; path = ∀ α. [α]; serviceConfig = { ExecStart = String; RemainAfterExit = String; Type = String }; wantedBy = [String] } } } }; options = { powerManagement = { powertop = { enable = String } } } }

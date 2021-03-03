@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { value = { type = ∀ α. [α] } } }

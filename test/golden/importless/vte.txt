@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = [{ programs = { bash = { interactiveShellInit = String } } }]; meta = { maintainers = ∀ β. β }; options = { programs = { bash = { vteIntegration = { default = Bool; description = String; type = ∀ α. α } }; zsh = { vteIntegration = { default = Bool; description = String; type = ∀ α. α } } } } }

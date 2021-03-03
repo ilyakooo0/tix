@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { environment = { pathsToLink = [String] } }; options = { appstream = { enable = { default = Bool; description = String; type = ∀ α. α } } } }

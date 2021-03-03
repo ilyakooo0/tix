@@ -1,0 +1,1 @@
+∀ ε ζ η. { config = ε; lib = ζ; pkgs = η } -> { config = { environment = { systemPackages = ∀ γ. [γ] }; services = { dbus = { packages = ∀ β. [β] } } }; meta = { maintainers = ∀ δ. δ }; options = { services = { gnome3 = { gnome-online-accounts = { enable = { default = Bool; description = String; type = ∀ α. α } } } } } }

@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { host = { description = String; example = String; type = ∀ α. α }; port = { description = String; example = Integer; type = ∀ α. α } } }

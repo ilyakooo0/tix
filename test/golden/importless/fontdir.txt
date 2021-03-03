@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { pathsToLink = [String]; systemPackages = [String] } }; options = { fonts = { enableFontDir = { default = Bool; description = String; type = ∀ α. α } } } }

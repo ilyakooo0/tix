@@ -1,0 +1,1 @@
+∀ α β γ. { buildDunePackage = { meta = { description = String }; pname = String; propagatedBuildInputs = [α] } -> β; cstruct = α; fmt = γ; logs = α; mirage-clock = α; mirage-flow = α; ocaml_lwt = α } -> { meta = { description = String }; pname = String; propagatedBuildInputs = [α] }

@@ -1,0 +1,1 @@
+∀ γ. { lib = γ } -> { options = { submodule = { default = {  }; type = { modules = ∀ β. [{ lib = β } -> { options = { foo = { default = ∀ α. α } } }]; specialArgs = { lib = { foo = String } } } } } }

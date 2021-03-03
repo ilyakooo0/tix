@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { lilypond = α; lndir = β; makeWrapper = β; openlilylib-fonts = γ; stdenv = δ; symlinkJoin = { buildInputs = [β]; paths = [α]; postBuild = String } -> ε } -> { buildInputs = [β]; paths = [α]; postBuild = String }

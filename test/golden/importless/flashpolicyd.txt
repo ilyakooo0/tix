@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { services = { xinetd = { enable = Bool; services = { name = String; port = Integer; server = String; unlisted = Bool } } } }; options = { services = { flashpolicyd = { enable = { default = Bool; description = String; type = ∀ α. α }; policy = { default = String; description = String } } } } }

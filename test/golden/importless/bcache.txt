@@ -1,0 +1,1 @@
+∀ γ. { pkgs = γ } -> { boot = { initrd = { extraUdevRulesCommands = String } }; environment = { systemPackages = ∀ β. [β] }; services = { udev = { packages = ∀ α. [α] } } }

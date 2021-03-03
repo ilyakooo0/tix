@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { kernelParams = [String] }; environment = { systemPackages = ∀ α. [α] } }; options = { programs = { sedutil = { enable = String } } } }

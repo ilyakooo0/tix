@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { extraModulePackages = ∀ α. [α] }; environment = { systemPackages = ∀ α. [α] } }; options = { programs = { sysdig = { enable = String } } } }

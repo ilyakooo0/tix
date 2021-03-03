@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { crt = { default = String; description = String; example = String; type = ∀ α. α }; key = { default = String; description = String; example = String; type = ∀ α. α } } }

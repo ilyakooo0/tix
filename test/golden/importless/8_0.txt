@@ -1,0 +1,1 @@
+∀ α. { callPackage = Path -> α } -> { callPackage = Path -> α; extraPatches = [Path]; extraPostInstall = String; sha256 = String; version = String }

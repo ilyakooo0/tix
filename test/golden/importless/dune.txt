@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { dune = α; dune_2 = α; findlib = α; ocaml = α; opaline = β; stdenv = γ } -> { buildInputs = [α]; enableParallelBuilding = Bool; pname = δ; version = ε } -> String

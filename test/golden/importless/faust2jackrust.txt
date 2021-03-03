@@ -1,0 +1,1 @@
+∀ α β γ. { binutils = α; cargo = α; faust = β; gcc = α; gnumake = α; libjack2 = α; openssl = α; pkgconfig = α; stdenv = γ } -> { baseName = String; propagatedBuildInputs = [α] }

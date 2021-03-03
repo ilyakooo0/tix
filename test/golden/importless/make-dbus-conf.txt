@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { dbus = α; libxslt = β; runCommand = String -> γ; serviceDirectories = δ; suidHelper = String; writeText = String -> ε } -> String

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { etc = { freetds.conf = { text = ∀ α. α } }; variables = { FREETDS = String; FREETDSCONF = String; SYBASE = String } } }; options = { environment = { freetds = { default = {  }; description = String; example = String; type = ∀ β. β } } } }

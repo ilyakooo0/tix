@@ -1,0 +1,1 @@
+∀ α β. α -> β -> { ci-info = {  }; dconf2nix = {  }; graphql-engine = {  }; graphql-parser = {  }; haskell-language-server = {  }; hls-ghcide = {  }; multi-ghc-travis = String; pg-client = {  }; spago = {  }; vaultenv = {  } }

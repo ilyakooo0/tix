@@ -1,0 +1,1 @@
+∀ α β. { lib = α; mkspiffs = β } -> { arduino-esp32 = { CPPFLAGS = [String] }; arduino-esp8266 = { CPPFLAGS = [String] }; esp-idf = { CPPFLAGS = [String] } }

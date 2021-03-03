@@ -1,0 +1,1 @@
+∀ α β. { config = {  }; lib = α; options = β } -> { config = { assertions = [{ assertion = Bool; message = String }] }; options = { nixops = { enableDeprecatedAutoLuks = String } } }

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { etc = { screenrc = { text = ∀ α. α } }; systemPackages = ∀ β. [β] }; security = { pam = { services = { screen = {  } } } } }; options = { programs = { screen = { screenrc = { default = String; description = String; type = ∀ α. α } } } } }

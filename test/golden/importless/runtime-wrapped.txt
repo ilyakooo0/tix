@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ. { lib = β; perl = γ; pkgs = δ; runtimeOnly = Bool; stdenv = ε; steam-runtime = ζ; steamArch = String } -> { builder = Path; installPhase = String; name = String; nativeBuildInputs = [γ]; passthru = { arch = String; bins = [String]; gnuArch = String; libs = [String]; overridePkgs = ∀ α. [α] } }

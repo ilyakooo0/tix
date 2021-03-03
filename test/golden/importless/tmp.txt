@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { systemd = { additionalUpstreamSystemUnits = String; tmpfiles = { rules = String } } }; options = { boot = { cleanTmpDir = { default = Bool; description = String; type = ∀ α. α }; tmpOnTmpfs = { default = Bool; description = String; type = ∀ α. α } } } }

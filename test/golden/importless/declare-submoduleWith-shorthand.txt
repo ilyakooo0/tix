@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { submodule = { default = {  }; type = { modules = [{ options = { config = { default = Bool; type = ∀ α. α } } }]; shorthandOnlyDefinesConfig = Bool } } } }

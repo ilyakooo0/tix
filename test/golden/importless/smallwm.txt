@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; services = { xserver = { windowManager = { session = { name = String; start = String } } } } }; options = { services = { xserver = { windowManager = { smallwm = { enable = String } } } } } }

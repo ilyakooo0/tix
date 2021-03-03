@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ η θ. { cmake = β; fetch = String -> γ; libcxx = δ; libunwind = ε; llvm = ζ; stdenv = η; version = θ } -> { buildInputs = ε; installPhase = String; meta = { description = String; homepage = String; license = ∀ α. [α]; maintainers = ∀ α. [α]; platforms = ∀ α. α }; nativeBuildInputs = [β]; pname = String; postUnpack = String; src = String; version = θ }

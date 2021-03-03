@@ -1,0 +1,1 @@
+∀ γ δ ε ζ η. { closureInfo = { rootPaths = ∀ α. [{ name = α }] } -> γ; jq = δ; lib = ε; runCommand = String -> ζ; squashfsTools = δ; writeText = String -> η } -> ∀ β. { meta = { name = β } } -> String

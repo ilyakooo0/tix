@@ -1,0 +1,1 @@
+∀ γ δ. { makeInstalledTest = { testConfig = { services = { gnome3 = { glib-networking = { enable = Bool } } } }; tested = ∀ α. α } -> γ; pkgs = δ } -> { testConfig = { services = { gnome3 = { glib-networking = { enable = Bool } } } }; tested = ∀ β. β }

@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { allowMissing = Bool; firmware = α; kernel = β; kmod = γ; nukeReferences = γ; rootModules = δ; stdenvNoCC = ε } -> { allowMissing = Bool; allowedReferences = [String]; builder = Path; firmware = α; kernel = β; name = String; nativeBuildInputs = [γ]; rootModules = δ }

@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { options = { value = { default = {  }; type = { emptyValue = { value = String } } } } }

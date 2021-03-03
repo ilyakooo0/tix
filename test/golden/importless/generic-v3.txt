@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ ι. { autoreconfHook = α; buildPackages = β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = γ } -> δ; gmock = ε; sha256 = γ; stdenv = ζ; version = η; zlib = θ } -> ι

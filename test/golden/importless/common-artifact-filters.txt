@@ -1,0 +1,1 @@
+∀ β. { fetchMaven = { artifactId = String; groupId = String; sha512 = ∀ α. α; type = ∀ α. α; version = String } -> β } -> { mavenCommonArtifactFilters_1_2 = [{ sha512 = String; type = String }]; mavenCommonArtifactFilters_1_3 = [{ sha512 = String; type = String }]; mavenCommonArtifactFilters_1_4 = [{ sha512 = String; type = String }] }

@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { assertions = { default = ∀ α. α; description = String; example = [{ assertion = Bool; message = String }]; internal = Bool; type = ∀ α. α }; warnings = { default = ∀ α. α; description = String; example = [String]; internal = Bool; type = ∀ α. α } } }

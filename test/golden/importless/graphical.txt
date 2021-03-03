@@ -1,0 +1,1 @@
+∀ β. { pkgs = β } -> { environment = { systemPackages = ∀ α. [α] }; hardware = { pulseaudio = { enable = Bool } }; services = { xserver = { desktopManager = { plasma5 = { enable = Bool } }; displayManager = { sddm = { enable = Bool } }; enable = Bool; libinput = { enable = Bool } } } }

@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { assertions = { assertion = ∀ β. β; message = String }; systemd = { services = { xfs = { after = [String]; description = String; path = ∀ α. [α]; script = String; wantedBy = [String] } } } }; options = { services = { xfs = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

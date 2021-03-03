@@ -1,0 +1,1 @@
+∀ α β. Integer -> { buildEnv = { ignoreCollisions = Bool; name = String; paths = Integer; pathsToLink = [String]; postBuild = String } -> α; lib = β } -> { ignoreCollisions = Bool; name = String; paths = Integer; pathsToLink = [String]; postBuild = String }

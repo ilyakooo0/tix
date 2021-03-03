@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { environment = { extraOutputsToInstall = [String]; variables = { NIX_DEBUG_INFO_DIRS = [String] } } }; options = { environment = { enableDebugInfo = { default = Bool; description = String; type = ∀ α. α } } } }

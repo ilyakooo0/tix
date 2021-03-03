@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ. { asdFilesToKeep = [[String]]; baseName = α; buildInputs = β; buildSystems = [γ]; clwrapper = δ; deps = ε; description = ζ; meta = {  }; overrides = η -> {  }; packageName = θ; parasites = ι; propagatedBuildInputs = κ; src = λ; stdenv = μ; version = String } -> {  }

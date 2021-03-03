@@ -1,0 +1,1 @@
+∀ α β γ δ. { buildDunePackage = { buildInputs = [α]; pname = String; propagatedBuildInputs = [β]; useDune2 = Bool } -> γ; cmdliner = α; cohttp-lwt = β; conduit-lwt-unix = β; fmt = β; magic-mime = β; ppx_sexp_conv = α; stdenv = δ } -> β

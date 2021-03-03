@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = [{ gestures = ∀ β. β }] }; services = { xserver = { windowManager = { session = { name = String; start = String } } } } }; options = { services = { xserver = { windowManager = { fvwm = { enable = String; gestures = { default = Bool; description = String; type = ∀ α. α } } } } } } }

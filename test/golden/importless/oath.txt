@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { security = { pam = { oath = { digits = { default = Integer; description = String; type = [Integer] }; enable = { default = Bool; description = String; type = ∀ α. α }; usersFile = { default = String; description = String; type = ∀ α. α }; window = { default = Integer; description = String; type = ∀ α. α } } } } } }

@@ -1,0 +1,1 @@
+∀ α β. { fetchurl = { sha256 = String; url = String } -> α; python = β } -> { patches = [Path]; pname = String; postFixup = String; postInstall = String; setSourceRoot = String; src = { sha256 = String; url = String }; version = String }

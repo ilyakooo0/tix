@@ -1,0 +1,1 @@
+∀ α β. { callPackage = Path -> α; fetchurl = { sha256 = String; url = String } -> β } -> { callPackage = Path -> α; fetchurl = { sha256 = String; url = String } -> β; patches = [Path]; src = { sha256 = String; url = String }; version = String }

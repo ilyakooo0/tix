@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { extra-cmake-modules = γ; lib = δ; mkDerivation = { meta = { maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [γ]; outputs = [String]; propagatedBuildInputs = [ε] } -> ζ; qtquickcontrols2 = ε } -> { meta = { maintainers = ∀ β. [β] }; name = String; nativeBuildInputs = [γ]; outputs = [String]; propagatedBuildInputs = [ε] }

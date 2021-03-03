@@ -1,0 +1,1 @@
+∀ α β γ. { fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> α; libgit2 = β } -> γ -> { cmakeFlags = [String]; src = { owner = String; repo = String; rev = String; sha256 = String } }

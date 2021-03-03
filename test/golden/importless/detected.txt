@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { config = { hardware = { enableRedistributableFirmware = Bool } } }

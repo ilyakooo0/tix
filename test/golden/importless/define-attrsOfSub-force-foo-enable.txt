@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { attrsOfSub = { foo = { enable = Bool } } }

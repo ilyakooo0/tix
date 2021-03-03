@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { services = { udev = { packages = ∀ β. [β -> {  }] } } }; options = { hardware = { nitrokey = { enable = { default = Bool; description = String; type = ∀ α. α }; group = { default = String; description = String; example = String; type = ∀ α. α } } } } }

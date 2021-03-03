@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β]; variables = { EDITOR = String } } }; options = { programs = { vim = { defaultEditor = { default = Bool; description = String; type = ∀ α. α } } } } }

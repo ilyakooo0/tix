@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { fetchurl = { sha256 = α; url = String } -> β; stdenv = γ } -> { meta = {  }; pkg = δ; sha256 = α; version = ε } -> { installPhase = String; meta = {  }; name = String; phases = [String]; src = { sha256 = α; url = String }; unpackCmd = String }

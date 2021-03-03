@@ -1,0 +1,1 @@
+∀ ε. { lib = ε } -> { meta = { maintainers = ∀ δ. δ }; options = { meta = { doc = { description = String; example = String; internal = Bool; type = { merge = ∀ α β. α -> β -> β } }; maintainers = { default = ∀ γ. γ; description = String; example = ∀ γ. [γ]; internal = Bool; type = { merge = ∀ α β. [α] -> β -> β } } } } }

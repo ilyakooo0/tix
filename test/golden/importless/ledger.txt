@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { services = { udev = { packages = ∀ α. [α] } } }; options = { hardware = { ledger = { enable = String } } } }

@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { environment = { etc = { fuse.conf = { text = String } } } }; meta = { maintainers = ∀ β. [β] }; options = { programs = { fuse = { mountMax = { default = Integer; description = String; type = Integer }; userAllowOther = { default = Bool; description = String; type = ∀ α. α } } } } }

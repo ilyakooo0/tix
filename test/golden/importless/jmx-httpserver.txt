@@ -1,0 +1,1 @@
+∀ β γ δ. { fetchurl = { sha256 = String; url = String } -> β; jre = γ; makeWrapper = γ; stdenv = δ } -> { buildInputs = [γ]; installPhase = String; jarName = String; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; phases = String; src = { sha256 = String; url = String }; version = String }

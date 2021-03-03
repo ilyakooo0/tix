@@ -1,0 +1,1 @@
+∀ α β γ δ. { fetchurl = { sha256 = α; url = String } -> β; geant_version = γ; stdenv = δ } -> [{ envvar = String; name = String; sha256 = String; version = String }]

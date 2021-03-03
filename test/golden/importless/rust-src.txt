@@ -1,0 +1,1 @@
+∀ β γ. { rustc = β; stdenv = γ } -> { installPhase = String; name = String; phases = [String]; src = ∀ α. α }

@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ. { customConfig = Null; name = β; ncurses = γ; patches = δ; src = ε; stdenv = ζ } -> { CFLAGS = String; buildInputs = [γ]; makeFlags = [String]; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = β; nativeBuildInputs = [γ]; patches = δ; postPatch = String; prePatch = String; src = ε }

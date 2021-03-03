@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { boot = { loader = { grub = { extraEntries = ∀ β. β; extraFiles = { ipxe.lkrn = String } } } } }; options = { boot = { loader = { grub = { ipxe = { default = {  }; description = String; example = String; type = ∀ α. α } } } } } }

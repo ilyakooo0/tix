@@ -1,0 +1,1 @@
+∀ β γ δ. { cmake = β; curl = β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ; pkgconfig = β; stdenv = δ } -> { buildInputs = [β]; meta = { description = String; homepage = String; license = ∀ α. α; platforms = ∀ α. α }; pname = String; src = { owner = String; repo = String; rev = String; sha256 = String }; version = String }

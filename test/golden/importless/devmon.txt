@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { services = { udisks2 = { enable = Bool } }; systemd = { user = { services = { devmon = { description = String; path = ∀ α. [α]; serviceConfig = { ExecStart = String }; wantedBy = [String] } } } } }; options = { services = { devmon = { enable = String } } } }

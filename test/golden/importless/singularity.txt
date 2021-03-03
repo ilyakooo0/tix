@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = [∀ α. α -> { installPhase = String }] }; security = { wrappers = { singularity-suid = { source = String } } }; systemd = { tmpfiles = { rules = [String] } } }; options = { programs = { singularity = { enable = String } } } }

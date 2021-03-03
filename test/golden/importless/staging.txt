@@ -1,0 +1,1 @@
+∀ α β γ. { callPackage = Path -> α; stdenv = β; wineUnstable = γ } -> { meta = { description = String } }

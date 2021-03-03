@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { R = α; lib = β; packages = [α]; qtbase = γ; recommendedPackages = [α]; rstudio = δ; runCommand = String -> ε; wrapQtAppsHook = ζ } -> String

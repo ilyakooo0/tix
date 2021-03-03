@@ -1,0 +1,1 @@
+∀ α β. { alsaLib = α; faust = β; qt4 = α } -> { baseName = String; propagatedBuildInputs = [α] }

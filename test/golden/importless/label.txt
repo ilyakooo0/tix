@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { system = { nixos = { label = ∀ β. [β] } } }; options = { system = { nixos = { label = { description = String; type = ∀ α. α }; tags = { default = ∀ α. α; description = String; example = [String]; type = ∀ α. α } } } } }

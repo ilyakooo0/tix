@@ -1,0 +1,1 @@
+∀ α β. { fetchurl = { hash = String; sha256 = String; url = [String] } -> α; makeOverridable = { format = String; hash = String; sha256 = String } -> { hash = String; sha256 = String; url = [String] } -> β } -> { format = String; hash = String; sha256 = String } -> { hash = String; sha256 = String; url = [String] }

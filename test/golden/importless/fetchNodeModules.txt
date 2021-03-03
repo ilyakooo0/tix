@@ -1,0 +1,1 @@
+∀ α β γ δ. { jq = α; stdenv = β } -> { nodejs = α; sha256 = γ; src = δ } -> { buildCommand = String; name = String; nativeBuildInputs = [α]; outputHash = γ; outputHashAlgo = String; outputHashMode = String }

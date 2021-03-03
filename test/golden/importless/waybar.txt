@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { user = { services = { waybar = { description = String; partOf = [String]; script = String; wantedBy = [String] } } } } }; meta = { maintainers = ∀ α. [α] }; options = { programs = { waybar = { enable = String } } } }

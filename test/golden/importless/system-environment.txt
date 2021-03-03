@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { system = { build = { pamEnvironment = String } } }; options = { environment = { profileRelativeSessionVariables = { description = String; example = { MANPATH = [String]; PATH = [String] }; type = ∀ α. α }; sessionVariables = { apply = ∀ α. α -> Bool -> Bool; default = {  }; description = String; type = ∀ α. α } } } }

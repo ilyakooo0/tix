@@ -1,0 +1,1 @@
+∀ α β. { boost = α; faust = β; ladspaH = α } -> { baseName = String; propagatedBuildInputs = [α] }

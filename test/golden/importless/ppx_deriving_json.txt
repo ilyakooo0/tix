@@ -1,0 +1,1 @@
+∀ α β γ δ. { dune_2 = α; findlib = α; js_of_ocaml = β; js_of_ocaml-compiler = γ; ocaml = α; ppxlib = β; stdenv = δ } -> { buildInputs = [α]; buildPhase = String; pname = String; propagatedBuildInputs = [β] }

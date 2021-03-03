@@ -1,0 +1,1 @@
+∀ α. { lib = α } -> { boot = { kernelParams = [String]; loader = { grub = { splashImage = Null } }; vesa = Bool }; systemd = { enableEmergencyMode = Bool; services = { autovt@ = { enable = Bool }; getty@tty1 = { enable = Bool }; serial-getty@hvc0 = { enable = Bool }; serial-getty@ttyS0 = { enable = Bool } } } }

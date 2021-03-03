@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { stdenv = α; unzip = β } -> { name = γ; src = δ; version = ε } -> { buildInputs = [β]; dontBuild = Bool; installPhase = String; name = γ; src = δ; unpackPhase = String; version = ε }

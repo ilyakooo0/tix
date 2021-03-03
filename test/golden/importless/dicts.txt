@@ -1,0 +1,1 @@
+∀ α β. { hspell = α; stdenv = β } -> { aspell = { installPhase = String; name = String }; hunspell = { installPhase = String; name = String }; myspell = { installPhase = String; name = String }; recurseForDerivations = Bool }

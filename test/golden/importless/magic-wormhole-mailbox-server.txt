@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { systemd = { services = { magic-wormhole-mailbox-server = { after = [String]; serviceConfig = { DynamicUser = Bool; ExecStart = String; StateDirectory = String; WorkingDirectory = String }; wantedBy = [String] } } } }; options = { services = { magic-wormhole-mailbox-server = { enable = String } } } }

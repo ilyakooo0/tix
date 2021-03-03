@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { environment = { systemPackages = ∀ α. [α] }; systemd = { services = { spice-vdagentd = { description = String; preStart = String; serviceConfig = { ExecStart = String; Type = String }; wantedBy = [String] } } } }; options = { services = { spice-vdagentd = { enable = String } } } }

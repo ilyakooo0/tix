@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { initrd = { availableKernelModules = [String]; extraUtilsCommands = String } }; system = { fsPackages = ∀ α. [α] } } }

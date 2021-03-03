@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { set = { enable = { default = Bool; description = String; example = Bool; type = ∀ α. α } } } }

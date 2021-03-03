@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { programs = { zsh = { interactiveShellInit = String } } }; options = { programs = { zsh = { zsh-autoenv = { enable = String; package = { default = ∀ α. α; defaultText = String; description = String; type = ∀ α. α } } } } } }

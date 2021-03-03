@@ -1,0 +1,1 @@
+∀ β γ δ ε. { makeWrapper = β; perl = γ; perlPackages = δ; stdenv = ε } -> { buildInputs = [β]; buildPhase = String; dontUnpack = Bool; installPhase = String; meta = { description = String; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String }

@@ -1,0 +1,1 @@
+∀ δ ε. { stdenv = δ; unzip = ε } -> { buildMoodlePlugin = ∀ α β γ. { buildInputs = [ε]; buildPhase = String; configurePhase = String; name = α; pluginType = β; src = γ } -> { buildInputs = [ε]; buildPhase = String; configurePhase = String; installPhase = String; name = α; pluginType = β; src = γ } }

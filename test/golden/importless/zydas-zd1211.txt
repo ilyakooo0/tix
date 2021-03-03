@@ -1,0 +1,1 @@
+∀ β. { pkgs = β } -> { hardware = { firmware = ∀ α. [α] } }

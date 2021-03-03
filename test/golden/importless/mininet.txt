@@ -1,0 +1,1 @@
+∀ α β γ. { config = α; lib = β; pkgs = γ } -> { config = { environment = { systemPackages = [String] }; virtualisation = { vswitch = { enable = Bool } } }; options = { programs = { mininet = { enable = String } } } }

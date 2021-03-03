@@ -1,0 +1,1 @@
+∀ β γ δ ε. { config = β; lib = γ; pkgs = δ; utils = ε } -> { config = { assertions = [{ assertion = Bool; message = String }]; networking = { dhcpcd = { enable = Bool }; interfaces = ∀ α. [α] }; systemd = { network = [{ enable = Bool }]; services = { network-local-commands = { after = [String]; bindsTo = [String] } } } } }

@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β] }; hardware = { opengl = { driSupport32Bit = Bool; enable = Bool }; pulseaudio = { support32Bit = ∀ α. α }; steam-hardware = { enable = Bool } } }; meta = { maintainers = ∀ γ. [γ] }; options = { programs = { steam = { enable = String } } } }

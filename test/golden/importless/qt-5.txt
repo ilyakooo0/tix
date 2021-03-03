@@ -1,0 +1,1 @@
+∀ β γ δ ε. { cmake = β; fetchurl = { sha256 = String; url = String } -> γ; glib = δ; pkgconfig = β; polkit = δ; qtbase = δ; stdenv = ε } -> { meta = { description = String; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; nativeBuildInputs = [β]; outputs = [String]; postFixup = String; propagatedBuildInputs = [δ]; src = { sha256 = String; url = String } }

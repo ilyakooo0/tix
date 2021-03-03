@@ -1,0 +1,1 @@
+∀ ε ζ η. { config = ε; lib = ζ; pkgs = η } -> { config = { services = { dbus = { packages = ∀ γ. [γ] } }; systemd = { packages = ∀ δ. [δ]; services = { ofono = { environment = { OFONO_PLUGIN_PATH = ∀ α. α } } } } }; options = { services = { ofono = { enable = String; plugins = { default = ∀ β. β; description = String; example = String; type = ∀ β. β } } } } }

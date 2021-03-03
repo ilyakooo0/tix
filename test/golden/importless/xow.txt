@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { hardware = { uinput = { enable = Bool } }; services = { udev = { packages = ∀ α. [α] } }; systemd = { packages = ∀ β. [β] } }; options = { services = { hardware = { xow = { enable = String } } } } }

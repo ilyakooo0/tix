@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { systemd = { services = { klogd = { description = String; path = ∀ α. [α]; script = String; unitConfig = { ConditionVirtualization = String }; wantedBy = [String] } } } }; options = { services = { klogd = { enable = { default = String; description = String; type = ∀ α. α } } } } }

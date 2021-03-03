@@ -1,0 +1,1 @@
+∀ β γ. { config = β; lib = γ } -> { config = { assertions = { assertion = String; message = String }; boot = { extraModprobeConfig = String; extraModulePackages = ∀ α. [α]; kernelModules = [String] }; environment = { systemPackages = ∀ α. [α] } }; options = { hardware = { mwProCapture = { enable = String } } } }

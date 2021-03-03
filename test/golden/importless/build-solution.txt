@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { dotnetfx = α; stdenv = β } -> { assemblyInputs = γ; baseDir = String; mainClassFile = Null; modifyPublicMain = Bool; name = δ; options = String; preBuild = String; slnFile = ε; src = ζ; targets = String; verbosity = String } -> { buildInputs = [α]; installPhase = String; name = δ; preBuild = String; preConfigure = String; src = ζ }

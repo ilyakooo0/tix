@@ -1,0 +1,1 @@
+∀ γ δ ε ζ. { extra-cmake-modules = γ; kconfig = δ; kcoreaddons = δ; ki18n = δ; kio = δ; kirigami2 = δ; lib = ε; mkDerivation = { buildInputs = [δ]; meta = { maintainers = ∀ α. [α] }; name = String; nativeBuildInputs = [γ] } -> ζ; qtbase = δ; qtdeclarative = δ } -> { buildInputs = [δ]; meta = { maintainers = ∀ β. [β] }; name = String; nativeBuildInputs = [γ] }

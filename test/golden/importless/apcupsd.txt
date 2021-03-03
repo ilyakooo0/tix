@@ -1,0 +1,1 @@
+∀ β γ δ ε. { config = β; lib = γ; options = δ; pkgs = ε } -> { extraOpts = { apcupsdAddress = { default = String; description = String; type = ∀ α. α }; apcupsdNetwork = { default = String; description = String; type = [String] } }; port = Integer; serviceOpts = { serviceConfig = { ExecStart = String } } }

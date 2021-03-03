@@ -1,0 +1,1 @@
+∀ β. { pkgs = β } -> { mavenLibs_2_0_1 = ∀ α. [α]; mavenLibs_2_0_6 = ∀ α. [α]; mavenLibs_2_0_9 = ∀ α. [α]; mavenLibs_2_2_1 = ∀ α. [α] }

@@ -1,0 +1,1 @@
+∀ α β. { csound = α; faust = β } -> { baseName = String; preFixup = String; propagatedBuildInputs = [α] }

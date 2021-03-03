@@ -1,0 +1,1 @@
+∀ α β γ. { composeXcodeWrapper = { app = Null; bundleId = Null; name = α } -> β; stdenv = γ } -> { app = Null; bundleId = Null; name = α } -> { buildCommand = String; name = α }

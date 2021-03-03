@@ -1,0 +1,1 @@
+∀ β γ δ. { fontDirs = β; stdenv = γ; xorg = δ } -> { buildCommand = String; buildInputs = ∀ α. [α]; name = String }

@@ -1,0 +1,1 @@
+∀ β γ δ ε. { alsaLib = β; autoreconfHook = γ; check = β; dsview = δ; glib = β; libftdi = β; libserialport = β; libusb1 = β; libzip = β; pkgconfig = γ; stdenv = ε; systemd = β } -> { buildInputs = [β]; meta = { description = String; homepage = String; license = ∀ α. α; maintainers = ∀ α. [α]; platforms = ∀ α. α }; nativeBuildInputs = [γ]; pname = String; postUnpack = String }

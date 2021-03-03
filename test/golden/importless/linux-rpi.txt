@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ η. { buildLinux = α; buildPackages = β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ; lib = δ; perl = ε; rpiVersion = Integer; stdenv = ζ } -> η -> { postConfigure = String; postFixup = String }

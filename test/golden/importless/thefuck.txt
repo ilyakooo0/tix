@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; programs = { bash = { interactiveShellInit = String }; fish = { interactiveShellInit = String }; zsh = { interactiveShellInit = String } } }; options = { programs = { thefuck = { alias = { default = String; description = String; type = ∀ α. α }; enable = String } } } }

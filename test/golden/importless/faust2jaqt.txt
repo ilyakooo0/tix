@@ -1,0 +1,1 @@
+∀ α β. { alsaLib = α; faust = β; jack2Full = α; libsndfile = α; opencv2 = α; qt4 = α; which = α } -> { baseName = String; propagatedBuildInputs = [α]; scripts = [String] }

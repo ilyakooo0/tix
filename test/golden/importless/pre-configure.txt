@@ -1,0 +1,1 @@
+∀ α β γ. { gnatboot = Null; hostPlatform = α; langAda = Bool; langGo = Bool; langJava = Bool; langJit = Bool; lib = β; version = String -> γ } -> String

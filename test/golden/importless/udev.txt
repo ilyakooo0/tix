@@ -1,0 +1,1 @@
+∀ β γ. { stdenv = β; substituteAll = { isExecutable = Bool; src = Path } -> γ } -> { dontBuild = Bool; dontUnpack = Bool; installPhase = String; meta = { description = String; homepage = String; license = ∀ α. α; platforms = ∀ α. α }; name = String }

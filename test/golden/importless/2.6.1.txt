@@ -1,0 +1,1 @@
+∀ β γ δ ε. { bison = β; fetchurl = { sha256 = String; url = String } -> γ; m4 = δ; stdenv = ε } -> { buildInputs = [β]; meta = { description = String; homepage = String; license = ∀ α. α; platforms = ∀ α. α }; name = String; postConfigure = String; postPatch = String; preConfigure = [String]; propagatedBuildInputs = [δ]; src = { sha256 = String; url = String } }

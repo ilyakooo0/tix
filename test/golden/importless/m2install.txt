@@ -1,0 +1,1 @@
+∀ α β γ δ ε ζ. { fetchurl = { sha512 = α; url = String } -> β; stdenv = γ } -> { artifactId = δ; groupId = ε; sha512 = α; suffix = String; type = String; version = ζ } -> { installPhase = String; m2File = String; m2Path = String; name = String; phases = String; src = { sha512 = α; url = String } }

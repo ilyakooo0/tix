@@ -1,0 +1,1 @@
+∀ α β γ δ. { aspell = α; aspellDicts = [α]; buildEnv = { buildInputs = [β]; name = String; paths = [α]; postBuild = String } -> γ; makeWrapper = β } -> [α] -> δ -> { buildInputs = [β]; name = String; paths = [α]; postBuild = String }

@@ -1,0 +1,1 @@
+∀ γ δ ε ζ η. { geany = γ; lndir = δ; makeWrapper = ε; symlinkJoin = { name = String; nativeBuildInputs = [ε]; paths = ∀ α. [α]; postBuild = String } -> ζ; vte = η } -> { name = String; nativeBuildInputs = [ε]; paths = ∀ β. [β]; postBuild = String }

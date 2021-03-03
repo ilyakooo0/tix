@@ -1,0 +1,1 @@
+∀ α β γ. { isPy3k = α; pkgs = β; pythonPackages = γ } -> { disabled = α; doCheck = Bool; meta = { description = String; homepage = String; license = String }; name = String; src = { sha256 = String; url = String } }

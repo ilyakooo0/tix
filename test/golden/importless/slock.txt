@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { environment = { systemPackages = ∀ β. [β] }; security = { wrappers = { slock = { source = String } } } }; options = { programs = { slock = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

@@ -1,0 +1,1 @@
+∀ β. { stdenv = β } -> { buildCommand = String; meta = { platforms = ∀ α. α }; name = String }

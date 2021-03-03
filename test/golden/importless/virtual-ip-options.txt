@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { addr = { description = String; type = ∀ α. α }; brd = { default = Null; description = String; type = ∀ α. α }; dev = { default = Null; description = String; type = ∀ α. α }; label = { default = Null; description = String; type = ∀ α. α }; scope = { default = Null; description = String; type = ∀ α. α } } }

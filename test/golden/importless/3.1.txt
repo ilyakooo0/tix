@@ -1,0 +1,1 @@
+∀ β γ δ. { fetchurl = { sha256 = String; url = String } -> β; stdenv = γ; unzip = δ } -> { dontUnpack = Bool; installPhase = String; meta = { platforms = ∀ α. α }; name = String; nativeBuildInputs = [δ] }

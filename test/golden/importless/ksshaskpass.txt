@@ -1,0 +1,1 @@
+∀ α β γ. { extra-cmake-modules = α; kcoreaddons = β; kdoctools = α; ki18n = β; kwallet = β; kwidgetsaddons = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; qtbase = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α] }

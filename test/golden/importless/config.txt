@@ -1,0 +1,1 @@
+∀ β. { stdenv = β } -> ∀ α. { paths = α } -> { installPhase = String; name = String; phases = String }

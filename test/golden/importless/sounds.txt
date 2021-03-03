@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { pathsToLink = [String]; systemPackages = ∀ β. [β] } }; meta = { maintainers = ∀ γ. γ }; options = { xdg = { sounds = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

@@ -1,0 +1,1 @@
+∀ γ δ. { config = γ; lib = δ } -> { config = { services = { nginx = ∀ β. [β]; oauth2_proxy = { enable = Bool } } }; options = { services = { oauth2_proxy = { nginx = { proxy = { default = ∀ α. α; description = String; type = ∀ α. α }; virtualHosts = { default = ∀ α. α; description = String; type = ∀ α. α } } } } } }

@@ -1,0 +1,1 @@
+∀ α β γ. { autoreconfHook = α; callPackage = Path -> β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ } -> { autoreconfHook = α; callPackage = Path -> β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ; src = { owner = String; repo = String; rev = String; sha256 = String }; version = String }

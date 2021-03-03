@@ -1,0 +1,1 @@
+∀ δ ε ζ. { config = δ; lib = ε; pkgs = ζ } -> { config = { environment = { systemPackages = ∀ β. [β]; variables = { QT_QPA_PLATFORMTHEME = String } } }; meta = { maintainers = ∀ γ. [γ] }; options = { programs = { qt5ct = { enable = { default = Bool; description = String; type = ∀ α. α } } } } }

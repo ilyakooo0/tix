@@ -1,0 +1,1 @@
+∀ α β γ δ. { allLocales = Bool; buildPackages = α; callPackage = Path -> β; locales = [String]; stdenv = γ; writeText = String -> δ } -> { buildPhase = String; builder = Path; installPhase = String; meta = { description = String }; name = String; outputs = [String]; setupHook = String }

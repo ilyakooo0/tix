@@ -1,0 +1,1 @@
+∀ β γ δ ε ζ. { jq = β; makeWrapper = γ; nix = δ; skopeo = ε; stdenv = ζ } -> { dontUnpack = Bool; installPhase = String; meta = { description = String; maintainers = ∀ α. [α]; platforms = ∀ α. α }; name = String; nativeBuildInputs = [γ]; preferLocalBuild = Bool }

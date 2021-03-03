@@ -1,0 +1,1 @@
+{ output = ∀ α β. α -> β -> String }

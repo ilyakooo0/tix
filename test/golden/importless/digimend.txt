@@ -1,0 +1,1 @@
+∀ β γ δ. { config = β; lib = γ; pkgs = δ } -> { config = { boot = { extraModulePackages = [∀ α. α] }; environment = { etc = { X11/xorg.conf.d/50-digimend.conf = { source = String } } }; services = { xserver = { wacom = { enable = Bool } } } }; options = { services = { xserver = { digimend = { enable = String } } } } }

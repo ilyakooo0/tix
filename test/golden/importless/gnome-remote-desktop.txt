@@ -1,0 +1,1 @@
+∀ γ δ ε. { config = γ; lib = δ; pkgs = ε } -> { config = { services = { pipewire = { enable = Bool } }; systemd = { packages = ∀ α. [α] } }; meta = { maintainers = ∀ β. β }; options = { services = { gnome3 = { gnome-remote-desktop = { enable = String } } } } }

@@ -1,0 +1,1 @@
+∀ α β. { boost = α; faust = β; lv2 = α; qt4 = α; which = α } -> { baseName = String; propagatedBuildInputs = [α] }

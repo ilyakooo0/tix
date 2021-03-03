@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { buildDunePackage = { buildInputs = [α]; pname = String; propagatedBuildInputs = [β] } -> γ; lib = δ; ocaml = ε; ounit = α; ppx_sexp_conv = β; sexplib0 = β; uri = β } -> String

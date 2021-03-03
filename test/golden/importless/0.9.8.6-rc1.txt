@@ -1,0 +1,1 @@
+∀ α β γ. { fetchurl = { sha256 = String; url = String } -> α; makeWrapper = β; ncurses = β; ocaml = β; stdenv = γ } -> String

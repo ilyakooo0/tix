@@ -1,0 +1,1 @@
+∀ β. { lib = β } -> { options = { boot = { loader = { efi = { canTouchEfiVariables = { default = Bool; description = String; type = ∀ α. α }; efiSysMountPoint = { default = String; description = String; type = ∀ α. α } } } } } }

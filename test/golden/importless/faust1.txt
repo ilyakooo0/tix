@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { coreutils = α; fetchurl = { sha256 = String; url = String } -> β; makeWrapper = γ; pkgconfig = δ; stdenv = ε } -> { buildInputs = [γ]; meta = { description = String; longDescription = String }; passthru = {  }; pname = String; postFixup = String; postInstall = String; preConfigure = String }
