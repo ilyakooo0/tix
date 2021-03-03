@@ -356,31 +356,19 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     lhst ~~ listt
     rhst ~~ listt
     return $ listt
-  NBinary op lhs rhs | op `elem` [NEq, NNEq] -> do
-    lhst <- infer lhs
-    rhst <- infer rhs
-    lhst ~~ rhst
-    return $ NAtomic Bool
-  NBinary op lhs rhs
-    | op `elem` [NLt, NLte, NGt, NGte] -> do
-      lhst <- infer lhs
-      rhst <- infer rhs
-      -- TODO: Infer lhst and rhst are either Integer or Double
-      lhst ~~ rhst
-      return $ NAtomic Bool
-  NBinary op lhs rhs
-    | op `elem` [NPlus, NMinus, NMult, NDiv] -> do
-      lhst <- infer lhs
-      rhst <- infer rhs
-      -- TODO: Infer lhst and rhst are either Integer or Double
-      lhst ~~ rhst
-      return $ lhst
-  NBinary op lhs rhs | op `elem` [NAnd, NOr, NImpl] -> do
-    lhst <- infer lhs
-    rhst <- infer rhs
-    rhst ~~ NAtomic Bool
-    lhst ~~ NAtomic Bool
-    return $ NAtomic Bool
+  NBinary NEq lhs rhs -> equality lhs rhs
+  NBinary NNEq lhs rhs -> equality lhs rhs
+  NBinary NLt lhs rhs -> comparison lhs rhs
+  NBinary NLte lhs rhs -> comparison lhs rhs
+  NBinary NGt lhs rhs -> comparison lhs rhs
+  NBinary NGte lhs rhs -> comparison lhs rhs
+  NBinary NPlus lhs rhs -> math lhs rhs
+  NBinary NMinus lhs rhs -> math lhs rhs
+  NBinary NMult lhs rhs -> math lhs rhs
+  NBinary NDiv lhs rhs -> math lhs rhs
+  NBinary NAnd lhs rhs -> logic lhs rhs
+  NBinary NOr lhs rhs -> logic lhs rhs
+  NBinary NImpl lhs rhs -> logic lhs rhs
   NSelect r path' def -> do
     setT <- infer r
     path <- getPath path'
@@ -435,6 +423,30 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     condT ~~ NAtomic Bool
     infer body
   NSynHole _ -> NTypeVariable <$> freshSrc
+  where
+    equality lhs rhs = do
+      lhst <- infer lhs
+      rhst <- infer rhs
+      lhst ~~ rhst
+      return $ NAtomic Bool
+    comparison lhs rhs = do
+      lhst <- infer lhs
+      rhst <- infer rhs
+      -- TODO: Infer lhst and rhst are either Integer or Double or String
+      lhst ~~ rhst
+      return $ NAtomic Bool
+    math lhs rhs = do
+      lhst <- infer lhs
+      rhst <- infer rhs
+      -- TODO: Infer lhst and rhst are either Integer or Double
+      lhst ~~ rhst
+      return lhst
+    logic lhs rhs = do
+      lhst <- infer lhs
+      rhst <- infer rhs
+      rhst ~~ NAtomic Bool
+      lhst ~~ NAtomic Bool
+      return $ NAtomic Bool
 
 inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName NType)
 inferBinding bindings = do
