@@ -1,1 +1,3 @@
+[]
+[]
 ∀ α β γ. { extra-cmake-modules = α; grantlee = β; kcmutils = β; kconfig = β; kcoreaddons = β; kdbusaddons = β; kdelibs4support = β; kdoctools = α; khtml = β; ki18n = β; kinit = β; kservice = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; xapian = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α] }

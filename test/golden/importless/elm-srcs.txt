@@ -1,1 +1,3 @@
+[]
+[]
 { elm-explorations/markdown = { sha256 = String; version = String }; elm/browser = { sha256 = String; version = String }; elm/bytes = { sha256 = String; version = String }; elm/core = { sha256 = String; version = String }; elm/file = { sha256 = String; version = String }; elm/html = { sha256 = String; version = String }; elm/http = { sha256 = String; version = String }; elm/json = { sha256 = String; version = String }; elm/parser = { sha256 = String; version = String }; elm/project-metadata-utils = { sha256 = String; version = String }; elm/svg = { sha256 = String; version = String }; elm/time = { sha256 = String; version = String }; elm/url = { sha256 = String; version = String }; elm/virtual-dom = { sha256 = String; version = String } }

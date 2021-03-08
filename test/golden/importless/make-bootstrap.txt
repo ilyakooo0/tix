@@ -1,1 +1,3 @@
+[]
+[CanNotUnify (NAttrSet (fromList [])) (NAtomic String :-> NTypeVariable 5),CanNotUnify (NAtomic String) (NAttrSet (fromList []) :-> NTypeVariable 4)]
 ∀ α β γ. { nukeReferences = α; openjdk = β; runCommand = String -> γ } -> String

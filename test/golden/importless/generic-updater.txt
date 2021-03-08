@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 5, sourceColumn = Pos 14}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 5, sourceColumn = Pos 19}},UndefinedVariable "pname")]
+[CanNotUnify (NAtomic String) (NAtomic Bool),CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 12)]
 ∀ α β γ δ ε ζ η. { common-updater-scripts = α; coreutils = β; gnugrep = γ; gnused = δ; nix = ε; stdenv = ζ; writeScript = String -> η } -> { attrPath = String; ignoredVersions = String; odd-unstable = Bool; patchlevel-unstable = Bool; pname = String; rev-prefix = String; version = String; versionLister = String } -> [String]

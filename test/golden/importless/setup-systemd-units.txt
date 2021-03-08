@@ -1,1 +1,3 @@
+[]
+[CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 14),CanNotUnify (NAttrSet (fromList [])) (NAtomic String :-> NTypeVariable 10),CanNotUnify (NAtomic String) (NAttrSet (fromList []) :-> NTypeVariable 9)]
 ∀ α β γ δ ε ζ η θ. { bash = α; coreutils = β; lib = γ; runCommand = String -> δ; systemd = ε; writeScriptBin = String -> ζ } -> { namespace = η; units = θ } -> String

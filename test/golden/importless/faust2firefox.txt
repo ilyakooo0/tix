@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 11}},KeyNotPresent "wrap"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 11}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
+[]
 ∀ α β. { faust = α; xdg_utils = β } -> { baseName = String; runtimeInputs = [β] }

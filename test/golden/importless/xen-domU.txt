@@ -1,1 +1,3 @@
+[]
+[]
 {  } -> { boot = { initrd = { kernelModules = [String] }; loader = { grub = { device = String; version = Integer } } }; services = { syslogd = { tty = String }; timesyncd = { enable = Bool } } }

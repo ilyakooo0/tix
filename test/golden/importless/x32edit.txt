@@ -1,1 +1,3 @@
+[]
+[CanNotUnify (NAtomic Path) (NAttrSet (fromList [("brand",NAtomic String),("callPackage",NAtomic Path :-> NTypeVariable 1),("homepage",NAtomic String),("sha256",NAtomic String),("type",NAtomic String),("version",NAtomic String)]) :-> NTypeVariable 2)]
 ∀ α. { callPackage = Path -> α } -> { brand = String; callPackage = Path -> α; homepage = String; sha256 = String; type = String; version = String }

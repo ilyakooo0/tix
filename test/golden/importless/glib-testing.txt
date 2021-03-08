@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 29}},KeyNotPresent "glib-testing"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 29}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
+[]
 ∀ γ δ. { makeInstalledTest = { tested = ∀ α. α } -> γ; pkgs = δ } -> { tested = ∀ β. β }

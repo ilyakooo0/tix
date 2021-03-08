@@ -1,1 +1,3 @@
+[]
+[]
 { ameba = { owner = String; repo = String; rev = String; sha256 = String } }

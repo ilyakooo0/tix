@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 23}},KeyNotPresent "wrapWithBuildEnv"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 23}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 1})]
+[]
 ∀ α β. { boost = α; faust = β; ladspaH = α } -> { baseName = String; propagatedBuildInputs = [α] }

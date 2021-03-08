@@ -1,1 +1,3 @@
+[]
+[CanNotUnify (NAttrSet (fromList [("openssl",NTypeVariable 1),("python",NTypeVariable 2)])) (NAttrSet (fromList [("enableNpm",NAtomic Bool),("sha256",NAtomic String),("version",NAtomic String)]) :-> NTypeVariable 5),CanNotUnify (NAtomic Path) (NAttrSet (fromList [("openssl",NTypeVariable 1),("python",NTypeVariable 2)]) :-> NTypeVariable 4)]
 ∀ α β γ. { callPackage = Path -> α; enableNpm = Bool; openssl = β; python3 = γ } -> { enableNpm = Bool; sha256 = String; version = String }

@@ -1,1 +1,3 @@
+[]
+[]
 { peer0 = { privateKey = String; publicKey = String }; peer1 = { privateKey = String; publicKey = String } }

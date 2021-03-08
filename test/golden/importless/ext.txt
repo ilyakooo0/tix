@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 27}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 41}},KeyNotPresent "e2fsprogs"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 27}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 41}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
+[]
 ∀ β. { pkgs = β } -> { config = { boot = { initrd = { availableKernelModules = [String]; extraUtilsCommands = String } }; system = { fsPackages = ∀ α. [α] } } }

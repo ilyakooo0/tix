@@ -1,1 +1,3 @@
+[]
+[]
 ∀ α. { config = α } -> { config = { environment = { etc = { terminfo = { source = String } }; extraInit = String; pathsToLink = [String]; profileRelativeSessionVariables = { TERMINFO_DIRS = [String] } }; security = { sudo = { extraConfig = String } } } }

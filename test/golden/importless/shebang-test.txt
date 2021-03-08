@@ -1,1 +1,3 @@
+[]
+[CanNotUnify (NAttrSet (fromList [])) (NAtomic String :-> NTypeVariable 8),CanNotUnify (NAtomic String) (NAttrSet (fromList []) :-> NTypeVariable 7)]
 ∀ α β γ δ ε ζ. { bazel = α; bazelTest = { bazelPkg = α; bazelScript = String; buildInputs = [β]; name = String } -> γ; distDir = δ; extracted = ε; runLocal = String -> ζ; unzip = β } -> { bazelPkg = α; bazelScript = String; buildInputs = [β]; name = String }

@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 35}},KeyNotPresent "xdg-desktop-portal"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 35}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
+[]
 ∀ γ δ. { makeInstalledTest = { meta = { broken = Bool }; tested = ∀ α. α } -> γ; pkgs = δ } -> { meta = { broken = Bool }; tested = ∀ β. β }

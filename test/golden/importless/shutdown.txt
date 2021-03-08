@@ -1,1 +1,3 @@
+[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 3, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 28, sourceColumn = Pos 1}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 1})]
+[]
 ∀ α β γ. { config = α; lib = β; pkgs = γ } -> { boot = { kernel = { sysctl = { kernel.poweroff_cmd = String } } }; systemd = { services = { save-hwclock = { description = String; serviceConfig = { ExecStart = String; Type = String }; unitConfig = { ConditionPathExists = String; DefaultDependencies = Bool }; wantedBy = [String] } } } }
