@@ -294,6 +294,7 @@ type VariableMap = Map VarName NType
 (~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
 lhs ~~ rhs = tell $ lhs :~ rhs
 
+-- TODO: shadowed bindings are not properly restored.
 withBindings ::
   (Member (State VariableMap) effs) =>
   VariableMap ->
@@ -304,6 +305,30 @@ withBindings bindings m = do
   a <- m
   modify @VariableMap (`M.difference` bindings)
   return a
+
+instantiate ::
+  forall effs.
+  Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan)] effs =>
+  NType ->
+  Eff effs NType
+instantiate = evalState M.empty . instantiate'
+  where
+    instantiate' :: forall. NType -> Eff (State (Map DeBrujin TypeVariable) ': effs) NType
+    instantiate' x@(NTypeVariable _) = return x
+    instantiate' x@(NAtomic _) = return x
+    instantiate' (NBrujin db) = NTypeVariable <$> freshInst db
+    instantiate' (x :-> y) = (:->) <$> instantiate' x <*> instantiate' y
+    instantiate' (List x) = List <$> instantiate' x
+    instantiate' (NAttrSet xs) = NAttrSet <$> traverse instantiate' xs
+
+    freshInst :: DeBrujin -> Eff (State (Map DeBrujin TypeVariable) ': effs) TypeVariable
+    freshInst db = do
+      gets (M.lookup db) >>= \case
+        Just t -> return t
+        Nothing -> do
+          t <- freshSrc
+          modify (M.insert db t)
+          return t
 
 infer :: NExprLoc -> InferM NType
 infer (Fix (Compose (Ann src x))) = runReader src $ case x of
@@ -319,6 +344,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NSym var ->
     get @VariableMap
       >>= maybe (NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
+      >>= instantiate -- I have no idea if this covers all cases.
   NList xs -> do
     xs' <- traverse infer xs
     traverse_ tell . fmap (uncurry (:~)) $ zip xs' (tail xs')
