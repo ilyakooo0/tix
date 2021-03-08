@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ δ. { extra-cmake-modules = α; kconfig = β; kcoreaddons = β; kcrash = β; kdbusaddons = β; kservice = β; kwindowsystem = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α]; propagatedBuildInputs = [γ] } -> δ; qtbase = γ; qttools = β; qtx11extras = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α]; propagatedBuildInputs = [γ] }

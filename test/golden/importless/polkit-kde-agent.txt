@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { extra-cmake-modules = α; kconfig = β; kcoreaddons = β; kcrash = β; kdbusaddons = β; ki18n = β; kiconthemes = β; knotifications = β; kwidgetsaddons = β; kwindowsystem = β; mkDerivation = { name = String; nativeBuildInputs = [α]; outputs = [String]; propagatedBuildInputs = [β] } -> γ; polkit-qt = β } -> { name = String; nativeBuildInputs = [α]; outputs = [String]; propagatedBuildInputs = [β] }

@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ δ. { extra-cmake-modules = α; kwallet = β; lib = γ; libgcrypt = β; mkDerivation = { buildInputs = [β]; dontWrapQtApps = Bool; name = String; nativeBuildInputs = [α]; postFixup = String; postPatch = String } -> δ; pam = β; qtbase = β; socat = β } -> { buildInputs = [β]; dontWrapQtApps = Bool; name = String; nativeBuildInputs = [α]; postFixup = String; postPatch = String }

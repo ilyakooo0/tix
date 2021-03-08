@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAtomic Path) (NAttrSet (fromList [("Foundation",NTypeVariable 1),("enableParallelBuilding",NAtomic Bool),("extraPatches",List (NAtomic Path)),("libobjc",NTypeVariable 2),("sha256",NAtomic String),("version",NAtomic String)]) :-> NTypeVariable 4)]
-∀ α β γ. { Foundation = α; callPackage = Path -> β; libobjc = γ } -> { Foundation = α; enableParallelBuilding = Bool; extraPatches = [Path]; libobjc = γ; sha256 = String; version = String }

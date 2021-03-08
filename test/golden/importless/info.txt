@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAttrSet (fromList [])) (NAttrSet (fromList [("buildInputs",List (NTypeVariable 1)),("buildPhase",NAtomic String),("configureFlags",List (NAtomic String)),("installPhase",NAtomic String),("meta",NAttrSet (fromList [("description",NAtomic String)])),("name",NAtomic String),("outputs",List (NAtomic String))]) :-> NTypeVariable 5),CanNotUnify (NAtomic Path) (NAttrSet (fromList []) :-> NTypeVariable 4)]
-∀ α β. { callPackage = Path -> α; perl = β; texinfo = β } -> { buildInputs = [β]; buildPhase = String; configureFlags = [String]; installPhase = String; meta = { description = String }; name = String; outputs = [String] }

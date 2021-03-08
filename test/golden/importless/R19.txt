@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β. { fetchpatch = { name = String; sha256 = String; url = String } -> α; mkDerivation = { patches = [{ name = String; sha256 = String; url = String }]; prePatch = String; sha256 = String; version = String } -> β } -> { patches = [{ name = String; sha256 = String; url = String }]; prePatch = String; sha256 = String; version = String }

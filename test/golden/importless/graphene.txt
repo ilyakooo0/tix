@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 25}},KeyNotPresent "graphene"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 12}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 25}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ γ δ. { makeInstalledTest = { tested = ∀ α. α } -> γ; pkgs = δ } -> { tested = ∀ β. β }

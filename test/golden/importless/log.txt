@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 37, sourceColumn = Pos 13}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 37, sourceColumn = Pos 30}},UndefinedVariable "echo_colored_body")]
-[]
-∀ γ. { lib = γ } -> { echo_colored = ∀ α. α -> String; noisily = ∀ α β. α -> β -> String }

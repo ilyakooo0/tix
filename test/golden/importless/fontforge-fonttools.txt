@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 1, sourceColumn = Pos 16}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 1, sourceColumn = Pos 34}},KeyNotPresent "override"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 1, sourceColumn = Pos 16}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 1, sourceColumn = Pos 34}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α. { fontforge = α } -> { withExtras = Bool }

@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAtomic Path) (NAttrSet (fromList [("sha256",NAtomic String),("version",NAtomic String)]) :-> NTypeVariable 2)]
-∀ α. { callPackage = Path -> α } -> { sha256 = String; version = String }

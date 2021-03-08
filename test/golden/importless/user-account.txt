@@ -1,3 +1,1 @@
-[]
-[]
 {  } -> { users = { users = { alice = { description = String; isNormalUser = Bool; password = String; uid = Integer }; bob = { description = String; isNormalUser = Bool; password = String } } } }

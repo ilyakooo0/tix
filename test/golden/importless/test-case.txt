@@ -1,3 +1,1 @@
-[]
-[]
 { a = Integer; b = String; c = String; d = String }

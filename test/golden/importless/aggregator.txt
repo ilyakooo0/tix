@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ δ. { buildEnv = { name = String; paths = α; postBuild = String } -> β; kmod = γ; modules = α; name = String; stdenvNoCC = δ } -> { name = String; paths = α; postBuild = String }

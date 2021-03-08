@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { akonadi = α; akonadi-notes = α; akonadi-search = α; extra-cmake-modules = β; grantlee = α; grantleetheme = α; kcalendarcore = α; kcalutils = α; kcmutils = α; kcompletion = α; kconfig = α; kconfigwidgets = α; kcoreaddons = α; kcrash = α; kdbusaddons = α; kdelibs4support = α; kdnssd = α; kdoctools = β; kglobalaccel = α; kiconthemes = α; kitemmodels = α; kitemviews = α; kmime = α; knewstuff = α; knotifications = α; knotifyconfig = α; kontactinterface = α; kparts = α; kpimtextedit = α; ktextwidgets = α; kwidgetsaddons = α; kwindowsystem = α; libkdepim = α; mkDerivation = { buildInputs = [α]; name = String; nativeBuildInputs = [β] } -> γ; pimcommon = α; qtx11extras = α } -> { buildInputs = [α]; name = String; nativeBuildInputs = [β] }

@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAttrSet (fromList [("buildInputs",List (NTypeVariable 2))])) (NAtomic String :-> NTypeVariable 6),CanNotUnify (NAtomic String) (NAttrSet (fromList [("buildInputs",List (NTypeVariable 2))]) :-> NTypeVariable 5)]
-∀ α β γ. { cabal2nix = α; configuredSrc = β; runCommand = String -> γ; yq = α } -> String

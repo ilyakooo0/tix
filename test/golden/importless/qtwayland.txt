@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ δ. { pkgconfig = α; qtModule = { buildInputs = [β]; name = String; nativeBuildInputs = [α]; outputs = [String]; qtInputs = [γ] } -> δ; qtbase = γ; qtquickcontrols = γ; wayland = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α]; outputs = [String]; qtInputs = [γ] }

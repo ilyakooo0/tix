@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 16}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 28}},KeyNotPresent "mkOption"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 16}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 8, sourceColumn = Pos 28}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α. { lib = α } -> { options = { passthru = { description = String; visible = Bool } } }

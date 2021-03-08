@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAtomic Path) (NAttrSet (fromList [("callPackage",NAtomic Path :-> NTypeVariable 4),("fetchpatch",NTypeVariable 3),("fetchurl",NTypeVariable 2),("src",NAttrSet (fromList [("sha256",NAtomic String),("url",NAtomic String)])),("stdenv",NTypeVariable 0),("version",NAtomic String)]) :-> NTypeVariable 6)]
-∀ α β γ δ. { callPackage = Path -> α; fetchpatch = β; fetchurl = { sha256 = String; url = String } -> γ; stdenv = δ } -> { callPackage = Path -> α; fetchpatch = β; fetchurl = { sha256 = String; url = String } -> γ; src = { sha256 = String; url = String }; stdenv = δ; version = String }

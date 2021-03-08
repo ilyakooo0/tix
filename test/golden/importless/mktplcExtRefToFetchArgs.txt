@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { name = α; publisher = β; sha256 = String; version = γ } -> { name = String; sha256 = String; url = String }

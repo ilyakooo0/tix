@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β. { qtModule = { name = String; outputs = [String]; qtInputs = [α] } -> β; qtdeclarative = α } -> { name = String; outputs = [String]; qtInputs = [α] }

@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAttrSet (fromList [])) (NAtomic String :-> NTypeVariable 6),CanNotUnify (NAtomic String) (NAttrSet (fromList []) :-> NTypeVariable 5)]
-∀ α β γ δ. { runCommand = String -> α } -> { pname = β; src = γ; version = δ } -> String

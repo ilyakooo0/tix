@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 23}},KeyNotPresent "wrapWithBuildEnv"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 6, sourceColumn = Pos 23}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α β. { alsaLib = α; faust = β; qt4 = α } -> { baseName = String; propagatedBuildInputs = [α] }

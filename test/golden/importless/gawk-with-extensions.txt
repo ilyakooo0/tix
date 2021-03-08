@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAttrSet (fromList [("buildInputs",List (NTypeVariable 3))])) (NAtomic String :-> NTypeVariable 7),CanNotUnify (NAtomic String) (NAttrSet (fromList [("buildInputs",List (NTypeVariable 3))]) :-> NTypeVariable 6)]
-∀ α β. { extensions = [α]; gawk = α; makeWrapper = α; runCommand = String -> β } -> String

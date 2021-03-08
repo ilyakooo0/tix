@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { extra-cmake-modules = α; kactivities = β; kconfig = β; kdbusaddons = β; kfilemetadata = β; ki18n = β; kio = β; knotifications = β; kpurpose = β; krunner = β; kwindowsystem = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; qtbase = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α] }

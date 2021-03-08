@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 10),CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 8),CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 6),CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 4),CanNotUnify (NAtomic String) (NAtomic String :-> NTypeVariable 2)]
-∀ α. String -> α -> [String]

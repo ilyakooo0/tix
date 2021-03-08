@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 14, sourceColumn = Pos 6}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 14, sourceColumn = Pos 50}},KeyNotPresent "sourceFromHead"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 14, sourceColumn = Pos 6}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 14, sourceColumn = Pos 50}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α β. { config = α } -> β -> String -> String

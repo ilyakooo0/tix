@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { extra-cmake-modules = α; ibus = β; kcmutils = β; kconfig = β; kconfigwidgets = β; kcoreaddons = β; kdelibs4support = β; kdoctools = α; kholidays = β; kio = β; knewstuff = β; kpurpose = β; kross = β; krunner = β; kservice = β; ksysguard = β; kunitconversion = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; plasma-framework = β; plasma-workspace = β; qtdeclarative = β; qtwebengine = β; qtx11extras = β } -> { buildInputs = [β]; name = String; nativeBuildInputs = [α] }

@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NAtomic Path) (NAttrSet (fromList [("autoreconfHook",NTypeVariable 2),("callPackage",NAtomic Path :-> NTypeVariable 3),("fetchFromGitHub",NTypeVariable 1),("src",NAttrSet (fromList [("owner",NAtomic String),("repo",NAtomic String),("rev",NAtomic String),("sha256",NAtomic String)])),("version",NAtomic String)]) :-> NTypeVariable 5)]
-∀ α β γ. { autoreconfHook = α; callPackage = Path -> β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ } -> { autoreconfHook = α; callPackage = Path -> β; fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> γ; src = { owner = String; repo = String; rev = String; sha256 = String }; version = String }

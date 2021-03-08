@@ -1,3 +1,0 @@
-[]
-[CanNotUnify (NBrujin (DeBrujin 1 0)) (NAtomic Integer)]
-{ a = Integer; f = ∀ α. α -> α }

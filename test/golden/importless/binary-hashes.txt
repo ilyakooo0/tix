@@ -1,3 +1,1 @@
-[]
-[]
 { cpu-darwin-x86_64 = { sha256 = String; url = String }; cpu-linux-x86_64 = { sha256 = String; url = String }; gpu-linux-x86_64 = { sha256 = String; url = String }; version = String }

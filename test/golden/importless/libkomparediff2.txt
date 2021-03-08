@@ -1,3 +1,1 @@
-[]
-[]
 ∀ α β γ. { extra-cmake-modules = α; kcodecs = β; ki18n = β; kio = β; kxmlgui = β; mkDerivation = { name = String; nativeBuildInputs = [α]; propagatedBuildInputs = [β] } -> γ } -> { name = String; nativeBuildInputs = [α]; propagatedBuildInputs = [β] }

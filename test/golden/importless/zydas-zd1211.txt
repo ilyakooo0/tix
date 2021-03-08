@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 25}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 38}},KeyNotPresent "zd1211fw"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 25}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 4, sourceColumn = Pos 38}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ β. { pkgs = β } -> { hardware = { firmware = ∀ α. [α] } }

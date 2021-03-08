@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 10, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 10, sourceColumn = Pos 23}},KeyNotPresent "wrapWithBuildEnv"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 10, sourceColumn = Pos 1}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 10, sourceColumn = Pos 23}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α β. { alsaLib = α; faust = β; gtk2 = α; jack2Full = α; libsndfile = α; opencv2 = α; which = α } -> { baseName = String; propagatedBuildInputs = [α]; scripts = [String] }

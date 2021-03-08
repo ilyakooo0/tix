@@ -1,3 +1,0 @@
-[(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 18, sourceColumn = Pos 26}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 18, sourceColumn = Pos 39}},KeyNotPresent "mkDefault"),(SrcSpan {spanBegin = SourcePos {sourceName = "<string>", sourceLine = Pos 18, sourceColumn = Pos 26}, spanEnd = SourcePos {sourceName = "<string>", sourceLine = Pos 18, sourceColumn = Pos 39}},UnexpectedType {expected = NAttrSet (fromList []), got = NTypeVariable 0})]
-[]
-∀ α. { lib = α } -> { boot = { initrd = { availableKernelModules = [String]; kernelModules = [String]; postDeviceCommands = String } }; security = { rngd = { enable = Bool } } }

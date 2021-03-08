@@ -32,13 +32,9 @@ tests = do
                   case parseNixTextLoc inp of
                     Failure err -> error $ show err
                     Success r -> do
-                      let (t, errors, unifyingErrors, _) = getType r
-                          showBS :: Show a => a -> BSL.ByteString
-                          showBS = BSLC.pack . show
-                      return . BSL.intercalate "\n" $
-                        [ showBS errors,
-                          showBS unifyingErrors,
-                          (BSL.fromStrict . T.encodeUtf8 . showNType) t
-                        ]
+                      case getType r of
+                        (t, [], [], _) ->
+                          return $ (BSL.fromStrict . T.encodeUtf8 . showNType) t
+                        (_, errors, unifyingErrors, _) -> error . show $ (errors, unifyingErrors)
               )
         )
