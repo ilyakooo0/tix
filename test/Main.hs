@@ -20,7 +20,7 @@ tests = do
   let testDirectory :: FilePath
       testDirectory = "test/golden"
   findByExtension [".nix"] testDirectory
-    <&> localOption (mkTimeout 1000000) . testGroup "Importless tests"
+    <&> localOption (mkTimeout 10000000) . testGroup "Importless tests"
       . fmap
         ( \file ->
             goldenVsStringDiff
