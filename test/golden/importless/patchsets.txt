@@ -1,1 +1,1 @@
-∀ α β γ δ ε. { fetchpatch = α; ops = [String] -> β -> γ; patchLevel = δ; patchSet = ε; useRailsExpress = [String] -> β } -> { 2.5.8 = [String]; 2.6.6 = [String]; 2.7.2 = [String] }
+∀ β γ δ ε ζ. { fetchpatch = β; ops = γ -> [String] -> δ; patchLevel = ε; patchSet = ζ; useRailsExpress = γ } -> { 2.5.8 = ∀ α. α; 2.6.6 = δ; 2.7.2 = δ }

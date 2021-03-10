@@ -1,0 +1,1 @@
+∀ α β. { callPackage = Path -> α } -> β

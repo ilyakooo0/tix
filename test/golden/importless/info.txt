@@ -1,0 +1,1 @@
+∀ α β γ. { callPackage = Path -> α; perl = β; texinfo = β } -> γ

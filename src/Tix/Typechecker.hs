@@ -373,7 +373,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     rhst <- infer rhs
     rest <- NTypeVariable <$> freshSrc
     lhst ~~ (rhst :-> rest)
-    return rhst
+    return rest
   NBinary NConcat lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs

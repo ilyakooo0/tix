@@ -1,1 +1,1 @@
-∀ γ δ ε. { pkgconfig = γ; qtModule = { buildInputs = ∀ α. α; name = String; nativeBuildInputs = [γ]; outputs = [String]; qtInputs = [δ] } -> ε; qtbase = δ; qtdeclarative = δ } -> { buildInputs = ∀ β. β; name = String; nativeBuildInputs = [γ]; outputs = [String]; qtInputs = [δ] }
+∀ β γ δ. { pkgconfig = β; qtModule = { buildInputs = ∀ α. α; name = String; nativeBuildInputs = [β]; outputs = [String]; qtInputs = [γ] } -> δ; qtbase = γ; qtdeclarative = γ } -> δ

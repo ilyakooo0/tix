@@ -1,1 +1,1 @@
-∀ α β γ. { libtiff = α; qtModule = { name = String; propagatedBuildInputs = [α]; qtInputs = [β] } -> γ; qtbase = β } -> { name = String; propagatedBuildInputs = [α]; qtInputs = [β] }
+∀ α β γ. { libtiff = α; qtModule = { name = String; propagatedBuildInputs = [α]; qtInputs = [β] } -> γ; qtbase = β } -> γ

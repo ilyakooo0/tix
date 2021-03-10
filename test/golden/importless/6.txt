@@ -1,0 +1,1 @@
+∀ α β γ δ. { Foundation = α; callPackage = Path -> β; libobjc = γ } -> δ

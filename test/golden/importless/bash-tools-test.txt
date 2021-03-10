@@ -1,0 +1,1 @@
+∀ α β γ δ ε. { bazel = α; bazelTest = { bazelPkg = α; bazelScript = String; name = String } -> β; distDir = γ; runLocal = String -> δ; writeText = String -> String -> ε } -> β

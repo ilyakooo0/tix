@@ -1,1 +1,1 @@
-∀ α. { fetchgit = { rev = String; sha256 = String; url = String } -> α } -> { angle2 = { rev = String; sha256 = String; url = String }; dng_sdk = { rev = String; sha256 = String; url = String }; piex = { rev = String; sha256 = String; url = String }; sfntly = { rev = String; sha256 = String; url = String } }
+∀ α. { fetchgit = { rev = String; sha256 = String; url = String } -> α } -> { angle2 = α; dng_sdk = α; piex = α; sfntly = α }

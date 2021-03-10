@@ -1,1 +1,1 @@
-∀ γ. { fetchzip = { meta = { hydraPlatforms = ∀ α. α }; name = String; sha256 = String; url = String } -> γ } -> { meta = { hydraPlatforms = ∀ β. β }; name = String; sha256 = String; url = String }
+∀ β. { fetchzip = { meta = { hydraPlatforms = ∀ α. α }; name = String; sha256 = String; url = String } -> β } -> β

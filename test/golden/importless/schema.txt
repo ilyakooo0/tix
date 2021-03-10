@@ -1,1 +1,0 @@
-∀ β. { fetchFromGitHub = { name = String; owner = String; repo = String; rev = String; sha256 = String } -> β } -> { meta = { hydraPlatforms = ∀ α. α }; name = String; owner = String; repo = String; rev = String; sha256 = String }

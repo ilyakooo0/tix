@@ -1,0 +1,1 @@
+∀ β γ. { buildEnv = { ignoreCollisions = Bool; name = String; paths = ∀ α. [α] } -> β; fetchbower = String -> γ } -> β
