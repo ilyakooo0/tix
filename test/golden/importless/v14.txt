@@ -1,1 +1,1 @@
-∀ α β γ δ. { callPackage = Path -> α; enableNpm = Bool; openssl = β; python3 = γ } -> δ
+∀ α β γ δ. { callPackage = Path -> { openssl = α; python = β } -> γ; enableNpm = Bool; openssl = α; python3 = β } -> δ

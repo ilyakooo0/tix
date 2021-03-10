@@ -157,7 +157,7 @@ prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap rende
 
 -- | @older <> newer@
 instance Semigroup Substitution where
-  (Substitution x) <> y'@(Substitution y) = Substitution (y <> fmap (sub y') x)
+  x'@(Substitution x) <> (Substitution y) = Substitution (fmap (sub x') y <> x)
 
 instance Monoid Substitution where
   mempty = Substitution mempty

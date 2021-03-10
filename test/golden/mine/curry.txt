@@ -1,0 +1,1 @@
+∀ α. { f = Integer -> String -> α } -> α

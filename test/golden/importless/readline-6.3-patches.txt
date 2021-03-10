@@ -1,1 +1,1 @@
-∀ α β. String -> α -> [β]
+∀ α. String -> String -> α -> [α]

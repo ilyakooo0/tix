@@ -1,1 +1,1 @@
-∀ α β γ. { extensions = [α]; gawk = α; makeWrapper = α; runCommand = String -> β } -> γ
+∀ α β. { extensions = [α]; gawk = α; makeWrapper = α; runCommand = String -> { buildInputs = [α] } -> String -> β } -> β

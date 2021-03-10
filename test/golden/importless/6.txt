@@ -1,1 +1,1 @@
-∀ α β γ δ. { Foundation = α; callPackage = Path -> β; libobjc = γ } -> δ
+∀ α β γ. { Foundation = α; callPackage = Path -> { Foundation = α; enableParallelBuilding = Bool; libobjc = β; sha256 = String; srcArchiveSuffix = String; version = String } -> γ; libobjc = β } -> γ

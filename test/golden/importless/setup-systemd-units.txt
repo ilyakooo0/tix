@@ -1,1 +1,1 @@
-∀ α β γ δ ε ζ η θ ι. { bash = α; coreutils = β; lib = γ; runCommand = String -> δ; systemd = ε; writeScriptBin = String -> ζ } -> { namespace = η; units = θ } -> ι
+∀ α β γ δ ε ζ η θ. { bash = α; coreutils = β; lib = γ; runCommand = String -> {  } -> String -> δ; systemd = ε; writeScriptBin = String -> String -> ζ } -> { namespace = η; units = θ } -> ζ
