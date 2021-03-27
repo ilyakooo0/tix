@@ -4,6 +4,9 @@ module Tix.Types
     DeBrujin (..),
     TypeVariable (..),
     showNType,
+    Scheme (..),
+    scheme,
+    Pred (..),
   )
 where
 
@@ -17,14 +20,26 @@ import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
 import Prettyprinter
 
+-- = !NType `Update` !NType
+
+-- | !NType `HasField` !(Text, NType)
+data Pred
+  deriving stock (Eq, Ord, Show)
+
+data Scheme
+  = [Pred] :=> !NType
+  | NAtomic !AtomicType
+  deriving stock (Eq, Ord, Show)
+
+scheme :: NType -> Scheme
+scheme t = [] :=> t
+
 data NType
   = NTypeVariable !TypeVariable
   | NBrujin !DeBrujin
-  | NAtomic !AtomicType
-  | -- These three introduce a new De Brujin binding context
-    !NType :-> !NType
-  | List !NType
-  | NAttrSet !(Map Text NType)
+  | !Scheme :-> !Scheme
+  | List !Scheme
+  | NAttrSet !(Map Text Scheme)
   deriving stock (Eq, Ord, Show)
 
 data AtomicType
@@ -49,14 +64,14 @@ instance Show TypeVariable where
 -- | Show a type which has already been closed over.
 --
 -- TODO: This should be a Prettyprinter
-showNType :: NType -> Text
+showNType :: Scheme -> Text
 showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
   where
     greekVars = M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames
-    showNType' :: Int -> NType -> T.Builder
-    showNType' depth u =
+    showNType' :: Int -> Scheme -> T.Builder
+    showNType' _ (NAtomic a) = showAtomicType a
+    showNType' depth ([] :=> u) =
       foralls <> case u of
-        (NAtomic a) -> showAtomicType a
         (NBrujin (DeBrujin i j)) -> greekVars M.! DeBrujin (i - depth) j
         (NTypeVariable _) -> error "should not have free type variables at this point"
         (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
@@ -84,11 +99,11 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
 -- (current) binding context.
 -- So variables that are bound in one of the inner contexts will have a negative
 -- binding context number.
-getAllDeBurjins :: NType -> Set DeBrujin
-getAllDeBurjins =
-  \case
+getAllDeBurjins :: Scheme -> Set DeBrujin
+getAllDeBurjins (NAtomic _) = S.empty
+getAllDeBurjins ([] :=> t) =
+  case t of
     (NTypeVariable _) -> S.empty
-    (NAtomic _) -> S.empty
     (NBrujin x) -> S.singleton x
     (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
     (List x) -> bndCtx $ getAllDeBurjins x
@@ -106,12 +121,15 @@ getDeBurjins = getDeBurjins' 0
 -- Only returns the second indexes.
 getDeBurjins' :: Int -> NType -> Set Int
 getDeBurjins' _ (NTypeVariable _) = S.empty
-getDeBurjins' _ (NAtomic _) = S.empty
 getDeBurjins' n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
 getDeBurjins' _ (NBrujin _) = S.empty
-getDeBurjins' n (x :-> y) = getDeBurjins' (n + 1) x <> getDeBurjins' (n + 1) y
-getDeBurjins' n (List x) = getDeBurjins' (n + 1) x
-getDeBurjins' n (NAttrSet xs) = foldMap (getDeBurjins' (n + 1)) . M.elems $ xs
+getDeBurjins' n (x :-> y) = getSchemeDeBurjins' (n + 1) x <> getSchemeDeBurjins' (n + 1) y
+getDeBurjins' n (List x) = getSchemeDeBurjins' (n + 1) x
+getDeBurjins' n (NAttrSet xs) = foldMap (getSchemeDeBurjins' (n + 1)) . M.elems $ xs
+
+getSchemeDeBurjins' :: Int -> Scheme -> Set Int
+getSchemeDeBurjins' _ (NAtomic _) = S.empty
+getSchemeDeBurjins' n ([] :=> t) = getDeBurjins' n t
 
 showAtomicType :: AtomicType -> T.Builder
 showAtomicType Integer = "Integer"
@@ -132,7 +150,6 @@ variableNames =
 instance Pretty NType where
   pretty (NTypeVariable t) = viaShow t
   pretty (NBrujin (DeBrujin i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
-  pretty (NAtomic a) = viaShow a
   pretty (x :-> y) = sep [pretty x, "->" <+> pretty y]
   pretty (List x) = "[" <> align (pretty x) <> "]"
   pretty (NAttrSet x) =
@@ -145,3 +162,8 @@ instance Pretty NType where
             ),
         "}"
       ]
+
+instance Pretty Scheme where
+  pretty (NAtomic a) = viaShow a
+  pretty ([] :=> t) = pretty t
+  pretty (cs :=> t) = viaShow cs <+> "=>" <+> pretty t

@@ -84,3 +84,6 @@ default-extensions:
   - ViewPatterns
   - KindSignatures
   - MultiParamTypeClasses
+  - TupleSections
+  - EmptyDataDeriving
+  - EmptyCase
