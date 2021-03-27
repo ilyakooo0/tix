@@ -331,11 +331,8 @@ throwSrcTV e = do
 
 type VariableMap = Map VarName Scheme
 
-(~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
-lhs ~~ rhs = ([] :=> lhs) ~~~ ([] :=> rhs)
-
-(~~~) :: Member (Writer Constraint) r => Scheme -> Scheme -> Eff r ()
-lhs ~~~ rhs = tell $ lhs :~ rhs
+(~~) :: Member (Writer Constraint) r => Scheme -> Scheme -> Eff r ()
+lhs ~~ rhs = tell $ lhs :~ rhs
 
 -- TODO: shadowed bindings are not properly restored.
 withBindings ::
@@ -409,29 +406,29 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     return t
   NUnary NNot y -> do
     t <- infer y
-    t ~~~ NAtomic Bool
+    t ~~ NAtomic Bool
     return t
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
     rhsT <- infer rhs
-    lhsT ~~~ rhsT
+    lhsT ~~ rhsT
     lhs' <- expectAttrSet lhsT
     rhs' <- expectAttrSet rhsT
-    forM_ (M.toList $ M.intersectionWith (,) lhs' rhs') (\(_, (a, b)) -> a ~~~ b)
+    forM_ (M.toList $ M.intersectionWith (,) lhs' rhs') (\(_, (a, b)) -> a ~~ b)
     return . scheme . NAttrSet $ rhs' <> lhs'
   NBinary NApp lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
     rest <- scheme . NTypeVariable <$> freshSrc
-    lhst ~~~ (scheme $ rhst :-> rest)
+    lhst ~~ (scheme $ rhst :-> rest)
     return rest
   NBinary NConcat lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
     t <- scheme . NTypeVariable <$> freshSrc
     let listt = scheme $ List t
-    lhst ~~~ listt
-    rhst ~~~ listt
+    lhst ~~ listt
+    rhst ~~ listt
     return $ listt
   NBinary NEq lhs rhs -> equality lhs rhs
   NBinary NNEq lhs rhs -> equality lhs rhs
@@ -456,7 +453,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
       Nothing -> return ()
       Just defR -> do
         defT <- infer defR
-        defT ~~~ resT
+        defT ~~ resT
     return resT
   NSet NNonRecursive xs -> scheme . NAttrSet <$> inferBinding xs
   NHasAttr attrSet path -> do
@@ -486,10 +483,10 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     withBindings bindingsT $ infer body
   NIf cond t f -> do
     condT <- infer cond
-    condT ~~~ NAtomic Bool
+    condT ~~ NAtomic Bool
     tT <- infer t
     fT <- infer f
-    tT ~~~ fT
+    tT ~~ fT
     return tT
   NWith set body -> do
     setT <- infer set
@@ -497,32 +494,32 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     withBindings vars $ infer body
   NAssert cond body -> do
     condT <- infer cond
-    condT ~~~ NAtomic Bool
+    condT ~~ NAtomic Bool
     infer body
   NSynHole _ -> scheme . NTypeVariable <$> freshSrc
   where
     equality lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      lhst ~~~ rhst
+      lhst ~~ rhst
       return $ NAtomic Bool
     comparison lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double or String
-      lhst ~~~ rhst
+      lhst ~~ rhst
       return $ NAtomic Bool
     math lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double
-      lhst ~~~ rhst
+      lhst ~~ rhst
       return lhst
     logic lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      rhst ~~~ NAtomic Bool
-      lhst ~~~ NAtomic Bool
+      rhst ~~ NAtomic Bool
+      lhst ~~ NAtomic Bool
       return $ NAtomic Bool
 
 inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName Scheme)
