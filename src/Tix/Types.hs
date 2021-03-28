@@ -7,6 +7,8 @@ module Tix.Types
     Scheme (..),
     scheme,
     Pred (..),
+    (=>>),
+    (//),
   )
 where
 
@@ -20,16 +22,31 @@ import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
 import Prettyprinter
 
--- = !NType `Update` !NType
-
--- | !NType `HasField` !(Text, NType)
 data Pred
+  = -- | '(x // y) ~ z'
+    Update
+      !NType
+      -- ^ x
+      !NType
+      -- ^ y
+      !NType
+      -- ^ z
+  | !NType `HasField` !(Text, Scheme)
   deriving stock (Eq, Ord, Show)
+
+(//) :: Scheme -> Scheme -> Scheme -> Pred
+(//) (_ :=> x) (_ :=> y) (_ :=> z) = Update x y z
+(//) _ _ _ = error "Bad update operator" -- This should not be an 'error'
 
 data Scheme
   = [Pred] :=> !NType
   | NAtomic !AtomicType
   deriving stock (Eq, Ord, Show)
+
+(=>>) :: [Pred] -> Scheme -> Scheme
+[] =>> x = x
+xs =>> (ys :=> u) = (xs <> ys) :=> u
+_ =>> (NAtomic _) = error "Can not constrain atomic type"
 
 scheme :: NType -> Scheme
 scheme t = [] :=> t

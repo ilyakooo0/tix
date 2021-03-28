@@ -33,8 +33,8 @@ tests = do
                     Failure err -> error $ show err
                     Success r -> do
                       case getType r of
-                        (t, [], [], _) ->
+                        (t, [], [], [], _) ->
                           return $ (BSL.fromStrict . T.encodeUtf8 . showNType) t
-                        (_, errors, unifyingErrors, _) -> error . show $ (errors, unifyingErrors)
+                        (_, errors, unifyingErrors, predicateErrors, _) -> error . show $ (errors, unifyingErrors, predicateErrors)
               )
         )

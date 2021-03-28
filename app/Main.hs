@@ -13,8 +13,9 @@ main = do
   case parseNixTextLoc inp of
     Failure err -> error $ show err
     Success r -> do
-      let (t, errs, uErrs, o) = getType r
+      let (t, errs, uErrs, pErrs, o) = getType r
       BSC.putStrLn . YAML.encode $
         o <> "errors" .= fmap show errs
           <> "unifying_errors" .= fmap show uErrs
           <> "resulting_type" .= showNType t
+          <> "predicate_errors" .= fmap show pErrs

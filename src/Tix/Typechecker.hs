@@ -26,7 +26,6 @@ import Data.Functor
 import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
-import qualified Data.List.NonEmpty as NE
 import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
@@ -49,9 +48,9 @@ import Nix.Expr
 import Nix.Pretty
 import Tix.Types
 
-getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [UnifyingError], A.Object)
+getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [UnifyingError], [PredicateError], A.Object)
 getType r =
-  let ((((((t, traceTree), unifying), errs), srcs), subs), _) =
+  let (((((((t, traceTree), predicate), unifying), errs), srcs), subs), _) =
         run
           . evalState (M.empty :: VariableMap)
           . runConstraintEnv
@@ -59,10 +58,11 @@ getType r =
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
           . runSeqWriter @[(SrcSpan, Errors)]
           . runSeqWriter @[UnifyingError]
+          . runSeqWriter @[PredicateError]
           . runFresh
           . runTreeTracer
           $ inferGeneral r
-   in (sub subs t, errs, unifying, traceTree)
+   in (sub subs t, errs, unifying, predicate, traceTree)
 
 runConstraintEnv ::
   Member (State VariableMap) effs =>
@@ -157,13 +157,11 @@ instance Free NType where
     NAttrSet m -> NAttrSet $ sub s <$> m
     x :-> y -> sub s x :-> sub s y
 
-instance Free Pred
-
--- free (x `Update` y) = free x <> free y
--- free (x `HasField` (_, y)) = free x <> free y
-
--- sub s (x `Update` y) = sub s x `Update` sub s y
--- sub s (x `HasField` (t, y)) = sub s x `HasField` (t, sub s y)
+instance Free Pred where
+  free (Update x y z) = free x <> free y <> free z
+  free (x `HasField` (_, y)) = free x <> free y
+  sub s (Update x y z) = Update (sub s x) (sub s y) (sub s z)
+  sub s (x `HasField` (t, y)) = sub s x `HasField` (t, sub s y)
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
@@ -230,17 +228,13 @@ unifyWithPriority range (lhs :~ rhs) =
       lhs' <<- (rhsCs :=> NTypeVariable rhs') -- This might be wrong
     (_ :=> NTypeVariable t, x) -> t <<- x
     (x, _ :=> NTypeVariable t) -> t <<- x
-    (xcs :=> List x, ycs :=> List y) -> do
-      s <- unifyWithPriority range $ x :~ y
-      s' <- uncurry unifyPred . sub s $ (xcs, ycs)
-      return $ s <> s'
-    (xcs :=> NAttrSet x, ycs :=> NAttrSet y) -> do
-      s <-
-        foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority range (sub s' c)) (pure mempty)
-          . M.elems
-          $ M.intersectionWith (:~) x y
-      s' <- uncurry unifyPred . sub s $ (xcs, ycs)
-      return $ s <> s'
+    (xcs :=> List x, ycs :=> List y) ->
+      unifyWithPriority range $ (xcs =>> x) :~ (ycs =>> y)
+    (_xcs :=> NAttrSet x, _ycs :=> NAttrSet y) ->
+      -- TODO: what to do with predicates ?
+      foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority range (sub s' c)) (pure mempty)
+        . M.elems
+        $ M.intersectionWith (:~) x y
     (xcs :=> (x1 :-> y1), ycs :=> (x2 :-> y2)) -> do
       s <- unifyWithPriority range (x1 :~ x2)
       s' <- unifyWithPriority range $ sub s $ y1 :~ y2
@@ -250,8 +244,7 @@ unifyWithPriority range (lhs :~ rhs) =
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
 unifyPred :: [Pred] -> [Pred] -> UnifyM Substitution
-unifyPred [] [] = return mempty
-unifyPred _ _ = undefined
+unifyPred _xs _ys = pure mempty
 
 solve :: Seq Constraint -> UnifyM Substitution
 solve = solveWithPriority RS.empty
@@ -273,7 +266,7 @@ occursIn t x = t `S.member` free x
 data Errors
   = UndefinedVariable VarName
   | UnexpectedType {expected :: Scheme, got :: Scheme}
-  | KeyNotPresent Text
+  | KeyNotPresent' Text
   deriving stock (Eq, Ord, Show)
 
 freshSrc ::
@@ -290,6 +283,11 @@ data UnifyingError
   | CanNotUnify Scheme Scheme
   deriving stock (Eq, Show)
 
+data PredicateError
+  = KeyNotPresent Text NType
+  | NotAnAttributeSet NType
+  deriving stock (Eq, Show)
+
 type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
 
 type InferEffs =
@@ -297,6 +295,7 @@ type InferEffs =
      Writer (TypeVariable, SrcSpan),
      Writer Constraint,
      Writer (SrcSpan, Errors),
+     Writer PredicateError,
      State VariableMap,
      Writer UnifyingError,
      SubstituteEnv,
@@ -359,8 +358,8 @@ instantiate = evalState M.empty . instantiateScheme
 
     instantiatePred :: forall. Pred -> Eff (State (Map DeBrujin TypeVariable) ': effs) Pred
     instantiatePred = \case
-    -- instantiatePred (x `Update` y) = Update <$> instantiate' x <*> instantiate' y
-    -- instantiatePred (x `HasField` (f, y)) = HasField <$> instantiate' x <*> ((f,) <$> instantiate' y)
+      (Update x y z) -> Update <$> instantiate' x <*> instantiate' y <*> instantiate' z
+      (x `HasField` (f, y)) -> HasField <$> instantiate' x <*> ((f,) <$> instantiate y)
 
     instantiate' :: forall. NType -> Eff (State (Map DeBrujin TypeVariable) ': effs) NType
     instantiate' x@(NTypeVariable _) = return x
@@ -411,11 +410,8 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
     rhsT <- infer rhs
-    lhsT ~~ rhsT
-    lhs' <- expectAttrSet lhsT
-    rhs' <- expectAttrSet rhsT
-    forM_ (M.toList $ M.intersectionWith (,) lhs' rhs') (\(_, (a, b)) -> a ~~ b)
-    return . scheme . NAttrSet $ rhs' <> lhs'
+    res <- scheme . NTypeVariable <$> freshSrc
+    return $ [lhsT // rhsT $ res] =>> res
   NBinary NApp lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
@@ -446,19 +442,24 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NSelect r path' def -> do
     setT <- infer r
     path <- getPath path'
-    resT <- case path of
-      Just p -> lookupAttrSet p setT
-      Nothing -> scheme . NTypeVariable <$> freshSrc
+    resT <-
+      scheme . NTypeVariable <$> case path of
+        Just p -> do
+          (set', var) <- lookupAttrSet p
+          setT ~~ set'
+          return var
+        Nothing -> freshSrc
     case def of
       Nothing -> return ()
       Just defR -> do
+        -- this should infer optional type
         defT <- infer defR
         defT ~~ resT
     return resT
   NSet NNonRecursive xs -> scheme . NAttrSet <$> inferBinding xs
   NHasAttr attrSet path -> do
     setT <- infer attrSet
-    expectAttrSet setT
+    -- this should infer optional type
     return setT
   NAbs param body -> do
     (paramT, varMap :: VariableMap) <- case param of
@@ -489,9 +490,24 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     tT ~~ fT
     return tT
   NWith set body -> do
+    -- TODO: implement fallback variable lookup -> specify that the set should have the key.
     setT <- infer set
     vars <- expectAttrSet setT
     withBindings vars $ infer body
+    where
+      -- Deprecated
+      expectAttrSet ::
+        Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r =>
+        Scheme ->
+        Eff r VariableMap
+      expectAttrSet (_ :=> NAttrSet x) = return x
+      expectAttrSet g = do
+        throwSrc
+          UnexpectedType
+            { expected = scheme $ NAttrSet M.empty,
+              got = g
+            }
+        return M.empty
   NAssert cond body -> do
     condT <- infer cond
     condT ~~ NAtomic Bool
@@ -531,20 +547,30 @@ inferBinding bindings = do
           Nothing -> return []
           Just name -> do
             t <- inferGeneral r
-            return $ [stack ((,) <$> name) (scheme . NAttrSet . uncurry M.singleton) t]
+            return [stack ((,) <$> name) (scheme . NAttrSet . uncurry M.singleton) t]
       Inherit attrSet keys src -> do
-        vars <- case attrSet of
-          Just attr -> do
-            t <- infer attr
-            expectAttrSet t
-          Nothing -> get @VariableMap
         names <- catMaybes <$> traverse getKeyName keys
-        return $
-          catMaybes $
-            names <&> \name -> case M.lookup name vars of
-              Nothing -> Nothing
-              Just r -> Just (name, r)
+        attrSet' <- infer `traverse` attrSet
+        names' <- for names $ \name ->
+          fmap (name,) <$> do
+            case attrSet' of
+              Just t -> do
+                (s', var) <- lookupAttrSet (pure name)
+                s' ~~ t
+                return $ Just . scheme . NTypeVariable $ var
+              Nothing -> do
+                vars <- get @VariableMap
+                return $ case M.lookup name vars of
+                  Nothing -> Nothing
+                  Just r -> Just r
+        return $ catMaybes names'
   return $ M.fromListWith mergeSetTypes bindings'
+  where
+    -- This seems fishy
+    mergeSetTypes :: Scheme -> Scheme -> Scheme
+    mergeSetTypes (xcs :=> NAttrSet ks) (ycs :=> NAttrSet ks') =
+      (xcs <> ycs) :=> NAttrSet (M.unionWith mergeSetTypes ks ks')
+    mergeSetTypes _ x = x
 
 renderPretty :: Pretty x => x -> TL.Text
 renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
@@ -555,7 +581,12 @@ showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.grou
 inferGeneral :: NExprLoc -> InferM Scheme
 inferGeneral x = traceSubtree (showExpr x) $ do
   (((t, subs), cs), range) <-
-    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
+    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ do
+      infer x >>= \case
+        (cs :=> t) -> do
+          cs' <- solveConstraints cs
+          return $ cs' :=> t
+        u -> return u
   traceSubtree "received" $ do
     traceValue "type" $ renderPretty t
     traceValue "substitutions" $ prettySubstitution subs
@@ -573,16 +604,24 @@ inferGeneral x = traceSubtree (showExpr x) $ do
     traceValue "type" $ renderPretty retT
     return retT
 
--- | Deprecated
-expectAttrSet :: Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r => Scheme -> Eff r VariableMap
-expectAttrSet (_ :=> NAttrSet x) = return x
-expectAttrSet g = do
-  throwSrc
-    UnexpectedType
-      { expected = scheme $ NAttrSet M.empty,
-        got = g
-      }
-  return M.empty
+solveConstraints :: [Pred] -> InferM [Pred]
+solveConstraints ps = do
+  flip Control.Monad.filterM ps $ \case
+    HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
+      Nothing -> do
+        tell $ KeyNotPresent f (NAttrSet ts)
+        return False
+      Just t' -> do
+        t ~~ t'
+        return False
+    HasField (NTypeVariable _) _ -> return True
+    HasField t _ -> do
+      tell $ NotAnAttributeSet t
+      return False
+    (Update (NAttrSet a) (NAttrSet b) t) -> do
+      scheme (NAttrSet $ b <> a) ~~ scheme t
+      return False
+    _ -> return True
 
 -- | Stacks functions recursively inside each other
 -- >>> stack [f1, f2, f3] h x
@@ -596,12 +635,6 @@ stack (g :| gs) h x = g $ f gs
 
 (>>.=) :: (Applicative f, Monad t, Traversable t) => t a -> (a -> f (t b)) -> f (t b)
 ta >>.= f = join <$> traverse f ta
-
--- | Deprecated
-mergeSetTypes :: Scheme -> Scheme -> Scheme
-mergeSetTypes (xcs :=> NAttrSet ks) (ycs :=> NAttrSet ks') =
-  (xcs <> ycs) :=> NAttrSet (M.unionWith mergeSetTypes ks ks')
-mergeSetTypes _ x = x
 
 -- TODO: process variables
 antiAntiQuote :: Antiquoted (NString r) r -> Maybe Text
@@ -632,7 +665,6 @@ getPath path = sequence <$> traverse getKeyName path
 
 type AttrSetPath = NonEmpty Text
 
--- | Deprecated
 lookupAttrSet ::
   Members
     '[ Reader SrcSpan,
@@ -642,23 +674,12 @@ lookupAttrSet ::
      ]
     r =>
   AttrSetPath ->
-  Scheme ->
-  Eff r Scheme
-lookupAttrSet path = go (NE.toList path)
-  where
-    go ::
-      Members
-        '[ Reader SrcSpan,
-           Writer (SrcSpan, Errors),
-           Writer (TypeVariable, SrcSpan),
-           Fresh
-         ]
-        r =>
-      [VarName] ->
-      Scheme ->
-      Eff r Scheme
-    go [] x = return x
-    go (p : ps) x = do
-      expectAttrSet x <&> M.lookup p >>= \case
-        Nothing -> scheme . NTypeVariable <$> throwSrcTV (KeyNotPresent p)
-        Just t -> go ps t
+  Eff r (Scheme, TypeVariable)
+lookupAttrSet (p :| []) = do
+  set <- NTypeVariable <$> freshSrc
+  var <- freshSrc
+  return ([HasField set (p, scheme . NTypeVariable $ var)] :=> set, var)
+lookupAttrSet (p :| (pp : ps)) = do
+  set <- NTypeVariable <$> freshSrc
+  (innerSet, var) <- lookupAttrSet (pp :| ps)
+  return ([HasField set (p, innerSet)] :=> set, var)
