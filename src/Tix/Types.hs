@@ -9,9 +9,11 @@ module Tix.Types
     Pred (..),
     (=>>),
     (//),
+    Preds (..),
   )
 where
 
+import Data.Foldable
 import qualified Data.List as L
 import Data.Map (Map)
 import qualified Data.Map as M
@@ -20,6 +22,7 @@ import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.Builder as T
+import GHC.Exts
 import Prettyprinter
 
 data Pred
@@ -39,11 +42,14 @@ data Pred
 (//) _ _ _ = error "Bad update operator" -- This should not be an 'error'
 
 data Scheme
-  = [Pred] :=> !NType
+  = Preds :=> !NType
   | NAtomic !AtomicType
   deriving stock (Eq, Ord, Show)
 
-(=>>) :: [Pred] -> Scheme -> Scheme
+newtype Preds = Preds {unPreds :: [Pred]}
+  deriving newtype (Show, Eq, Ord, Semigroup, Monoid, IsList)
+
+(=>>) :: Preds -> Scheme -> Scheme
 [] =>> x = x
 xs =>> (ys :=> u) = (xs <> ys) :=> u
 _ =>> (NAtomic _) = error "Can not constrain atomic type"
@@ -87,8 +93,8 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
     greekVars = M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames
     showNType' :: Int -> Scheme -> T.Builder
     showNType' _ (NAtomic a) = showAtomicType a
-    showNType' depth ([] :=> u) =
-      foralls <> case u of
+    showNType' depth (Preds ps :=> u) =
+      foralls <> predicates <> case u of
         (NBrujin (DeBrujin i j)) -> greekVars M.! DeBrujin (i - depth) j
         (NTypeVariable _) -> error "should not have free type variables at this point"
         (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
@@ -111,6 +117,10 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
               "∀ "
                 <> (mconcat . L.intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
                 <> ". "
+        predicates =
+          if null ps
+            then mempty
+            else "(" <> (fold . L.intersperse ", " $ T.fromString . show <$> ps) <> ") => "
 
 -- | Returns the set of all De Brujin type variables relative to the outermost
 -- (current) binding context.
@@ -118,15 +128,26 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
 -- binding context number.
 getAllDeBurjins :: Scheme -> Set DeBrujin
 getAllDeBurjins (NAtomic _) = S.empty
-getAllDeBurjins ([] :=> t) =
-  case t of
-    (NTypeVariable _) -> S.empty
-    (NBrujin x) -> S.singleton x
-    (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
-    (List x) -> bndCtx $ getAllDeBurjins x
-    (NAttrSet xs) -> bndCtx . foldMap getAllDeBurjins . M.elems $ xs
+getAllDeBurjins (Preds ps :=> t) =
+  foldMap
+    ( \case
+        (Update x y z) ->
+          bndCtx $
+            getAllTypeDeBurjins x <> getAllTypeDeBurjins y <> getAllTypeDeBurjins z
+        (HasField x (_, y)) -> bndCtx $ getAllTypeDeBurjins x <> getAllDeBurjins y
+    )
+    ps
+    <> case t of
+      (NTypeVariable _) -> S.empty
+      (NBrujin x) -> S.singleton x
+      (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
+      (List x) -> bndCtx $ getAllDeBurjins x
+      (NAttrSet xs) -> bndCtx . foldMap getAllDeBurjins . M.elems $ xs
   where
     bndCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
+
+getAllTypeDeBurjins :: NType -> Set DeBrujin
+getAllTypeDeBurjins = getAllDeBurjins . scheme
 
 -- | Get all De Brujin type variables that were bound in the the outermost
 -- (current) binding context.
@@ -146,7 +167,14 @@ getDeBurjins' n (NAttrSet xs) = foldMap (getSchemeDeBurjins' (n + 1)) . M.elems 
 
 getSchemeDeBurjins' :: Int -> Scheme -> Set Int
 getSchemeDeBurjins' _ (NAtomic _) = S.empty
-getSchemeDeBurjins' n ([] :=> t) = getDeBurjins' n t
+getSchemeDeBurjins' n (Preds ps :=> t) =
+  getDeBurjins' n t
+    <> foldMap
+      ( \case
+          Update x y z -> getDeBurjins' n x <> getDeBurjins' n y <> getDeBurjins' n z
+          HasField u (_, v) -> getDeBurjins' n u <> getSchemeDeBurjins' n v
+      )
+      ps
 
 showAtomicType :: AtomicType -> T.Builder
 showAtomicType Integer = "Integer"

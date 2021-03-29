@@ -87,3 +87,4 @@ default-extensions:
   - TupleSections
   - EmptyDataDeriving
   - EmptyCase
+  - OverloadedLists

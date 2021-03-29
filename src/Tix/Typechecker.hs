@@ -112,16 +112,24 @@ close (Predicate f) =
     close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBrujinMap] Scheme
     close' x@(NAtomic _) = return x
     close' (preds :=> t) =
-      (:=>) <$> (closePred `traverse` preds) <*> case t of
-        x@(NBrujin _) -> return x
-        (NTypeVariable tv) | f tv -> NBrujin <$> newbrujin tv
-        x@(NTypeVariable _) -> return x
-        (x :-> y) -> bndCtx $ (:->) <$> close' x <*> close' y
-        (List x) -> bndCtx $ List <$> close' x
-        (NAttrSet x) -> bndCtx $ NAttrSet <$> traverse close' x
+      (:=>) <$> (Preds <$> closePred `traverse` unPreds preds) <*> closeType t
+
+    closeType :: NType -> Eff '[State Int, Reader Int, State TDeBrujinMap] NType
+    closeType = \case
+      x@(NBrujin _) -> return x
+      (NTypeVariable tv) | f tv -> NBrujin <$> newbrujin tv
+      x@(NTypeVariable _) -> return x
+      (x :-> y) -> bndCtx $ (:->) <$> close' x <*> close' y
+      (List x) -> bndCtx $ List <$> close' x
+      (NAttrSet x) -> bndCtx $ NAttrSet <$> traverse close' x
 
     closePred :: Pred -> Eff '[State Int, Reader Int, State TDeBrujinMap] Pred
     closePred = \case
+      (Update x y z) -> bndCtx $ Update <$> closeType x <*> closeType y <*> closeType z
+      (HasField t (k, v)) -> bndCtx $ do
+        t' <- closeType t
+        v' <- close' v
+        return $ HasField t' (k, v')
 
     bndCtx m = do
       modify @TDeBrujinMap (SM.shift 1)
@@ -157,11 +165,25 @@ instance Free NType where
     NAttrSet m -> NAttrSet $ sub s <$> m
     x :-> y -> sub s x :-> sub s y
 
-instance Free Pred where
-  free (Update x y z) = free x <> free y <> free z
-  free (x `HasField` (_, y)) = free x <> free y
-  sub s (Update x y z) = Update (sub s x) (sub s y) (sub s z)
-  sub s (x `HasField` (t, y)) = sub s x `HasField` (t, sub s y)
+instance Free Preds where
+  free (Preds ps) = flip foldMap ps $ \case
+    Update x y z -> free x <> free y <> free z
+    x `HasField` (_, y) -> free x <> free y
+  sub s (Preds ps) =
+    Preds $
+      ps >>= \case
+        Update x y z ->
+          let (a, x') = sub' x
+              (b, y') = sub' y
+              (c, z') = sub' z
+           in Update x' y' z' : unPreds (a <> b <> c)
+        HasField t (f, v) ->
+          let (a, t') = sub' t
+           in HasField t' (f, sub s v) : unPreds a
+    where
+      sub' t = case sub s (scheme t) of
+        pp :=> t' -> (pp, t')
+        NAtomic _ -> error "can not be atomic" -- this should not be an 'error'
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
@@ -170,7 +192,7 @@ instance Free Scheme where
     case M.lookup tv $ unSubstitution s of
       Nothing -> sub s x :=> NTypeVariable tv
       Just (newCs :=> new) -> (sub s x <> newCs) :=> new
-      Just a@(NAtomic _) -> assert (null x) a
+      Just a@(NAtomic _) -> assert (null . unPreds $ x) a
   sub s (x :=> y) = sub s x :=> sub s y
   sub _ x@(NAtomic _) = x
 
@@ -221,30 +243,38 @@ unifyWithPriority range (lhs :~ rhs) =
   case (lhs, rhs) of
     (NAtomic x, NAtomic y) | x == y -> return mempty
     (xcs :=> NTypeVariable x, ycs :=> NTypeVariable y) -> do
-      let ((_lhsCs, lhs'), (rhsCs, rhs')) =
+      let ((lhsCs, lhs'), (rhsCs, rhs')) =
             if y `RS.member` range
               then ((ycs, y), (xcs, x))
               else ((xcs, x), (ycs, y))
-      lhs' <<- (rhsCs :=> NTypeVariable rhs') -- This might be wrong
-    (_ :=> NTypeVariable t, x) -> t <<- x
-    (x, _ :=> NTypeVariable t) -> t <<- x
+          extraCs = replacing lhs' (scheme . NTypeVariable $ rhs') lhsCs
+          newScheme = (extraCs <> rhsCs) :=> NTypeVariable rhs'
+      -- This might come back to bite me.
+      (<> (Substitution $ M.singleton rhs' newScheme)) <$> (lhs' <<- newScheme)
+    (cs :=> NTypeVariable t, x) -> t <<- (replacing t x cs =>> x)
+    (x, cs :=> NTypeVariable t) -> t <<- (replacing t x cs =>> x)
     (xcs :=> List x, ycs :=> List y) ->
       unifyWithPriority range $ (xcs =>> x) :~ (ycs =>> y)
-    (_xcs :=> NAttrSet x, _ycs :=> NAttrSet y) ->
+    (Preds xcs :=> NAttrSet x, Preds ycs :=> NAttrSet y) ->
       -- TODO: what to do with predicates ?
-      foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority range (sub s' c)) (pure mempty)
-        . M.elems
-        $ M.intersectionWith (:~) x y
-    (xcs :=> (x1 :-> y1), ycs :=> (x2 :-> y2)) -> do
+      -- I don't think there should be any predicates here...
+      assert (null xcs && null ycs) $
+        foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority range (sub s' c)) (pure mempty)
+          . M.elems
+          $ M.intersectionWith (:~) x y
+    (Preds xcs :=> (x1 :-> y1), Preds ycs :=> (x2 :-> y2)) -> do
       s <- unifyWithPriority range (x1 :~ x2)
       s' <- unifyWithPriority range $ sub s $ y1 :~ y2
       let ss = s' <> s
-      s'' <- uncurry unifyPred . sub ss $ (xcs, ycs)
-      return $ s'' <> ss
+      -- I don't think there should be any predicates here either...
+      -- s'' <- uncurry unifyPred . sub ss $ (xcs, ycs)
+      assert (null xcs && null ycs) $ return ss
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
-unifyPred :: [Pred] -> [Pred] -> UnifyM Substitution
-unifyPred _xs _ys = pure mempty
+replacing :: Free x => TypeVariable -> Scheme -> x -> x
+replacing tv t x =
+  let s = Substitution $ M.singleton tv t
+   in sub s x
 
 solve :: Seq Constraint -> UnifyM Substitution
 solve = solveWithPriority RS.empty
@@ -353,7 +383,8 @@ instantiate ::
 instantiate = evalState M.empty . instantiateScheme
   where
     instantiateScheme :: forall. Scheme -> Eff (State (Map DeBrujin TypeVariable) ': effs) Scheme
-    instantiateScheme (ps :=> t) = (:=>) <$> traverse instantiatePred ps <*> instantiate' t
+    instantiateScheme (ps :=> t) =
+      (:=>) <$> (Preds <$> traverse instantiatePred (unPreds ps)) <*> instantiate' t
     instantiateScheme x@(NAtomic _) = return x
 
     instantiatePred :: forall. Pred -> Eff (State (Map DeBrujin TypeVariable) ': effs) Pred
@@ -604,24 +635,25 @@ inferGeneral x = traceSubtree (showExpr x) $ do
     traceValue "type" $ renderPretty retT
     return retT
 
-solveConstraints :: [Pred] -> InferM [Pred]
-solveConstraints ps = do
-  flip Control.Monad.filterM ps $ \case
-    HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
-      Nothing -> do
-        tell $ KeyNotPresent f (NAttrSet ts)
+solveConstraints :: Preds -> InferM Preds
+solveConstraints (Preds ps) =
+  Preds <$> do
+    flip Control.Monad.filterM ps $ \case
+      HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
+        Nothing -> do
+          tell $ KeyNotPresent f (NAttrSet ts)
+          return False
+        Just t' -> do
+          t ~~ t'
+          return False
+      HasField (NTypeVariable _) _ -> return True
+      HasField t _ -> do
+        tell $ NotAnAttributeSet t
         return False
-      Just t' -> do
-        t ~~ t'
+      (Update (NAttrSet a) (NAttrSet b) t) -> do
+        scheme (NAttrSet $ b <> a) ~~ scheme t
         return False
-    HasField (NTypeVariable _) _ -> return True
-    HasField t _ -> do
-      tell $ NotAnAttributeSet t
-      return False
-    (Update (NAttrSet a) (NAttrSet b) t) -> do
-      scheme (NAttrSet $ b <> a) ~~ scheme t
-      return False
-    _ -> return True
+      _ -> return True
 
 -- | Stacks functions recursively inside each other
 -- >>> stack [f1, f2, f3] h x
