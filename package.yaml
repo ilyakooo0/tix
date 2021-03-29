@@ -88,3 +88,4 @@ default-extensions:
   - EmptyDataDeriving
   - EmptyCase
   - OverloadedLists
+  - StandaloneDeriving

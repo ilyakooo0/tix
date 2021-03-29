@@ -92,38 +92,38 @@ data Constraint = !Scheme :~ !Scheme
 instance Pretty Constraint where
   pretty (x :~ y) = pretty x <+> "~" <+> pretty y
 
-newtype DeBrujinContext = DeBrujinContext (Sum Int)
+newtype DeBruijnContext = DeBruijnContext (Sum Int)
   deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
 
-instance Act DeBrujinContext DeBrujin where
-  act (DeBrujinContext (Sum n)) (DeBrujin i j) = DeBrujin (i + n) j
+instance Act DeBruijnContext DeBruijn where
+  act (DeBruijnContext (Sum n)) (DeBruijn i j) = DeBruijn (i + n) j
 
-type TDeBrujinMap = ShiftedMap DeBrujinContext TypeVariable DeBrujin
+type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
 
 close :: Predicate TypeVariable -> Scheme -> Scheme
 close (Predicate f) =
   run
-    . evalState @TDeBrujinMap mempty
+    . evalState @TDeBruijnMap mempty
     . runReader @Int 0
     . evalState @Int 0
     . close'
   where
     -- State is the sequential number, Reader is the binding context number
-    close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBrujinMap] Scheme
+    close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBruijnMap] Scheme
     close' x@(NAtomic _) = return x
     close' (preds :=> t) =
       (:=>) <$> (Preds <$> closePred `traverse` unPreds preds) <*> closeType t
 
-    closeType :: NType -> Eff '[State Int, Reader Int, State TDeBrujinMap] NType
+    closeType :: NType -> Eff '[State Int, Reader Int, State TDeBruijnMap] NType
     closeType = \case
-      x@(NBrujin _) -> return x
-      (NTypeVariable tv) | f tv -> NBrujin <$> newbrujin tv
+      x@(NBruijn _) -> return x
+      (NTypeVariable tv) | f tv -> NBruijn <$> newbruijn tv
       x@(NTypeVariable _) -> return x
       (x :-> y) -> bndCtx $ (:->) <$> close' x <*> close' y
       (List x) -> bndCtx $ List <$> close' x
       (NAttrSet x) -> bndCtx $ NAttrSet <$> traverse close' x
 
-    closePred :: Pred -> Eff '[State Int, Reader Int, State TDeBrujinMap] Pred
+    closePred :: Pred -> Eff '[State Int, Reader Int, State TDeBruijnMap] Pred
     closePred = \case
       (Update x y z) -> bndCtx $ Update <$> closeType x <*> closeType y <*> closeType z
       (HasField t (k, v)) -> bndCtx $ do
@@ -132,18 +132,18 @@ close (Predicate f) =
         return $ HasField t' (k, v')
 
     bndCtx m = do
-      modify @TDeBrujinMap (SM.shift 1)
+      modify @TDeBruijnMap (SM.shift 1)
       x <- local @Int (+ 1) m
-      modify @TDeBrujinMap (SM.shift (-1))
+      modify @TDeBruijnMap (SM.shift (-1))
       return x
-    newbrujin t = do
-      get @TDeBrujinMap <&> SM.lookup t >>= \case
+    newbruijn t = do
+      get @TDeBruijnMap <&> SM.lookup t >>= \case
         Nothing -> do
           i <- ask
           j <- get
           modify @Int (+ 1)
-          let x = DeBrujin i j
-          modify @TDeBrujinMap (SM.insert t x)
+          let x = DeBruijn i j
+          modify @TDeBruijnMap (SM.insert t x)
           return x
         Just x -> return x
 
@@ -156,10 +156,10 @@ instance Free NType where
   free (List x) = free x
   free (NAttrSet attrs) = foldMap free . M.elems $ attrs
   free (x :-> y) = free x <> free y
-  free (NBrujin _) = S.empty
+  free (NBruijn _) = S.empty
 
   sub s r = case r of
-    NBrujin _ -> r
+    NBruijn _ -> r
     NTypeVariable x -> NTypeVariable x -- it should be substituted higher in Scheme
     List x -> List $ sub s x
     NAttrSet m -> NAttrSet $ sub s <$> m
@@ -382,24 +382,24 @@ instantiate ::
   Eff effs Scheme
 instantiate = evalState M.empty . instantiateScheme
   where
-    instantiateScheme :: forall. Scheme -> Eff (State (Map DeBrujin TypeVariable) ': effs) Scheme
+    instantiateScheme :: forall. Scheme -> Eff (State (Map DeBruijn TypeVariable) ': effs) Scheme
     instantiateScheme (ps :=> t) =
       (:=>) <$> (Preds <$> traverse instantiatePred (unPreds ps)) <*> instantiate' t
     instantiateScheme x@(NAtomic _) = return x
 
-    instantiatePred :: forall. Pred -> Eff (State (Map DeBrujin TypeVariable) ': effs) Pred
+    instantiatePred :: forall. Pred -> Eff (State (Map DeBruijn TypeVariable) ': effs) Pred
     instantiatePred = \case
       (Update x y z) -> Update <$> instantiate' x <*> instantiate' y <*> instantiate' z
       (x `HasField` (f, y)) -> HasField <$> instantiate' x <*> ((f,) <$> instantiate y)
 
-    instantiate' :: forall. NType -> Eff (State (Map DeBrujin TypeVariable) ': effs) NType
+    instantiate' :: forall. NType -> Eff (State (Map DeBruijn TypeVariable) ': effs) NType
     instantiate' x@(NTypeVariable _) = return x
-    instantiate' (NBrujin db) = NTypeVariable <$> freshInst db
+    instantiate' (NBruijn db) = NTypeVariable <$> freshInst db
     instantiate' (x :-> y) = (:->) <$> instantiateScheme x <*> instantiateScheme y
     instantiate' (List x) = List <$> instantiateScheme x
     instantiate' (NAttrSet xs) = NAttrSet <$> traverse instantiateScheme xs
 
-    freshInst :: DeBrujin -> Eff (State (Map DeBrujin TypeVariable) ': effs) TypeVariable
+    freshInst :: DeBruijn -> Eff (State (Map DeBruijn TypeVariable) ': effs) TypeVariable
     freshInst db = do
       gets (M.lookup db) >>= \case
         Just t -> return t

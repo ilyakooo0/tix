@@ -1,7 +1,7 @@
 module Tix.Types
   ( NType (..),
     AtomicType (..),
-    DeBrujin (..),
+    DeBruijn (..),
     TypeVariable (..),
     showNType,
     Scheme (..),
@@ -59,7 +59,7 @@ scheme t = [] :=> t
 
 data NType
   = NTypeVariable !TypeVariable
-  | NBrujin !DeBrujin
+  | NBruijn !DeBruijn
   | !Scheme :-> !Scheme
   | List !Scheme
   | NAttrSet !(Map Text Scheme)
@@ -75,7 +75,7 @@ data AtomicType
   | URI
   deriving stock (Eq, Ord, Show)
 
-data DeBrujin = DeBrujin !Int !Int
+data DeBruijn = DeBruijn !Int !Int
   deriving stock (Show, Eq, Ord)
 
 newtype TypeVariable = TypeVariable Int
@@ -95,7 +95,7 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
     showNType' _ (NAtomic a) = showAtomicType a
     showNType' depth (Preds ps :=> u) =
       foralls <> predicates <> case u of
-        (NBrujin (DeBrujin i j)) -> greekVars M.! DeBrujin (i - depth) j
+        (NBruijn (DeBruijn i j)) -> greekVars M.! DeBruijn (i - depth) j
         (NTypeVariable _) -> error "should not have free type variables at this point"
         (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
         (List x) -> "[" <> showNextNType' x <> "]"
@@ -109,7 +109,7 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
             <> " }"
       where
         showNextNType' = showNType' $ depth + 1
-        currBurjins = S.mapMonotonic (DeBrujin (- depth)) $ getDeBurjins u
+        currBurjins = S.mapMonotonic (DeBruijn (- depth)) $ getDeBurjins u
         foralls =
           if S.null currBurjins
             then ""
@@ -122,11 +122,11 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
             then mempty
             else "(" <> (fold . L.intersperse ", " $ T.fromString . show <$> ps) <> ") => "
 
--- | Returns the set of all De Brujin type variables relative to the outermost
+-- | Returns the set of all De Bruijn type variables relative to the outermost
 -- (current) binding context.
 -- So variables that are bound in one of the inner contexts will have a negative
 -- binding context number.
-getAllDeBurjins :: Scheme -> Set DeBrujin
+getAllDeBurjins :: Scheme -> Set DeBruijn
 getAllDeBurjins (NAtomic _) = S.empty
 getAllDeBurjins (Preds ps :=> t) =
   foldMap
@@ -139,28 +139,28 @@ getAllDeBurjins (Preds ps :=> t) =
     ps
     <> case t of
       (NTypeVariable _) -> S.empty
-      (NBrujin x) -> S.singleton x
+      (NBruijn x) -> S.singleton x
       (x :-> y) -> bndCtx $ getAllDeBurjins x <> getAllDeBurjins y
       (List x) -> bndCtx $ getAllDeBurjins x
       (NAttrSet xs) -> bndCtx . foldMap getAllDeBurjins . M.elems $ xs
   where
-    bndCtx = S.mapMonotonic (\(DeBrujin i j) -> DeBrujin (i - 1) j)
+    bndCtx = S.mapMonotonic (\(DeBruijn i j) -> DeBruijn (i - 1) j)
 
-getAllTypeDeBurjins :: NType -> Set DeBrujin
+getAllTypeDeBurjins :: NType -> Set DeBruijn
 getAllTypeDeBurjins = getAllDeBurjins . scheme
 
--- | Get all De Brujin type variables that were bound in the the outermost
+-- | Get all De Bruijn type variables that were bound in the the outermost
 -- (current) binding context.
 -- Only returns the second indexes.
 getDeBurjins :: NType -> Set Int
 getDeBurjins = getDeBurjins' 0
 
--- | Gets all De Brujin variables with the given binding context offset.
+-- | Gets all De Bruijn variables with the given binding context offset.
 -- Only returns the second indexes.
 getDeBurjins' :: Int -> NType -> Set Int
 getDeBurjins' _ (NTypeVariable _) = S.empty
-getDeBurjins' n (NBrujin (DeBrujin m j)) | m == n = S.singleton j
-getDeBurjins' _ (NBrujin _) = S.empty
+getDeBurjins' n (NBruijn (DeBruijn m j)) | m == n = S.singleton j
+getDeBurjins' _ (NBruijn _) = S.empty
 getDeBurjins' n (x :-> y) = getSchemeDeBurjins' (n + 1) x <> getSchemeDeBurjins' (n + 1) y
 getDeBurjins' n (List x) = getSchemeDeBurjins' (n + 1) x
 getDeBurjins' n (NAttrSet xs) = foldMap (getSchemeDeBurjins' (n + 1)) . M.elems $ xs
@@ -194,7 +194,7 @@ variableNames =
 
 instance Pretty NType where
   pretty (NTypeVariable t) = viaShow t
-  pretty (NBrujin (DeBrujin i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
+  pretty (NBruijn (DeBruijn i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
   pretty (x :-> y) = sep [pretty x, "->" <+> pretty y]
   pretty (List x) = "[" <> align (pretty x) <> "]"
   pretty (NAttrSet x) =
