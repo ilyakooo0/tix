@@ -37,6 +37,7 @@ dependencies:
   - bytestring
   - prettyprinter
   - range-set-list
+  - generic-data
 
 library:
   source-dirs: src
@@ -89,3 +90,6 @@ default-extensions:
   - EmptyCase
   - OverloadedLists
   - StandaloneDeriving
+  - DeriveGeneric
+  - DerivingVia
+  - RecordWildCards

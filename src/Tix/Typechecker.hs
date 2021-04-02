@@ -110,13 +110,13 @@ close (Predicate f) =
   where
     -- State is the sequential number, Reader is the binding context number
     close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBruijnMap] Scheme
-    close' x@(NAtomic _) = return x
     close' (preds :=> t) =
       (:=>) <$> (Preds <$> closePred `traverse` unPreds preds) <*> closeType t
 
     closeType :: NType -> Eff '[State Int, Reader Int, State TDeBruijnMap] NType
     closeType = \case
       x@(NBruijn _) -> return x
+      x@(NAtomic _) -> return x
       (NTypeVariable tv) | f tv -> NBruijn <$> newbruijn tv
       x@(NTypeVariable _) -> return x
       (x :-> y) -> bndCtx $ (:->) <$> close' x <*> close' y
@@ -157,6 +157,7 @@ instance Free NType where
   free (NAttrSet attrs) = foldMap free . M.elems $ attrs
   free (x :-> y) = free x <> free y
   free (NBruijn _) = S.empty
+  free (NAtomic _) = S.empty
 
   sub s r = case r of
     NBruijn _ -> r
@@ -164,6 +165,7 @@ instance Free NType where
     List x -> List $ sub s x
     NAttrSet m -> NAttrSet $ sub s <$> m
     x :-> y -> sub s x :-> sub s y
+    x@(NAtomic _) -> x
 
 instance Free Preds where
   free (Preds ps) = flip foldMap ps $ \case
@@ -183,18 +185,14 @@ instance Free Preds where
     where
       sub' t = case sub s (scheme t) of
         pp :=> t' -> (pp, t')
-        NAtomic _ -> error "can not be atomic" -- this should not be an 'error'
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
-  free (NAtomic _) = S.empty
   sub s (x :=> NTypeVariable tv) =
     case M.lookup tv $ unSubstitution s of
       Nothing -> sub s x :=> NTypeVariable tv
       Just (newCs :=> new) -> (sub s x <> newCs) :=> new
-      Just a@(NAtomic _) -> assert (null . unPreds $ x) a
   sub s (x :=> y) = sub s x :=> sub s y
-  sub _ x@(NAtomic _) = x
 
 instance Free a => Free [a] where
   free = foldMap free
@@ -241,7 +239,7 @@ unifyWithPriority ::
   UnifyM Substitution
 unifyWithPriority range (lhs :~ rhs) =
   case (lhs, rhs) of
-    (NAtomic x, NAtomic y) | x == y -> return mempty
+    (_ :=> NAtomic x, _ :=> NAtomic y) | x == y -> return mempty
     (xcs :=> NTypeVariable x, ycs :=> NTypeVariable y) -> do
       let ((lhsCs, lhs'), (rhsCs, rhs')) =
             if y `RS.member` range
@@ -385,7 +383,6 @@ instantiate = evalState M.empty . instantiateScheme
     instantiateScheme :: forall. Scheme -> Eff (State (Map DeBruijn TypeVariable) ': effs) Scheme
     instantiateScheme (ps :=> t) =
       (:=>) <$> (Preds <$> traverse instantiatePred (unPreds ps)) <*> instantiate' t
-    instantiateScheme x@(NAtomic _) = return x
 
     instantiatePred :: forall. Pred -> Eff (State (Map DeBruijn TypeVariable) ': effs) Pred
     instantiatePred = \case
@@ -398,6 +395,7 @@ instantiate = evalState M.empty . instantiateScheme
     instantiate' (x :-> y) = (:->) <$> instantiateScheme x <*> instantiateScheme y
     instantiate' (List x) = List <$> instantiateScheme x
     instantiate' (NAttrSet xs) = NAttrSet <$> traverse instantiateScheme xs
+    instantiate' x@(NAtomic _) = return x
 
     freshInst :: DeBruijn -> Eff (State (Map DeBruijn TypeVariable) ': effs) TypeVariable
     freshInst db = do
@@ -410,15 +408,15 @@ instantiate = evalState M.empty . instantiateScheme
 
 infer :: NExprLoc -> InferM Scheme
 infer (Fix (Compose (Ann src x))) = runReader src $ case x of
-  NConstant a -> return . NAtomic $ case a of
+  NConstant a -> return . scheme . NAtomic $ case a of
     NURI {} -> URI
     NInt {} -> Integer
     NFloat {} -> Float
     NBool {} -> Bool
     NNull {} -> Null
-  NLiteralPath {} -> return . NAtomic $ Path
-  NEnvPath {} -> return . NAtomic $ Path
-  NStr {} -> return $ NAtomic String
+  NLiteralPath {} -> return . scheme . NAtomic $ Path
+  NEnvPath {} -> return . scheme . NAtomic $ Path
+  NStr {} -> return $ scheme $ NAtomic String
   NSym var ->
     get @VariableMap
       >>= maybe (scheme . NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
@@ -436,7 +434,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     return t
   NUnary NNot y -> do
     t <- infer y
-    t ~~ NAtomic Bool
+    t ~~ scheme (NAtomic Bool)
     return t
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
@@ -515,7 +513,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     withBindings bindingsT $ infer body
   NIf cond t f -> do
     condT <- infer cond
-    condT ~~ NAtomic Bool
+    condT ~~ scheme (NAtomic Bool)
     tT <- infer t
     fT <- infer f
     tT ~~ fT
@@ -541,7 +539,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
         return M.empty
   NAssert cond body -> do
     condT <- infer cond
-    condT ~~ NAtomic Bool
+    condT ~~ scheme (NAtomic Bool)
     infer body
   NSynHole _ -> scheme . NTypeVariable <$> freshSrc
   where
@@ -549,13 +547,13 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
       lhst <- infer lhs
       rhst <- infer rhs
       lhst ~~ rhst
-      return $ NAtomic Bool
+      return . scheme $ NAtomic Bool
     comparison lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double or String
       lhst ~~ rhst
-      return $ NAtomic Bool
+      return . scheme $ NAtomic Bool
     math lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
@@ -565,9 +563,9 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     logic lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      rhst ~~ NAtomic Bool
-      lhst ~~ NAtomic Bool
-      return $ NAtomic Bool
+      rhst ~~ scheme (NAtomic Bool)
+      lhst ~~ scheme (NAtomic Bool)
+      return . scheme $ NAtomic Bool
 
 inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName Scheme)
 inferBinding bindings = do
