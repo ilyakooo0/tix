@@ -10,15 +10,18 @@ module Tix.Types
     (=>>),
     (//),
     Preds (..),
-    foldNTypeM,
-    foldNType,
-    NTypeFolder (..),
+    traverseNTypesWith,
+    traverseNTypes,
+    TerminalNType (..),
   )
 where
 
-import Control.Applicative
+import Control.Lens hiding (List)
+import Data.Bifunctor
+import Data.Data (Data)
+import Data.Data.Lens
 import Data.Foldable
-import Data.Functor.Identity
+import Data.Generics.Sum.Subtype
 import qualified Data.List as L
 import Data.Map (Map)
 import qualified Data.Map as M
@@ -30,6 +33,7 @@ import qualified Data.Text.Lazy.Builder as T
 import GHC.Exts
 import Generic.Data
 import Prettyprinter
+import Type.Reflection
 
 data Pred
   = -- | '(x // y) ~ z'
@@ -41,17 +45,18 @@ data Pred
       !NType
       -- ^ z
   | !NType `HasField` !(Text, Scheme)
-  deriving stock (Eq, Ord, Show)
+  deriving stock (Eq, Ord, Show, Data, Generic)
 
 -- this seems bad. It should not drop constraints.
 (//) :: Scheme -> Scheme -> Scheme -> Pred
 (//) (_ :=> x) (_ :=> y) (_ :=> z) = Update x y z
 
 data Scheme = Preds :=> !NType
-  deriving stock (Eq, Ord, Show)
+  deriving stock (Eq, Ord, Show, Data, Generic)
 
 newtype Preds = Preds {unPreds :: [Pred]}
   deriving newtype (Show, Eq, Ord, Semigroup, Monoid, IsList)
+  deriving stock (Data, Generic)
 
 (=>>) :: Preds -> Scheme -> Scheme
 [] =>> x = x
@@ -60,52 +65,34 @@ xs =>> (ys :=> u) = (xs <> ys) :=> u
 scheme :: NType -> Scheme
 scheme t = [] :=> t
 
-data NTypeFolder a = NTypeFolder
-  { variableFolder :: TypeVariable -> a,
-    deBruijnFolder :: DeBruijn -> a,
-    atomicFolder :: AtomicType -> a,
-    compositeFolder :: a -> a
-  }
-  deriving stock (Generic)
-  deriving (Semigroup, Monoid) via Generically (NTypeFolder a)
+data TerminalNType
+  = TAtomic !AtomicType
+  | TTypeVariable !TypeVariable
+  | TBruijn !DeBruijn
+  deriving stock (Show, Generic)
 
-class TypeFoldable t where
-  foldNTypeM :: (Applicative m, Monoid a) => NTypeFolder (m a) -> t -> m a
+traverseNTypesWith ::
+  (Data s, Applicative f) => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> s -> f s
+traverseNTypesWith ctx f s = case eqTypeRep (typeOf s) (typeRep @NType) of
+  Just HRefl | Just _ <- projectSub @TerminalNType s -> _Sub @TerminalNType f s
+  Just HRefl -> ctx $ (template @_ @NType . traverseNTypesWith ctx) f s
+  _ -> (template @_ @NType . traverseNTypesWith ctx) f s
+{-# SPECIALIZE traverseNTypesWith ::
+  Applicative f => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> NType -> f NType
+  #-}
+{-# SPECIALIZE traverseNTypesWith ::
+  Applicative f => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> Scheme -> f Scheme
+  #-}
+{-# SPECIALIZE traverseNTypesWith ::
+  Monoid r => (forall x. Const r x -> Const r x) -> (TerminalNType -> Const r TerminalNType) -> NType -> Const r NType
+  #-}
+{-# SPECIALIZE traverseNTypesWith ::
+  Monoid r => (forall x. Const r x -> Const r x) -> (TerminalNType -> Const r TerminalNType) -> Scheme -> Const r Scheme
+  #-}
 
-instance TypeFoldable Scheme where
-  foldNTypeM tf (Preds ps :=> t) = foldA [foldAType tf ps, foldNTypeM tf t]
-
-instance TypeFoldable a => TypeFoldable [a] where
-  foldNTypeM tf = foldAType tf
-
-instance TypeFoldable Pred where
-  foldNTypeM tf (Update x y z) = foldAType tf [x, y, z]
-  foldNTypeM tf (HasField x (_, z)) = foldA [foldNTypeM tf x, foldNTypeM tf z]
-
-instance TypeFoldable NType where
-  foldNTypeM NTypeFolder {variableFolder = f} (NTypeVariable x) = f x
-  foldNTypeM NTypeFolder {deBruijnFolder = f} (NBruijn x) = f x
-  foldNTypeM NTypeFolder {atomicFolder = f} (NAtomic x) = f x
-  foldNTypeM tf@NTypeFolder {compositeFolder = f} (x :-> y) = f $ foldAType tf [x, y]
-  foldNTypeM tf@NTypeFolder {compositeFolder = f} (List x) = f $ foldNTypeM tf x
-  foldNTypeM tf@NTypeFolder {compositeFolder = f} (NAttrSet x) = f $ foldAType tf $ M.elems x
-
-foldNType :: (Monoid a, TypeFoldable x) => NTypeFolder a -> x -> a
-foldNType NTypeFolder {..} = runIdentity . foldNTypeM tf
-  where
-    tf =
-      NTypeFolder
-        { variableFolder = Identity . variableFolder,
-          deBruijnFolder = Identity . deBruijnFolder,
-          atomicFolder = Identity . atomicFolder,
-          compositeFolder = Identity . compositeFolder . runIdentity
-        }
-
-foldAType :: (Monoid a, Applicative f, TypeFoldable t) => NTypeFolder (f a) -> [t] -> f a
-foldAType tf ne = foldA $ fmap (foldNTypeM tf) ne
-
-foldA :: (Monoid a, Applicative f) => [f a] -> f a
-foldA = foldr (liftA2 (<>)) (pure mempty)
+traverseNTypes :: Data s => Traversal' s TerminalNType
+traverseNTypes = traverseNTypesWith id
+{-# INLINE traverseNTypes #-}
 
 data NType
   = NTypeVariable !TypeVariable
@@ -114,7 +101,7 @@ data NType
   | !Scheme :-> !Scheme
   | List !Scheme
   | NAttrSet !(Map Text Scheme)
-  deriving stock (Eq, Ord, Show)
+  deriving stock (Eq, Ord, Show, Data, Generic)
 
 data AtomicType
   = Integer
@@ -124,13 +111,14 @@ data AtomicType
   | Path
   | Null
   | URI
-  deriving stock (Eq, Ord, Show)
+  deriving stock (Eq, Ord, Show, Data, Generic)
 
 data DeBruijn = DeBruijn !Int !Int
-  deriving stock (Show, Eq, Ord)
+  deriving stock (Show, Eq, Ord, Data)
 
 newtype TypeVariable = TypeVariable Int
   deriving newtype (Eq, Ord, Enum, Bounded)
+  deriving stock (Data)
 
 instance Show TypeVariable where
   show (TypeVariable n) = "〚" <> show n <> "〛"
@@ -177,15 +165,16 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
 -- (current) binding context.
 -- So variables that are bound in one of the inner contexts will have a negative
 -- binding context number.
-getAllDeBurjins :: TypeFoldable x => x -> Set DeBruijn
+getAllDeBurjins :: Data x => x -> Set DeBruijn
 getAllDeBurjins =
-  foldNType
-    NTypeFolder
-      { variableFolder = const S.empty,
-        deBruijnFolder = S.singleton,
-        atomicFolder = const S.empty,
-        compositeFolder = S.mapMonotonic (\(DeBruijn i j) -> DeBruijn (i - 1) j)
-      }
+  view $
+    traverseNTypesWith (first $ S.mapMonotonic (\(DeBruijn i j) -> DeBruijn (i - 1) j))
+      . to
+        ( \case
+            TAtomic _ -> S.empty
+            TBruijn b -> S.singleton b
+            TTypeVariable _ -> S.empty
+        )
 
 -- | Get all De Bruijn type variables that were bound in the the outermost
 -- (current) binding context.
@@ -195,17 +184,19 @@ getDeBurjins t = getDeBurjins' t 0
 
 -- | Gets all De Bruijn variables with the given binding context offset.
 -- Only returns the second indexes.
-getDeBurjins' :: TypeFoldable x => x -> Int -> Set Int
+getDeBurjins' :: Data x => x -> Int -> Set Int
 getDeBurjins' =
-  foldNType
-    NTypeFolder
-      { variableFolder = \_ _ -> S.empty,
-        deBruijnFolder = \t n -> case t of
-          DeBruijn m j | m == n -> S.singleton j
-          _ -> S.empty,
-        atomicFolder = \_ _ -> S.empty,
-        compositeFolder = \f n -> f (n + 1)
-      }
+  view $
+    traverseNTypesWith (\(Const f) -> Const (\n -> f (n + 1)))
+      . to
+        ( \case
+            TAtomic _ -> const S.empty
+            TBruijn (DeBruijn m j) -> \n ->
+              if m == n
+                then S.singleton j
+                else S.empty
+            TTypeVariable _ -> const S.empty
+        )
 
 showAtomicType :: AtomicType -> T.Builder
 showAtomicType Integer = "Integer"

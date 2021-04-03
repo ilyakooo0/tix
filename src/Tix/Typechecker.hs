@@ -10,6 +10,7 @@ module Tix.Typechecker
 where
 
 import Control.Exception (assert)
+import Control.Lens hiding (Empty, List, cons, equality, set, set')
 import Control.Monad
 import Control.Monad.Freer
 import Control.Monad.Freer.Fresh
@@ -22,7 +23,6 @@ import Data.Act
 import qualified Data.Aeson as A
 import Data.Fix
 import Data.Foldable
-import Data.Functor
 import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
@@ -110,26 +110,12 @@ close (Predicate f) =
   where
     -- State is the sequential number, Reader is the binding context number
     close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBruijnMap] Scheme
-    close' (preds :=> t) =
-      (:=>) <$> (Preds <$> closePred `traverse` unPreds preds) <*> closeType t
-
-    closeType :: NType -> Eff '[State Int, Reader Int, State TDeBruijnMap] NType
-    closeType = \case
-      x@(NBruijn _) -> return x
-      x@(NAtomic _) -> return x
-      (NTypeVariable tv) | f tv -> NBruijn <$> newbruijn tv
-      x@(NTypeVariable _) -> return x
-      (x :-> y) -> bndCtx $ (:->) <$> close' x <*> close' y
-      (List x) -> bndCtx $ List <$> close' x
-      (NAttrSet x) -> bndCtx $ NAttrSet <$> traverse close' x
-
-    closePred :: Pred -> Eff '[State Int, Reader Int, State TDeBruijnMap] Pred
-    closePred = \case
-      (Update x y z) -> bndCtx $ Update <$> closeType x <*> closeType y <*> closeType z
-      (HasField t (k, v)) -> bndCtx $ do
-        t' <- closeType t
-        v' <- close' v
-        return $ HasField t' (k, v')
+    close' =
+      traverseNTypesWith bndCtx %%~ \case
+        x@(TBruijn _) -> return x
+        x@(TAtomic _) -> return x
+        (TTypeVariable tv) | f tv -> TBruijn <$> newbruijn tv
+        x@(TTypeVariable _) -> return x
 
     bndCtx m = do
       modify @TDeBruijnMap (SM.shift 1)
@@ -381,21 +367,11 @@ instantiate ::
 instantiate = evalState M.empty . instantiateScheme
   where
     instantiateScheme :: forall. Scheme -> Eff (State (Map DeBruijn TypeVariable) ': effs) Scheme
-    instantiateScheme (ps :=> t) =
-      (:=>) <$> (Preds <$> traverse instantiatePred (unPreds ps)) <*> instantiate' t
-
-    instantiatePred :: forall. Pred -> Eff (State (Map DeBruijn TypeVariable) ': effs) Pred
-    instantiatePred = \case
-      (Update x y z) -> Update <$> instantiate' x <*> instantiate' y <*> instantiate' z
-      (x `HasField` (f, y)) -> HasField <$> instantiate' x <*> ((f,) <$> instantiate y)
-
-    instantiate' :: forall. NType -> Eff (State (Map DeBruijn TypeVariable) ': effs) NType
-    instantiate' x@(NTypeVariable _) = return x
-    instantiate' (NBruijn db) = NTypeVariable <$> freshInst db
-    instantiate' (x :-> y) = (:->) <$> instantiateScheme x <*> instantiateScheme y
-    instantiate' (List x) = List <$> instantiateScheme x
-    instantiate' (NAttrSet xs) = NAttrSet <$> traverse instantiateScheme xs
-    instantiate' x@(NAtomic _) = return x
+    instantiateScheme =
+      traverseNTypes %%~ \case
+        (TBruijn db) -> TTypeVariable <$> freshInst db
+        x@(TAtomic _) -> return x
+        x@(TTypeVariable _) -> return x
 
     freshInst :: DeBruijn -> Eff (State (Map DeBruijn TypeVariable) ': effs) TypeVariable
     freshInst db = do
@@ -611,11 +587,9 @@ inferGeneral :: NExprLoc -> InferM Scheme
 inferGeneral x = traceSubtree (showExpr x) $ do
   (((t, subs), cs), range) <-
     traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ do
-      infer x >>= \case
-        (cs :=> t) -> do
-          cs' <- solveConstraints cs
-          return $ cs' :=> t
-        u -> return u
+      infer x >>= \(cs :=> t) -> do
+        cs' <- solveConstraints cs
+        return $ cs' :=> t
   traceSubtree "received" $ do
     traceValue "type" $ renderPretty t
     traceValue "substitutions" $ prettySubstitution subs

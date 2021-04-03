@@ -38,6 +38,7 @@ dependencies:
   - prettyprinter
   - range-set-list
   - generic-data
+  - generic-lens
 
 library:
   source-dirs: src
@@ -93,3 +94,5 @@ default-extensions:
   - DeriveGeneric
   - DerivingVia
   - RecordWildCards
+  - FunctionalDependencies
+  - DeriveDataTypeable
