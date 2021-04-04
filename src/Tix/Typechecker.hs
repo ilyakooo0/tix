@@ -21,6 +21,7 @@ import Control.Monad.Freer.TreeTracer
 import Control.Monad.Freer.Writer
 import Data.Act
 import qualified Data.Aeson as A
+import Data.Data (Data)
 import Data.Fix
 import Data.Foldable
 import Data.Functor.Contravariant
@@ -75,6 +76,8 @@ runConstraintEnv =
     . interpret @SubstituteEnv
       ( \(SubstituteEnv x) -> do
           modify @(Seq Constraint) (sub x <$>)
+          -- TODO: I have a feeling that variables in the env should already be closed over.
+          -- (aka this is redundant)
           modify @VariableMap (sub x <$>)
           tell x
           return ()
@@ -194,6 +197,7 @@ instance (Free a, Free b) => Free (a, b) where
 
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable Scheme}
   deriving newtype (Eq, Ord, Show)
+  deriving stock (Data)
 
 prettySubstitution :: Substitution -> A.Value
 prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap renderPretty . unSubstitution
@@ -215,6 +219,9 @@ instance Free Constraint where
   UnifyM Substitution
 v <<- ([] :=> NTypeVariable x) | v == x = return mempty
 v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
+  where
+    occursIn :: Free x => TypeVariable -> x -> Bool
+    occursIn t u = t `S.member` free u
 v <<- x = return $ Substitution $ M.singleton v x
 
 unifyWithPriority ::
@@ -272,10 +279,8 @@ solveWithPriority ::
 solveWithPriority _ Empty = return mempty
 solveWithPriority range (rest :|> c) = do
   s <- unifyWithPriority range c
+  -- TODO: This should probably be (s <>)
   (<> s) <$> solveWithPriority range (fmap (sub s) rest)
-
-occursIn :: Free x => TypeVariable -> x -> Bool
-occursIn t x = t `S.member` free x
 
 data Errors
   = UndefinedVariable VarName
@@ -583,13 +588,11 @@ renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
 showExpr :: Fix NExprLocF -> Text
 showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix . stripAnnotation
 
+-- TODO: There is no need to solve predicates in types that have already been closed.
 inferGeneral :: NExprLoc -> InferM Scheme
 inferGeneral x = traceSubtree (showExpr x) $ do
   (((t, subs), cs), range) <-
-    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ do
-      infer x >>= \(cs :=> t) -> do
-        cs' <- solveConstraints cs
-        return $ cs' :=> t
+    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
   traceSubtree "received" $ do
     traceValue "type" $ renderPretty t
     traceValue "substitutions" $ prettySubstitution subs
