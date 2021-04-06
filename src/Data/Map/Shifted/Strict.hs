@@ -33,7 +33,7 @@ shift :: (Semigroup d) => d -> ShiftedMap d k v -> ShiftedMap d k v
 shift d' (ShiftedMap d m) = ShiftedMap (d <> d') m
 
 liftMap :: Monoid d => Map k v -> ShiftedMap d k v
-liftMap m = ShiftedMap mempty m
+liftMap = ShiftedMap mempty
 
 unshift :: Act d v => ShiftedMap d k v -> Map k v
 unshift (ShiftedMap d m) = act d <$> m

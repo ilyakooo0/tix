@@ -25,6 +25,7 @@ import Data.Generics.Sum.Subtype
 import qualified Data.List as L
 import Data.Map (Map)
 import qualified Data.Map as M
+import qualified Data.Map.MultiKey.Strict as MKM
 import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
@@ -47,9 +48,13 @@ data Pred
   | !NType `HasField` !(Text, Scheme)
   deriving stock (Eq, Ord, Show, Data, Generic)
 
+instance MKM.Keyable Pred where
+  type Key Pred = TypeVariable
+  getKeys p = p ^.. template @_ @TypeVariable
+
 -- this seems bad. It should not drop constraints.
-(//) :: Scheme -> Scheme -> Scheme -> Pred
-(//) (_ :=> x) (_ :=> y) (_ :=> z) = Update x y z
+(//) :: NType -> NType -> NType -> Pred
+(//) = Update
 
 data Scheme = Preds :=> !NType
   deriving stock (Eq, Ord, Show, Data, Generic)
@@ -98,8 +103,8 @@ data NType
   = NTypeVariable !TypeVariable
   | NBruijn !DeBruijn
   | NAtomic !AtomicType
-  | !Scheme :-> !Scheme
-  | List !Scheme
+  | !NType :-> !NType
+  | List !NType
   | NAttrSet !(Map Text Scheme)
   deriving stock (Eq, Ord, Show, Data, Generic)
 
@@ -136,8 +141,8 @@ showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
         (NAtomic a) -> showAtomicType a
         (NBruijn (DeBruijn i j)) -> greekVars M.! DeBruijn (i - depth) j
         (NTypeVariable _) -> error "should not have free type variables at this point"
-        (x :-> y) -> showNextNType' x <> " -> " <> showNextNType' y
-        (List x) -> "[" <> showNextNType' x <> "]"
+        (x :-> y) -> showNextNType' (scheme x) <> " -> " <> showNextNType' (scheme y)
+        (List x) -> "[" <> showNextNType' (scheme x) <> "]"
         (NAttrSet x) ->
           "{ "
             <> ( mconcat

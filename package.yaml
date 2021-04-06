@@ -96,3 +96,5 @@ default-extensions:
   - RecordWildCards
   - FunctionalDependencies
   - DeriveDataTypeable
+  - TypeFamilies
+  - FlexibleInstances

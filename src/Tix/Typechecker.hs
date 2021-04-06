@@ -9,7 +9,6 @@ module Tix.Typechecker
   )
 where
 
-import Control.Exception (assert)
 import Control.Lens hiding (Empty, List, cons, equality, set, set')
 import Control.Monad
 import Control.Monad.Freer
@@ -27,6 +26,7 @@ import Data.Foldable
 import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
+import qualified Data.Map.MultiKey.Strict as MKM
 import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
@@ -51,8 +51,10 @@ import Tix.Types
 
 getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [UnifyingError], [PredicateError], A.Object)
 getType r =
-  let (((((((t, traceTree), predicate), unifying), errs), srcs), subs), _) =
+  let (((((((t, traceTree), predicate), unifying), errs), _srcs), subs), _) =
         run
+          . evalState @(MKM.Map Pred) mempty
+          . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
           . evalState (M.empty :: VariableMap)
           . runConstraintEnv
           . runState @[(TypeVariable, SrcSpan)] []
@@ -66,7 +68,7 @@ getType r =
    in (sub subs t, errs, unifying, predicate, traceTree)
 
 runConstraintEnv ::
-  Member (State VariableMap) effs =>
+  Members '[State VariableMap, State (MKM.Map Pred)] effs =>
   Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
   Eff effs ((a, Substitution), Seq Constraint)
 runConstraintEnv =
@@ -79,6 +81,7 @@ runConstraintEnv =
           -- TODO: I have a feeling that variables in the env should already be closed over.
           -- (aka this is redundant)
           modify @VariableMap (sub x <$>)
+          modify @(MKM.Map Pred) (sub x)
           tell x
           return ()
       )
@@ -89,52 +92,11 @@ data SubstituteEnv a where
 subEnv :: Member SubstituteEnv r => Substitution -> Eff r ()
 subEnv = send . SubstituteEnv
 
-data Constraint = !Scheme :~ !Scheme
+data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
 
 instance Pretty Constraint where
   pretty (x :~ y) = pretty x <+> "~" <+> pretty y
-
-newtype DeBruijnContext = DeBruijnContext (Sum Int)
-  deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
-
-instance Act DeBruijnContext DeBruijn where
-  act (DeBruijnContext (Sum n)) (DeBruijn i j) = DeBruijn (i + n) j
-
-type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
-
-close :: Predicate TypeVariable -> Scheme -> Scheme
-close (Predicate f) =
-  run
-    . evalState @TDeBruijnMap mempty
-    . runReader @Int 0
-    . evalState @Int 0
-    . close'
-  where
-    -- State is the sequential number, Reader is the binding context number
-    close' :: Scheme -> Eff '[State Int, Reader Int, State TDeBruijnMap] Scheme
-    close' =
-      traverseNTypesWith bndCtx %%~ \case
-        x@(TBruijn _) -> return x
-        x@(TAtomic _) -> return x
-        (TTypeVariable tv) | f tv -> TBruijn <$> newbruijn tv
-        x@(TTypeVariable _) -> return x
-
-    bndCtx m = do
-      modify @TDeBruijnMap (SM.shift 1)
-      x <- local @Int (+ 1) m
-      modify @TDeBruijnMap (SM.shift (-1))
-      return x
-    newbruijn t = do
-      get @TDeBruijnMap <&> SM.lookup t >>= \case
-        Nothing -> do
-          i <- ask
-          j <- get
-          modify @Int (+ 1)
-          let x = DeBruijn i j
-          modify @TDeBruijnMap (SM.insert t x)
-          return x
-        Just x -> return x
 
 class Free s where
   free :: s -> Set TypeVariable
@@ -150,7 +112,9 @@ instance Free NType where
 
   sub s r = case r of
     NBruijn _ -> r
-    NTypeVariable x -> NTypeVariable x -- it should be substituted higher in Scheme
+    NTypeVariable x -> case M.lookup x $ unSubstitution s of
+      Nothing -> NTypeVariable x
+      Just t -> t
     List x -> List $ sub s x
     NAttrSet m -> NAttrSet $ sub s <$> m
     x :-> y -> sub s x :-> sub s y
@@ -162,25 +126,12 @@ instance Free Preds where
     x `HasField` (_, y) -> free x <> free y
   sub s (Preds ps) =
     Preds $
-      ps >>= \case
-        Update x y z ->
-          let (a, x') = sub' x
-              (b, y') = sub' y
-              (c, z') = sub' z
-           in Update x' y' z' : unPreds (a <> b <> c)
-        HasField t (f, v) ->
-          let (a, t') = sub' t
-           in HasField t' (f, sub s v) : unPreds a
-    where
-      sub' t = case sub s (scheme t) of
-        pp :=> t' -> (pp, t')
+      ps <&> \case
+        Update x y z -> Update (sub s x) (sub s y) (sub s z)
+        HasField t (f, v) -> HasField (sub s t) (f, sub s v)
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
-  sub s (x :=> NTypeVariable tv) =
-    case M.lookup tv $ unSubstitution s of
-      Nothing -> sub s x :=> NTypeVariable tv
-      Just (newCs :=> new) -> (sub s x <> newCs) :=> new
   sub s (x :=> y) = sub s x :=> sub s y
 
 instance Free a => Free [a] where
@@ -195,7 +146,15 @@ instance (Free a, Free b) => Free (a, b) where
   free (a, b) = free a <> free b
   sub s (a, b) = (sub s a, sub s b)
 
-newtype Substitution = Substitution {unSubstitution :: Map TypeVariable Scheme}
+instance Free (MKM.Map Pred) where
+  free = MKM.keys
+  sub subs@(Substitution s) mkm@(MKM.Map m _) = m'
+    where
+      vals = S.toList . fold . M.elems $ M.restrictKeys m (M.keysSet s)
+      f = appEndo $ foldMap (Endo . MKM.delete) vals
+      m' = f mkm <> MKM.fromList (unPreds . sub subs $ Preds vals)
+
+newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
   deriving stock (Data)
 
@@ -215,9 +174,9 @@ instance Free Constraint where
 
 (<<-) ::
   TypeVariable ->
-  Scheme ->
+  NType ->
   UnifyM Substitution
-v <<- ([] :=> NTypeVariable x) | v == x = return mempty
+v <<- (NTypeVariable x) | v == x = return mempty
 v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
   where
     occursIn :: Free x => TypeVariable -> x -> Bool
@@ -227,65 +186,47 @@ v <<- x = return $ Substitution $ M.singleton v x
 unifyWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  RS.RSet TypeVariable ->
+  Predicate TypeVariable ->
   Constraint ->
   UnifyM Substitution
-unifyWithPriority range (lhs :~ rhs) =
+unifyWithPriority f (lhs :~ rhs) =
   case (lhs, rhs) of
-    (_ :=> NAtomic x, _ :=> NAtomic y) | x == y -> return mempty
-    (xcs :=> NTypeVariable x, ycs :=> NTypeVariable y) -> do
-      let ((lhsCs, lhs'), (rhsCs, rhs')) =
-            if y `RS.member` range
-              then ((ycs, y), (xcs, x))
-              else ((xcs, x), (ycs, y))
-          extraCs = replacing lhs' (scheme . NTypeVariable $ rhs') lhsCs
-          newScheme = (extraCs <> rhsCs) :=> NTypeVariable rhs'
-      -- This might come back to bite me.
-      (<> (Substitution $ M.singleton rhs' newScheme)) <$> (lhs' <<- newScheme)
-    (cs :=> NTypeVariable t, x) -> t <<- (replacing t x cs =>> x)
-    (x, cs :=> NTypeVariable t) -> t <<- (replacing t x cs =>> x)
-    (xcs :=> List x, ycs :=> List y) ->
-      unifyWithPriority range $ (xcs =>> x) :~ (ycs =>> y)
-    (Preds xcs :=> NAttrSet x, Preds ycs :=> NAttrSet y) ->
-      -- TODO: what to do with predicates ?
-      -- I don't think there should be any predicates here...
-      assert (null xcs && null ycs) $
-        foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority range (sub s' c)) (pure mempty)
-          . M.elems
-          $ M.intersectionWith (:~) x y
-    (Preds xcs :=> (x1 :-> y1), Preds ycs :=> (x2 :-> y2)) -> do
-      s <- unifyWithPriority range (x1 :~ x2)
-      s' <- unifyWithPriority range $ sub s $ y1 :~ y2
-      let ss = s' <> s
-      -- I don't think there should be any predicates here either...
-      -- s'' <- uncurry unifyPred . sub ss $ (xcs, ycs)
-      assert (null xcs && null ycs) $ return ss
+    (NAtomic x, NAtomic y) | x == y -> return mempty
+    (NTypeVariable x, NTypeVariable y) -> do
+      if getPredicate f y
+        then y <<- NTypeVariable x
+        else x <<- NTypeVariable y
+    (NTypeVariable t, x) -> t <<- x
+    (x, NTypeVariable t) -> t <<- x
+    (List x, List y) -> unifyWithPriority f $ x :~ y
+    (NAttrSet _x, NAttrSet _y) -> error "TODO: This should be handled in a special way"
+    -- foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority f (sub s' c)) (pure mempty)
+    --   . M.elems
+    --   $ M.intersectionWith (:~) x y
+    (x1 :-> y1, x2 :-> y2) -> do
+      s <- unifyWithPriority f (x1 :~ x2)
+      s' <- unifyWithPriority f $ sub s $ y1 :~ y2
+      return $ s' <> s
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
-replacing :: Free x => TypeVariable -> Scheme -> x -> x
-replacing tv t x =
-  let s = Substitution $ M.singleton tv t
-   in sub s x
-
 solve :: Seq Constraint -> UnifyM Substitution
-solve = solveWithPriority RS.empty
+solve = solveWithPriority mempty
 
 solveWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  RS.RSet TypeVariable ->
+  Predicate TypeVariable ->
   Seq Constraint ->
   UnifyM Substitution
 solveWithPriority _ Empty = return mempty
-solveWithPriority range (rest :|> c) = do
-  s <- unifyWithPriority range c
+solveWithPriority f (rest :|> c) = do
+  s <- unifyWithPriority f c
   -- TODO: This should probably be (s <>)
-  (<> s) <$> solveWithPriority range (fmap (sub s) rest)
+  (<> s) <$> solveWithPriority f (fmap (sub s) rest)
 
 data Errors
   = UndefinedVariable VarName
   | UnexpectedType {expected :: Scheme, got :: Scheme}
-  | KeyNotPresent' Text
   deriving stock (Eq, Ord, Show)
 
 freshSrc ::
@@ -298,8 +239,8 @@ freshSrc = do
   return v
 
 data UnifyingError
-  = InfinityType Scheme
-  | CanNotUnify Scheme Scheme
+  = InfinityType NType
+  | CanNotUnify NType NType
   deriving stock (Eq, Show)
 
 data PredicateError
@@ -315,6 +256,8 @@ type InferEffs =
      Writer Constraint,
      Writer (SrcSpan, Errors),
      Writer PredicateError,
+     Writer Pred,
+     State (MKM.Map Pred),
      State VariableMap,
      Writer UnifyingError,
      SubstituteEnv,
@@ -349,7 +292,7 @@ throwSrcTV e = do
 
 type VariableMap = Map VarName Scheme
 
-(~~) :: Member (Writer Constraint) r => Scheme -> Scheme -> Eff r ()
+(~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
 lhs ~~ rhs = tell $ lhs :~ rhs
 
 -- TODO: shadowed bindings are not properly restored.
@@ -366,20 +309,25 @@ withBindings bindings m = do
 
 instantiate ::
   forall effs.
-  Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan)] effs =>
+  Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan), Writer Pred] effs =>
   Scheme ->
-  Eff effs Scheme
-instantiate = evalState M.empty . instantiateScheme
+  Eff effs NType
+instantiate s = do
+  (Preds cs :=> t) <- runReader 0 . evalState M.empty . instantiateScheme $ s
+  tell `traverse_` cs
+  return t
   where
-    instantiateScheme :: forall. Scheme -> Eff (State (Map DeBruijn TypeVariable) ': effs) Scheme
+    instantiateScheme :: forall. Scheme -> Eff (State (Map DeBruijn TypeVariable) ': Reader Int ': effs) Scheme
     instantiateScheme =
-      traverseNTypes %%~ \case
+      traverseNTypesWith (local @Int (+ 1)) %%~ \case
         (TBruijn db) -> TTypeVariable <$> freshInst db
         x@(TAtomic _) -> return x
         x@(TTypeVariable _) -> return x
 
-    freshInst :: DeBruijn -> Eff (State (Map DeBruijn TypeVariable) ': effs) TypeVariable
-    freshInst db = do
+    freshInst :: DeBruijn -> Eff (State (Map DeBruijn TypeVariable) ': Reader Int ': effs) TypeVariable
+    freshInst (DeBruijn i j) = do
+      x <- ask @Int
+      let db = DeBruijn (i - x) j
       gets (M.lookup db) >>= \case
         Just t -> return t
         Nothing -> do
@@ -387,17 +335,17 @@ instantiate = evalState M.empty . instantiateScheme
           modify (M.insert db t)
           return t
 
-infer :: NExprLoc -> InferM Scheme
+infer :: NExprLoc -> InferM NType
 infer (Fix (Compose (Ann src x))) = runReader src $ case x of
-  NConstant a -> return . scheme . NAtomic $ case a of
+  NConstant a -> return . NAtomic $ case a of
     NURI {} -> URI
     NInt {} -> Integer
     NFloat {} -> Float
     NBool {} -> Bool
     NNull {} -> Null
-  NLiteralPath {} -> return . scheme . NAtomic $ Path
-  NEnvPath {} -> return . scheme . NAtomic $ Path
-  NStr {} -> return $ scheme $ NAtomic String
+  NLiteralPath {} -> return . NAtomic $ Path
+  NEnvPath {} -> return . NAtomic $ Path
+  NStr {} -> return $ NAtomic String
   NSym var ->
     get @VariableMap
       >>= maybe (scheme . NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
@@ -406,8 +354,8 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     xs' <- traverse infer xs
     traverse_ tell . fmap (uncurry (:~)) $ zip xs' (tail xs')
     case xs' of
-      [] -> scheme . NTypeVariable <$> freshSrc
-      y : _ -> return . scheme $ List y
+      [] -> NTypeVariable <$> freshSrc
+      y : _ -> return $ List y
   NUnary NNeg y -> do
     t <- infer y
     -- TODO: Infer either Float or Integer
@@ -415,24 +363,25 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     return t
   NUnary NNot y -> do
     t <- infer y
-    t ~~ scheme (NAtomic Bool)
+    t ~~ NAtomic Bool
     return t
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
     rhsT <- infer rhs
-    res <- scheme . NTypeVariable <$> freshSrc
-    return $ [lhsT // rhsT $ res] =>> res
+    res <- NTypeVariable <$> freshSrc
+    tell (lhsT // rhsT $ res)
+    return res
   NBinary NApp lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    rest <- scheme . NTypeVariable <$> freshSrc
-    lhst ~~ (scheme $ rhst :-> rest)
+    rest <- NTypeVariable <$> freshSrc
+    lhst ~~ (rhst :-> rest)
     return rest
   NBinary NConcat lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    t <- scheme . NTypeVariable <$> freshSrc
-    let listt = scheme $ List t
+    t <- NTypeVariable <$> freshSrc
+    let listt = List t
     lhst ~~ listt
     rhst ~~ listt
     return $ listt
@@ -453,7 +402,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     setT <- infer r
     path <- getPath path'
     resT <-
-      scheme . NTypeVariable <$> case path of
+      NTypeVariable <$> case path of
         Just p -> do
           (set', var) <- lookupAttrSet p
           setT ~~ set'
@@ -466,7 +415,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
         defT <- infer defR
         defT ~~ resT
     return resT
-  NSet NNonRecursive xs -> scheme . NAttrSet <$> inferBinding xs
+  NSet NNonRecursive xs -> NAttrSet <$> inferBinding xs
   NHasAttr attrSet path -> do
     setT <- infer attrSet
     -- this should infer optional type
@@ -475,66 +424,66 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     (paramT, varMap :: VariableMap) <- case param of
       Param name -> do
         t <- freshSrc
-        return (scheme $ NTypeVariable t, M.singleton name . scheme $ NTypeVariable t)
+        return (NTypeVariable t, M.singleton name . scheme $ NTypeVariable t)
       ParamSet set variadic binding -> do
         setBindings <-
           M.fromList <$> set
             `for` ( \(name, def) -> do
                       t <- case def of
-                        Nothing -> scheme . NTypeVariable <$> freshSrc
+                        Nothing -> NTypeVariable <$> freshSrc
                         Just def' -> infer def'
-                      return (name, t)
+                      return (name, scheme t) -- TODO: This is bad: it probably shouldn't be a scheme
                   )
-        let setT = scheme . NAttrSet $ setBindings
-        return (setT, maybe M.empty (`M.singleton` setT) binding <> setBindings)
+        let setT = NAttrSet $ setBindings
+        return (setT, maybe M.empty (`M.singleton` scheme setT) binding <> setBindings)
     bodyT <- withBindings varMap $ infer body
-    return . scheme $ paramT :-> bodyT
+    return $ paramT :-> bodyT
   NLet bindings body -> do
     bindingsT <- inferBinding bindings
     withBindings bindingsT $ infer body
   NIf cond t f -> do
     condT <- infer cond
-    condT ~~ scheme (NAtomic Bool)
+    condT ~~ NAtomic Bool
     tT <- infer t
     fT <- infer f
     tT ~~ fT
     return tT
-  NWith set body -> do
-    -- TODO: implement fallback variable lookup -> specify that the set should have the key.
-    setT <- infer set
-    vars <- expectAttrSet setT
-    withBindings vars $ infer body
-    where
-      -- Deprecated
-      expectAttrSet ::
-        Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r =>
-        Scheme ->
-        Eff r VariableMap
-      expectAttrSet (_ :=> NAttrSet x) = return x
-      expectAttrSet g = do
-        throwSrc
-          UnexpectedType
-            { expected = scheme $ NAttrSet M.empty,
-              got = g
-            }
-        return M.empty
+  -- NWith set body -> do
+  --   -- TODO: implement fallback variable lookup -> specify that the set should have the key.
+  --   setT <- infer set
+  --   vars <- expectAttrSet setT
+  --   withBindings vars $ infer body
+  --   where
+  --     -- Deprecated
+  --     expectAttrSet ::
+  --       Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r =>
+  --       Scheme ->
+  --       Eff r VariableMap
+  --     expectAttrSet (_ :=> NAttrSet x) = return x
+  --     expectAttrSet g = do
+  --       throwSrc
+  --         UnexpectedType
+  --           { expected = scheme $ NAttrSet M.empty,
+  --             got = g
+  --           }
+  --       return M.empty
   NAssert cond body -> do
     condT <- infer cond
-    condT ~~ scheme (NAtomic Bool)
+    condT ~~ NAtomic Bool
     infer body
-  NSynHole _ -> scheme . NTypeVariable <$> freshSrc
+  NSynHole _ -> NTypeVariable <$> freshSrc
   where
     equality lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
       lhst ~~ rhst
-      return . scheme $ NAtomic Bool
+      return $ NAtomic Bool
     comparison lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
       -- TODO: Infer lhst and rhst are either Integer or Double or String
       lhst ~~ rhst
-      return . scheme $ NAtomic Bool
+      return $ NAtomic Bool
     math lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
@@ -544,9 +493,9 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     logic lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      rhst ~~ scheme (NAtomic Bool)
-      lhst ~~ scheme (NAtomic Bool)
-      return . scheme $ NAtomic Bool
+      rhst ~~ NAtomic Bool
+      lhst ~~ NAtomic Bool
+      return $ NAtomic Bool
 
 inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName Scheme)
 inferBinding bindings = do
@@ -588,29 +537,81 @@ renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
 showExpr :: Fix NExprLocF -> Text
 showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix . stripAnnotation
 
--- TODO: There is no need to solve predicates in types that have already been closed.
 inferGeneral :: NExprLoc -> InferM Scheme
-inferGeneral x = traceSubtree (showExpr x) $ do
-  (((t, subs), cs), range) <-
-    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
-  traceSubtree "received" $ do
-    traceValue "type" $ renderPretty t
-    traceValue "substitutions" $ prettySubstitution subs
-    traceValue "constraints" $ fmap renderPretty cs
-    traceValue "range" $ T.pack . show $ range
-  s' <- solveWithPriority range cs
-  traceValue "substitutions_after_solving" $ prettySubstitution s'
-  let s = subs <> s'
-      returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
-  traceSubtree "returned" $ do
-    traceValue "substitutions" $ prettySubstitution returnedS
-    -- Filter for optimization purposes
-    subEnv returnedS
-    let retT = close (Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)) $ sub s t
-    traceValue "type" $ renderPretty retT
-    return retT
+inferGeneral x@(Fix (Compose (Ann src _))) = runReader src $
+  traceSubtree (showExpr x) $ do
+    (((t, subs), cs), range) <-
+      traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
+    traceSubtree "received" $ do
+      traceValue "type" $ renderPretty t
+      traceValue "substitutions" $ prettySubstitution subs
+      traceValue "constraints" $ fmap renderPretty cs
+      traceValue "range" $ T.pack . show $ range
+      get @(MKM.Map Pred) >>= traceValue "preds" . showPreds
+    s' <- solveWithPriority (Predicate (`RS.member` range)) cs
+    traceValue "substitutions_after_solving" $ prettySubstitution s'
+    let s = subs <> s'
+        returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
+    traceSubtree "returned" $ do
+      traceValue "substitutions" $ prettySubstitution returnedS
+      -- Filter for optimization purposes
+      subEnv returnedS
+      preds <- get @(MKM.Map Pred)
+      traceValue "subbed_preds" $ showPreds preds
+      let p = Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)
+          (MKM.toList -> keep, toss) = MKM.partition (getPredicate p) preds
+      -- At this point the only predicates only contain type variables that are only used
+      -- in the expression. This means that all of the generated constraints and
+      -- substitutions can be safely restricted to this expression.
+      retT <- solveAndClose p $ sub s $ Preds keep :=> t
+      traceValue "preds" $ showPreds toss
+      put toss
+      traceValue "type" $ renderPretty retT
+      return retT
+  where
+    showPreds :: MKM.Map Pred -> Map String String
+    showPreds = M.mapKeys show . fmap show . MKM.toMap
 
-solveConstraints :: Preds -> InferM Preds
+solveAndClose ::
+  Members
+    '[ Writer (TypeVariable, SrcSpan),
+       Reader SrcSpan,
+       Fresh,
+       Writer PredicateError,
+       Writer UnifyingError
+     ]
+    eff =>
+  Predicate TypeVariable ->
+  Scheme ->
+  Eff eff Scheme
+solveAndClose p (cs :=> t) = do
+  (((Preds solvedPreds, range), constraints), collectedPreds) <-
+    runSeqWriter @[Pred]
+      . runSeqWriter @(Seq Constraint)
+      . registerTypeVariables
+      $ solveConstraints cs
+  let newPredicate = p `pOr` Predicate (`RS.member` range)
+  case (constraints, collectedPreds) of
+    (Empty, []) -> return . close newPredicate $ Preds solvedPreds :=> t
+    _ -> do
+      s <- solveWithPriority newPredicate constraints
+      solveAndClose newPredicate $ sub s $ Preds (collectedPreds <> solvedPreds) :=> t
+
+pOr :: Predicate x -> Predicate x -> Predicate x
+pOr (Predicate f) (Predicate g) = Predicate $ \x -> f x || g x
+
+solveConstraints ::
+  Members
+    '[ Fresh,
+       Reader SrcSpan,
+       Writer (TypeVariable, SrcSpan),
+       Writer Pred,
+       Writer PredicateError,
+       Writer Constraint
+     ]
+    effs =>
+  Preds ->
+  Eff effs Preds
 solveConstraints (Preds ps) =
   Preds <$> do
     flip Control.Monad.filterM ps $ \case
@@ -619,16 +620,59 @@ solveConstraints (Preds ps) =
           tell $ KeyNotPresent f (NAttrSet ts)
           return False
         Just t' -> do
-          t ~~ t'
+          x <- instantiate t
+          y <- instantiate t'
+          x ~~ y
           return False
       HasField (NTypeVariable _) _ -> return True
       HasField t _ -> do
         tell $ NotAnAttributeSet t
         return False
       (Update (NAttrSet a) (NAttrSet b) t) -> do
-        scheme (NAttrSet $ b <> a) ~~ scheme t
+        (NAttrSet $ b <> a) ~~ t
         return False
       _ -> return True
+
+newtype DeBruijnContext = DeBruijnContext (Sum Int)
+  deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
+
+instance Act DeBruijnContext DeBruijn where
+  act (DeBruijnContext (Sum n)) (DeBruijn i j) = DeBruijn (i + n) j
+
+type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
+
+close :: Data x => Predicate TypeVariable -> x -> x
+close (Predicate f) =
+  run
+    . evalState @TDeBruijnMap mempty
+    . runReader @Int 0
+    . evalState @Int 0
+    . close'
+  where
+    -- State is the sequential number, Reader is the binding context number
+    -- close' :: NType -> Eff '[State Int, Reader Int, State TDeBruijnMap] NType
+    close' =
+      traverseNTypesWith bndCtx %%~ \case
+        x@(TBruijn _) -> return x
+        x@(TAtomic _) -> return x
+        (TTypeVariable tv) | f tv -> TBruijn <$> newbruijn tv
+        x@(TTypeVariable _) -> return x
+
+    bndCtx m = do
+      modify @TDeBruijnMap (SM.shift 1)
+      x <- local @Int (+ 1) m
+      modify @TDeBruijnMap (SM.shift (-1))
+      return x
+    newbruijn t = do
+      get @TDeBruijnMap <&> SM.lookup t >>= \case
+        Nothing -> do
+          i <- ask
+          j <- get
+          modify @Int (+ 1)
+          let x = DeBruijn i j
+          modify @TDeBruijnMap (SM.insert t x)
+          return x
+        Just x -> return x
 
 -- | Stacks functions recursively inside each other
 -- >>> stack [f1, f2, f3] h x
@@ -677,16 +721,19 @@ lookupAttrSet ::
     '[ Reader SrcSpan,
        Writer (SrcSpan, Errors),
        Writer (TypeVariable, SrcSpan),
+       Writer Pred,
        Fresh
      ]
     r =>
   AttrSetPath ->
-  Eff r (Scheme, TypeVariable)
+  Eff r (NType, TypeVariable)
 lookupAttrSet (p :| []) = do
   set <- NTypeVariable <$> freshSrc
   var <- freshSrc
-  return ([HasField set (p, scheme . NTypeVariable $ var)] :=> set, var)
+  tell (HasField set (p, scheme . NTypeVariable $ var))
+  return (set, var)
 lookupAttrSet (p :| (pp : ps)) = do
   set <- NTypeVariable <$> freshSrc
   (innerSet, var) <- lookupAttrSet (pp :| ps)
-  return ([HasField set (p, innerSet)] :=> set, var)
+  tell $ HasField set (p, scheme innerSet)
+  return (set, var)
