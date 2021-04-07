@@ -641,7 +641,7 @@ instance Act DeBruijnContext DeBruijn where
 
 type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
 
-close :: Data x => Predicate TypeVariable -> x -> x
+close :: TraversableNTypes x => Predicate TypeVariable -> x -> x
 close (Predicate f) =
   run
     . evalState @TDeBruijnMap mempty

@@ -6,10 +6,9 @@ module Tix.Types
     Scheme (..),
     scheme,
     Pred (..),
-    (=>>),
     (//),
     Preds (..),
-    traverseNTypesWith,
+    TraversableNTypes (..),
     traverseNTypes,
     TerminalNType (..),
   )
@@ -21,7 +20,6 @@ import Control.Monad.Freer.Reader
 import Data.Bifunctor
 import Data.Data (Data)
 import Data.Data.Lens
-import Data.Generics.Sum.Subtype
 import Data.Map (Map)
 import qualified Data.Map as M
 import qualified Data.Map.MultiKey.Strict as MKM
@@ -33,7 +31,6 @@ import Debug.Trace
 import GHC.Exts
 import Generic.Data
 import Prettyprinter
-import Type.Reflection
 
 data Pred
   = -- | '(x // y) ~ z'
@@ -54,6 +51,7 @@ instance MKM.Keyable Pred where
 -- this seems bad. It should not drop constraints.
 (//) :: NType -> NType -> NType -> Pred
 (//) = Update
+{-# INLINE (//) #-}
 
 data Scheme = Preds :=> !NType
   deriving stock (Eq, Ord, Show, Data, Generic)
@@ -62,12 +60,9 @@ newtype Preds = Preds {unPreds :: [Pred]}
   deriving newtype (Show, Eq, Ord, Semigroup, Monoid, IsList)
   deriving stock (Data, Generic)
 
-(=>>) :: Preds -> Scheme -> Scheme
-[] =>> x = x
-xs =>> (ys :=> u) = (xs <> ys) :=> u
-
 scheme :: NType -> Scheme
 scheme t = [] :=> t
+{-# INLINE scheme #-}
 
 data TerminalNType
   = TAtomic !AtomicType
@@ -75,26 +70,50 @@ data TerminalNType
   | TBruijn !DeBruijn
   deriving stock (Show, Generic)
 
-traverseNTypesWith ::
-  (Data s, Applicative f) => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> s -> f s
-traverseNTypesWith ctx f s = case eqTypeRep (typeOf s) (typeRep @NType) of
-  Just HRefl | Just _ <- projectSub @TerminalNType s -> _Sub @TerminalNType f s
-  Just HRefl -> ctx $ (template @_ @NType . traverseNTypesWith ctx) f s
-  _ -> (template @_ @NType . traverseNTypesWith ctx) f s
-{-# SPECIALIZE traverseNTypesWith ::
-  Applicative f => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> NType -> f NType
-  #-}
-{-# SPECIALIZE traverseNTypesWith ::
-  Applicative f => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> Scheme -> f Scheme
-  #-}
-{-# SPECIALIZE traverseNTypesWith ::
-  Monoid r => (forall x. Const r x -> Const r x) -> (TerminalNType -> Const r TerminalNType) -> NType -> Const r NType
-  #-}
-{-# SPECIALIZE traverseNTypesWith ::
-  Monoid r => (forall x. Const r x -> Const r x) -> (TerminalNType -> Const r TerminalNType) -> Scheme -> Const r Scheme
-  #-}
+class TraversableNTypes s where
+  traverseNTypesWith ::
+    (Applicative f) => (forall x. f x -> f x) -> (TerminalNType -> f TerminalNType) -> s -> f s
 
-traverseNTypes :: Data s => Traversal' s TerminalNType
+instance TraversableNTypes NType where
+  traverseNTypesWith ctx f = \case
+    NAtomic a -> f' $ TAtomic a
+    NTypeVariable a -> f' $ TTypeVariable a
+    NBruijn a -> f' $ TBruijn a
+    x :-> y -> ctx $ (:->) <$> traverseNextType x <*> traverseNextType y
+    List t -> ctx $ List <$> traverseNextType t
+    NAttrSet m -> ctx $ NAttrSet <$> traverseNTypesWith ctx f `traverse` m
+    where
+      traverseNextType = traverseNTypesWith ctx f
+      f' = fmap fromTerminalNType . f
+      fromTerminalNType :: TerminalNType -> NType
+      fromTerminalNType = \case
+        TAtomic a -> NAtomic a
+        TTypeVariable a -> NTypeVariable a
+        TBruijn a -> NBruijn a
+  {-# INLINE traverseNTypesWith #-}
+
+instance TraversableNTypes Scheme where
+  traverseNTypesWith ctx f (cs :=> t) =
+    ctx $
+      (:=>) <$> traverseNTypesWith ctx f cs <*> traverseNTypesWith ctx f t
+  {-# INLINE traverseNTypesWith #-}
+
+instance TraversableNTypes Preds where
+  traverseNTypesWith ctx f (Preds ps) = Preds <$> traverseNTypesWith ctx f `traverse` ps
+  {-# INLINE traverseNTypesWith #-}
+
+instance TraversableNTypes Pred where
+  traverseNTypesWith ctx f = \case
+    (HasField t (k, h)) ->
+      HasField <$> traverseNTypesWith ctx f t <*> ((k,) <$> traverseNTypesWith ctx f h)
+    (Update x y z) ->
+      Update
+        <$> traverseNTypesWith ctx f x
+        <*> traverseNTypesWith ctx f y
+        <*> traverseNTypesWith ctx f z
+  {-# INLINE traverseNTypesWith #-}
+
+traverseNTypes :: TraversableNTypes s => Traversal' s TerminalNType
 traverseNTypes = traverseNTypesWith id
 {-# INLINE traverseNTypes #-}
 
@@ -142,7 +161,7 @@ instance Pretty NType where
 instance Pretty Scheme where
   pretty t = greekifyWith t $ prettyScheme t
 
-greekifyWith :: Data t => t -> Eff '[Reader (Map DeBruijn Text), Reader Depth] x -> x
+greekifyWith :: TraversableNTypes t => t -> Eff '[Reader (Map DeBruijn Text), Reader Depth] x -> x
 greekifyWith t =
   run
     . runReader (Depth 0)
@@ -153,7 +172,7 @@ newtype Depth = Depth Int
 descend :: Member (Reader Depth) eff => Eff eff x -> Eff eff x
 descend = local (\(Depth n) -> Depth $ n + 1)
 
-getDepthedDeBurjins :: (Data x, Member (Reader Depth) eff) => x -> Eff eff (Set DeBruijn)
+getDepthedDeBurjins :: (TraversableNTypes x, Member (Reader Depth) eff) => x -> Eff eff (Set DeBruijn)
 getDepthedDeBurjins x = do
   Depth depth <- ask
   return $ S.mapMonotonic (DeBruijn (- depth)) $ getDeBurjins x
@@ -198,12 +217,13 @@ prettyScheme u@(Preds cs :=> t) = do
     getDepthedDeBurjins (traceShowId u) <&> \s -> case M.elems . M.restrictKeys greekVars $ traceShowId s of
       [] -> mempty
       foralls -> "∀" <+> fillSep (pretty <$> foralls) <> "." <> line
-  cs' <-
-    prettyPred `traverse` cs <&> \case
-      [] -> mempty
-      cs' -> group (paren (vsep $ punctuate "," cs') <+> "=>" <> line)
-  t' <- prettyNType t
-  return $ group $ foralls <> cs' <> t'
+  descend $ do
+    cs' <-
+      prettyPred `traverse` cs <&> \case
+        [] -> mempty
+        cs' -> group (paren (vsep $ punctuate "," cs') <+> "=>" <> line)
+    t' <- prettyNType t
+    return $ group $ foralls <> cs' <> t'
   where
     prettyPred :: Pred -> PrettyM (Doc ann)
     prettyPred (h `HasField` (k, v)) = do
@@ -221,7 +241,7 @@ prettyScheme u@(Preds cs :=> t) = do
 -- (current) binding context.
 -- So variables that are bound in one of the inner contexts will have a negative
 -- binding context number.
-getAllDeBurjins :: Data x => x -> Set DeBruijn
+getAllDeBurjins :: TraversableNTypes x => x -> Set DeBruijn
 getAllDeBurjins =
   view $
     traverseNTypesWith (first $ S.mapMonotonic (\(DeBruijn i j) -> DeBruijn (i - 1) j))
@@ -235,12 +255,12 @@ getAllDeBurjins =
 -- | Get all De Bruijn type variables that were bound in the the outermost
 -- (current) binding context.
 -- Only returns the second indexes.
-getDeBurjins :: Data x => x -> Set Int
+getDeBurjins :: TraversableNTypes x => x -> Set Int
 getDeBurjins t = getDeBurjins' t 0
 
 -- | Gets all De Bruijn variables with the given binding context offset.
 -- Only returns the second indexes.
-getDeBurjins' :: Data x => x -> Int -> Set Int
+getDeBurjins' :: TraversableNTypes x => x -> Int -> Set Int
 getDeBurjins' =
   view $
     traverseNTypesWith (\(Const f) -> Const (\n -> f (n + 1)))
