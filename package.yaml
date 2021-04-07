@@ -57,7 +57,7 @@ executables:
 tests:
   tix-test:
     main: Main.hs
-    source-dirs: test
+    source-dirs: test/src
     ghc-options:
       - -threaded
       - -rtsopts
@@ -98,3 +98,4 @@ default-extensions:
   - DeriveDataTypeable
   - TypeFamilies
   - FlexibleInstances
+  - DeriveAnyClass

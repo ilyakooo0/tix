@@ -1,11 +1,8 @@
 module Main (main) where
 
-import qualified Data.ByteString as BS
-import qualified Data.ByteString.Lazy as BSL
-import qualified Data.ByteString.Lazy.Char8 as BSLC
 import Data.Functor
-import qualified Data.Text.Encoding as T
 import qualified Data.Text.IO as T
+import qualified Data.Text.Lazy.Encoding as TL
 import Nix
 import System.FilePath
 import Test.Tasty
@@ -34,7 +31,7 @@ tests = do
                     Success r -> do
                       case getType r of
                         (t, [], [], [], _) ->
-                          return $ (BSL.fromStrict . T.encodeUtf8 . showNType) t
+                          return $ (TL.encodeUtf8 . renderPretty) t
                         (_, errors, unifyingErrors, predicateErrors, _) -> error . show $ (errors, unifyingErrors, predicateErrors)
               )
         )

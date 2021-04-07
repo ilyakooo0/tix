@@ -4,8 +4,8 @@ module Tix.Typechecker
     runFresh,
     runSeqWriter,
     getType,
-    showNType,
     runNoTreeTracer,
+    renderPretty,
   )
 where
 

@@ -3,7 +3,6 @@ module Tix.Types
     AtomicType (..),
     DeBruijn (..),
     TypeVariable (..),
-    showNType,
     Scheme (..),
     scheme,
     Pred (..),
@@ -17,20 +16,20 @@ module Tix.Types
 where
 
 import Control.Lens hiding (List)
+import Control.Monad.Freer
+import Control.Monad.Freer.Reader
 import Data.Bifunctor
 import Data.Data (Data)
 import Data.Data.Lens
-import Data.Foldable
 import Data.Generics.Sum.Subtype
-import qualified Data.List as L
 import Data.Map (Map)
 import qualified Data.Map as M
 import qualified Data.Map.MultiKey.Strict as MKM
 import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
-import qualified Data.Text.Lazy as TL
-import qualified Data.Text.Lazy.Builder as T
+import qualified Data.Text as T
+import Debug.Trace
 import GHC.Exts
 import Generic.Data
 import Prettyprinter
@@ -118,6 +117,9 @@ data AtomicType
   | URI
   deriving stock (Eq, Ord, Show, Data, Generic)
 
+instance Pretty AtomicType where
+  pretty = viaShow
+
 data DeBruijn = DeBruijn !Int !Int
   deriving stock (Show, Eq, Ord, Data)
 
@@ -128,43 +130,92 @@ newtype TypeVariable = TypeVariable Int
 instance Show TypeVariable where
   show (TypeVariable n) = "〚" <> show n <> "〛"
 
--- | Show a type which has already been closed over.
---
--- TODO: This should be a Prettyprinter
-showNType :: Scheme -> Text
-showNType t = TL.toStrict . T.toLazyText $ showNType' 0 t
+instance Pretty TypeVariable where
+  pretty (TypeVariable n) = "〚" <> pretty n <> "〛"
+
+instance Pretty DeBruijn where
+  pretty (DeBruijn i j) = "〚" <> pretty i <+> pretty j <> "〛"
+
+instance Pretty NType where
+  pretty t = greekifyWith t $ prettyNType t
+
+instance Pretty Scheme where
+  pretty t = greekifyWith t $ prettyScheme t
+
+greekifyWith :: Data t => t -> Eff '[Reader (Map DeBruijn Text), Reader Depth] x -> x
+greekifyWith t =
+  run
+    . runReader (Depth 0)
+    . runReader (M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames)
+
+newtype Depth = Depth Int
+
+descend :: Member (Reader Depth) eff => Eff eff x -> Eff eff x
+descend = local (\(Depth n) -> Depth $ n + 1)
+
+getDepthedDeBurjins :: (Data x, Member (Reader Depth) eff) => x -> Eff eff (Set DeBruijn)
+getDepthedDeBurjins x = do
+  Depth depth <- ask
+  return $ S.mapMonotonic (DeBruijn (- depth)) $ getDeBurjins x
+
+getDeBurjin :: (Members '[Reader Depth, Reader (Map DeBruijn Text)] eff) => DeBruijn -> Eff eff (Maybe Text)
+getDeBurjin (DeBruijn i j) = do
+  Depth depth <- ask
+  M.lookup (DeBruijn (i - depth) j) <$> ask
+
+type PrettyM a = forall eff. Members '[Reader Depth, Reader (Map DeBruijn Text)] eff => Eff eff a
+
+prettyNType :: NType -> PrettyM (Doc ann)
+prettyNType (NTypeVariable x) = return $ pretty x
+prettyNType (NBruijn x) =
+  getDeBurjin x <&> \case
+    Nothing -> pretty x
+    Just t -> pretty t
+prettyNType (NAtomic x) = return $ pretty x
+prettyNType (x :-> y) = descend $ do
+  x' <- prettyNType x
+  y' <- prettyNType y
+  return $ group $ x' <+> "->" <> line <> y'
+prettyNType (List x) = descend $ do
+  x' <- prettyNType x
+  return $ group $ bracketed "[" "]" x'
+prettyNType (NAttrSet m) = descend $ do
+  decls <- prettyDecl `traverse` M.toAscList m
+  return $ group $ bracketed "{" "}" $ vsep decls
   where
-    greekVars = M.fromList $ zip (S.toList $ getAllDeBurjins t) variableNames
-    showNType' :: Int -> Scheme -> T.Builder
-    showNType' depth (Preds ps :=> u) =
-      foralls <> predicates <> case u of
-        (NAtomic a) -> showAtomicType a
-        (NBruijn (DeBruijn i j)) -> greekVars M.! DeBruijn (i - depth) j
-        (NTypeVariable _) -> error "should not have free type variables at this point"
-        (x :-> y) -> showNextNType' (scheme x) <> " -> " <> showNextNType' (scheme y)
-        (List x) -> "[" <> showNextNType' (scheme x) <> "]"
-        (NAttrSet x) ->
-          "{ "
-            <> ( mconcat
-                   . L.intersperse "; "
-                   . fmap (\(k, v) -> T.fromText k <> " = " <> showNextNType' v)
-                   $ M.toList x
-               )
-            <> " }"
-      where
-        showNextNType' = showNType' $ depth + 1
-        currBurjins = S.mapMonotonic (DeBruijn (- depth)) $ getDeBurjins u
-        foralls =
-          if S.null currBurjins
-            then ""
-            else
-              "∀ "
-                <> (mconcat . L.intersperse " " . M.elems $ M.restrictKeys greekVars currBurjins)
-                <> ". "
-        predicates =
-          if null ps
-            then mempty
-            else "(" <> (fold . L.intersperse ", " $ T.fromString . show <$> ps) <> ") => "
+    prettyDecl :: (Text, Scheme) -> PrettyM (Doc ann)
+    prettyDecl (name, sch) = do
+      sch' <- prettyScheme sch
+      return $ group $ pretty name <+> "=" <> nest 2 (line <> sch' <> ";")
+
+bracketed :: Doc ann -> Doc ann -> Doc ann -> Doc ann
+bracketed l r d = flatAlt (l <> " ") l <> nest 2 d <> line' <> r
+
+prettyScheme :: Scheme -> PrettyM (Doc ann)
+prettyScheme u@(Preds cs :=> t) = do
+  greekVars <- ask @(Map DeBruijn Text)
+  foralls <-
+    getDepthedDeBurjins (traceShowId u) <&> \s -> case M.elems . M.restrictKeys greekVars $ traceShowId s of
+      [] -> mempty
+      foralls -> "∀" <+> fillSep (pretty <$> foralls) <> "." <> line
+  cs' <-
+    prettyPred `traverse` cs <&> \case
+      [] -> mempty
+      cs' -> group (paren (vsep $ punctuate "," cs') <+> "=>" <> line)
+  t' <- prettyNType t
+  return $ group $ foralls <> cs' <> t'
+  where
+    prettyPred :: Pred -> PrettyM (Doc ann)
+    prettyPred (h `HasField` (k, v)) = do
+      h' <- prettyNType h
+      v' <- prettyScheme v
+      return $ group $ group (h' <> nest 2 (line' <> "." <> pretty k <+> "=")) <> nest 2 (line <> v')
+    prettyPred (Update x y z) = do
+      x' <- prettyNType x
+      y' <- prettyNType y
+      z' <- prettyNType z
+      return $ group $ paren x' <+> "//" <> line <> paren y' <+> "~" <> line <> paren z'
+    paren = bracketed "(" ")"
 
 -- | Returns the set of all De Bruijn type variables relative to the outermost
 -- (current) binding context.
@@ -184,7 +235,7 @@ getAllDeBurjins =
 -- | Get all De Bruijn type variables that were bound in the the outermost
 -- (current) binding context.
 -- Only returns the second indexes.
-getDeBurjins :: NType -> Set Int
+getDeBurjins :: Data x => x -> Set Int
 getDeBurjins t = getDeBurjins' t 0
 
 -- | Gets all De Bruijn variables with the given binding context offset.
@@ -203,39 +254,9 @@ getDeBurjins' =
             TTypeVariable _ -> const S.empty
         )
 
-showAtomicType :: AtomicType -> T.Builder
-showAtomicType Integer = "Integer"
-showAtomicType Float = "Float"
-showAtomicType Bool = "Bool"
-showAtomicType String = "String"
-showAtomicType Path = "Path"
-showAtomicType Null = "Null"
-showAtomicType URI = "URI"
-
-greek :: [T.Builder]
+greek :: [Text]
 greek = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"]
 
-variableNames :: [T.Builder]
+variableNames :: [Text]
 variableNames =
-  greek <> fmap (\(n, g) -> g <> T.fromString (show n)) (zip [1 :: Int ..] greek)
-
-instance Pretty NType where
-  pretty (NAtomic a) = viaShow a
-  pretty (NTypeVariable t) = viaShow t
-  pretty (NBruijn (DeBruijn i j)) = "⟦" <> pretty i <+> pretty j <> "⟧"
-  pretty (x :-> y) = sep [pretty x, "->" <+> pretty y]
-  pretty (List x) = "[" <> align (pretty x) <> "]"
-  pretty (NAttrSet x) =
-    sep
-      [ flatAlt "{ " "{"
-          <+> align
-            ( sep . zipWith (<+>) ("" : repeat ";")
-                . map (\(k, v) -> pretty k <+> "=" <+> align (pretty v))
-                $ M.toList x
-            ),
-        "}"
-      ]
-
-instance Pretty Scheme where
-  pretty ([] :=> t) = pretty t
-  pretty (cs :=> t) = viaShow cs <+> "=>" <+> pretty t
+  greek <> fmap (\(n, g) -> g <> T.pack (show n)) (zip [1 :: Int ..] greek)

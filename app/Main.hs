@@ -17,5 +17,5 @@ main = do
       BSC.putStrLn . YAML.encode $
         o <> "errors" .= fmap show errs
           <> "unifying_errors" .= fmap show uErrs
-          <> "resulting_type" .= showNType t
+          <> "resulting_type" .= renderPretty t
           <> "predicate_errors" .= fmap show pErrs
