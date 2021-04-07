@@ -161,7 +161,7 @@ instance Pretty DeBruijn where
   pretty (DeBruijn i j) = "〚" <> pretty i <+> pretty j <> "〛"
 
 instance Pretty NType where
-  pretty t = greekifyWith t $ prettyNType t
+  pretty t = greekifyWith t $ prettyNType False t
 
 instance Pretty Scheme where
   pretty t = greekifyWith t $ prettyScheme t
@@ -189,21 +189,21 @@ getDeBurjin (DeBruijn i j) = do
 
 type PrettyM a = forall eff. Members '[Reader Depth, Reader (Map DeBruijn Text)] eff => Eff eff a
 
-prettyNType :: NType -> PrettyM (Doc ann)
-prettyNType (NTypeVariable x) = return $ pretty x
-prettyNType (NBruijn x) =
+prettyNType :: Bool -> NType -> PrettyM (Doc ann)
+prettyNType _ (NTypeVariable x) = return $ pretty x
+prettyNType _ (NBruijn x) =
   getDeBurjin x <&> \case
     Nothing -> pretty x
     Just t -> pretty t
-prettyNType (NAtomic x) = return $ pretty x
-prettyNType (x :-> y) = descend $ do
-  x' <- prettyNType x
-  y' <- prettyNType y
-  return $ group $ x' <+> "->" <> line <> y'
-prettyNType (List x) = descend $ do
-  x' <- prettyNType x
+prettyNType _ (NAtomic x) = return $ pretty x
+prettyNType rhs (x :-> y) = descend $ do
+  x' <- prettyNType True x
+  y' <- prettyNType False y
+  return $ group $ (if rhs then bracketed "(" ")" else id) $ x' <+> "->" <> line <> y'
+prettyNType _ (List x) = descend $ do
+  x' <- prettyNType True x
   return $ group $ bracketed "[" "]" x'
-prettyNType (NAttrSet m) = descend $ do
+prettyNType _ (NAttrSet m) = descend $ do
   decls <- prettyDecl `traverse` M.toAscList m
   return $ group $ bracketed "{" "}" $ vsep decls
   where
@@ -227,18 +227,18 @@ prettyScheme u@(Preds cs :=> t) = do
       prettyPred `traverse` cs <&> \case
         [] -> mempty
         cs' -> group (paren (vsep $ punctuate "," cs') <+> "=>" <> line)
-    t' <- prettyNType t
+    t' <- prettyNType False t
     return $ group $ foralls <> cs' <> t'
   where
     prettyPred :: Pred -> PrettyM (Doc ann)
     prettyPred (h `HasField` (k, v)) = do
-      h' <- prettyNType h
+      h' <- prettyNType False h
       v' <- prettyScheme v
       return $ group $ group (h' <> nest 2 (line' <> "." <> pretty k <+> "=")) <> nest 2 (line <> v')
     prettyPred (Update x y z) = do
-      x' <- prettyNType x
-      y' <- prettyNType y
-      z' <- prettyNType z
+      x' <- prettyNType False x
+      y' <- prettyNType False y
+      z' <- prettyNType False z
       return $ group $ paren x' <+> "//" <> line <> paren y' <+> "~" <> line <> paren z'
     paren = bracketed "(" ")"
 
