@@ -20,7 +20,6 @@ import Control.Monad.Freer.TreeTracer
 import Control.Monad.Freer.Writer
 import Data.Act
 import qualified Data.Aeson as A
-import Data.Data (Data)
 import Data.Fix
 import Data.Foldable
 import Data.Functor.Contravariant
@@ -156,7 +155,6 @@ instance Free (MKM.Map Pred) where
 
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
-  deriving stock (Data)
 
 prettySubstitution :: Substitution -> A.Value
 prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap renderPretty . unSubstitution

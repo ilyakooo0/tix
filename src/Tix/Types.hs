@@ -18,8 +18,6 @@ import Control.Lens hiding (List)
 import Control.Monad.Freer
 import Control.Monad.Freer.Reader
 import Data.Bifunctor
-import Data.Data (Data)
-import Data.Data.Lens
 import Data.Map (Map)
 import qualified Data.Map as M
 import qualified Data.Map.MultiKey.Strict as MKM
@@ -27,7 +25,6 @@ import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text as T
-import Debug.Trace
 import GHC.Exts
 import Generic.Data
 import Prettyprinter
@@ -42,11 +39,20 @@ data Pred
       !NType
       -- ^ z
   | !NType `HasField` !(Text, Scheme)
-  deriving stock (Eq, Ord, Show, Data, Generic)
+  deriving stock (Eq, Ord, Show, Generic)
 
 instance MKM.Keyable Pred where
   type Key Pred = TypeVariable
-  getKeys p = p ^.. template @_ @TypeVariable
+  getKeys p =
+    S.toList $
+      p
+        ^. traverseNTypes
+          . to
+            ( \case
+                TAtomic _ -> S.empty
+                TTypeVariable t -> S.singleton t
+                TBruijn _ -> S.empty
+            )
 
 -- this seems bad. It should not drop constraints.
 (//) :: NType -> NType -> NType -> Pred
@@ -54,11 +60,11 @@ instance MKM.Keyable Pred where
 {-# INLINE (//) #-}
 
 data Scheme = Preds :=> !NType
-  deriving stock (Eq, Ord, Show, Data, Generic)
+  deriving stock (Eq, Ord, Show, Generic)
 
 newtype Preds = Preds {unPreds :: [Pred]}
   deriving newtype (Show, Eq, Ord, Semigroup, Monoid, IsList)
-  deriving stock (Data, Generic)
+  deriving stock (Generic)
 
 scheme :: NType -> Scheme
 scheme t = [] :=> t
@@ -124,7 +130,7 @@ data NType
   | !NType :-> !NType
   | List !NType
   | NAttrSet !(Map Text Scheme)
-  deriving stock (Eq, Ord, Show, Data, Generic)
+  deriving stock (Eq, Ord, Show, Generic)
 
 data AtomicType
   = Integer
@@ -134,17 +140,16 @@ data AtomicType
   | Path
   | Null
   | URI
-  deriving stock (Eq, Ord, Show, Data, Generic)
+  deriving stock (Eq, Ord, Show, Generic)
 
 instance Pretty AtomicType where
   pretty = viaShow
 
 data DeBruijn = DeBruijn !Int !Int
-  deriving stock (Show, Eq, Ord, Data)
+  deriving stock (Show, Eq, Ord)
 
 newtype TypeVariable = TypeVariable Int
   deriving newtype (Eq, Ord, Enum, Bounded)
-  deriving stock (Data)
 
 instance Show TypeVariable where
   show (TypeVariable n) = "〚" <> show n <> "〛"
@@ -214,7 +219,7 @@ prettyScheme :: Scheme -> PrettyM (Doc ann)
 prettyScheme u@(Preds cs :=> t) = do
   greekVars <- ask @(Map DeBruijn Text)
   foralls <-
-    getDepthedDeBurjins (traceShowId u) <&> \s -> case M.elems . M.restrictKeys greekVars $ traceShowId s of
+    getDepthedDeBurjins u <&> \s -> case M.elems . M.restrictKeys greekVars $ s of
       [] -> mempty
       foralls -> "∀" <+> fillSep (pretty <$> foralls) <> "." <> line
   descend $ do
