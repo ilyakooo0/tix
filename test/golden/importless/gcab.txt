@@ -1,0 +1,2 @@
+∀ β γ.
+{makeInstalledTest = {tested = ∀ α. (β.gcab = α) => α;} -> γ; pkgs = β;} -> γ

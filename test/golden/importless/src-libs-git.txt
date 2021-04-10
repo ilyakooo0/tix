@@ -1,1 +1,0 @@
-[{ rev = String; sha256 = String; url = String }]

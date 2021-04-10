@@ -1,0 +1,26 @@
+∀ γ δ ε ζ η.
+{ extra-cmake-modules = γ;
+  kbookmarks = δ;
+  kcompletion = δ;
+  kconfig = δ;
+  kconfigwidgets = ε;
+  ki18n = δ;
+  kiconthemes = ε;
+  kio = δ;
+  knewstuff = δ;
+  knotifications = δ;
+  kpackage = δ;
+  kwidgetsaddons = δ;
+  lib = ζ;
+  libXcursor = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+  qtx11extras = δ;
+} ->
+η

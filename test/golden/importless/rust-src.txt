@@ -1,0 +1,10 @@
+∀ β γ δ.
+( β.mkDerivation =
+    { installPhase = String;
+      name = String;
+      phases = [String];
+      src = ∀ α. (γ.src = α) => α;
+    } ->
+    δ
+) =>
+{rustc = γ; stdenv = β;} -> δ

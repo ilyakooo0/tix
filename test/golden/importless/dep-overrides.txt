@@ -1,0 +1,25 @@
+∀ δ ε ζ η θ ι κ λ μ.
+( δ.doJailbreak = ε -> ζ,
+  δ.dontHaddock = η -> ε,
+  δ.dontCheck = θ -> ε,
+  ι.haddock-library-ghcjs = θ,
+  κ.haddock-api-ghcjs = η
+) =>
+{haskellLib = δ;} ->
+λ ->
+μ ->
+{ ghc-api-ghcjs =
+    ∀ β γ.
+    ( μ.ghc-api-ghcjs = β,
+      β.override = {happy = ∀ α. (λ.happy_1_19_5 = α) => α;} -> γ
+    ) =>
+    γ;
+  ghcjs =
+    ∀ β γ.
+    ( μ.ghcjs = β,
+      β.override = {shelly = ∀ α. (μ.shelly_1_8_1 = α) => α;} -> γ
+    ) =>
+    γ;
+  haddock-api-ghcjs = ζ;
+  haddock-library-ghcjs = ζ;
+}

@@ -1,0 +1,11 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { installPhase = String;
+      meta =
+        {platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;};
+      name = String;
+      phases = [String];
+    } ->
+    ε
+) =>
+{binutils = ζ; gccRaw = η; stdenv = δ;} -> ε

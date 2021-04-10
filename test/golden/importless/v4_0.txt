@@ -1,0 +1,13 @@
+∀ α β γ δ ε ζ η θ ι.
+{ CoreFoundation = α;
+  Security = β;
+  boost = γ;
+  callPackage =
+    Path ->
+    {CoreFoundation = α; Security = β; boost = γ; cctools = δ; sasl = ε;} -> ζ;
+  cctools = δ;
+  lib = η;
+  sasl = ε;
+  stdenv = θ;
+} ->
+ι

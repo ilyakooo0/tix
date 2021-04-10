@@ -1,0 +1,15 @@
+∀ δ ε ζ η.
+{ bluez = δ;
+  qtModule =
+    { buildInputs =
+        ∀ α β γ. (ε.lib = α, α.optional = β -> δ -> γ, ε.isLinux = β) => γ;
+      name = String;
+      outputs = [String];
+      qtInputs = [ζ];
+    } ->
+    η;
+  qtbase = ζ;
+  qtdeclarative = ζ;
+  stdenv = ε;
+} ->
+η

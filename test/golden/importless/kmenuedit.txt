@@ -1,1 +1,15 @@
-∀ α β γ. { extra-cmake-modules = α; kdbusaddons = β; kdelibs4support = β; kdoctools = α; khotkeys = β; ki18n = β; kiconthemes = β; kio = β; kxmlgui = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; sonnet = β } -> γ
+∀ α β γ.
+{ extra-cmake-modules = α;
+  kdbusaddons = β;
+  kdelibs4support = β;
+  kdoctools = α;
+  khotkeys = β;
+  ki18n = β;
+  kiconthemes = β;
+  kio = β;
+  kxmlgui = β;
+  mkDerivation =
+    {buildInputs = [β]; name = String; nativeBuildInputs = [α];} -> γ;
+  sonnet = β;
+} ->
+γ

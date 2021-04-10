@@ -1,0 +1,5 @@
+∀ β.
+{lib = β;} ->
+{ hardware =
+    {enableRedistributableFirmware = ∀ α. (β.mkDefault = Bool -> α) => α;};
+}

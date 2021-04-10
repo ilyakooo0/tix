@@ -1,0 +1,20 @@
+∀ δ ε ζ η.
+{ base = δ;
+  bytestring = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+  mkDerivation =
+    { description = String;
+      executableHaskellDepends = [δ];
+      isExecutable = Bool;
+      isLibrary = Bool;
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.lgpl3 = γ) => γ;
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    η;
+  network = δ;
+  stdenv = ζ;
+} ->
+η

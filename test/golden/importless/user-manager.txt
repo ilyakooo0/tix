@@ -1,1 +1,15 @@
-∀ α β γ. { extra-cmake-modules = α; kcmutils = β; kconfig = β; kdoctools = α; khtml = β; ki18n = β; kiconthemes = β; kio = β; kwindowsystem = β; libpwquality = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ } -> γ
+∀ α β γ.
+{ extra-cmake-modules = α;
+  kcmutils = β;
+  kconfig = β;
+  kdoctools = α;
+  khtml = β;
+  ki18n = β;
+  kiconthemes = β;
+  kio = β;
+  kwindowsystem = β;
+  libpwquality = β;
+  mkDerivation =
+    {buildInputs = [β]; name = String; nativeBuildInputs = [α];} -> γ;
+} ->
+γ

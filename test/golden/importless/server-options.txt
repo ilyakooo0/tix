@@ -1,0 +1,25 @@
+∀ δ.
+{lib = δ;} ->
+{ options =
+    { host =
+        ∀ γ.
+        ( δ.mkOption =
+            { description = String;
+              example = String;
+              type = ∀ α β. (δ.types = α, α.str = β) => β;
+            } ->
+            γ
+        ) =>
+        γ;
+      port =
+        ∀ γ.
+        ( δ.mkOption =
+            { description = String;
+              example = Integer;
+              type = ∀ α β. (δ.types = α, α.int = β) => β;
+            } ->
+            γ
+        ) =>
+        γ;
+    };
+}

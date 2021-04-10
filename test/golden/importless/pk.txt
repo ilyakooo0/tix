@@ -1,0 +1,32 @@
+∀ γ δ ε ζ η θ ι κ λ.
+( γ.version = δ,
+  γ.src = ε,
+  γ.useDune2 = ζ,
+  γ.minimumOCamlVersion = η
+) =>
+{ buildDunePackage =
+    { buildInputs = [θ];
+      checkInputs = [ι];
+      doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      minimumOCamlVersion = η;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ε;
+      useDune2 = ζ;
+      version = δ;
+    } ->
+    κ;
+  cstruct = λ;
+  eqaf = λ;
+  gmp = θ;
+  mirage-crypto = λ;
+  mirage-crypto-rng = λ;
+  ounit = ι;
+  ppx_sexp_conv = γ;
+  randomconv = ι;
+  rresult = λ;
+  sexplib = λ;
+  zarith = λ;
+} ->
+κ

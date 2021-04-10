@@ -1,0 +1,76 @@
+∀ δ ε ζ η θ ι κ.
+{ Cabal = δ;
+  Glob = δ;
+  QuickCheck = ε;
+  aeson = δ;
+  aeson-pretty = δ;
+  ansi-terminal = δ;
+  async-pool = δ;
+  base = δ;
+  bower-json = δ;
+  bytestring = δ;
+  containers = δ;
+  dhall = δ;
+  directory = δ;
+  either = δ;
+  exceptions = δ;
+  extra = ε;
+  fetchgit =
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ζ;
+  file-embed = δ;
+  filepath = δ;
+  foldl = δ;
+  fsnotify = δ;
+  github = δ;
+  hpack = η;
+  hspec = ε;
+  hspec-discover = θ;
+  hspec-megaparsec = ε;
+  http-client = δ;
+  http-conduit = δ;
+  lens-family-core = δ;
+  megaparsec = δ;
+  mkDerivation =
+    { executableHaskellDepends = [ε];
+      homepage = String;
+      isExecutable = Bool;
+      isLibrary = Bool;
+      libraryHaskellDepends = [ε];
+      libraryToolDepends = [η];
+      license = ∀ α β γ. (ι.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      pname = String;
+      prePatch = String;
+      src = ζ;
+      testHaskellDepends = [ε];
+      testToolDepends = [θ];
+      version = String;
+    } ->
+    κ;
+  mtl = δ;
+  network-uri = δ;
+  open-browser = δ;
+  optparse-applicative = δ;
+  prettyprinter = δ;
+  process = δ;
+  retry = δ;
+  rio = δ;
+  rio-orphans = δ;
+  safe = δ;
+  semver-range = δ;
+  stdenv = ι;
+  stm = δ;
+  tar = δ;
+  template-haskell = δ;
+  temporary = δ;
+  text = δ;
+  time = δ;
+  transformers = δ;
+  turtle = δ;
+  unliftio = δ;
+  unordered-containers = δ;
+  vector = δ;
+  versions = δ;
+  with-utf8 = δ;
+  zlib = ε;
+} ->
+κ

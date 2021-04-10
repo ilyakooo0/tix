@@ -1,0 +1,25 @@
+∀ γ δ ε ζ η.
+{ attica = γ;
+  extra-cmake-modules = δ;
+  kconfig = ε;
+  kconfigwidgets = ε;
+  kglobalaccel = γ;
+  ki18n = γ;
+  kiconthemes = γ;
+  kitemviews = γ;
+  ktextwidgets = γ;
+  kwindowsystem = γ;
+  lib = ζ;
+  mkDerivation =
+    { buildInputs = [γ];
+      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+  qtbase = ε;
+  qttools = ε;
+  sonnet = γ;
+} ->
+η

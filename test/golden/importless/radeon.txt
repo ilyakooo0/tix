@@ -1,1 +1,1 @@
-{ hardware = { enableRedistributableFirmware = Bool } }
+{hardware = {enableRedistributableFirmware = Bool;};}

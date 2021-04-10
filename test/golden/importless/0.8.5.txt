@@ -1,0 +1,27 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      createFindlibDestdir = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.lgpl21 = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.maggesi = γ) => [γ];
+          platforms = ∀ α β. (ε.meta = α, α.platforms = β) => β;
+        };
+      patches = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ camlp4 = ε;
+  fetchpatch = {sha256 = String; url = String;} -> ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  findlib = ε;
+  ocaml = ε;
+  stdenv = δ;
+} ->
+θ

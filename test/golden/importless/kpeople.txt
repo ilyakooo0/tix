@@ -1,0 +1,20 @@
+∀ γ δ ε ζ η.
+{ extra-cmake-modules = γ;
+  kcoreaddons = δ;
+  ki18n = δ;
+  kitemviews = δ;
+  kservice = δ;
+  kwidgetsaddons = δ;
+  lib = ε;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      propagatedBuildInputs = [ζ];
+    } ->
+    η;
+  qtbase = ζ;
+  qtdeclarative = δ;
+} ->
+η

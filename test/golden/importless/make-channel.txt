@@ -1,0 +1,14 @@
+∀ β γ δ ε ζ η.
+( β.releaseTools = γ,
+  γ.makeSourceTarball =
+    { buildInputs = ∀ α. (β.nix = α) => [α];
+      distPhase = String;
+      name = String;
+      officialRelease = Bool;
+      src = δ;
+      version = ε;
+      versionSuffix = ζ;
+    } ->
+    η
+) =>
+{nixpkgs = δ; pkgs = β; version = ε; versionSuffix = ζ;} -> η

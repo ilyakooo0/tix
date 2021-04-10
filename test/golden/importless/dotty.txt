@@ -1,0 +1,13 @@
+∀ α β γ δ ε ζ η θ.
+( α.mkDerivation =
+    {dontUnpack = Bool; installPhase = String; meta = β; name = String;} -> γ,
+  δ.meta = β
+) =>
+{ callPackage =
+    Path -> {fetchurl = ε; jre = ζ; makeWrapper = η; stdenv = α;} -> θ;
+  fetchurl = ε;
+  jre = ζ;
+  makeWrapper = η;
+  stdenv = α;
+} ->
+γ

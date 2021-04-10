@@ -1,0 +1,25 @@
+∀ λ μ ν.
+{config = λ; lib = μ; pkgs = ν;} ->
+{ config =
+    ∀ η θ ι κ.
+    ( μ.mkIf =
+        η ->
+        { environment = {systemPackages = ∀ β. (ν.sysprof = β) => [β];};
+          services = {dbus = {packages = ∀ α. (ν.sysprof = α) => [α];};};
+          systemd = {packages = ∀ β. (ν.sysprof = β) => [β];};
+        } ->
+        θ,
+      λ.services = ι,
+      ι.sysprof = κ,
+      κ.enable = η
+    ) =>
+    θ;
+  meta =
+    { maintainers =
+        ∀ δ ε ζ. (ν.sysprof = δ, δ.meta = ε, ε.maintainers = ζ) => ζ;
+    };
+  options =
+    { services =
+        {sysprof = {enable = ∀ γ. (μ.mkEnableOption = String -> γ) => γ;};};
+    };
+}

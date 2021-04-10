@@ -1,1 +1,1 @@
-{ fetchSubmodules = Bool; rev = String; sha256 = String; url = String }
+{fetchSubmodules = Bool; rev = String; sha256 = String; url = String;}

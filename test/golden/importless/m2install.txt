@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η.
+( α.mkDerivation =
+    { installPhase = String;
+      m2File = String;
+      m2Path = String;
+      name = String;
+      phases = String;
+      src = β;
+    } ->
+    γ
+) =>
+{fetchurl = {sha512 = δ; url = String;} -> β; stdenv = α;} ->
+{ artifactId = ε;
+  groupId = ζ;
+  sha512 = δ;
+  suffix = String;
+  type = String;
+  version = η;
+} ->
+γ

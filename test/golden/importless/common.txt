@@ -1,0 +1,34 @@
+∀ ζ.
+{system = ζ;} ->
+{ baseConfig =
+    ∀ β γ δ ε.
+    ( β.stdenv = γ,
+      γ.mkDerivation =
+        { buildInputs = (β.makeWrapper = δ) => [δ];
+          dontUnpack = Bool;
+          installPhase = String;
+          name = String;
+          postFixup = String;
+        } ->
+        ε
+    ) =>
+    {pkgs = β;} ->
+    { environment = {systemPackages = ∀ α. (β.jq = α) => [α];};
+      nix =
+        { binaryCaches = ∀ α. α;
+          buildMachines = [{hostName = String; systems = [ζ];}];
+          distributedBuilds = Bool;
+        };
+      services =
+        { hydra =
+            { enable = Bool;
+              extraConfig = String;
+              hydraURL = String;
+              notificationSender = String;
+            };
+          postfix = {enable = Bool;};
+        };
+      time = {timeZone = String;};
+      virtualisation = {memorySize = Integer;};
+    };
+}

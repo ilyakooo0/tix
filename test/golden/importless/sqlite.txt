@@ -1,0 +1,16 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          maintainers = ∀ α β. (ε.maintainers = α, α.lassulus = β) => [β];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      name = String;
+      phases = [String];
+      src = ζ;
+    } ->
+    η
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ζ; lib = ε; stdenv = δ;} -> η

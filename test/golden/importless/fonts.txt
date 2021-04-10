@@ -1,0 +1,11 @@
+∀ α β γ δ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      installPhase = String;
+      name = String;
+      sourceRoot = String;
+      src = γ;
+    } ->
+    δ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> γ; stdenv = α; unzip = β;} -> δ

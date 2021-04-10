@@ -1,0 +1,5 @@
+∀ α β γ.
+( α.wrapWithBuildEnv =
+    {baseName = String; preFixup = String; propagatedBuildInputs = [β];} -> γ
+) =>
+{csound = β; faust = α;} -> γ

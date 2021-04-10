@@ -1,0 +1,9 @@
+{ allowAliases = Bool;
+  packageOverrides =
+    ∀ γ.
+    γ ->
+    { haskellPackages =
+        ∀ α β. (γ.recurseIntoAttrs = α -> β, γ.haskellPackages = α) => β;
+      rPackages = ∀ α β. (γ.recurseIntoAttrs = α -> β, γ.rPackages = α) => β;
+    };
+}

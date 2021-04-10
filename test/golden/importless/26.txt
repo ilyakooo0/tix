@@ -1,0 +1,46 @@
+∀ μ ν ξ ο π ρ.
+{ autoPatchelfHook = μ;
+  deployAndroidPackage =
+    { buildInputs =
+        ∀ γ δ ε ζ η θ ι κ λ.
+        ( ν.optional = Bool -> [γ] -> [μ],
+          ξ.glibc = γ,
+          ξ.xlibs = δ,
+          δ.libX11 = γ,
+          ξ.xlibs = ε,
+          ε.libXrender = γ,
+          ξ.xlibs = ζ,
+          ζ.libXext = γ,
+          ξ.fontconfig = γ,
+          ξ.freetype = γ,
+          ο.glibc = γ,
+          ο.xlibs = η,
+          η.libX11 = γ,
+          ο.xlibs = θ,
+          θ.libXrender = γ,
+          ο.xlibs = ι,
+          ι.libXext = γ,
+          ο.fontconfig = κ,
+          κ.lib = γ,
+          ο.freetype = γ,
+          ο.zlib = γ,
+          ξ.fontconfig = λ,
+          λ.lib = γ
+        ) =>
+        [μ];
+      meta = {licenses = ∀ α β. (ν.licenses = α, α.unfree = β) => β;};
+      name = String;
+      os = String;
+      package = π;
+      patchInstructions = String;
+    } ->
+    ρ;
+  lib = ν;
+  makeWrapper = μ;
+  os = String;
+  package = π;
+  pkgs = ξ;
+  pkgs_i686 = ο;
+  postInstall = String;
+} ->
+ρ

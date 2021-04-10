@@ -1,1 +1,1 @@
-{ _module = { check = Bool } }
+{_module = {check = Bool;};}

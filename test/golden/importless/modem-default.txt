@@ -1,1 +1,15 @@
-∀ α. { pkgs = α } -> { AdminGroup = String; AnswerRotary = String; LogFileMode = String; PriorityScheduling = Bool; RecvFileMode = String; SendPageCmd = String; SendUUCPCmd = String; ServerTracing = String; SessionTracing = String; TagLineFont = String; TagLineLocale = String; UUCPLockDir = String }
+∀ α.
+{pkgs = α;} ->
+{ AdminGroup = String;
+  AnswerRotary = String;
+  LogFileMode = String;
+  PriorityScheduling = Bool;
+  RecvFileMode = String;
+  SendPageCmd = String;
+  SendUUCPCmd = String;
+  ServerTracing = String;
+  SessionTracing = String;
+  TagLineFont = String;
+  TagLineLocale = String;
+  UUCPLockDir = String;
+}

@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+{ bazel = α;
+  bazel-examples = β;
+  bazelTest =
+    {bazelPkg = α; bazelScript = String; buildInputs = [γ]; name = String;} ->
+    δ;
+  distDir = ε;
+  gccStdenv = ζ;
+  lib = η;
+  openjdk8 = γ;
+  runLocal = String -> {} -> String -> θ;
+  runtimeShell = ι;
+  writeScript = String -> String -> κ;
+  writeText = λ;
+} ->
+δ

@@ -1,1 +1,23 @@
-∀ α β γ. { cups = α; epoxy = α; extra-cmake-modules = β; gettext = β; kcoreaddons = α; kdeclarative = α; kdoctools = β; kio = α; kirigami2 = α; knotifications = α; kwayland = α; kwidgetsaddons = α; kwindowsystem = α; mesa = α; mkDerivation = { buildInputs = [α]; name = String; nativeBuildInputs = [β] } -> γ; pcre = α; pipewire = α; plasma-framework = α; python = β } -> γ
+∀ α β γ.
+{ cups = α;
+  epoxy = α;
+  extra-cmake-modules = β;
+  gettext = β;
+  kcoreaddons = α;
+  kdeclarative = α;
+  kdoctools = β;
+  kio = α;
+  kirigami2 = α;
+  knotifications = α;
+  kwayland = α;
+  kwidgetsaddons = α;
+  kwindowsystem = α;
+  mesa = α;
+  mkDerivation =
+    {buildInputs = [α]; name = String; nativeBuildInputs = [β];} -> γ;
+  pcre = α;
+  pipewire = α;
+  plasma-framework = α;
+  python = β;
+} ->
+γ

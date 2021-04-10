@@ -1,0 +1,43 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { NIX_CFLAGS_COMPILE = String;
+      buildInputs = [ε];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.zlib = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      preConfigure = String;
+      src = η;
+    } ->
+    θ
+) =>
+{ SDL2 = ε;
+  autoconf = ε;
+  automake = ε;
+  fetchFromBitbucket =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  freetype = ε;
+  libGL = ε;
+  libGLU = ε;
+  libdevil = ε;
+  libmodplug = ε;
+  libogg = ε;
+  libtheora = ε;
+  libtool = ε;
+  libvorbis = ε;
+  luajit = ε;
+  mpg123 = ε;
+  openal = ε;
+  physfs = ε;
+  pkgconfig = ζ;
+  stdenv = δ;
+  which = ε;
+} ->
+θ

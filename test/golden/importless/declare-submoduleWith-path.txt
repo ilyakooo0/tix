@@ -1,0 +1,17 @@
+∀ δ.
+{lib = δ;} ->
+{ config = {submodule = Path;};
+  options =
+    { submodule =
+        ∀ γ.
+        ( δ.mkOption =
+            { default = {};
+              type =
+                ∀ α β.
+                (δ.types = α, α.submoduleWith = {modules = [Path];} -> β) => β;
+            } ->
+            γ
+        ) =>
+        γ;
+    };
+}

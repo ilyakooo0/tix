@@ -1,0 +1,13 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  kcodecs = δ;
+  lib = ε;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.bkchr = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+    } ->
+    ζ;
+} ->
+ζ

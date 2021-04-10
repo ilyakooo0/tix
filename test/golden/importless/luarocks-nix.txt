@@ -1,0 +1,9 @@
+∀ α β γ δ.
+( α.overrideAttrs =
+    (β -> {patches = [Path]; pname = String; src = γ; version = String;}) -> δ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> γ;
+  luarocks = α;
+} ->
+δ

@@ -1,0 +1,18 @@
+∀ α β γ δ.
+( α.coreutils = β,
+  α.findutils = β,
+  α.diffutils = β,
+  α.gnused = β,
+  α.gnugrep = β,
+  α.gawk = β,
+  α.gnutar = β,
+  α.gzip = β,
+  α.bzip2 = γ,
+  γ.bin = β,
+  α.gnumake = β,
+  α.bash = β,
+  α.patch = β,
+  α.xz = δ,
+  δ.bin = β
+) =>
+{pkgs = α;} -> [β]

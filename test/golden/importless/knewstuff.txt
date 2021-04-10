@@ -1,0 +1,32 @@
+∀ γ δ ε ζ η θ.
+{ attica = γ;
+  extra-cmake-modules = δ;
+  fetchpatch = {revert = Bool; sha256 = String; url = String;} -> ε;
+  karchive = ζ;
+  kcompletion = ζ;
+  kconfig = ζ;
+  kcoreaddons = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kio = ζ;
+  kirigami2 = ζ;
+  kitemviews = ζ;
+  kpackage = ζ;
+  kservice = γ;
+  ktextwidgets = ζ;
+  kwidgetsaddons = ζ;
+  kxmlgui = γ;
+  lib = η;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {maintainers = ∀ α β. (η.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [δ];
+      patches = [ε];
+      propagatedBuildInputs = [γ];
+    } ->
+    θ;
+  qtbase = ζ;
+  qtdeclarative = ζ;
+} ->
+θ

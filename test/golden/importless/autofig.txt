@@ -1,0 +1,6 @@
+∀ α β γ.
+(α.mkDerivation = {name = String; src = β;} -> γ) => { fetchurl =
+    {sha256 = String; url = String;} -> β;
+  stdenv = α;
+} ->
+γ

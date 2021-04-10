@@ -1,0 +1,2 @@
+∀ β γ.
+{makeInstalledTest = {tested = ∀ α. (β.libxmlb = α) => α;} -> γ; pkgs = β;} -> γ

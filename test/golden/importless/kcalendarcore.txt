@@ -1,0 +1,15 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  lib = δ;
+  libical = ε;
+  mkDerivation =
+    { meta =
+        {maintainers = ∀ α β. (δ.maintainers = α, α.nyanloutre = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+      propagatedBuildInputs = [ε];
+    } ->
+    ζ;
+} ->
+ζ

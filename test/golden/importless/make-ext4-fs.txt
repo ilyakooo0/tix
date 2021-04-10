@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.stdenv = β,
+  β.mkDerivation =
+    { buildCommand = String;
+      name = String;
+      nativeBuildInputs = (γ.bin = δ, ε.optional = Bool -> ζ -> [δ]) => [δ];
+    } ->
+    η
+) =>
+{ compressImage = Bool;
+  e2fsprogs = γ;
+  fakeroot = δ;
+  lib = ε;
+  libfaketime = δ;
+  perl = δ;
+  pkgs = α;
+  populateImageCommands = String;
+  storePaths = θ;
+  uuid = String;
+  volumeLabel = ι;
+  zstd = ζ;
+} ->
+η

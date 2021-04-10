@@ -1,0 +1,16 @@
+∀ γ δ ε ζ η.
+{ extra-cmake-modules = γ;
+  ki18n = δ;
+  kio = ε;
+  lib = ζ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+} ->
+η

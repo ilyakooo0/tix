@@ -1,1 +1,6 @@
-∀ α β. { qtModule = { devTools = [String]; name = String; qtInputs = [α] } -> β; qtbase = α; qtdeclarative = α } -> β
+∀ α β.
+{ qtModule = {devTools = [String]; name = String; qtInputs = [α];} -> β;
+  qtbase = α;
+  qtdeclarative = α;
+} ->
+β

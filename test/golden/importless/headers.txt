@@ -1,0 +1,7 @@
+∀ α β γ δ ε.
+( α.mkDerivation =
+    {meta = β; name = String; preConfigure = String; src = γ;} -> δ,
+  ε.src = γ,
+  ε.meta = β
+) =>
+{mingw_w64 = ε; stdenvNoCC = α;} -> δ

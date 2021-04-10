@@ -1,0 +1,16 @@
+∀ ζ.
+{lib = ζ;} ->
+{ options =
+    { value =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = {};
+              type =
+                ∀ α β γ δ.
+                (ζ.types = α, α.attrsOf = β -> γ, ζ.types = δ, δ.str = β) => γ;
+            } ->
+            ε
+        ) =>
+        ε;
+    };
+}

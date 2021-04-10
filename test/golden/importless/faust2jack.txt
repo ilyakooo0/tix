@@ -1,0 +1,13 @@
+∀ α β γ.
+( α.wrapWithBuildEnv =
+    {baseName = String; propagatedBuildInputs = [β]; scripts = [String];} -> γ
+) =>
+{ alsaLib = β;
+  faust = α;
+  gtk2 = β;
+  jack2Full = β;
+  libsndfile = β;
+  opencv2 = β;
+  which = β;
+} ->
+γ

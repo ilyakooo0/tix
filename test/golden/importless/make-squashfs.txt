@@ -1,0 +1,11 @@
+∀ α β γ δ ε.
+( α.mkDerivation =
+    {buildCommand = String; name = String; nativeBuildInputs = [β];} -> γ
+) =>
+{ closureInfo = δ;
+  comp = String;
+  squashfsTools = β;
+  stdenv = α;
+  storeContents = ε;
+} ->
+γ

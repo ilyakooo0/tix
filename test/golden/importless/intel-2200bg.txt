@@ -1,0 +1,27 @@
+∀ θ ι κ.
+{config = θ; lib = ι; pkgs = κ;} ->
+{ config =
+    ∀ ε ζ η.
+    ( ι.mkIf =
+        ε ->
+        {hardware = {firmware = ∀ γ. (κ.intel2200BGFirmware = γ) => [γ];};} ->
+        ζ,
+      θ.networking = η,
+      η.enableIntel2200BGFirmware = ε
+    ) =>
+    ζ;
+  options =
+    { networking =
+        { enableIntel2200BGFirmware =
+            ∀ δ.
+            ( ι.mkOption =
+                { default = Bool;
+                  description = String;
+                  type = ∀ α β. (ι.types = α, α.bool = β) => β;
+                } ->
+                δ
+            ) =>
+            δ;
+        };
+    };
+}

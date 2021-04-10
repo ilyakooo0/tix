@@ -1,1 +1,5 @@
-∀ α β. { qtModule = { name = String; outputs = [String]; qtInputs = [α] } -> β; qtdeclarative = α } -> β
+∀ α β.
+{ qtModule = {name = String; outputs = [String]; qtInputs = [α];} -> β;
+  qtdeclarative = α;
+} ->
+β

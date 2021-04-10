@@ -1,0 +1,14 @@
+∀ δ ε ζ η θ ι κ.
+( ( δ
+  ) //
+  ( { description = ∀ γ. (ε.meta = γ, γ.description = String) => String;
+      priority = Integer;
+    }
+  ) ~
+  ( ζ
+  ),
+  η.mkDerivation =
+    {builder = θ; meta = ∀ α β. (ε.meta = α) => β; name = String;} -> ι
+) =>
+{coreutils = κ; gnupg = ε; stdenv = η; writeScript = String -> String -> θ;} ->
+ι

@@ -1,0 +1,18 @@
+∀ δ.
+{lib = δ;} ->
+{ options =
+    { set =
+        { enable =
+            ∀ γ.
+            ( δ.mkOption =
+                { default = Bool;
+                  description = String;
+                  example = Bool;
+                  type = ∀ α β. (δ.types = α, α.bool = β) => β;
+                } ->
+                γ
+            ) =>
+            γ;
+        };
+    };
+}

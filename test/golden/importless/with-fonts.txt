@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  β.appendToName = String -> γ -> δ,
+  ε.meta = ζ,
+  ε.name = η,
+  ε.version = θ
+) =>
+{ lilypond = ε;
+  lndir = ι;
+  makeWrapper = ι;
+  openlilylib-fonts = κ;
+  stdenv = α;
+  symlinkJoin =
+    { buildInputs = [ι];
+      meta = ζ;
+      name = η;
+      paths = (κ.all = [ε]) => [ε];
+      postBuild = String;
+      version = θ;
+    } ->
+    γ;
+} ->
+δ

@@ -1,0 +1,5 @@
+∀ γ.
+γ ->
+{ snakeOilPrivateKey = ∀ α. (γ.writeText = String -> String -> α) => α;
+  snakeOilPublicKey = ∀ α β. (γ.lib = α, α.concatStrings = [String] -> β) => β;
+}

@@ -1,1 +1,8 @@
-∀ α β γ δ ε. { callPackage = Path -> { icu = α; openssl = β; python = γ } -> δ; enableNpm = Bool; icu = α; openssl = β; python2 = γ } -> ε
+∀ α β γ δ ε.
+{ callPackage = Path -> {icu = α; openssl = β; python = γ;} -> δ;
+  enableNpm = Bool;
+  icu = α;
+  openssl = β;
+  python2 = γ;
+} ->
+ε

@@ -1,1 +1,17 @@
-∀ α β. { callPackage = Path -> {  } -> { buildInputs = [α]; buildPhase = String; configureFlags = [String]; installPhase = String; meta = { description = String }; name = String; outputs = [String] } -> β; perl = α; texinfo = α } -> β
+∀ α β.
+{ callPackage =
+    Path ->
+    {} ->
+    { buildInputs = [α];
+      buildPhase = String;
+      configureFlags = [String];
+      installPhase = String;
+      meta = {description = String;};
+      name = String;
+      outputs = [String];
+    } ->
+    β;
+  perl = α;
+  texinfo = α;
+} ->
+β

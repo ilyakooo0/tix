@@ -1,0 +1,15 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  kdoctools = γ;
+  lib = δ;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {maintainers = ∀ α β. (δ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+    } ->
+    ζ;
+  pcre = ε;
+  qtbase = ε;
+} ->
+ζ

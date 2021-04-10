@@ -1,1 +1,19 @@
-∀ α β γ. { bluez-qt = α; extra-cmake-modules = β; kcoreaddons = α; kdbusaddons = α; kded = α; ki18n = α; kiconthemes = α; kio = α; knotifications = α; kwidgetsaddons = α; kwindowsystem = α; mkDerivation = { buildInputs = [α]; name = String; nativeBuildInputs = [β] } -> γ; plasma-framework = α; qtdeclarative = α; shared-mime-info = β } -> γ
+∀ α β γ.
+{ bluez-qt = α;
+  extra-cmake-modules = β;
+  kcoreaddons = α;
+  kdbusaddons = α;
+  kded = α;
+  ki18n = α;
+  kiconthemes = α;
+  kio = α;
+  knotifications = α;
+  kwidgetsaddons = α;
+  kwindowsystem = α;
+  mkDerivation =
+    {buildInputs = [α]; name = String; nativeBuildInputs = [β];} -> γ;
+  plasma-framework = α;
+  qtdeclarative = α;
+  shared-mime-info = β;
+} ->
+γ

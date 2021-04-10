@@ -1,0 +1,25 @@
+∀ γ δ ε ζ η.
+( γ.mkDerivation =
+    { buildPhase = String;
+      dontConfigure = Bool;
+      installPhase = String;
+      meta =
+        ∀ α β.
+        ( (α) // ({description = String; longDescription = String;}) ~ (β),
+          δ.meta = α
+        ) =>
+        β;
+      name = String;
+      nativeBuildInputs = [ε];
+      src = ∀ α. (ζ.src = α) => α;
+    } ->
+    η
+) =>
+{ apulse = δ;
+  autoreconfHook = ε;
+  intltool = ε;
+  libpulseaudio = ζ;
+  pkgconfig = ε;
+  stdenv = γ;
+} ->
+η

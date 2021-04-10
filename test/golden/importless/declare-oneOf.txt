@@ -1,0 +1,26 @@
+∀ κ.
+{lib = κ;} ->
+{ options =
+    { value =
+        ∀ ι.
+        ( κ.mkOption =
+            { type =
+                ∀ α β γ δ ε ζ η θ.
+                ( κ.types = α,
+                  α.oneOf = [β] -> γ,
+                  κ.types = δ,
+                  δ.int = β,
+                  κ.types = ε,
+                  ε.listOf = ζ -> β,
+                  κ.types = η,
+                  η.int = ζ,
+                  κ.types = θ,
+                  θ.str = β
+                ) =>
+                γ;
+            } ->
+            ι
+        ) =>
+        ι;
+    };
+}

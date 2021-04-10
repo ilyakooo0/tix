@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η.
+( α.src = β,
+  α.version = γ,
+  α.meta = δ,
+  α.nativeBuildInputs = ε
+) =>
+{ buildDunePackage =
+    { buildInputs = (α.buildInputs = [ζ]) => [ζ];
+      meta = δ;
+      nativeBuildInputs = ε;
+      pname = String;
+      propagatedBuildInputs = [α];
+      src = β;
+      version = γ;
+    } ->
+    η;
+  gtksourceview = ζ;
+  lablgtk3 = α;
+} ->
+η

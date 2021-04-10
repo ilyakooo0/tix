@@ -1,0 +1,35 @@
+∀ ε ζ η.
+{config = ε; lib = ζ; pkgs = η;} ->
+{ options =
+    { ec2 =
+        { efi =
+            ∀ δ.
+            ( ζ.mkOption =
+                { default =
+                    ∀ α β γ.
+                    (η.stdenv = α, α.hostPlatform = β, β.isAarch64 = γ) => γ;
+                  description = String;
+                  internal = Bool;
+                } ->
+                δ
+            ) =>
+            δ;
+          hvm =
+            ∀ δ.
+            ( ζ.mkOption =
+                { default =
+                    ∀ α β γ.
+                    ( ζ.versionAtLeast = α -> String -> β,
+                      ε.system = γ,
+                      γ.stateVersion = α
+                    ) =>
+                    β;
+                  description = String;
+                  internal = Bool;
+                } ->
+                δ
+            ) =>
+            δ;
+        };
+    };
+}

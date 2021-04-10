@@ -1,0 +1,39 @@
+∀ α β γ δ.
+( α.mkDerivation =
+    { doCheckstyle = Bool;
+      doJavadoc = Bool;
+      doRelease = Bool;
+      doTest = Bool;
+      doTestCompile = Bool;
+      extraMvnFlags = String;
+      finalPhase = String;
+      includeTestClasses = Bool;
+      mvnAssembly = String;
+      mvnCheckstyle = String;
+      mvnCompile = String;
+      mvnJar = String;
+      mvnJavadoc = String;
+      mvnRelease = String;
+      mvnTest = String;
+      mvnTestCompile = String;
+      mvnTestJar = String;
+      name = β;
+      phases = String;
+      setupPhase = String;
+      src = γ;
+      stdenv = α;
+    } ->
+    δ
+) =>
+{ doCheckstyle = Bool;
+  doJavadoc = Bool;
+  doRelease = Bool;
+  doTest = Bool;
+  doTestCompile = Bool;
+  extraMvnFlags = String;
+  includeTestClasses = Bool;
+  name = β;
+  src = γ;
+  stdenv = α;
+} ->
+δ

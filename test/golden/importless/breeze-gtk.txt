@@ -1,0 +1,18 @@
+∀ β γ δ ε ζ η.
+(β.getLib = γ) => { breeze-qt5 = δ;
+  extra-cmake-modules = δ;
+  gtk2 = ε;
+  lib = β;
+  mkDerivation =
+    { buildInputs = [ζ];
+      cmakeFlags = [String];
+      name = String;
+      nativeBuildInputs = ∀ α. (δ.pkgs = α, α.pycairo = δ) => [δ];
+      postPatch = String;
+    } ->
+    η;
+  python3 = δ;
+  qtbase = ζ;
+  sassc = δ;
+} ->
+η

@@ -1,0 +1,44 @@
+∀ δ ε ζ η θ.
+{ Glob = δ;
+  QuickCheck = ε;
+  array = ε;
+  async = ε;
+  base = ε;
+  bytestring = δ;
+  containers = ε;
+  crackNum = ε;
+  deepseq = ε;
+  directory = ε;
+  doctest = δ;
+  filepath = ε;
+  generic-deriving = ε;
+  ghc = ε;
+  hlint = δ;
+  mkDerivation =
+    { description = String;
+      enableSeparateDataOutput = Bool;
+      homepage = String;
+      libraryHaskellDepends = [δ];
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      pname = String;
+      sha256 = String;
+      testHaskellDepends = [δ];
+      testSystemDepends = [η];
+      version = String;
+    } ->
+    θ;
+  mtl = ε;
+  pretty = ε;
+  process = ε;
+  random = ε;
+  stdenv = ζ;
+  syb = ε;
+  tasty = δ;
+  tasty-golden = δ;
+  tasty-hunit = δ;
+  tasty-quickcheck = δ;
+  template-haskell = ε;
+  time = δ;
+  z3 = η;
+} ->
+θ

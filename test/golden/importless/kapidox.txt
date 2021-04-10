@@ -1,0 +1,13 @@
+∀ γ δ ε.
+{ extra-cmake-modules = γ;
+  lib = δ;
+  mkDerivation =
+    { meta = {maintainers = ∀ α β. (δ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      postFixup = String;
+    } ->
+    ε;
+  python = γ;
+} ->
+ε

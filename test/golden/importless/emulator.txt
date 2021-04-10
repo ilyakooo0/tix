@@ -1,0 +1,57 @@
+∀ ξ ο π ρ σ τ.
+{ autoPatchelfHook = ξ;
+  deployAndroidPackage =
+    { buildInputs =
+        ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+        ( ο.optional = Bool -> [α] -> [ξ],
+          π.glibc = α,
+          π.xlibs = β,
+          β.libX11 = α,
+          π.xlibs = γ,
+          γ.libXext = α,
+          π.xlibs = δ,
+          δ.libXdamage = α,
+          π.xlibs = ε,
+          ε.libXfixes = α,
+          π.xlibs = ζ,
+          ζ.libxcb = α,
+          π.xlibs = η,
+          η.libXcomposite = α,
+          π.xlibs = θ,
+          θ.libXcursor = α,
+          π.xlibs = ι,
+          ι.libXi = α,
+          π.xlibs = κ,
+          κ.libXrender = α,
+          π.xlibs = λ,
+          λ.libXtst = α,
+          π.libcxx = α,
+          π.libGL = α,
+          π.libpulseaudio = α,
+          π.zlib = α,
+          π.ncurses5 = α,
+          π.stdenv = μ,
+          μ.cc = ν,
+          ν.cc = α,
+          ρ.glibc = α,
+          π.expat = α,
+          π.freetype = α,
+          π.nss = α,
+          π.nspr = α,
+          π.alsaLib = α
+        ) =>
+        [ξ];
+      dontMoveLib64 = Bool;
+      os = String;
+      package = σ;
+      patchInstructions = ∀ α. (ο.optionalString = Bool -> String -> α) => α;
+    } ->
+    τ;
+  lib = ο;
+  makeWrapper = ξ;
+  os = String;
+  package = σ;
+  pkgs = π;
+  pkgs_i686 = ρ;
+} ->
+τ

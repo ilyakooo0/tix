@@ -1,1 +1,1 @@
-∀ α β. { qtModule = { name = String; qtInputs = [α] } -> β; qtbase = α } -> β
+∀ α β. {qtModule = {name = String; qtInputs = [α];} -> β; qtbase = α;} -> β

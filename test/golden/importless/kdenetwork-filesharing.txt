@@ -1,0 +1,23 @@
+∀ δ ε ζ η.
+{ extra-cmake-modules = δ;
+  kcoreaddons = ε;
+  kdoctools = δ;
+  ki18n = ε;
+  kio = ε;
+  kwidgetsaddons = ε;
+  lib = ζ;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { license =
+            ∀ α β γ.
+            (ζ.licenses = α, α.gpl2 = β, ζ.licenses = γ, γ.lgpl21 = β) => [β];
+          maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];
+        };
+      name = String;
+      nativeBuildInputs = [δ];
+    } ->
+    η;
+  samba = ε;
+} ->
+η

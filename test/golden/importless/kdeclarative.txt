@@ -1,0 +1,24 @@
+∀ γ δ ε ζ η.
+{ epoxy = γ;
+  extra-cmake-modules = δ;
+  kconfig = ε;
+  kglobalaccel = γ;
+  kguiaddons = γ;
+  ki18n = γ;
+  kiconthemes = γ;
+  kio = γ;
+  kpackage = ε;
+  kwidgetsaddons = γ;
+  kwindowsystem = γ;
+  lib = ζ;
+  mkDerivation =
+    { buildInputs = [γ];
+      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+  qtdeclarative = ε;
+} ->
+η

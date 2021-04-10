@@ -1,0 +1,15 @@
+∀ δ ε ζ.
+{ qtModule =
+    { name = String;
+      outputs = [String];
+      qmakeFlags =
+        ∀ α β γ.
+        (δ.lib = α, α.optional = β -> [String] -> γ, δ.isDarwin = β) => γ;
+      qtInputs = [ε];
+    } ->
+    ζ;
+  qtbase = ε;
+  qtmultimedia = ε;
+  stdenv = δ;
+} ->
+ζ

@@ -1,0 +1,23 @@
+∀ β γ δ ε ζ.
+{ autoPatchelfHook = β;
+  deployAndroidPackage =
+    { buildInputs =
+        ∀ α.
+        ( γ.optionals = Bool -> [α] -> [β],
+          δ.glibc = α,
+          δ.zlib = α,
+          δ.ncurses5 = α
+        ) =>
+        [β];
+      os = String;
+      package = ε;
+      patchInstructions =
+        (γ.optionalString = Bool -> String -> String) => String;
+    } ->
+    ζ;
+  lib = γ;
+  os = String;
+  package = ε;
+  pkgs = δ;
+} ->
+ζ

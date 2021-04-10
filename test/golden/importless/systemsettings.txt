@@ -1,1 +1,30 @@
-∀ α β γ. { extra-cmake-modules = α; kactivities = β; kactivities-stats = β; kcmutils = β; kconfig = β; kcrash = β; kdbusaddons = β; kdoctools = α; khtml = β; ki18n = β; kiconthemes = β; kio = β; kirigami2 = β; kitemviews = β; kservice = β; kwindowsystem = β; kxmlgui = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α]; outputs = [String] } -> γ; plasma-workspace = β; qtquickcontrols = β; qtquickcontrols2 = β } -> γ
+∀ α β γ.
+{ extra-cmake-modules = α;
+  kactivities = β;
+  kactivities-stats = β;
+  kcmutils = β;
+  kconfig = β;
+  kcrash = β;
+  kdbusaddons = β;
+  kdoctools = α;
+  khtml = β;
+  ki18n = β;
+  kiconthemes = β;
+  kio = β;
+  kirigami2 = β;
+  kitemviews = β;
+  kservice = β;
+  kwindowsystem = β;
+  kxmlgui = β;
+  mkDerivation =
+    { buildInputs = [β];
+      name = String;
+      nativeBuildInputs = [α];
+      outputs = [String];
+    } ->
+    γ;
+  plasma-workspace = β;
+  qtquickcontrols = β;
+  qtquickcontrols2 = β;
+} ->
+γ

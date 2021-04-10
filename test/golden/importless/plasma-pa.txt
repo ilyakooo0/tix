@@ -1,1 +1,20 @@
-∀ α β γ. { extra-cmake-modules = α; gconf = β; glib = β; kconfigwidgets = β; kcoreaddons = β; kdeclarative = β; kdoctools = α; kglobalaccel = β; ki18n = β; kwindowsystem = β; libcanberra-gtk3 = β; libpulseaudio = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; plasma-framework = β; qtdeclarative = β; sound-theme-freedesktop = β } -> γ
+∀ α β γ.
+{ extra-cmake-modules = α;
+  gconf = β;
+  glib = β;
+  kconfigwidgets = β;
+  kcoreaddons = β;
+  kdeclarative = β;
+  kdoctools = α;
+  kglobalaccel = β;
+  ki18n = β;
+  kwindowsystem = β;
+  libcanberra-gtk3 = β;
+  libpulseaudio = β;
+  mkDerivation =
+    {buildInputs = [β]; name = String; nativeBuildInputs = [α];} -> γ;
+  plasma-framework = β;
+  qtdeclarative = β;
+  sound-theme-freedesktop = β;
+} ->
+γ

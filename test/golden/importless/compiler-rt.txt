@@ -1,0 +1,102 @@
+∀ ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7.
+( ρ.hostPlatform = σ,
+  ρ.hostPlatform = τ,
+  ρ.hostPlatform = υ,
+  ρ.hostPlatform = φ,
+  ρ.hostPlatform = χ,
+  ρ.hostPlatform = ψ,
+  ρ.hostPlatform = ω,
+  ρ.hostPlatform = α1,
+  ρ.hostPlatform = β2,
+  β2.isMusl = Bool,
+  ρ.mkDerivation =
+    { NIX_CFLAGS_COMPILE = [String];
+      buildInputs =
+        ∀ α β γ δ.
+        ( ρ.lib = α,
+          α.optional = β -> γ3 -> γ,
+          ρ.hostPlatform = δ,
+          δ.isDarwin = β
+        ) =>
+        γ;
+      cmakeFlags =
+        ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+        ( ρ.lib = α,
+          α.optionals = Bool -> [String] -> [String],
+          β.useLLVM = Bool,
+          γ.parsed = δ,
+          δ.kernel = ε,
+          ε.name = String,
+          ρ.lib = ζ,
+          ζ.optionals = Bool -> [String] -> [String],
+          η.useLLVM = Bool,
+          θ.parsed = ι,
+          ι.kernel = κ,
+          κ.name = String,
+          ρ.lib = λ,
+          λ.optionals = Bool -> [String] -> [String],
+          μ.useLLVM = Bool,
+          ρ.lib = ν,
+          ν.optionals = Bool -> [String] -> [String],
+          ξ.parsed = ο,
+          ο.kernel = π,
+          π.name = String
+        ) =>
+        [String];
+      enableParallelBuilding = Bool;
+      nativeBuildInputs = [δ4];
+      outputs = [String];
+      patches =
+        ∀ α β γ δ ε ζ η θ.
+        ( ρ.lib = α,
+          α.optional = β -> Path -> [Path],
+          ρ.hostPlatform = γ,
+          γ.isMusl = β,
+          ρ.lib = δ,
+          δ.optional = Bool -> Path -> [Path],
+          ρ.hostPlatform = ε,
+          ε.libc = String,
+          ρ.lib = ζ,
+          ζ.optional = η -> Path -> [Path],
+          ρ.hostPlatform = θ,
+          θ.isAarch32 = η
+        ) =>
+        [Path];
+      pname = String;
+      postInstall =
+        ∀ α β γ δ ε ζ.
+        ( ρ.lib = α,
+          α.optionalString = Bool -> String -> β,
+          ρ.hostPlatform = γ,
+          γ.isDarwin = Bool,
+          ρ.hostPlatform = δ,
+          δ.isWasm = Bool,
+          ρ.lib = ε,
+          ε.optionalString = Bool -> String -> β,
+          ζ.useLLVM = Bool
+        ) =>
+        β;
+      postPatch =
+        ∀ α β γ δ ε.
+        ( ρ.lib = α,
+          α.optionalString = β -> String -> γ,
+          ρ.isDarwin = β,
+          ρ.lib = δ,
+          δ.optionalString = Bool -> String -> γ,
+          ε.useLLVM = Bool
+        ) =>
+        γ;
+      src = ε5;
+      version = ζ6;
+    } ->
+    η7
+) =>
+{ cmake = δ4;
+  fetch = String -> String -> ε5;
+  libcxxabi = γ3;
+  llvm = δ4;
+  python3 = δ4;
+  stdenv = ρ;
+  version = ζ6;
+} ->
+η7

@@ -1,0 +1,19 @@
+∀ γ δ ε ζ η.
+{ extra-cmake-modules = γ;
+  gtk3 = γ;
+  hicolor-icon-theme = δ;
+  lib = ε;
+  mkDerivation =
+    { buildInputs = [ζ];
+      dontDropIconThemeCache = Bool;
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+      postInstall = String;
+      propagatedBuildInputs = [δ];
+    } ->
+    η;
+  qtsvg = ζ;
+} ->
+η

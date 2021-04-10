@@ -1,1 +1,21 @@
-∀ α β γ. { extra-cmake-modules = α; kcmutils = β; kconfig = β; kconfigwidgets = β; kdbusaddons = β; kdeclarative = β; kglobalaccel = β; ki18n = β; kwidgetsaddons = β; kwindowsystem = β; kxmlgui = β; libkscreen = β; mkDerivation = { buildInputs = [β]; name = String; nativeBuildInputs = [α] } -> γ; plasma-framework = β; qtdeclarative = β; qtgraphicaleffects = β; qtsensors = β } -> γ
+∀ α β γ.
+{ extra-cmake-modules = α;
+  kcmutils = β;
+  kconfig = β;
+  kconfigwidgets = β;
+  kdbusaddons = β;
+  kdeclarative = β;
+  kglobalaccel = β;
+  ki18n = β;
+  kwidgetsaddons = β;
+  kwindowsystem = β;
+  kxmlgui = β;
+  libkscreen = β;
+  mkDerivation =
+    {buildInputs = [β]; name = String; nativeBuildInputs = [α];} -> γ;
+  plasma-framework = β;
+  qtdeclarative = β;
+  qtgraphicaleffects = β;
+  qtsensors = β;
+} ->
+γ

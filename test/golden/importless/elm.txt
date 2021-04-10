@@ -1,0 +1,51 @@
+∀ δ ε ζ η.
+{ HTTP = δ;
+  SHA = δ;
+  ansi-terminal = δ;
+  ansi-wl-pprint = δ;
+  base = δ;
+  binary = δ;
+  bytestring = δ;
+  containers = δ;
+  directory = δ;
+  edit-distance = δ;
+  fetchgit =
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
+  file-embed = δ;
+  filelock = δ;
+  filepath = δ;
+  ghc-prim = δ;
+  haskeline = δ;
+  http-client = δ;
+  http-client-tls = δ;
+  http-types = δ;
+  language-glsl = δ;
+  mkDerivation =
+    { description = String;
+      executableHaskellDepends = [δ];
+      homepage = String;
+      isExecutable = Bool;
+      isLibrary = Bool;
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    η;
+  mtl = δ;
+  network = δ;
+  parsec = δ;
+  process = δ;
+  raw-strings-qq = δ;
+  scientific = δ;
+  snap-core = δ;
+  snap-server = δ;
+  stdenv = ζ;
+  template-haskell = δ;
+  time = δ;
+  unordered-containers = δ;
+  utf8-string = δ;
+  vector = δ;
+  zip-archive = δ;
+} ->
+η

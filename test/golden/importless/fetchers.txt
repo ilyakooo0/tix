@@ -1,1 +1,1 @@
-∀ α. { lib = α } -> { proxyImpureEnvVars = [String] }
+∀ α. {lib = α;} -> {proxyImpureEnvVars = [String];}

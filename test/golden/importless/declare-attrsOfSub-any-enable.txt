@@ -1,0 +1,40 @@
+∀ ι.
+{lib = ι;} ->
+{ options =
+    { attrsOfSub =
+        ∀ θ.
+        ( ι.mkOption =
+            { default = {};
+              description = String;
+              example = {};
+              type =
+                ∀ α β γ δ ε ζ η.
+                ( ι.types = α,
+                  α.attrsOf = β -> γ,
+                  ι.types = δ,
+                  δ.submodule =
+                    [ ( {} ->
+                        { options =
+                            { enable =
+                                ( ι.mkOption =
+                                    { default = Bool;
+                                      description = String;
+                                      example = Bool;
+                                      type = (ι.types = ε, ε.bool = ζ) => ζ;
+                                    } ->
+                                    η
+                                ) =>
+                                η;
+                            };
+                        }
+                      )
+                    ] ->
+                    β
+                ) =>
+                γ;
+            } ->
+            θ
+        ) =>
+        θ;
+    };
+}

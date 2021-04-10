@@ -1,0 +1,11 @@
+∀ β γ δ ε.
+( β.mkDerivation =
+    { allowedReferences = [String];
+      buildCommand = String;
+      meta = γ;
+      name = ∀ α. (δ.name = α) => α;
+    } ->
+    ε,
+  δ.meta = γ
+) =>
+{klibc = δ; stdenv = β;} -> ε

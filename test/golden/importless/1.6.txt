@@ -1,1 +1,5 @@
-∀ α. { mkDerivation = { minimumOTPVersion = String; sha256 = String; version = String } -> α } -> α
+∀ α.
+{ mkDerivation =
+    {minimumOTPVersion = String; sha256 = String; version = String;} -> α;
+} ->
+α

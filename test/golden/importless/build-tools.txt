@@ -1,0 +1,29 @@
+∀ β γ δ ε ζ η.
+{ autoPatchelfHook = β;
+  deployAndroidPackage =
+    { buildInputs =
+        ∀ α.
+        ( γ.optionals = Bool -> [α] -> [β],
+          δ.glibc = α,
+          δ.zlib = α,
+          δ.ncurses5 = α,
+          ε.glibc = α,
+          ε.zlib = α,
+          ε.ncurses5 = α,
+          δ.libcxx = α
+        ) =>
+        [β];
+      noAuditTmpdir = Bool;
+      os = String;
+      package = ζ;
+      patchInstructions = String;
+    } ->
+    η;
+  lib = γ;
+  makeWrapper = β;
+  os = String;
+  package = ζ;
+  pkgs = δ;
+  pkgs_i686 = ε;
+} ->
+η

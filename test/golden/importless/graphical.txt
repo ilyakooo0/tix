@@ -1,0 +1,13 @@
+∀ β.
+{pkgs = β;} ->
+{ environment = {systemPackages = ∀ α. (β.glxinfo = α, β.firefox = α) => [α];};
+  hardware = {pulseaudio = {enable = Bool;};};
+  services =
+    { xserver =
+        { desktopManager = {plasma5 = {enable = Bool;};};
+          displayManager = {sddm = {enable = Bool;};};
+          enable = Bool;
+          libinput = {enable = Bool;};
+        };
+    };
+}

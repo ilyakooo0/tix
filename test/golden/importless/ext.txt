@@ -1,0 +1,10 @@
+∀ β.
+{pkgs = β;} ->
+{ config =
+    { boot =
+        { initrd =
+            {availableKernelModules = [String]; extraUtilsCommands = String;};
+        };
+      system = {fsPackages = ∀ α. (β.e2fsprogs = α) => [α];};
+    };
+}

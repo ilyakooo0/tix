@@ -1,1 +1,1 @@
-∀ α. { lib = α } -> { disabledModules = [String] }
+∀ α. {lib = α;} -> {disabledModules = [String];}

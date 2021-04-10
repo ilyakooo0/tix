@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι.
+(α.name = β, α.src = γ, α.meta = δ) => { gmp = ε;
+  idris-no-deps = α;
+  lib = ζ;
+  makeWrapper = η;
+  stdenv = θ;
+  symlinkJoin =
+    { buildInputs = [η];
+      meta = δ;
+      name = β;
+      paths = [α];
+      postBuild = String;
+      src = γ;
+    } ->
+    ι;
+} ->
+ι

@@ -1,0 +1,23 @@
+∀ α β γ δ ε.
+( α.versionOlder = β -> String -> Bool,
+  α.optionalString = Bool -> String -> γ,
+  δ.isSunOS = Bool,
+  δ.is64bit = Bool,
+  α.optionalString = Bool -> String -> γ,
+  α.versionOlder = β -> String -> Bool,
+  α.optionalString = Bool -> String -> γ,
+  α.optionalString = ε -> String -> γ,
+  δ.isDarwin = ε,
+  α.optionalString = Bool -> String -> γ,
+  δ.isDarwin = Bool
+) =>
+{ gnatboot = Null;
+  hostPlatform = δ;
+  langAda = Bool;
+  langGo = Bool;
+  langJava = Bool;
+  langJit = Bool;
+  lib = α;
+  version = β;
+} ->
+γ

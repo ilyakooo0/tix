@@ -1,0 +1,48 @@
+∀ δ ε ζ η θ ι.
+{ Cabal = δ;
+  HUnit = ε;
+  QuickCheck = ε;
+  ansi-terminal = ζ;
+  ansi-wl-pprint = ζ;
+  base = δ;
+  binary = ζ;
+  bytestring = ζ;
+  cmark = ε;
+  containers = ζ;
+  directory = δ;
+  elm-format = ε;
+  fetchgit =
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> η;
+  filepath = δ;
+  free = ζ;
+  indents = ζ;
+  json = ζ;
+  mkDerivation =
+    { description = String;
+      executableHaskellDepends = [ε];
+      homepage = String;
+      isExecutable = Bool;
+      isLibrary = Bool;
+      libraryHaskellDepends = [ε];
+      license = ∀ α β γ. (θ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      pname = String;
+      setupHaskellDepends = [ζ];
+      src = η;
+      testHaskellDepends = [ε];
+      version = String;
+    } ->
+    ι;
+  mtl = ζ;
+  optparse-applicative = ζ;
+  parsec = ζ;
+  process = ζ;
+  quickcheck-io = ε;
+  split = ζ;
+  stdenv = θ;
+  tasty = ε;
+  tasty-golden = ε;
+  tasty-hunit = ε;
+  tasty-quickcheck = ε;
+  text = ε;
+} ->
+ι

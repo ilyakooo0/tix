@@ -1,0 +1,4 @@
+∀ α β γ.
+( α.wrapWithBuildEnv = {baseName = String; propagatedBuildInputs = [β];} -> γ
+) =>
+{boost = β; faust = α; ladspaH = β;} -> γ

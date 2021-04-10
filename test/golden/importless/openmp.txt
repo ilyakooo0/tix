@@ -1,0 +1,25 @@
+∀ δ ε ζ η θ ι.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = θ;
+    } ->
+    ι
+) =>
+{ cmake = ζ;
+  fetch = String -> String -> η;
+  llvm = ε;
+  perl = ζ;
+  stdenv = δ;
+  version = θ;
+} ->
+ι

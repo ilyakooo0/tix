@@ -1,0 +1,36 @@
+∀ ζ η θ ι.
+( ζ.mkDerivation =
+    { buildInputs = [η];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd2 = γ) => γ;
+          maintainers =
+            ∀ α β γ δ ε.
+            ( ζ.lib = α,
+              α.maintainers = β,
+              β.meisternu = γ,
+              ζ.lib = δ,
+              δ.maintainers = ε,
+              ε.epitrochoid = γ
+            ) =>
+            [γ];
+          platforms = ∀ α β γ. (ζ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      name = String;
+      src = θ;
+    } ->
+    ι
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libXinerama = η;
+  libxcb = η;
+  stdenv = ζ;
+  xcbutil = η;
+  xcbutilkeysyms = η;
+  xcbutilwm = η;
+} ->
+ι

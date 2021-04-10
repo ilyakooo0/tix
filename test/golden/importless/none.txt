@@ -1,1 +1,5 @@
-{ services = { xserver = { windowManager = { session = [{ name = String; start = String }] } } } }
+{ services =
+    { xserver =
+        {windowManager = {session = [{name = String; start = String;}];};};
+    };
+}

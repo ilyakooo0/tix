@@ -1,1 +1,1635 @@
-{ CFPropertyList = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; RubyInline = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ZenTest = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; actionmailer = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; actionpack = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; actionview = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; activejob = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; activemodel = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; activerecord = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; activesupport = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; addressable = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; algoliasearch = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; arel = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ast = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; atk = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; atomos = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; awesome_print = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; bacon = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; builder = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; byebug = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cairo = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cairo-gobject = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; camping = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; charlock_holmes = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; claide = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; clamp = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cld3 = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-acknowledgements = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-art = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-bin = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-browser = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-bugsnag = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-check = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-clean = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-clean_build_phases_scripts = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-core = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-coverage = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-deintegrate = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-dependencies = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-deploy = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-disable-podfile-validations = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-downloader = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-expert-difficulty = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-fix-react-native = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-generate = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-git_url_rewriter = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-keys = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-no-dev-schemes = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-open = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-packager = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-packager-pro = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-playgrounds = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-plugins = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-prune-localizations = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-rome = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-search = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-sorted-search = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-static-swift-framework = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-stats = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-tdfire-binary = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-testing = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-trunk = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-try = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-try-release-fix = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-update-if-you-dare = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-whitelist = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; cocoapods-wholemodule = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; coderay = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; colorator = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; colored2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; concurrent-ruby = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; crass = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; curb = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; curses = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; daemons = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; data_objects = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; dep-selector-libgecode = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; diff-lcs = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; digest-sha3 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; do_sqlite3 = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; docile = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; domain_name = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; dotenv = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; em-websocket = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; erubis = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; escape = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ethon = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; eventmachine = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; excon = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; faraday = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ffi = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ffi-compiler = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ffi-rzmq-core = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-core = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-dnsimple = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-json = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; formatador = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; forwardable-extended = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fourflusher = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fuzzy_match = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gdk_pixbuf2 = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gh_inspector = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gio2 = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gitlab-markup = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; glib2 = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; globalid = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gobject-introspection = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gpgme = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; gtk2 = { dependencies = [String]; groups = [String]; meta = { broken = Bool }; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; hashie = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; highline = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; hike = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; hitimes = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; hpricot = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; http-accept = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; http-cookie = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; http_parser.rb = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; httpclient = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; i18n = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; iconv = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; idn-ruby = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jaro_winkler = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jbuilder = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jekyll = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jekyll-sass-converter = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jekyll-watch = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jmespath = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; json = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; jwt = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; kramdown = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; kramdown-parser-gfm = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; libv8 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; libxml-ruby = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; liquid = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; listen = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; loofah = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mab = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; magic = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mail = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; markaby = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mercenary = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; method_source = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mime-types = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mime-types-data = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mini_magick = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mini_mime = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mini_portile2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; minitest = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; molinillo = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; msgpack = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; multi_json = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; multipart-post = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mysql2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; nanaimo = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; nap = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; native-package-installer = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ncursesw = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; net-scp = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; net-ssh = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; netrc = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; nio4r = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; nokogiri = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; opus-ruby = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; osx_keychain = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ovirt-engine-sdk = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pango = { dependencies = [String]; groups = [String]; meta = { broken = Bool }; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; parallel = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; parser = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pathutil = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; patron = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pcaprub = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pg = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pkg-config = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; polyglot = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pry = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pry-byebug = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; pry-doc = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; public_suffix = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; puma = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rack = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rack-protection = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rack-test = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rails = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rails-deprecated_sanitizer = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rails-dom-testing = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rails-html-sanitizer = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; railties = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rainbow = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rake = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rb-fsevent = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rb-inotify = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rb-readline = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rbnacl = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; re2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; redcarpet = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; redis = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; redis-rack = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; redis-store = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rest-client = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rmagick = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rouge = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rpam2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rspec = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rspec-core = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rspec-expectations = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rspec-mocks = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rspec-support = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rubocop = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rubocop-performance = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-graphviz = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-libvirt = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-lxc = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-macho = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-progressbar = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-terminfo = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-vips = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rubyzip = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; rugged = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; safe_yaml = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sassc = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; scrypt = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; semian = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sequel = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sequel_pg = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; simplecov = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; simplecov-html = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sinatra = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; slather = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; slop = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; snappy = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sprockets = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sprockets-rails = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; sqlite3 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; taglib-ruby = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; terminal-table = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; thor = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; thread_safe = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; thrift = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; tilt = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; tiny_tds = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; treetop = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; typhoeus = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; tzinfo = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; unf = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; unf_ext = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; unicode-display_width = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; uuid4r = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; whois = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; xcodeproj = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; xctasks = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; yard = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; zookeeper = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String } }
+{ CFPropertyList =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  RubyInline =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ZenTest =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  actionmailer =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  actionpack =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  actionview =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  activejob =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  activemodel =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  activerecord =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  activesupport =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  addressable =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  algoliasearch =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  arel =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ast =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  atk =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  atomos =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  awesome_print =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  bacon =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  builder =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  byebug =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cairo =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cairo-gobject =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  camping =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  charlock_holmes =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  claide =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  clamp =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cld3 =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-acknowledgements =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-art =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-bin =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-browser =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-bugsnag =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-check =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-clean =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-clean_build_phases_scripts =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-core =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-coverage =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-deintegrate =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-dependencies =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-deploy =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-disable-podfile-validations =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-downloader =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-expert-difficulty =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-fix-react-native =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-generate =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-git_url_rewriter =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-keys =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-no-dev-schemes =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-open =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-packager =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-packager-pro =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-playgrounds =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-plugins =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-prune-localizations =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-rome =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-search =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-sorted-search =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-static-swift-framework =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-stats =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-tdfire-binary =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-testing =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-trunk =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-try =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-try-release-fix =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-update-if-you-dare =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-whitelist =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  cocoapods-wholemodule =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  coderay =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  colorator =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  colored2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  concurrent-ruby =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  crass =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  curb =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  curses =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  daemons =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  data_objects =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  dep-selector-libgecode =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  diff-lcs =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  digest-sha3 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  do_sqlite3 =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  docile =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  domain_name =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  dotenv =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  em-websocket =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  erubis =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  escape =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ethon =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  eventmachine =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  excon =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  faraday =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ffi =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ffi-compiler =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ffi-rzmq-core =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-core =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-dnsimple =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-json =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  formatador =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  forwardable-extended =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fourflusher =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fuzzy_match =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gdk_pixbuf2 =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gh_inspector =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gio2 =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gitlab-markup =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  glib2 =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  globalid =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gobject-introspection =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gpgme =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  gtk2 =
+    { dependencies = [String];
+      groups = [String];
+      meta = {broken = Bool;};
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  hashie =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  highline =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  hike =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  hitimes =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  hpricot =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  http-accept =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  http-cookie =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  http_parser.rb =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  httpclient =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  i18n =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  iconv =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  idn-ruby =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jaro_winkler =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jbuilder =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jekyll =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jekyll-sass-converter =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jekyll-watch =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jmespath =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  json =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  jwt =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  kramdown =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  kramdown-parser-gfm =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  libv8 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  libxml-ruby =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  liquid =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  listen =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  loofah =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mab =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  magic =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mail =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  markaby =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mercenary =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  method_source =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mime-types =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mime-types-data =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mini_magick =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mini_mime =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mini_portile2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  minitest =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  molinillo =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  msgpack =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  multi_json =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  multipart-post =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mysql2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  nanaimo =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  nap =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  native-package-installer =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ncursesw =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  net-scp =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  net-ssh =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  netrc =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  nio4r =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  nokogiri =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  opus-ruby =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  osx_keychain =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ovirt-engine-sdk =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pango =
+    { dependencies = [String];
+      groups = [String];
+      meta = {broken = Bool;};
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  parallel =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  parser =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pathutil =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  patron =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pcaprub =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pg =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pkg-config =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  polyglot =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pry =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pry-byebug =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  pry-doc =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  public_suffix =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  puma =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rack =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rack-protection =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rack-test =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rails =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rails-deprecated_sanitizer =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rails-dom-testing =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rails-html-sanitizer =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  railties =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rainbow =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rake =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rb-fsevent =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rb-inotify =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rb-readline =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rbnacl =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  re2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  redcarpet =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  redis =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  redis-rack =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  redis-store =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rest-client =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rmagick =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rouge =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rpam2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rspec =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rspec-core =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rspec-expectations =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rspec-mocks =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rspec-support =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rubocop =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rubocop-performance =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-graphviz =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-libvirt =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-lxc =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-macho =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-progressbar =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-terminfo =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-vips =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rubyzip =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  rugged =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  safe_yaml =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sassc =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  scrypt =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  semian =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sequel =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sequel_pg =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  simplecov =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  simplecov-html =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sinatra =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  slather =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  slop =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  snappy =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sprockets =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sprockets-rails =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  sqlite3 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  taglib-ruby =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  terminal-table =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  thor =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  thread_safe =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  thrift =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  tilt =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  tiny_tds =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  treetop =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  typhoeus =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  tzinfo =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  unf =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  unf_ext =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  unicode-display_width =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  uuid4r =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  whois =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  xcodeproj =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  xctasks =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  yard =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  zookeeper =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+}

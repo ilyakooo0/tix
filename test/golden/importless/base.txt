@@ -1,0 +1,42 @@
+∀ γ δ.
+{lib = γ; pkgs = δ;} ->
+{ boot = {supportedFilesystems = [String];};
+  environment =
+    { systemPackages =
+        ∀ α β.
+        ( δ.w3m-nographics = α,
+          δ.testdisk = α,
+          δ.ms-sys = α,
+          δ.efibootmgr = α,
+          δ.efivar = α,
+          δ.parted = α,
+          δ.gptfdisk = α,
+          δ.ddrescue = α,
+          δ.ccrypt = α,
+          δ.cryptsetup = α,
+          δ.mkpasswd = α,
+          δ.vim = α,
+          δ.fuse = α,
+          δ.fuse3 = α,
+          δ.sshfs-fuse = α,
+          δ.rsync = α,
+          δ.socat = α,
+          δ.screen = α,
+          δ.sdparm = α,
+          δ.hdparm = α,
+          δ.smartmontools = α,
+          δ.pciutils = α,
+          δ.usbutils = α,
+          δ.ntfsprogs = α,
+          δ.dosfstools = α,
+          δ.xfsprogs = β,
+          β.bin = α,
+          δ.jfsutils = α,
+          δ.f2fs-tools = α,
+          δ.unzip = α,
+          δ.zip = α
+        ) =>
+        [α];
+    };
+  networking = {hostId = ∀ α. (γ.mkDefault = String -> α) => α;};
+}

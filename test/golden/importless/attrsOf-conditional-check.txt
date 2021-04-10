@@ -1,0 +1,8 @@
+∀ γ δ.
+{config = γ; lib = δ;} ->
+{ config = {value = {foo = ∀ α. (δ.mkIf = Bool -> String -> α) => α;};};
+  options =
+    { conditionalWorks =
+        ∀ β. (δ.mkOption = {default = (γ.value = Bool) => Bool;} -> β) => β;
+    };
+}

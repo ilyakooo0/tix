@@ -1,0 +1,18 @@
+∀ γ δ ε.
+{ build-idris-package =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β. (γ.licenses = α, α.agpl3 = β) => β;
+          maintainers = ∀ α β. (γ.maintainers = α, α.brainrape = β) => [β];
+        };
+      name = String;
+      src = δ;
+      version = String;
+    } ->
+    ε;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
+  lib = γ;
+} ->
+ε

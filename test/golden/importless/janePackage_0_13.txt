@@ -1,0 +1,16 @@
+∀ γ δ ε ζ η.
+{ buildDunePackage =
+    { hash = γ;
+      meta =
+        {homepage = String; license = ∀ α β. (δ.licenses = α, α.mit = β) => β;};
+      minimumOCamlVersion = String;
+      pname = ε;
+      src = ζ;
+      version = String;
+    } ->
+    η;
+  defaultVersion = String;
+  fetchFromGitHub = {owner = String; repo = ε; rev = String; sha256 = γ;} -> ζ;
+  lib = δ;
+} ->
+{hash = γ; pname = ε; version = String;} -> η

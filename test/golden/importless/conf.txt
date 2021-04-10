@@ -1,0 +1,20 @@
+∀ ζ η θ ι κ λ μ ν ξ ο π.
+( ζ.writeTextDir = η -> String -> θ,
+  ζ.writeTextDir = ι -> String -> κ,
+  ζ.writeTextDir = λ -> String -> μ,
+  ζ.writeTextDir = ν -> String -> ξ,
+  ζ.buildEnv =
+    { name = String;
+      paths =
+        ∀ α β γ δ ε.
+        ( ο.coreSite = α,
+          ο.hdfsSite = β,
+          ο.mapredSite = γ,
+          ο.yarnSite = δ,
+          ζ.writeTextDir = String -> String -> ε
+        ) =>
+        [ε];
+    } ->
+    π
+) =>
+{hadoop = ο; pkgs = ζ;} -> π

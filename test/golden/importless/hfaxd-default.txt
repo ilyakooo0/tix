@@ -1,1 +1,1 @@
-{  } -> { ServerTracing = String; XferLogFile = String }
+{} -> {ServerTracing = String; XferLogFile = String;}

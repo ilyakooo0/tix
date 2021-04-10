@@ -1,0 +1,11 @@
+∀ β γ.
+((β) // ({meta = {hydraPlatforms = ∀ α. α;};}) ~ (γ)) => { fetchFromGitHub =
+    { name = String;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    β;
+} ->
+γ

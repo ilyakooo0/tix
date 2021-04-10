@@ -1,1 +1,5 @@
-∀ α β. { extra-cmake-modules = α; mkDerivation = { name = String; nativeBuildInputs = [α] } -> β } -> β
+∀ α β.
+{ extra-cmake-modules = α;
+  mkDerivation = {name = String; nativeBuildInputs = [α];} -> β;
+} ->
+β

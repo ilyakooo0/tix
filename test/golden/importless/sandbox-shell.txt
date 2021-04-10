@@ -1,0 +1,5 @@
+∀ α β γ.
+( α.override =
+    {enableMinimal = Bool; enableStatic = Bool; extraConfig = String;} -> β
+) =>
+{busybox = α; stdenv = γ;} -> β

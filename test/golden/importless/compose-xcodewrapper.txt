@@ -1,0 +1,5 @@
+∀ α β.
+( α.isDarwin = Bool,
+  α.mkDerivation = {buildCommand = String; name = String;} -> β
+) =>
+{stdenv = α;} -> {version = String; xcodeBaseDir = String;} -> β

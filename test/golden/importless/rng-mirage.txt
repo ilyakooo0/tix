@@ -1,0 +1,29 @@
+∀ γ δ ε ζ η θ ι κ.
+( γ.version = δ,
+  γ.src = ε,
+  γ.useDune2 = ζ,
+  γ.minimumOCamlVersion = η
+) =>
+{ buildDunePackage =
+    { checkInputs = [θ];
+      doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      minimumOCamlVersion = η;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ε;
+      useDune2 = ζ;
+      version = δ;
+    } ->
+    ι;
+  cstruct = κ;
+  duration = κ;
+  mirage-clock = γ;
+  mirage-clock-unix = θ;
+  mirage-crypto-rng = κ;
+  mirage-runtime = κ;
+  mirage-time = κ;
+  mirage-time-unix = θ;
+  mirage-unix = θ;
+} ->
+ι

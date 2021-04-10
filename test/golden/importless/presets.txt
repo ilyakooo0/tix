@@ -1,0 +1,11 @@
+∀ α β γ δ ε ζ η.
+( α.mapAttrs =
+    (β -> {CPPFLAGS = γ;} -> δ) ->
+    { arduino-esp32 = {CPPFLAGS = [String];};
+      arduino-esp8266 = {CPPFLAGS = [String];};
+      esp-idf = {CPPFLAGS = [String];};
+    } ->
+    ε,
+  ζ.overrideAttrs = (η -> {BUILD_CONFIG_NAME = String; CPPFLAGS = γ;}) -> δ
+) =>
+{lib = α; mkspiffs = ζ;} -> ε

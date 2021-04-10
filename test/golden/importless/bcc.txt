@@ -1,0 +1,26 @@
+∀ ι κ.
+{config = ι; lib = κ;} ->
+{ config =
+    ∀ ε ζ η θ.
+    ( κ.mkIf =
+        ε ->
+        { boot =
+            { extraModulePackages =
+                ∀ α β γ. (ι.boot = α, α.kernelPackages = β, β.bcc = γ) => [γ];
+            };
+          environment =
+            { systemPackages =
+                ∀ α β γ. (ι.boot = α, α.kernelPackages = β, β.bcc = γ) => [γ];
+            };
+        } ->
+        ζ,
+      ι.programs = η,
+      η.bcc = θ,
+      θ.enable = ε
+    ) =>
+    ζ;
+  options =
+    { programs =
+        {bcc = {enable = ∀ δ. (κ.mkEnableOption = String -> δ) => δ;};};
+    };
+}

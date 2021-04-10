@@ -1,1 +1,6 @@
-{  } -> { ModemGroup = [String]; ServerTracing = String; SessionTracing = String; UUCPLockDir = String }
+{} ->
+{ ModemGroup = [String];
+  ServerTracing = String;
+  SessionTracing = String;
+  UUCPLockDir = String;
+}

@@ -1,0 +1,27 @@
+∀ δ.
+{lib = δ;} ->
+{ options =
+    { crt =
+        ∀ γ.
+        ( δ.mkOption =
+            { default = String;
+              description = String;
+              example = String;
+              type = ∀ α β. (δ.types = α, α.str = β) => β;
+            } ->
+            γ
+        ) =>
+        γ;
+      key =
+        ∀ γ.
+        ( δ.mkOption =
+            { default = String;
+              description = String;
+              example = String;
+              type = ∀ α β. (δ.types = α, α.str = β) => β;
+            } ->
+            γ
+        ) =>
+        γ;
+    };
+}

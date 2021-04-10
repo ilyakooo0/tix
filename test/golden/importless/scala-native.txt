@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.overrideDerivation =
+    ( β ->
+      { nativeBuildInputs = [γ];
+        postFixup = String;
+        sha256 = String;
+        version = String;
+      }
+    ) ->
+    δ
+) =>
+{ boehmgc = ε;
+  lib = ζ;
+  libunwind = η;
+  llvmPackages = θ;
+  makeWrapper = γ;
+  re2 = ι;
+  sbt = α;
+  zlib = κ;
+} ->
+δ

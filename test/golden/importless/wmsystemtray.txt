@@ -1,0 +1,27 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.bstrik = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      src = η;
+    } ->
+    θ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  libX11 = ε;
+  libXext = ε;
+  libXfixes = ε;
+  libXmu = ε;
+  libXpm = ε;
+  pkgconfig = ζ;
+  stdenv = δ;
+} ->
+θ

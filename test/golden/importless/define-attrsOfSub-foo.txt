@@ -1,1 +1,1 @@
-{ attrsOfSub = { foo = {  } } }
+{attrsOfSub = {foo = {};};}

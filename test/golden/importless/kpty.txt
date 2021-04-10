@@ -1,0 +1,16 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  kcoreaddons = δ;
+  ki18n = δ;
+  lib = ε;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+    } ->
+    ζ;
+  qtbase = δ;
+} ->
+ζ

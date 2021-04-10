@@ -1,0 +1,5 @@
+∀ β γ.
+{ makeInstalledTest = {tested = ∀ α. (β.glib-testing = α) => α;} -> γ;
+  pkgs = β;
+} ->
+γ

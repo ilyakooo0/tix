@@ -1,0 +1,13 @@
+∀ α β γ δ ε ζ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      dontBuild = Bool;
+      installPhase = String;
+      name = γ;
+      src = δ;
+      unpackPhase = String;
+      version = ε;
+    } ->
+    ζ
+) =>
+{stdenv = α; unzip = β;} -> {name = γ; src = δ; version = ε;} -> ζ

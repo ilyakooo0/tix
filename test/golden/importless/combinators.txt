@@ -1,0 +1,17 @@
+∀ γ δ ε ζ η θ.
+(γ.version = δ, γ.src = ε) => { buildDunePackage =
+    { meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ε;
+      version = δ;
+    } ->
+    ζ;
+  cstruct = η;
+  fmt = θ;
+  logs = η;
+  mirage-clock = η;
+  mirage-flow = γ;
+  ocaml_lwt = η;
+} ->
+ζ

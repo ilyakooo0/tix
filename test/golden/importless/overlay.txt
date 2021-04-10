@@ -1,0 +1,15 @@
+∀ δ ε ζ η θ ι κ.
+( δ.mkDerivation =
+    { installPhase = String;
+      meta =
+        { broken = Bool;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      name = String;
+      phases = [String];
+      src = ε;
+    } ->
+    ζ,
+  η.src = ε
+) =>
+{file = θ; lib = ι; mumble = η; mumble_i686 = κ; stdenv = δ; which = θ;} -> ζ

@@ -1,1 +1,18 @@
-∀ α β γ δ. { extra-cmake-modules = α; kconfig = β; kcoreaddons = β; kio = β; kparts = β; mkDerivation = { buildInputs = [β]; cmakeFlags = [String]; name = String; nativeBuildInputs = [α]; outputs = [String]; propagatedBuildInputs = [γ] } -> δ; qtwebkit = γ } -> δ
+∀ α β γ δ.
+{ extra-cmake-modules = α;
+  kconfig = β;
+  kcoreaddons = β;
+  kio = β;
+  kparts = β;
+  mkDerivation =
+    { buildInputs = [β];
+      cmakeFlags = [String];
+      name = String;
+      nativeBuildInputs = [α];
+      outputs = [String];
+      propagatedBuildInputs = [γ];
+    } ->
+    δ;
+  qtwebkit = γ;
+} ->
+δ

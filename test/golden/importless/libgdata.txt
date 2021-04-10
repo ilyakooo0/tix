@@ -1,0 +1,10 @@
+∀ β γ.
+{ makeInstalledTest =
+    { testConfig =
+        {services = {gnome3 = {glib-networking = {enable = Bool;};};};};
+      tested = ∀ α. (β.libgdata = α) => α;
+    } ->
+    γ;
+  pkgs = β;
+} ->
+γ

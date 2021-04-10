@@ -1,0 +1,17 @@
+∀ γ δ ε ζ η.
+(γ.version = δ, γ.src = ε) => { alcotest = ζ;
+  buildDunePackage =
+    { meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ε;
+      useDune2 = Bool;
+      version = δ;
+    } ->
+    η;
+  cmdliner = ζ;
+  irmin = ζ;
+  metrics-unix = ζ;
+  mtime = γ;
+} ->
+η

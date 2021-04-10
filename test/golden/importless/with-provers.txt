@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      buildPhase = String;
+      installPhase = String;
+      name = String;
+      phases = [String];
+    } ->
+    γ
+) =>
+{ makeWrapper = β;
+  runCommand = String -> {provers = δ;} -> String -> ε;
+  stdenv = α;
+  symlinkJoin = ζ;
+  why3 = β;
+} ->
+[β] -> γ

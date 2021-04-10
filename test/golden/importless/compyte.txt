@@ -1,1 +1,7 @@
-∀ α β. { fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> α; mkDerivation = { installPhase = String; pname = String; src = α; version = String } -> β } -> β
+∀ α β.
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> α;
+  mkDerivation =
+    {installPhase = String; pname = String; src = α; version = String;} -> β;
+} ->
+β

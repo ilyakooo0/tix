@@ -1,0 +1,52 @@
+∀ ξ ο π ρ.
+(ξ.boot = ο, ξ.boot = π) => {config = ξ; lib = ρ;} ->
+{ config =
+    ∀ κ λ μ ν.
+    ( ρ.mkIf =
+        κ ->
+        { boot =
+            { blacklistedKernelModules = [String];
+              extraModulePackages =
+                ∀ ζ η θ. (ζ.kernelPackages = η, η.bbswitch = θ) => [θ];
+              kernelModules = [String];
+            };
+          systemd =
+            { services =
+                { bbswitch =
+                    { description = String;
+                      path =
+                        ∀ α β γ. (α.kernelPackages = β, β.bbswitch = γ) => [γ];
+                      serviceConfig =
+                        { ExecStart = String;
+                          ExecStop = String;
+                          RemainAfterExit = Bool;
+                          Type = String;
+                        };
+                      wantedBy = [String];
+                    };
+                };
+            };
+        } ->
+        λ,
+      ξ.hardware = μ,
+      μ.nvidiaOptimus = ν,
+      ν.disable = κ
+    ) =>
+    λ;
+  options =
+    { hardware =
+        { nvidiaOptimus =
+            { disable =
+                ∀ ι.
+                ( ρ.mkOption =
+                    { default = Bool;
+                      description = String;
+                      type = ∀ δ ε. (ρ.types = δ, δ.bool = ε) => ε;
+                    } ->
+                    ι
+                ) =>
+                ι;
+            };
+        };
+    };
+}

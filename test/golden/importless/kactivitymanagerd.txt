@@ -1,1 +1,16 @@
-∀ α β γ. { boost = α; extra-cmake-modules = β; kconfig = α; kcoreaddons = α; kcrash = α; kdbusaddons = α; kglobalaccel = α; ki18n = α; kio = α; kwindowsystem = α; kxmlgui = α; mkDerivation = { buildInputs = [α]; name = String; nativeBuildInputs = [β] } -> γ } -> γ
+∀ α β γ.
+{ boost = α;
+  extra-cmake-modules = β;
+  kconfig = α;
+  kcoreaddons = α;
+  kcrash = α;
+  kdbusaddons = α;
+  kglobalaccel = α;
+  ki18n = α;
+  kio = α;
+  kwindowsystem = α;
+  kxmlgui = α;
+  mkDerivation =
+    {buildInputs = [α]; name = String; nativeBuildInputs = [β];} -> γ;
+} ->
+γ

@@ -1,0 +1,23 @@
+∀ ι κ λ μ.
+(ι.services = κ) => {config = ι; lib = λ; pkgs = μ;} ->
+{ config =
+    ∀ δ ε ζ η θ.
+    ( λ.mkIf =
+        δ ->
+        { hardware = {uinput = {enable = Bool;};};
+          services = {udev = {packages = ∀ α. (μ.xow = α) => [α];};};
+          systemd = {packages = ∀ γ. (μ.xow = γ) => [γ];};
+        } ->
+        ε,
+      ζ.hardware = η,
+      η.xow = θ,
+      θ.enable = δ
+    ) =>
+    ε;
+  options =
+    { services =
+        { hardware =
+            {xow = {enable = ∀ β. (λ.mkEnableOption = String -> β) => β;};};
+        };
+    };
+}

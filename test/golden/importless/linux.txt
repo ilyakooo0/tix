@@ -1,0 +1,16 @@
+∀ α β γ δ ε.
+( α.pkgs = β,
+  β.isPy27 = Bool,
+  α.pkgs = γ,
+  γ.buildPythonPackage =
+    { patches = [Path];
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      setSourceRoot = String;
+      src = δ;
+      version = String;
+    } ->
+    ε
+) =>
+{fetchurl = {sha256 = String; url = String;} -> δ; python = α;} -> ε

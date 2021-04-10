@@ -1,0 +1,15 @@
+∀ α β γ δ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      configurePhase = String;
+      pname = String;
+      src = γ;
+      version = String;
+    } ->
+    δ
+) =>
+{ fetchurl = {name = String; sha256 = String; url = String;} -> γ;
+  mecab-nodic = β;
+  stdenv = α;
+} ->
+δ

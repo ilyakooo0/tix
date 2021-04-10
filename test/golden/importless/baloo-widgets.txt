@@ -1,0 +1,24 @@
+∀ γ δ ε ζ.
+{ baloo = γ;
+  extra-cmake-modules = δ;
+  kconfig = γ;
+  kdelibs4support = γ;
+  kdoctools = δ;
+  kfilemetadata = γ;
+  ki18n = γ;
+  kio = γ;
+  kservice = γ;
+  lib = ε;
+  mkDerivation =
+    { meta =
+        { license = ∀ α β. (ε.licenses = α, α.lgpl21 = β) => [β];
+          maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];
+        };
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+      propagatedBuildInputs = [γ];
+    } ->
+    ζ;
+} ->
+ζ

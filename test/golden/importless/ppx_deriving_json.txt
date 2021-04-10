@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.mkDerivation =
+    { buildInputs = [β];
+      buildPhase = String;
+      installPhase = γ;
+      meta = δ;
+      pname = String;
+      propagatedBuildInputs = [ε];
+      src = ζ;
+      version = η;
+    } ->
+    θ,
+  ι.version = η,
+  ι.src = ζ,
+  ι.installPhase = γ,
+  ι.meta = δ
+) =>
+{ dune_2 = β;
+  findlib = β;
+  js_of_ocaml = ε;
+  js_of_ocaml-compiler = ι;
+  ocaml = β;
+  ppxlib = ε;
+  stdenv = α;
+} ->
+θ

@@ -1,0 +1,17 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  lib = δ;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { license = ∀ α β. (δ.licenses = α, α.lgpl3Plus = β) => β;
+          maintainers = ∀ α β. (δ.maintainers = α, α.ttuegel = β) => [β];
+        };
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+    } ->
+    ζ;
+  qtbase = ε;
+} ->
+ζ

@@ -1,1 +1,1 @@
-{ value = Integer }
+{value = Integer;}

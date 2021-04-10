@@ -1,1 +1,8 @@
-∀ α β. { hunspell = α; qtModule = { name = String; qtInputs = [α] } -> β; qtbase = α; qtdeclarative = α; qtsvg = α } -> β
+∀ α β.
+{ hunspell = α;
+  qtModule = {name = String; qtInputs = [α];} -> β;
+  qtbase = α;
+  qtdeclarative = α;
+  qtsvg = α;
+} ->
+β

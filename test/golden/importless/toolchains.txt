@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.getBin = β,
+  α.optionalString = γ -> String -> String,
+  α.generators = δ,
+  δ.toPlist = ε,
+  ζ.isDarwin = γ
+) =>
+{ buildPackages = η;
+  fetchurl = {executable = Bool; sha256 = String; url = String;} -> θ;
+  lib = α;
+  runCommand = String -> {} -> String -> ι;
+  stdenv = ζ;
+  toolchainName = κ;
+  writeText = λ;
+} ->
+ι

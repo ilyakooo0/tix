@@ -1,0 +1,14 @@
+∀ α β γ δ.
+( α.wrapWithBuildEnv = {baseName = String; propagatedBuildInputs = [β];} -> γ
+) =>
+{ binutils = β;
+  cargo = β;
+  faust = α;
+  gcc = β;
+  gnumake = β;
+  libjack2 = β;
+  openssl = β;
+  pkgconfig = β;
+  stdenv = δ;
+} ->
+γ

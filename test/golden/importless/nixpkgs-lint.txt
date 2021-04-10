@@ -1,0 +1,17 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = (ε.XMLSimple = ζ) => [ζ];
+      buildPhase = String;
+      dontUnpack = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.eelco = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      name = String;
+    } ->
+    η
+) =>
+{makeWrapper = ζ; perl = ζ; perlPackages = ε; stdenv = δ;} -> η

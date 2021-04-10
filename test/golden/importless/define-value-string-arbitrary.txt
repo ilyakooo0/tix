@@ -1,1 +1,1 @@
-{ value = String }
+{value = String;}

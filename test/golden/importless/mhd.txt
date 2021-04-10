@@ -1,0 +1,24 @@
+∀ γ δ ε ζ η.
+{ build-idris-package =
+    { extraBuildInputs = [γ];
+      idrisDeps = [δ];
+      ipkgName = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β. (ε.licenses = α, α.lgpl21 = β) => β;
+          maintainers = ∀ α β. (ε.maintainers = α, α.brainrape = β) => [β];
+        };
+      name = String;
+      src = ζ;
+      version = String;
+    } ->
+    η;
+  contrib = δ;
+  effects = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  lib = ε;
+  libmicrohttpd = γ;
+} ->
+η

@@ -1,0 +1,18 @@
+∀ γ δ ε ζ η.
+{ boost = γ;
+  extra-cmake-modules = δ;
+  kactivities = γ;
+  kconfig = γ;
+  lib = ε;
+  mkDerivation =
+    { buildInputs = [γ];
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+      propagatedBuildInputs = [ζ];
+    } ->
+    η;
+  qtbase = ζ;
+} ->
+η

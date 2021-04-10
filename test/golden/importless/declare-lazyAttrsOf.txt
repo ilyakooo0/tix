@@ -1,0 +1,22 @@
+∀ η.
+{lib = η;} ->
+{ options =
+    { value =
+        ∀ ζ.
+        ( η.mkOption =
+            { default = {};
+              type =
+                ∀ α β γ δ ε.
+                ( (α) // ({emptyValue = {value = String;};}) ~ (β),
+                  η.types = γ,
+                  γ.lazyAttrsOf = β -> δ,
+                  η.types = ε,
+                  ε.str = α
+                ) =>
+                δ;
+            } ->
+            ζ
+        ) =>
+        ζ;
+    };
+}

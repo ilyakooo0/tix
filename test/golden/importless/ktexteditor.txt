@@ -1,0 +1,28 @@
+∀ γ δ ε ζ η.
+{ editorconfig-core-c = γ;
+  extra-cmake-modules = δ;
+  karchive = γ;
+  kconfig = γ;
+  kguiaddons = γ;
+  ki18n = γ;
+  kiconthemes = γ;
+  kio = γ;
+  kparts = ε;
+  lib = ζ;
+  libgit2 = γ;
+  mkDerivation =
+    { buildInputs = [γ];
+      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+  perl = δ;
+  qtquickcontrols = γ;
+  qtscript = γ;
+  qtxmlpatterns = γ;
+  sonnet = γ;
+  syntax-highlighting = γ;
+} ->
+η

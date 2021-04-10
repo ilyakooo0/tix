@@ -1,0 +1,11 @@
+∀ β.
+{lib = β;} ->
+{ boot =
+    { initrd =
+        { availableKernelModules = [String];
+          kernelModules = [String];
+          postDeviceCommands = String;
+        };
+    };
+  security = {rngd = {enable = ∀ α. (β.mkDefault = Bool -> α) => α;};};
+}

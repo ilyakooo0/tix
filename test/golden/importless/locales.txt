@@ -1,0 +1,21 @@
+∀ β γ δ ε.
+{ allLocales = Bool;
+  buildPackages = β;
+  callPackage =
+    Path ->
+    {stdenv = γ;} ->
+    { buildPhase =
+        ∀ α. (γ.lib = α, α.optionalString = Bool -> String -> String) => String;
+      builder = Path;
+      installPhase = String;
+      meta = {description = String;};
+      name = String;
+      outputs = [String];
+      setupHook = δ;
+    } ->
+    ε;
+  locales = [String];
+  stdenv = γ;
+  writeText = String -> String -> δ;
+} ->
+ε

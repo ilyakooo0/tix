@@ -1,0 +1,3 @@
+∀ β.
+{lib = β;} ->
+{attrsOfSub = ∀ α. (β.mkForce = {foo = {enable = Bool;};} -> α) => α;}

@@ -1,0 +1,87 @@
+∀ ζ.
+{lib = ζ;} ->
+{ options =
+    { affinity =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = String;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.enum = [String] -> β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      dns =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Bool;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.bool = β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      fall =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Integer;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.int = β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      proto =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = String;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.enum = [String] -> β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      redirect-if-not-tls =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Bool;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.bool = β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      rise =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Integer;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.int = β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+      sni =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Null;
+              description = String;
+              type =
+                ∀ α β γ δ.
+                (ζ.types = α, α.nullOr = β -> γ, ζ.types = δ, δ.str = β) => γ;
+            } ->
+            ε
+        ) =>
+        ε;
+      tls =
+        ∀ ε.
+        ( ζ.mkOption =
+            { default = Bool;
+              description = String;
+              type = ∀ α β. (ζ.types = α, α.bool = β) => β;
+            } ->
+            ε
+        ) =>
+        ε;
+    };
+}

@@ -1,0 +1,11 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mapAttrsToList = (β -> γ -> String) -> δ -> ε,
+  ζ.sha256 = η,
+  α.concatStrings = ε -> String
+) =>
+{ fetchurl = {meta = {homepage = String;}; sha256 = η; url = String;} -> θ;
+  lib = α;
+  registryDat = ι;
+  stdenv = κ;
+} ->
+λ -> δ -> String

@@ -1,1 +1,5 @@
-∀ α. { fetchFromGitHub = { owner = String; repo = String; rev = String; sha256 = String } -> α } -> α
+∀ α.
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> α;
+} ->
+α

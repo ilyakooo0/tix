@@ -1,1 +1,1 @@
-∀ α. { nix-update = α } -> { attrPath = String } -> [String]
+∀ α. {nix-update = α;} -> {attrPath = String;} -> [String]

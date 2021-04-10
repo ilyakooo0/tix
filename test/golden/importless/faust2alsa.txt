@@ -1,0 +1,15 @@
+∀ α β γ.
+( α.wrapWithBuildEnv = {baseName = String; propagatedBuildInputs = [β];} -> γ
+) =>
+{ alsaLib = β;
+  atk = β;
+  cairo = β;
+  faust = α;
+  fontconfig = β;
+  freetype = β;
+  gdk-pixbuf = β;
+  glib = β;
+  gtk2 = β;
+  pango = β;
+} ->
+γ

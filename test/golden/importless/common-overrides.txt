@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.addBuildTools = β,
+  α.appendConfigureFlag = γ -> String -> δ,
+  α.dontHaddock = δ -> ε,
+  α.doJailbreak = ζ -> γ,
+  η.ghcjs = ζ
+) =>
+{haskellLib = α;} ->
+θ ->
+ι ->
+{ ghcjs = ε;
+  haddock-library-ghcjs = (ι.haddock-library-ghcjs = δ) => ε;
+  system-fileio = (ι.system-fileio = ζ) => γ;
+}

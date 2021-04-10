@@ -1,1 +1,1 @@
-∀ α. { mkDerivation = { installPhase = String; name = String } -> α } -> α
+∀ α. {mkDerivation = {installPhase = String; name = String;} -> α;} -> α

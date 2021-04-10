@@ -1,0 +1,23 @@
+∀ δ ε ζ η.
+{ base = δ;
+  containers = δ;
+  fetchgit =
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
+  mkDerivation =
+    { description = String;
+      executableHaskellDepends = [δ];
+      isExecutable = Bool;
+      isLibrary = Bool;
+      libraryHaskellDepends = [δ];
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.asl20 = γ) => γ;
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    η;
+  optparse-applicative = δ;
+  parsec = δ;
+  stdenv = ζ;
+  text = δ;
+} ->
+η

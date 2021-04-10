@@ -1,1 +1,4 @@
-∀ α. { mkDerivation = { prePatch = String; sha256 = String; version = String } -> α } -> α
+∀ α.
+{ mkDerivation = {prePatch = String; sha256 = String; version = String;} -> α;
+} ->
+α

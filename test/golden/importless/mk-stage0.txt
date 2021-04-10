@@ -1,1 +1,7 @@
-∀ α β γ. { cabal2nix = α; configuredSrc = β; runCommand = String -> { buildInputs = [α] } -> String -> γ; yq = α } -> γ
+∀ α β γ.
+{ cabal2nix = α;
+  configuredSrc = β;
+  runCommand = String -> {buildInputs = [α];} -> String -> γ;
+  yq = α;
+} ->
+γ

@@ -1,0 +1,35 @@
+∀ κ λ μ.
+{config = κ; lib = λ; pkgs = μ;} ->
+{ config =
+    ∀ ζ η θ ι.
+    ( λ.mkIf =
+        ζ ->
+        { services = {dbus = {packages = ∀ α. (μ.gcr = α) => [α];};};
+          systemd =
+            { user =
+                { services =
+                    { nm-applet =
+                        { description = String;
+                          partOf = [String];
+                          serviceConfig = {ExecStart = String;};
+                          wantedBy = [String];
+                        };
+                    };
+                };
+            };
+        } ->
+        η,
+      κ.programs = θ,
+      θ.nm-applet = ι,
+      ι.enable = ζ
+    ) =>
+    η;
+  meta =
+    { maintainers =
+        ∀ γ δ ε. (λ.teams = γ, γ.freedesktop = δ, δ.members = ε) => ε;
+    };
+  options =
+    { programs =
+        {nm-applet = {enable = ∀ β. (λ.mkEnableOption = String -> β) => β;};};
+    };
+}

@@ -1,0 +1,32 @@
+∀ ι κ λ μ.
+(ι.services = κ) => {config = ι; lib = λ; pkgs = μ;} ->
+{ config =
+    ∀ γ δ ε ζ η θ.
+    ( λ.mkIf =
+        γ ->
+        { environment = {systemPackages = ∀ β. (μ.windowlab = β) => [β];};
+          services =
+            { xserver =
+                { windowManager =
+                    {session = [{name = String; start = String;}];};
+                };
+            };
+        } ->
+        δ,
+      ε.xserver = ζ,
+      ζ.windowManager = η,
+      η.windowlab = θ,
+      θ.enable = γ
+    ) =>
+    δ;
+  options =
+    { services =
+        { xserver =
+            { windowManager =
+                { windowlab =
+                    {enable = ∀ α. (λ.mkEnableOption = String -> α) => α;};
+                };
+            };
+        };
+    };
+}

@@ -1,0 +1,32 @@
+∀ η θ ι κ.
+( η.mkDerivation =
+    { NIX_CFLAGS_COMPILE =
+        ∀ δ ε ζ.
+        (η.lib = δ, δ.optionalString = ε -> String -> ζ, η.isDarwin = ε) => ζ;
+      buildPhase = String;
+      checkPhase = String;
+      doCheck = Bool;
+      hardeningDisable = [String];
+      installPhase =
+        ∀ δ ε.
+        ( η.lib = δ,
+          δ.optionalString = ε -> String -> String,
+          η.isDarwin = ε
+        ) =>
+        String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (η.lib = α, α.licenses = β, β.free = γ) => γ;
+          platforms = ∀ α β γ. (η.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      nativeBuildInputs = [θ];
+      patches = [Path];
+      pname = String;
+      preConfigure = String;
+      src = ι;
+      version = String;
+    } ->
+    κ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = η; unzip = θ;} -> κ

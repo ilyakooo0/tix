@@ -1,0 +1,28 @@
+∀ δ ε ζ η θ ι.
+{ QuickCheck = δ;
+  base = ε;
+  containers = ε;
+  fetchpatch = {sha256 = String; url = String;} -> ζ;
+  gomp = η;
+  hspec = δ;
+  mkDerivation =
+    { description = String;
+      doCheck = Bool;
+      homepage = String;
+      isExecutable = Bool;
+      isLibrary = Bool;
+      libraryHaskellDepends = [δ];
+      librarySystemDepends = [η];
+      license = ∀ α β γ. (θ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      patches = [ζ];
+      pname = String;
+      sha256 = String;
+      testHaskellDepends = [δ];
+      version = String;
+    } ->
+    ι;
+  stdenv = θ;
+  transformers = δ;
+  z3 = η;
+} ->
+ι

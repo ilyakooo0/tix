@@ -1,0 +1,8 @@
+∀ α β γ δ ε.
+{ lld = α;
+  llvm = β;
+  runCommand = String -> {preferLocalBuild = Bool;} -> String -> γ;
+  stdenv = δ;
+  version = ε;
+} ->
+γ

@@ -1,0 +1,5 @@
+∀ β γ.
+{ makeInstalledTest = {tested = ∀ α. (β.gjs = α) => α; withX11 = Bool;} -> γ;
+  pkgs = β;
+} ->
+γ

@@ -1,0 +1,5 @@
+∀ α β γ.
+(α.wrap = {baseName = String; runtimeInputs = [β];} -> γ) => { faust = α;
+  xdg_utils = β;
+} ->
+γ

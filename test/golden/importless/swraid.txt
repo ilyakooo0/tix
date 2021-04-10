@@ -1,0 +1,10 @@
+∀ γ.
+{pkgs = γ;} ->
+{ boot =
+    { initrd =
+        {availableKernelModules = [String]; extraUdevRulesCommands = String;};
+    };
+  environment = {systemPackages = ∀ β. (γ.mdadm = β) => [β];};
+  services = {udev = {packages = ∀ α. (γ.mdadm = α) => [α];};};
+  systemd = {packages = ∀ β. (γ.mdadm = β) => [β];};
+}

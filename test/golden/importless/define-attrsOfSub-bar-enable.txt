@@ -1,1 +1,1 @@
-{ attrsOfSub = { bar = { enable = Bool } } }
+{attrsOfSub = {bar = {enable = Bool;};};}

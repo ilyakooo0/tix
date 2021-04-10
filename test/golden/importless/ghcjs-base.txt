@@ -1,0 +1,44 @@
+∀ δ ε ζ η θ.
+{ HUnit = δ;
+  QuickCheck = δ;
+  aeson = ε;
+  array = δ;
+  attoparsec = ε;
+  base = ε;
+  binary = ε;
+  bytestring = ε;
+  containers = ε;
+  deepseq = ε;
+  directory = δ;
+  dlist = ε;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ζ;
+  ghc-prim = ε;
+  ghcjs-prim = ε;
+  hashable = ε;
+  integer-gmp = ε;
+  mkDerivation =
+    { description = String;
+      homepage = String;
+      libraryHaskellDepends = [δ];
+      license = ∀ α β γ. (η.lib = α, α.licenses = β, β.mit = γ) => γ;
+      pname = String;
+      src = ζ;
+      testHaskellDepends = [δ];
+      version = String;
+    } ->
+    θ;
+  primitive = ε;
+  quickcheck-unicode = δ;
+  random = δ;
+  scientific = ε;
+  stdenv = η;
+  test-framework = δ;
+  test-framework-hunit = δ;
+  test-framework-quickcheck2 = δ;
+  text = ε;
+  time = ε;
+  transformers = ε;
+  unordered-containers = ε;
+  vector = δ;
+} ->
+θ

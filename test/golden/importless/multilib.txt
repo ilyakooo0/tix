@@ -1,0 +1,10 @@
+∀ δ ε.
+( δ.mkDerivation =
+    { buildCommand = String;
+      meta =
+        {platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.x86_64 = γ) => γ;};
+      name = String;
+    } ->
+    ε
+) =>
+{stdenv = δ;} -> ε

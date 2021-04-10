@@ -1,0 +1,16 @@
+∀ γ δ ε ζ η θ ι.
+(γ.version = δ, γ.src = ε, γ.minimumOCamlVersion = ζ) => { buildDunePackage =
+    { doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      minimumOCamlVersion = ζ;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ε;
+      version = δ;
+    } ->
+    η;
+  cstruct = γ;
+  lib = θ;
+  macaddr = ι;
+} ->
+η

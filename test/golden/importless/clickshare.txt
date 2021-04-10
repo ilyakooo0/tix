@@ -1,0 +1,28 @@
+∀ μ ν ξ.
+{config = μ; lib = ν; pkgs = ξ;} ->
+{ config =
+    ∀ η θ ι κ λ.
+    ( ν.modules = η,
+      η.mkIf =
+        θ ->
+        { environment = {systemPackages = ∀ β. (ξ.clickshare-csc1 = β) => [β];};
+          services =
+            {udev = {packages = ∀ α. (ξ.clickshare-csc1 = α) => [α];};};
+          users = {groups = {clickshare = {};};};
+        } ->
+        ι,
+      μ.programs = κ,
+      κ.clickshare-csc1 = λ,
+      λ.enable = θ
+    ) =>
+    ι;
+  meta = {maintainers = ∀ ε ζ. (ν.maintainers = ε, ε.yarny = ζ) => [ζ];};
+  options =
+    { programs =
+        { clickshare-csc1 =
+            { enable =
+                ∀ γ δ. (ν.options = γ, γ.mkEnableOption = String -> δ) => δ;
+            };
+        };
+    };
+}

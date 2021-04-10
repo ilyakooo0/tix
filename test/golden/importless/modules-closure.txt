@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ.
+( α.mkDerivation =
+    { allowMissing = Bool;
+      allowedReferences = [String];
+      builder = Path;
+      firmware = β;
+      kernel = γ;
+      name = (γ.name = String) => String;
+      nativeBuildInputs = [δ];
+      rootModules = ε;
+    } ->
+    ζ
+) =>
+{ allowMissing = Bool;
+  firmware = β;
+  kernel = γ;
+  kmod = δ;
+  nukeReferences = δ;
+  rootModules = ε;
+  stdenvNoCC = α;
+} ->
+ζ

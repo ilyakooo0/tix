@@ -1,1 +1,98 @@
-{ builder = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; excon = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-core = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-json = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-libvirt = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; fog-xml = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; formatador = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; json = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mime-types = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mime-types-data = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; mini_portile2 = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; multi_json = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; nokogiri = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; ruby-libvirt = { groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String }; vagrant-libvirt = { dependencies = [String]; groups = [String]; platforms = ∀ α. α; source = { remotes = [String]; sha256 = String; type = String }; version = String } }
+{ builder =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  excon =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-core =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-json =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-libvirt =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  fog-xml =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  formatador =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  json =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mime-types =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mime-types-data =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  mini_portile2 =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  multi_json =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  nokogiri =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  ruby-libvirt =
+    { groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+  vagrant-libvirt =
+    { dependencies = [String];
+      groups = [String];
+      platforms = ∀ α. α;
+      source = {remotes = [String]; sha256 = String; type = String;};
+      version = String;
+    };
+}

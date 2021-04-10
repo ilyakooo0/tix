@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η.
+( α.mkDerivation =
+    { buildInputs = [β];
+      installPhase = String;
+      name = γ;
+      preBuild = String;
+      preConfigure = String;
+      src = δ;
+    } ->
+    ε
+) =>
+{dotnetfx = β; stdenv = α;} ->
+{ assemblyInputs = ζ;
+  baseDir = String;
+  mainClassFile = Null;
+  modifyPublicMain = Bool;
+  name = γ;
+  options = String;
+  preBuild = String;
+  slnFile = η;
+  src = δ;
+  targets = String;
+  verbosity = String;
+} ->
+ε

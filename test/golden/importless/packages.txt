@@ -1,0 +1,62 @@
+∀ ζ η.
+ζ ->
+η ->
+{ age =
+    ∀ ε.
+    (η.callPackage = Path -> {bison = ∀ γ. (ζ.bison_3_5 = γ) => γ;} -> ε) => ε;
+  cstore_fdw = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  periods = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_auto_failover = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_bigm = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_cron = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_ed25519 = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_hll = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_partman = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_repack = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_safeupdate = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_similarity = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pg_topn = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pgjwt = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pgroonga = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pgrouting = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pgtap = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  pipelinedb = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  plpgsql_check = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  plv8 =
+    ∀ ε.
+    ( η.callPackage =
+        Path ->
+        { v8 =
+            ∀ γ.
+            ( η.callPackage = Path -> {python = ∀ α. (ζ.python2 = α) => α;} -> γ
+            ) =>
+            γ;
+        } ->
+        ε
+    ) =>
+    ε;
+  postgis =
+    ∀ ε.
+    ( η.callPackage =
+        Path ->
+        { gdal =
+            ∀ γ δ.
+            ( ζ.gdal = γ,
+              γ.override =
+                { poppler = ∀ β. (ζ.poppler_0_61 = β) => β;
+                  postgresql = ∀ β. (ζ.postgresql = β) => β;
+                } ->
+                δ
+            ) =>
+            δ;
+        } ->
+        ε
+    ) =>
+    ε;
+  repmgr = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  smlar = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  tds_fdw = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  temporal_tables = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  timescaledb = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+  tsearch_extras = ∀ ε. (η.callPackage = Path -> {} -> ε) => ε;
+}

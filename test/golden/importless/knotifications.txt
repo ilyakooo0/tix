@@ -1,0 +1,20 @@
+∀ γ δ ε ζ.
+{ extra-cmake-modules = γ;
+  kcodecs = δ;
+  kconfig = δ;
+  kcoreaddons = δ;
+  kwindowsystem = δ;
+  lib = ε;
+  libdbusmenu = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+    } ->
+    ζ;
+  phonon = δ;
+  qttools = γ;
+  qtx11extras = δ;
+} ->
+ζ

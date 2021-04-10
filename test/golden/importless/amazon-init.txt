@@ -1,1 +1,17 @@
-∀ α β. { config = α; pkgs = β } -> { systemd = { services = { amazon-init = { after = [String]; description = String; requires = [String]; restartIfChanged = Bool; script = String; serviceConfig = { RemainAfterExit = Bool; Type = String }; unitConfig = { X-StopOnRemoval = Bool }; wantedBy = [String] } } } }
+∀ α β.
+{config = α; pkgs = β;} ->
+{ systemd =
+    { services =
+        { amazon-init =
+            { after = [String];
+              description = String;
+              requires = [String];
+              restartIfChanged = Bool;
+              script = String;
+              serviceConfig = {RemainAfterExit = Bool; Type = String;};
+              unitConfig = {X-StopOnRemoval = Bool;};
+              wantedBy = [String];
+            };
+        };
+    };
+}

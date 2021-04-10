@@ -1,0 +1,5 @@
+{ a = Integer;
+  b = Integer;
+  f = ∀ α. (α.y = Integer) => α -> Integer;
+  g = ∀ α β. (α.y = β) => α -> β;
+}

@@ -1,1 +1,1 @@
-{ baseName = String; downloadPage = String }
+{baseName = String; downloadPage = String;}

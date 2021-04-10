@@ -1,0 +1,7 @@
+∀ β γ.
+{ makeInstalledTest =
+    {meta = {broken = Bool;}; tested = ∀ α. (β.xdg-desktop-portal = α) => α;} ->
+    γ;
+  pkgs = β;
+} ->
+γ

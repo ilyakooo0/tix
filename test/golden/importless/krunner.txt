@@ -1,0 +1,25 @@
+∀ γ δ ε ζ η θ.
+{ extra-cmake-modules = γ;
+  fetchpatch = δ;
+  kconfig = ε;
+  kcoreaddons = ε;
+  ki18n = ε;
+  kio = ε;
+  kservice = ε;
+  kwindowsystem = ζ;
+  lib = η;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {maintainers = ∀ α β. (η.maintainers = α, α.ttuegel = β) => [β];};
+      name = String;
+      nativeBuildInputs = [γ];
+      propagatedBuildInputs = [ζ];
+    } ->
+    θ;
+  plasma-framework = ζ;
+  qtbase = ζ;
+  qtdeclarative = ε;
+  solid = ε;
+  threadweaver = ε;
+} ->
+θ

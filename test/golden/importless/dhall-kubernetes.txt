@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ.
+( α.mapAttrs =
+    (β -> {rev = γ; sha256 = δ;} -> ε) ->
+    { 2.1.0 = {rev = String; sha256 = String;};
+      3.0.0 = {rev = String; sha256 = String;};
+    } ->
+    ζ
+) =>
+{ buildDhallGitHubPackage =
+    { file = String;
+      name = String;
+      owner = String;
+      repo = String;
+      rev = γ;
+      sha256 = δ;
+    } ->
+    ε;
+  lib = α;
+} ->
+ζ

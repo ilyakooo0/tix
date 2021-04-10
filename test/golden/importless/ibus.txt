@@ -1,0 +1,23 @@
+∀ β γ.
+{ makeInstalledTest =
+    { testConfig =
+        { i18n = {inputMethod = {enabled = String;};};
+          systemd =
+            { user =
+                { services =
+                    { ibus-daemon =
+                        { partOf = [String];
+                          serviceConfig = {ExecStart = String;};
+                          wantedBy = [String];
+                        };
+                    };
+                };
+            };
+        };
+      tested = ∀ α. (β.ibus = α) => α;
+      withX11 = Bool;
+    } ->
+    γ;
+  pkgs = β;
+} ->
+γ

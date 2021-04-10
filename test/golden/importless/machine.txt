@@ -1,0 +1,27 @@
+∀ γ.
+{pkgs = γ;} ->
+{ nixpkgs =
+    { config =
+        { packageOverrides =
+            ∀ β.
+            β ->
+            { hello-world-container =
+                ∀ α. (β.callPackage = Path -> {} -> α) => α;
+            };
+        };
+    };
+  systemd =
+    { services =
+        { docker-load-fetchdocker-image =
+            { after = [String];
+              description = String;
+              script = String;
+              serviceConfig = {Type = String;};
+              wantedBy = [String];
+              wants = [String];
+            };
+        };
+    };
+  virtualisation =
+    {docker = {enable = Bool; package = ∀ β. (γ.docker = β) => β;};};
+}
