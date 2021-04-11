@@ -99,3 +99,4 @@ default-extensions:
   - TypeFamilies
   - FlexibleInstances
   - DeriveAnyClass
+  - ConstraintKinds

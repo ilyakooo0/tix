@@ -30,6 +30,7 @@ import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
 import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
+import Data.Maybe
 import Data.MonoTraversable
 import Data.Monoid
 import qualified Data.RangeSet.Map as RS
@@ -48,9 +49,9 @@ import Nix.Expr
 import Nix.Pretty
 import Tix.Types
 
-getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [UnifyingError], [PredicateError], A.Object)
+getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [InferError], [UnifyingError], [PredicateError], A.Object)
 getType r =
-  let (((((((t, traceTree), predicate), unifying), errs), _srcs), subs), _) =
+  let ((((((((t, traceTree), inf), predicate), unifying), errs), _srcs), subs), _) =
         run
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
@@ -61,10 +62,11 @@ getType r =
           . runSeqWriter @[(SrcSpan, Errors)]
           . runSeqWriter @[UnifyingError]
           . runSeqWriter @[PredicateError]
+          . runSeqWriter @[InferError]
           . runFresh
           . runTreeTracer
           $ inferGeneral r
-   in (sub subs t, errs, unifying, predicate, traceTree)
+   in (sub subs t, errs, inf, unifying, predicate, traceTree)
 
 runConstraintEnv ::
   Members '[State VariableMap, State (MKM.Map Pred)] effs =>
@@ -197,7 +199,7 @@ unifyWithPriority f (lhs :~ rhs) =
     (NTypeVariable t, x) -> t <<- x
     (x, NTypeVariable t) -> t <<- x
     (List x, List y) -> unifyWithPriority f $ x :~ y
-    (NAttrSet _x, NAttrSet _y) -> error "TODO: This should be handled in a special way"
+    (NAttrSet _x, NAttrSet _y) -> error $ "TODO: This should be handled in a special way " <> show _x <> show _y
     -- foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority f (sub s' c)) (pure mempty)
     --   . M.elems
     --   $ M.intersectionWith (:~) x y
@@ -246,6 +248,10 @@ data PredicateError
   | NotAnAttributeSet NType
   deriving stock (Eq, Show)
 
+data InferError
+  = ConflictingBindingDefinitions NormalizedBinding' NormalizedBinding'
+  deriving stock (Show)
+
 type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
 
 type InferEffs =
@@ -258,6 +264,7 @@ type InferEffs =
      State (MKM.Map Pred),
      State VariableMap,
      Writer UnifyingError,
+     Writer InferError,
      SubstituteEnv,
      TreeTracer
    ]
@@ -398,7 +405,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NBinary NImpl lhs rhs -> logic lhs rhs
   NSelect r path' def -> do
     setT <- infer r
-    path <- getPath path'
+    let path = getPath path'
     resT <-
       NTypeVariable <$> case path of
         Just p -> do
@@ -495,39 +502,50 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
       lhst ~~ NAtomic Bool
       return $ NAtomic Bool
 
-inferBinding :: [Binding (Fix NExprLocF)] -> InferM' (Map VarName Scheme)
-inferBinding bindings = do
-  bindings' <-
-    bindings >>.= \case
-      (NamedVar path r src) -> do
-        getPath path >>= \case
-          Nothing -> return []
-          Just name -> do
-            t <- inferGeneral r
-            return [stack ((,) <$> name) (scheme . NAttrSet . uncurry M.singleton) t]
-      Inherit attrSet keys src -> do
-        names <- catMaybes <$> traverse getKeyName keys
-        attrSet' <- infer `traverse` attrSet
-        names' <- for names $ \name ->
-          fmap (name,) <$> do
-            case attrSet' of
-              Just t -> do
-                (s', var) <- lookupAttrSet (pure name)
-                s' ~~ t
-                return $ Just . scheme . NTypeVariable $ var
-              Nothing -> do
-                vars <- get @VariableMap
-                return $ case M.lookup name vars of
-                  Nothing -> Nothing
-                  Just r -> Just r
-        return $ catMaybes names'
-  return $ M.fromListWith mergeSetTypes bindings'
+data NormalizedBinding' = NBType !NExprLoc | NBAttrSet !NormalizedBinding
+  deriving stock (Show)
+
+type NormalizedBinding = Map VarName NormalizedBinding'
+
+normalizeBindings :: Member (Writer InferError) eff => [Binding NExprLoc] -> Eff eff NormalizedBinding
+normalizeBindings bindings = case bindings' of
+  [] -> return M.empty
+  (x : xs) ->
+    sequence $
+      -- This is really sub-optimal
+      foldl (\u -> M.unionWith (\i j -> i >>= \i' -> j >>= mergeBindings i') u . fmap pure) (fmap pure x) xs
   where
-    -- This seems fishy
-    mergeSetTypes :: Scheme -> Scheme -> Scheme
-    mergeSetTypes (xcs :=> NAttrSet ks) (ycs :=> NAttrSet ks') =
-      (xcs <> ycs) :=> NAttrSet (M.unionWith mergeSetTypes ks ks')
-    mergeSetTypes _ x = x
+    mergeBindings (NBAttrSet lhs) (NBAttrSet rhs) =
+      fmap NBAttrSet . sequence $
+        -- This is really sub-optimal
+        M.unionWith (\x y -> x >>= \x' -> y >>= mergeBindings x') (pure <$> lhs) (pure <$> rhs)
+    mergeBindings x y = do
+      tell $ ConflictingBindingDefinitions x y
+      return x
+    fromName :: NonEmpty VarName -> NExprLoc -> NormalizedBinding
+    fromName (n :| ns) x = M.singleton n $ foldr (\u t -> NBAttrSet $ M.singleton u t) (NBType x) ns
+    bindings' =
+      bindings >>= \case
+        (NamedVar path r src) ->
+          case getPath path of
+            Nothing -> [] -- TODO: This should be an error (?)
+            Just name -> pure $ fromName name r
+        (Inherit attrSet keys src) ->
+          let names :: [VarName] = mapMaybe getKeyName keys
+              f :: VarName -> NExprLoc = case attrSet of
+                Nothing -> \v -> Fix $ Compose $ Ann (SrcSpan src src) $ NSym v
+                Just set -> \v -> Fix $ Compose $ Ann (SrcSpan src src) $ NSelect set (pure $ StaticKey v) Nothing
+           in (\v -> fromName (pure v) (f v)) <$> names
+
+inferNormalizedBindings' :: NormalizedBinding' -> InferM' Scheme
+inferNormalizedBindings' (NBType expr) = inferGeneral expr
+inferNormalizedBindings' (NBAttrSet m) = scheme . NAttrSet <$> inferNormalizedBindings' `traverse` m
+
+inferNormalizedBindings :: NormalizedBinding -> InferM' (Map VarName Scheme)
+inferNormalizedBindings = traverse inferNormalizedBindings'
+
+inferBinding :: [Binding NExprLoc] -> InferM' (Map VarName Scheme)
+inferBinding = normalizeBindings >=> inferNormalizedBindings
 
 renderPretty :: Pretty x => x -> TL.Text
 renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
@@ -702,15 +720,15 @@ unNString :: NString r -> Maybe Text
 unNString (DoubleQuoted ss) = foldMap antiAntiQuoteText ss
 unNString (Indented _ ss) = foldMap antiAntiQuoteText ss
 
-getKeyName :: Monad m => NKeyName r -> m (Maybe VarName)
-getKeyName (StaticKey k) = return $ Just k
-getKeyName (DynamicKey k) = return $ antiAntiQuote k
+getKeyName :: NKeyName r -> (Maybe VarName)
+getKeyName (StaticKey k) = Just k
+getKeyName (DynamicKey k) = antiAntiQuote k
 
 getPath ::
-  (Traversable t, Monad f) =>
+  (Traversable t) =>
   t (NKeyName r) ->
-  f (Maybe (t Text))
-getPath path = sequence <$> traverse getKeyName path
+  Maybe (t Text)
+getPath = mapM getKeyName
 
 type AttrSetPath = NonEmpty Text
 

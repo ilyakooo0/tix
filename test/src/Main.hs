@@ -30,8 +30,8 @@ tests = do
                     Failure err -> error $ show err
                     Success r -> do
                       case getType r of
-                        (t, [], [], [], _) ->
+                        (t, [], [], [], [], _) ->
                           return $ (TL.encodeUtf8 . renderPretty) t
-                        (_, errors, unifyingErrors, predicateErrors, _) -> error . show $ (errors, unifyingErrors, predicateErrors)
+                        (_, errors, inferError, unifyingErrors, predicateErrors, _) -> error . show $ (errors, inferError, unifyingErrors, predicateErrors)
               )
         )
