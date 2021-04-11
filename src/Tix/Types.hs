@@ -7,7 +7,6 @@ module Tix.Types
     scheme,
     Pred (..),
     (//),
-    Preds (..),
     TraversableNTypes (..),
     traverseNTypes,
     TerminalNType (..),
@@ -25,7 +24,6 @@ import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
 import qualified Data.Text as T
-import GHC.Exts
 import Generic.Data
 import Prettyprinter
 
@@ -59,12 +57,8 @@ instance MKM.Keyable Pred where
 (//) = Update
 {-# INLINE (//) #-}
 
-data Scheme = Preds :=> !NType
+data Scheme = [Pred] :=> !NType
   deriving stock (Eq, Ord, Show, Generic)
-
-newtype Preds = Preds {unPreds :: [Pred]}
-  deriving newtype (Show, Eq, Ord, Semigroup, Monoid, IsList)
-  deriving stock (Generic)
 
 scheme :: NType -> Scheme
 scheme t = [] :=> t
@@ -101,11 +95,7 @@ instance TraversableNTypes NType where
 instance TraversableNTypes Scheme where
   traverseNTypesWith ctx f (cs :=> t) =
     ctx $
-      (:=>) <$> traverseNTypesWith ctx f cs <*> traverseNTypesWith ctx f t
-  {-# INLINE traverseNTypesWith #-}
-
-instance TraversableNTypes Preds where
-  traverseNTypesWith ctx f (Preds ps) = Preds <$> traverseNTypesWith ctx f `traverse` ps
+      (:=>) <$> traverseNTypesWith ctx f `traverse` cs <*> traverseNTypesWith ctx f t
   {-# INLINE traverseNTypesWith #-}
 
 instance TraversableNTypes Pred where
@@ -216,7 +206,7 @@ bracketed :: Doc ann -> Doc ann -> Doc ann -> Doc ann
 bracketed l r d = flatAlt (l <> " ") l <> nest 2 d <> line' <> r
 
 prettyScheme :: Scheme -> PrettyM (Doc ann)
-prettyScheme u@(Preds cs :=> t) = do
+prettyScheme u@(cs :=> t) = do
   greekVars <- ask @(Map DeBruijn Text)
   foralls <-
     getDepthedDeBurjins u <&> \s -> case M.elems . M.restrictKeys greekVars $ s of

@@ -1,20 +1,18 @@
-∀ ε ζ η θ ι.
-(ε.version = ζ, ε.src = η) => { buildDunePackage =
+∀ δ ε.
+{ buildDunePackage =
     { meta =
-        ∀ α β γ δ.
-        ( ε.meta = α,
-          α.homepage = β,
-          α.license = γ,
-          α.maintainers = δ
-        ) =>
-        {description = String; homepage = β; license = γ; maintainers = δ;};
+        { description = String;
+          homepage = ∀ α β. (δ.meta = α, α.homepage = β) => β;
+          license = ∀ α β. (δ.meta = α, α.license = β) => β;
+          maintainers = ∀ α β. (δ.meta = α, α.maintainers = β) => β;
+        };
       pname = String;
-      propagatedBuildInputs = [ε];
-      src = η;
-      version = ζ;
+      propagatedBuildInputs = [δ];
+      src = ∀ γ. (δ.src = γ) => γ;
+      version = ∀ γ. (δ.version = γ) => γ;
     } ->
-    θ;
-  ocplib-endian = ε;
-  ocplib-json-typed = ι;
+    ε;
+  ocplib-endian = δ;
+  ocplib-json-typed = δ;
 } ->
-θ
+ε

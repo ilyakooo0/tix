@@ -1,32 +1,27 @@
-∀ γ δ ε ζ η θ ι κ λ.
-( γ.version = δ,
-  γ.src = ε,
-  γ.useDune2 = ζ,
-  γ.minimumOCamlVersion = η
-) =>
+∀ γ δ ε ζ.
 { buildDunePackage =
-    { buildInputs = [θ];
-      checkInputs = [ι];
+    { buildInputs = [γ];
+      checkInputs = [δ];
       doCheck = Bool;
-      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
-      minimumOCamlVersion = η;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), ε.meta = α) => β;
+      minimumOCamlVersion = ∀ α. (ε.minimumOCamlVersion = α) => α;
       pname = String;
-      propagatedBuildInputs = [γ];
-      src = ε;
-      useDune2 = ζ;
-      version = δ;
+      propagatedBuildInputs = [ε];
+      src = ∀ α. (ε.src = α) => α;
+      useDune2 = ∀ α. (ε.useDune2 = α) => α;
+      version = ∀ α. (ε.version = α) => α;
     } ->
-    κ;
-  cstruct = λ;
-  eqaf = λ;
-  gmp = θ;
-  mirage-crypto = λ;
-  mirage-crypto-rng = λ;
-  ounit = ι;
-  ppx_sexp_conv = γ;
-  randomconv = ι;
-  rresult = λ;
-  sexplib = λ;
-  zarith = λ;
+    ζ;
+  cstruct = ε;
+  eqaf = ε;
+  gmp = γ;
+  mirage-crypto = ε;
+  mirage-crypto-rng = ε;
+  ounit = δ;
+  ppx_sexp_conv = ε;
+  randomconv = δ;
+  rresult = ε;
+  sexplib = ε;
+  zarith = ε;
 } ->
-κ
+ζ

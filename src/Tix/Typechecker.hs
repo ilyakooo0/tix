@@ -121,15 +121,13 @@ instance Free NType where
     x :-> y -> sub s x :-> sub s y
     x@(NAtomic _) -> x
 
-instance Free Preds where
-  free (Preds ps) = flip foldMap ps $ \case
+instance Free Pred where
+  free = \case
     Update x y z -> free x <> free y <> free z
     x `HasField` (_, y) -> free x <> free y
-  sub s (Preds ps) =
-    Preds $
-      ps <&> \case
-        Update x y z -> Update (sub s x) (sub s y) (sub s z)
-        HasField t (f, v) -> HasField (sub s t) (f, sub s v)
+  sub s = \case
+    Update x y z -> Update (sub s x) (sub s y) (sub s z)
+    HasField t (f, v) -> HasField (sub s t) (f, sub s v)
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
@@ -153,7 +151,7 @@ instance Free (MKM.Map Pred) where
     where
       vals = S.toList . fold . M.elems $ M.restrictKeys m (M.keysSet s)
       f = appEndo $ foldMap (Endo . MKM.delete) vals
-      m' = f mkm <> MKM.fromList (unPreds . sub subs $ Preds vals)
+      m' = f mkm <> MKM.fromList (sub subs vals)
 
 newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
   deriving newtype (Eq, Ord, Show)
@@ -191,7 +189,7 @@ unifyWithPriority ::
   UnifyM Substitution
 unifyWithPriority f (lhs :~ rhs) =
   case (lhs, rhs) of
-    (NAtomic x, NAtomic y) | x == y -> return mempty
+    (x, y) | x == y -> return mempty
     (NTypeVariable x, NTypeVariable y) -> do
       if getPredicate f y
         then y <<- NTypeVariable x
@@ -199,15 +197,32 @@ unifyWithPriority f (lhs :~ rhs) =
     (NTypeVariable t, x) -> t <<- x
     (x, NTypeVariable t) -> t <<- x
     (List x, List y) -> unifyWithPriority f $ x :~ y
-    (NAttrSet _x, NAttrSet _y) -> error $ "TODO: This should be handled in a special way " <> show _x <> show _y
-    -- foldr (\c s -> s >>= \s' -> (<> s') <$> unifyWithPriority f (sub s' c)) (pure mempty)
-    --   . M.elems
-    --   $ M.intersectionWith (:~) x y
+    (NAttrSet x, NAttrSet y) -> do
+      assertSetsMatch (tell . KeysDontMatch) (M.keysSet x) (M.keysSet y)
+      unifySchemes f . M.elems $ M.intersectionWith (,) x y
     (x1 :-> y1, x2 :-> y2) -> do
       s <- unifyWithPriority f (x1 :~ x2)
       s' <- unifyWithPriority f $ sub s $ y1 :~ y2
       return $ s' <> s
     (x, y) -> tell (CanNotUnify x y) >> return mempty
+
+unifySchemes :: Predicate TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitution
+unifySchemes _ [] = pure mempty
+unifySchemes f ((x, y) : rest) = do
+  s <- unifyScheme f x y
+  sub s <$> unifySchemes f (sub s rest)
+
+unifyScheme :: Predicate TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
+unifyScheme range (xs :=> x) (ys :=> y) = do
+  s <- solveWithPriority range (pure (x :~ y))
+  let f = S.fromList . sub s
+  assertSetsMatch (tell . ConstraintsDontMatch) (f xs) (f ys)
+  return s
+
+assertSetsMatch :: Ord x => Applicative f => (Set x -> f ()) -> Set x -> Set x -> f ()
+assertSetsMatch f x y = case (x S.\\ y, y S.\\ x) of
+  (a, b) | S.null a, S.null b -> pure ()
+  (a, b) -> f $ a <> b
 
 solve :: Seq Constraint -> UnifyM Substitution
 solve = solveWithPriority mempty
@@ -241,6 +256,8 @@ freshSrc = do
 data UnifyingError
   = InfinityType NType
   | CanNotUnify NType NType
+  | ConstraintsDontMatch (Set Pred)
+  | KeysDontMatch (Set Text)
   deriving stock (Eq, Show)
 
 data PredicateError
@@ -318,7 +335,7 @@ instantiate ::
   Scheme ->
   Eff effs NType
 instantiate s = do
-  (Preds cs :=> t) <- runReader 0 . evalState M.empty . instantiateScheme $ s
+  (cs :=> t) <- runReader 0 . evalState M.empty . instantiateScheme $ s
   tell `traverse_` cs
   return t
   where
@@ -579,7 +596,7 @@ inferGeneral x@(Fix (Compose (Ann src _))) = runReader src $
       -- At this point the only predicates only contain type variables that are only used
       -- in the expression. This means that all of the generated constraints and
       -- substitutions can be safely restricted to this expression.
-      retT <- solveAndClose p $ sub s $ Preds keep :=> t
+      retT <- solveAndClose p $ sub s $ keep :=> t
       traceValue "preds" $ showPreds toss
       put toss
       traceValue "type" $ renderPretty retT
@@ -601,17 +618,17 @@ solveAndClose ::
   Scheme ->
   Eff eff Scheme
 solveAndClose p (cs :=> t) = do
-  (((Preds solvedPreds, range), constraints), collectedPreds) <-
+  (((solvedPreds, range), constraints), collectedPreds) <-
     runSeqWriter @[Pred]
       . runSeqWriter @(Seq Constraint)
       . registerTypeVariables
       $ solveConstraints cs
   let newPredicate = p `pOr` Predicate (`RS.member` range)
   case (constraints, collectedPreds) of
-    (Empty, []) -> return . close newPredicate $ Preds solvedPreds :=> t
+    (Empty, []) -> return . close newPredicate $ solvedPreds :=> t
     _ -> do
       s <- solveWithPriority newPredicate constraints
-      solveAndClose newPredicate $ sub s $ Preds (collectedPreds <> solvedPreds) :=> t
+      solveAndClose newPredicate $ sub s $ (collectedPreds <> solvedPreds) :=> t
 
 pOr :: Predicate x -> Predicate x -> Predicate x
 pOr (Predicate f) (Predicate g) = Predicate $ \x -> f x || g x
@@ -626,28 +643,27 @@ solveConstraints ::
        Writer Constraint
      ]
     effs =>
-  Preds ->
-  Eff effs Preds
-solveConstraints (Preds ps) =
-  Preds <$> do
-    flip Control.Monad.filterM ps $ \case
-      HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
-        Nothing -> do
-          tell $ KeyNotPresent f (NAttrSet ts)
-          return False
-        Just t' -> do
-          x <- instantiate t
-          y <- instantiate t'
-          x ~~ y
-          return False
-      HasField (NTypeVariable _) _ -> return True
-      HasField t _ -> do
-        tell $ NotAnAttributeSet t
+  [Pred] ->
+  Eff effs [Pred]
+solveConstraints ps = do
+  flip Control.Monad.filterM ps $ \case
+    HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
+      Nothing -> do
+        tell $ KeyNotPresent f (NAttrSet ts)
         return False
-      (Update (NAttrSet a) (NAttrSet b) t) -> do
-        (NAttrSet $ b <> a) ~~ t
+      Just t' -> do
+        x <- instantiate t
+        y <- instantiate t'
+        x ~~ y
         return False
-      _ -> return True
+    HasField (NTypeVariable _) _ -> return True
+    HasField t _ -> do
+      tell $ NotAnAttributeSet t
+      return False
+    (Update (NAttrSet a) (NAttrSet b) t) -> do
+      (NAttrSet $ b <> a) ~~ t
+      return False
+    _ -> return True
 
 newtype DeBruijnContext = DeBruijnContext (Sum Int)
   deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
@@ -689,19 +705,6 @@ close (Predicate f) =
           modify @TDeBruijnMap (SM.insert t x)
           return x
         Just x -> return x
-
--- | Stacks functions recursively inside each other
--- >>> stack [f1, f2, f3] h x
--- f1 (h $ f2 (h $ f3 x))
-stack :: forall x y. NonEmpty (x -> y) -> (y -> x) -> x -> y
-stack (g :| gs) h x = g $ f gs
-  where
-    f :: [x -> y] -> x
-    f [] = x
-    f (k : ks) = h . k $ f ks
-
-(>>.=) :: (Applicative f, Monad t, Traversable t) => t a -> (a -> f (t b)) -> f (t b)
-ta >>.= f = join <$> traverse f ta
 
 -- TODO: process variables
 antiAntiQuote :: Antiquoted (NString r) r -> Maybe Text

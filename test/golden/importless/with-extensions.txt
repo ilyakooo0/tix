@@ -1,16 +1,16 @@
-∀ β γ δ ε ζ η θ.
-(β.executableName = γ) => { buildEnv = {name = String; paths = δ;} -> ε;
-  lib = ζ;
-  makeWrapper = β;
+∀ β γ δ ε ζ.
+{ buildEnv = {name = String; paths = β;} -> γ;
+  lib = δ;
+  makeWrapper = ε;
   runCommand =
     String ->
-    { buildInputs = [β];
+    { buildInputs = [ε];
       dontPatchELF = Bool;
       dontStrip = Bool;
-      meta = ∀ α. (β.meta = α) => α;
+      meta = ∀ α. (ε.meta = α) => α;
     } ->
-    String -> η;
-  vscode = θ;
-  vscodeExtensions = δ;
+    String -> ζ;
+  vscode = ε;
+  vscodeExtensions = β;
 } ->
-η
+ζ

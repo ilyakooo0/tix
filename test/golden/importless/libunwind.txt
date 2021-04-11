@@ -1,0 +1,20 @@
+∀ γ δ ε ζ η θ.
+( γ.mkDerivation =
+    { cmakeFlags = ∀ α β. (γ.lib = α, α.optional = Bool -> String -> β) => β;
+      enableParallelBuilding = Bool;
+      nativeBuildInputs = [δ];
+      patches = [ε];
+      pname = String;
+      src = ζ;
+      version = η;
+    } ->
+    θ
+) =>
+{ cmake = δ;
+  enableShared = Bool;
+  fetch = String -> String -> ζ;
+  fetchpatch = {sha256 = String; url = String;} -> ε;
+  stdenv = γ;
+  version = η;
+} ->
+θ

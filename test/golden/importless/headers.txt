@@ -1,7 +1,10 @@
-∀ α β γ δ ε.
-( α.mkDerivation =
-    {meta = β; name = String; preConfigure = String; src = γ;} -> δ,
-  ε.src = γ,
-  ε.meta = β
+∀ β γ δ.
+( β.mkDerivation =
+    { meta = ∀ α. (γ.meta = α) => α;
+      name = String;
+      preConfigure = String;
+      src = ∀ α. (γ.src = α) => α;
+    } ->
+    δ
 ) =>
-{mingw_w64 = ε; stdenvNoCC = α;} -> δ
+{mingw_w64 = γ; stdenvNoCC = β;} -> δ

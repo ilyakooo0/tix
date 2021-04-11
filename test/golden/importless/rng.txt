@@ -1,30 +1,25 @@
-∀ γ δ ε ζ η θ ι κ λ.
-( γ.version = δ,
-  γ.src = ε,
-  γ.useDune2 = ζ,
-  γ.minimumOCamlVersion = η
-) =>
+∀ γ δ ε ζ.
 { buildDunePackage =
-    { checkInputs = [θ];
+    { checkInputs = [γ];
       doCheck = Bool;
-      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
-      minimumOCamlVersion = η;
-      nativeBuildInputs = [ι];
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), δ.meta = α) => β;
+      minimumOCamlVersion = ∀ α. (δ.minimumOCamlVersion = α) => α;
+      nativeBuildInputs = [ε];
       pname = String;
-      propagatedBuildInputs = [γ];
-      src = ε;
-      useDune2 = ζ;
-      version = δ;
+      propagatedBuildInputs = [δ];
+      src = ∀ α. (δ.src = α) => α;
+      useDune2 = ∀ α. (δ.useDune2 = α) => α;
+      version = ∀ α. (δ.version = α) => α;
     } ->
-    κ;
-  cstruct = λ;
-  dune-configurator = ι;
-  duration = λ;
-  logs = λ;
-  mirage-crypto = λ;
-  mtime = λ;
-  ocaml_lwt = γ;
-  ounit = θ;
-  randomconv = θ;
+    ζ;
+  cstruct = δ;
+  dune-configurator = ε;
+  duration = δ;
+  logs = δ;
+  mirage-crypto = δ;
+  mtime = δ;
+  ocaml_lwt = δ;
+  ounit = γ;
+  randomconv = γ;
 } ->
-κ
+ζ

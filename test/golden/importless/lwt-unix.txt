@@ -1,27 +1,24 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.lib = β,
-  β.versionAtLeast = γ -> String -> Bool,
-  δ.version = γ,
-  δ.version = ε,
-  δ.src = ζ,
-  δ.meta = η
+∀ β γ δ ε ζ.
+( β.lib = γ,
+  γ.versionAtLeast = δ -> String -> Bool,
+  ε.version = δ
 ) =>
 { buildDunePackage =
-    { buildInputs = [θ];
-      meta = η;
+    { buildInputs = [ζ];
+      meta = ∀ α. (ε.meta = α) => α;
       pname = String;
-      propagatedBuildInputs = [δ];
-      src = ζ;
+      propagatedBuildInputs = [ε];
+      src = ∀ α. (ε.src = α) => α;
       useDune2 = Bool;
-      version = ε;
+      version = ∀ α. (ε.version = α) => α;
     } ->
-    ι;
-  cmdliner = θ;
-  cohttp-lwt = ι;
-  conduit-lwt-unix = ι;
-  fmt = ι;
-  magic-mime = δ;
-  ppx_sexp_conv = θ;
-  stdenv = α;
+    ε;
+  cmdliner = ζ;
+  cohttp-lwt = ε;
+  conduit-lwt-unix = ε;
+  fmt = ε;
+  magic-mime = ε;
+  ppx_sexp_conv = ζ;
+  stdenv = β;
 } ->
-ι
+ε

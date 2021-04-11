@@ -1,8 +1,13 @@
-∀ α β γ δ ε ζ η θ ι.
-(α.getLib = β, α.optional = γ -> String -> δ, ε.isLinux = γ) => { lib = α;
-  qtModule = {NIX_CFLAGS_COMPILE = δ; name = String; qtInputs = [ζ];} -> η;
+∀ γ δ ε ζ η θ.
+(γ.optional = δ) => { lib = γ;
+  qtModule =
+    { NIX_CFLAGS_COMPILE = ∀ α β. (ε.isLinux = α) => β;
+      name = String;
+      qtInputs = [ζ];
+    } ->
+    η;
   qtbase = ζ;
-  stdenv = θ;
-  systemd = ι;
+  stdenv = ε;
+  systemd = θ;
 } ->
 η

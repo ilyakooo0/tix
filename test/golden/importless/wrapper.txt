@@ -1,15 +1,15 @@
-∀ α β γ δ ε ζ.
-(α.version = β, α.version = β, α.meta = γ) => { buildEnv =
+∀ β γ δ ε.
+(β.version = γ, β.version = γ) => { buildEnv =
     { buildInputs = [δ];
-      meta = γ;
+      meta = ∀ α. (β.meta = α) => α;
       name = String;
-      paths = [α];
+      paths = [β];
       pathsToLink = [String];
       postBuild = String;
     } ->
     ε;
   makeWrapper = δ;
-  zeroad-data = α;
-  zeroad-unwrapped = ζ;
+  zeroad-data = β;
+  zeroad-unwrapped = β;
 } ->
 ε

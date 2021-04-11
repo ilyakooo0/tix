@@ -1,14 +1,14 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.addBuildTools = β,
-  α.appendConfigureFlag = γ -> String -> δ,
-  α.dontHaddock = δ -> ε,
-  α.doJailbreak = ζ -> γ,
-  η.ghcjs = ζ
+∀ γ δ ε ζ η θ ι κ.
+( γ.appendConfigureFlag = δ,
+  γ.doJailbreak = ε,
+  γ.doJailbreak = ζ,
+  γ.dontHaddock = η,
+  γ.dontHaddock = θ
 ) =>
-{haskellLib = α;} ->
-θ ->
+{haskellLib = γ;} ->
 ι ->
-{ ghcjs = ε;
-  haddock-library-ghcjs = (ι.haddock-library-ghcjs = δ) => ε;
-  system-fileio = (ι.system-fileio = ζ) => γ;
+κ ->
+{ ghcjs = ∀ α β. (κ.ghcjs = α) => β;
+  haddock-library-ghcjs = ∀ α β. (κ.haddock-library-ghcjs = α) => β;
+  system-fileio = ∀ α β. (κ.system-fileio = α) => β;
 }

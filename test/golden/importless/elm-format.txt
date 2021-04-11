@@ -17,7 +17,7 @@
   mkDerivation =
     { description = String;
       doHaddock = Bool;
-      executableHaskellDepends = [δ];
+      executableHaskellDepends = [ε];
       homepage = String;
       isExecutable = Bool;
       isLibrary = Bool;

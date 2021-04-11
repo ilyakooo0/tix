@@ -1,0 +1,25 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( β.overrideAttrs = (γ -> {UNZIP = String;}) -> δ,
+  β.overrideAttrs = (ε -> {UNZIP = String;}) -> ζ,
+  β.overrideAttrs = (η -> {UNZIP = String;}) -> θ,
+  β.overrideAttrs = (ι -> {UNZIP = String;}) -> κ,
+  β.overrideAttrs = (λ -> {UNZIP = String;}) -> μ,
+  β.overrideAttrs = (ν -> {UNZIP = String;}) -> ξ,
+  β.overrideAttrs = (ο -> {UNZIP = String;}) -> π,
+  β.overrideAttrs = (ρ -> {UNZIP = String;}) -> σ,
+  β.overrideAttrs = (τ -> {UNZIP = String;}) -> υ,
+  β.overrideAttrs = (φ -> {UNZIP = String;}) -> χ
+) =>
+{fetchzip = ψ -> β;} ->
+{ ladder2017season1 = ∀ α. α;
+  ladder2017season2 = ∀ α. α;
+  ladder2017season3 = ∀ α. α;
+  ladder2017season4 = ∀ α. α;
+  ladder2018season1 = ∀ α. α;
+  ladder2018season2 = ∀ α. α;
+  ladder2018season3 = ∀ α. α;
+  ladder2018season4 = ∀ α. α;
+  ladder2019season1 = ∀ α. α;
+  melee = ∀ α. α;
+  minigames = β;
+}

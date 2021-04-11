@@ -1,10 +1,10 @@
-∀ α β γ δ ε ζ η θ ι.
-(α.generators = β, β.toPlist = γ) => { lib = α;
-  runCommand = String -> {} -> String -> δ;
-  sdkName = ε;
-  toolchainName = ζ;
-  version = η;
-  writeText = θ;
-  xcodePlatform = ι;
+∀ α β γ δ ε ζ η.
+{ lib = α;
+  runCommand = String -> {} -> String -> β;
+  sdkName = γ;
+  toolchainName = δ;
+  version = ε;
+  writeText = ζ;
+  xcodePlatform = η;
 } ->
-δ
+β

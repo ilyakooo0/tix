@@ -1,0 +1,65 @@
+∀ α.
+{fetchurl = {sha1 = String; url = String;} -> α;} ->
+{ 24 =
+    { google_apis_playstore =
+        { x86 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+        };
+    };
+  25 =
+    { google_apis_playstore =
+        { x86 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+        };
+    };
+  26 =
+    { google_apis_playstore =
+        { x86 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+        };
+    };
+  27 =
+    { google_apis_playstore =
+        { x86 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+        };
+    };
+  28 =
+    { google_apis_playstore =
+        { x86 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+          x86_64 =
+            { archives = {all = α;};
+              displayName = String;
+              name = String;
+              path = String;
+              revision = String;
+            };
+        };
+    };
+}

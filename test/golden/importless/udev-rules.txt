@@ -1,20 +1,17 @@
-∀ ε ζ η θ.
-( ε.mkDerivation =
+∀ δ ε ζ.
+( δ.mkDerivation =
     { dontBuild = Bool;
       installPhase = String;
       meta =
-        ∀ α β γ δ.
-        ( ζ.meta = α,
-          α.homepage = β,
-          α.license = γ,
-          α.maintainers = δ
-        ) =>
-        {description = String; homepage = β; license = γ; maintainers = δ;};
+        { description = String;
+          homepage = ∀ α β. (ε.meta = α, α.homepage = β) => β;
+          license = ∀ α β. (ε.meta = α, α.license = β) => β;
+          maintainers = ∀ α β. (ε.meta = α, α.maintainers = β) => β;
+        };
       name = String;
       patchPhase = String;
-      src = η;
+      src = ∀ γ. (ε.src = γ) => γ;
     } ->
-    θ,
-  ζ.src = η
+    ζ
 ) =>
-{group = String; nitrokey-app = ζ; stdenv = ε;} -> θ
+{group = String; nitrokey-app = ε; stdenv = δ;} -> ζ

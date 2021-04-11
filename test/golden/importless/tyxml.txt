@@ -1,30 +1,26 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.mkDerivation =
-    { buildInputs = [β];
+∀ β γ δ ε ζ.
+( β.mkDerivation =
+    { buildInputs = [γ];
       buildPhase = String;
-      installPhase = γ;
-      meta = δ;
+      installPhase = ∀ α. (δ.installPhase = α) => α;
+      meta = ∀ α. (δ.meta = α) => α;
       pname = String;
       propagatedBuildInputs = [ε];
-      src = ζ;
-      version = η;
+      src = ∀ α. (δ.src = α) => α;
+      version = ∀ α. (δ.version = α) => α;
     } ->
-    θ,
-  ι.version = η,
-  ι.src = ζ,
-  ι.installPhase = γ,
-  ι.meta = δ
+    ζ
 ) =>
-{ dune_2 = β;
-  findlib = β;
+{ dune_2 = γ;
+  findlib = γ;
   js_of_ocaml = ε;
-  js_of_ocaml-compiler = ι;
-  js_of_ocaml-ppx = β;
-  ocaml = β;
-  ocaml-migrate-parsetree = β;
-  ppx_tools_versioned = β;
+  js_of_ocaml-compiler = δ;
+  js_of_ocaml-ppx = γ;
+  ocaml = γ;
+  ocaml-migrate-parsetree = γ;
+  ppx_tools_versioned = γ;
   reactivedata = ε;
-  stdenv = α;
+  stdenv = β;
   tyxml = ε;
 } ->
-θ
+ζ

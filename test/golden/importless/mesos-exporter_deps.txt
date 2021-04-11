@@ -1,0 +1,4 @@
+[ { fetch = {rev = String; sha256 = String; type = String; url = String;};
+    goPackagePath = String;
+  }
+]

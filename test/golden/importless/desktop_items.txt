@@ -1,0 +1,15 @@
+∀ α β γ.
+{ makeDesktopItem =
+    { categories = String;
+      desktopName = String;
+      exec = String;
+      extraEntries = String;
+      icon = String;
+      mimeType = String;
+      name = String;
+    } ->
+    α;
+  pname = β;
+  suiteName = γ;
+} ->
+{planmaker = α; presentations = α; textmaker = α;}

@@ -1,23 +1,17 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.lib = β,
-  β.appendToName = String -> γ -> δ,
-  ε.meta = ζ,
-  ε.name = η,
-  ε.version = θ
-) =>
-{ lilypond = ε;
-  lndir = ι;
-  makeWrapper = ι;
-  openlilylib-fonts = κ;
-  stdenv = α;
+∀ β γ δ ε ζ η θ.
+(β.lib = γ, γ.appendToName = String -> δ -> ε) => { lilypond = ζ;
+  lndir = η;
+  makeWrapper = η;
+  openlilylib-fonts = θ;
+  stdenv = β;
   symlinkJoin =
-    { buildInputs = [ι];
-      meta = ζ;
-      name = η;
-      paths = (κ.all = [ε]) => [ε];
+    { buildInputs = [η];
+      meta = ∀ α. (ζ.meta = α) => α;
+      name = ∀ α. (ζ.name = α) => α;
+      paths = (θ.all = [ζ]) => [ζ];
       postBuild = String;
-      version = θ;
+      version = ∀ α. (ζ.version = α) => α;
     } ->
-    γ;
+    δ;
 } ->
-δ
+ε

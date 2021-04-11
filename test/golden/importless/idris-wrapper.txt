@@ -1,17 +1,17 @@
-∀ α β γ δ ε ζ η θ ι.
-(α.name = β, α.src = γ, α.meta = δ) => { gmp = ε;
-  idris-no-deps = α;
-  lib = ζ;
-  makeWrapper = η;
-  stdenv = θ;
+∀ β γ δ ε ζ η.
+{ gmp = β;
+  idris-no-deps = γ;
+  lib = δ;
+  makeWrapper = ε;
+  stdenv = ζ;
   symlinkJoin =
-    { buildInputs = [η];
-      meta = δ;
-      name = β;
-      paths = [α];
+    { buildInputs = [ε];
+      meta = ∀ α. (γ.meta = α) => α;
+      name = ∀ α. (γ.name = α) => α;
+      paths = [γ];
       postBuild = String;
-      src = γ;
+      src = ∀ α. (γ.src = α) => α;
     } ->
-    ι;
+    η;
 } ->
-ι
+η

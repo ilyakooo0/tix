@@ -1,11 +1,10 @@
-∀ β γ δ.
+∀ β γ.
 ( β.substituteAll =
-    { bash = γ;
+    { bash = ∀ α. (β.bash = α) => α;
       isExecutable = Bool;
       path = ∀ α. (β.coreutils = α, β.gnused = α, β.gnugrep = α) => [α];
       src = Path;
     } ->
-    δ,
-  β.bash = γ
+    γ
 ) =>
-{pkgs = β;} -> δ
+{pkgs = β;} -> γ

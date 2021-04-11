@@ -1,0 +1,40 @@
+∀ ζ η θ.
+( ζ.mkDerivation =
+    { buildInputs =
+        ∀ δ ε. (ζ.lib = δ, δ.filter = (Null -> Bool) -> [Null] -> ε) => ε;
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
+          longDescription = String;
+          maintainers =
+            ∀ α β γ. (ζ.lib = α, α.maintainers = β, β.peti = γ) => [γ];
+          platforms = ∀ α β γ. (ζ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      name = String;
+      patches =
+        ∀ δ. (ζ.lib = δ, δ.optionals = Bool -> [Path] -> [Path]) => [Path];
+      postInstall =
+        ∀ δ. (ζ.lib = δ, δ.optionalString = Bool -> String -> String) => String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ ecl = Null;
+  ecl-fasl = Bool;
+  fetchpatch = {sha256 = String; url = String;} -> Path;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  gnuplot = Null;
+  makeWrapper = Null;
+  perl = Null;
+  python = Null;
+  rlwrap = Null;
+  sbcl = Null;
+  stdenv = ζ;
+  texinfo = Null;
+  tk = Null;
+} ->
+θ

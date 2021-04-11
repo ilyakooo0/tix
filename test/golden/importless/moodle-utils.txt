@@ -1,13 +1,13 @@
-∀ ζ η.
-{stdenv = ζ; unzip = η;} ->
+∀ ε ζ η θ.
+(ε.mkDerivation = ζ -> η) => {stdenv = ε; unzip = θ;} ->
 { buildMoodlePlugin =
-    ∀ α β γ δ ε.
-    (ζ.mkDerivation = α -> β) => { buildInputs = [η];
+    ∀ α β γ δ.
+    { buildInputs = [θ];
       buildPhase = String;
       configurePhase = String;
-      name = γ;
-      pluginType = δ;
-      src = ε;
+      name = α;
+      pluginType = β;
+      src = γ;
     } ->
-    β;
+    δ;
 }

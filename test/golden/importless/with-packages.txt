@@ -1,14 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.lib = β,
-  α.lib = γ,
-  γ.appendToName = String -> δ -> ε,
-  ζ.name = η,
-  β.closePropagation = θ -> ι
+∀ β γ δ ε ζ η θ ι κ.
+( β.lib = γ,
+  β.lib = δ,
+  δ.appendToName = String -> ε -> ζ,
+  γ.closePropagation = η -> θ
 ) =>
-{ idris = ζ;
+{ idris = ι;
   makeWrapper = κ;
-  stdenv = α;
+  stdenv = β;
   symlinkJoin =
-    {buildInputs = [κ]; name = η; paths = [ζ]; postBuild = String;} -> δ;
+    { buildInputs = [κ];
+      name = ∀ α. (ι.name = α) => α;
+      paths = [ι];
+      postBuild = String;
+    } ->
+    ε;
 } ->
-θ -> ε
+η -> ζ

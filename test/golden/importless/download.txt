@@ -1,0 +1,7 @@
+[ { md5 = String;
+    md5name = String;
+    name = String;
+    sha256 = String;
+    url = String;
+  }
+]

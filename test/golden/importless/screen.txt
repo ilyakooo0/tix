@@ -1,23 +1,11 @@
-∀ θ ι κ λ μ ν ξ ο.
-( θ.programs = ι,
-  θ.programs = κ,
-  λ.mkOption =
-    {default = String; description = String; type = ∀ ε. (μ.lines = ε) => ε;} ->
-    ν,
-  λ.mkIf =
-    Bool ->
-    { environment =
-        { etc =
-            { screenrc = {text = ∀ α β γ. (α.screen = β, β.screenrc = γ) => γ;};
-            };
-          systemPackages = ∀ δ. (ξ.screen = δ) => [δ];
-        };
-      security = {pam = {services = {screen = {};};};};
-    } ->
-    ο,
-  λ.types = μ
+∀ ε ζ η θ ι κ λ μ.
+( ε.programs = ζ,
+  ε.programs = η,
+  θ.mkIf = ι,
+  θ.mkOption = κ,
+  θ.types = λ
 ) =>
-{config = θ; lib = λ; pkgs = ξ;} ->
-{ config = ∀ ζ η. (ζ.screen = η, η.screenrc = String) => ο;
-  options = {programs = {screen = {screenrc = ν;};};};
+{config = ε; lib = θ; pkgs = μ;} ->
+{ config = ∀ β γ δ. (β.screen = γ, γ.screenrc = String) => δ;
+  options = {programs = {screen = {screenrc = ∀ α. α;};};};
 }

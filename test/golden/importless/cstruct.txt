@@ -1,16 +1,16 @@
-∀ γ δ ε ζ η θ ι.
-(γ.version = δ, γ.src = ε, γ.minimumOCamlVersion = ζ) => { buildDunePackage =
+∀ γ δ ε.
+{ buildDunePackage =
     { doCheck = Bool;
       meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
-      minimumOCamlVersion = ζ;
+      minimumOCamlVersion = ∀ α. (γ.minimumOCamlVersion = α) => α;
       pname = String;
       propagatedBuildInputs = [γ];
-      src = ε;
-      version = δ;
+      src = ∀ α. (γ.src = α) => α;
+      version = ∀ α. (γ.version = α) => α;
     } ->
-    η;
+    δ;
   cstruct = γ;
-  lib = θ;
-  macaddr = ι;
+  lib = ε;
+  macaddr = γ;
 } ->
-η
+δ

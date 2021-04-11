@@ -1,15 +1,15 @@
-∀ γ δ ε ζ η.
-( γ.mkDerivation =
+∀ β γ δ ε ζ.
+( β.mkDerivation =
     { allowSubstitutes = Bool;
       buildCommand = String;
       meta = {platforms = [String];};
-      msp430GccSupport = δ;
+      msp430GccSupport = γ;
       name = String;
-      newlib = ε;
+      newlib = δ;
       passthru =
-        ∀ α β. (ε.incdir = α, ε.libdir = β) => {incdir = α; libdir = β;};
+        {incdir = ∀ α. (δ.incdir = α) => α; libdir = ∀ α. (δ.libdir = α) => α;};
       preferLocalBuild = Bool;
     } ->
-    ζ
+    ε
 ) =>
-{lndir = η; msp430GccSupport = δ; newlib = ε; stdenvNoCC = γ;} -> ζ
+{lndir = ζ; msp430GccSupport = γ; newlib = δ; stdenvNoCC = β;} -> ε

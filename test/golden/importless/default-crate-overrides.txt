@@ -1,70 +1,90 @@
-∀ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
-( ε.apple_sdk = ζ,
-  ζ.frameworks = η,
-  η.CoreFoundation = θ,
-  η.Security = θ
+∀ θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( θ.apple_sdk = ι,
+  θ.apple_sdk = κ,
+  θ.apple_sdk = λ,
+  θ.apple_sdk = μ
 ) =>
-{ cairo = ι;
-  curl = κ;
-  darwin = ε;
-  dbus = λ;
-  dbus-glib = μ;
-  foundationdb = ν;
-  gdk-pixbuf = ξ;
-  gmp = ο;
-  libgit2 = π;
-  libiconv = θ;
-  libsodium = ρ;
-  libssh2 = σ;
-  openssl = τ;
-  pkgconfig = τ;
-  postgresql = ρ;
-  python3 = υ;
-  sqlite = φ;
-  stdenv = χ;
-  zlib = τ;
+{ cairo = ν;
+  curl = ξ;
+  darwin = θ;
+  dbus = ο;
+  dbus-glib = π;
+  foundationdb = ρ;
+  gdk-pixbuf = σ;
+  gmp = τ;
+  libgit2 = υ;
+  libiconv = φ;
+  libsodium = χ;
+  libssh2 = ψ;
+  openssl = ω;
+  pkgconfig = ω;
+  postgresql = χ;
+  python3 = α1;
+  sqlite = β2;
+  stdenv = γ3;
+  zlib = ω;
 } ->
-{ cairo-rs = ∀ δ. δ -> {buildInputs = [ι];};
+{ cairo-rs = ∀ η. η -> {buildInputs = [ν];};
   cargo =
-    ∀ δ.
-    δ ->
+    ∀ η.
+    η ->
     { buildInputs =
-        ∀ α β.
-        (χ.lib = α, α.optionals = β -> [θ] -> [κ], χ.isDarwin = β) => [κ];
+        ∀ α β γ δ ε ζ.
+        ( γ3.lib = α,
+          α.optionals = β -> [φ] -> [ξ],
+          γ3.isDarwin = β,
+          γ.frameworks = δ,
+          δ.CoreFoundation = φ,
+          ε.frameworks = ζ,
+          ζ.Security = φ
+        ) =>
+        [ξ];
     };
   curl-sys =
-    ∀ δ.
-    δ ->
-    { buildInputs = [κ];
+    ∀ η.
+    η ->
+    { buildInputs = [ξ];
       extraLinkFlags = [String];
-      propagatedBuildInputs = [κ];
+      propagatedBuildInputs = [ξ];
     };
-  dbus = ∀ δ. δ -> {buildInputs = [λ];};
-  foundationdb = ∀ δ. δ -> {buildInputs = [ν];};
-  foundationdb-sys = ∀ δ. δ -> {buildInputs = [ν];};
-  gdk-pixbuf = ∀ δ. δ -> {buildInputs = [ξ];};
-  gdk-pixbuf-sys = ∀ δ. δ -> {buildInputs = [μ];};
-  gio-sys = ∀ δ. δ -> {buildInputs = [μ];};
-  gobject-sys = ∀ δ. δ -> {buildInputs = [μ];};
-  libdbus-sys = ∀ δ. δ -> {buildInputs = [σ];};
+  dbus = ∀ η. η -> {buildInputs = [ο];};
+  foundationdb = ∀ η. η -> {buildInputs = [ρ];};
+  foundationdb-sys = ∀ η. η -> {buildInputs = [ρ];};
+  gdk-pixbuf = ∀ η. η -> {buildInputs = [σ];};
+  gdk-pixbuf-sys = ∀ η. η -> {buildInputs = [π];};
+  gio-sys = ∀ η. η -> {buildInputs = [π];};
+  gobject-sys = ∀ η. η -> {buildInputs = [π];};
+  libdbus-sys = ∀ η. η -> {buildInputs = [ο];};
   libgit2-sys =
-    ∀ δ. δ -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [π];};
-  libsqlite3-sys = ∀ δ. δ -> {buildInputs = [φ];};
-  libssh2-sys = ∀ δ. δ -> {buildInputs = [σ];};
-  libz-sys = ∀ δ. δ -> {buildInputs = [κ]; extraLinkFlags = [String];};
-  openssl = ∀ δ. δ -> {buildInputs = [σ];};
-  openssl-sys = ∀ δ. δ -> {buildInputs = [σ];};
-  pq-sys = ∀ δ. δ -> {buildInputs = [ρ];};
+    ∀ η. η -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [υ];};
+  libsqlite3-sys = ∀ η. η -> {buildInputs = [β2];};
+  libssh2-sys = ∀ η. η -> {buildInputs = [ψ];};
+  libz-sys = ∀ η. η -> {buildInputs = [ψ]; extraLinkFlags = [String];};
+  openssl = ∀ η. η -> {buildInputs = [ψ];};
+  openssl-sys = ∀ η. η -> {buildInputs = [ψ];};
+  pq-sys = ∀ η. η -> {buildInputs = [χ];};
   rink =
-    ∀ δ.
-    δ -> {buildInputs = [ο]; crateBin = [{name = String; path = String;}];};
-  security-framework-sys = ∀ δ. δ -> {propagatedBuildInputs = [θ];};
-  serde_derive =
-    ∀ δ.
-    δ ->
-    { buildInputs =
-        ∀ α β γ. (χ.lib = α, α.optional = β -> θ -> γ, χ.isDarwin = β) => γ;
+    ∀ η.
+    η -> {buildInputs = [τ]; crateBin = [{name = String; path = String;}];};
+  security-framework-sys =
+    ∀ η.
+    η ->
+    { propagatedBuildInputs =
+        ∀ α β γ. (α.frameworks = β, β.Security = γ) => [γ];
     };
-  thrussh-libsodium = ∀ δ. δ -> {buildInputs = [ρ];};
-  xcb = ∀ δ. δ -> {buildInputs = [υ];};
+  serde_derive =
+    ∀ η.
+    η ->
+    { buildInputs =
+        ∀ α β γ δ ε ζ.
+        ( γ3.lib = α,
+          α.optional = β -> γ -> δ,
+          γ3.isDarwin = β,
+          ε.frameworks = ζ,
+          ζ.Security = γ
+        ) =>
+        δ;
+    };
+  thrussh-libsodium = ∀ η. η -> {buildInputs = [χ];};
+  xcb = ∀ η. η -> {buildInputs = [α1];};
 }

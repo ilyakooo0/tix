@@ -1,0 +1,3 @@
+∀ α.
+{fetchgit = {rev = String; sha256 = String; url = String;} -> α;} ->
+{angle2 = α; dng_sdk = α; piex = α; sfntly = α;}
