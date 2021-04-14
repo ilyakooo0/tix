@@ -26,7 +26,6 @@ import Data.Act
 import qualified Data.Aeson as A
 import Data.Fix
 import Data.Foldable
-import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
 import qualified Data.List.NonEmpty as NE
@@ -190,35 +189,35 @@ v <<- x = return $ Substitution $ M.singleton v x
 unifyWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  Predicate TypeVariable ->
+  RS.RSet TypeVariable ->
   Constraint ->
   UnifyM Substitution
-unifyWithPriority f (lhs :~ rhs) =
+unifyWithPriority range (lhs :~ rhs) =
   case (lhs, rhs) of
     (x, y) | x == y -> return mempty
     (NTypeVariable x, NTypeVariable y) -> do
-      if getPredicate f y
+      if y `RS.member` range
         then y <<- NTypeVariable x
         else x <<- NTypeVariable y
     (NTypeVariable t, x) -> t <<- x
     (x, NTypeVariable t) -> t <<- x
-    (List x, List y) -> unifyWithPriority f $ x :~ y
+    (List x, List y) -> unifyWithPriority range $ x :~ y
     (NAttrSet x, NAttrSet y) -> do
       assertSetsMatch (tell . KeysDontMatch) (M.keysSet x) (M.keysSet y)
-      unifySchemes f . M.elems $ M.intersectionWith (,) x y
+      unifySchemes range . M.elems $ M.intersectionWith (,) x y
     (x1 :-> y1, x2 :-> y2) -> do
-      s <- unifyWithPriority f (x1 :~ x2)
-      s' <- unifyWithPriority f $ sub s $ y1 :~ y2
+      s <- unifyWithPriority range (x1 :~ x2)
+      s' <- unifyWithPriority range $ sub s $ y1 :~ y2
       return $ s' <> s
     (x, y) -> tell (CanNotUnify x y) >> return mempty
 
-unifySchemes :: Predicate TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitution
+unifySchemes :: RS.RSet TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitution
 unifySchemes _ [] = pure mempty
-unifySchemes f ((x, y) : rest) = do
-  s <- unifyScheme f x y
-  sub s <$> unifySchemes f (sub s rest)
+unifySchemes range ((x, y) : rest) = do
+  s <- unifyScheme range x y
+  sub s <$> unifySchemes range (sub s rest)
 
-unifyScheme :: Predicate TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
+unifyScheme :: RS.RSet TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
 unifyScheme range (xs :=> x) (ys :=> y) = do
   s <- solveWithPriority range (pure (x :~ y))
   let f = S.fromList . sub s
@@ -236,13 +235,13 @@ solve = solveWithPriority mempty
 solveWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  Predicate TypeVariable ->
+  RS.RSet TypeVariable ->
   Seq Constraint ->
   UnifyM Substitution
 solveWithPriority _ Empty = return mempty
-solveWithPriority f (rest :|> c) = do
-  s <- unifyWithPriority f c
-  sub s <$> solveWithPriority f (fmap (sub s) rest)
+solveWithPriority range (rest :|> c) = do
+  s <- unifyWithPriority range c
+  sub s <$> solveWithPriority range (fmap (sub s) rest)
 
 data Errors
   = UndefinedVariable VarName
@@ -711,7 +710,7 @@ inferGeneral' ::
   (Members InferEffs r, Pretty y) =>
   (x -> y) ->
   Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : r) x ->
-  Eff r (x, Predicate TypeVariable, [Pred], Substitution)
+  Eff r (x, RS.RSet TypeVariable, [Pred], Substitution)
 inferGeneral' toPretty f = do
   (((x, subs), cs), range) <-
     traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ f
@@ -721,7 +720,7 @@ inferGeneral' toPretty f = do
     traceValue "constraints" $ fmap renderPretty cs
     traceValue "range" $ T.pack . show $ range
     get @(MKM.Map Pred) >>= traceValue "preds" . showPreds
-  s' <- solveWithPriority (Predicate (`RS.member` range)) cs
+  s' <- solveWithPriority range cs
   traceValue "substitutions_after_solving" $ prettySubstitution s'
   let s = subs <> s'
       returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
@@ -731,8 +730,8 @@ inferGeneral' toPretty f = do
     subEnv returnedS
     preds <- get @(MKM.Map Pred)
     traceValue "subbed_preds" $ showPreds preds
-    let p = Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)
-        (keep', toss) = MKM.partition (getPredicate p) preds
+    let newRange = range RS.\\ rangeFromSet (free returnedS)
+        (keep', toss) = MKM.partition (`RS.member` newRange) preds
         keep = MKM.toList keep'
     -- At this point the only predicates only contain type variables that are only used
     -- in the expression. This means that all of the generated constraints and
@@ -740,10 +739,13 @@ inferGeneral' toPretty f = do
     traceValue "preds" $ showPreds toss
     traceValue "keep_preds" $ showPreds keep'
     put toss
-    return (x, p, keep, s)
+    return (x, newRange, keep, s)
   where
     showPreds :: MKM.Map Pred -> Map String String
     showPreds = M.mapKeys show . fmap show . MKM.toMap
+
+rangeFromSet :: (Ord x, Enum x) => S.Set x -> RS.RSet x
+rangeFromSet = RS.fromAscList . S.toAscList
 
 solveAndClose ::
   Members
@@ -754,24 +756,21 @@ solveAndClose ::
        Writer UnifyingError
      ]
     eff =>
-  Predicate TypeVariable ->
+  RS.RSet TypeVariable ->
   Scheme ->
   Eff eff Scheme
-solveAndClose p (cs :=> t) = do
-  (((solvedPreds, range), constraints), collectedPreds) <-
+solveAndClose range (cs :=> t) = do
+  (((solvedPreds, range'), constraints), collectedPreds) <-
     runSeqWriter @[Pred]
       . runSeqWriter @(Seq Constraint)
       . registerTypeVariables
       $ solveConstraints cs
-  let newPredicate = p `pOr` Predicate (`RS.member` range)
+  let newRange = range `RS.union` range'
   case (constraints, collectedPreds) of
-    (Empty, []) -> return . close newPredicate $ solvedPreds :=> t
+    (Empty, []) -> return . close newRange $ solvedPreds :=> t
     _ -> do
-      s <- solveWithPriority newPredicate constraints
-      solveAndClose newPredicate $ sub s $ (collectedPreds <> solvedPreds) :=> t
-
-pOr :: Predicate x -> Predicate x -> Predicate x
-pOr (Predicate f) (Predicate g) = Predicate $ \x -> f x || g x
+      s <- solveWithPriority newRange constraints
+      solveAndClose newRange $ sub s $ (collectedPreds <> solvedPreds) :=> t
 
 solveConstraints ::
   Members
@@ -813,8 +812,8 @@ instance Act DeBruijnContext DeBruijn where
 
 type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
 
-close :: TraversableNTypes x => Predicate TypeVariable -> x -> x
-close (Predicate f) =
+close :: TraversableNTypes x => RS.RSet TypeVariable -> x -> x
+close range =
   run
     . evalState @TDeBruijnMap mempty
     . runReader @Int 0
@@ -827,7 +826,7 @@ close (Predicate f) =
       traverseNTypesWith bndCtx %%~ \case
         x@(TBruijn _) -> return x
         x@(TAtomic _) -> return x
-        (TTypeVariable tv) | f tv -> TBruijn <$> newbruijn tv
+        (TTypeVariable tv) | tv `RS.member` range -> TBruijn <$> newbruijn tv
         x@(TTypeVariable _) -> return x
 
     bndCtx m = do
