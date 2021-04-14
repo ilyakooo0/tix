@@ -1,0 +1,10 @@
+∀ α β γ.
+{ buildPythonPackage =
+    {pname = String; propagatedBuildInputs = [α]; src = β; version = String;} ->
+    γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β;
+  python-pam = α;
+  twisted = α;
+} ->
+γ

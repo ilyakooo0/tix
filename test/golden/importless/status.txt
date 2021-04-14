@@ -1,0 +1,32 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+          maintainers = ∀ α. α;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      preBuild = String;
+      src = η;
+    } ->
+    θ
+) =>
+{ alsaLib = ε;
+  asciidoc = ζ;
+  docbook_xml_dtd_45 = ζ;
+  docbook_xsl = ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  libconfuse = ε;
+  libnl = ε;
+  libpulseaudio = ε;
+  pkgconfig = ζ;
+  stdenv = δ;
+  xmlto = ζ;
+  yajl = ε;
+} ->
+θ

@@ -1,0 +1,30 @@
+∀ δ ε ζ η θ ι.
+{ buildDunePackage =
+    { buildInputs = [δ];
+      configurePlatforms = ∀ γ. γ;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β. (ε.licenses = α, α.gpl2 = β) => β;
+          maintainers = ∀ α β. (ε.maintainers = α, α.vbgl = β) => [β];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      useDune2 = Bool;
+      version = String;
+    } ->
+    ι;
+  cmdliner = δ;
+  cppo = ζ;
+  dune_2 = ζ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  findlib = ζ;
+  lib = ε;
+  menhir = ζ;
+  ocaml = ζ;
+  ocaml-migrate-parsetree = η;
+  yojson = η;
+} ->
+ι

@@ -1,0 +1,32 @@
+∀ ζ η θ ι κ λ μ.
+{ buildPythonApplication =
+    { checkPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          platforms = ∀ α β γ. (ζ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postPatch =
+        ∀ δ ε.
+        ( ζ.lib = δ,
+          δ.optionalString = ε -> String -> String,
+          ζ.isi686 = ε
+        ) =>
+        String;
+      preConfigure = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  e2fsprogs = λ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  parted = θ;
+  pkgconfig = η;
+  python = μ;
+  stdenv = ζ;
+} ->
+κ

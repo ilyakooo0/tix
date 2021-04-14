@@ -1,0 +1,58 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+((α) // ({lib = β;}) ~ (γ), δ.isILP64 = Bool, ε.isILP64 = Bool) => { bash =
+    String;
+  binutils = ζ;
+  blas = δ;
+  cddlib = String;
+  coreutils = String;
+  ecl = String;
+  eclib = String;
+  ecm = String;
+  env-locations = η;
+  fflas-ffpack = θ;
+  flint = ι;
+  flintqs = String;
+  gap = String;
+  gd = κ;
+  gfan = String;
+  gfortran = String;
+  giac = String;
+  givaro = λ;
+  glpk = String;
+  gmp = μ;
+  gnugrep = String;
+  gnused = String;
+  gsl = ν;
+  jdk = String;
+  jmol = String;
+  lapack = ε;
+  lcalc = String;
+  less = String;
+  lib = ξ;
+  libpng = ο;
+  linbox = π;
+  m4ri = ρ;
+  maxima-ecl = String;
+  mpfr = σ;
+  nauty = String;
+  ntl = τ;
+  palp = String;
+  pari = String;
+  pkg-config = String;
+  ppl = String;
+  pynac = υ;
+  python = φ;
+  python3 = χ;
+  pythonEnv = String;
+  rWrapper = String;
+  rubiks = String;
+  sagelib = β;
+  singular = String;
+  sqlite = String;
+  stdenv = ψ;
+  sympow = String;
+  tachyon = String;
+  writeTextFile = {destination = String; name = String; text = String;} -> α;
+  zlib = ω;
+} ->
+γ

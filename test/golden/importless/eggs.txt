@@ -1,0 +1,24 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( β.eggDerivation = γ,
+  β.eggDerivation = δ,
+  β.eggDerivation = ε,
+  β.eggDerivation = ζ,
+  β.eggDerivation = η,
+  β.eggDerivation = θ,
+  β.fetchegg = ι,
+  β.fetchegg = κ,
+  β.fetchegg = λ,
+  β.fetchegg = μ,
+  β.fetchegg = ν,
+  β.fetchegg = ξ
+) =>
+{pkgs = β; stdenv = ο;} ->
+{ args = ∀ α. α;
+  eggDerivation = ∀ α. (β.eggDerivation = α) => α;
+  fetchegg = ∀ α. (β.fetchegg = α) => α;
+  matchable = ∀ α. α;
+  srfi-1 = ∀ α. α;
+  srfi-13 = ∀ α. α;
+  srfi-14 = ∀ α. α;
+  srfi-37 = ∀ α. α;
+}

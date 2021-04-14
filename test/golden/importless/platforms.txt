@@ -1,0 +1,203 @@
+∀ β.
+{lib = β;} ->
+{ aarch64-multiplatform =
+    { gcc = {arch = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  armv7a-android =
+    {gcc = {arch = String; float-abi = String; fpu = String;}; name = String;};
+  armv7l-hf-multiplatform =
+    { gcc = {arch = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  beaglebone =
+    { gcc = {arch = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  ben_nanonote =
+    { gcc = {arch = String; float = String;};
+      kernelArch = String;
+      kernelMajor = String;
+      name = String;
+    };
+  fuloong2f_n32 =
+    { gcc = {abi = String; arch = String; float = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelTarget = String;
+      name = String;
+    };
+  guruplug =
+    { gcc = {arch = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelMakeFlags = [String];
+      kernelTarget = String;
+      name = String;
+    };
+  pc32 =
+    { kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  pc32_simplekernel =
+    { kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  pc64 =
+    { kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  pc64_simplekernel =
+    { kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  pcBase =
+    { kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  pogoplug4 =
+    { gcc = {arch = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelMakeFlags = [String];
+      kernelTarget = String;
+      name = String;
+    };
+  powernv =
+    { kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelExtraConfig = String;
+      kernelFile = String;
+      kernelInstallTarget = String;
+      kernelTarget = String;
+      name = String;
+    };
+  raspberrypi =
+    { gcc = {arch = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  raspberrypi2 =
+    { gcc = {arch = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  riscv-multiplatform =
+    ∀ α.
+    α ->
+    { bfdEmulation = String;
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelExtraConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  scaleway-c1 =
+    { gcc = {cpu = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelPreferBuiltin = Bool;
+      kernelTarget = String;
+      name = String;
+    };
+  selectBySystem =
+    ∀ α.
+    α ->
+    { kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelTarget = String;
+      name = String;
+    };
+  sheevaplug =
+    { gcc = {arch = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelMakeFlags = [String];
+      kernelTarget = String;
+      name = String;
+    };
+  utilite =
+    { gcc = {cpu = String; fpu = String;};
+      kernelArch = String;
+      kernelAutoModules = Bool;
+      kernelBaseConfig = String;
+      kernelDTB = Bool;
+      kernelExtraConfig = String;
+      kernelMajor = String;
+      kernelMakeFlags = [String];
+      kernelTarget = String;
+      name = String;
+    };
+}

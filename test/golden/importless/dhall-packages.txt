@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.fix' = β -> γ,
+  α.extends =
+    (δ -> ε -> {}) ->
+    ( ζ ->
+      { Prelude = η;
+        buildDhallDirectoryPackage = θ;
+        buildDhallGitHubPackage = θ;
+        buildDhallPackage = θ;
+        dhall-kubernetes = η;
+        dhall-packages = η;
+      }
+    ) ->
+    β
+) =>
+{lib = α; newScope = ζ -> ι; overrides = δ -> ε -> {};} -> γ

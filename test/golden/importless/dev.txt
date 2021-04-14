@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ.
+( α.override = {ruby = β;} -> γ,
+  α.override = {ruby = β;} -> δ,
+  ε.override = {bundler = ζ;} -> η
+) =>
+{ buildEnv =
+    { ignoreCollisions = Bool;
+      name = String;
+      paths = [β];
+      pathsToLink = [String];
+    } ->
+    θ;
+  bundix = ε;
+  bundler = α;
+  ruby = β;
+} ->
+θ

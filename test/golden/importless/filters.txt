@@ -1,0 +1,47 @@
+∀ δ ε ζ η θ ι.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      configureFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postConfigure = String;
+      postInstall = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ avahi = ε;
+  bc = ι;
+  coreutils = ι;
+  cups = ε;
+  dbus = ε;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  fontconfig = ε;
+  gawk = ι;
+  ghostscript = ε;
+  gnugrep = ι;
+  gnused = ι;
+  ijs = ε;
+  libjpeg = ε;
+  libpng = ε;
+  makeWrapper = ζ;
+  mupdf = ε;
+  perl = ε;
+  pkgconfig = ζ;
+  poppler = ε;
+  poppler_utils = ε;
+  qpdf = ε;
+  stdenv = δ;
+  which = ι;
+} ->
+θ

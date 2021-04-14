@@ -1,0 +1,17 @@
+∀ β γ δ ε ζ η.
+( β.mkDerivation =
+    { buildPhase = String;
+      installPhase = String;
+      name = String;
+      nativeBuildInputs = [γ];
+      src = ∀ α. α;
+    } ->
+    δ
+) =>
+{ callPackage = Path -> {src = ε; version = ζ;} -> η;
+  maven = γ;
+  src = ε;
+  stdenv = β;
+  version = ζ;
+} ->
+δ

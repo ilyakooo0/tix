@@ -1,0 +1,25 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      builder = ζ;
+      convert = Path;
+      data = η;
+      meta =
+        { description = String;
+          homepage = String;
+          maintainers = ∀ α. α;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+        };
+      pname = String;
+      version = String;
+    } ->
+    θ
+) =>
+{ dict = ε;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  glibcLocales = ε;
+  python = ε;
+  stdenv = δ;
+  writeScript = String -> String -> ζ;
+} ->
+θ

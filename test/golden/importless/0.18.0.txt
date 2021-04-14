@@ -1,0 +1,25 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      configureFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          longDescription = String;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      name = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+    } ->
+    θ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  gmp = ε;
+  isl = ζ;
+  stdenv = δ;
+} ->
+θ

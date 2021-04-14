@@ -1,0 +1,23 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      dontUnpack = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
+          maintainers = ∀ α. α;
+        };
+      pname = String;
+      sources10Zip = ζ;
+      sources20Zip = ζ;
+      sources30Zip = ζ;
+      sources40Zip = ζ;
+      sources50Zip = ζ;
+      sources60Zip = ζ;
+      version = String;
+    } ->
+    η
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ζ; stdenv = δ; unzip = ε;} -> η

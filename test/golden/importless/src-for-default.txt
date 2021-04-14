@@ -1,0 +1,6 @@
+{ advertisedUrl = String;
+  hash = String;
+  name = String;
+  url = String;
+  version = String;
+}

@@ -1,0 +1,17 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { description = String;
+          longDescription = String;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      name = String;
+      preConfigure = String;
+      src = ζ;
+    } ->
+    η
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ζ; lvm2 = ε; stdenv = δ;} -> η

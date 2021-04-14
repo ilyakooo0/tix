@@ -1,0 +1,29 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.free = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.jwiegley = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.darwin = γ) => γ;
+        };
+      pname = String;
+      postInstall = String;
+      src = ζ;
+      unpackPhase = String;
+      version = String;
+    } ->
+    η
+) =>
+{ cpio = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  makeWrapper = ε;
+  rsync = ε;
+  stdenv = δ;
+  xar = θ;
+} ->
+η

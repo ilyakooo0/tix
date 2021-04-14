@@ -1,0 +1,33 @@
+∀ ζ η θ ι κ λ μ ν ξ ο.
+( ζ.withPackages = (η -> [θ]) -> ι,
+  κ.mkDerivation =
+    { buildInputs =
+        ∀ δ ε. (δ.pycairo = ε, δ.pygobject2 = ε, δ.pygtk = ε) => [λ];
+      doBuild = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (κ.lib = α, α.licenses = β, β.unfree = γ) => γ;
+          maintainers =
+            ∀ α β γ. (κ.lib = α, α.maintainers = β, β.zimbatm = γ) => [γ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [μ];
+      pname = String;
+      postFixup = String;
+      src = ν;
+      unpackPhase = String;
+      version = ∀ δ. δ;
+    } ->
+    ξ
+) =>
+{ autoPatchelfHook = ο;
+  dpkg = μ;
+  fahviewer = λ;
+  fetchurl = {sha256 = String; url = String;} -> ν;
+  makeWrapper = μ;
+  python2 = ζ;
+  stdenv = κ;
+} ->
+ξ

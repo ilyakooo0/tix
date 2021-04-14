@@ -1,0 +1,29 @@
+∀ α β γ.
+{ fetchDockerConfig =
+    { imageName = String;
+      registry = String;
+      repository = String;
+      sha256 = String;
+      tag = String;
+    } ->
+    α;
+  fetchDockerLayer =
+    { imageName = String;
+      layerDigest = String;
+      registry = String;
+      repository = String;
+      sha256 = String;
+    } ->
+    β;
+  fetchdocker =
+    { imageConfig = α;
+      imageLayers = [β];
+      imageName = String;
+      name = String;
+      registry = String;
+      repository = String;
+      tag = String;
+    } ->
+    γ;
+} ->
+γ

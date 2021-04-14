@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mkDerivation =
+    { configureFlags =
+        ( α.lib = β,
+          β.enableFeature = Bool -> String -> γ,
+          α.lib = δ,
+          δ.optionals = ε -> [String] -> [γ],
+          α.isDarwin = ε
+        ) =>
+        [γ];
+      doCheck = Bool;
+      meta =
+        { badPlatforms = [String];
+          branch = String;
+          description = String;
+          homepage = String;
+          license = (α.lib = ζ, ζ.licenses = η, η.lgpl3Plus = θ) => θ;
+          longDescription = String;
+          maintainers = ζ;
+          platforms = (α.lib = ζ, ζ.platforms = η, η.all = θ) => θ;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+      outputs = [String];
+      passthru = {static = (κ.out = ζ) => ζ;};
+      preConfigure = (α.isDarwin = Bool) => String;
+      src = λ;
+    } ->
+    κ
+) =>
+{ cxx = Bool;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  m4 = ι;
+  stdenv = α;
+} ->
+κ

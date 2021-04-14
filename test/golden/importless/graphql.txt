@@ -1,0 +1,18 @@
+∀ γ δ ε.
+{ buildDunePackage =
+    { doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      pname = String;
+      propagatedBuildInputs = [γ];
+      src = ∀ α. (γ.src = α) => α;
+      useDune2 = Bool;
+      version = ∀ α. (γ.version = α) => α;
+    } ->
+    δ;
+  cohttp-lwt = γ;
+  graphql-cohttp = γ;
+  graphql-lwt = γ;
+  irmin = γ;
+  lib = ε;
+} ->
+δ

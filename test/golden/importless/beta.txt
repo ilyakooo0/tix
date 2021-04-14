@@ -1,0 +1,36 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { NIX_LDFLAGS = String;
+      buildInputs = [ε];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          downloadPage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          version = String;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      preConfigure = String;
+      setSourceRoot = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ autoconf = ζ;
+  automake = ζ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> η;
+  libGL = ε;
+  libGLU = ε;
+  libX11 = ε;
+  perl = ε;
+  python2 = ε;
+  stdenv = δ;
+  wxGTK = ε;
+  zlib = ε;
+} ->
+θ

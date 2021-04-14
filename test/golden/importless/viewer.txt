@@ -1,0 +1,32 @@
+∀ ε ζ η θ ι κ.
+( ε.mkDerivation =
+    { buildInputs = (ζ.lib = η) => [η];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.unfree = γ) => γ;
+          maintainers =
+            ∀ α β γ. (ε.lib = α, α.maintainers = β, β.zimbatm = γ) => [γ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      unpackPhase = String;
+      version = ∀ δ. δ;
+    } ->
+    κ
+) =>
+{ autoPatchelfHook = θ;
+  dpkg = θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  freeglut = η;
+  gcc-unwrapped = ζ;
+  libGL = η;
+  libGLU = η;
+  makeWrapper = θ;
+  stdenv = ε;
+  zlib = η;
+} ->
+κ

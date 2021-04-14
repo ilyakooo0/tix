@@ -1,0 +1,13 @@
+∀ β γ.
+{fetchurl = {sha256 = β; url = String;} -> γ;} ->
+{ fetchSrc = ∀ α. {name = α; sha256 = String;} -> γ;
+  help = γ;
+  major = String;
+  minor = String;
+  patch = String;
+  src = γ;
+  subdir = String;
+  translations = γ;
+  tweak = String;
+  version = String;
+}

@@ -1,0 +1,5 @@
+∀ α.
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> α;
+} ->
+{src = α; versions = {libtiff = String; opentoonz = String;};}

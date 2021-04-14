@@ -1,0 +1,30 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { description = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.lgpl21Plus = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          version = String;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ autoconf = ζ;
+  automake = ζ;
+  autoreconfHook = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  gettext = ζ;
+  gmp = ε;
+  libtool = ζ;
+  mpfr = ε;
+  stdenv = δ;
+} ->
+θ

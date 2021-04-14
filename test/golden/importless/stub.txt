@@ -1,0 +1,16 @@
+∀ β γ δ ε.
+{ buildDunePackage =
+    { checkInputs = ∀ α. (β.optional = Bool -> γ -> α) => α;
+      doCheck = Bool;
+      meta = ∀ α. (δ.meta = α) => α;
+      pname = String;
+      propagatedBuildInputs = [δ];
+      src = ∀ α. (δ.src = α) => α;
+      version = ∀ α. (δ.version = α) => α;
+    } ->
+    ε;
+  lib = β;
+  ocaml_gettext = δ;
+  ounit = γ;
+} ->
+ε

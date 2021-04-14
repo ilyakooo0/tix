@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+{ combinatorial_designs = α;
+  conway_polynomials = β;
+  cysignals = γ;
+  ecl = δ;
+  elliptic_curves = ε;
+  gap = ζ;
+  graphs = η;
+  jmol = θ;
+  mathjax = ι;
+  maxima-ecl = κ;
+  pari = λ;
+  pari_data = μ;
+  polytopes_db = ν;
+  singular = ξ;
+  three = ο;
+  writeTextFile = {destination = String; name = String; text = String;} -> π;
+} ->
+π

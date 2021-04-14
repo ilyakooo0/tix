@@ -1,0 +1,32 @@
+∀ ζ η θ ι.
+( ζ.mkDerivation =
+    { buildInputs = [η];
+      configurePhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = ∀ α β. (θ.meta = α, α.homepage = β) => β;
+          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.lgpl3 = γ) => γ;
+          platforms =
+            ∀ α β γ δ ε.
+            ( ζ.lib = α,
+              α.platforms = β,
+              β.linux = [γ],
+              ζ.lib = δ,
+              δ.platforms = ε,
+              ε.darwin = [γ]
+            ) =>
+            [γ];
+        };
+      name = String;
+      patches = [Path];
+      src = θ;
+    } ->
+    ι
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  pixie = η;
+  stdenv = ζ;
+} ->
+ι

@@ -1,0 +1,5 @@
+∀ α β γ.
+( α.mkDerivation =
+    {buildCommand = String; pname = String; src = β; version = String;} -> γ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> β; stdenv = α;} -> γ

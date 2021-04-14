@@ -1,0 +1,29 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      doCheck = Bool;
+      doInstallCheck = Bool;
+      dontPatchShebangs = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          longDescription = String;
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+        };
+      name = String;
+      nativeBuildInputs = [ε];
+      preCheck = String;
+      setupHook = Path;
+      src = ζ;
+    } ->
+    η
+) =>
+{ autoconf = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  perl = ε;
+  stdenv = δ;
+} ->
+η

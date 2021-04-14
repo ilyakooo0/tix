@@ -1,0 +1,29 @@
+∀ δ ε ζ η θ ι κ λ.
+( δ.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl3 = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.thoughtpolice = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      nativeBuildInputs = (ε.python = ζ) => [ζ];
+      outputs = [String];
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  lsof = ι;
+  makeWrapper = ζ;
+  ncurses = κ;
+  nettools = λ;
+  python2Packages = ε;
+  stdenv = δ;
+} ->
+θ

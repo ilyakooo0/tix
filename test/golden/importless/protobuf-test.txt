@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+(α.isDarwin = β, γ.optionalString = β -> String -> String) => { bazel = δ;
+  bazelTest =
+    { bazelPkg = δ;
+      bazelScript = String;
+      buildInputs = [ε];
+      name = String;
+      workspaceDir = ζ;
+    } ->
+    η;
+  distDir = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  fetchurl =
+    {passthru = {sha256 = String;}; sha256 = String; url = String;} -> κ;
+  gccStdenv = α;
+  lib = γ;
+  openjdk8 = ε;
+  runLocal = String -> {} -> String -> ζ;
+  runtimeShell = λ;
+  writeScript = String -> String -> μ;
+  writeText = String -> String -> ν;
+} ->
+η

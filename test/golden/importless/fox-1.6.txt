@@ -1,0 +1,41 @@
+∀ ζ η θ ι κ.
+( ζ.mkDerivation =
+    { buildInputs =
+        ∀ δ ε. (ζ.lib = δ, δ.optional = ε -> η -> [θ], ζ.isDarwin = ε) => [θ];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      hardeningDisable = [String];
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.lgpl3 = γ) => γ;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms =
+            ∀ α β γ. (ζ.lib = α, α.platforms = β, β.mesaPlatforms = γ) => γ;
+        };
+      pname = String;
+      src = ι;
+      version = ∀ δ. δ;
+    } ->
+    κ
+) =>
+{ CoreServices = η;
+  bzip2 = θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  libGL = θ;
+  libGLU = θ;
+  libXcursor = θ;
+  libXfixes = θ;
+  libXft = θ;
+  libXrandr = θ;
+  libjpeg = θ;
+  libpng = θ;
+  libtiff = θ;
+  stdenv = ζ;
+  xinput = θ;
+  xlibsWrapper = θ;
+  zlib = θ;
+} ->
+κ

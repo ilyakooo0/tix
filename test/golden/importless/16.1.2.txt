@@ -1,0 +1,42 @@
+∀ ε ζ η θ ι κ.
+( ε.lib = ζ,
+  ε.mkDerivation =
+    { buildInputs = [η];
+      configureFlags =
+        ∀ δ. (ε.lib = δ, δ.optional = Bool -> String -> [String]) => [String];
+      hardeningDisable = [String];
+      meta =
+        { description = String;
+          license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.mit = γ) => γ;
+          maintainers =
+            ∀ α β γ. (ε.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (ε.lib = α, α.platforms = β, β.unix = γ) => γ;
+          version = String;
+        };
+      name = String;
+      patches = [Path];
+      postInstall = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  ζ.optionals = Bool -> [Null] -> [θ]
+) =>
+{ autoconf = η;
+  automake = η;
+  boehmgc = Null;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  gcc = θ;
+  gmp = θ;
+  libffi = θ;
+  libtool = η;
+  makeWrapper = η;
+  mpfr = θ;
+  noUnicode = Bool;
+  stdenv = ε;
+  threadSupport = Bool;
+  useBoehmgc = Bool;
+} ->
+κ

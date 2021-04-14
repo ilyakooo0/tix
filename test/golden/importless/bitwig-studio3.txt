@@ -1,0 +1,19 @@
+∀ β γ δ ε ζ η.
+( β.overrideAttrs =
+    ( γ ->
+      { buildInputs = ∀ α. (γ.buildInputs = [α], δ.libXtst = α) => [α];
+        installPhase = String;
+        name = String;
+        runtimeDependencies = [ε];
+        src = ζ;
+        version = String;
+      }
+    ) ->
+    η
+) =>
+{ bitwig-studio1 = β;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  pulseaudio = ε;
+  xorg = δ;
+} ->
+η

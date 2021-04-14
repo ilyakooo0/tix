@@ -1,0 +1,8 @@
+∀ γ δ ε ζ η.
+(γ.lib = δ, γ.lib = ε) => { file = ζ;
+  stdenv = γ;
+  writeScript = String -> String -> η;
+} ->
+{ checkForRemainingFiles = η;
+  commonFileActions = ∀ α β. {docFiles = α; noiseFiles = β;} -> η;
+}

@@ -1,0 +1,3 @@
+∀ γ.
+{lib = γ;} ->
+{echo_colored = ∀ α. α -> String; noisily = ∀ α β. α -> β -> String;}

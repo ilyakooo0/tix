@@ -1,0 +1,22 @@
+∀ δ ε ζ η θ.
+{ buildPythonApplication =
+    { checkPhase = String;
+      md5_path = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+        };
+      pname = String;
+      postPatch = String;
+      propagatedBuildInputs = [ε];
+      src = ζ;
+      version = String;
+    } ->
+    η;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  python = θ;
+  stdenv = δ;
+  urlgrabber = ε;
+} ->
+η

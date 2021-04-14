@@ -1,0 +1,27 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      installPhase = String;
+      meta =
+        { description = String;
+          downloadPage = String;
+          downloadURLRegexp = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.asl20 = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          version = String;
+        };
+      name = String;
+      src = ζ;
+      version = String;
+    } ->
+    η
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  java = θ;
+  makeWrapper = ε;
+  stdenv = δ;
+} ->
+η

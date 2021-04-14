@@ -1,0 +1,31 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      buildPhase = String;
+      checkTarget = String;
+      createFindlibDestdir = Bool;
+      doCheck = Bool;
+      dontConfigure = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.roconnor = γ) => [γ];
+        };
+      name = String;
+      patches = [Path];
+      postPatch = String;
+      src = ζ;
+      version = String;
+    } ->
+    η
+) =>
+{ expat = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  findlib = ε;
+  ocaml = ε;
+  ounit = ε;
+  stdenv = δ;
+} ->
+η

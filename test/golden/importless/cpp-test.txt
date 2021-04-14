@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+(α.isDarwin = β, γ.optionalString = β -> String -> String) => { bazel = δ;
+  bazel-examples = ε;
+  bazelTest =
+    {bazelPkg = δ; bazelScript = String; name = String; workspaceDir = ζ;} -> η;
+  distDir = θ;
+  gccStdenv = α;
+  lib = γ;
+  runLocal = String -> {} -> String -> ζ;
+  runtimeShell = ι;
+  writeScript = String -> String -> κ;
+  writeText = λ;
+} ->
+η

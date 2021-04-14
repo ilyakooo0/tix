@@ -1,0 +1,17 @@
+∀ γ δ ε ζ.
+{ buildDunePackage =
+    { checkInputs = ∀ α. (γ.optional = Bool -> δ -> α) => α;
+      doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), ε.meta = α) => β;
+      pname = String;
+      propagatedBuildInputs = [ε];
+      src = ∀ α. (ε.src = α) => α;
+      useDune2 = Bool;
+      version = ∀ α. (ε.version = α) => α;
+    } ->
+    ζ;
+  irmin = ε;
+  irmin-test = δ;
+  lib = γ;
+} ->
+ζ

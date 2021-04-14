@@ -1,0 +1,13 @@
+∀ α β γ δ ε.
+{ extensionsFromVscodeMarketplace = [α] -> β;
+  lib = γ;
+  vscodeDefault = δ;
+  writeShellScriptBin = String -> String -> ε;
+} ->
+{ mutableExtensions = [α];
+  nixExtensions = [α];
+  user-data-dir = String;
+  vscode = δ;
+  vscodeExtsFolderName = String;
+} ->
+ε

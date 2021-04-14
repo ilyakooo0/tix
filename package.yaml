@@ -39,6 +39,8 @@ dependencies:
   - range-set-list
   - generic-data
   - generic-lens
+  - free
+  - algebraic-graphs
 
 library:
   source-dirs: src
@@ -100,3 +102,4 @@ default-extensions:
   - FlexibleInstances
   - DeriveAnyClass
   - ConstraintKinds
+  - DeriveTraversable

@@ -1,0 +1,30 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.bsd2 = γ) => γ;
+          longDescription = String;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.badi = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      phases = [String];
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η
+) =>
+{ cvc3 = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  isabelle = ε;
+  ocaml = ε;
+  perl = ε;
+  stdenv = δ;
+  wget = ε;
+  which = ε;
+} ->
+η

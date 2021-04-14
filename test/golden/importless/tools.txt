@@ -1,0 +1,56 @@
+∀ γ δ ε ζ η θ ι κ.
+{ afdko = γ;
+  appdirs = γ;
+  attrs = γ;
+  bash = δ;
+  black = γ;
+  booleanoperations = γ;
+  brotlipy = γ;
+  buildPythonPackage =
+    { checkInputs = [δ];
+      checkPhase = String;
+      disabled = ε;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β. (ζ.licenses = α, α.asl20 = β) => β;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      propagatedBuildInputs = [γ];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  click = γ;
+  defcon = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  fontmath = γ;
+  fontparts = γ;
+  fontpens = γ;
+  fonttools = γ;
+  fs = κ;
+  lib = ζ;
+  lxml = γ;
+  mutatormath = γ;
+  pathspec = γ;
+  pillow = δ;
+  psautohint = γ;
+  pyclipper = γ;
+  pythonOlder = String -> ε;
+  pytz = γ;
+  regex = γ;
+  scour = γ;
+  setuptools_scm = η;
+  six = δ;
+  toml = γ;
+  typed-ast = γ;
+  ufonormalizer = γ;
+  ufoprocessor = γ;
+  unicodedata2 = γ;
+  zopfli = γ;
+} ->
+ι

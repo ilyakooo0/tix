@@ -1,0 +1,21 @@
+∀ γ δ ε ζ.
+{ alcotest-lwt = γ;
+  buildDunePackage =
+    { checkInputs = ∀ α. (δ.optionals = Bool -> [γ] -> α) => α;
+      doCheck = Bool;
+      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), ε.meta = α) => β;
+      minimumOCamlVersion = String;
+      pname = String;
+      propagatedBuildInputs = [ε];
+      src = ∀ α. (ε.src = α) => α;
+      useDune2 = Bool;
+      version = ∀ α. (ε.version = α) => α;
+    } ->
+    ζ;
+  index = ε;
+  irmin = ε;
+  irmin-test = γ;
+  lib = δ;
+  ocaml_lwt = ε;
+} ->
+ζ

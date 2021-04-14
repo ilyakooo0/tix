@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.mkDerivation =
+    { buildInputs = (β.python = γ) => [γ];
+      dontBuild = Bool;
+      installPhase = String;
+      name = String;
+      nativeBuildInputs = [δ];
+      patchPhase = String;
+      src = ε;
+      version = ζ;
+    } ->
+    η
+) =>
+{ fetchFromGitHub = {owner = String; repo = String; rev = ζ; sha256 = θ;} -> ε;
+  makeWrapper = δ;
+  patch = γ;
+  python3Packages = β;
+  stdenv = α;
+} ->
+{rev = ζ; sha256 = θ;} -> η

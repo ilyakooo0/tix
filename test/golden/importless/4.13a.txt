@@ -1,0 +1,18 @@
+∀ γ δ ε ζ η θ.
+( γ.mkDerivation =
+    { buildInputs = [δ];
+      meta = ∀ α β. ((α) // ({branch = String;}) ~ (β), ε.meta = α) => β;
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  lzma = ζ;
+  ncurses = δ;
+  stdenv = γ;
+  texinfo = ε;
+} ->
+θ

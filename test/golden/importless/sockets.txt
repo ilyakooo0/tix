@@ -1,0 +1,18 @@
+∀ ε ζ η θ.
+( ε.mkDerivation =
+    { buildInputs = [ζ];
+      luaver = ∀ δ. (ζ.luaversion = δ) => δ;
+      meta =
+        { homepage = String;
+          hydraPlatforms =
+            ∀ α β γ. (ε.lib = α, α.platforms = β, β.linux = γ) => γ;
+          maintainers = ∀ α. α;
+        };
+      patchPhase = String;
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> η; lua5 = ζ; stdenv = ε;} -> θ

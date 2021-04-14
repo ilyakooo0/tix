@@ -1,0 +1,24 @@
+∀ γ δ ε ζ η.
+{ buildDunePackage =
+    { buildInputs = [γ];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β. (δ.licenses = α, α.isc = β) => β;
+          maintainers = ∀ α β. (δ.maintainers = α, α.vbgl = β) => [β];
+        };
+      minimumOCamlVersion = String;
+      pname = String;
+      propagatedBuildInputs = [ε];
+      src = ζ;
+      useDune2 = Bool;
+      version = String;
+    } ->
+    η;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  lib = δ;
+  ocaml-syntax-shims = γ;
+  ppxlib = ε;
+} ->
+η

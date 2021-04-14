@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η.
+( α.mkDerivation = {buildCommand = String; name = β;} -> γ
+) =>
+{ composeAndroidPackages =
+    { abiVersions = [String];
+      includeEmulator = Bool;
+      includeSystemImages = Bool;
+      platformVersions = [String];
+      systemImageTypes = [String];
+      toolsVersion = String;
+    } ->
+    δ;
+  lib = ε;
+  runtimeShell = ζ;
+  stdenv = α;
+} ->
+{ abiVersion = String;
+  activity = Null;
+  app = Null;
+  avdHomeDir = Null;
+  enableGPU = Bool;
+  extraAVDFiles = η;
+  name = β;
+  package = Null;
+  platformVersion = String;
+  sdkExtraArgs = {};
+  systemImageType = String;
+} ->
+γ

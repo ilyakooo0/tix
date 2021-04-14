@@ -1,0 +1,30 @@
+∀ δ ε ζ η.
+( δ.mkDerivation =
+    { NIX_LDFLAGS = String;
+      buildInputs = [ε];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η
+) =>
+{ SDL = ε;
+  SDL_image = ε;
+  SDL_ttf = ε;
+  expat = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  libGL = ε;
+  libGLU = ε;
+  libX11 = ε;
+  stdenv = δ;
+  zlib = ε;
+} ->
+η

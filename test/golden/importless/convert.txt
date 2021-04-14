@@ -1,0 +1,27 @@
+∀ γ δ ε ζ η θ ι.
+( γ.mkDerivation =
+    { dontBuild = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          longDescription = String;
+          maintainers = ∀ α β. (δ.maintainers = α, α.Profpatsch = β) => [β];
+        };
+      passthru = {scriptName = String;};
+      patches = [Path];
+      pname = String;
+      postPatch = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ
+) =>
+{ fetchgit = {rev = String; sha256 = String; url = String;} -> ε;
+  lib = δ;
+  libnotify = η;
+  mkvtoolnix-cli = θ;
+  stdenv = γ;
+  yad = ι;
+} ->
+ζ

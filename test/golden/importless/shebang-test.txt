@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ.
+{ bazel = α;
+  bazelTest =
+    { bazelPkg = α;
+      bazelScript = String;
+      buildInputs = [β];
+      name = String;
+      workspaceDir = γ;
+    } ->
+    δ;
+  distDir = ε;
+  extracted = ζ;
+  runLocal = String -> {} -> String -> γ;
+  unzip = β;
+} ->
+δ

@@ -1,0 +1,19 @@
+∀ β γ δ ε ζ η θ ι κ λ.
+( (β) // (γ) ~ (δ),
+  ε.mkDerivation =
+    { doBuild = Bool;
+      installPhase = String;
+      name = String;
+      nativeBuildInputs =
+        ∀ α. (ζ.optional = α -> η -> [θ], ε.isLinux = α) => [θ];
+      outputHash = (ε.isLinux = Bool) => String;
+      outputHashAlgo = String;
+      outputHashMode = String;
+      src = ∀ α. α;
+    } ->
+    β,
+  ζ.optionalAttrs = ι -> {dontAutoPatchelf = Bool;} -> γ,
+  ε.isLinux = ι
+) =>
+{autoPatchelfHook = η; lib = ζ; maven = θ; src = κ; stdenv = ε; version = λ;} ->
+δ

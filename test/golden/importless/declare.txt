@@ -1,0 +1,64 @@
+{ configA =
+    ∀ ι κ λ μ.
+    ι ->
+    κ ->
+    { optionA =
+        ∀ η θ.
+        ( ι.lib = η,
+          η.mkOption =
+            { default = Bool;
+              merge = ∀ ε ζ. (ι.lib = ε, ε.mergeEnableOption = ζ) => ζ;
+            } ->
+            θ
+        ) =>
+        θ;
+      optionB = ∀ η. (κ.optionA = η) => η;
+      require =
+        λ ->
+        μ ->
+        { optionB =
+            ∀ ε ζ. (λ.lib = ε, ε.mkOption = {default = Bool;} -> ζ) => ζ;
+          require = [{optionA = Bool; optionD = Bool;}];
+        };
+    };
+  configB =
+    ∀ ι κ.
+    ι ->
+    κ ->
+    { optionB = ∀ η θ. (ι.lib = η, η.mkOption = {default = Bool;} -> θ) => θ;
+      require = [{optionA = Bool; optionD = Bool;}];
+    };
+  configC =
+    ∀ ι κ λ μ ν ξ.
+    ι ->
+    κ ->
+    { optionA = ∀ η. (κ.optionC = η) => η;
+      optionC = ∀ η θ. (ι.lib = η, η.mkOption = {default = Bool;} -> θ) => θ;
+      require =
+        [ ( λ ->
+            μ ->
+            { optionA =
+                ∀ γ δ.
+                ( λ.lib = γ,
+                  γ.mkOption =
+                    { default = Bool;
+                      merge = ∀ α β. (λ.lib = α, α.mergeEnableOption = β) => β;
+                    } ->
+                    δ
+                ) =>
+                δ;
+              optionB = ∀ γ. (μ.optionA = γ) => γ;
+              require =
+                ν ->
+                ξ ->
+                { optionB =
+                    ∀ α β.
+                    (ν.lib = α, α.mkOption = {default = Bool;} -> β) => β;
+                  require = [{optionA = Bool; optionD = Bool;}];
+                };
+            }
+          )
+        ];
+    };
+  configD = {optionA = Bool; optionD = Bool;};
+}

@@ -1,0 +1,55 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.mkDerivation =
+    { buildPhase = String;
+      dbName = γ;
+      installPhase = String;
+      locale = δ;
+      meta =
+        { description = String;
+          platforms = (β.lib = ε, ε.platforms = ζ, ζ.linux = η) => η;
+        };
+      name = String;
+      src = θ;
+      unpackPhase = String;
+    } ->
+    ι,
+  β.mkDerivation =
+    { buildPhase = String;
+      dbName = κ;
+      installPhase = String;
+      locale = λ;
+      meta =
+        { description = String;
+          platforms = (β.lib = μ, μ.platforms = ν, ν.linux = ξ) => ξ;
+        };
+      name = String;
+      src = ο;
+      unpackPhase = String;
+    } ->
+    π
+) =>
+{ callPackage = Path -> {} -> ρ;
+  fetchurl = {sha256 = String; url = String;} -> σ;
+  stdenv = β;
+} ->
+{ deu2eng = ∀ α. α;
+  eng2deu = ∀ α. α;
+  eng2fra = ∀ α. α;
+  eng2nld = ∀ α. α;
+  eng2rus = ∀ α. α;
+  fra2eng = ∀ α. α;
+  mueller_eng2rus_pkg = ∀ α. α;
+  mueller_enru_abbr =
+    {dbName = String; locale = String; name = String; outPath = String;};
+  mueller_enru_base =
+    {dbName = String; locale = String; name = String; outPath = String;};
+  mueller_enru_dict =
+    {dbName = String; locale = String; name = String; outPath = String;};
+  mueller_enru_geo =
+    {dbName = String; locale = String; name = String; outPath = String;};
+  mueller_enru_names =
+    {dbName = String; locale = String; name = String; outPath = String;};
+  nld2eng = ∀ α. α;
+  wiktionary = ρ;
+  wordnet = ρ;
+}

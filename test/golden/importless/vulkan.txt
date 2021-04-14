@@ -1,0 +1,36 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [ε];
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = ∀ α β. (ζ.meta = α, α.homepage = β) => β;
+          longDescription = String;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.gnidorah = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postFixup = String;
+      preInstall = String;
+      sourceRoot = String;
+      src = ζ;
+      version = String;
+    } ->
+    θ
+) =>
+{ SDL2 = ε;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  gzip = ε;
+  libmad = ε;
+  libvorbis = ε;
+  makeWrapper = η;
+  stdenv = δ;
+  vulkan-headers = η;
+  vulkan-loader = ε;
+} ->
+θ

@@ -1,0 +1,34 @@
+∀ ε ζ η θ.
+( ε.mkDerivation =
+    { buildInputs = [Null];
+      configureFlags =
+        ∀ δ. (ε.lib = δ, δ.optional = Bool -> String -> [String]) => [String];
+      hardeningDisable = [String];
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          platforms = ∀ α β γ. (ε.lib = α, α.platforms = β, β.unix = γ) => γ;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      src = η;
+    } ->
+    θ
+) =>
+{ expat = Null;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  fontconfig = Null;
+  gd = Null;
+  libXaw = Null;
+  libjpeg = Null;
+  libpng = Null;
+  libtool = Null;
+  libwebp = Null;
+  pango = Null;
+  pkgconfig = ζ;
+  stdenv = ε;
+  xlibsWrapper = Null;
+  yacc = Null;
+} ->
+θ

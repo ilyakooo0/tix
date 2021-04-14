@@ -1,0 +1,20 @@
+∀ α β γ δ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      buildPhase = String;
+      installPhase = String;
+      patches = [Path];
+      pname = String;
+      src = γ;
+      version = String;
+    } ->
+    δ
+) =>
+{ fetchapplesource = {name = String; sha256 = String; version = String;} -> γ;
+  launchd = β;
+  libauto = β;
+  libc_old = β;
+  libunwind = β;
+  stdenv = α;
+} ->
+δ

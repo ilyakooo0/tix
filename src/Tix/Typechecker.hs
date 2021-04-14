@@ -9,8 +9,12 @@ module Tix.Typechecker
   )
 where
 
+import qualified Algebra.Graph.AdjacencyMap.Algorithm as AM
+import qualified Algebra.Graph.Class as G
+import qualified Algebra.Graph.NonEmpty.AdjacencyMap as AM
 import Control.Lens hiding (Empty, List, cons, equality, set, set')
 import Control.Monad
+import qualified Control.Monad.Free as F
 import Control.Monad.Freer
 import Control.Monad.Freer.Fresh
 import Control.Monad.Freer.Internal (handleRelayS)
@@ -25,6 +29,7 @@ import Data.Foldable
 import Data.Functor.Contravariant
 import Data.Group hiding ((~~))
 import Data.List.NonEmpty (NonEmpty (..))
+import qualified Data.List.NonEmpty as NE
 import qualified Data.Map.MultiKey.Strict as MKM
 import Data.Map.Shifted.Strict (ShiftedMap (..))
 import qualified Data.Map.Shifted.Strict as SM
@@ -35,7 +40,7 @@ import Data.MonoTraversable
 import Data.Monoid
 import qualified Data.RangeSet.Map as RS
 import Data.Sequence (Seq (..))
-import Data.Sequences
+import Data.Sequences hiding (catMaybes)
 import Data.Set (Set)
 import qualified Data.Set as S
 import Data.Text (Text)
@@ -48,6 +53,7 @@ import Nix.Atoms
 import Nix.Expr
 import Nix.Pretty
 import Tix.Types
+import Prelude as P
 
 getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [InferError], [UnifyingError], [PredicateError], A.Object)
 getType r =
@@ -210,6 +216,7 @@ unifySchemes :: Predicate TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitut
 unifySchemes _ [] = pure mempty
 unifySchemes f ((x, y) : rest) = do
   s <- unifyScheme f x y
+  -- TODO: This should probably be (s <>)
   sub s <$> unifySchemes f (sub s rest)
 
 unifyScheme :: Predicate TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
@@ -266,7 +273,7 @@ data PredicateError
   deriving stock (Eq, Show)
 
 data InferError
-  = ConflictingBindingDefinitions NormalizedBinding' NormalizedBinding'
+  = ConflictingBindingDefinitions (NormalizedBinding' NExprLoc) (NormalizedBinding' NExprLoc)
   deriving stock (Show)
 
 type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
@@ -438,6 +445,10 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
         defT ~~ resT
     return resT
   NSet NNonRecursive xs -> NAttrSet <$> inferBinding xs
+  NSet NRecursive xs -> NAttrSet <$> inferRecBinding xs
+  NLet bindings body -> do
+    bindingsT <- inferRecBinding bindings
+    withBindings bindingsT $ infer body
   NHasAttr attrSet path -> do
     setT <- infer attrSet
     -- this should infer optional type
@@ -460,9 +471,6 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
         return (setT, maybe M.empty (`M.singleton` scheme setT) binding <> setBindings)
     bodyT <- withBindings varMap $ infer body
     return $ paramT :-> bodyT
-  NLet bindings body -> do
-    bindingsT <- inferBinding bindings
-    withBindings bindingsT $ infer body
   NIf cond t f -> do
     condT <- infer cond
     condT ~~ NAtomic Bool
@@ -519,12 +527,11 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
       lhst ~~ NAtomic Bool
       return $ NAtomic Bool
 
-data NormalizedBinding' = NBType !NExprLoc | NBAttrSet !NormalizedBinding
-  deriving stock (Show)
+type NormalizedBinding' = F.Free (Map VarName)
 
-type NormalizedBinding = Map VarName NormalizedBinding'
+type NormalizedBinding x = Map VarName (NormalizedBinding' x)
 
-normalizeBindings :: Member (Writer InferError) eff => [Binding NExprLoc] -> Eff eff NormalizedBinding
+normalizeBindings :: Member (Writer InferError) eff => [Binding NExprLoc] -> Eff eff (NormalizedBinding NExprLoc)
 normalizeBindings bindings = case bindings' of
   [] -> return M.empty
   (x : xs) ->
@@ -532,18 +539,18 @@ normalizeBindings bindings = case bindings' of
       -- This is really sub-optimal
       foldl (\u -> M.unionWith (\i j -> i >>= \i' -> j >>= mergeBindings i') u . fmap pure) (fmap pure x) xs
   where
-    mergeBindings (NBAttrSet lhs) (NBAttrSet rhs) =
-      fmap NBAttrSet . sequence $
+    mergeBindings (F.Free lhs) (F.Free rhs) =
+      fmap F.Free . sequence $
         -- This is really sub-optimal
         M.unionWith (\x y -> x >>= \x' -> y >>= mergeBindings x') (pure <$> lhs) (pure <$> rhs)
     mergeBindings x y = do
       tell $ ConflictingBindingDefinitions x y
       return x
-    fromName :: NonEmpty VarName -> NExprLoc -> NormalizedBinding
-    fromName (n :| ns) x = M.singleton n $ foldr (\u t -> NBAttrSet $ M.singleton u t) (NBType x) ns
+    fromName :: NonEmpty VarName -> x -> NormalizedBinding x
+    fromName (n :| ns) x = M.singleton n $ foldr (\u t -> F.Free $ M.singleton u t) (F.Pure x) ns
     bindings' =
       bindings >>= \case
-        (NamedVar path r src) ->
+        (NamedVar path r _src) ->
           case getPath path of
             Nothing -> [] -- TODO: This should be an error (?)
             Just name -> pure $ fromName name r
@@ -554,53 +561,188 @@ normalizeBindings bindings = case bindings' of
                 Just set -> \v -> Fix $ Compose $ Ann (SrcSpan src src) $ NSelect set (pure $ StaticKey v) Nothing
            in (\v -> fromName (pure v) (f v)) <$> names
 
-inferNormalizedBindings' :: NormalizedBinding' -> InferM' Scheme
-inferNormalizedBindings' (NBType expr) = inferGeneral expr
-inferNormalizedBindings' (NBAttrSet m) = scheme . NAttrSet <$> inferNormalizedBindings' `traverse` m
-
-inferNormalizedBindings :: NormalizedBinding -> InferM' (Map VarName Scheme)
+inferNormalizedBindings :: NormalizedBinding NExprLoc -> InferM' (Map VarName Scheme)
 inferNormalizedBindings = traverse inferNormalizedBindings'
+  where
+    inferNormalizedBindings' :: NormalizedBinding' NExprLoc -> InferM' Scheme
+    inferNormalizedBindings' (F.Pure expr) = inferGeneral expr
+    inferNormalizedBindings' (F.Free m) = scheme . NAttrSet <$> inferNormalizedBindings' `traverse` m
+
+inferNormalizedBindingsRecursive :: NormalizedBinding NExprLoc -> InferM' (Map VarName Scheme)
+inferNormalizedBindingsRecursive n = do
+  let components = case AM.topSort . AM.scc $ bindingGraph n of
+        Left x -> [foldMap AM.vertexSet x]
+        Right x -> AM.vertexSet <$> P.reverse x
+  fmap toScheme <$> inferComponents n components
+  where
+    toScheme :: NormalizedBinding' Scheme -> Scheme
+    toScheme (F.Pure t) = t
+    toScheme (F.Free m) = scheme $ NAttrSet $ fmap toScheme m
+
+inferComponents :: NormalizedBinding NExprLoc -> [Set (NonEmpty VarName)] -> InferM' (NormalizedBinding Scheme)
+inferComponents _ [] = pure M.empty
+inferComponents n ((S.toList -> paths) : otherComponents) = do
+  let bindings = catMaybes $ paths <&> \path -> (path,) <$> lookupExpr path n
+  (types, p, preds, s) <-
+    traceSubtree (showExpr . bindingsToNExpr $ bindings)
+      . inferGeneral' (NAttrSet . fmap toScheme)
+      $ do
+        tvsExprs <- for bindings (\(a, b) -> (a,b,) . NTypeVariable <$> freshSrc)
+        let tvsExprs' =
+              foldl' (M.unionWith mergeBindings) M.empty $
+                fmap (\(a, b, c) -> normalize a (b, c)) tvsExprs
+            tvs = toScheme . fmap snd <$> tvsExprs'
+
+        -- (type, tv)
+        tvsTypes <-
+          withBindings tvs $
+            tvsExprs' & traverse . traverse . _1 %%~ infer
+        for_ tvsTypes $ traverse (uncurry (~~))
+        return $ fmap fst <$> tvsTypes
+  -- TODO: There should probably be some smarter predicate filtering
+  schemes <- types & traverse . traverse %%~ (\t -> solveAndClose p $ sub s $ preds :=> t)
+  fmap (M.unionWith mergeBindings schemes) . withBindings (toScheme' <$> schemes) $
+    inferComponents n otherComponents
+  where
+    bindingToNExpr :: NonEmpty VarName -> NExprLoc -> Binding NExpr
+    bindingToNExpr name expr = NamedVar (StaticKey <$> name) (stripAnnotation expr) nullPos
+
+    bindingsToNExpr :: [(NonEmpty VarName, NExprLoc)] -> NExpr
+    bindingsToNExpr bs = Fix $ NSet NNonRecursive $ fmap (uncurry bindingToNExpr) bs
+
+    normalize :: NonEmpty VarName -> x -> NormalizedBinding x
+    normalize (NESingle x) t = M.singleton x (F.Pure t)
+    normalize (x :|| xs) t = M.singleton x (F.Free $ normalize xs t)
+
+    mergeBindings :: NormalizedBinding' x -> NormalizedBinding' x -> NormalizedBinding' x
+    mergeBindings (F.Free lhs) (F.Free rhs) = F.Free $ M.unionWith mergeBindings lhs rhs
+    -- This should have been taken care of when constructing the structures.
+    mergeBindings _ _ = error "not possible"
+
+    toScheme :: NormalizedBinding' NType -> Scheme
+    toScheme (F.Pure t) = scheme t
+    toScheme (F.Free m) = scheme $ NAttrSet $ fmap toScheme m
+
+    toScheme' :: NormalizedBinding' Scheme -> Scheme
+    toScheme' (F.Pure t) = t
+    toScheme' (F.Free m) = scheme $ NAttrSet $ fmap toScheme' m
+
+    -- Returns Just only if it is the tip.
+    -- This is what we want because non-tip elements are also part of the call graph.
+    lookupExpr :: NonEmpty VarName -> NormalizedBinding x -> Maybe x
+    lookupExpr (NESingle x) m =
+      M.lookup x m >>= \case
+        F.Pure a -> Just a
+        F.Free _ -> Nothing
+    lookupExpr (x :|| xs) m =
+      M.lookup x m >>= \case
+        F.Pure _ -> Nothing
+        F.Free a -> lookupExpr xs a
+
+bindingGraph :: forall g. (G.Graph g, G.Vertex g ~ NonEmpty VarName) => NormalizedBinding NExprLoc -> g
+bindingGraph n = G.overlays . fmap (\(k, v) -> getGraph (pure k) v) . M.toList $ n
+  where
+    getGraph :: NonEmpty VarName -> NormalizedBinding' NExprLoc -> g
+    getGraph p (F.Pure e) = G.star p (P.filter (elemBindingSet n) $ getReferences e)
+    getGraph p (F.Free m) = G.star p (fmap fst attrs) `G.overlay` G.overlays (fmap (uncurry getGraph) attrs)
+      where
+        attrs = (\(k, v) -> (p <> pure k, v)) <$> M.toList m
+    elemBindingSet :: NormalizedBinding x -> NonEmpty VarName -> Bool
+    elemBindingSet m = elemBindingSet' m . NE.toList
+    elemBindingSet' :: NormalizedBinding x -> [VarName] -> Bool
+    elemBindingSet' _ [] = True
+    elemBindingSet' m (x : xs) = case M.lookup x m of
+      Nothing -> False
+      Just (F.Free next) -> elemBindingSet' next xs
+      Just (F.Pure _) -> case xs of
+        [] -> True
+        _ -> False
+
+getReferences :: NExprLoc -> [NonEmpty VarName]
+getReferences expr@(Fix (Compose (Ann _ x))) = case x of
+  NConstant _ -> []
+  NLiteralPath _ -> []
+  NEnvPath _ -> []
+  NStr _ -> []
+  NSym var -> [pure var]
+  NList xs -> foldMap getReferences xs
+  NUnary _ a -> getReferences a
+  NBinary _ a b -> getReferences a <> getReferences b
+  NSelect {} -> case processSelect expr of
+    (Nothing, other) -> other
+    (Just p, other) -> pure p <> other
+  NSet _ xs -> foldMap getReferences $ xs >>= toList -- This is not strictly correct
+  NHasAttr a _ -> getReferences a
+  NAbs _ a -> getReferences a -- This is not strictly correct
+  NLet a b -> foldMap getReferences (a >>= toList) <> getReferences b -- This is not strictly correct
+  NIf a b c -> getReferences a <> getReferences b <> getReferences c -- This is not strictly correct
+  NWith a b -> getReferences a <> getReferences b -- This is not strictly correct
+  NAssert a b -> getReferences a <> getReferences b
+  NSynHole _ -> []
+  where
+    processSelect :: NExprLoc -> (Maybe (NonEmpty VarName), [NonEmpty VarName])
+    processSelect u@(Fix (Compose (Ann _ y))) = case y of
+      NSym var -> (Just $ pure var, [])
+      NSelect l h m -> fmap
+        (join (maybeToList (getReferences <$> m)) <>)
+        $ case getPath h of
+          Nothing -> (Nothing, getReferences l)
+          Just p -> case processSelect l of
+            (Just path, other) -> (Just $ path <> p, other)
+            (Nothing, other) -> (Nothing, other)
+      _ -> (Nothing, getReferences u)
 
 inferBinding :: [Binding NExprLoc] -> InferM' (Map VarName Scheme)
 inferBinding = normalizeBindings >=> inferNormalizedBindings
 
+inferRecBinding :: [Binding NExprLoc] -> InferM' (Map VarName Scheme)
+inferRecBinding = normalizeBindings >=> inferNormalizedBindingsRecursive
+
 renderPretty :: Pretty x => x -> TL.Text
 renderPretty = renderLazy . layoutPretty defaultLayoutOptions . pretty
 
-showExpr :: Fix NExprLocF -> Text
-showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix . stripAnnotation
+showExpr :: NExpr -> Text
+showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix
 
 inferGeneral :: NExprLoc -> InferM Scheme
-inferGeneral x@(Fix (Compose (Ann src _))) = runReader src $
-  traceSubtree (showExpr x) $ do
-    (((t, subs), cs), range) <-
-      traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ infer x
-    traceSubtree "received" $ do
-      traceValue "type" $ renderPretty t
-      traceValue "substitutions" $ prettySubstitution subs
-      traceValue "constraints" $ fmap renderPretty cs
-      traceValue "range" $ T.pack . show $ range
-      get @(MKM.Map Pred) >>= traceValue "preds" . showPreds
-    s' <- solveWithPriority (Predicate (`RS.member` range)) cs
-    traceValue "substitutions_after_solving" $ prettySubstitution s'
-    let s = subs <> s'
-        returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
-    traceSubtree "returned" $ do
-      traceValue "substitutions" $ prettySubstitution returnedS
-      -- Filter for optimization purposes
-      subEnv returnedS
-      preds <- get @(MKM.Map Pred)
-      traceValue "subbed_preds" $ showPreds preds
-      let p = Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)
-          (MKM.toList -> keep, toss) = MKM.partition (getPredicate p) preds
-      -- At this point the only predicates only contain type variables that are only used
-      -- in the expression. This means that all of the generated constraints and
-      -- substitutions can be safely restricted to this expression.
-      retT <- solveAndClose p $ sub s $ keep :=> t
-      traceValue "preds" $ showPreds toss
-      put toss
-      traceValue "type" $ renderPretty retT
-      return retT
+inferGeneral x@(Fix (Compose (Ann src _))) = runReader src . traceSubtree (showExpr . stripAnnotation $ x) $ do
+  (t, p, keep, s) <- inferGeneral' id $ infer x
+  solveAndClose p $ sub s $ keep :=> t
+
+inferGeneral' ::
+  (Members InferEffs r, Pretty y) =>
+  (x -> y) ->
+  Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : r) x ->
+  Eff r (x, Predicate TypeVariable, [Pred], Substitution)
+inferGeneral' toPretty f = do
+  (((x, subs), cs), range) <-
+    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ f
+  traceSubtree "received" $ do
+    traceValue "type" $ renderPretty $ toPretty x
+    traceValue "substitutions" $ prettySubstitution subs
+    traceValue "constraints" $ fmap renderPretty cs
+    traceValue "range" $ T.pack . show $ range
+    get @(MKM.Map Pred) >>= traceValue "preds" . showPreds
+  s' <- solveWithPriority (Predicate (`RS.member` range)) cs
+  traceValue "substitutions_after_solving" $ prettySubstitution s'
+  let s = subs <> s'
+      returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
+  traceSubtree "returned" $ do
+    traceValue "substitutions" $ prettySubstitution returnedS
+    -- Filter for optimization purposes
+    subEnv returnedS
+    preds <- get @(MKM.Map Pred)
+    traceValue "subbed_preds" $ showPreds preds
+    let p = Predicate (`RS.member` range) <> Predicate (`S.notMember` free returnedS)
+        (keep', toss) = MKM.partition (getPredicate p) preds
+        keep = MKM.toList keep'
+    -- At this point the only predicates only contain type variables that are only used
+    -- in the expression. This means that all of the generated constraints and
+    -- substitutions can be safely restricted to this expression.
+    traceValue "preds" $ showPreds toss
+    traceValue "keep_preds" $ showPreds keep'
+    put toss
+    return (x, p, keep, s)
   where
     showPreds :: MKM.Map Pred -> Map String String
     showPreds = M.mapKeys show . fmap show . MKM.toMap
@@ -746,13 +888,33 @@ lookupAttrSet ::
     r =>
   AttrSetPath ->
   Eff r (NType, TypeVariable)
-lookupAttrSet (p :| []) = do
+lookupAttrSet (NESingle p) = do
   set <- NTypeVariable <$> freshSrc
   var <- freshSrc
   tell (HasField set (p, scheme . NTypeVariable $ var))
   return (set, var)
-lookupAttrSet (p :| (pp : ps)) = do
+lookupAttrSet (p :|| ps) = do
   set <- NTypeVariable <$> freshSrc
-  (innerSet, var) <- lookupAttrSet (pp :| ps)
+  (innerSet, var) <- lookupAttrSet ps
   tell $ HasField set (p, scheme innerSet)
   return (set, var)
+
+-- NonEmpty patterns
+
+pattern (:||) :: x -> NonEmpty x -> NonEmpty x
+pattern (:||) x xs <-
+  ( \case
+      (a :| (aa : aaa)) -> Just (a, aa :| aaa)
+      _ -> Nothing ->
+      Just (x, xs)
+    )
+  where
+    x :|| xs = NE.cons x xs
+
+pattern NESingle :: x -> NonEmpty x
+pattern NESingle x <-
+  x :| []
+  where
+    NESingle x = x :| []
+
+{-# COMPLETE (:||), NESingle #-}

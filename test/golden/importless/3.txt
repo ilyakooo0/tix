@@ -1,0 +1,27 @@
+∀ δ ε ζ η θ.
+( δ.mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { description = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.cecill-b = γ) => γ;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          version = String;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ
+) =>
+{ autoconf = ε;
+  automake = ε;
+  autoreconfHook = ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  gmpxx = ε;
+  libtool = ε;
+  stdenv = δ;
+} ->
+θ

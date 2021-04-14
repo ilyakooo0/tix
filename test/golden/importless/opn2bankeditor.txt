@@ -1,0 +1,14 @@
+∀ α β γ δ.
+( α.overrideAttrs = (β -> {pname = String; src = γ; version = String;}) -> δ
+) =>
+{ fetchFromGitHub =
+    { fetchSubmodules = Bool;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    γ;
+  opl3bankeditor = α;
+} ->
+δ

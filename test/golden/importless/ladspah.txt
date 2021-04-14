@@ -1,0 +1,19 @@
+∀ δ ε ζ.
+( δ.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.lgpl2 = γ) => γ;
+          longDescription = String;
+          maintainers =
+            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.magnetophon = γ) => [γ];
+          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+        };
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = δ;} -> ζ

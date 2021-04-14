@@ -1,0 +1,12 @@
+∀ α β γ δ ε.
+( α.overrideAttrs =
+    ( β ->
+      {name = String; runtimeDependencies = [γ]; src = δ; version = String;}
+    ) ->
+    ε
+) =>
+{ bitwig-studio1 = α;
+  fetchurl = {sha256 = String; url = String;} -> δ;
+  pulseaudio = γ;
+} ->
+ε

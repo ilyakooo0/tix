@@ -1,0 +1,8 @@
+∀ α β γ δ ε.
+{ fetchgit = α;
+  fetchurl = {name = String; sha1 = String; url = String;} -> β;
+  gnutar = γ;
+  linkFarm = String -> [{name = String; path = β;}] -> δ;
+  runCommandNoCC = ε;
+} ->
+{offline_cache = δ; packages = [{name = String; path = β;}];}
