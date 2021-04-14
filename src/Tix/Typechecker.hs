@@ -216,7 +216,6 @@ unifySchemes :: Predicate TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitut
 unifySchemes _ [] = pure mempty
 unifySchemes f ((x, y) : rest) = do
   s <- unifyScheme f x y
-  -- TODO: This should probably be (s <>)
   sub s <$> unifySchemes f (sub s rest)
 
 unifyScheme :: Predicate TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
@@ -243,8 +242,7 @@ solveWithPriority ::
 solveWithPriority _ Empty = return mempty
 solveWithPriority f (rest :|> c) = do
   s <- unifyWithPriority f c
-  -- TODO: This should probably be (s <>)
-  (<> s) <$> solveWithPriority f (fmap (sub s) rest)
+  sub s <$> solveWithPriority f (fmap (sub s) rest)
 
 data Errors
   = UndefinedVariable VarName
