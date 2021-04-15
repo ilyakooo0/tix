@@ -1,44 +1,44 @@
-∀ δ ε ζ η θ.
+∀ δ ε ζ η.
 { Glob = δ;
-  QuickCheck = ε;
-  array = ε;
-  async = ε;
-  base = ε;
+  QuickCheck = δ;
+  array = δ;
+  async = δ;
+  base = δ;
   bytestring = δ;
-  containers = ε;
-  crackNum = ε;
-  deepseq = ε;
-  directory = ε;
+  containers = δ;
+  crackNum = δ;
+  deepseq = δ;
+  directory = δ;
   doctest = δ;
-  filepath = ε;
-  generic-deriving = ε;
-  ghc = ε;
+  filepath = δ;
+  generic-deriving = δ;
+  ghc = δ;
   hlint = δ;
   mkDerivation =
     { description = String;
       enableSeparateDataOutput = Bool;
       homepage = String;
       libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
       pname = String;
       sha256 = String;
       testHaskellDepends = [δ];
-      testSystemDepends = [η];
+      testSystemDepends = [ζ];
       version = String;
     } ->
-    θ;
-  mtl = ε;
-  pretty = ε;
-  process = ε;
-  random = ε;
-  stdenv = ζ;
-  syb = ε;
+    η;
+  mtl = δ;
+  pretty = δ;
+  process = δ;
+  random = δ;
+  stdenv = ε;
+  syb = δ;
   tasty = δ;
   tasty-golden = δ;
   tasty-hunit = δ;
   tasty-quickcheck = δ;
-  template-haskell = ε;
+  template-haskell = δ;
   time = δ;
-  z3 = η;
+  z3 = ζ;
 } ->
-θ
+η

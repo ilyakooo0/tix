@@ -1,48 +1,48 @@
-∀ δ ε ζ η θ ι.
+∀ δ ε ζ η.
 { Cabal = δ;
   HUnit = δ;
   QuickCheck = δ;
-  ansi-terminal = ε;
-  ansi-wl-pprint = ε;
-  base = ε;
-  binary = ε;
-  bytestring = ε;
+  ansi-terminal = δ;
+  ansi-wl-pprint = δ;
+  base = δ;
+  binary = δ;
+  bytestring = δ;
   cmark = δ;
-  containers = ε;
-  directory = ε;
+  containers = δ;
+  directory = δ;
   elm-format = δ;
   fetchgit =
-    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ζ;
-  filepath = ε;
-  free = ε;
-  indents = ε;
-  json = ε;
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
+  filepath = δ;
+  free = δ;
+  indents = δ;
+  json = δ;
   mkDerivation =
     { description = String;
-      executableHaskellDepends = [ε];
+      executableHaskellDepends = [δ];
       homepage = String;
       isExecutable = Bool;
       isLibrary = Bool;
-      libraryHaskellDepends = [η];
-      license = ∀ α β γ. (θ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [δ];
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
       pname = String;
       setupHaskellDepends = [δ];
-      src = ζ;
+      src = ε;
       testHaskellDepends = [δ];
       version = String;
     } ->
-    ι;
-  mtl = ε;
-  optparse-applicative = ε;
-  parsec = ε;
-  process = ε;
+    η;
+  mtl = δ;
+  optparse-applicative = δ;
+  parsec = δ;
+  process = δ;
   quickcheck-io = δ;
-  split = ε;
-  stdenv = θ;
+  split = δ;
+  stdenv = ζ;
   tasty = δ;
   tasty-golden = δ;
   tasty-hunit = δ;
   tasty-quickcheck = δ;
-  text = η;
+  text = δ;
 } ->
-ι
+η

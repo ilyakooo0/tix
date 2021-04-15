@@ -1,13 +1,13 @@
-∀ δ ε ζ η.
+∀ δ ε ζ.
 { Cabal = δ;
-  base = ε;
-  bytestring = ε;
-  containers = ε;
-  curry-base = ε;
-  directory = ε;
-  extra = ε;
-  file-embed = ε;
-  filepath = ε;
+  base = δ;
+  bytestring = δ;
+  containers = δ;
+  curry-base = δ;
+  directory = δ;
+  extra = δ;
+  file-embed = δ;
+  filepath = δ;
   mkDerivation =
     { description = String;
       enableSeparateDataOutput = Bool;
@@ -16,20 +16,20 @@
       isExecutable = Bool;
       isLibrary = Bool;
       libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
       pname = String;
       src = Path;
       testHaskellDepends = [δ];
       version = String;
     } ->
-    η;
-  mtl = ε;
-  network-uri = ε;
-  pretty = ε;
-  process = ε;
-  set-extra = ε;
-  stdenv = ζ;
-  template-haskell = ε;
+    ζ;
+  mtl = δ;
+  network-uri = δ;
+  pretty = δ;
+  process = δ;
+  set-extra = δ;
+  stdenv = ε;
+  template-haskell = δ;
   transformers = δ;
 } ->
-η
+ζ

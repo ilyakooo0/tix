@@ -1,12 +1,12 @@
-∀ δ ε ζ η θ ι κ λ.
+∀ δ ε ζ η θ ι.
 { Cabal = δ;
   Glob = δ;
-  QuickCheck = ε;
+  QuickCheck = δ;
   aeson = δ;
   aeson-pretty = δ;
   ansi-terminal = δ;
   async-pool = δ;
-  base = ζ;
+  base = δ;
   bower-json = δ;
   bytestring = δ;
   containers = δ;
@@ -14,18 +14,18 @@
   directory = δ;
   either = δ;
   exceptions = δ;
-  extra = ε;
+  extra = δ;
   fetchgit =
-    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> η;
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
   file-embed = δ;
   filepath = δ;
   foldl = δ;
   fsnotify = δ;
   github = δ;
-  hpack = θ;
-  hspec = ε;
-  hspec-discover = ι;
-  hspec-megaparsec = ε;
+  hpack = ζ;
+  hspec = δ;
+  hspec-discover = η;
+  hspec-megaparsec = δ;
   http-client = δ;
   http-conduit = δ;
   lens-family-core = δ;
@@ -35,17 +35,17 @@
       homepage = String;
       isExecutable = Bool;
       isLibrary = Bool;
-      libraryHaskellDepends = [ε];
-      libraryToolDepends = [θ];
-      license = ∀ α β γ. (κ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [δ];
+      libraryToolDepends = [ζ];
+      license = ∀ α β γ. (θ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
       pname = String;
       prePatch = String;
-      src = η;
-      testHaskellDepends = [ε];
-      testToolDepends = [ι];
+      src = ε;
+      testHaskellDepends = [δ];
+      testToolDepends = [η];
       version = String;
     } ->
-    λ;
+    ι;
   mtl = δ;
   network-uri = δ;
   open-browser = δ;
@@ -57,20 +57,20 @@
   rio-orphans = δ;
   safe = δ;
   semver-range = δ;
-  stdenv = κ;
+  stdenv = θ;
   stm = δ;
   tar = δ;
   template-haskell = δ;
   temporary = δ;
-  text = ζ;
+  text = δ;
   time = δ;
   transformers = δ;
-  turtle = ζ;
+  turtle = δ;
   unliftio = δ;
   unordered-containers = δ;
   vector = δ;
   versions = δ;
   with-utf8 = δ;
-  zlib = ε;
+  zlib = δ;
 } ->
-λ
+ι

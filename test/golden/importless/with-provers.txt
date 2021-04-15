@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ.
+∀ α β γ δ ε.
 ( α.mkDerivation =
     { buildInputs = [β];
       buildPhase = String;
@@ -9,9 +9,9 @@
     γ
 ) =>
 { makeWrapper = β;
-  runCommand = String -> {provers = δ;} -> String -> ε;
+  runCommand = String -> {provers = [β];} -> String -> δ;
   stdenv = α;
-  symlinkJoin = ζ;
+  symlinkJoin = ε;
   why3 = β;
 } ->
 [β] -> γ

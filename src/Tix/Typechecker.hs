@@ -77,20 +77,40 @@ runConstraintEnv ::
   Members '[State VariableMap, State (MKM.Map Pred)] effs =>
   Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
   Eff effs ((a, Substitution), Seq Constraint)
-runConstraintEnv =
-  runState @(Seq Constraint) Empty
-    . interpret @(Writer Constraint) (\(Tell x) -> modify (x :<|))
-    . runWriter @Substitution
-    . interpret @SubstituteEnv
-      ( \(SubstituteEnv x) -> do
-          modify @(Seq Constraint) (sub x <$>)
-          -- TODO: I have a feeling that variables in the env should already be closed over.
-          -- (aka this is redundant)
-          modify @VariableMap (sub x <$>)
-          modify @(MKM.Map Pred) (sub x)
-          tell x
-          return ()
-      )
+runConstraintEnv f = do
+  ((x, subs), cs) <-
+    runState @(Seq Constraint) Empty
+      . interpret @(Writer Constraint) (\(Tell x) -> modify (x :<|))
+      . runWriter @Substitution
+      . interpret @SubstituteEnv
+        ( \(SubstituteEnv x) -> do
+            -- modify @(Seq Constraint) (sub x <$>)
+            -- TODone: I have a feeling that variables in the env should already be closed over.
+            -- (aka this is redundant)
+            --
+            -- No, they can have type variables. E g when they are arguments in a function.
+            modify @VariableMap (sub x <$>)
+            modify @(MKM.Map Pred) (sub x)
+            tell x
+            return ()
+        )
+      $ f
+  return ((x, subs), sub subs <$> cs)
+
+captureSubstitutions ::
+  Members '[SubstituteEnv] effs =>
+  Eff (Writer Substitution : effs) a ->
+  Eff effs (a, Substitution)
+captureSubstitutions f = do
+  (x, s) <-
+    runWriter @Substitution
+      . interpose @SubstituteEnv
+        ( \(SubstituteEnv x) -> do
+            tell x
+            subEnv x
+        )
+      $ f
+  return (x, s)
 
 data SubstituteEnv a where
   SubstituteEnv :: Substitution -> SubstituteEnv ()
@@ -166,7 +186,7 @@ prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap rende
 
 -- | @older <> newer@
 instance Semigroup Substitution where
-  x'@(Substitution x) <> (Substitution y) = Substitution (fmap (sub x') y <> x)
+  x'@(Substitution x) <> y'@(Substitution y) = Substitution (M.unionWithKey (error "invariant") (fmap (sub y') x) (fmap (sub x') y))
 
 instance Monoid Substitution where
   mempty = Substitution mempty
@@ -598,8 +618,12 @@ inferComponents n ((S.toList -> paths) : otherComponents) = do
         return $ fmap fst <$> tvsTypes
   -- TODO: There should probably be some smarter predicate filtering
   schemes <- types & traverse . traverse %%~ (\t -> solveAndClose p $ sub s $ preds :=> t)
-  fmap (M.unionWith mergeBindings schemes) . withBindings (toScheme' <$> schemes) $
-    inferComponents n otherComponents
+
+  (otherBindings, s') <-
+    captureSubstitutions $
+      withBindings (toScheme' <$> schemes) $
+        inferComponents n otherComponents
+  return $ M.unionWith mergeBindings (fmap (sub s') <$> schemes) otherBindings
   where
     bindingToNExpr :: NonEmpty VarName -> NExprLoc -> Binding NExpr
     bindingToNExpr name expr = NamedVar (StaticKey <$> name) (stripAnnotation expr) nullPos
@@ -724,6 +748,7 @@ inferGeneral' toPretty f = do
   traceValue "substitutions_after_solving" $ prettySubstitution s'
   let s = subs <> s'
       returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
+  traceValue "composed_substitution" $ prettySubstitution s
   traceSubtree "returned" $ do
     traceValue "substitutions" $ prettySubstitution returnedS
     -- Filter for optimization purposes

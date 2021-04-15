@@ -1,44 +1,44 @@
-∀ δ ε ζ η θ.
+∀ δ ε ζ η.
 { HUnit = δ;
   QuickCheck = δ;
-  aeson = ε;
+  aeson = δ;
   array = δ;
-  attoparsec = ε;
-  base = ε;
-  binary = ε;
-  bytestring = ε;
-  containers = ε;
-  deepseq = ε;
+  attoparsec = δ;
+  base = δ;
+  binary = δ;
+  bytestring = δ;
+  containers = δ;
+  deepseq = δ;
   directory = δ;
-  dlist = ε;
-  fetchgit = {rev = String; sha256 = String; url = String;} -> ζ;
-  ghc-prim = ε;
-  ghcjs-prim = ε;
-  hashable = ε;
-  integer-gmp = ε;
+  dlist = δ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ε;
+  ghc-prim = δ;
+  ghcjs-prim = δ;
+  hashable = δ;
+  integer-gmp = δ;
   mkDerivation =
     { description = String;
       homepage = String;
       libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (η.lib = α, α.licenses = β, β.mit = γ) => γ;
+      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.mit = γ) => γ;
       pname = String;
-      src = ζ;
+      src = ε;
       testHaskellDepends = [δ];
       version = String;
     } ->
-    θ;
-  primitive = ε;
+    η;
+  primitive = δ;
   quickcheck-unicode = δ;
   random = δ;
-  scientific = ε;
-  stdenv = η;
+  scientific = δ;
+  stdenv = ζ;
   test-framework = δ;
   test-framework-hunit = δ;
   test-framework-quickcheck2 = δ;
-  text = ε;
-  time = ε;
-  transformers = ε;
-  unordered-containers = ε;
+  text = δ;
+  time = δ;
+  transformers = δ;
+  unordered-containers = δ;
   vector = δ;
 } ->
-θ
+η

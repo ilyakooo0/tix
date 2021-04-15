@@ -1,26 +1,26 @@
-∀ δ ε ζ η.
+∀ δ ε ζ.
 { Cabal = δ;
-  base = ε;
-  containers = ε;
-  directory = ε;
-  extra = ε;
-  filepath = ε;
+  base = δ;
+  containers = δ;
+  directory = δ;
+  extra = δ;
+  filepath = δ;
   mkDerivation =
     { description = String;
       homepage = String;
       libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
       pname = String;
       src = Path;
       testHaskellDepends = [δ];
       version = String;
     } ->
-    η;
-  mtl = ε;
-  parsec = ε;
-  pretty = ε;
-  stdenv = ζ;
-  time = ε;
+    ζ;
+  mtl = δ;
+  parsec = δ;
+  pretty = δ;
+  stdenv = ε;
+  time = δ;
   transformers = δ;
 } ->
-η
+ζ

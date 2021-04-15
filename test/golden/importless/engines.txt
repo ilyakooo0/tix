@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+∀ β γ δ ε ζ η θ ι κ λ.
 ( β.overrideAttrs = (γ -> {postInstall = String;}) -> δ,
   β.overrideAttrs = (ε -> {postInstall = String;}) -> ζ,
   β.overrideAttrs = (η -> {postInstall = String;}) -> θ
@@ -8,12 +8,17 @@
       homepage = String;
       mods = [String];
       src = ι;
-      version = κ;
+      version = String;
     } ->
-    λ -> β;
-  extraPostFetch = μ;
+    κ -> β;
+  extraPostFetch = λ;
   fetchFromGitHub =
-    {extraPostFetch = μ; owner = String; repo = String; rev = ν; sha256 = ξ;} ->
+    { extraPostFetch = λ;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
     ι;
 } ->
-{bleed = ∀ α. λ -> α; playtest = ∀ α. λ -> α; release = ∀ α. λ -> α;}
+{bleed = ∀ α. κ -> α; playtest = ∀ α. κ -> α; release = ∀ α. κ -> α;}

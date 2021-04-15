@@ -1,1 +1,1 @@
-∀ α β. {fetchurl = {url = α;} -> β;} -> [β]
+∀ α. {fetchurl = {url = String;} -> α;} -> [α]
