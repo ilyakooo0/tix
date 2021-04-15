@@ -1,5 +1,6 @@
 module Control.Monad.Freer.Fresh
   ( Fresh (..),
+    fresh,
     runFresh,
     registerTypeVariables,
   )
@@ -14,6 +15,9 @@ data Fresh x where
   Fresh :: Fresh TypeVariable
   -- | Inclusive
   MinFreshFromNow :: Fresh TypeVariable
+
+fresh :: Member Fresh eff => Eff eff TypeVariable
+fresh = send Fresh
 
 type Runner effect = forall effs a. Eff (effect ': effs) a -> Eff effs a
 

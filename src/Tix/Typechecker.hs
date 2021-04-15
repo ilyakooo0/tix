@@ -58,6 +58,7 @@ getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [InferError], [UnifyingErro
 getType r =
   let ((((((((t, traceTree), inf), predicate), unifying), errs), _srcs), subs), _) =
         run
+          . runReader nullSpan
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
           . evalState (M.empty :: VariableMap)
@@ -68,7 +69,7 @@ getType r =
           . runSeqWriter @[UnifyingError]
           . runSeqWriter @[PredicateError]
           . runSeqWriter @[InferError]
-          . runFresh
+          . runFreshSrc
           . runTreeTracer
           $ inferGeneral r
    in (sub subs t, errs, inf, unifying, predicate, traceTree)
@@ -96,6 +97,21 @@ runConstraintEnv f = do
         )
       $ f
   return ((x, subs), sub subs <$> cs)
+
+runFreshSrc ::
+  Members '[Reader SrcSpan, Writer (TypeVariable, SrcSpan)] eff =>
+  Eff (Fresh : eff) ~> Eff eff
+runFreshSrc =
+  runFresh
+    . interpose @Fresh
+      ( \case
+          Fresh -> do
+            v <- send Fresh
+            src <- ask @SrcSpan
+            tell (v, src)
+            return v
+          MinFreshFromNow -> send MinFreshFromNow
+      )
 
 captureSubstitutions ::
   Members '[SubstituteEnv] effs =>
@@ -268,15 +284,6 @@ data Errors
   | UnexpectedType {expected :: Scheme, got :: Scheme}
   deriving stock (Eq, Ord, Show)
 
-freshSrc ::
-  Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan)] r =>
-  Eff r TypeVariable
-freshSrc = do
-  v <- send Fresh
-  src <- ask @SrcSpan
-  tell (v, src)
-  return v
-
 data UnifyingError
   = InfinityType NType
   | CanNotUnify NType NType
@@ -297,7 +304,7 @@ type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
 
 type InferEffs =
   '[ Fresh,
-     Writer (TypeVariable, SrcSpan),
+     Reader SrcSpan,
      Writer Constraint,
      Writer (SrcSpan, Errors),
      Writer PredicateError,
@@ -312,8 +319,6 @@ type InferEffs =
 
 type InferM x = forall r. Members InferEffs r => Eff r x
 
-type InferM' x = forall r. Members (Reader SrcSpan ': InferEffs) r => Eff r x
-
 runSeqWriter :: forall s w r a. (IsSequence s, Element s ~ w) => Eff (Writer w ': r) a -> Eff r (a, s)
 runSeqWriter = handleRelayS mempty (\s x -> return (x, s)) $ \s (Tell w) k -> k (cons w s) ()
 
@@ -322,19 +327,18 @@ throwSrc e = do
   src <- ask @SrcSpan
   tell (src, e)
 
-throwSrcTV ::
+throwTV ::
   Members
     '[ Reader SrcSpan,
        Writer (SrcSpan, e),
-       Writer (TypeVariable, SrcSpan),
        Fresh
      ]
     r =>
   e ->
   Eff r TypeVariable
-throwSrcTV e = do
+throwTV e = do
   throwSrc e
-  freshSrc
+  fresh
 
 type VariableMap = Map VarName Scheme
 
@@ -355,7 +359,7 @@ withBindings bindings m = do
 
 instantiate ::
   forall effs.
-  Members '[Fresh, Reader SrcSpan, Writer (TypeVariable, SrcSpan), Writer Pred] effs =>
+  Members '[Fresh, Writer Pred] effs =>
   Scheme ->
   Eff effs NType
 instantiate s = do
@@ -377,12 +381,12 @@ instantiate s = do
       gets (M.lookup db) >>= \case
         Just t -> return t
         Nothing -> do
-          t <- freshSrc
+          t <- fresh
           modify (M.insert db t)
           return t
 
 infer :: NExprLoc -> InferM NType
-infer (Fix (Compose (Ann src x))) = runReader src $ case x of
+infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NConstant a -> return . NAtomic $ case a of
     NURI {} -> URI
     NInt {} -> Integer
@@ -394,13 +398,13 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NStr {} -> return $ NAtomic String
   NSym var ->
     get @VariableMap
-      >>= maybe (scheme . NTypeVariable <$> throwSrcTV (UndefinedVariable var)) return . M.lookup var
+      >>= maybe (scheme . NTypeVariable <$> throwTV (UndefinedVariable var)) return . M.lookup var
       >>= instantiate -- I have no idea if this covers all cases.
   NList xs -> do
     xs' <- traverse infer xs
     traverse_ tell . fmap (uncurry (:~)) $ zip xs' (tail xs')
     case xs' of
-      [] -> NTypeVariable <$> freshSrc
+      [] -> NTypeVariable <$> fresh
       y : _ -> return $ List y
   NUnary NNeg y -> do
     t <- infer y
@@ -414,19 +418,19 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
     rhsT <- infer rhs
-    res <- NTypeVariable <$> freshSrc
+    res <- NTypeVariable <$> fresh
     tell (lhsT // rhsT $ res)
     return res
   NBinary NApp lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    rest <- NTypeVariable <$> freshSrc
+    rest <- NTypeVariable <$> fresh
     lhst ~~ (rhst :-> rest)
     return rest
   NBinary NConcat lhs rhs -> do
     lhst <- infer lhs
     rhst <- infer rhs
-    t <- NTypeVariable <$> freshSrc
+    t <- NTypeVariable <$> fresh
     let listt = List t
     lhst ~~ listt
     rhst ~~ listt
@@ -453,7 +457,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
           (set', var) <- lookupAttrSet p
           setT ~~ set'
           return var
-        Nothing -> freshSrc
+        Nothing -> fresh
     case def of
       Nothing -> return ()
       Just defR -> do
@@ -473,14 +477,14 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
   NAbs param body -> do
     (paramT, varMap :: VariableMap) <- case param of
       Param name -> do
-        t <- freshSrc
+        t <- fresh
         return (NTypeVariable t, M.singleton name . scheme $ NTypeVariable t)
       ParamSet set variadic binding -> do
         setBindings <-
           M.fromList <$> set
             `for` ( \(name, def) -> do
                       t <- case def of
-                        Nothing -> NTypeVariable <$> freshSrc
+                        Nothing -> NTypeVariable <$> fresh
                         Just def' -> infer def'
                       return (name, scheme t) -- TODO: This is bad: it probably shouldn't be a scheme
                   )
@@ -518,7 +522,7 @@ infer (Fix (Compose (Ann src x))) = runReader src $ case x of
     condT <- infer cond
     condT ~~ NAtomic Bool
     infer body
-  NSynHole _ -> NTypeVariable <$> freshSrc
+  NSynHole _ -> NTypeVariable <$> fresh
   where
     equality lhs rhs = do
       lhst <- infer lhs
@@ -578,14 +582,14 @@ normalizeBindings bindings = case bindings' of
                 Just set -> \v -> Fix $ Compose $ Ann (SrcSpan src src) $ NSelect set (pure $ StaticKey v) Nothing
            in (\v -> fromName (pure v) (f v)) <$> names
 
-inferNormalizedBindings :: NormalizedBinding NExprLoc -> InferM' (Map VarName Scheme)
+inferNormalizedBindings :: NormalizedBinding NExprLoc -> InferM (Map VarName Scheme)
 inferNormalizedBindings = traverse inferNormalizedBindings'
   where
-    inferNormalizedBindings' :: NormalizedBinding' NExprLoc -> InferM' Scheme
+    inferNormalizedBindings' :: NormalizedBinding' NExprLoc -> InferM Scheme
     inferNormalizedBindings' (F.Pure expr) = inferGeneral expr
     inferNormalizedBindings' (F.Free m) = scheme . NAttrSet <$> inferNormalizedBindings' `traverse` m
 
-inferNormalizedBindingsRecursive :: NormalizedBinding NExprLoc -> InferM' (Map VarName Scheme)
+inferNormalizedBindingsRecursive :: NormalizedBinding NExprLoc -> InferM (Map VarName Scheme)
 inferNormalizedBindingsRecursive n = do
   let components = case AM.topSort . AM.scc $ bindingGraph n of
         Left x -> [foldMap AM.vertexSet x]
@@ -596,7 +600,7 @@ inferNormalizedBindingsRecursive n = do
     toScheme (F.Pure t) = t
     toScheme (F.Free m) = scheme $ NAttrSet $ fmap toScheme m
 
-inferComponents :: NormalizedBinding NExprLoc -> [Set (NonEmpty VarName)] -> InferM' (NormalizedBinding Scheme)
+inferComponents :: NormalizedBinding NExprLoc -> [Set (NonEmpty VarName)] -> InferM (NormalizedBinding Scheme)
 inferComponents _ [] = pure M.empty
 inferComponents n ((S.toList -> paths) : otherComponents) = do
   let bindings = catMaybes $ paths <&> \path -> (path,) <$> lookupExpr path n
@@ -604,7 +608,7 @@ inferComponents n ((S.toList -> paths) : otherComponents) = do
     traceSubtree (showExpr . bindingsToNExpr $ bindings)
       . inferGeneral' (NAttrSet . fmap toScheme)
       $ do
-        tvsExprs <- for bindings (\(a, b) -> (a,b,) . NTypeVariable <$> freshSrc)
+        tvsExprs <- for bindings (\(a, b) -> (a,b,) . NTypeVariable <$> fresh)
         let tvsExprs' =
               foldl' (M.unionWith mergeBindings) M.empty $
                 fmap (\(a, b, c) -> normalize a (b, c)) tvsExprs
@@ -713,10 +717,10 @@ getReferences expr@(Fix (Compose (Ann _ x))) = case x of
             (Nothing, other) -> (Nothing, other)
       _ -> (Nothing, getReferences u)
 
-inferBinding :: [Binding NExprLoc] -> InferM' (Map VarName Scheme)
+inferBinding :: [Binding NExprLoc] -> InferM (Map VarName Scheme)
 inferBinding = normalizeBindings >=> inferNormalizedBindings
 
-inferRecBinding :: [Binding NExprLoc] -> InferM' (Map VarName Scheme)
+inferRecBinding :: [Binding NExprLoc] -> InferM (Map VarName Scheme)
 inferRecBinding = normalizeBindings >=> inferNormalizedBindingsRecursive
 
 renderPretty :: Pretty x => x -> TL.Text
@@ -726,7 +730,7 @@ showExpr :: NExpr -> Text
 showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix
 
 inferGeneral :: NExprLoc -> InferM Scheme
-inferGeneral x@(Fix (Compose (Ann src _))) = runReader src . traceSubtree (showExpr . stripAnnotation $ x) $ do
+inferGeneral x@(Fix (Compose (Ann src _))) = local (const src) . traceSubtree (showExpr . stripAnnotation $ x) $ do
   (t, p, keep, s) <- inferGeneral' id $ infer x
   solveAndClose p $ sub s $ keep :=> t
 
@@ -774,9 +778,7 @@ rangeFromSet = RS.fromAscList . S.toAscList
 
 solveAndClose ::
   Members
-    '[ Writer (TypeVariable, SrcSpan),
-       Reader SrcSpan,
-       Fresh,
+    '[ Fresh,
        Writer PredicateError,
        Writer UnifyingError
      ]
@@ -800,8 +802,6 @@ solveAndClose range (cs :=> t) = do
 solveConstraints ::
   Members
     '[ Fresh,
-       Reader SrcSpan,
-       Writer (TypeVariable, SrcSpan),
        Writer Pred,
        Writer PredicateError,
        Writer Constraint
@@ -901,9 +901,7 @@ type AttrSetPath = NonEmpty Text
 
 lookupAttrSet ::
   Members
-    '[ Reader SrcSpan,
-       Writer (SrcSpan, Errors),
-       Writer (TypeVariable, SrcSpan),
+    '[ Writer (SrcSpan, Errors),
        Writer Pred,
        Fresh
      ]
@@ -911,12 +909,12 @@ lookupAttrSet ::
   AttrSetPath ->
   Eff r (NType, TypeVariable)
 lookupAttrSet (NESingle p) = do
-  set <- NTypeVariable <$> freshSrc
-  var <- freshSrc
+  set <- NTypeVariable <$> fresh
+  var <- fresh
   tell (HasField set (p, scheme . NTypeVariable $ var))
   return (set, var)
 lookupAttrSet (p :|| ps) = do
-  set <- NTypeVariable <$> freshSrc
+  set <- NTypeVariable <$> fresh
   (innerSet, var) <- lookupAttrSet ps
   tell $ HasField set (p, scheme innerSet)
   return (set, var)
