@@ -1,22 +1,19 @@
-∀ γ δ ε ζ.
-{ dolphin = γ;
-  extra-cmake-modules = δ;
-  kdelibs4support = γ;
-  kdoctools = δ;
-  ki18n = γ;
-  kio = γ;
-  kxmlgui = γ;
-  lib = ε;
+∀ α β γ δ ε ζ η θ.
+(α.gpl2 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { dolphin = ζ;
+  extra-cmake-modules = η;
+  kdelibs4support = ζ;
+  kdoctools = η;
+  ki18n = ζ;
+  kio = ζ;
+  kxmlgui = ζ;
+  lib = α;
   mkDerivation =
-    { meta =
-        { license = ∀ α β. (ε.licenses = α, α.gpl2 = β) => [β];
-          maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [η];
       outputs = [String];
-      propagatedBuildInputs = [γ];
+      propagatedBuildInputs = [ζ];
     } ->
-    ζ;
+    θ;
 } ->
-ζ
+θ

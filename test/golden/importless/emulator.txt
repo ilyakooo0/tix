@@ -1,57 +1,56 @@
-∀ ξ ο π ρ σ τ.
-{ autoPatchelfHook = ξ;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.optional = Bool -> [β] -> [γ],
+  α.optionalString = Bool -> String -> δ,
+  ε.alsaLib = β,
+  ε.cc = β,
+  ε.expat = β,
+  ε.freetype = β,
+  ε.glibc = β,
+  ε.libGL = β,
+  ε.libX11 = β,
+  ε.libXcomposite = β,
+  ε.libXcursor = β,
+  ε.libXdamage = β,
+  ε.libXext = β,
+  ε.libXfixes = β,
+  ε.libXi = β,
+  ε.libXrender = β,
+  ε.libXtst = β,
+  ε.libcxx = β,
+  ε.libpulseaudio = β,
+  ε.libxcb = β,
+  ε.ncurses5 = β,
+  ε.nspr = β,
+  ε.nss = β,
+  ε.zlib = β,
+  ζ.glibc = β,
+  η.xlibs = ε,
+  θ.xlibs = ε,
+  ι.xlibs = ε,
+  κ.xlibs = ε,
+  λ.xlibs = ε,
+  μ.xlibs = ε,
+  ν.xlibs = ε,
+  ξ.xlibs = ε,
+  ο.xlibs = ε,
+  π.xlibs = ε,
+  ρ.cc = ε,
+  σ.stdenv = ρ
+) =>
+{ autoPatchelfHook = γ;
   deployAndroidPackage =
-    { buildInputs =
-        ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-        ( ο.optional = Bool -> [α] -> [ξ],
-          π.glibc = α,
-          π.xlibs = β,
-          β.libX11 = α,
-          π.xlibs = γ,
-          γ.libXext = α,
-          π.xlibs = δ,
-          δ.libXdamage = α,
-          π.xlibs = ε,
-          ε.libXfixes = α,
-          π.xlibs = ζ,
-          ζ.libxcb = α,
-          π.xlibs = η,
-          η.libXcomposite = α,
-          π.xlibs = θ,
-          θ.libXcursor = α,
-          π.xlibs = ι,
-          ι.libXi = α,
-          π.xlibs = κ,
-          κ.libXrender = α,
-          π.xlibs = λ,
-          λ.libXtst = α,
-          π.libcxx = α,
-          π.libGL = α,
-          π.libpulseaudio = α,
-          π.zlib = α,
-          π.ncurses5 = α,
-          π.stdenv = μ,
-          μ.cc = ν,
-          ν.cc = α,
-          ρ.glibc = α,
-          π.expat = α,
-          π.freetype = α,
-          π.nss = α,
-          π.nspr = α,
-          π.alsaLib = α
-        ) =>
-        [ξ];
+    { buildInputs = [γ];
       dontMoveLib64 = Bool;
       os = String;
-      package = σ;
-      patchInstructions = ∀ α. (ο.optionalString = Bool -> String -> α) => α;
+      package = τ;
+      patchInstructions = δ;
     } ->
-    τ;
-  lib = ο;
-  makeWrapper = ξ;
+    υ;
+  lib = α;
+  makeWrapper = γ;
   os = String;
-  package = σ;
-  pkgs = π;
-  pkgs_i686 = ρ;
+  package = τ;
+  pkgs = ε;
+  pkgs_i686 = ζ;
 } ->
-τ
+υ

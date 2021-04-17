@@ -1,32 +1,33 @@
-∀ η θ ι κ.
-( η.mkDerivation =
-    { NIX_CFLAGS_COMPILE =
-        ∀ δ ε ζ.
-        (η.lib = δ, δ.optionalString = ε -> String -> ζ, η.isDarwin = ε) => ζ;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.free = β,
+  α.isDarwin = γ,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = δ;
       buildPhase = String;
       checkPhase = String;
       doCheck = Bool;
       hardeningDisable = [String];
-      installPhase =
-        ∀ δ ε.
-        ( η.lib = δ,
-          δ.optionalString = ε -> String -> String,
-          η.isDarwin = ε
-        ) =>
-        String;
+      installPhase = String;
       meta =
-        { description = String;
-          homepage = String;
-          license = ∀ α β γ. (η.lib = α, α.licenses = β, β.free = γ) => γ;
-          platforms = ∀ α β γ. (η.lib = α, α.platforms = β, β.unix = γ) => γ;
-        };
-      nativeBuildInputs = [θ];
+        {description = String; homepage = String; license = β; platforms = ε;};
+      nativeBuildInputs = [ζ];
       patches = [Path];
       pname = String;
       preConfigure = String;
-      src = ι;
+      src = η;
       version = String;
     } ->
-    κ
+    θ,
+  α.optionalString = γ -> String -> δ,
+  α.sharedLibrary = ι,
+  α.unix = ε,
+  κ.extensions = α,
+  λ.hostPlatform = κ,
+  μ.lib = α,
+  ν.lib = α,
+  ξ.licenses = α,
+  ο.lib = ξ,
+  π.platforms = α,
+  ρ.lib = π
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = η; unzip = θ;} -> κ
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; unzip = ζ;} -> θ

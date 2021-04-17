@@ -1,11 +1,5 @@
-∀ γ.
-{lib = γ; options = Bool;} ->
-{ config =
-    { set =
-        ∀ α β.
-        ( ({value = Integer;}) // (α) ~ (β),
-          γ.optionalAttrs = Bool -> {enable = Bool;} -> α
-        ) =>
-        β;
-    };
-}
+∀ β γ δ.
+( ({value = Integer;}) // (β) ~ (γ),
+  δ.optionalAttrs = Bool -> {enable = Bool;} -> β
+) =>
+{lib = δ; options = Bool;} -> {config = {set = ∀ α. α;};}

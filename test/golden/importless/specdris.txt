@@ -1,20 +1,16 @@
-∀ γ δ ε ζ.
-{ build-idris-package =
+∀ α β γ δ ε ζ.
+(α.mit = β, γ.licenses = α) => { build-idris-package =
     { doCheck = Bool;
-      idrisDeps = [γ];
-      meta =
-        { description = String;
-          homepage = String;
-          license = ∀ α β. (δ.licenses = α, α.mit = β) => β;
-        };
+      idrisDeps = [δ];
+      meta = {description = String; homepage = String; license = β;};
       name = String;
       src = ε;
       version = String;
     } ->
     ζ;
-  effects = γ;
+  effects = δ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
-  lib = δ;
+  lib = α;
 } ->
 ζ

@@ -1,5 +1,5 @@
-∀ β γ.
-{ makeInstalledTest =
+∀ α β γ.
+(α.ibus = β) => { makeInstalledTest =
     { testConfig =
         { i18n = {inputMethod = {enabled = String;};};
           systemd =
@@ -14,10 +14,10 @@
                 };
             };
         };
-      tested = ∀ α. (β.ibus = α) => α;
+      tested = β;
       withX11 = Bool;
     } ->
     γ;
-  pkgs = β;
+  pkgs = α;
 } ->
 γ

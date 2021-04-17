@@ -1,25 +1,28 @@
-∀ θ ι κ.
-( θ.mkDerivation =
-    { configureFlags =
-        ∀ δ ε ζ η.
-        ( θ.lib = δ,
-          δ.optional = ε -> String -> ζ,
-          θ.hostPlatform = η,
-          η.isMinGW = ε
-        ) =>
-        ζ;
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.all = γ,
+  β.gpl3Plus = δ,
+  β.isMinGW = ε,
+  β.mkDerivation =
+    { configureFlags = ζ;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (θ.lib = α, α.licenses = β, β.gpl3Plus = γ) => γ;
+          license = δ;
           longDescription = String;
           maintainers = ∀ α. α;
-          platforms = ∀ α β γ. (θ.lib = α, α.platforms = β, β.all = γ) => γ;
+          platforms = γ;
         };
       name = String;
       outputs = [String];
-      src = ι;
+      src = η;
     } ->
-    κ
+    θ,
+  β.optional = ε -> String -> ζ,
+  ι.lib = β,
+  κ.hostPlatform = β,
+  λ.licenses = β,
+  μ.lib = λ,
+  ν.platforms = β,
+  ξ.lib = ν
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = θ;} -> κ
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = β;} -> θ

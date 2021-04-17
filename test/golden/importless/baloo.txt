@@ -1,26 +1,26 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kauth = δ;
-  kconfig = δ;
-  kcoreaddons = ε;
-  kcrash = δ;
-  kdbusaddons = δ;
-  kfilemetadata = ε;
-  ki18n = δ;
-  kidletime = δ;
-  kio = δ;
-  lib = ζ;
-  lmdb = δ;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kauth = ε;
+  kconfig = ε;
+  kcoreaddons = ζ;
+  kcrash = ε;
+  kdbusaddons = ε;
+  kfilemetadata = ζ;
+  ki18n = ε;
+  kidletime = ε;
+  kio = ε;
+  lib = α;
+  lmdb = ε;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
-      propagatedBuildInputs = [ε];
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ζ];
     } ->
     η;
-  qtbase = ε;
-  qtdeclarative = δ;
-  solid = δ;
+  qtbase = ζ;
+  qtdeclarative = ε;
+  solid = ε;
 } ->
 η

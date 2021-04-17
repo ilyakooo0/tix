@@ -1,23 +1,27 @@
-∀ ε ζ η θ.
-( ε.mkDerivation =
+∀ α β γ δ ε ζ η θ.
+( α.mkDerivation =
     { buildInputs = [Null];
-      configureFlags =
-        ∀ δ. (ε.lib = δ, δ.optional = Bool -> String -> [String]) => [String];
+      configureFlags = [String];
       hardeningDisable = [String];
       meta =
         { branch = String;
           description = String;
           homepage = String;
-          platforms = ∀ α β γ. (ε.lib = α, α.platforms = β, β.unix = γ) => γ;
+          platforms = β;
         };
       name = String;
-      nativeBuildInputs = [ζ];
-      src = η;
+      nativeBuildInputs = [γ];
+      src = δ;
     } ->
-    θ
+    ε,
+  α.optional = Bool -> String -> [String],
+  α.unix = β,
+  ζ.platforms = α,
+  η.lib = ζ,
+  θ.lib = α
 ) =>
 { expat = Null;
-  fetchurl = {sha256 = String; url = String;} -> η;
+  fetchurl = {sha256 = String; url = String;} -> δ;
   fontconfig = Null;
   gd = Null;
   libXaw = Null;
@@ -26,9 +30,9 @@
   libtool = Null;
   libwebp = Null;
   pango = Null;
-  pkgconfig = ζ;
-  stdenv = ε;
+  pkgconfig = γ;
+  stdenv = α;
   xlibsWrapper = Null;
   yacc = Null;
 } ->
-θ
+ε

@@ -1,10 +1,6 @@
-∀ γ δ ε.
-{ build-idris-package =
-    { meta =
-        { description = String;
-          homepage = String;
-          maintainers = ∀ α β. (γ.maintainers = α, α.brainrape = β) => [β];
-        };
+∀ α β γ δ ε.
+(α.brainrape = β, γ.maintainers = α) => { build-idris-package =
+    { meta = {description = String; homepage = String; maintainers = [β];};
       name = String;
       src = δ;
       version = String;
@@ -12,6 +8,6 @@
     ε;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
-  lib = γ;
+  lib = α;
 } ->
 ε

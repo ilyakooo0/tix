@@ -1,12 +1,12 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kdoctools = γ;
-  lib = δ;
+∀ α β γ δ ε ζ.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kdoctools = δ;
+  lib = α;
   mkDerivation =
     { buildInputs = [ε];
-      meta = {maintainers = ∀ α β. (δ.maintainers = α, α.ttuegel = β) => [β];};
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
     } ->
     ζ;
   pcre = ε;

@@ -1,40 +1,54 @@
-∀ ζ η θ.
-( ζ.mkDerivation =
-    { buildInputs =
-        ∀ δ ε. (ζ.lib = δ, δ.filter = (Null -> Bool) -> [Null] -> ε) => ε;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.filter = (Null -> Bool) -> [Null] -> β,
+  α.gpl2 = γ,
+  α.makeBinPath = β -> δ,
+  α.mkDerivation =
+    { buildInputs = ε;
       doCheck = Bool;
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
+          license = γ;
           longDescription = String;
-          maintainers =
-            ∀ α β γ. (ζ.lib = α, α.maintainers = β, β.peti = γ) => [γ];
-          platforms = ∀ α β γ. (ζ.lib = α, α.platforms = β, β.unix = γ) => γ;
+          maintainers = [ζ];
+          platforms = η;
         };
       name = String;
-      patches =
-        ∀ δ. (ζ.lib = δ, δ.optionals = Bool -> [Path] -> [Path]) => [Path];
-      postInstall =
-        ∀ δ. (ζ.lib = δ, δ.optionalString = Bool -> String -> String) => String;
-      src = η;
+      patches = [Path];
+      postInstall = String;
+      src = θ;
       version = String;
     } ->
-    θ
+    ι,
+  α.optionalString = Bool -> String -> String,
+  α.optionals = Bool -> [Path] -> [Path],
+  α.peti = ζ,
+  α.unix = η,
+  κ.lib = α,
+  λ.lib = α,
+  μ.lib = α,
+  ν.licenses = α,
+  ξ.lib = ν,
+  ο.maintainers = α,
+  π.lib = ο,
+  ρ.platforms = α,
+  σ.lib = ρ,
+  τ.lib = α,
+  υ.lib = α
 ) =>
 { ecl = Null;
   ecl-fasl = Bool;
   fetchpatch = {sha256 = String; url = String;} -> Path;
-  fetchurl = {sha256 = String; url = String;} -> η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
   gnuplot = Null;
   makeWrapper = Null;
   perl = Null;
   python = Null;
   rlwrap = Null;
   sbcl = Null;
-  stdenv = ζ;
+  stdenv = α;
   texinfo = Null;
   tk = Null;
 } ->
-θ
+ι

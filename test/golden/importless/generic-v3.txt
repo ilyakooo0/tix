@@ -1,0 +1,79 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( α.buildPlatform = β,
+  α.hostPlatform = β,
+  γ.cc = Null,
+  γ.stdenv = δ,
+  γ.which = Null,
+  α.bsd3 = ε,
+  α.isDarwin = ζ,
+  α.mkDerivation =
+    { buildInputs = [η];
+      configureFlags = [String];
+      doCheck = Bool;
+      dontDisableStatic = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          platforms = θ;
+        };
+      nativeBuildInputs = [Null];
+      passthru = {version = ι;};
+      pname = String;
+      postPatch = String;
+      src = κ;
+      version = ι;
+    } ->
+    λ,
+  α.optionalString = ζ -> String -> String,
+  α.unix = θ,
+  μ.licenses = α,
+  ν.lib = μ,
+  ξ.platforms = α,
+  ο.lib = ξ,
+  π.lib = α,
+  δ.bsd3 = ρ,
+  δ.isDarwin = σ,
+  δ.mkDerivation =
+    { buildInputs = [η];
+      configureFlags = [String];
+      doCheck = Bool;
+      dontDisableStatic = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ρ;
+          longDescription = String;
+          platforms = τ;
+        };
+      nativeBuildInputs = [Null];
+      passthru = {version = ι;};
+      pname = String;
+      postPatch = String;
+      src = κ;
+      version = ι;
+    } ->
+    Null,
+  δ.optionalString = σ -> String -> String,
+  δ.unix = τ,
+  υ.licenses = δ,
+  φ.lib = υ,
+  χ.platforms = δ,
+  ψ.lib = χ,
+  ω.lib = δ,
+  α1.stdenv = γ
+) =>
+{ autoreconfHook = Null;
+  buildPackages = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = β2;} -> κ;
+  gmock = γ3;
+  sha256 = β2;
+  stdenv = α;
+  version = ι;
+  zlib = η;
+} ->
+λ

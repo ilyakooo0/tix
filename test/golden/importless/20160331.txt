@@ -1,12 +1,13 @@
-∀ δ ε ζ η θ.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lgpl21Plus = β,
+  α.linux = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
       meta =
         { description = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.lgpl21Plus = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = β;
+          maintainers = [ε];
+          platforms = γ;
           version = String;
         };
       nativeBuildInputs = [ζ];
@@ -14,7 +15,14 @@
       src = η;
       version = String;
     } ->
-    θ
+    θ,
+  α.raskin = ε,
+  ι.licenses = α,
+  κ.lib = ι,
+  λ.maintainers = α,
+  μ.lib = λ,
+  ν.platforms = α,
+  ξ.lib = ν
 ) =>
 { autoconf = ζ;
   automake = ζ;
@@ -22,9 +30,9 @@
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> η;
   gettext = ζ;
-  gmp = ε;
+  gmp = δ;
   libtool = ζ;
-  mpfr = ε;
-  stdenv = δ;
+  mpfr = δ;
+  stdenv = α;
 } ->
 θ

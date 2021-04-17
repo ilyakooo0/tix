@@ -1,12 +1,14 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ η.
+( α.mkDerivation =
     { dontUnpack = Bool;
       installPhase = String;
-      meta =
-        {platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;};
+      meta = {platforms = β;};
       name = String;
-      nativeBuildInputs = [ε];
+      nativeBuildInputs = [γ];
     } ->
-    ζ
+    δ,
+  α.unix = β,
+  ε.platforms = α,
+  ζ.lib = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> η; stdenv = δ; unzip = ε;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; unzip = γ;} -> δ

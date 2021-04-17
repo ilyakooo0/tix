@@ -1,14 +1,16 @@
-∀ ε ζ η θ ι κ.
-( ε.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.linux = β,
+  α.mkDerivation =
     { installPhase = String;
-      meta =
-        { broken = Bool;
-          platforms = ∀ α β γ. (ε.lib = α, α.platforms = β, β.linux = γ) => γ;
-        };
+      meta = {broken = Bool; platforms = β;};
       name = String;
       phases = [String];
-      src = ∀ δ. (ζ.src = δ) => δ;
+      src = γ;
     } ->
-    η
+    δ,
+  ε.makeBinPath = [ζ] -> η,
+  θ.src = γ,
+  ι.platforms = α,
+  κ.lib = ι
 ) =>
-{file = θ; lib = ι; mumble = ζ; mumble_i686 = κ; stdenv = ε; which = θ;} -> η
+{file = ζ; lib = ε; mumble = θ; mumble_i686 = λ; stdenv = α; which = ζ;} -> δ

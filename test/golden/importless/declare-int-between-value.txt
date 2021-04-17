@@ -1,19 +1,7 @@
-∀ ε.
-{lib = ε;} ->
-{ options =
-    { value =
-        ∀ δ.
-        ( ε.mkOption =
-            { type =
-                ∀ α β γ.
-                ( ε.types = α,
-                  α.ints = β,
-                  β.between = Integer -> Integer -> γ
-                ) =>
-                γ;
-            } ->
-            δ
-        ) =>
-        δ;
-    };
-}
+∀ α β γ δ ε.
+( α.between = Integer -> Integer -> β,
+  α.mkOption = {type = β;} -> γ,
+  δ.ints = α,
+  ε.types = δ
+) =>
+{lib = α;} -> {options = {value = γ;};}

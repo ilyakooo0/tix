@@ -1,17 +1,7 @@
-∀ δ.
-{lib = δ;} ->
-{ config = {nest = {bar = String;};};
-  options =
-    { nest =
-        { foo =
-            ∀ γ.
-            ( δ.mkOption =
-                { default = Bool;
-                  type = ∀ α β. (δ.types = α, α.bool = β) => β;
-                } ->
-                γ
-            ) =>
-            γ;
-        };
-    };
-}
+∀ α β γ δ.
+( α.bool = β,
+  α.mkOption = {default = Bool; type = β;} -> γ,
+  δ.types = α
+) =>
+{lib = α;} ->
+{config = {nest = {bar = String;};}; options = {nest = {foo = γ;};};}

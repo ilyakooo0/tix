@@ -1,22 +1,9 @@
-∀ η.
-{lib = η;} ->
-{ options =
-    { value =
-        ∀ ζ.
-        ( η.mkOption =
-            { default = {};
-              type =
-                ∀ α β γ δ ε.
-                ( (α) // ({emptyValue = {value = String;};}) ~ (β),
-                  η.types = γ,
-                  γ.lazyAttrsOf = β -> δ,
-                  η.types = ε,
-                  ε.str = α
-                ) =>
-                δ;
-            } ->
-            ζ
-        ) =>
-        ζ;
-    };
-}
+∀ α β γ δ ε ζ η.
+( (α) // ({emptyValue = {value = String;};}) ~ (β),
+  γ.lazyAttrsOf = β -> δ,
+  γ.mkOption = {default = {}; type = δ;} -> ε,
+  γ.str = α,
+  ζ.types = γ,
+  η.types = γ
+) =>
+{lib = γ;} -> {options = {value = ε;};}

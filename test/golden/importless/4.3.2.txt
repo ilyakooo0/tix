@@ -1,36 +1,41 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.mkDerivation =
-    { configureFlags =
-        ( α.lib = β,
-          β.enableFeature = Bool -> String -> γ,
-          α.lib = δ,
-          δ.optionals = ε -> [String] -> [γ],
-          α.isDarwin = ε
-        ) =>
-        [γ];
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( β.all = γ,
+  β.enableFeature = Bool -> String -> δ,
+  β.isDarwin = Bool,
+  β.lgpl3Plus = ε,
+  β.mkDerivation =
+    { configureFlags = [δ];
       doCheck = Bool;
       meta =
         { badPlatforms = [String];
           branch = String;
           description = String;
           homepage = String;
-          license = (α.lib = ζ, ζ.licenses = η, η.lgpl3Plus = θ) => θ;
+          license = ε;
           longDescription = String;
-          maintainers = ζ;
-          platforms = (α.lib = ζ, ζ.platforms = η, η.all = θ) => θ;
+          maintainers = ∀ α. α;
+          platforms = γ;
         };
       name = String;
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [ζ];
       outputs = [String];
-      passthru = {static = (κ.out = ζ) => ζ;};
-      preConfigure = (α.isDarwin = Bool) => String;
-      src = λ;
+      passthru = {static = η;};
+      preConfigure = String;
+      src = θ;
     } ->
-    κ
+    ι,
+  β.optionals = κ -> [String] -> [δ],
+  ι.out = λ,
+  μ.licenses = β,
+  ν.lib = μ,
+  ξ.platforms = β,
+  ο.lib = ξ,
+  π.lib = β,
+  ρ.lib = β
 ) =>
 { cxx = Bool;
-  fetchurl = {sha256 = String; url = String;} -> λ;
-  m4 = ι;
-  stdenv = α;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  m4 = ζ;
+  stdenv = β;
 } ->
-κ
+ι

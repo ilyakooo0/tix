@@ -1,25 +1,12 @@
-∀ κ.
-{lib = κ;} ->
-{ options =
-    { value =
-        ∀ ι.
-        ( κ.mkOption =
-            { default = String;
-              type =
-                ∀ α β γ δ ε ζ η θ.
-                ( κ.types = α,
-                  α.coercedTo = β -> γ -> δ -> ε,
-                  κ.types = ζ,
-                  ζ.str = β,
-                  κ.toInt = γ,
-                  κ.types = η,
-                  η.ints = θ,
-                  θ.s8 = δ
-                ) =>
-                ε;
-            } ->
-            ι
-        ) =>
-        ι;
-    };
-}
+∀ α β γ δ ε ζ η θ ι κ.
+( α.coercedTo = β -> γ -> δ -> ε,
+  α.mkOption = {default = String; type = ε;} -> ζ,
+  α.s8 = δ,
+  α.str = β,
+  α.toInt = γ,
+  η.types = α,
+  θ.types = α,
+  ι.ints = α,
+  κ.types = ι
+) =>
+{lib = α;} -> {options = {value = ζ;};}

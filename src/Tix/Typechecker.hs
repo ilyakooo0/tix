@@ -24,6 +24,7 @@ import Control.Monad.Freer.TreeTracer
 import Control.Monad.Freer.Writer
 import Data.Act
 import qualified Data.Aeson as A
+import Data.Either
 import Data.Fix
 import Data.Foldable
 import Data.Group hiding ((~~))
@@ -61,7 +62,7 @@ getType r =
           . runReader nullSpan
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
-          . evalState (M.empty :: VariableMap)
+          . runReader (M.empty :: VariableMap)
           . evalState @Substitution mempty
           . runState @[(TypeVariable, SrcSpan)] []
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
@@ -83,6 +84,11 @@ runFreshSrc =
       ( \case
           Fresh -> do
             v <- send Fresh
+            src <- ask @SrcSpan
+            tell (v, src)
+            return v
+          FreshSub x -> do
+            v <- send $ FreshSub x
             src <- ask @SrcSpan
             tell (v, src)
             return v
@@ -183,7 +189,7 @@ v <<- x = modify (Substitution (M.singleton v x) <>)
 unifyWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  RS.RSet TypeVariable ->
+  RS.RSet RangeTypeVariable ->
   Constraint ->
   UnifyM ()
 unifyWithPriority range (lhs :~ rhs) = do
@@ -191,7 +197,7 @@ unifyWithPriority range (lhs :~ rhs) = do
   case sub s (lhs, rhs) of
     (x, y) | x == y -> return mempty
     (NTypeVariable x, NTypeVariable y) -> do
-      if y `RS.member` range
+      if rangeTypeVariable y `RS.member` range
         then y <<- NTypeVariable x
         else x <<- NTypeVariable y
     (NTypeVariable t, x) -> t <<- x
@@ -205,13 +211,13 @@ unifyWithPriority range (lhs :~ rhs) = do
       unifyWithPriority range $ y1 :~ y2
     (x, y) -> tell (CanNotUnify x y)
 
-unifySchemes :: RS.RSet TypeVariable -> [(Scheme, Scheme)] -> UnifyM ()
+unifySchemes :: RS.RSet RangeTypeVariable -> [(Scheme, Scheme)] -> UnifyM ()
 unifySchemes _ [] = pure mempty
 unifySchemes range ((x, y) : rest) = do
   unifyScheme range x y
   unifySchemes range rest
 
-unifyScheme :: RS.RSet TypeVariable -> Scheme -> Scheme -> UnifyM ()
+unifyScheme :: RS.RSet RangeTypeVariable -> Scheme -> Scheme -> UnifyM ()
 unifyScheme range (xs :=> x) (ys :=> y) = do
   solveWithPriority range (pure (x :~ y))
   s <- get
@@ -229,7 +235,7 @@ solve = solveWithPriority mempty
 solveWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
-  RS.RSet TypeVariable ->
+  RS.RSet RangeTypeVariable ->
   Seq Constraint ->
   UnifyM ()
 solveWithPriority _ Empty = return mempty
@@ -267,7 +273,7 @@ type InferEffs =
      Writer PredicateError,
      Writer Pred,
      State (MKM.Map Pred),
-     State VariableMap,
+     Reader VariableMap,
      Writer UnifyingError,
      Writer InferError,
      State Substitution,
@@ -304,17 +310,12 @@ type VariableMap = Map VarName Scheme
 (~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
 lhs ~~ rhs = tell $ lhs :~ rhs
 
--- TODO: shadowed bindings are not properly restored.
 withBindings ::
-  (Member (State VariableMap) effs) =>
+  (Member (Reader VariableMap) effs) =>
   VariableMap ->
   Eff effs a ->
   Eff effs a
-withBindings bindings m = do
-  modify (bindings <>)
-  a <- m
-  modify @VariableMap (`M.difference` bindings)
-  return a
+withBindings bindings = local (bindings <>)
 
 instantiate ::
   forall effs.
@@ -356,7 +357,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NEnvPath {} -> return . NAtomic $ Path
   NStr {} -> return $ NAtomic String
   NSym var ->
-    get @VariableMap
+    ask @VariableMap
       >>= maybe (scheme . NTypeVariable <$> throwTV (UndefinedVariable var)) return . M.lookup var
       >>= instantiate -- I have no idea if this covers all cases.
   NList xs -> do
@@ -413,8 +414,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     resT <-
       NTypeVariable <$> case path of
         Just p -> do
-          (set', var) <- lookupAttrSet p
-          setT ~~ set'
+          (_, var) <- lookupAttrSet setT p
           return var
         Nothing -> fresh
     case def of
@@ -563,27 +563,30 @@ inferComponents :: NormalizedBinding NExprLoc -> [Set (NonEmpty VarName)] -> Inf
 inferComponents _ [] = pure M.empty
 inferComponents n ((S.toList -> paths) : otherComponents) = do
   let bindings = catMaybes $ paths <&> \path -> (path,) <$> lookupExpr path n
-  (types, p, preds, s) <-
-    traceSubtree (showExpr . bindingsToNExpr $ bindings)
-      . inferGeneral' (NAttrSet . fmap toScheme)
-      $ do
-        tvsExprs <- for bindings (\(a, b) -> (a,b,) . NTypeVariable <$> fresh)
-        let tvsExprs' =
-              foldl' (M.unionWith mergeBindings) M.empty $
-                fmap (\(a, b, c) -> normalize a (b, c)) tvsExprs
-            tvs = toScheme . fmap snd <$> tvsExprs'
+  (schemes, schemes') <- traceSubtree (showExpr . bindingsToNExpr $ bindings) $ do
+    (types, p, preds, s) <-
+      inferGeneral' (NAttrSet . fmap toScheme) $
+        do
+          tvsExprs <- for bindings (\(a, b) -> (a,b,) . NTypeVariable <$> fresh)
+          let tvsExprs' =
+                foldl' (M.unionWith mergeBindings) M.empty $
+                  fmap (\(a, b, c) -> normalize a (b, c)) tvsExprs
+              tvs = toScheme . fmap snd <$> tvsExprs'
 
-        -- (type, tv)
-        tvsTypes <-
-          withBindings tvs $
-            tvsExprs' & traverse . traverse . _1 %%~ infer
-        for_ tvsTypes $ traverse (uncurry (~~))
-        return $ fmap fst <$> tvsTypes
-  -- TODO: There should probably be some smarter predicate filtering
-  schemes <- types & traverse . traverse %%~ (\t -> solveAndClose p $ sub s $ preds :=> t)
+          -- (type, tv)
+          tvsTypes <-
+            withBindings tvs $
+              tvsExprs' & traverse . traverse . _1 %%~ infer
+          for_ tvsTypes $ traverse (uncurry (~~))
+          return $ fmap fst <$> tvsTypes
+    -- TODO: There should probably be some smarter predicate filtering
+    schemes <- types & traverse . traverse %%~ (\t -> solveAndClose p $ sub s $ preds :=> t)
+    let schemes' = toScheme' <$> schemes
+    traceValue "resulting_type" $ renderPretty . scheme $ NAttrSet schemes'
+    return (schemes, schemes')
 
   otherBindings <-
-    withBindings (toScheme' <$> schemes) $ inferComponents n otherComponents
+    withBindings schemes' $ inferComponents n otherComponents
   return $ M.unionWith mergeBindings schemes otherBindings
   where
     bindingToNExpr :: NonEmpty VarName -> NExprLoc -> Binding NExpr
@@ -690,13 +693,15 @@ inferGeneral :: NExprLoc -> InferM Scheme
 inferGeneral x@(Fix (Compose (Ann src _))) =
   local (const src) . traceSubtree (showExpr . stripAnnotation $ x) $ do
     (t, p, keep, s) <- inferGeneral' id $ infer x
-    solveAndClose p $ sub s $ keep :=> t
+    res <- solveAndClose p $ sub s $ keep :=> t
+    traceValue "resuting_type" $ renderPretty res
+    return res
 
 inferGeneral' ::
   (Members InferEffs r, Pretty y) =>
   (x -> y) ->
   Eff (Writer Constraint : r) x ->
-  Eff r (x, RS.RSet TypeVariable, [Pred], Substitution)
+  Eff r (x, RS.RSet RangeTypeVariable, [Pred], Substitution)
 inferGeneral' toPretty f = do
   ((x, cs), range) <-
     traceSubtree "subexpressions" . registerTypeVariables . runSeqWriter @(Seq Constraint) $ f
@@ -710,7 +715,7 @@ inferGeneral' toPretty f = do
   get >>= traceValue "substitutions_after_solving" . prettySubstitution
   (s, returnedS) <-
     get @Substitution
-      <&> join bimap Substitution . M.partitionWithKey (\k _ -> k `RS.member` range) . unSubstitution
+      <&> join bimap Substitution . M.partitionWithKey (\k _ -> rangeTypeVariable k `RS.member` range) . unSubstitution
   put returnedS
   -- modify @Substitution $ Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution
   -- returnedS <- get @Substitution
@@ -718,9 +723,8 @@ inferGeneral' toPretty f = do
     traceValue "substitutions" $ prettySubstitution returnedS
     -- Filter for optimization purposes
     preds <- get @(MKM.Map Pred)
-    traceValue "subbed_preds" $ showPreds preds
     let newRange = range RS.\\ rangeFromSet (free returnedS)
-        (keep', toss) = MKM.partition (`RS.member` newRange) preds
+        (keep', toss) = MKM.partition ((`RS.member` newRange) . rangeTypeVariable) preds
         keep = MKM.toList keep'
     -- At this point the only predicates only contain type variables that are only used
     -- in the expression. This means that all of the generated constraints and
@@ -733,8 +737,8 @@ inferGeneral' toPretty f = do
     showPreds :: MKM.Map Pred -> Map String String
     showPreds = M.mapKeys show . fmap show . MKM.toMap
 
-rangeFromSet :: (Ord x, Enum x) => S.Set x -> RS.RSet x
-rangeFromSet = RS.fromAscList . S.toAscList
+rangeFromSet :: S.Set TypeVariable -> RS.RSet RangeTypeVariable
+rangeFromSet = RS.fromAscList . fmap rangeTypeVariable . S.toAscList
 
 solveAndClose ::
   Members
@@ -743,20 +747,21 @@ solveAndClose ::
        Writer UnifyingError
      ]
     eff =>
-  RS.RSet TypeVariable ->
+  RS.RSet RangeTypeVariable ->
   Scheme ->
   Eff eff Scheme
-solveAndClose range (cs :=> t) = do
+solveAndClose range (cs :=> t) = evalState @Substitution mempty $ do
   (((solvedPreds, range'), constraints), collectedPreds) <-
     runSeqWriter @[Pred]
       . runSeqWriter @(Seq Constraint)
       . registerTypeVariables
-      $ solveConstraints cs
+      $ solveConstraints range cs
   let newRange = range `RS.union` range'
   case (constraints, collectedPreds) of
     (Empty, []) -> return . close newRange $ solvedPreds :=> t
     _ -> do
-      ((), s) <- runState @Substitution mempty $ solveWithPriority newRange constraints
+      solveWithPriority newRange constraints
+      s <- get
       solveAndClose newRange $ sub s $ (collectedPreds <> solvedPreds) :=> t
 
 solveConstraints ::
@@ -764,30 +769,43 @@ solveConstraints ::
     '[ Fresh,
        Writer Pred,
        Writer PredicateError,
-       Writer Constraint
+       Writer Constraint,
+       Writer UnifyingError,
+       State Substitution
      ]
     effs =>
+  RS.RSet RangeTypeVariable ->
   [Pred] ->
   Eff effs [Pred]
-solveConstraints ps = do
-  flip Control.Monad.filterM ps $ \case
-    HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
-      Nothing -> do
-        tell $ KeyNotPresent f (NAttrSet ts)
-        return False
-      Just t' -> do
-        x <- instantiate t
-        y <- instantiate t'
-        x ~~ y
-        return False
-    HasField (NTypeVariable _) _ -> return True
-    HasField t _ -> do
-      tell $ NotAnAttributeSet t
-      return False
-    (Update (NAttrSet a) (NAttrSet b) t) -> do
-      (NAttrSet $ b <> a) ~~ t
-      return False
-    _ -> return True
+solveConstraints _ [] = pure []
+solveConstraints range (p : ps) = case p of
+  HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
+    Nothing -> do
+      tell $ KeyNotPresent f (NAttrSet ts)
+      solveConstraints range ps
+    Just t' -> do
+      x <- instantiate t
+      y <- instantiate t'
+      x ~~ y
+      solveConstraints range ps
+  HasField tv@(NTypeVariable _) (k, v) -> do
+    let sameAttrSet :: Pred -> Either Scheme Pred
+        sameAttrSet = \case
+          HasField t (k', v') | t == tv, k == k' -> Left v'
+          x -> Right x
+        (same, different) = partitionWith sameAttrSet ps
+    (unifyScheme range v) `traverse_` same
+    (p :) <$> solveConstraints range different
+  HasField t _ -> do
+    tell $ NotAnAttributeSet t
+    solveConstraints range ps
+  (Update (NAttrSet a) (NAttrSet b) t) -> do
+    (NAttrSet $ b <> a) ~~ t
+    solveConstraints range ps
+  _ -> (p :) <$> solveConstraints range ps
+
+partitionWith :: (a -> Either b c) -> [a] -> ([b], [c])
+partitionWith f = partitionEithers . map f
 
 newtype DeBruijnContext = DeBruijnContext (Sum Int)
   deriving newtype (Eq, Ord, Show, Semigroup, Monoid, Group, Num)
@@ -797,7 +815,7 @@ instance Act DeBruijnContext DeBruijn where
 
 type TDeBruijnMap = ShiftedMap DeBruijnContext TypeVariable DeBruijn
 
-close :: TraversableNTypes x => RS.RSet TypeVariable -> x -> x
+close :: TraversableNTypes x => RS.RSet RangeTypeVariable -> x -> x
 close range =
   run
     . evalState @TDeBruijnMap mempty
@@ -811,7 +829,7 @@ close range =
       traverseNTypesWith bndCtx %%~ \case
         x@(TBruijn _) -> return x
         x@(TAtomic _) -> return x
-        (TTypeVariable tv) | tv `RS.member` range -> TBruijn <$> newbruijn tv
+        (TTypeVariable tv) | rangeTypeVariable tv `RS.member` range -> TBruijn <$> newbruijn tv
         x@(TTypeVariable _) -> return x
 
     bndCtx m = do
@@ -866,18 +884,22 @@ lookupAttrSet ::
        Fresh
      ]
     r =>
+  NType ->
   AttrSetPath ->
   Eff r (NType, TypeVariable)
-lookupAttrSet (NESingle p) = do
-  set <- NTypeVariable <$> fresh
-  var <- fresh
-  tell (HasField set (p, scheme . NTypeVariable $ var))
-  return (set, var)
-lookupAttrSet (p :|| ps) = do
-  set <- NTypeVariable <$> fresh
-  (innerSet, var) <- lookupAttrSet ps
-  tell $ HasField set (p, scheme innerSet)
-  return (set, var)
+lookupAttrSet n = \case
+  (NESingle p) -> do
+    var <- getSubTV n
+    tell (HasField n (p, scheme . NTypeVariable $ var))
+    return (n, var)
+  (p :|| ps) -> do
+    (innerSet, var) <- lookupAttrSet n ps
+    set <- NTypeVariable <$> getSubTV n
+    tell $ HasField set (p, scheme innerSet)
+    return (set, var)
+  where
+    getSubTV (NTypeVariable tv) = freshSub tv
+    getSubTV _ = fresh
 
 -- NonEmpty patterns
 

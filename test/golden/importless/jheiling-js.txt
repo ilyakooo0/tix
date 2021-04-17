@@ -1,22 +1,27 @@
-∀ γ δ ε ζ.
+∀ α β γ δ ε ζ η θ.
+( α.brainrape = β,
+  α.unlicense = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
 { build-idris-package =
-    { idrisDeps = [γ];
+    { idrisDeps = [ζ];
       ipkgName = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (δ.licenses = α, α.unlicense = β) => β;
-          maintainers = ∀ α β. (δ.maintainers = α, α.brainrape = β) => [β];
+          license = γ;
+          maintainers = [β];
         };
       name = String;
-      src = ε;
+      src = η;
       version = String;
     } ->
-    ζ;
-  contrib = γ;
+    θ;
+  contrib = ζ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
-  jheiling-extras = γ;
-  lib = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  jheiling-extras = ζ;
+  lib = α;
 } ->
-ζ
+θ

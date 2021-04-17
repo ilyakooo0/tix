@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ.
+( α.hostPlatform = β,
+  α.lib = γ,
+  α.optionals = Bool -> [String] -> [String],
+  α.targetPlatform = β,
+  γ.optionals = Bool -> [String] -> [δ],
+  ε.lib = α
+) =>
+{ crossStageStatic = Bool;
+  langD = Bool;
+  libcCross = Null;
+  stdenv = α;
+  threadsCross = Null;
+} ->
+{EXTRA_FLAGS_FOR_TARGET = [δ]; EXTRA_LDFLAGS_FOR_TARGET = [ζ];}

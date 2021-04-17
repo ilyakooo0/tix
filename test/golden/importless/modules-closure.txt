@@ -5,11 +5,12 @@
       builder = Path;
       firmware = β;
       kernel = γ;
-      name = (γ.name = String) => String;
+      name = String;
       nativeBuildInputs = [δ];
       rootModules = ε;
     } ->
-    ζ
+    ζ,
+  γ.name = String
 ) =>
 { allowMissing = Bool;
   firmware = β;

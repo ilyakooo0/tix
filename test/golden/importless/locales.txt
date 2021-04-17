@@ -1,11 +1,10 @@
-∀ β γ δ ε.
-{ allLocales = Bool;
-  buildPackages = β;
+∀ α β γ δ ε.
+(α.optionalString = Bool -> String -> String, β.lib = α) => { allLocales = Bool;
+  buildPackages = γ;
   callPackage =
     Path ->
-    {stdenv = γ;} ->
-    { buildPhase =
-        ∀ α. (γ.lib = α, α.optionalString = Bool -> String -> String) => String;
+    {stdenv = α;} ->
+    { buildPhase = String;
       builder = Path;
       installPhase = String;
       meta = {description = String;};
@@ -15,7 +14,7 @@
     } ->
     ε;
   locales = [String];
-  stdenv = γ;
+  stdenv = α;
   writeText = String -> String -> δ;
 } ->
 ε

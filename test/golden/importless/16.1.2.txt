@@ -1,42 +1,51 @@
-∀ ε ζ η θ ι κ.
-( ε.lib = ζ,
-  ε.mkDerivation =
-    { buildInputs = [η];
-      configureFlags =
-        ∀ δ. (ε.lib = δ, δ.optional = Bool -> String -> [String]) => [String];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.mit = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
       hardeningDisable = [String];
       meta =
         { description = String;
-          license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.mit = γ) => γ;
-          maintainers =
-            ∀ α β γ. (ε.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β γ. (ε.lib = α, α.platforms = β, β.unix = γ) => γ;
+          license = β;
+          maintainers = [δ];
+          platforms = ε;
           version = String;
         };
       name = String;
       patches = [Path];
       postInstall = String;
-      propagatedBuildInputs = [θ];
-      src = ι;
+      propagatedBuildInputs = [ζ];
+      src = η;
       version = String;
     } ->
-    κ,
-  ζ.optionals = Bool -> [Null] -> [θ]
+    θ,
+  α.optional = Bool -> String -> [String],
+  α.optionals = Bool -> [Null] -> [ζ],
+  α.raskin = δ,
+  α.unix = ε,
+  ι.lib = α,
+  κ.lib = α,
+  λ.licenses = α,
+  μ.lib = λ,
+  ν.maintainers = α,
+  ξ.lib = ν,
+  ο.platforms = α,
+  π.lib = ο
 ) =>
-{ autoconf = η;
-  automake = η;
+{ autoconf = γ;
+  automake = γ;
   boehmgc = Null;
   fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
-  fetchurl = {sha256 = String; url = String;} -> ι;
-  gcc = θ;
-  gmp = θ;
-  libffi = θ;
-  libtool = η;
-  makeWrapper = η;
-  mpfr = θ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  gcc = ζ;
+  gmp = ζ;
+  libffi = ζ;
+  libtool = γ;
+  makeWrapper = γ;
+  mpfr = ζ;
   noUnicode = Bool;
-  stdenv = ε;
+  stdenv = α;
   threadSupport = Bool;
   useBoehmgc = Bool;
 } ->
-κ
+θ

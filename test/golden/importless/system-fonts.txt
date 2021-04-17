@@ -1,9 +1,7 @@
-∀ β γ δ ε.
-( β.mkDerivation =
-    { buildCommand = String;
-      buildInputs = ∀ α. (γ.mkfontdir = α, γ.mkfontscale = α) => [α];
-      name = String;
-    } ->
-    δ
+∀ α β γ δ ε.
+( α.mkDerivation =
+    {buildCommand = String; buildInputs = [β]; name = String;} -> γ,
+  δ.mkfontdir = β,
+  δ.mkfontscale = β
 ) =>
-{fontDirs = ε; stdenv = β; xorg = γ;} -> δ
+{fontDirs = ε; stdenv = α; xorg = δ;} -> γ

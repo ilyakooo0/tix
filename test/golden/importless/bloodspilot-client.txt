@@ -1,30 +1,38 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.gpl2Plus = β,
+  α.linux = γ,
+  α.mkDerivation =
     { NIX_LDFLAGS = String;
-      buildInputs = [ε];
+      buildInputs = [δ];
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = β;
+          maintainers = [ε];
+          platforms = γ;
         };
       pname = String;
       src = ζ;
       version = String;
     } ->
-    η
+    η,
+  α.raskin = ε,
+  θ.licenses = α,
+  ι.lib = θ,
+  κ.maintainers = α,
+  λ.lib = κ,
+  μ.platforms = α,
+  ν.lib = μ
 ) =>
-{ SDL = ε;
-  SDL_image = ε;
-  SDL_ttf = ε;
-  expat = ε;
+{ SDL = δ;
+  SDL_image = δ;
+  SDL_ttf = δ;
+  expat = δ;
   fetchurl = {sha256 = String; url = String;} -> ζ;
-  libGL = ε;
-  libGLU = ε;
-  libX11 = ε;
-  stdenv = δ;
-  zlib = ε;
+  libGL = δ;
+  libGLU = δ;
+  libX11 = δ;
+  stdenv = α;
+  zlib = δ;
 } ->
 η

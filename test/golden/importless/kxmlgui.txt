@@ -1,25 +1,25 @@
-∀ γ δ ε ζ η.
-{ attica = γ;
-  extra-cmake-modules = δ;
-  kconfig = ε;
-  kconfigwidgets = ε;
-  kglobalaccel = γ;
-  ki18n = γ;
-  kiconthemes = γ;
-  kitemviews = γ;
-  ktextwidgets = γ;
-  kwindowsystem = γ;
-  lib = ζ;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { attica = δ;
+  extra-cmake-modules = ε;
+  kconfig = ζ;
+  kconfigwidgets = ζ;
+  kglobalaccel = δ;
+  ki18n = δ;
+  kiconthemes = δ;
+  kitemviews = δ;
+  ktextwidgets = δ;
+  kwindowsystem = δ;
+  lib = α;
   mkDerivation =
-    { buildInputs = [γ];
-      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [δ];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [δ];
-      propagatedBuildInputs = [ε];
+      nativeBuildInputs = [ε];
+      propagatedBuildInputs = [ζ];
     } ->
     η;
-  qtbase = ε;
-  qttools = ε;
-  sonnet = γ;
+  qtbase = ζ;
+  qttools = ζ;
+  sonnet = δ;
 } ->
 η

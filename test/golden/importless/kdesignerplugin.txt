@@ -1,27 +1,27 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kcompletion = δ;
-  kconfig = δ;
-  kconfigwidgets = δ;
-  kcoreaddons = δ;
-  kdoctools = γ;
-  kiconthemes = δ;
-  kio = δ;
-  kitemviews = δ;
-  kplotting = δ;
-  ktextwidgets = δ;
-  kwidgetsaddons = δ;
-  kxmlgui = δ;
-  lib = ε;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kcompletion = ε;
+  kconfig = ε;
+  kconfigwidgets = ε;
+  kcoreaddons = ε;
+  kdoctools = δ;
+  kiconthemes = ε;
+  kio = ε;
+  kitemviews = ε;
+  kplotting = ε;
+  ktextwidgets = ε;
+  kwidgetsaddons = ε;
+  kxmlgui = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
       propagatedBuildInputs = [ζ];
     } ->
     η;
   qttools = ζ;
-  sonnet = δ;
+  sonnet = ε;
 } ->
 η

@@ -1,35 +1,10 @@
-∀ ε ζ η.
-{config = ε; lib = ζ; pkgs = η;} ->
-{ options =
-    { ec2 =
-        { efi =
-            ∀ δ.
-            ( ζ.mkOption =
-                { default =
-                    ∀ α β γ.
-                    (η.stdenv = α, α.hostPlatform = β, β.isAarch64 = γ) => γ;
-                  description = String;
-                  internal = Bool;
-                } ->
-                δ
-            ) =>
-            δ;
-          hvm =
-            ∀ δ.
-            ( ζ.mkOption =
-                { default =
-                    ∀ α β γ.
-                    ( ζ.versionAtLeast = α -> String -> β,
-                      ε.system = γ,
-                      γ.stateVersion = α
-                    ) =>
-                    β;
-                  description = String;
-                  internal = Bool;
-                } ->
-                δ
-            ) =>
-            δ;
-        };
-    };
-}
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.stateVersion = β,
+  γ.mkOption = {default = δ; description = String; internal = Bool;} -> ε,
+  γ.versionAtLeast = β -> String -> ζ,
+  η.isAarch64 = δ,
+  θ.system = α,
+  ι.hostPlatform = η,
+  κ.stdenv = ι
+) =>
+{config = α; lib = γ; pkgs = η;} -> {options = {ec2 = {efi = ε; hvm = λ;};};}

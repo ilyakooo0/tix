@@ -1,23 +1,33 @@
-∀ γ δ ε ζ η θ.
-( (γ) // ({shortName = δ;}) ~ (ε),
-  ( ζ
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( (α) // ({shortName = β;}) ~ (γ),
+  ( δ
   ) //
-  ( { agpl3 = ∀ α β. (η.licenses = α, α.agpl3Only = β) => β;
-      fdl11 = ∀ α β. (η.licenses = α, α.fdl11Only = β) => β;
-      fdl12 = ∀ α β. (η.licenses = α, α.fdl12Only = β) => β;
-      fdl13 = ∀ α β. (η.licenses = α, α.fdl13Only = β) => β;
-      gpl1 = ∀ α β. (η.licenses = α, α.gpl1Only = β) => β;
-      gpl2 = ∀ α β. (η.licenses = α, α.gpl2Only = β) => β;
-      gpl3 = ∀ α β. (η.licenses = α, α.gpl3Only = β) => β;
-      lgpl2 = ∀ α β. (η.licenses = α, α.lgpl2Only = β) => β;
-      lgpl21 = ∀ α β. (η.licenses = α, α.lgpl21Only = β) => β;
-      lgpl3 = ∀ α β. (η.licenses = α, α.lgpl3Only = β) => β;
+  ( { agpl3 = ε;
+      fdl11 = ζ;
+      fdl12 = η;
+      fdl13 = θ;
+      gpl1 = ι;
+      gpl2 = κ;
+      gpl3 = λ;
+      lgpl2 = μ;
+      lgpl21 = ν;
+      lgpl3 = ξ;
     }
   ) ~
-  ( θ
+  ( ο
   ),
-  η.mapAttrs =
-    (δ -> γ -> ε) ->
+  π.agpl3Only = ε,
+  π.fdl11Only = ζ,
+  π.fdl12Only = η,
+  π.fdl13Only = θ,
+  π.gpl1Only = ι,
+  π.gpl2Only = κ,
+  π.gpl3Only = λ,
+  π.lgpl21Only = ν,
+  π.lgpl2Only = μ,
+  π.lgpl3Only = ξ,
+  π.mapAttrs =
+    (β -> α -> γ) ->
     { abstyles = {fullName = String; spdxId = String; url = String;};
       afl21 = {fullName = String; spdxId = String; url = String;};
       afl3 = {fullName = String; spdxId = String; url = String;};
@@ -177,6 +187,16 @@
       zpl20 = {fullName = String; spdxId = String; url = String;};
       zpl21 = {fullName = String; spdxId = String; url = String;};
     } ->
-    ζ
+    δ,
+  ρ.licenses = π,
+  σ.licenses = π,
+  τ.licenses = π,
+  υ.licenses = π,
+  φ.licenses = π,
+  χ.licenses = π,
+  ψ.licenses = π,
+  ω.licenses = π,
+  α1.licenses = π,
+  β2.licenses = π
 ) =>
-{lib = η;} -> θ
+{lib = π;} -> ο

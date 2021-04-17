@@ -1,36 +1,39 @@
-∀ ζ η θ ι.
-( ζ.mkDerivation =
-    { buildInputs = [η];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.bsd2 = β,
+  α.epitrochoid = γ,
+  α.linux = δ,
+  α.meisternu = γ,
+  α.mkDerivation =
+    { buildInputs = [ε];
       buildPhase = String;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.bsd2 = γ) => γ;
-          maintainers =
-            ∀ α β γ δ ε.
-            ( ζ.lib = α,
-              α.maintainers = β,
-              β.meisternu = γ,
-              ζ.lib = δ,
-              δ.maintainers = ε,
-              ε.epitrochoid = γ
-            ) =>
-            [γ];
-          platforms = ∀ α β γ. (ζ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = β;
+          maintainers = [γ];
+          platforms = δ;
         };
       name = String;
-      src = θ;
+      src = ζ;
     } ->
-    ι
+    η,
+  θ.licenses = α,
+  ι.lib = θ,
+  κ.maintainers = α,
+  λ.lib = κ,
+  μ.maintainers = α,
+  ν.lib = μ,
+  ξ.platforms = α,
+  ο.lib = ξ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  libXinerama = η;
-  libxcb = η;
-  stdenv = ζ;
-  xcbutil = η;
-  xcbutilkeysyms = η;
-  xcbutilwm = η;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  libXinerama = ε;
+  libxcb = ε;
+  stdenv = α;
+  xcbutil = ε;
+  xcbutilkeysyms = ε;
+  xcbutilwm = ε;
 } ->
-ι
+η

@@ -1,6 +1,6 @@
-∀ β.
-{pkgs = β;} ->
-{ environment = {systemPackages = ∀ α. (β.glxinfo = α, β.firefox = α) => [α];};
+∀ α β.
+(α.firefox = β, α.glxinfo = β) => {pkgs = α;} ->
+{ environment = {systemPackages = [β];};
   hardware = {pulseaudio = {enable = Bool;};};
   services =
     { xserver =

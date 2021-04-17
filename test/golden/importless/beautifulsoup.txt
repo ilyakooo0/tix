@@ -1,11 +1,12 @@
-∀ β γ δ ε.
-( β.buildPythonPackage =
-    { disabled = γ;
+∀ α β γ δ ε.
+( α.buildPythonPackage =
+    { disabled = β;
       doCheck = Bool;
       meta = {description = String; homepage = String; license = String;};
       name = String;
-      src = ∀ α. (δ.fetchurl = {sha256 = String; url = String;} -> α) => α;
+      src = γ;
     } ->
-    ε
+    δ,
+  ε.fetchurl = {sha256 = String; url = String;} -> γ
 ) =>
-{isPy3k = γ; pkgs = δ; pythonPackages = β;} -> ε
+{isPy3k = β; pkgs = ε; pythonPackages = α;} -> δ

@@ -1,24 +1,20 @@
-∀ β γ δ ε ζ η θ ι κ λ.
-( β.overrideAttrs = (γ -> {postInstall = String;}) -> δ,
-  β.overrideAttrs = (ε -> {postInstall = String;}) -> ζ,
-  β.overrideAttrs = (η -> {postInstall = String;}) -> θ
-) =>
-{ buildOpenRAEngine =
+∀ β γ δ ε ζ.
+(β.overrideAttrs = γ) => { buildOpenRAEngine =
     { description = String;
       homepage = String;
       mods = [String];
-      src = ι;
+      src = δ;
       version = String;
     } ->
-    κ -> β;
-  extraPostFetch = λ;
+    ε -> β;
+  extraPostFetch = ζ;
   fetchFromGitHub =
-    { extraPostFetch = λ;
+    { extraPostFetch = ζ;
       owner = String;
       repo = String;
       rev = String;
       sha256 = String;
     } ->
-    ι;
+    δ;
 } ->
-{bleed = ∀ α. κ -> α; playtest = ∀ α. κ -> α; release = ∀ α. κ -> α;}
+{bleed = ∀ α. ε -> α; playtest = ∀ α. ε -> α; release = ∀ α. ε -> α;}

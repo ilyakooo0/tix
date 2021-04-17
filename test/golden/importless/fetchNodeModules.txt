@@ -1,15 +1,15 @@
 ∀ α β γ δ ε ζ η.
-( α.lib = β,
-  β.versionAtLeast = γ -> String -> Bool,
-  δ.version = γ,
-  α.mkDerivation =
+( α.mkDerivation =
     { buildCommand = String;
       name = String;
-      nativeBuildInputs = [δ];
-      outputHash = ε;
+      nativeBuildInputs = [β];
+      outputHash = γ;
       outputHashAlgo = String;
       outputHashMode = String;
     } ->
-    ζ
+    δ,
+  α.versionAtLeast = ε -> String -> Bool,
+  β.version = ε,
+  ζ.lib = α
 ) =>
-{jq = δ; stdenv = α;} -> {nodejs = δ; sha256 = ε; src = η;} -> ζ
+{jq = β; stdenv = α;} -> {nodejs = β; sha256 = γ; src = η;} -> δ

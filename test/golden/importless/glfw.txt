@@ -1,24 +1,31 @@
-∀ δ ε ζ η θ.
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.brainrape = β,
+  α.mit = γ,
+  δ.glfw = ε,
+  δ.pkgconfig = ζ,
+  η.licenses = α,
+  θ.maintainers = α
+) =>
 { build-idris-package =
-    { extraBuildInputs = ∀ γ. (δ.glfw = γ) => [γ];
-      idrisDeps = [ε];
+    { extraBuildInputs = [ε];
+      idrisDeps = [ι];
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (ζ.licenses = α, α.mit = β) => β;
-          maintainers = ∀ α β. (ζ.maintainers = α, α.brainrape = β) => [β];
+          license = γ;
+          maintainers = [β];
         };
       name = String;
-      nativeBuildInputs = ∀ γ. (δ.pkgconfig = γ) => [γ];
+      nativeBuildInputs = [ζ];
       postPatch = String;
-      src = η;
+      src = κ;
       version = String;
     } ->
-    θ;
-  effects = ε;
+    λ;
+  effects = ι;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  lib = ζ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  lib = α;
   pkgs = δ;
 } ->
-θ
+λ

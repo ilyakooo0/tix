@@ -1,14 +1,14 @@
-∀ γ δ ε ζ η.
-{ boost = γ;
-  extra-cmake-modules = δ;
-  kactivities = γ;
-  kconfig = γ;
-  lib = ε;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { boost = δ;
+  extra-cmake-modules = ε;
+  kactivities = δ;
+  kconfig = δ;
+  lib = α;
   mkDerivation =
-    { buildInputs = [γ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [δ];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [ε];
       outputs = [String];
       propagatedBuildInputs = [ζ];
     } ->

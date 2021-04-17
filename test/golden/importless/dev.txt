@@ -1,7 +1,6 @@
-∀ α β γ δ ε ζ η θ.
-( α.override = {ruby = β;} -> γ,
-  α.override = {ruby = β;} -> δ,
-  ε.override = {bundler = ζ;} -> η
+∀ α β γ δ.
+( α.override = {ruby = β;} -> β,
+  γ.override = {bundler = β;} -> β
 ) =>
 { buildEnv =
     { ignoreCollisions = Bool;
@@ -9,9 +8,9 @@
       paths = [β];
       pathsToLink = [String];
     } ->
-    θ;
-  bundix = ε;
+    δ;
+  bundix = γ;
   bundler = α;
   ruby = β;
 } ->
-θ
+δ

@@ -1,18 +1,18 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kdoctools = γ;
-  ki18n = δ;
-  kjs = ε;
-  lib = ζ;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kdoctools = δ;
+  ki18n = ε;
+  kjs = ζ;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
-      propagatedBuildInputs = [ε];
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ζ];
     } ->
     η;
-  qtsvg = δ;
-  qttools = γ;
+  qtsvg = ε;
+  qttools = δ;
 } ->
 η

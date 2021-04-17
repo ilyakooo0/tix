@@ -1,24 +1,30 @@
-∀ δ ε ζ η θ.
-( δ.buildPythonApplication =
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.aszlig = β,
+  α.mit = γ,
+  δ.buildPythonApplication =
     { checkPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.mit = γ) => γ;
-          maintainers =
-            ∀ α β γ. (ε.lib = α, α.maintainers = β, β.aszlig = γ) => [γ];
+          license = γ;
+          maintainers = [β];
         };
-      nativeBuildInputs = (δ.nose = ζ) => [ζ];
+      nativeBuildInputs = [ε];
       pname = String;
-      src = η;
+      src = ζ;
       version = String;
     } ->
-    θ
+    η,
+  δ.nose = ε,
+  θ.licenses = α,
+  ι.lib = θ,
+  κ.maintainers = α,
+  λ.lib = κ
 ) =>
-{ beets = ζ;
+{ beets = ε;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
   pythonPackages = δ;
-  stdenv = ε;
+  stdenv = α;
 } ->
-θ
+η

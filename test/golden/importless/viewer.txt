@@ -1,32 +1,41 @@
-∀ ε ζ η θ ι κ.
-( ε.mkDerivation =
-    { buildInputs = (ζ.lib = η) => [η];
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.majorMinor = String -> γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.unfree = γ) => γ;
-          maintainers =
-            ∀ α β γ. (ε.lib = α, α.maintainers = β, β.zimbatm = γ) => [γ];
+          license = ε;
+          maintainers = [ζ];
           platforms = [String];
         };
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [η];
       pname = String;
-      src = ι;
+      src = θ;
       unpackPhase = String;
-      version = ∀ δ. δ;
+      version = ∀ α. α;
     } ->
-    κ
+    ι,
+  β.unfree = ε,
+  β.zimbatm = ζ,
+  κ.lib = δ,
+  λ.versions = β,
+  μ.lib = λ,
+  ν.licenses = β,
+  ξ.lib = ν,
+  ο.maintainers = β,
+  π.lib = ο
 ) =>
-{ autoPatchelfHook = θ;
-  dpkg = θ;
-  fetchurl = {sha256 = String; url = String;} -> ι;
-  freeglut = η;
-  gcc-unwrapped = ζ;
-  libGL = η;
-  libGLU = η;
-  makeWrapper = θ;
-  stdenv = ε;
-  zlib = η;
+{ autoPatchelfHook = η;
+  dpkg = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  freeglut = δ;
+  gcc-unwrapped = κ;
+  libGL = δ;
+  libGLU = δ;
+  makeWrapper = η;
+  stdenv = β;
+  zlib = δ;
 } ->
-κ
+ι

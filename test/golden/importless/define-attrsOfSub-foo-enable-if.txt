@@ -1,5 +1,3 @@
-∀ γ δ.
-{config = γ; lib = δ;} ->
-{ attrsOfSub =
-    {foo = {enable = ∀ α β. (δ.mkIf = α -> Bool -> β, γ.enable = α) => β;};};
-}
+∀ α β γ δ.
+(α.enable = β, γ.mkIf = β -> Bool -> δ) => {config = α; lib = γ;} ->
+{attrsOfSub = {foo = {enable = δ;};};}

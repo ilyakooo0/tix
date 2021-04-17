@@ -1,16 +1,7 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
-( β.overrideAttrs = (γ -> {UNZIP = String;}) -> δ,
-  β.overrideAttrs = (ε -> {UNZIP = String;}) -> ζ,
-  β.overrideAttrs = (η -> {UNZIP = String;}) -> θ,
-  β.overrideAttrs = (ι -> {UNZIP = String;}) -> κ,
-  β.overrideAttrs = (λ -> {UNZIP = String;}) -> μ,
-  β.overrideAttrs = (ν -> {UNZIP = String;}) -> ξ,
-  β.overrideAttrs = (ο -> {UNZIP = String;}) -> π,
-  β.overrideAttrs = (ρ -> {UNZIP = String;}) -> σ,
-  β.overrideAttrs = (τ -> {UNZIP = String;}) -> υ,
-  β.overrideAttrs = (φ -> {UNZIP = String;}) -> χ
-) =>
-{fetchzip = {sha256 = String; stripRoot = Bool; url = String;} -> β;} ->
+∀ β γ.
+(β.overrideAttrs = γ) => { fetchzip =
+    {sha256 = String; stripRoot = Bool; url = String;} -> β;
+} ->
 { ladder2017season1 = ∀ α. α;
   ladder2017season2 = ∀ α. α;
   ladder2017season3 = ∀ α. α;

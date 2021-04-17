@@ -1,29 +1,38 @@
-∀ δ ε ζ η θ ι κ λ.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.gpl3 = β,
+  α.mkDerivation =
     { installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl3 = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.thoughtpolice = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+          license = β;
+          maintainers = [γ];
+          platforms = δ;
         };
-      nativeBuildInputs = (ε.python = ζ) => [ζ];
+      nativeBuildInputs = [ε];
       outputs = [String];
       pname = String;
       postPatch = String;
-      src = η;
+      src = ζ;
       version = String;
     } ->
-    θ
+    η,
+  α.thoughtpolice = γ,
+  α.unix = δ,
+  θ.python = ε,
+  ι.licenses = α,
+  κ.lib = ι,
+  λ.maintainers = α,
+  μ.lib = λ,
+  ν.platforms = α,
+  ξ.lib = ν
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> η;
-  lsof = ι;
-  makeWrapper = ζ;
-  ncurses = κ;
-  nettools = λ;
-  python2Packages = ε;
-  stdenv = δ;
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  lsof = ο;
+  makeWrapper = ε;
+  ncurses = π;
+  nettools = ρ;
+  python2Packages = θ;
+  stdenv = α;
 } ->
-θ
+η

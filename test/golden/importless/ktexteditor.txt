@@ -1,28 +1,28 @@
-∀ γ δ ε ζ η.
-{ editorconfig-core-c = γ;
-  extra-cmake-modules = δ;
-  karchive = γ;
-  kconfig = γ;
-  kguiaddons = γ;
-  ki18n = γ;
-  kiconthemes = γ;
-  kio = γ;
-  kparts = ε;
-  lib = ζ;
-  libgit2 = γ;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { editorconfig-core-c = δ;
+  extra-cmake-modules = ε;
+  karchive = δ;
+  kconfig = δ;
+  kguiaddons = δ;
+  ki18n = δ;
+  kiconthemes = δ;
+  kio = δ;
+  kparts = ζ;
+  lib = α;
+  libgit2 = δ;
   mkDerivation =
-    { buildInputs = [γ];
-      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [δ];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [δ];
-      propagatedBuildInputs = [ε];
+      nativeBuildInputs = [ε];
+      propagatedBuildInputs = [ζ];
     } ->
     η;
-  perl = δ;
-  qtquickcontrols = γ;
-  qtscript = γ;
-  qtxmlpatterns = γ;
-  sonnet = γ;
-  syntax-highlighting = γ;
+  perl = ε;
+  qtquickcontrols = δ;
+  qtscript = δ;
+  qtxmlpatterns = δ;
+  sonnet = δ;
+  syntax-highlighting = δ;
 } ->
 η

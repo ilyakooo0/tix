@@ -1,10 +1,12 @@
-∀ β γ δ.
-( β.mkDerivation =
+∀ α β γ δ ε.
+( α.mkDerivation =
     { allowedReferences = [String];
       buildCommand = String;
-      meta = ∀ α. (γ.meta = α) => α;
-      name = ∀ α. (γ.name = α) => α;
+      meta = β;
+      name = γ;
     } ->
-    δ
+    δ,
+  ε.meta = β,
+  ε.name = γ
 ) =>
-{klibc = γ; stdenv = β;} -> δ
+{klibc = ε; stdenv = α;} -> δ

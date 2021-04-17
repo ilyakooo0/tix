@@ -1,15 +1,21 @@
-∀ γ δ ε.
+∀ β γ δ ε ζ η θ ι.
+( (β) // ({description = String;}) ~ (γ),
+  δ.meta = β,
+  δ.src = ε,
+  δ.useDune2 = ζ,
+  δ.version = η
+) =>
 { buildDunePackage =
     { doCheck = Bool;
-      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), γ.meta = α) => β;
+      meta = ∀ α. α;
       pname = String;
-      propagatedBuildInputs = [γ];
-      src = ∀ α. (γ.src = α) => α;
-      useDune2 = ∀ α. (γ.useDune2 = α) => α;
-      version = ∀ α. (γ.version = α) => α;
+      propagatedBuildInputs = [δ];
+      src = ε;
+      useDune2 = ζ;
+      version = η;
     } ->
-    δ;
-  lib = ε;
-  posix-base = γ;
+    θ;
+  lib = ι;
+  posix-base = δ;
 } ->
-δ
+θ

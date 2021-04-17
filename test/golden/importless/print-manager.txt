@@ -1,32 +1,29 @@
-∀ γ δ ε ζ η.
-{ cups = γ;
-  extra-cmake-modules = δ;
-  kcmutils = ε;
-  kconfig = ε;
-  kconfigwidgets = ε;
-  kdbusaddons = ε;
-  ki18n = γ;
-  kiconthemes = ε;
-  kio = ε;
-  kitemviews = ε;
-  knotifications = ε;
-  kwidgetsaddons = ε;
-  kwindowsystem = ε;
-  lib = ζ;
+∀ α β γ δ ε ζ η θ ι.
+(α.gpl2 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { cups = ζ;
+  extra-cmake-modules = η;
+  kcmutils = θ;
+  kconfig = θ;
+  kconfigwidgets = θ;
+  kdbusaddons = θ;
+  ki18n = ζ;
+  kiconthemes = θ;
+  kio = θ;
+  kitemviews = θ;
+  knotifications = θ;
+  kwidgetsaddons = θ;
+  kwindowsystem = θ;
+  lib = α;
   mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
-      buildInputs = [γ];
-      meta =
-        { license = ∀ α β. (ζ.licenses = α, α.gpl2 = β) => [β];
-          maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];
-        };
+      buildInputs = [ζ];
+      meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [η];
       outputs = [String];
-      propagatedBuildInputs = [ε];
+      propagatedBuildInputs = [θ];
     } ->
-    η;
-  plasma-framework = ε;
-  qtdeclarative = ε;
+    ι;
+  plasma-framework = θ;
+  qtdeclarative = θ;
 } ->
-η
+ι

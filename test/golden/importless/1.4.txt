@@ -1,15 +1,17 @@
-∀ δ ε ζ.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ η θ ι.
+( α.linux = β,
+  α.mit = γ,
+  α.mkDerivation =
     { installPhase = String;
       meta =
-        { description = String;
-          homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
-        };
+        {description = String; homepage = String; license = γ; platforms = β;};
       name = String;
-      src = ε;
+      src = δ;
     } ->
-    ζ
+    ε,
+  ζ.licenses = α,
+  η.lib = ζ,
+  θ.platforms = α,
+  ι.lib = θ
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = δ;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> δ; stdenv = α;} -> ε

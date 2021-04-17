@@ -1,19 +1,11 @@
-∀ γ δ ε ζ.
-( γ.nixops = δ,
-  ε.attrByPath = [String] -> {} -> γ -> {},
-  ε.hasAttrByPath = [String] -> γ -> Bool
+∀ α β γ δ ε.
+( α.nixops = β,
+  γ.attrByPath = [String] -> {} -> α -> {},
+  γ.hasAttrByPath = [String] -> α -> Bool,
+  γ.mkEnableOption = String -> δ,
+  β.enableDeprecatedAutoLuks = Bool
 ) =>
-{config = γ; lib = ε; options = ζ;} ->
-{ config =
-    { assertions =
-        [ { assertion = ∀ α. (α.enableDeprecatedAutoLuks = Bool) => Bool;
-            message = String;
-          }
-        ];
-    };
-  options =
-    { nixops =
-        { enableDeprecatedAutoLuks = ∀ β. (ε.mkEnableOption = String -> β) => β;
-        };
-    };
+{config = α; lib = γ; options = ε;} ->
+{ config = {assertions = [{assertion = Bool; message = String;}];};
+  options = {nixops = {enableDeprecatedAutoLuks = δ;};};
 }

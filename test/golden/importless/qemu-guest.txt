@@ -1,5 +1,5 @@
-∀ β.
-{lib = β;} ->
+∀ α β.
+(α.mkDefault = Bool -> β) => {lib = α;} ->
 { boot =
     { initrd =
         { availableKernelModules = [String];
@@ -7,5 +7,5 @@
           postDeviceCommands = String;
         };
     };
-  security = {rngd = {enable = ∀ α. (β.mkDefault = Bool -> α) => α;};};
+  security = {rngd = {enable = β;};};
 }

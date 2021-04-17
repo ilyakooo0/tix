@@ -1,22 +1,27 @@
-∀ γ δ ε ζ.
+∀ α β γ δ ε ζ η θ.
+( α.asl20 = β,
+  α.brainrape = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
 { build-idris-package =
-    { idrisDeps = [γ];
+    { idrisDeps = [ζ];
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (δ.licenses = α, α.asl20 = β) => β;
-          maintainers = ∀ α β. (δ.maintainers = α, α.brainrape = β) => [β];
+          license = β;
+          maintainers = [γ];
         };
       name = String;
-      src = ε;
+      src = η;
       version = String;
     } ->
-    ζ;
+    θ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
-  html = γ;
-  idrisscript = γ;
-  lib = δ;
-  xhr = γ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  html = ζ;
+  idrisscript = ζ;
+  lib = α;
+  xhr = ζ;
 } ->
-ζ
+θ

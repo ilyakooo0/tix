@@ -1,25 +1,31 @@
-∀ γ δ ε ζ η.
-{ alcotest = γ;
-  astring = δ;
+∀ β γ δ ε ζ η θ ι κ λ.
+( (β) // ({description = String;}) ~ (γ),
+  δ.optionals = Bool -> [ε] -> ζ,
+  η.meta = β,
+  η.src = θ,
+  η.version = ι
+) =>
+{ alcotest = ε;
+  astring = η;
   buildDunePackage =
-    { checkInputs = ∀ α. (ε.optionals = Bool -> [γ] -> α) => α;
+    { checkInputs = ζ;
       doCheck = Bool;
-      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), δ.meta = α) => β;
-      nativeBuildInputs = [ζ];
+      meta = ∀ α. α;
+      nativeBuildInputs = [κ];
       pname = String;
-      propagatedBuildInputs = [δ];
-      src = ∀ α. (δ.src = α) => α;
+      propagatedBuildInputs = [η];
+      src = θ;
       useDune2 = Bool;
-      version = ∀ α. (δ.version = α) => α;
+      version = ι;
     } ->
-    η;
-  cohttp = δ;
-  cohttp-lwt-unix = γ;
-  digestif = δ;
-  graphql = δ;
-  graphql-lwt = γ;
-  lib = ε;
-  ocaml-crunch = ζ;
-  ocplib-endian = δ;
+    λ;
+  cohttp = η;
+  cohttp-lwt-unix = ε;
+  digestif = η;
+  graphql = η;
+  graphql-lwt = ε;
+  lib = δ;
+  ocaml-crunch = κ;
+  ocplib-endian = η;
 } ->
-η
+λ

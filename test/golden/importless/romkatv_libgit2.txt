@@ -1,6 +1,6 @@
 ∀ α β γ δ.
-( α.overrideAttrs =
-    (β -> {cmakeFlags = (β.cmakeFlags = [String]) => [String]; src = γ;}) -> δ
+( α.overrideAttrs = (β -> {cmakeFlags = [String]; src = γ;}) -> δ,
+  β.cmakeFlags = [String]
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> γ;

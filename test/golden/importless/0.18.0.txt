@@ -1,25 +1,31 @@
-∀ δ ε ζ η θ.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.gpl2Plus = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       configureFlags = [String];
       doCheck = Bool;
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          license = β;
           longDescription = String;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
+          platforms = δ;
         };
       name = String;
-      propagatedBuildInputs = [ζ];
-      src = η;
+      propagatedBuildInputs = [ε];
+      src = ζ;
     } ->
-    θ
+    η,
+  α.unix = δ,
+  θ.licenses = α,
+  ι.lib = θ,
+  κ.platforms = α,
+  λ.lib = κ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> η;
-  gmp = ε;
-  isl = ζ;
-  stdenv = δ;
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  gmp = γ;
+  isl = ε;
+  stdenv = α;
 } ->
-θ
+η

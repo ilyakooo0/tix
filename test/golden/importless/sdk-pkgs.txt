@@ -1,0 +1,52 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( ( β
+  ) //
+  ( { sdk =
+        { name = String;
+          outPath = String;
+          platform = γ;
+          type = String;
+          version = δ;
+        };
+    }
+  ) ~
+  ( ε
+  ),
+  ζ.sdkVer = δ,
+  ζ.xcodePlatform = γ,
+  η.optionalString = Bool -> String -> String,
+  θ.libraries = ι,
+  κ.lib = η,
+  λ.lib = η
+) =>
+{ binutils-unwrapped = μ;
+  buildIosSdk = ν;
+  clang-unwrapped = ξ;
+  lib = ο;
+  runCommand = String -> {passthru = {sdk = ν;};} -> String -> π;
+  stdenv = η;
+  targetIosSdkPkgs = θ;
+  targetPlatform = ζ;
+  wrapBintoolsWith =
+    {bintools = μ; extraBuildCommands = String; libc = ι;} -> ρ;
+  wrapCCWith =
+    { bintools = ρ;
+      cc = ξ;
+      extraBuildCommands = String;
+      extraPackages = [String];
+      libc = ι;
+    } ->
+    β;
+  xcode = String;
+} ->
+{ binutils = ρ;
+  clang = ∀ α. α;
+  libraries = π;
+  sdk =
+    { name = String;
+      outPath = String;
+      platform = γ;
+      type = String;
+      version = δ;
+    };
+}

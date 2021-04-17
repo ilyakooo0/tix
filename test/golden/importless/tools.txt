@@ -1,56 +1,52 @@
-∀ γ δ ε ζ η θ ι κ.
-{ afdko = γ;
-  appdirs = γ;
-  attrs = γ;
-  bash = δ;
-  black = γ;
-  booleanoperations = γ;
-  brotlipy = γ;
+∀ α β γ δ ε ζ η θ ι κ.
+(α.asl20 = β, γ.licenses = α) => { afdko = δ;
+  appdirs = δ;
+  attrs = δ;
+  bash = ε;
+  black = δ;
+  booleanoperations = δ;
+  brotlipy = δ;
   buildPythonPackage =
-    { checkInputs = [δ];
+    { checkInputs = [ε];
       checkPhase = String;
-      disabled = ε;
-      meta =
-        { description = String;
-          homepage = String;
-          license = ∀ α β. (ζ.licenses = α, α.asl20 = β) => β;
-        };
+      disabled = ζ;
+      meta = {description = String; homepage = String; license = β;};
       nativeBuildInputs = [η];
       pname = String;
       postInstall = String;
       postPatch = String;
-      propagatedBuildInputs = [γ];
+      propagatedBuildInputs = [δ];
       src = θ;
       version = String;
     } ->
     ι;
-  click = γ;
-  defcon = γ;
+  click = δ;
+  defcon = δ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  fontmath = γ;
-  fontparts = γ;
-  fontpens = γ;
-  fonttools = γ;
+  fontmath = δ;
+  fontparts = δ;
+  fontpens = δ;
+  fonttools = δ;
   fs = κ;
-  lib = ζ;
-  lxml = γ;
-  mutatormath = γ;
-  pathspec = γ;
-  pillow = δ;
-  psautohint = γ;
-  pyclipper = γ;
-  pythonOlder = String -> ε;
-  pytz = γ;
-  regex = γ;
-  scour = γ;
+  lib = α;
+  lxml = δ;
+  mutatormath = δ;
+  pathspec = δ;
+  pillow = ε;
+  psautohint = δ;
+  pyclipper = δ;
+  pythonOlder = String -> ζ;
+  pytz = δ;
+  regex = δ;
+  scour = δ;
   setuptools_scm = η;
-  six = δ;
-  toml = γ;
-  typed-ast = γ;
-  ufonormalizer = γ;
-  ufoprocessor = γ;
-  unicodedata2 = γ;
-  zopfli = γ;
+  six = ε;
+  toml = δ;
+  typed-ast = δ;
+  ufonormalizer = δ;
+  ufoprocessor = δ;
+  unicodedata2 = δ;
+  zopfli = δ;
 } ->
 ι

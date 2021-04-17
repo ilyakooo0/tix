@@ -1,11 +1,11 @@
-∀ β γ δ ε ζ.
-{ dbus = β;
-  libxslt = γ;
+∀ α β γ δ ε ζ.
+(α.bin = β) => { dbus = γ;
+  libxslt = α;
   runCommand =
     String ->
     { XML_CATALOG_FILES = δ;
       allowSubstitutes = Bool;
-      nativeBuildInputs = ∀ α. (γ.bin = α) => [α];
+      nativeBuildInputs = [β];
       preferLocalBuild = Bool;
       serviceDirectories = ε;
       suidHelper = String;

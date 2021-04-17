@@ -1,22 +1,22 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kcodecs = δ;
-  kdepimTeam = ε;
-  ki18n = δ;
-  lib = ζ;
+∀ α β γ δ ε ζ η θ ι.
+( α.lgpl21 = β,
+  α.versionOlder = γ -> String -> δ,
+  ε.version = γ,
+  ζ.licenses = α
+) =>
+{ extra-cmake-modules = η;
+  kcodecs = ε;
+  kdepimTeam = θ;
+  ki18n = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta =
-        { broken =
-            ∀ α β. (ζ.versionOlder = α -> String -> β, δ.version = α) => β;
-          license = ∀ α β. (ζ.licenses = α, α.lgpl21 = β) => [β];
-          maintainers = ε;
-        };
+    { buildInputs = [ε];
+      meta = {broken = δ; license = [β]; maintainers = θ;};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [η];
       outputs = [String];
     } ->
-    η;
-  qtbase = δ;
+    ι;
+  qtbase = ε;
 } ->
-η
+ι

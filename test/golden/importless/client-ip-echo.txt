@@ -1,20 +1,20 @@
-∀ δ ε ζ η.
-{ base = δ;
-  bytestring = δ;
+∀ α β γ δ ε ζ η.
+(α.lgpl3 = β, γ.licenses = α, δ.lib = γ) => { base = ε;
+  bytestring = ε;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
   mkDerivation =
     { description = String;
-      executableHaskellDepends = [δ];
+      executableHaskellDepends = [ε];
       isExecutable = Bool;
       isLibrary = Bool;
-      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.lgpl3 = γ) => γ;
+      license = β;
       pname = String;
-      src = ε;
+      src = ζ;
       version = String;
     } ->
     η;
-  network = δ;
-  stdenv = ζ;
+  network = ε;
+  stdenv = α;
 } ->
 η

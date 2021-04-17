@@ -1,102 +1,61 @@
-∀ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8.
-( σ.hostPlatform = τ,
-  σ.hostPlatform = υ,
-  σ.hostPlatform = φ,
-  σ.hostPlatform = χ,
-  σ.hostPlatform = ψ,
-  σ.hostPlatform = ω,
-  σ.hostPlatform = α1,
-  σ.hostPlatform = β2,
-  σ.hostPlatform = γ3,
-  σ.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
+λ11.
+( α.hostPlatform = β,
+  α.isAarch32 = γ,
+  α.isDarwin = δ,
+  α.isMusl = ε,
+  α.isWasm = Bool,
+  α.libc = String,
+  α.mkDerivation =
     { NIX_CFLAGS_COMPILE = [String];
-      buildInputs =
-        ∀ α β γ δ.
-        ( σ.lib = α,
-          α.optional = β -> δ4 -> γ,
-          σ.hostPlatform = δ,
-          δ.isDarwin = β
-        ) =>
-        γ;
-      cmakeFlags =
-        ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-        ( σ.lib = α,
-          α.optionals = Bool -> [String] -> [String],
-          β.useLLVM = Bool,
-          γ.parsed = δ,
-          δ.kernel = ε,
-          ε.name = String,
-          ζ.isMusl = Bool,
-          σ.lib = η,
-          η.optionals = Bool -> [String] -> [String],
-          θ.useLLVM = Bool,
-          ι.parsed = κ,
-          κ.kernel = λ,
-          λ.name = String,
-          σ.lib = μ,
-          μ.optionals = Bool -> [String] -> [String],
-          ν.useLLVM = Bool,
-          σ.lib = ξ,
-          ξ.optionals = Bool -> [String] -> [String],
-          ο.parsed = π,
-          π.kernel = ρ,
-          ρ.name = String
-        ) =>
-        [String];
+      buildInputs = ζ;
+      cmakeFlags = [String];
       enableParallelBuilding = Bool;
-      nativeBuildInputs = [ε5];
+      nativeBuildInputs = [η];
       outputs = [String];
-      patches =
-        ∀ α β γ δ ε ζ η θ.
-        ( σ.lib = α,
-          α.optional = β -> Path -> [Path],
-          σ.hostPlatform = γ,
-          γ.isMusl = β,
-          σ.lib = δ,
-          δ.optional = Bool -> Path -> [Path],
-          σ.hostPlatform = ε,
-          ε.libc = String,
-          σ.lib = ζ,
-          ζ.optional = η -> Path -> [Path],
-          σ.hostPlatform = θ,
-          θ.isAarch32 = η
-        ) =>
-        [Path];
+      patches = [Path];
       pname = String;
-      postInstall =
-        ∀ α β γ δ ε ζ.
-        ( σ.lib = α,
-          α.optionalString = Bool -> String -> β,
-          σ.hostPlatform = γ,
-          γ.isDarwin = Bool,
-          σ.hostPlatform = δ,
-          δ.isWasm = Bool,
-          σ.lib = ε,
-          ε.optionalString = Bool -> String -> β,
-          ζ.useLLVM = Bool
-        ) =>
-        β;
-      postPatch =
-        ∀ α β γ δ ε.
-        ( σ.lib = α,
-          α.optionalString = β -> String -> γ,
-          σ.isDarwin = β,
-          σ.lib = δ,
-          δ.optionalString = Bool -> String -> γ,
-          ε.useLLVM = Bool
-        ) =>
-        γ;
-      src = ζ6;
-      version = η7;
+      postInstall = θ;
+      postPatch = ι;
+      src = κ;
+      version = λ;
     } ->
-    θ8
+    μ,
+  α.name = String,
+  α.optional = δ -> ν -> ζ,
+  α.optionalString = Bool -> String -> θ,
+  α.optionals = Bool -> [String] -> [String],
+  α.useLLVM = Bool,
+  ξ.hostPlatform = α,
+  β.isMusl = Bool,
+  ο.kernel = α,
+  π.parsed = ο,
+  ρ.hostPlatform = π,
+  σ.lib = α,
+  τ.hostPlatform = α,
+  υ.lib = α,
+  φ.lib = α,
+  χ.lib = α,
+  ψ.lib = α,
+  ω.lib = α,
+  α1.hostPlatform = α,
+  β2.lib = α,
+  γ3.hostPlatform = α,
+  δ4.lib = α,
+  ε5.hostPlatform = α,
+  ζ6.lib = α,
+  η7.hostPlatform = α,
+  θ8.hostPlatform = α,
+  ι9.lib = α,
+  κ10.lib = α,
+  λ11.lib = α
 ) =>
-{ cmake = ε5;
-  fetch = String -> String -> ζ6;
-  libcxxabi = δ4;
-  llvm = ε5;
-  python3 = ε5;
-  stdenv = σ;
-  version = η7;
+{ cmake = η;
+  fetch = String -> String -> κ;
+  libcxxabi = ν;
+  llvm = η;
+  python3 = η;
+  stdenv = α;
+  version = λ;
 } ->
-θ8
+μ

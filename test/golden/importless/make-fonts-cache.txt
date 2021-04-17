@@ -1,12 +1,12 @@
-∀ β γ δ ε.
-{ fontDirectories = β;
-  fontconfig = γ;
+∀ α β γ δ ε.
+(α.bin = β) => { fontDirectories = γ;
+  fontconfig = α;
   lib = δ;
   runCommand =
     String ->
     { allowSubstitutes = Bool;
       fontDirs = String;
-      nativeBuildInputs = ∀ α. (γ.bin = α) => [α];
+      nativeBuildInputs = [β];
       passAsFile = [String];
       preferLocalBuild = Bool;
     } ->

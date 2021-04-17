@@ -1,7 +1,9 @@
-∀ ζ η θ ι κ.
-( ζ.mkDerivation =
-    { buildInputs =
-        ∀ δ ε. (ζ.lib = δ, δ.optional = ε -> η -> [θ], ζ.isDarwin = ε) => [θ];
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( γ.isDarwin = δ,
+  γ.lgpl3 = ε,
+  γ.mesaPlatforms = ζ,
+  γ.mkDerivation =
+    { buildInputs = [η];
       doCheck = Bool;
       enableParallelBuilding = Bool;
       hardeningDisable = [String];
@@ -9,33 +11,38 @@
         { branch = String;
           description = String;
           homepage = String;
-          license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.lgpl3 = γ) => γ;
+          license = ε;
           longDescription = String;
           maintainers = ∀ α. α;
-          platforms =
-            ∀ α β γ. (ζ.lib = α, α.platforms = β, β.mesaPlatforms = γ) => γ;
+          platforms = ζ;
         };
       pname = String;
-      src = ι;
-      version = ∀ δ. δ;
+      src = θ;
+      version = ∀ β. β;
     } ->
-    κ
+    ι,
+  γ.optional = δ -> κ -> [η],
+  λ.licenses = γ,
+  μ.lib = λ,
+  ν.platforms = γ,
+  ξ.lib = ν,
+  ο.lib = γ
 ) =>
-{ CoreServices = η;
-  bzip2 = θ;
-  fetchurl = {sha256 = String; url = String;} -> ι;
-  libGL = θ;
-  libGLU = θ;
-  libXcursor = θ;
-  libXfixes = θ;
-  libXft = θ;
-  libXrandr = θ;
-  libjpeg = θ;
-  libpng = θ;
-  libtiff = θ;
-  stdenv = ζ;
-  xinput = θ;
-  xlibsWrapper = θ;
-  zlib = θ;
+{ CoreServices = κ;
+  bzip2 = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  libGL = η;
+  libGLU = η;
+  libXcursor = η;
+  libXfixes = η;
+  libXft = η;
+  libXrandr = η;
+  libjpeg = η;
+  libpng = η;
+  libtiff = η;
+  stdenv = γ;
+  xinput = η;
+  xlibsWrapper = η;
+  zlib = η;
 } ->
-κ
+ι

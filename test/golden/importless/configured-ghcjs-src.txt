@@ -1,22 +1,17 @@
-∀ β γ δ ε ζ η.
-{ alex = β;
-  autoconf = β;
-  automake = β;
-  cabal-install = β;
+∀ α β γ δ ε ζ η.
+(α.optionals = β -> [γ] -> [δ], ε.isDarwin = β) => { alex = δ;
+  autoconf = δ;
+  automake = δ;
+  cabal-install = δ;
   gcc = γ;
-  ghc = β;
-  ghcjsSrc = δ;
-  happy = β;
-  lib = ε;
-  perl = β;
-  python3 = β;
+  ghc = δ;
+  ghcjsSrc = ζ;
+  happy = δ;
+  lib = α;
+  perl = δ;
+  python3 = δ;
   runCommand =
-    String ->
-    { ghcjsSrc = δ;
-      nativeBuildInputs =
-        ∀ α. (ε.optionals = α -> [γ] -> [β], ζ.isDarwin = α) => [β];
-    } ->
-    String -> η;
-  stdenv = ζ;
+    String -> {ghcjsSrc = ζ; nativeBuildInputs = [δ];} -> String -> η;
+  stdenv = ε;
 } ->
 η

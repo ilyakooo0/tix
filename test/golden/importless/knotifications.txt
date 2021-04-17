@@ -1,20 +1,20 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kcodecs = δ;
-  kconfig = δ;
-  kcoreaddons = δ;
-  kwindowsystem = δ;
-  lib = ε;
-  libdbusmenu = δ;
+∀ α β γ δ ε ζ.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kcodecs = ε;
+  kconfig = ε;
+  kcoreaddons = ε;
+  kwindowsystem = ε;
+  lib = α;
+  libdbusmenu = ε;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
     } ->
     ζ;
-  phonon = δ;
-  qttools = γ;
-  qtx11extras = δ;
+  phonon = ε;
+  qttools = δ;
+  qtx11extras = ε;
 } ->
 ζ

@@ -1,24 +1,21 @@
-∀ γ δ ε ζ.
-{ baloo = γ;
-  extra-cmake-modules = δ;
-  kconfig = γ;
-  kdelibs4support = γ;
-  kdoctools = δ;
-  kfilemetadata = γ;
-  ki18n = γ;
-  kio = γ;
-  kservice = γ;
-  lib = ε;
+∀ α β γ δ ε ζ η θ.
+(α.lgpl21 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { baloo = ζ;
+  extra-cmake-modules = η;
+  kconfig = ζ;
+  kdelibs4support = ζ;
+  kdoctools = η;
+  kfilemetadata = ζ;
+  ki18n = ζ;
+  kio = ζ;
+  kservice = ζ;
+  lib = α;
   mkDerivation =
-    { meta =
-        { license = ∀ α β. (ε.licenses = α, α.lgpl21 = β) => [β];
-          maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [η];
       outputs = [String];
-      propagatedBuildInputs = [γ];
+      propagatedBuildInputs = [ζ];
     } ->
-    ζ;
+    θ;
 } ->
-ζ
+θ

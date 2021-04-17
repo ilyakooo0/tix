@@ -1,90 +1,65 @@
-∀ θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
-( θ.apple_sdk = ι,
-  θ.apple_sdk = κ,
-  θ.apple_sdk = λ,
-  θ.apple_sdk = μ
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( β.isDarwin = γ,
+  β.optional = δ -> ε -> ζ,
+  β.optionals = γ -> [ε] -> [η],
+  θ.frameworks = ι,
+  κ.lib = β,
+  λ.lib = β,
+  ι.Security = ε,
+  μ.apple_sdk = θ,
+  ν.CoreFoundation = ε,
+  ξ.apple_sdk = θ
 ) =>
-{ cairo = ν;
-  curl = ξ;
+{ cairo = ο;
+  curl = η;
   darwin = θ;
-  dbus = ξ;
-  dbus-glib = ο;
-  foundationdb = π;
-  gdk-pixbuf = ρ;
-  gmp = σ;
-  libgit2 = ξ;
-  libiconv = τ;
-  libsodium = ξ;
-  libssh2 = ξ;
-  openssl = ξ;
-  pkgconfig = ξ;
-  postgresql = ξ;
+  dbus = η;
+  dbus-glib = π;
+  foundationdb = ρ;
+  gdk-pixbuf = σ;
+  gmp = τ;
+  libgit2 = η;
+  libiconv = ε;
+  libsodium = η;
+  libssh2 = η;
+  openssl = η;
+  pkgconfig = η;
+  postgresql = η;
   python3 = υ;
-  sqlite = ξ;
-  stdenv = φ;
-  zlib = ξ;
+  sqlite = η;
+  stdenv = β;
+  zlib = η;
 } ->
-{ cairo-rs = ∀ η. η -> {buildInputs = [ν];};
-  cargo =
-    ∀ η.
-    η ->
-    { buildInputs =
-        ∀ α β γ δ ε ζ.
-        ( φ.lib = α,
-          α.optionals = β -> [τ] -> [ξ],
-          φ.isDarwin = β,
-          γ.frameworks = δ,
-          δ.CoreFoundation = τ,
-          ε.frameworks = ζ,
-          ζ.Security = τ
-        ) =>
-        [ξ];
-    };
+{ cairo-rs = ∀ α. α -> {buildInputs = [ο];};
+  cargo = ∀ α. α -> {buildInputs = [η];};
   curl-sys =
-    ∀ η.
-    η ->
-    { buildInputs = [ξ];
+    ∀ α.
+    α ->
+    { buildInputs = [η];
       extraLinkFlags = [String];
-      propagatedBuildInputs = [ξ];
+      propagatedBuildInputs = [η];
     };
-  dbus = ∀ η. η -> {buildInputs = [ξ];};
-  foundationdb = ∀ η. η -> {buildInputs = [π];};
-  foundationdb-sys = ∀ η. η -> {buildInputs = [π];};
-  gdk-pixbuf = ∀ η. η -> {buildInputs = [ρ];};
-  gdk-pixbuf-sys = ∀ η. η -> {buildInputs = [ο];};
-  gio-sys = ∀ η. η -> {buildInputs = [ο];};
-  gobject-sys = ∀ η. η -> {buildInputs = [ο];};
-  libdbus-sys = ∀ η. η -> {buildInputs = [ξ];};
+  dbus = ∀ α. α -> {buildInputs = [η];};
+  foundationdb = ∀ α. α -> {buildInputs = [ρ];};
+  foundationdb-sys = ∀ α. α -> {buildInputs = [ρ];};
+  gdk-pixbuf = ∀ α. α -> {buildInputs = [σ];};
+  gdk-pixbuf-sys = ∀ α. α -> {buildInputs = [π];};
+  gio-sys = ∀ α. α -> {buildInputs = [π];};
+  gobject-sys = ∀ α. α -> {buildInputs = [π];};
+  libdbus-sys = ∀ α. α -> {buildInputs = [η];};
   libgit2-sys =
-    ∀ η. η -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [ξ];};
-  libsqlite3-sys = ∀ η. η -> {buildInputs = [ξ];};
-  libssh2-sys = ∀ η. η -> {buildInputs = [ξ];};
-  libz-sys = ∀ η. η -> {buildInputs = [ξ]; extraLinkFlags = [String];};
-  openssl = ∀ η. η -> {buildInputs = [ξ];};
-  openssl-sys = ∀ η. η -> {buildInputs = [ξ];};
-  pq-sys = ∀ η. η -> {buildInputs = [ξ];};
+    ∀ α. α -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [η];};
+  libsqlite3-sys = ∀ α. α -> {buildInputs = [η];};
+  libssh2-sys = ∀ α. α -> {buildInputs = [η];};
+  libz-sys = ∀ α. α -> {buildInputs = [η]; extraLinkFlags = [String];};
+  openssl = ∀ α. α -> {buildInputs = [η];};
+  openssl-sys = ∀ α. α -> {buildInputs = [η];};
+  pq-sys = ∀ α. α -> {buildInputs = [η];};
   rink =
-    ∀ η.
-    η -> {buildInputs = [σ]; crateBin = [{name = String; path = String;}];};
-  security-framework-sys =
-    ∀ η.
-    η ->
-    { propagatedBuildInputs =
-        ∀ α β γ. (α.frameworks = β, β.Security = γ) => [γ];
-    };
-  serde_derive =
-    ∀ η.
-    η ->
-    { buildInputs =
-        ∀ α β γ δ ε ζ.
-        ( φ.lib = α,
-          α.optional = β -> γ -> δ,
-          φ.isDarwin = β,
-          ε.frameworks = ζ,
-          ζ.Security = γ
-        ) =>
-        δ;
-    };
-  thrussh-libsodium = ∀ η. η -> {buildInputs = [ξ];};
-  xcb = ∀ η. η -> {buildInputs = [υ];};
+    ∀ α.
+    α -> {buildInputs = [τ]; crateBin = [{name = String; path = String;}];};
+  security-framework-sys = ∀ α. α -> {propagatedBuildInputs = [ε];};
+  serde_derive = ∀ α. α -> {buildInputs = ζ;};
+  thrussh-libsodium = ∀ α. α -> {buildInputs = [η];};
+  xcb = ∀ α. α -> {buildInputs = [υ];};
 }

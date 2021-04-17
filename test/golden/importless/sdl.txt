@@ -1,23 +1,23 @@
-∀ γ δ ε ζ η.
-{ SDL = γ;
-  SDL_gfx = γ;
+∀ α β γ δ ε ζ η.
+(α.brainrape = β, γ.maintainers = α) => { SDL = δ;
+  SDL_gfx = δ;
   build-idris-package =
-    { extraBuildInputs = [γ];
-      idrisDeps = [δ];
+    { extraBuildInputs = [δ];
+      idrisDeps = [ε];
       meta =
         { broken = Bool;
           description = String;
           homepage = String;
-          maintainers = ∀ α β. (ε.maintainers = α, α.brainrape = β) => [β];
+          maintainers = [β];
         };
       name = String;
       src = ζ;
       version = String;
     } ->
     η;
-  effects = δ;
+  effects = ε;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  lib = ε;
+  lib = α;
 } ->
 η

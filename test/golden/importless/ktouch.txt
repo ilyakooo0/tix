@@ -1,39 +1,42 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kcmutils = γ;
-  kconfig = γ;
-  kconfigwidgets = γ;
-  kcoreaddons = γ;
-  kdeclarative = γ;
-  kdoctools = γ;
-  ki18n = γ;
-  kio = γ;
-  kitemviews = γ;
-  knewstuff = γ;
-  kqtquickcharts = γ;
-  ktexteditor = γ;
-  kwidgetsaddons = γ;
-  kwindowsystem = γ;
-  kxmlgui = γ;
-  lib = δ;
+∀ α β γ δ ε ζ η θ.
+( α.gpl2 = β,
+  α.schmittlauch = γ,
+  δ.libxcb = ε,
+  δ.libxkbfile = ε,
+  ζ.licenses = α,
+  η.maintainers = α
+) =>
+{ extra-cmake-modules = ε;
+  kcmutils = ε;
+  kconfig = ε;
+  kconfigwidgets = ε;
+  kcoreaddons = ε;
+  kdeclarative = ε;
+  kdoctools = ε;
+  ki18n = ε;
+  kio = ε;
+  kitemviews = ε;
+  knewstuff = ε;
+  kqtquickcharts = ε;
+  ktexteditor = ε;
+  kwidgetsaddons = ε;
+  kwindowsystem = ε;
+  kxmlgui = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = (ε.libxkbfile = γ, ε.libxcb = γ) => [γ];
+    { buildInputs = [ε];
       enableParallelBuilding = Bool;
-      meta =
-        { description = String;
-          license = ∀ α β. (δ.licenses = α, α.gpl2 = β) => β;
-          maintainers = ∀ α β. (δ.maintainers = α, α.schmittlauch = β) => [β];
-        };
+      meta = {description = String; license = β; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [ε];
     } ->
-    ζ;
-  qtdeclarative = γ;
-  qtgraphicaleffects = γ;
-  qtquickcontrols2 = γ;
-  qtscript = γ;
-  qtx11extras = γ;
-  qtxmlpatterns = γ;
-  xorg = ε;
+    θ;
+  qtdeclarative = ε;
+  qtgraphicaleffects = ε;
+  qtquickcontrols2 = ε;
+  qtscript = ε;
+  qtx11extras = ε;
+  qtxmlpatterns = ε;
+  xorg = δ;
 } ->
-ζ
+θ

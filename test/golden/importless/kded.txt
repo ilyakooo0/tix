@@ -1,23 +1,23 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kconfig = δ;
-  kcoreaddons = δ;
-  kcrash = δ;
-  kdbusaddons = δ;
-  kdoctools = γ;
-  kinit = δ;
-  kservice = δ;
-  lib = ε;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kconfig = ε;
+  kcoreaddons = ε;
+  kcrash = ε;
+  kdbusaddons = ε;
+  kdoctools = δ;
+  kinit = ε;
+  kservice = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
       outputs = [String];
       setupHook = ζ;
     } ->
     η;
   propagate = String -> ζ;
-  qtbase = δ;
+  qtbase = ε;
 } ->
 η

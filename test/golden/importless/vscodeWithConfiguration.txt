@@ -1,13 +1,16 @@
-∀ α β γ δ ε.
-{ extensionsFromVscodeMarketplace = [α] -> β;
-  lib = γ;
-  vscodeDefault = δ;
-  writeShellScriptBin = String -> String -> ε;
+∀ α β γ δ ε ζ η θ.
+( α.forEach = β -> (γ -> {origin = String; target = String;}) -> δ,
+  α.optionalString = Bool -> String -> ε
+) =>
+{ extensionsFromVscodeMarketplace = [ζ] -> β;
+  lib = α;
+  vscodeDefault = η;
+  writeShellScriptBin = String -> String -> θ;
 } ->
-{ mutableExtensions = [α];
-  nixExtensions = [α];
+{ mutableExtensions = [ζ];
+  nixExtensions = [ζ];
   user-data-dir = String;
-  vscode = δ;
+  vscode = η;
   vscodeExtsFolderName = String;
 } ->
-ε
+θ

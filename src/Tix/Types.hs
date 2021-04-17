@@ -3,6 +3,8 @@ module Tix.Types
     AtomicType (..),
     DeBruijn (..),
     TypeVariable (..),
+    RangeTypeVariable (..),
+    rangeTypeVariable,
     Scheme (..),
     scheme,
     Pred (..),
@@ -138,14 +140,28 @@ instance Pretty AtomicType where
 data DeBruijn = DeBruijn !Int !Int
   deriving stock (Show, Eq, Ord)
 
-newtype TypeVariable = TypeVariable Int
+data TypeVariable
+  = TypeVariable !Int
+  | SubTypeVariable !Int !Int
+  deriving stock (Eq, Ord)
+
+rangeTypeVariable :: TypeVariable -> RangeTypeVariable
+rangeTypeVariable (TypeVariable x) = RangeTypeVariable x
+rangeTypeVariable (SubTypeVariable x _) = RangeTypeVariable x
+{-# INLINE rangeTypeVariable #-}
+
+newtype RangeTypeVariable = RangeTypeVariable {unRangeTypeVariable :: Int}
   deriving newtype (Eq, Ord, Enum, Bounded)
 
+instance Show RangeTypeVariable where
+  show (RangeTypeVariable n) = "〚" <> show n <> "〛"
+
 instance Show TypeVariable where
-  show (TypeVariable n) = "〚" <> show n <> "〛"
+  show = show . pretty
 
 instance Pretty TypeVariable where
   pretty (TypeVariable n) = "〚" <> pretty n <> "〛"
+  pretty (SubTypeVariable tv n) = "〚" <> pretty tv <> "." <> pretty n <> "〛"
 
 instance Pretty DeBruijn where
   pretty (DeBruijn i j) = "〚" <> pretty i <+> pretty j <> "〛"

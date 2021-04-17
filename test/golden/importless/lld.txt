@@ -1,27 +1,33 @@
-∀ δ ε ζ η θ ι.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.all = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       enableParallelBuilding = Bool;
       meta =
         { badPlatforms = [String];
           description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.ncsa = γ) => γ;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+          license = δ;
+          platforms = β;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [ε];
       outputs = [String];
       pname = String;
       postInstall = String;
-      src = η;
-      version = θ;
+      src = ζ;
+      version = η;
     } ->
-    ι
+    θ,
+  α.ncsa = δ,
+  ι.licenses = α,
+  κ.lib = ι,
+  λ.platforms = α,
+  μ.lib = λ
 ) =>
-{ cmake = ζ;
-  fetch = String -> String -> η;
-  llvm = ε;
-  stdenv = δ;
-  version = θ;
+{ cmake = ε;
+  fetch = String -> String -> ζ;
+  llvm = γ;
+  stdenv = α;
+  version = η;
 } ->
-ι
+θ

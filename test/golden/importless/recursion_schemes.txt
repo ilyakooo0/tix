@@ -1,24 +1,29 @@
-∀ γ δ ε ζ.
-{ bifunctors = γ;
+∀ α β γ δ ε ζ η θ.
+( α.brainrape = β,
+  α.bsd3 = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
+{ bifunctors = ζ;
   build-idris-package =
-    { idrisDeps = [γ];
+    { idrisDeps = [ζ];
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (δ.licenses = α, α.bsd3 = β) => β;
-          maintainers = ∀ α β. (δ.maintainers = α, α.brainrape = β) => [β];
+          license = γ;
+          maintainers = [β];
         };
       name = String;
-      src = ε;
+      src = η;
       version = String;
     } ->
-    ζ;
-  comonad = γ;
-  composition = γ;
+    θ;
+  comonad = ζ;
+  composition = ζ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
-  free = γ;
-  hezarfen = γ;
-  lib = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  free = ζ;
+  hezarfen = ζ;
+  lib = α;
 } ->
-ζ
+θ

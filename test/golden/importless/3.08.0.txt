@@ -1,21 +1,23 @@
-∀ δ ε ζ.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ.
+( α.linux = β,
+  α.mkDerivation =
     { buildFlags = [String];
       builder = Path;
       checkTarget = [String];
       configureFlags = [String];
       configureScript = Path;
       dontAddPrefix = String;
-      meta =
-        {platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;};
+      meta = {platforms = β;};
       pname = String;
-      src = ε;
+      src = γ;
       version = String;
     } ->
-    ζ
+    δ,
+  ε.platforms = α,
+  ζ.lib = ε
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ε;
-  stdenv = δ;
+{ fetchurl = {sha256 = String; url = String;} -> γ;
+  stdenv = α;
   xlibsWrapper = String;
 } ->
-ζ
+δ

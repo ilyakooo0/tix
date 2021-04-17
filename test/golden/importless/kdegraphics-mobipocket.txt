@@ -1,17 +1,19 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kio = δ;
-  lib = ε;
+∀ α β γ δ ε ζ η θ.
+( α.gpl2Plus = β,
+  α.ttuegel = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kio = η;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta =
-        { license = ∀ α β. (ε.licenses = α, α.gpl2Plus = β) => [β];
-          maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { buildInputs = [η];
+      meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [ζ];
       outputs = [String];
     } ->
-    ζ;
+    θ;
 } ->
-ζ
+θ

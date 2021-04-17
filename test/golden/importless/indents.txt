@@ -1,19 +1,19 @@
-∀ δ ε ζ.
-{ base = δ;
-  concatenative = δ;
+∀ α β γ δ ε ζ.
+(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { base = ε;
+  concatenative = ε;
   mkDerivation =
     { description = String;
       doCheck = Bool;
       homepage = String;
-      libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [ε];
+      license = β;
       pname = String;
       sha256 = String;
       version = String;
     } ->
     ζ;
-  mtl = δ;
-  parsec = δ;
-  stdenv = ε;
+  mtl = ε;
+  parsec = ε;
+  stdenv = α;
 } ->
 ζ

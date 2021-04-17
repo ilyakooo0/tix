@@ -1,35 +1,32 @@
-∀ κ λ μ.
-{config = κ; lib = λ; pkgs = μ;} ->
-{ config =
-    ∀ ζ η θ ι.
-    ( λ.mkIf =
-        ζ ->
-        { services = {dbus = {packages = ∀ α. (μ.gcr = α) => [α];};};
-          systemd =
-            { user =
-                { services =
-                    { nm-applet =
-                        { description = String;
-                          partOf = [String];
-                          serviceConfig = {ExecStart = String;};
-                          wantedBy = [String];
-                        };
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.members = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    β ->
+    { services = {dbus = {packages = [ζ];};};
+      systemd =
+        { user =
+            { services =
+                { nm-applet =
+                    { description = String;
+                      partOf = [String];
+                      serviceConfig = {ExecStart = String;};
+                      wantedBy = [String];
                     };
                 };
             };
-        } ->
-        η,
-      κ.programs = θ,
-      θ.nm-applet = ι,
-      ι.enable = ζ
-    ) =>
-    η;
-  meta =
-    { maintainers =
-        ∀ γ δ ε. (λ.teams = γ, γ.freedesktop = δ, δ.members = ε) => ε;
-    };
-  options =
-    { programs =
-        {nm-applet = {enable = ∀ β. (λ.mkEnableOption = String -> β) => β;};};
-    };
+        };
+    } ->
+    η,
+  θ.gcr = ζ,
+  ι.nm-applet = α,
+  κ.programs = ι,
+  λ.freedesktop = γ,
+  μ.teams = λ
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{ config = η;
+  meta = {maintainers = δ;};
+  options = {programs = {nm-applet = {enable = ε;};};};
 }

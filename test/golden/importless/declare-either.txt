@@ -1,22 +1,10 @@
-∀ θ.
-{lib = θ;} ->
-{ options =
-    { value =
-        ∀ η.
-        ( θ.mkOption =
-            { type =
-                ∀ α β γ δ ε ζ.
-                ( θ.types = α,
-                  α.either = β -> γ -> δ,
-                  θ.types = ε,
-                  ε.int = β,
-                  θ.types = ζ,
-                  ζ.str = γ
-                ) =>
-                δ;
-            } ->
-            η
-        ) =>
-        η;
-    };
-}
+∀ α β γ δ ε ζ η θ.
+( α.either = β -> γ -> δ,
+  α.int = β,
+  α.mkOption = {type = δ;} -> ε,
+  α.str = γ,
+  ζ.types = α,
+  η.types = α,
+  θ.types = α
+) =>
+{lib = α;} -> {options = {value = ε;};}

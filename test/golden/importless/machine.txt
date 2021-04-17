@@ -1,13 +1,11 @@
-∀ γ.
-{pkgs = γ;} ->
+∀ γ δ.
+(γ.docker = δ) => {pkgs = γ;} ->
 { nixpkgs =
     { config =
         { packageOverrides =
-            ∀ β.
-            β ->
-            { hello-world-container =
-                ∀ α. (β.callPackage = Path -> {} -> α) => α;
-            };
+            ∀ α β.
+            (α.callPackage = Path -> {} -> β) => α ->
+            {hello-world-container = β;};
         };
     };
   systemd =
@@ -22,6 +20,5 @@
             };
         };
     };
-  virtualisation =
-    {docker = {enable = Bool; package = ∀ β. (γ.docker = β) => β;};};
+  virtualisation = {docker = {enable = Bool; package = δ;};};
 }

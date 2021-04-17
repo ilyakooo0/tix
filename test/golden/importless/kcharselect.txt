@@ -1,26 +1,27 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kbookmarks = δ;
-  kconfig = δ;
-  kconfigwidgets = δ;
-  kcoreaddons = δ;
-  kcrash = δ;
-  kdoctools = γ;
-  ki18n = δ;
-  kwidgetsaddons = δ;
-  kxmlgui = δ;
-  lib = ε;
+∀ α β γ δ ε ζ η θ.
+( α.gpl2Plus = β,
+  α.schmittlauch = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kbookmarks = η;
+  kconfig = η;
+  kconfigwidgets = η;
+  kcoreaddons = η;
+  kcrash = η;
+  kdoctools = ζ;
+  ki18n = η;
+  kwidgetsaddons = η;
+  kxmlgui = η;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [η];
       enableParallelBuilding = Bool;
-      meta =
-        { description = String;
-          license = ∀ α β. (ε.licenses = α, α.gpl2Plus = β) => β;
-          maintainers = ∀ α β. (ε.maintainers = α, α.schmittlauch = β) => [β];
-        };
+      meta = {description = String; license = β; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [ζ];
     } ->
-    ζ;
+    θ;
 } ->
-ζ
+θ

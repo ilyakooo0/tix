@@ -1,15 +1,20 @@
-∀ β γ δ ε ζ η θ ι κ.
-( β.mapAttrsToList = (γ -> δ -> String) -> ε -> ζ,
-  β.concatStrings = ζ -> String
-) =>
-{ fetchurl =
-    { meta = {homepage = String;};
-      sha256 = ∀ α. (δ.sha256 = α) => α;
-      url = String;
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mkDerivation =
+    { buildPhase = String;
+      configurePhase = String;
+      installPhase = String;
+      name = String;
+      src = β;
     } ->
-    η;
-  lib = β;
-  registryDat = θ;
-  stdenv = ι;
+    γ,
+  δ.concatStrings = ε -> String,
+  δ.mapAttrsToList = (ζ -> η -> String) -> θ -> ε,
+  δ.replaceChars = [String] -> [String] -> ζ -> String,
+  η.sha256 = ι
+) =>
+{ fetchurl = {meta = {homepage = String;}; sha256 = ι; url = String;} -> β;
+  lib = δ;
+  registryDat = κ;
+  stdenv = α;
 } ->
-κ -> ε -> String
+λ -> θ -> String

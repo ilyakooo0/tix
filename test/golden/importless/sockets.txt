@@ -1,18 +1,17 @@
-∀ ε ζ η θ.
-( ε.mkDerivation =
-    { buildInputs = [ζ];
-      luaver = ∀ δ. (ζ.luaversion = δ) => δ;
-      meta =
-        { homepage = String;
-          hydraPlatforms =
-            ∀ α β γ. (ε.lib = α, α.platforms = β, β.linux = γ) => γ;
-          maintainers = ∀ α. α;
-        };
+∀ β γ δ ε ζ η θ ι.
+( β.linux = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      luaver = ε;
+      meta = {homepage = String; hydraPlatforms = γ; maintainers = ∀ α. α;};
       patchPhase = String;
       pname = String;
-      src = η;
+      src = ζ;
       version = String;
     } ->
-    θ
+    η,
+  δ.luaversion = ε,
+  θ.platforms = β,
+  ι.lib = θ
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> η; lua5 = ζ; stdenv = ε;} -> θ
+{fetchurl = {sha256 = String; url = String;} -> ζ; lua5 = δ; stdenv = β;} -> η

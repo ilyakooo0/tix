@@ -1,23 +1,25 @@
-∀ δ ε ζ η.
-{ extra-cmake-modules = δ;
-  kcoreaddons = ε;
-  kdoctools = δ;
-  ki18n = ε;
-  kio = ε;
-  kwidgetsaddons = ε;
-  lib = ζ;
+∀ α β γ δ ε ζ η θ ι.
+( α.gpl2 = β,
+  α.lgpl21 = β,
+  α.ttuegel = γ,
+  δ.licenses = α,
+  ε.licenses = α,
+  ζ.maintainers = α
+) =>
+{ extra-cmake-modules = η;
+  kcoreaddons = θ;
+  kdoctools = η;
+  ki18n = θ;
+  kio = θ;
+  kwidgetsaddons = θ;
+  lib = α;
   mkDerivation =
-    { buildInputs = [ε];
-      meta =
-        { license =
-            ∀ α β γ.
-            (ζ.licenses = α, α.gpl2 = β, ζ.licenses = γ, γ.lgpl21 = β) => [β];
-          maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { buildInputs = [θ];
+      meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [η];
     } ->
-    η;
-  samba = ε;
+    ι;
+  samba = θ;
 } ->
-η
+ι

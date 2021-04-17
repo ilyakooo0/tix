@@ -1,34 +1,34 @@
-∀ δ ε ζ η θ.
-{ aeson = δ;
-  base = δ;
-  binary = δ;
-  bytestring = δ;
-  containers = δ;
-  directory = δ;
+∀ α β γ δ ε ζ η θ.
+(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { aeson = ε;
+  base = ε;
+  binary = ε;
+  bytestring = ε;
+  containers = ε;
+  directory = ε;
   fetchgit =
-    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
-  filepath = δ;
-  ghc-prim = δ;
-  hpack = ζ;
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ζ;
+  filepath = ε;
+  ghc-prim = ε;
+  hpack = η;
   mkDerivation =
-    { executableHaskellDepends = [δ];
+    { executableHaskellDepends = [ε];
       homepage = String;
       isExecutable = Bool;
       isLibrary = Bool;
-      libraryHaskellDepends = [δ];
-      libraryToolDepends = [ζ];
-      license = ∀ α β γ. (η.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [ε];
+      libraryToolDepends = [η];
+      license = β;
       pname = String;
       prePatch = String;
-      src = ε;
-      testHaskellDepends = [δ];
+      src = ζ;
+      testHaskellDepends = [ε];
       version = String;
     } ->
     θ;
-  optparse-applicative = δ;
-  stdenv = η;
-  text = δ;
-  unliftio = δ;
-  unordered-containers = δ;
+  optparse-applicative = ε;
+  stdenv = α;
+  text = ε;
+  unliftio = ε;
+  unordered-containers = ε;
 } ->
 θ

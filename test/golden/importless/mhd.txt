@@ -1,24 +1,29 @@
-∀ γ δ ε ζ η.
+∀ α β γ δ ε ζ η θ ι.
+( α.brainrape = β,
+  α.lgpl21 = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
 { build-idris-package =
-    { extraBuildInputs = [γ];
-      idrisDeps = [δ];
+    { extraBuildInputs = [ζ];
+      idrisDeps = [η];
       ipkgName = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (ε.licenses = α, α.lgpl21 = β) => β;
-          maintainers = ∀ α β. (ε.maintainers = α, α.brainrape = β) => [β];
+          license = γ;
+          maintainers = [β];
         };
       name = String;
-      src = ζ;
+      src = θ;
       version = String;
     } ->
-    η;
-  contrib = δ;
-  effects = δ;
+    ι;
+  contrib = η;
+  effects = η;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  lib = ε;
-  libmicrohttpd = γ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  lib = α;
+  libmicrohttpd = ζ;
 } ->
-η
+ι

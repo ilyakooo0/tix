@@ -1,37 +1,39 @@
-∀ γ δ ε ζ.
-{ akonadi-contacts = γ;
-  extra-cmake-modules = δ;
-  gnupg = γ;
-  karchive = γ;
-  kcodecs = γ;
-  kcontacts = γ;
-  kcoreaddons = γ;
-  kcrash = γ;
-  kdbusaddons = γ;
-  kdoctools = δ;
-  ki18n = γ;
-  kiconthemes = γ;
-  kio = γ;
-  kjobwidgets = γ;
-  knotifications = γ;
-  kservice = γ;
-  ktextwidgets = γ;
-  kwidgetsaddons = γ;
-  kwindowsystem = γ;
-  kxmlgui = γ;
-  lib = ε;
-  makeWrapper = δ;
+∀ α β γ δ ε ζ η θ.
+( α.gpl2 = β,
+  α.ttuegel = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
+{ akonadi-contacts = ζ;
+  extra-cmake-modules = η;
+  gnupg = ζ;
+  karchive = ζ;
+  kcodecs = ζ;
+  kcontacts = ζ;
+  kcoreaddons = ζ;
+  kcrash = ζ;
+  kdbusaddons = ζ;
+  kdoctools = η;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kio = ζ;
+  kjobwidgets = ζ;
+  knotifications = ζ;
+  kservice = ζ;
+  ktextwidgets = ζ;
+  kwidgetsaddons = ζ;
+  kwindowsystem = ζ;
+  kxmlgui = ζ;
+  lib = α;
+  makeWrapper = η;
   mkDerivation =
-    { buildInputs = [γ];
-      meta =
-        { license = ∀ α β. (ε.licenses = α, α.gpl2 = β) => [β];
-          maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { buildInputs = [ζ];
+      meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [δ];
+      nativeBuildInputs = [η];
       postFixup = String;
     } ->
-    ζ;
-  qgpgme = γ;
+    θ;
+  qgpgme = ζ;
 } ->
-ζ
+θ

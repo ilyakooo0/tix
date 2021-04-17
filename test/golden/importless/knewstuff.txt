@@ -1,32 +1,32 @@
-∀ γ δ ε ζ η θ.
-{ attica = γ;
-  extra-cmake-modules = δ;
-  fetchpatch = {revert = Bool; sha256 = String; url = String;} -> ε;
-  karchive = ζ;
-  kcompletion = ζ;
-  kconfig = ζ;
-  kcoreaddons = ζ;
-  ki18n = ζ;
-  kiconthemes = ζ;
-  kio = ζ;
-  kirigami2 = ζ;
-  kitemviews = ζ;
-  kpackage = ζ;
-  kservice = γ;
-  ktextwidgets = ζ;
-  kwidgetsaddons = ζ;
-  kxmlgui = γ;
-  lib = η;
+∀ α β γ δ ε ζ η θ.
+(α.ttuegel = β, γ.maintainers = α) => { attica = δ;
+  extra-cmake-modules = ε;
+  fetchpatch = {revert = Bool; sha256 = String; url = String;} -> ζ;
+  karchive = η;
+  kcompletion = η;
+  kconfig = η;
+  kcoreaddons = η;
+  ki18n = η;
+  kiconthemes = η;
+  kio = η;
+  kirigami2 = η;
+  kitemviews = η;
+  kpackage = η;
+  kservice = δ;
+  ktextwidgets = η;
+  kwidgetsaddons = η;
+  kxmlgui = δ;
+  lib = α;
   mkDerivation =
-    { buildInputs = [ζ];
-      meta = {maintainers = ∀ α β. (η.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [η];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [δ];
-      patches = [ε];
-      propagatedBuildInputs = [γ];
+      nativeBuildInputs = [ε];
+      patches = [ζ];
+      propagatedBuildInputs = [δ];
     } ->
     θ;
-  qtbase = ζ;
-  qtdeclarative = ζ;
+  qtbase = η;
+  qtdeclarative = η;
 } ->
 θ

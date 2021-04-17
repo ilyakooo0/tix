@@ -1,12 +1,7 @@
-∀ ε.
-{lib = ε;} ->
-{ options =
-    { value =
-        ∀ δ.
-        ( ε.mkOption =
-            {type = ∀ α β γ. (ε.types = α, α.ints = β, β.positive = γ) => γ;} ->
-            δ
-        ) =>
-        δ;
-    };
-}
+∀ α β γ δ ε.
+( α.mkOption = {type = β;} -> γ,
+  α.positive = β,
+  δ.ints = α,
+  ε.types = δ
+) =>
+{lib = α;} -> {options = {value = γ;};}

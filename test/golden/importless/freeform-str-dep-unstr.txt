@@ -1,17 +1,10 @@
-∀ η θ.
-{config = η; lib = θ;} ->
-{ config = {foo = ∀ ε ζ. (θ.mkIf = η -> ε -> ζ, η.value = ε) => ζ;};
-  options =
-    { foo =
-        ∀ ε.
-        ( θ.mkOption =
-            { default = Null;
-              type =
-                ∀ α β γ δ.
-                (θ.types = α, α.nullOr = β -> γ, θ.types = δ, δ.str = β) => γ;
-            } ->
-            ε
-        ) =>
-        ε;
-    };
-}
+∀ α β γ δ ε ζ η θ ι.
+( α.mkIf = β -> γ -> δ,
+  α.mkOption = {default = Null; type = ε;} -> ζ,
+  α.nullOr = η -> ε,
+  α.str = η,
+  β.value = γ,
+  θ.types = α,
+  ι.types = α
+) =>
+{config = β; lib = α;} -> {config = {foo = δ;}; options = {foo = ζ;};}

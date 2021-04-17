@@ -1,8 +1,8 @@
-∀ α β γ δ ε.
-{ lld = α;
-  llvm = β;
-  runCommand = String -> {preferLocalBuild = Bool;} -> String -> γ;
-  stdenv = δ;
-  version = ε;
+∀ α β γ δ ε ζ.
+(α.hostPlatform = β, α.targetPlatform = β) => { lld = γ;
+  llvm = δ;
+  runCommand = String -> {preferLocalBuild = Bool;} -> String -> ε;
+  stdenv = α;
+  version = ζ;
 } ->
-γ
+ε

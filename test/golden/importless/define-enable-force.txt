@@ -1,1 +1,1 @@
-∀ β. {lib = β;} -> {enable = ∀ α. (β.mkForce = Bool -> α) => α;}
+∀ α β. (α.mkForce = Bool -> β) => {lib = α;} -> {enable = β;}

@@ -1,22 +1,25 @@
-∀ γ δ ε ζ.
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lgpl21 = β,
+  α.vbgl = γ,
+  δ.meta = ε,
+  ζ.licenses = α,
+  η.maintainers = α,
+  ε.homepage = θ
+) =>
 { buildDunePackage =
     { meta =
-        { description = String;
-          homepage = ∀ α β. (γ.meta = α, α.homepage = β) => β;
-          license = ∀ α β. (δ.licenses = α, α.lgpl21 = β) => β;
-          maintainers = ∀ α β. (δ.maintainers = α, α.vbgl = β) => [β];
-        };
+        {description = String; homepage = θ; license = β; maintainers = [γ];};
       minimumOCamlVersion = String;
       pname = String;
       preBuild = String;
-      propagatedBuildInputs = [ε];
-      src = γ;
+      propagatedBuildInputs = [ι];
+      src = δ;
       version = String;
     } ->
-    ζ;
-  camlp4 = ε;
+    κ;
+  camlp4 = ι;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> γ;
-  lib = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
+  lib = α;
 } ->
-ζ
+κ

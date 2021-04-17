@@ -1,40 +1,35 @@
-∀ ζ η θ ι.
-(ζ.services = η) => {config = ζ; lib = θ; pkgs = ι;} ->
-{ config =
-    ∀ β γ δ ε.
-    ( θ.mkIf =
-        β ->
-        { networking =
-            { firewall =
-                {allowedTCPPorts = [Integer]; allowedUDPPorts = [Integer];};
-            };
-          systemd =
-            { user =
-                { services =
-                    { urserver =
-                        { after = [String];
-                          description = String;
-                          partOf = [String];
-                          serviceConfig =
-                            { ExecStart = String;
-                              ExecStop = String;
-                              Restart = String;
-                              RestartSec = Integer;
-                              Type = String;
-                            };
-                          wantedBy = [String];
+∀ α β γ δ ε ζ η θ.
+( α.urserver = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { networking =
+        { firewall =
+            {allowedTCPPorts = [Integer]; allowedUDPPorts = [Integer];};
+        };
+      systemd =
+        { user =
+            { services =
+                { urserver =
+                    { after = [String];
+                      description = String;
+                      partOf = [String];
+                      serviceConfig =
+                        { ExecStart = String;
+                          ExecStop = String;
+                          Restart = String;
+                          RestartSec = Integer;
+                          Type = String;
                         };
+                      wantedBy = [String];
                     };
                 };
             };
-        } ->
-        γ,
-      δ.urserver = ε,
-      ε.enable = β
-    ) =>
-    γ;
-  options =
-    { services =
-        {urserver = {enable = ∀ α. (θ.mkEnableOption = String -> α) => α;};};
-    };
-}
+        };
+    } ->
+    ζ,
+  β.enable = ε,
+  η.services = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ζ; options = {services = {urserver = {enable = δ;};};};}

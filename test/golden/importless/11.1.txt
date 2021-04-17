@@ -1,43 +1,51 @@
-∀ δ ε ζ η θ.
-( δ.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.linux = β,
+  α.mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
-      buildInputs = [ε];
+      buildInputs = [γ];
       configureFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.zlib = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = δ;
+          maintainers = [ε];
+          platforms = β;
         };
       name = String;
       nativeBuildInputs = [ζ];
       preConfigure = String;
       src = η;
     } ->
-    θ
+    θ,
+  α.raskin = ε,
+  α.zlib = δ,
+  ι.licenses = α,
+  κ.lib = ι,
+  λ.maintainers = α,
+  μ.lib = λ,
+  ν.platforms = α,
+  ξ.lib = ν
 ) =>
-{ SDL2 = ε;
-  autoconf = ε;
-  automake = ε;
+{ SDL2 = γ;
+  autoconf = γ;
+  automake = γ;
   fetchFromBitbucket =
     {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  freetype = ε;
-  libGL = ε;
-  libGLU = ε;
-  libdevil = ε;
-  libmodplug = ε;
-  libogg = ε;
-  libtheora = ε;
-  libtool = ε;
-  libvorbis = ε;
-  luajit = ε;
-  mpg123 = ε;
-  openal = ε;
-  physfs = ε;
+  freetype = γ;
+  libGL = γ;
+  libGLU = γ;
+  libdevil = γ;
+  libmodplug = γ;
+  libogg = γ;
+  libtheora = γ;
+  libtool = γ;
+  libvorbis = γ;
+  luajit = γ;
+  mpg123 = γ;
+  openal = γ;
+  physfs = γ;
   pkgconfig = ζ;
-  stdenv = δ;
-  which = ε;
+  stdenv = α;
+  which = γ;
 } ->
 θ

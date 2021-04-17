@@ -1,18 +1,18 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  kconfig = δ;
-  kwidgetsaddons = δ;
-  lib = ε;
+∀ α β γ δ ε ζ η.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kconfig = ε;
+  kwidgetsaddons = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
       outputs = [String];
       propagatedBuildInputs = [ζ];
     } ->
     η;
   qtbase = ζ;
-  qttools = δ;
+  qttools = ε;
 } ->
 η

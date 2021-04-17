@@ -1,28 +1,23 @@
-∀ μ ν ξ.
-{config = μ; lib = ν; pkgs = ξ;} ->
-{ config =
-    ∀ η θ ι κ λ.
-    ( ν.modules = η,
-      η.mkIf =
-        θ ->
-        { environment = {systemPackages = ∀ β. (ξ.clickshare-csc1 = β) => [β];};
-          services =
-            {udev = {packages = ∀ α. (ξ.clickshare-csc1 = α) => [α];};};
-          users = {groups = {clickshare = {};};};
-        } ->
-        ι,
-      μ.programs = κ,
-      κ.clickshare-csc1 = λ,
-      λ.enable = θ
-    ) =>
-    ι;
-  meta = {maintainers = ∀ ε ζ. (ν.maintainers = ε, ε.yarny = ζ) => [ζ];};
-  options =
-    { programs =
-        { clickshare-csc1 =
-            { enable =
-                ∀ γ δ. (ν.options = γ, γ.mkEnableOption = String -> δ) => δ;
-            };
-        };
-    };
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      services = {udev = {packages = [ζ];};};
+      users = {groups = {clickshare = {};};};
+    } ->
+    η,
+  γ.yarny = θ,
+  ι.clickshare-csc1 = ε,
+  κ.clickshare-csc1 = α,
+  λ.programs = κ,
+  μ.modules = γ,
+  ν.maintainers = γ,
+  ξ.options = γ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{ config = η;
+  meta = {maintainers = [θ];};
+  options = {programs = {clickshare-csc1 = {enable = δ;};};};
 }

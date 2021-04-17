@@ -1,0 +1,257 @@
+{ 14.04 =
+    { ap-northeast-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-2 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      sa-east-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-east-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-west-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-west-2 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+    };
+  14.12 =
+    { ap-northeast-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-2 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      eu-central-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      eu-west-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      sa-east-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-east-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-west-1 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+      us-west-2 = {hvm-ebs = String; pv-ebs = String; pv-s3 = String;};
+    };
+  15.09 =
+    { ap-northeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-central-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      sa-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+    };
+  16.03 =
+    { ap-northeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-northeast-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-south-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-central-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      sa-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+    };
+  16.09 =
+    { ap-northeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-northeast-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-south-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ap-southeast-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      ca-central-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-central-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      eu-west-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      sa-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-east-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-east-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-1 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+      us-west-2 =
+        {hvm-ebs = String; hvm-s3 = String; pv-ebs = String; pv-s3 = String;};
+    };
+  17.03 =
+    { ap-northeast-1 = {hvm-ebs = String; hvm-s3 = String;};
+      ap-northeast-2 = {hvm-ebs = String; hvm-s3 = String;};
+      ap-south-1 = {hvm-ebs = String; hvm-s3 = String;};
+      ap-southeast-1 = {hvm-ebs = String; hvm-s3 = String;};
+      ap-southeast-2 = {hvm-ebs = String; hvm-s3 = String;};
+      ca-central-1 = {hvm-ebs = String; hvm-s3 = String;};
+      eu-central-1 = {hvm-ebs = String; hvm-s3 = String;};
+      eu-west-1 = {hvm-ebs = String; hvm-s3 = String;};
+      eu-west-2 = {hvm-ebs = String; hvm-s3 = String;};
+      sa-east-1 = {hvm-ebs = String; hvm-s3 = String;};
+      us-east-1 = {hvm-ebs = String; hvm-s3 = String;};
+      us-east-2 = {hvm-ebs = String; hvm-s3 = String;};
+      us-west-1 = {hvm-ebs = String; hvm-s3 = String;};
+      us-west-2 = {hvm-ebs = String; hvm-s3 = String;};
+    };
+  17.09 =
+    { ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  18.03 =
+    { ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  18.09 =
+    { ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  19.03 =
+    { ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  19.09 =
+    { ap-east-1 = {hvm-ebs = String;};
+      ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-north-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  20.03 =
+    { ap-east-1 = {hvm-ebs = String;};
+      ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-north-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  20.09 =
+    { ap-east-1 = {hvm-ebs = String;};
+      ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-north-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+  latest =
+    { ap-east-1 = {hvm-ebs = String;};
+      ap-northeast-1 = {hvm-ebs = String;};
+      ap-northeast-2 = {hvm-ebs = String;};
+      ap-south-1 = {hvm-ebs = String;};
+      ap-southeast-1 = {hvm-ebs = String;};
+      ap-southeast-2 = {hvm-ebs = String;};
+      ca-central-1 = {hvm-ebs = String;};
+      eu-central-1 = {hvm-ebs = String;};
+      eu-north-1 = {hvm-ebs = String;};
+      eu-west-1 = {hvm-ebs = String;};
+      eu-west-2 = {hvm-ebs = String;};
+      eu-west-3 = {hvm-ebs = String;};
+      sa-east-1 = {hvm-ebs = String;};
+      us-east-1 = {hvm-ebs = String;};
+      us-east-2 = {hvm-ebs = String;};
+      us-west-1 = {hvm-ebs = String;};
+      us-west-2 = {hvm-ebs = String;};
+    };
+}

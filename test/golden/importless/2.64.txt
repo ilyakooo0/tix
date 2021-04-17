@@ -1,6 +1,8 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ.
+( α.all = β,
+  α.gpl2Plus = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
       doCheck = Bool;
       doInstallCheck = Bool;
       dontPatchShebangs = Bool;
@@ -8,19 +10,23 @@
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2Plus = γ) => γ;
+          license = γ;
           longDescription = String;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.all = γ) => γ;
+          platforms = β;
         };
       name = String;
       preCheck = String;
-      src = ζ;
+      src = ε;
     } ->
-    η
+    ζ,
+  η.licenses = α,
+  θ.lib = η,
+  ι.platforms = α,
+  κ.lib = ι
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
-  m4 = ε;
-  perl = ε;
-  stdenv = δ;
+{ fetchurl = {sha256 = String; url = String;} -> ε;
+  m4 = δ;
+  perl = δ;
+  stdenv = α;
 } ->
-η
+ζ

@@ -1,22 +1,21 @@
-∀ δ ε ζ η θ.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ.
+( α.bsd3 = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       installPhase = String;
-      jar = ζ;
-      meta =
-        { description = String;
-          homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
-        };
+      jar = δ;
+      meta = {description = String; homepage = String; license = β;};
       phases = String;
       pname = String;
       version = String;
     } ->
-    η
+    ε,
+  ζ.licenses = α,
+  η.lib = ζ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
+{ fetchurl = {sha256 = String; url = String;} -> δ;
   jre = θ;
-  makeWrapper = ε;
-  stdenv = δ;
+  makeWrapper = γ;
+  stdenv = α;
 } ->
-η
+ε

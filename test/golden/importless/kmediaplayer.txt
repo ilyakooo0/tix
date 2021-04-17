@@ -1,13 +1,13 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kparts = δ;
-  kxmlgui = δ;
-  lib = ε;
+∀ α β γ δ ε ζ.
+(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kparts = ε;
+  kxmlgui = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.ttuegel = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
     } ->
     ζ;
 } ->

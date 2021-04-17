@@ -1,13 +1,9 @@
-∀ γ δ ε ζ.
-{ bifunctors = γ;
+∀ α β γ δ ε ζ.
+(α.brainrape = β, γ.maintainers = α) => { bifunctors = δ;
   build-idris-package =
-    { idrisDeps = [γ];
+    { idrisDeps = [δ];
       ipkgName = String;
-      meta =
-        { description = String;
-          homepage = String;
-          maintainers = ∀ α β. (δ.maintainers = α, α.brainrape = β) => [β];
-        };
+      meta = {description = String; homepage = String; maintainers = [β];};
       name = String;
       src = ε;
       version = String;
@@ -15,6 +11,6 @@
     ζ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
-  lib = δ;
+  lib = α;
 } ->
 ζ

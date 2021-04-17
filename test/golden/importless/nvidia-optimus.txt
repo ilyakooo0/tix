@@ -1,52 +1,37 @@
-∀ ξ ο π ρ.
-(ξ.boot = ο, ξ.boot = π) => {config = ξ; lib = ρ;} ->
-{ config =
-    ∀ κ λ μ ν.
-    ( ρ.mkIf =
-        κ ->
-        { boot =
-            { blacklistedKernelModules = [String];
-              extraModulePackages =
-                ∀ ζ η θ. (ζ.kernelPackages = η, η.bbswitch = θ) => [θ];
-              kernelModules = [String];
-            };
-          systemd =
-            { services =
-                { bbswitch =
-                    { description = String;
-                      path =
-                        ∀ α β γ. (α.kernelPackages = β, β.bbswitch = γ) => [γ];
-                      serviceConfig =
-                        { ExecStart = String;
-                          ExecStop = String;
-                          RemainAfterExit = Bool;
-                          Type = String;
-                        };
-                      wantedBy = [String];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.disable = β,
+  α.kernelPackages = γ,
+  δ.bool = ε,
+  δ.mkIf =
+    β ->
+    { boot =
+        { blacklistedKernelModules = [String];
+          extraModulePackages = [ζ];
+          kernelModules = [String];
+        };
+      systemd =
+        { services =
+            { bbswitch =
+                { description = String;
+                  path = [η];
+                  serviceConfig =
+                    { ExecStart = String;
+                      ExecStop = String;
+                      RemainAfterExit = Bool;
+                      Type = String;
                     };
+                  wantedBy = [String];
                 };
             };
-        } ->
-        λ,
-      ξ.hardware = μ,
-      μ.nvidiaOptimus = ν,
-      ν.disable = κ
-    ) =>
-    λ;
-  options =
-    { hardware =
-        { nvidiaOptimus =
-            { disable =
-                ∀ ι.
-                ( ρ.mkOption =
-                    { default = Bool;
-                      description = String;
-                      type = ∀ δ ε. (ρ.types = δ, δ.bool = ε) => ε;
-                    } ->
-                    ι
-                ) =>
-                ι;
-            };
         };
-    };
-}
+    } ->
+    θ,
+  δ.mkOption = {default = Bool; description = String; type = ε;} -> ι,
+  γ.bbswitch = ζ,
+  κ.boot = α,
+  λ.nvidiaOptimus = α,
+  μ.hardware = λ,
+  ν.types = δ
+) =>
+{config = α; lib = δ;} ->
+{config = θ; options = {hardware = {nvidiaOptimus = {disable = ι;};};};}

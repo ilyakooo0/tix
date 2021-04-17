@@ -1,24 +1,31 @@
-∀ ε ζ η θ ι.
-( ε.version = ζ,
-  η.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.mkDerivation =
+    { buildInputs = [β];
       installPhase = String;
       meta =
         { description = String;
-          homepage = ∀ α β. (ε.meta = α, α.homepage = β) => β;
-          license = ∀ α β. (ε.meta = α, α.license = β) => β;
-          maintainers =
-            ∀ α β γ. (η.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β. (ε.meta = α, α.platforms = β) => β;
-          version = ∀ α. α;
+          homepage = γ;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+          version = η;
         };
       nativeBuildInputs = [θ];
       pname = String;
       preConfigure = String;
       sourceRoot = String;
-      src = ∀ δ. (ε.src = δ) => δ;
-      version = ∀ δ. (ε.version = δ) => δ;
+      src = ι;
+      version = η;
     } ->
-    ι
+    κ,
+  α.raskin = ε,
+  β.meta = λ,
+  β.src = ι,
+  β.version = η,
+  μ.maintainers = α,
+  ν.lib = μ,
+  λ.homepage = γ,
+  ξ.license = δ,
+  ο.platforms = ζ
 ) =>
-{cmake = θ; stdenv = η; z3 = ε;} -> ι
+{cmake = θ; stdenv = α; z3 = β;} -> κ

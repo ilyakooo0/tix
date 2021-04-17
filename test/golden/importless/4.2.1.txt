@@ -1,26 +1,34 @@
-∀ δ ε ζ η θ.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.gpl2 = β,
+  α.linux = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
       configureScript = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.gpl2 = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.wmertens = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = β;
+          maintainers = [ε];
+          platforms = γ;
         };
       name = String;
       nativeBuildInputs = [ζ];
-      passthru = {libdvdread = ε;};
+      passthru = {libdvdread = δ;};
       preConfigure = String;
       src = η;
     } ->
-    θ
+    θ,
+  α.wmertens = ε,
+  ι.licenses = α,
+  κ.lib = ι,
+  λ.maintainers = α,
+  μ.lib = λ,
+  ν.platforms = α,
+  ξ.lib = ν
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> η;
-  libdvdread = ε;
+  libdvdread = δ;
   pkgconfig = ζ;
-  stdenv = δ;
+  stdenv = α;
 } ->
 θ

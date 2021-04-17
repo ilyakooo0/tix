@@ -1,19 +1,19 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kconfig = δ;
-  kcoreaddons = δ;
-  ki18n = δ;
-  kio = δ;
-  kirigami2 = δ;
-  lib = ε;
+∀ α β γ δ ε ζ.
+(α.bkchr = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+  kconfig = ε;
+  kcoreaddons = ε;
+  ki18n = ε;
+  kio = ε;
+  kirigami2 = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {maintainers = ∀ α β. (ε.maintainers = α, α.bkchr = β) => [β];};
+    { buildInputs = [ε];
+      meta = {maintainers = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
     } ->
     ζ;
-  qtbase = δ;
-  qtdeclarative = δ;
+  qtbase = ε;
+  qtdeclarative = ε;
 } ->
 ζ

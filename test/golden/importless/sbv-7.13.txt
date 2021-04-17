@@ -1,44 +1,44 @@
-∀ δ ε ζ η.
-{ Glob = δ;
-  QuickCheck = δ;
-  array = δ;
-  async = δ;
-  base = δ;
-  bytestring = δ;
-  containers = δ;
-  crackNum = δ;
-  deepseq = δ;
-  directory = δ;
-  doctest = δ;
-  filepath = δ;
-  generic-deriving = δ;
-  ghc = δ;
-  hlint = δ;
+∀ α β γ δ ε ζ η.
+(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Glob = ε;
+  QuickCheck = ε;
+  array = ε;
+  async = ε;
+  base = ε;
+  bytestring = ε;
+  containers = ε;
+  crackNum = ε;
+  deepseq = ε;
+  directory = ε;
+  doctest = ε;
+  filepath = ε;
+  generic-deriving = ε;
+  ghc = ε;
+  hlint = ε;
   mkDerivation =
     { description = String;
       enableSeparateDataOutput = Bool;
       homepage = String;
-      libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [ε];
+      license = β;
       pname = String;
       sha256 = String;
-      testHaskellDepends = [δ];
+      testHaskellDepends = [ε];
       testSystemDepends = [ζ];
       version = String;
     } ->
     η;
-  mtl = δ;
-  pretty = δ;
-  process = δ;
-  random = δ;
-  stdenv = ε;
-  syb = δ;
-  tasty = δ;
-  tasty-golden = δ;
-  tasty-hunit = δ;
-  tasty-quickcheck = δ;
-  template-haskell = δ;
-  time = δ;
+  mtl = ε;
+  pretty = ε;
+  process = ε;
+  random = ε;
+  stdenv = α;
+  syb = ε;
+  tasty = ε;
+  tasty-golden = ε;
+  tasty-hunit = ε;
+  tasty-quickcheck = ε;
+  template-haskell = ε;
+  time = ε;
   z3 = ζ;
 } ->
 η

@@ -1,18 +1,18 @@
-∀ γ δ ε ζ.
-{ extra-cmake-modules = γ;
-  kcodecs = δ;
-  kconfig = δ;
-  kcoreaddons = δ;
-  ki18n = δ;
-  lib = ε;
+∀ α β γ δ ε ζ.
+(α.lgpl21 = β, γ.licenses = α) => { extra-cmake-modules = δ;
+  kcodecs = ε;
+  kconfig = ε;
+  kcoreaddons = ε;
+  ki18n = ε;
+  lib = α;
   mkDerivation =
-    { buildInputs = [δ];
-      meta = {license = ∀ α β. (ε.licenses = α, α.lgpl21 = β) => [β];};
+    { buildInputs = [ε];
+      meta = {license = [β];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [δ];
       outputs = [String];
     } ->
     ζ;
-  qtbase = δ;
+  qtbase = ε;
 } ->
 ζ

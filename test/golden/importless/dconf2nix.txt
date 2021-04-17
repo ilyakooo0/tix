@@ -1,23 +1,23 @@
-∀ δ ε ζ η.
-{ base = δ;
-  containers = δ;
+∀ α β γ δ ε ζ η.
+(α.asl20 = β, γ.licenses = α, δ.lib = γ) => { base = ε;
+  containers = ε;
   fetchgit =
-    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ε;
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ζ;
   mkDerivation =
     { description = String;
-      executableHaskellDepends = [δ];
+      executableHaskellDepends = [ε];
       isExecutable = Bool;
       isLibrary = Bool;
-      libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ζ.lib = α, α.licenses = β, β.asl20 = γ) => γ;
+      libraryHaskellDepends = [ε];
+      license = β;
       pname = String;
-      src = ε;
+      src = ζ;
       version = String;
     } ->
     η;
-  optparse-applicative = δ;
-  parsec = δ;
-  stdenv = ζ;
-  text = δ;
+  optparse-applicative = ε;
+  parsec = ε;
+  stdenv = α;
+  text = ε;
 } ->
 η

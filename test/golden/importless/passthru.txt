@@ -1,7 +1,3 @@
-∀ β.
-{lib = β;} ->
-{ options =
-    { passthru =
-        ∀ α. (β.mkOption = {description = String; visible = Bool;} -> α) => α;
-    };
-}
+∀ α β.
+(α.mkOption = {description = String; visible = Bool;} -> β) => {lib = α;} ->
+{options = {passthru = β;};}

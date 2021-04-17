@@ -1,26 +1,32 @@
-∀ δ ε ζ η θ ι.
-{ alcotest = δ;
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mit = β,
+  α.optional = Bool -> γ -> δ,
+  α.vbgl = ε,
+  ζ.licenses = α,
+  η.maintainers = α
+) =>
+{ alcotest = γ;
   buildDunePackage =
-    { checkInputs = ∀ γ. (ε.optional = Bool -> δ -> γ) => γ;
+    { checkInputs = δ;
       doCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β. (ε.licenses = α, α.mit = β) => β;
-          maintainers = ∀ α β. (ε.maintainers = α, α.vbgl = β) => [β];
+          license = β;
+          maintainers = [ε];
         };
       minimumOCamlVersion = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [θ];
       pname = String;
-      propagatedBuildInputs = [η];
-      src = θ;
+      propagatedBuildInputs = [ι];
+      src = κ;
       version = String;
     } ->
-    ι;
-  fetchurl = {sha256 = String; url = String;} -> θ;
-  fmt = η;
-  lib = ε;
-  menhir = ζ;
-  re = η;
+    λ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  fmt = ι;
+  lib = α;
+  menhir = θ;
+  re = ι;
 } ->
-ι
+λ

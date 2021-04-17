@@ -1,12 +1,12 @@
 ∀ α β γ δ ε.
-( α.mkDerivation =
-    {buildInputs = (β.sdk = γ) => [γ]; name = String; src = δ;} -> ε
+( α.mkDerivation = {buildInputs = [β]; name = String; src = γ;} -> δ,
+  ε.sdk = β
 ) =>
-{ apple_sdk_sierra = β;
-  cmake = γ;
+{ apple_sdk_sierra = ε;
+  cmake = β;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> γ;
   stdenv = α;
-  xnu-new = γ;
+  xnu-new = β;
 } ->
-ε
+δ

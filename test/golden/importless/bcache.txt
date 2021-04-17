@@ -1,6 +1,6 @@
-∀ γ.
-{pkgs = γ;} ->
+∀ α β γ.
+(α.bcache-tools = β) => {pkgs = α;} ->
 { boot = {initrd = {extraUdevRulesCommands = String;};};
-  environment = {systemPackages = ∀ β. (γ.bcache-tools = β) => [β];};
-  services = {udev = {packages = ∀ α. (γ.bcache-tools = α) => [α];};};
+  environment = {systemPackages = [β];};
+  services = {udev = {packages = [γ];};};
 }

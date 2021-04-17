@@ -1,20 +1,15 @@
-∀ ζ η θ ι.
-(ζ.hardware = η) => {config = ζ; lib = θ; pkgs = ι;} ->
-{ config =
-    ∀ β γ δ ε.
-    ( θ.mkIf =
-        β ->
-        { boot = {kernelModules = [String];};
-          services = {udev = {extraRules = String;};};
-          users = {groups = {uinput = {};};};
-        } ->
-        γ,
-      δ.uinput = ε,
-      ε.enable = β
-    ) =>
-    γ;
-  options =
-    { hardware =
-        {uinput = {enable = ∀ α. (θ.mkEnableOption = String -> α) => α;};};
-    };
-}
+∀ α β γ δ ε ζ η θ.
+( α.uinput = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { boot = {kernelModules = [String];};
+      services = {udev = {extraRules = String;};};
+      users = {groups = {uinput = {};};};
+    } ->
+    ζ,
+  β.enable = ε,
+  η.hardware = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ζ; options = {hardware = {uinput = {enable = δ;};};};}

@@ -1,14 +1,15 @@
-∀ β γ δ ε ζ η.
-( β.releaseTools = γ,
-  γ.makeSourceTarball =
-    { buildInputs = ∀ α. (β.nix = α) => [α];
+∀ α β γ δ ε ζ η.
+( α.makeSourceTarball =
+    { buildInputs = [β];
       distPhase = String;
       name = String;
       officialRelease = Bool;
-      src = δ;
-      version = ε;
-      versionSuffix = ζ;
+      src = γ;
+      version = δ;
+      versionSuffix = ε;
     } ->
-    η
+    ζ,
+  α.nix = β,
+  η.releaseTools = α
 ) =>
-{nixpkgs = δ; pkgs = β; version = ε; versionSuffix = ζ;} -> η
+{nixpkgs = γ; pkgs = α; version = δ; versionSuffix = ε;} -> ζ

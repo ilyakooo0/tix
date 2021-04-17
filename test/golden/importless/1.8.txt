@@ -1,58 +1,57 @@
-∀ ι κ λ μ ν ξ ο.
-( ι.mkDerivation =
-    { buildInputs = [κ];
-      configureFlags =
-        ∀ δ ε.
-        ( ι.lib = δ,
-          δ.optional = Bool -> String -> [String],
-          ι.hostPlatform = ε,
-          ι.buildPlatform = ε
-        ) =>
-        [String];
-      depsBuildBuild =
-        ∀ δ ε ζ η θ.
-        ( λ.stdenv = δ,
-          δ.cc = ε,
-          ι.lib = ζ,
-          ζ.optional = Bool -> η -> [ε],
-          ι.hostPlatform = θ,
-          ι.buildPlatform = θ,
-          μ.guile_1_8 = η
-        ) =>
-        [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.buildPlatform = β,
+  α.hostPlatform = β,
+  α.lgpl2Plus = γ,
+  α.ludo = δ,
+  α.mkDerivation =
+    { buildInputs = [ε];
+      configureFlags = [String];
+      depsBuildBuild = [ζ];
       doCheck = Bool;
       doInstallCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (ι.lib = α, α.licenses = β, β.lgpl2Plus = γ) => γ;
+          license = γ;
           longDescription = String;
-          maintainers =
-            ∀ α β γ. (ι.lib = α, α.maintainers = β, β.ludo = γ) => [γ];
-          platforms = ∀ α β γ. (ι.lib = α, α.platforms = β, β.unix = γ) => γ;
+          maintainers = [δ];
+          platforms = η;
         };
       name = String;
-      nativeBuildInputs = [ν];
+      nativeBuildInputs = [θ];
       outputs = [String];
       patches = [Path];
       postInstall = String;
       preBuild = String;
-      propagatedBuildInputs = [κ];
+      propagatedBuildInputs = [ε];
       setOutputFlags = Bool;
       setupHook = Path;
-      src = ξ;
+      src = ι;
     } ->
-    ο
+    κ,
+  α.optional = Bool -> λ -> [ζ],
+  α.unix = η,
+  μ.guile_1_8 = λ,
+  ν.cc = ζ,
+  ξ.licenses = α,
+  ο.lib = ξ,
+  π.maintainers = α,
+  ρ.lib = π,
+  σ.platforms = α,
+  τ.lib = σ,
+  υ.lib = α,
+  φ.lib = α,
+  χ.stdenv = ν
 ) =>
-{ buildPackages = λ;
-  fetchurl = {sha256 = String; url = String;} -> ξ;
-  gawk = ν;
-  gmp = κ;
-  libtool = κ;
-  makeWrapper = ν;
-  pkgconfig = ν;
+{ buildPackages = ν;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  gawk = θ;
+  gmp = ε;
+  libtool = ε;
+  makeWrapper = θ;
+  pkgconfig = θ;
   pkgsBuildBuild = μ;
-  readline = κ;
-  stdenv = ι;
+  readline = ε;
+  stdenv = α;
 } ->
-ο
+κ

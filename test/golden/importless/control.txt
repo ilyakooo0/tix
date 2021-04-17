@@ -1,33 +1,43 @@
-∀ ζ η θ ι κ λ μ ν ξ ο.
-( ζ.withPackages = (η -> [θ]) -> ι,
-  κ.mkDerivation =
-    { buildInputs =
-        ∀ δ ε. (δ.pycairo = ε, δ.pygobject2 = ε, δ.pygtk = ε) => [λ];
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( β.majorMinor = String -> γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
       doBuild = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (κ.lib = α, α.licenses = β, β.unfree = γ) => γ;
-          maintainers =
-            ∀ α β γ. (κ.lib = α, α.maintainers = β, β.zimbatm = γ) => [γ];
+          license = ε;
+          maintainers = [ζ];
           platforms = [String];
         };
-      nativeBuildInputs = [μ];
+      nativeBuildInputs = [η];
       pname = String;
       postFixup = String;
-      src = ν;
+      src = θ;
       unpackPhase = String;
-      version = ∀ δ. δ;
+      version = ∀ α. α;
     } ->
-    ξ
+    ι,
+  β.unfree = ε,
+  β.zimbatm = ζ,
+  κ.withPackages = (λ -> [μ]) -> δ,
+  λ.pycairo = μ,
+  λ.pygobject2 = ν,
+  λ.pygtk = ξ,
+  ο.versions = β,
+  π.lib = ο,
+  ρ.licenses = β,
+  σ.lib = ρ,
+  τ.maintainers = β,
+  υ.lib = τ
 ) =>
-{ autoPatchelfHook = ο;
-  dpkg = μ;
-  fahviewer = λ;
-  fetchurl = {sha256 = String; url = String;} -> ν;
-  makeWrapper = μ;
-  python2 = ζ;
-  stdenv = κ;
+{ autoPatchelfHook = φ;
+  dpkg = η;
+  fahviewer = δ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  makeWrapper = η;
+  python2 = κ;
+  stdenv = β;
 } ->
-ξ
+ι

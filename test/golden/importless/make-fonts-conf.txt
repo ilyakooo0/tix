@@ -1,11 +1,11 @@
-∀ α β γ δ ε ζ.
-(α.minimal = β) => { dejavu_fonts = γ;
+∀ α β γ δ ε.
+(α.minimal = β) => { dejavu_fonts = α;
   fontDirectories = [β];
-  fontconfig = δ;
-  libxslt = ε;
+  fontconfig = γ;
+  libxslt = δ;
   runCommand =
     String ->
-    {buildInputs = [δ]; fontDirectories = [β]; nativeBuildInputs = [ε];} ->
-    String -> ζ;
+    {buildInputs = [γ]; fontDirectories = [β]; nativeBuildInputs = [δ];} ->
+    String -> ε;
 } ->
-ζ
+ε

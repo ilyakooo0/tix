@@ -1,0 +1,19 @@
+∀ γ δ ε ζ η θ.
+(γ.free = δ, ε.licenses = γ) => { callPackage =
+    ( { elpaBuild =
+          { ename = String;
+            meta = {homepage = String; license = δ;};
+            packageRequires = ∀ α. α;
+            pname = String;
+            src = ζ;
+            version = String;
+          } ->
+          η;
+        fetchurl = {sha256 = String; url = String;} -> ζ;
+        lib = γ;
+      } ->
+      η
+    ) ->
+    {} -> θ;
+} ->
+{org = θ; org-plus-contrib = ∀ β. (γ.free = δ, β.licenses = γ) => θ;}

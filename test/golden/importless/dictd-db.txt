@@ -1,44 +1,30 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( β.mkDerivation =
+∀ α β γ δ ε ζ η.
+( α.linux = β,
+  α.mkDerivation =
     { buildPhase = String;
-      dbName = γ;
+      dbName = String;
       installPhase = String;
-      locale = δ;
-      meta =
-        { description = String;
-          platforms = (β.lib = ε, ε.platforms = ζ, ζ.linux = η) => η;
-        };
+      locale = String;
+      meta = {description = String; platforms = β;};
       name = String;
-      src = θ;
+      src = γ;
       unpackPhase = String;
     } ->
-    ι,
-  β.mkDerivation =
-    { buildPhase = String;
-      dbName = κ;
-      installPhase = String;
-      locale = λ;
-      meta =
-        { description = String;
-          platforms = (β.lib = μ, μ.platforms = ν, ν.linux = ξ) => ξ;
-        };
-      name = String;
-      src = ο;
-      unpackPhase = String;
-    } ->
-    π
+    δ,
+  ε.platforms = α,
+  ζ.lib = ε
 ) =>
-{ callPackage = Path -> {} -> ρ;
-  fetchurl = {sha256 = String; url = String;} -> σ;
-  stdenv = β;
+{ callPackage = Path -> {} -> η;
+  fetchurl = {sha256 = String; url = String;} -> γ;
+  stdenv = α;
 } ->
-{ deu2eng = ∀ α. α;
-  eng2deu = ∀ α. α;
-  eng2fra = ∀ α. α;
-  eng2nld = ∀ α. α;
-  eng2rus = ∀ α. α;
-  fra2eng = ∀ α. α;
-  mueller_eng2rus_pkg = ∀ α. α;
+{ deu2eng = δ;
+  eng2deu = δ;
+  eng2fra = δ;
+  eng2nld = δ;
+  eng2rus = δ;
+  fra2eng = δ;
+  mueller_eng2rus_pkg = δ;
   mueller_enru_abbr =
     {dbName = String; locale = String; name = String; outPath = String;};
   mueller_enru_base =
@@ -49,7 +35,7 @@
     {dbName = String; locale = String; name = String; outPath = String;};
   mueller_enru_names =
     {dbName = String; locale = String; name = String; outPath = String;};
-  nld2eng = ∀ α. α;
-  wiktionary = ρ;
-  wordnet = ρ;
+  nld2eng = δ;
+  wiktionary = η;
+  wordnet = η;
 }

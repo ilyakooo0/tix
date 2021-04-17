@@ -1,26 +1,25 @@
-∀ δ ε ζ η θ ι.
-( δ.mkDerivation =
-    { buildInputs = [ε];
-      meta =
-        { description = String;
-          homepage = String;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
-        };
+∀ α β γ δ ε ζ η θ ι.
+( α.linux = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta = {description = String; homepage = String; platforms = β;};
       name = String;
-      patches = [ζ];
+      patches = [δ];
       preBuild = String;
       sourceRoot = String;
-      src = η;
+      src = ε;
     } ->
-    θ
+    ζ,
+  η.platforms = α,
+  θ.lib = η
 ) =>
-{ fetchpatch = {excludes = [String]; sha256 = String; url = String;} -> ζ;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  gzip = ε;
-  libaio = ε;
-  lvm2 = ε;
-  readline = ε;
-  stdenv = δ;
+{ fetchpatch = {excludes = [String]; sha256 = String; url = String;} -> δ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
+  gzip = γ;
+  libaio = γ;
+  lvm2 = γ;
+  readline = γ;
+  stdenv = α;
   systemd = ι;
 } ->
-θ
+ζ

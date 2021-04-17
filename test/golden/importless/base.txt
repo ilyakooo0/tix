@@ -1,42 +1,39 @@
-∀ γ δ.
-{lib = γ; pkgs = δ;} ->
+∀ α β γ δ ε.
+( α.mkDefault = String -> β,
+  γ.bin = δ,
+  γ.ccrypt = δ,
+  γ.cryptsetup = δ,
+  γ.ddrescue = δ,
+  γ.dosfstools = δ,
+  γ.efibootmgr = δ,
+  γ.efivar = δ,
+  γ.f2fs-tools = δ,
+  γ.fuse = δ,
+  γ.fuse3 = δ,
+  γ.gptfdisk = δ,
+  γ.hdparm = δ,
+  γ.jfsutils = δ,
+  γ.mkpasswd = δ,
+  γ.ms-sys = δ,
+  γ.ntfsprogs = δ,
+  γ.parted = δ,
+  γ.pciutils = δ,
+  γ.rsync = δ,
+  γ.screen = δ,
+  γ.sdparm = δ,
+  γ.smartmontools = δ,
+  γ.socat = δ,
+  γ.sshfs-fuse = δ,
+  γ.testdisk = δ,
+  γ.unzip = δ,
+  γ.usbutils = δ,
+  γ.vim = δ,
+  γ.w3m-nographics = δ,
+  γ.zip = δ,
+  ε.xfsprogs = γ
+) =>
+{lib = α; pkgs = γ;} ->
 { boot = {supportedFilesystems = [String];};
-  environment =
-    { systemPackages =
-        ∀ α β.
-        ( δ.w3m-nographics = α,
-          δ.testdisk = α,
-          δ.ms-sys = α,
-          δ.efibootmgr = α,
-          δ.efivar = α,
-          δ.parted = α,
-          δ.gptfdisk = α,
-          δ.ddrescue = α,
-          δ.ccrypt = α,
-          δ.cryptsetup = α,
-          δ.mkpasswd = α,
-          δ.vim = α,
-          δ.fuse = α,
-          δ.fuse3 = α,
-          δ.sshfs-fuse = α,
-          δ.rsync = α,
-          δ.socat = α,
-          δ.screen = α,
-          δ.sdparm = α,
-          δ.hdparm = α,
-          δ.smartmontools = α,
-          δ.pciutils = α,
-          δ.usbutils = α,
-          δ.ntfsprogs = α,
-          δ.dosfstools = α,
-          δ.xfsprogs = β,
-          β.bin = α,
-          δ.jfsutils = α,
-          δ.f2fs-tools = α,
-          δ.unzip = α,
-          δ.zip = α
-        ) =>
-        [α];
-    };
-  networking = {hostId = ∀ α. (γ.mkDefault = String -> α) => α;};
+  environment = {systemPackages = [δ];};
+  networking = {hostId = β;};
 }

@@ -1,5 +1,2 @@
-∀ β γ.
-{ makeInstalledTest = {tested = ∀ α. (β.glib-testing = α) => α;} -> γ;
-  pkgs = β;
-} ->
-γ
+∀ α β γ.
+(α.glib-testing = β) => {makeInstalledTest = {tested = β;} -> γ; pkgs = α;} -> γ

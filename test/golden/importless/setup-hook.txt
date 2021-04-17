@@ -1,10 +1,6 @@
-∀ β γ δ ε.
-{ lib = β;
+∀ α β γ δ ε ζ.
+(α.escapeShellArgs = β -> γ) => { lib = α;
   runCommand =
-    String ->
-    { luacpathsearchpaths = ∀ α. (β.escapeShellArgs = γ -> α) => α;
-      luapathsearchpaths = ∀ α. (β.escapeShellArgs = δ -> α) => α;
-    } ->
-    String -> ε;
+    String -> {luacpathsearchpaths = γ; luapathsearchpaths = δ;} -> String -> ε;
 } ->
-δ -> γ -> ε
+ζ -> β -> ε

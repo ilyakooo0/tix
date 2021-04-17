@@ -1,26 +1,34 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.linux = β,
+  α.mit = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
       buildPhase = String;
       installPhase = String;
       meta =
         { description = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.raskin = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          license = γ;
+          maintainers = [ε];
+          platforms = β;
           version = String;
         };
       name = String;
       src = ζ;
       version = String;
     } ->
-    η
+    η,
+  α.raskin = ε,
+  θ.licenses = α,
+  ι.lib = θ,
+  κ.maintainers = α,
+  λ.lib = κ,
+  μ.platforms = α,
+  ν.lib = μ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> ζ;
-  perl = ε;
-  stdenv = δ;
-  texLive = ε;
-  texinfo = ε;
+  perl = δ;
+  stdenv = α;
+  texLive = δ;
+  texinfo = δ;
 } ->
 η

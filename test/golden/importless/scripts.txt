@@ -1,21 +1,27 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
+∀ β γ δ ε ζ η θ ι κ λ.
+( β.lgpl21Plus = γ,
+  β.linux = δ,
+  β.mkDerivation =
     { meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.lgpl21Plus = γ) => γ;
+          license = γ;
           maintainers = ∀ α. α;
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.linux = γ) => γ;
+          platforms = δ;
         };
       nativeBuildInputs = [ε];
       pname = String;
       src = ζ;
       version = String;
     } ->
-    η
+    η,
+  θ.licenses = β,
+  ι.lib = θ,
+  κ.platforms = β,
+  λ.lib = κ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> ζ;
   pkgconfig = ε;
-  stdenv = δ;
+  stdenv = β;
 } ->
 η

@@ -1,8 +1,8 @@
-∀ γ δ ε ζ η.
-(γ.lib = δ, γ.lib = ε) => { file = ζ;
-  stdenv = γ;
-  writeScript = String -> String -> η;
-} ->
-{ checkForRemainingFiles = η;
-  commonFileActions = ∀ α β. {docFiles = α; noiseFiles = β;} -> η;
+∀ γ δ ε ζ η θ ι.
+( γ.concatMapStringsSep = String -> (δ -> String) -> ε -> ζ,
+  η.lib = γ
+) =>
+{file = θ; stdenv = γ; writeScript = String -> String -> ι;} ->
+{ checkForRemainingFiles = ι;
+  commonFileActions = ∀ α β. {docFiles = α; noiseFiles = β;} -> ι;
 }

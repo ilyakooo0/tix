@@ -1,15 +1,6 @@
 ∀ α β γ δ ε ζ η.
-( α.mkDerivation =
-    { installPhase = String;
-      name = β;
-      preferLocalBuild = Bool;
-      setupHook = Path;
-      src = γ;
-    } ->
-    δ,
-  α.lib = ε,
-  ε.mapAttrs =
-    (β -> ζ -> δ) ->
+( α.mapAttrs =
+    (β -> γ -> δ) ->
     { ABMP15_3_nnlo = String;
       ABMP15_4_nnlo = String;
       ABMP15_5_nnlo = String;
@@ -820,6 +811,15 @@
       nCTEQ15np_84_42 = String;
       nCTEQ15np_9_4 = String;
     } ->
-    η
+    ε,
+  α.mkDerivation =
+    { installPhase = String;
+      name = β;
+      preferLocalBuild = Bool;
+      setupHook = Path;
+      src = ζ;
+    } ->
+    δ,
+  η.lib = α
 ) =>
-{fetchurl = {sha256 = ζ; url = String;} -> γ; stdenv = α;} -> η
+{fetchurl = {sha256 = γ; url = String;} -> ζ; stdenv = α;} -> ε

@@ -1,28 +1,34 @@
-∀ γ δ ε ζ.
+∀ β γ δ ε ζ η θ ι κ.
+( (β) // ({description = String;}) ~ (γ),
+  δ.optional = Bool -> ε -> ζ,
+  η.meta = β,
+  η.src = θ,
+  η.version = ι
+) =>
 { buildDunePackage =
-    { checkInputs = ∀ α. (γ.optional = Bool -> δ -> α) => α;
+    { checkInputs = ζ;
       doCheck = Bool;
-      meta = ∀ α β. ((α) // ({description = String;}) ~ (β), ε.meta = α) => β;
+      meta = ∀ α. α;
       pname = String;
-      propagatedBuildInputs = [ε];
-      src = ∀ α. (ε.src = α) => α;
+      propagatedBuildInputs = [η];
+      src = θ;
       useDune2 = Bool;
-      version = ∀ α. (ε.version = α) => α;
+      version = ι;
     } ->
-    ζ;
-  checkseum = ε;
-  cmdliner = ε;
-  git-unix = ε;
-  irmin = ε;
-  irmin-fs = ε;
-  irmin-git = ε;
-  irmin-graphql = ε;
-  irmin-http = ε;
-  irmin-mem = ε;
-  irmin-pack = ε;
-  irmin-test = δ;
-  irmin-watcher = ε;
-  lib = γ;
-  yaml = ε;
+    κ;
+  checkseum = η;
+  cmdliner = η;
+  git-unix = η;
+  irmin = η;
+  irmin-fs = η;
+  irmin-git = η;
+  irmin-graphql = η;
+  irmin-http = η;
+  irmin-mem = η;
+  irmin-pack = η;
+  irmin-test = ε;
+  irmin-watcher = η;
+  lib = δ;
+  yaml = η;
 } ->
-ζ
+κ

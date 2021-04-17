@@ -1,19 +1,14 @@
-∀ δ ε ζ η θ ι κ λ.
-{ CoreFoundation = δ;
-  Security = ε;
-  boost = ζ;
+∀ α β γ δ ε ζ η θ ι κ λ.
+(α.agpl3 = β, γ.licenses = α, δ.lib = γ) => { CoreFoundation = ε;
+  Security = ζ;
+  boost = η;
   callPackage =
     Path ->
-    {CoreFoundation = δ; Security = ε; boost = ζ; cctools = η; sasl = θ;} ->
-    { license = ∀ α β γ. (ι.lib = α, α.licenses = β, β.agpl3 = γ) => γ;
-      patches = [Path];
-      sha256 = String;
-      version = String;
-    } ->
-    κ;
-  cctools = η;
+    {CoreFoundation = ε; Security = ζ; boost = η; cctools = θ; sasl = ι;} ->
+    {license = β; patches = [Path]; sha256 = String; version = String;} -> κ;
+  cctools = θ;
   lib = λ;
-  sasl = θ;
-  stdenv = ι;
+  sasl = ι;
+  stdenv = α;
 } ->
 κ

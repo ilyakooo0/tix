@@ -1,35 +1,35 @@
-∀ δ ε ζ.
-{ Cabal = δ;
-  base = δ;
-  bytestring = δ;
-  containers = δ;
-  curry-base = δ;
-  directory = δ;
-  extra = δ;
-  file-embed = δ;
-  filepath = δ;
+∀ α β γ δ ε ζ.
+(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Cabal = ε;
+  base = ε;
+  bytestring = ε;
+  containers = ε;
+  curry-base = ε;
+  directory = ε;
+  extra = ε;
+  file-embed = ε;
+  filepath = ε;
   mkDerivation =
     { description = String;
       enableSeparateDataOutput = Bool;
-      executableHaskellDepends = [δ];
+      executableHaskellDepends = [ε];
       homepage = String;
       isExecutable = Bool;
       isLibrary = Bool;
-      libraryHaskellDepends = [δ];
-      license = ∀ α β γ. (ε.lib = α, α.licenses = β, β.bsd3 = γ) => γ;
+      libraryHaskellDepends = [ε];
+      license = β;
       pname = String;
       src = Path;
-      testHaskellDepends = [δ];
+      testHaskellDepends = [ε];
       version = String;
     } ->
     ζ;
-  mtl = δ;
-  network-uri = δ;
-  pretty = δ;
-  process = δ;
-  set-extra = δ;
-  stdenv = ε;
-  template-haskell = δ;
-  transformers = δ;
+  mtl = ε;
+  network-uri = ε;
+  pretty = ε;
+  process = ε;
+  set-extra = ε;
+  stdenv = α;
+  template-haskell = ε;
+  transformers = ε;
 } ->
 ζ

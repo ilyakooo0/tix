@@ -1,6 +1,7 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
-    { buildInputs = [ε];
+∀ α β γ δ ε ζ η θ ι κ.
+( α.mit = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       buildPhase = String;
       checkTarget = String;
       createFindlibDestdir = Bool;
@@ -9,23 +10,27 @@
       meta =
         { description = String;
           homepage = String;
-          license = ∀ α β γ. (δ.lib = α, α.licenses = β, β.mit = γ) => γ;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.roconnor = γ) => [γ];
+          license = β;
+          maintainers = [δ];
         };
       name = String;
       patches = [Path];
       postPatch = String;
-      src = ζ;
+      src = ε;
       version = String;
     } ->
-    η
+    ζ,
+  α.roconnor = δ,
+  η.licenses = α,
+  θ.lib = η,
+  ι.maintainers = α,
+  κ.lib = ι
 ) =>
-{ expat = ε;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  findlib = ε;
-  ocaml = ε;
-  ounit = ε;
-  stdenv = δ;
+{ expat = γ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
+  findlib = γ;
+  ocaml = γ;
+  ounit = γ;
+  stdenv = α;
 } ->
-η
+ζ

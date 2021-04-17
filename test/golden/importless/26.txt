@@ -1,46 +1,46 @@
-∀ μ ν ξ ο π ρ.
-{ autoPatchelfHook = μ;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.optional = Bool -> [β] -> [γ],
+  α.unfree = δ,
+  ε.fontconfig = β,
+  ε.freetype = β,
+  ε.glibc = β,
+  ε.lib = β,
+  ε.libX11 = β,
+  ε.libXext = β,
+  ε.libXrender = β,
+  ζ.freetype = β,
+  ζ.glibc = β,
+  ζ.lib = β,
+  ζ.libX11 = β,
+  ζ.libXext = β,
+  ζ.libXrender = β,
+  ζ.zlib = β,
+  η.licenses = α,
+  θ.xlibs = ε,
+  ι.xlibs = ε,
+  κ.xlibs = ε,
+  λ.fontconfig = ε,
+  μ.xlibs = ζ,
+  ν.xlibs = ζ,
+  ξ.xlibs = ζ,
+  ο.fontconfig = ζ
+) =>
+{ autoPatchelfHook = γ;
   deployAndroidPackage =
-    { buildInputs =
-        ∀ γ δ ε ζ η θ ι κ λ.
-        ( ν.optional = Bool -> [γ] -> [μ],
-          ξ.glibc = γ,
-          ξ.xlibs = δ,
-          δ.libX11 = γ,
-          ξ.xlibs = ε,
-          ε.libXrender = γ,
-          ξ.xlibs = ζ,
-          ζ.libXext = γ,
-          ξ.fontconfig = γ,
-          ξ.freetype = γ,
-          ο.glibc = γ,
-          ο.xlibs = η,
-          η.libX11 = γ,
-          ο.xlibs = θ,
-          θ.libXrender = γ,
-          ο.xlibs = ι,
-          ι.libXext = γ,
-          ο.fontconfig = κ,
-          κ.lib = γ,
-          ο.freetype = γ,
-          ο.zlib = γ,
-          ξ.fontconfig = λ,
-          λ.lib = γ
-        ) =>
-        [μ];
-      meta = {licenses = ∀ α β. (ν.licenses = α, α.unfree = β) => β;};
+    { buildInputs = [γ];
+      meta = {licenses = δ;};
       name = String;
       os = String;
       package = π;
       patchInstructions = String;
     } ->
     ρ;
-  lib = ν;
-  makeWrapper = μ;
+  lib = α;
+  makeWrapper = γ;
   os = String;
   package = π;
-  pkgs = ξ;
-  pkgs_i686 = ο;
+  pkgs = ε;
+  pkgs_i686 = ζ;
   postInstall = String;
 } ->
 ρ

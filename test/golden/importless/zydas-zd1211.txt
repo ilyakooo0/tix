@@ -1,1 +1,1 @@
-∀ β. {pkgs = β;} -> {hardware = {firmware = ∀ α. (β.zd1211fw = α) => [α];};}
+∀ α β. (α.zd1211fw = β) => {pkgs = α;} -> {hardware = {firmware = [β];};}

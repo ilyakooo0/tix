@@ -1,17 +1,19 @@
-∀ δ ε ζ η.
-( δ.mkDerivation =
-    { buildInputs = (ε.XMLSimple = ζ) => [ζ];
+∀ α β γ δ ε ζ η θ ι κ.
+( α.eelco = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       buildPhase = String;
       dontUnpack = Bool;
       installPhase = String;
-      meta =
-        { description = String;
-          maintainers =
-            ∀ α β γ. (δ.lib = α, α.maintainers = β, β.eelco = γ) => [γ];
-          platforms = ∀ α β γ. (δ.lib = α, α.platforms = β, β.unix = γ) => γ;
-        };
+      meta = {description = String; maintainers = [β]; platforms = δ;};
       name = String;
     } ->
-    η
+    ε,
+  α.unix = δ,
+  ζ.XMLSimple = γ,
+  η.maintainers = α,
+  θ.lib = η,
+  ι.platforms = α,
+  κ.lib = ι
 ) =>
-{makeWrapper = ζ; perl = ζ; perlPackages = ε; stdenv = δ;} -> η
+{makeWrapper = γ; perl = γ; perlPackages = ζ; stdenv = α;} -> ε

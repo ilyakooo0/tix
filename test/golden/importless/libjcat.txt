@@ -1,2 +1,2 @@
-∀ β γ.
-{makeInstalledTest = {tested = ∀ α. (β.libjcat = α) => α;} -> γ; pkgs = β;} -> γ
+∀ α β γ.
+(α.libjcat = β) => {makeInstalledTest = {tested = β;} -> γ; pkgs = α;} -> γ

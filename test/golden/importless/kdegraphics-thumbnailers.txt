@@ -1,20 +1,22 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  fetchpatch = δ;
-  karchive = ε;
-  kio = ε;
-  lib = ζ;
-  libkdcraw = ε;
-  libkexiv2 = ε;
+∀ α β γ δ ε ζ η θ ι.
+( α.lgpl21 = β,
+  α.ttuegel = γ,
+  δ.licenses = α,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  fetchpatch = η;
+  karchive = θ;
+  kio = θ;
+  lib = α;
+  libkdcraw = θ;
+  libkexiv2 = θ;
   mkDerivation =
-    { buildInputs = [ε];
-      meta =
-        { license = ∀ α β. (ζ.licenses = α, α.lgpl21 = β) => [β];
-          maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];
-        };
+    { buildInputs = [θ];
+      meta = {license = [β]; maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [ζ];
     } ->
-    η;
+    ι;
 } ->
-η
+ι

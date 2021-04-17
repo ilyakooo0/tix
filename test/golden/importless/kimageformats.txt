@@ -1,18 +1,18 @@
-∀ γ δ ε ζ η.
-{ extra-cmake-modules = γ;
-  ilmbase = δ;
-  karchive = ε;
-  lib = ζ;
+∀ α β γ δ ε ζ η θ.
+(α.getDev = β, α.ttuegel = γ, δ.maintainers = α) => { extra-cmake-modules = ε;
+  ilmbase = ζ;
+  karchive = η;
+  lib = α;
   mkDerivation =
     { CXXFLAGS = String;
-      buildInputs = [ε];
-      meta = {maintainers = ∀ α β. (ζ.maintainers = α, α.ttuegel = β) => [β];};
+      buildInputs = [η];
+      meta = {maintainers = [γ];};
       name = String;
-      nativeBuildInputs = [γ];
+      nativeBuildInputs = [ε];
       outputs = [String];
     } ->
-    η;
-  openexr = ε;
-  qtbase = ε;
+    θ;
+  openexr = η;
+  qtbase = η;
 } ->
-η
+θ

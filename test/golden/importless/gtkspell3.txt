@@ -1,15 +1,21 @@
-∀ β γ δ.
+∀ α β γ δ ε ζ η.
+( α.buildInputs = [β],
+  α.meta = γ,
+  α.nativeBuildInputs = δ,
+  α.src = ε,
+  α.version = ζ
+) =>
 { buildDunePackage =
-    { buildInputs = (β.buildInputs = [γ]) => [γ];
-      meta = ∀ α. (β.meta = α) => α;
-      nativeBuildInputs = ∀ α. (β.nativeBuildInputs = α) => α;
+    { buildInputs = [β];
+      meta = γ;
+      nativeBuildInputs = δ;
       pname = String;
-      propagatedBuildInputs = [β];
-      src = ∀ α. (β.src = α) => α;
-      version = ∀ α. (β.version = α) => α;
+      propagatedBuildInputs = [α];
+      src = ε;
+      version = ζ;
     } ->
-    δ;
-  gtkspell3 = γ;
-  lablgtk3 = β;
+    η;
+  gtkspell3 = β;
+  lablgtk3 = α;
 } ->
-δ
+η
