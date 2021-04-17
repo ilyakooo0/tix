@@ -56,13 +56,13 @@ import Prelude as P
 
 getType :: NExprLoc -> (Scheme, [(SrcSpan, Errors)], [InferError], [UnifyingError], [PredicateError], A.Object)
 getType r =
-  let ((((((((t, traceTree), inf), predicate), unifying), errs), _srcs), subs), _) =
+  let ((((((t, traceTree), inf), predicate), unifying), errs), _srcs) =
         run
           . runReader nullSpan
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
           . evalState (M.empty :: VariableMap)
-          . runConstraintEnv
+          . evalState @Substitution mempty
           . runState @[(TypeVariable, SrcSpan)] []
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
           . runSeqWriter @[(SrcSpan, Errors)]
@@ -72,31 +72,7 @@ getType r =
           . runFreshSrc
           . runTreeTracer
           $ inferGeneral r
-   in (sub subs t, errs, inf, unifying, predicate, traceTree)
-
-runConstraintEnv ::
-  Members '[State VariableMap, State (MKM.Map Pred)] effs =>
-  Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : effs) a ->
-  Eff effs ((a, Substitution), Seq Constraint)
-runConstraintEnv f = do
-  ((x, subs), cs) <-
-    runState @(Seq Constraint) Empty
-      . interpret @(Writer Constraint) (\(Tell x) -> modify (x :<|))
-      . runWriter @Substitution
-      . interpret @SubstituteEnv
-        ( \(SubstituteEnv x) -> do
-            -- modify @(Seq Constraint) (sub x <$>)
-            -- TODone: I have a feeling that variables in the env should already be closed over.
-            -- (aka this is redundant)
-            --
-            -- No, they can have type variables. E g when they are arguments in a function.
-            modify @VariableMap (sub x <$>)
-            modify @(MKM.Map Pred) (sub x)
-            tell x
-            return ()
-        )
-      $ f
-  return ((x, subs), sub subs <$> cs)
+   in (t, errs, inf, unifying, predicate, traceTree)
 
 runFreshSrc ::
   Members '[Reader SrcSpan, Writer (TypeVariable, SrcSpan)] eff =>
@@ -112,27 +88,6 @@ runFreshSrc =
             return v
           MinFreshFromNow -> send MinFreshFromNow
       )
-
-captureSubstitutions ::
-  Members '[SubstituteEnv] effs =>
-  Eff (Writer Substitution : effs) a ->
-  Eff effs (a, Substitution)
-captureSubstitutions f = do
-  (x, s) <-
-    runWriter @Substitution
-      . interpose @SubstituteEnv
-        ( \(SubstituteEnv x) -> do
-            tell x
-            subEnv x
-        )
-      $ f
-  return (x, s)
-
-data SubstituteEnv a where
-  SubstituteEnv :: Substitution -> SubstituteEnv ()
-
-subEnv :: Member SubstituteEnv r => Substitution -> Eff r ()
-subEnv = send . SubstituteEnv
 
 data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
@@ -178,6 +133,10 @@ instance Free a => Free [a] where
   free = foldMap free
   sub s = fmap (sub s)
 
+instance Free a => Free (Seq a) where
+  free = foldMap free
+  sub s = fmap (sub s)
+
 instance Free Substitution where
   free (Substitution s) = free . M.elems $ s
   sub new old = old <> new
@@ -200,7 +159,6 @@ newtype Substitution = Substitution {unSubstitution :: Map TypeVariable NType}
 prettySubstitution :: Substitution -> A.Value
 prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap renderPretty . unSubstitution
 
--- | @older <> newer@
 instance Semigroup Substitution where
   x'@(Substitution x) <> y'@(Substitution y) = Substitution (M.unionWithKey (error "invariant") (fmap (sub y') x) (fmap (sub x') y))
 
@@ -214,22 +172,23 @@ instance Free Constraint where
 (<<-) ::
   TypeVariable ->
   NType ->
-  UnifyM Substitution
-v <<- (NTypeVariable x) | v == x = return mempty
+  UnifyM ()
+v <<- (NTypeVariable x) | v == x = pure ()
 v <<- x | v `occursIn` x = tell (InfinityType x) >> return mempty
   where
     occursIn :: Free x => TypeVariable -> x -> Bool
     occursIn t u = t `S.member` free u
-v <<- x = return $ Substitution $ M.singleton v x
+v <<- x = modify (Substitution (M.singleton v x) <>)
 
 unifyWithPriority ::
   -- | The range of type variables to interpret as being lower
   -- priority (try to replace them if possible)
   RS.RSet TypeVariable ->
   Constraint ->
-  UnifyM Substitution
-unifyWithPriority range (lhs :~ rhs) =
-  case (lhs, rhs) of
+  UnifyM ()
+unifyWithPriority range (lhs :~ rhs) = do
+  s <- get
+  case sub s (lhs, rhs) of
     (x, y) | x == y -> return mempty
     (NTypeVariable x, NTypeVariable y) -> do
       if y `RS.member` range
@@ -242,30 +201,29 @@ unifyWithPriority range (lhs :~ rhs) =
       assertSetsMatch (tell . KeysDontMatch) (M.keysSet x) (M.keysSet y)
       unifySchemes range . M.elems $ M.intersectionWith (,) x y
     (x1 :-> y1, x2 :-> y2) -> do
-      s <- unifyWithPriority range (x1 :~ x2)
-      s' <- unifyWithPriority range $ sub s $ y1 :~ y2
-      return $ s' <> s
-    (x, y) -> tell (CanNotUnify x y) >> return mempty
+      unifyWithPriority range (x1 :~ x2)
+      unifyWithPriority range $ y1 :~ y2
+    (x, y) -> tell (CanNotUnify x y)
 
-unifySchemes :: RS.RSet TypeVariable -> [(Scheme, Scheme)] -> UnifyM Substitution
+unifySchemes :: RS.RSet TypeVariable -> [(Scheme, Scheme)] -> UnifyM ()
 unifySchemes _ [] = pure mempty
 unifySchemes range ((x, y) : rest) = do
-  s <- unifyScheme range x y
-  sub s <$> unifySchemes range (sub s rest)
+  unifyScheme range x y
+  unifySchemes range rest
 
-unifyScheme :: RS.RSet TypeVariable -> Scheme -> Scheme -> UnifyM Substitution
+unifyScheme :: RS.RSet TypeVariable -> Scheme -> Scheme -> UnifyM ()
 unifyScheme range (xs :=> x) (ys :=> y) = do
-  s <- solveWithPriority range (pure (x :~ y))
+  solveWithPriority range (pure (x :~ y))
+  s <- get
   let f = S.fromList . sub s
   assertSetsMatch (tell . ConstraintsDontMatch) (f xs) (f ys)
-  return s
 
 assertSetsMatch :: Ord x => Applicative f => (Set x -> f ()) -> Set x -> Set x -> f ()
 assertSetsMatch f x y = case (x S.\\ y, y S.\\ x) of
   (a, b) | S.null a, S.null b -> pure ()
   (a, b) -> f $ a <> b
 
-solve :: Seq Constraint -> UnifyM Substitution
+solve :: Seq Constraint -> UnifyM ()
 solve = solveWithPriority mempty
 
 solveWithPriority ::
@@ -273,11 +231,11 @@ solveWithPriority ::
   -- priority (try to replace them if possible)
   RS.RSet TypeVariable ->
   Seq Constraint ->
-  UnifyM Substitution
+  UnifyM ()
 solveWithPriority _ Empty = return mempty
 solveWithPriority range (rest :|> c) = do
-  s <- unifyWithPriority range c
-  sub s <$> solveWithPriority range (fmap (sub s) rest)
+  unifyWithPriority range c
+  solveWithPriority range rest
 
 data Errors
   = UndefinedVariable VarName
@@ -300,12 +258,11 @@ data InferError
   = ConflictingBindingDefinitions (NormalizedBinding' NExprLoc) (NormalizedBinding' NExprLoc)
   deriving stock (Show)
 
-type UnifyM x = forall r. Members '[Writer UnifyingError] r => Eff r x
+type UnifyM x = forall r. Members '[Writer UnifyingError, State Substitution] r => Eff r x
 
 type InferEffs =
   '[ Fresh,
      Reader SrcSpan,
-     Writer Constraint,
      Writer (SrcSpan, Errors),
      Writer PredicateError,
      Writer Pred,
@@ -313,11 +270,13 @@ type InferEffs =
      State VariableMap,
      Writer UnifyingError,
      Writer InferError,
-     SubstituteEnv,
+     State Substitution,
      TreeTracer
    ]
 
 type InferM x = forall r. Members InferEffs r => Eff r x
+
+type InferM' x = forall r. Members (Writer Constraint : InferEffs) r => Eff r x
 
 runSeqWriter :: forall s w r a. (IsSequence s, Element s ~ w) => Eff (Writer w ': r) a -> Eff r (a, s)
 runSeqWriter = handleRelayS mempty (\s x -> return (x, s)) $ \s (Tell w) k -> k (cons w s) ()
@@ -385,7 +344,7 @@ instantiate s = do
           modify (M.insert db t)
           return t
 
-infer :: NExprLoc -> InferM NType
+infer :: NExprLoc -> InferM' NType
 infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NConstant a -> return . NAtomic $ case a of
     NURI {} -> URI
@@ -623,11 +582,9 @@ inferComponents n ((S.toList -> paths) : otherComponents) = do
   -- TODO: There should probably be some smarter predicate filtering
   schemes <- types & traverse . traverse %%~ (\t -> solveAndClose p $ sub s $ preds :=> t)
 
-  (otherBindings, s') <-
-    captureSubstitutions $
-      withBindings (toScheme' <$> schemes) $
-        inferComponents n otherComponents
-  return $ M.unionWith mergeBindings (fmap (sub s') <$> schemes) otherBindings
+  otherBindings <-
+    withBindings (toScheme' <$> schemes) $ inferComponents n otherComponents
+  return $ M.unionWith mergeBindings schemes otherBindings
   where
     bindingToNExpr :: NonEmpty VarName -> NExprLoc -> Binding NExpr
     bindingToNExpr name expr = NamedVar (StaticKey <$> name) (stripAnnotation expr) nullPos
@@ -730,33 +687,36 @@ showExpr :: NExpr -> Text
 showExpr = TL.toStrict . renderLazy . layoutPretty defaultLayoutOptions . P.group . prettyNix
 
 inferGeneral :: NExprLoc -> InferM Scheme
-inferGeneral x@(Fix (Compose (Ann src _))) = local (const src) . traceSubtree (showExpr . stripAnnotation $ x) $ do
-  (t, p, keep, s) <- inferGeneral' id $ infer x
-  solveAndClose p $ sub s $ keep :=> t
+inferGeneral x@(Fix (Compose (Ann src _))) =
+  local (const src) . traceSubtree (showExpr . stripAnnotation $ x) $ do
+    (t, p, keep, s) <- inferGeneral' id $ infer x
+    solveAndClose p $ sub s $ keep :=> t
 
 inferGeneral' ::
   (Members InferEffs r, Pretty y) =>
   (x -> y) ->
-  Eff (SubstituteEnv : Writer Substitution : Writer Constraint : State (Seq Constraint) : r) x ->
+  Eff (Writer Constraint : r) x ->
   Eff r (x, RS.RSet TypeVariable, [Pred], Substitution)
 inferGeneral' toPretty f = do
-  (((x, subs), cs), range) <-
-    traceSubtree "subexpressions" . registerTypeVariables . runConstraintEnv $ f
+  ((x, cs), range) <-
+    traceSubtree "subexpressions" . registerTypeVariables . runSeqWriter @(Seq Constraint) $ f
   traceSubtree "received" $ do
     traceValue "type" $ renderPretty $ toPretty x
-    traceValue "substitutions" $ prettySubstitution subs
+    get >>= traceValue "substitutions" . prettySubstitution
     traceValue "constraints" $ fmap renderPretty cs
     traceValue "range" $ T.pack . show $ range
     get @(MKM.Map Pred) >>= traceValue "preds" . showPreds
-  s' <- solveWithPriority range cs
-  traceValue "substitutions_after_solving" $ prettySubstitution s'
-  let s = subs <> s'
-      returnedS = Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution $ s
-  traceValue "composed_substitution" $ prettySubstitution s
+  solveWithPriority range cs
+  get >>= traceValue "substitutions_after_solving" . prettySubstitution
+  (s, returnedS) <-
+    get @Substitution
+      <&> join bimap Substitution . M.partitionWithKey (\k _ -> k `RS.member` range) . unSubstitution
+  put returnedS
+  -- modify @Substitution $ Substitution . M.filterWithKey (\k _ -> k `RS.notMember` range) . unSubstitution
+  -- returnedS <- get @Substitution
   traceSubtree "returned" $ do
     traceValue "substitutions" $ prettySubstitution returnedS
     -- Filter for optimization purposes
-    subEnv returnedS
     preds <- get @(MKM.Map Pred)
     traceValue "subbed_preds" $ showPreds preds
     let newRange = range RS.\\ rangeFromSet (free returnedS)
@@ -796,7 +756,7 @@ solveAndClose range (cs :=> t) = do
   case (constraints, collectedPreds) of
     (Empty, []) -> return . close newRange $ solvedPreds :=> t
     _ -> do
-      s <- solveWithPriority newRange constraints
+      ((), s) <- runState @Substitution mempty $ solveWithPriority newRange constraints
       solveAndClose newRange $ sub s $ (collectedPreds <> solvedPreds) :=> t
 
 solveConstraints ::
