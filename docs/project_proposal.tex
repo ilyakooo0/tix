@@ -1,0 +1,131 @@
+\documentclass[a4paper,conference]{IEEEtran}
+
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage[main=english]{babel}
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc} %support umlauts in the input
+
+\title{Language Server for the Nix Expression Language}
+
+\author{
+  \IEEEauthorblockN{Kostyuchenko Ilya}
+  \IEEEauthorblockA{
+    Faculty of Computer Science,\\
+    Higher School of Economics,\\
+    Moscow, Russia
+  }
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become quite complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language. We will also investigate making development even more comfortable with the help of the Language Server Protocol.
+\end{abstract}
+
+\begin{IEEEkeywords}
+  programming languages, type systems, type inference, language server protocol, Nix Expression Language, build systems
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Today developing software is riddled with large amounts of complexity -- newer software is built on top of older software, dragging the whole stack below as dependencies. As a result, building software requires a large number of dependencies to be preinstalled. Modern build systems like Gradle\footnote{\url{https://gradle.org}}, Maven\footnote{\url{https://maven.apache.org}}, and Stack\footnote{\url{https://docs.haskellstack.org/en/stable/README/}} try to mitigate the issue by automatically downloading and installing the required dependencies. However, in most cases, such tools can only manage language-level dependencies, requiring the user to install additional libraries and tools manually.
+
+Such manual dependency management leads to several problems. Firstly, when a user wants to work on a project he has not encountered before, he will have to install the required dependencies, leading to additional tedious work. Furthermore, the required versions of project dependencies might conflict with the versions that another project requires. The user will have to manually switch the versions of executables and libraries when switching between projects.
+
+Secondly, manual dependency management impedes the reproducibility of the project builds -- building the same project on multiple machines will, in all likelihood, produce different results since the machines will likely differ in many ways that impact the build, such as having slightly different versions\footnote{``Version'' here refers to actual variations on the bit level, and not just version numbers.} of libraries and executables.
+
+Nix~\cite{dolstra2008nixos} attempts to solve the problems mentioned above by describing software project builds in a generic and language-agnostic way. Furthermore, the resulting descriptions define the build process in a complete and deterministic way -- everything that impacts the build in any way needs to be explicitly defined, even system-level libraries are reproducible on the bit level.
+
+Defining the build process in such a detailed manner is not easy. While most build systems define project builds with static configurations using formats such as YAML~\cite{ben2009yaml}, Nix employs a fully-fledged programming language as its configuration language. This programming language is called the Nix Expression Language\footnote{\url{https://nixos.wiki/wiki/Nix_Expression_Language}}.
+
+\section{Nix Expression Language}
+
+Nix Expression Language is a dynamic, lazy, purely functional programming language. The purely functional nature of the language aids in build reproducibility guarantees that Nix aims to provide.
+
+The fact that the Nix configuration language is a programming language certainly helps manage the complexities\footnote{The sheer amount of configuration required is itself large enough to be problematic.} defining \emph{everything} involved in building a software project. Even so, the dynamic nature of the language often makes it challenging to understand and reuse existing code.
+
+Refactoring existing code is also tricky since the generated expressions are only really checked for correctness\footnote{Here, ``correctness'' is used to mean the absence of evaluation-time errors.} at their evaluation time, and the evaluation time of expressions is difficult to predict due to the lazy nature of the language.
+
+\section{Static type checking}
+
+Static type checking is the process of analyzing the types of expressions and detecting type errors in programs without evaluating them.
+
+Even though static type checking in most mainstream programming languages does not influence the semantics of the programs, it is nonetheless widely used. This is an indication of the usefulness of static type checking during development. Type checking helps detect likely ``incorrect'' programs without evaluating them (very helpful during refactoring), and aids in understanding existing code since types often expose some semantics of expressions (this is especially true for purely functional programs).
+
+The Nix Expression Language does not currently support static type checking of any kind. Of course, retrofitting a static type checker onto an existing dynamic programming language will reject programs that will not produce errors at runtime. However, this is still a goal worth pursuing because even with all of the situations when the type checker produces false negatives, inferring types for existing expressions, as mentioned above, will aid in understanding existing code and surface potentially problematic areas of code to the developer.
+
+\section{Type System Approach}
+
+There has been much research done in the field of type systems for functional programming languages. The most notable contribution was the introduction of the Damas-Milner\footnote{The Damas-Milner type system is sometimes referred to as the Hindley–Milner type system.} type system and the W inference algorithm~\cite{damas1982principal}, which was later proven to be sound and complete~\cite{vaughanproof}.
+
+The Damas-Milner type system is a type system for lambda calculus with parametric polymorphism. The most notable property of the Damas-Milner type system is the proven ability of the W algorithm to infer the most general types without any user-provided type annotations.
+
+While the Damas-Milner describes a simple language, it is robust enough to be used as the basis for more advanced type systems such as the one used in the Haskell programming language~\cite{jones1999typing}, which extends the Damas-Milner type system in many ways which break the excellent properties it provides but remains extremely useful in practice.
+
+Since the Nix Expression Language is a relatively simple functional programming language, extending the Damas-Milner type system and algorithms to fit the language will be the approach we take as the tried and true method.
+
+\section{Type Checker Error Handling}
+
+Due to the inevitable presence of false negatives during type checking, for the type checker to be useful enough to be worth implementing, the algorithm should gracefully recover after encountering expressions that it deems to be ``wrong''.
+
+Since the interpreter of the programs will not be related to the developed type checker in any way, the type checker can not influence the semantics of the programs. This fact can be used to implement the following failure recovery heuristic: when the type checker encounters an expression that yields type checking errors, the errors are collected to be displayed to the user, and the expression is given the least general type possible such that it does not yield type errors.
+
+This is, in general, always possible since any syntactically valid expression will be correct with respect to types if every subexpression is assigned the polymorphic type:
+
+\begin{equation}
+  \forall \alpha. \alpha
+\end{equation}
+
+In some cases, this approach will likely yield too little information to be useful, but it seems like a reasonable solution.
+
+\section{Improving Type Checker Error Reporting}
+
+The original W inference algorithm is a single-stage inference algorithm, meaning that it attempts to satisfy type constraints as soon as it encounters them. A consequence of this is that errors are reported as soon as they are encountered. Often, the information available about the program at the time the error had occurred is very limited due to not all of the program being processed. This leads to poor error reporting.
+
+In contrast to the single-stage algorithm, the two-stage algorithm~\cite{jones2005practical,serrano2016type} collects the type constraints as the first stage of type checking and solves the collected constraints as a second step. This leads to most errors occurring during the second stage when all available type information has already been collected. As a result, better type errors are produced. This is the preferable approach for our goals.
+
+\section{Row-Polymorphism}
+
+One of the language-level constructs in the Nix Expression Language is the ``attribute set'' which can be thought of as a first-class hashmap with strings as keys. In combination with the dynamic nature of the language, these ``attribute sets'' have the semantics of row-polymorphic records.
+
+There has been some research conducted in the field of type systems with row-polymorphic records~\cite{morris2019abstracting,leijen2005extensible}. The approach that should be taken in developing a static type checker for the Nix Expression Language is describing row-polymorphic attribute sets with a construct similar\footnote{The way it should be displayed to the user will be distinct, since, unlike in Haskell, the Nix Expression Language does not have constraints as a language construct.} to Haskell constraints~\cite{orchard2010haskell}.
+
+\section{Message Reporting}
+
+Displaying errors to the user is not as simple as it might initially seem. For the type checker to be as helpful as possible, error messages should display the encountered issues in the language contexts in which they had occurred. Ideally, the errors should point to the exact terms that are most likely problematic.
+
+Even if all of the information necessary for detailed error messages is collected during type checking, displaying errors to the user is a problem that deserves its own research\footnote{This also relates to how types are laid out when displaying to the user even when no errors have occurred.}. The users might have different screen sizes. The error message should reflow all of the displayed text, code, and type annotations to accommodate the available space.
+
+Hughes introduced a general-purpose algebraic pretty-printer~\cite{hughes1995design}, which was later improved upon~\cite{wadler2003prettier}, to solve precisely this problem. Using one of the pretty-printers based on that research is the industry standard and will be used by our type checker.
+
+\section{Language Server Architecture}
+
+A Language Server is a server providing language-specific code analysis. It communicates with various code editors using the Language Server Protocol\footnote{\url{https://microsoft.github.io/language-server-protocol/}}.
+
+Language Servers have received wide adoption across a large variety of programming languages. Integrating the developed type checker into a Language Server with ``go-to-definition'' and ``show types on hover'' support would significantly improve the experience of developing in the Nix Expression Language.
+
+One of the actively developed language servers is the Haskell Language Server\footnote{\url{https://github.com/haskell/haskell-language-server}}. To manage the complexities of tracking changes in files and dependencies between them, the Haskell Language Server employs the Shake library~\cite{mitchell2012shake}. It is described as an alternative to Make\footnote{\url{https://www.gnu.org/software/make/}} embedded as a DSL into Haskell with the ability to dynamically update the dependency tree, among other improvements.
+
+As it is already tested as the basis for a Language Server implementation, building our Language Server on top of the Shake library seems like the correct architectural decision.
+
+\section{Conclusion}
+
+Nix is a rapidly growing ecosystem. At the time of writing, nixpkgs, the Nix package registry, contains over 60000 packages\footnote{\url{https://github.com/NixOS/nixpkgs}} that can be either installed or used as dependencies in other projects. There is much interest in the approach used by Nix, and making the ever-growing codebase of configurations easier to manage and extend would be a welcome development.
+
+Even though the developed type checker will need to check code for an existing dynamic language, and no type checker can cover all of the valid cases, producing false negatives, covering most of the cases encountered in practice would be useful enough to be worth using. Furthermore, plenty of research has already been conducted on which the Nix Expression Language type checker can be based.
+
+Integrating the type checker into a Language Server would provide additional utility and afford the ability to implement additional features, such as ``go-to-definition'' in a practical way.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibl}
+
+\begin{flushright}
+  \vspace{1cm}
+  \fbox{\textsc{\textsf{\textbf{\large word count: 1593}}}}
+\end{flushright}
+
+\end{document}
