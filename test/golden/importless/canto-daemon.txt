@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.canto-daemon = β,
+  γ.mkIf =
+    δ ->
+    { systemd =
+        { user =
+            { services =
+                { canto-daemon =
+                    { after = [String];
+                      description = String;
+                      serviceConfig = {ExecStart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.types = θ,
+  β.enable = δ,
+  ι.services = α,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ε; options = {services = {canto-daemon = {enable = η;};};};}

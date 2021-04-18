@@ -1,0 +1,82 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.cc = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { dontPatchELF = Bool;
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      preferLocalBuild = Bool;
+      rpath = η;
+      sourceRoot = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.unfree = δ,
+  κ.makeLibraryPath = [β] -> η,
+  λ.licenses = α,
+  μ.lib = λ,
+  γ.taku0 = ε,
+  ν.lib = α,
+  ξ.cc = α
+) =>
+{ alsaLib = β;
+  atk = β;
+  bzip2 = β;
+  cairo = β;
+  curl = β;
+  debug = Bool;
+  expat = β;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  fontconfig = β;
+  freetype = β;
+  gdk-pixbuf = β;
+  glib = β;
+  glibc = β;
+  graphite2 = β;
+  gtk2 = β;
+  harfbuzz = β;
+  lib = κ;
+  libICE = β;
+  libSM = β;
+  libX11 = β;
+  libXau = β;
+  libXcomposite = β;
+  libXcursor = β;
+  libXdamage = β;
+  libXdmcp = β;
+  libXext = β;
+  libXfixes = β;
+  libXi = β;
+  libXinerama = β;
+  libXrandr = β;
+  libXrender = β;
+  libXt = β;
+  libXxf86vm = β;
+  libdrm = β;
+  libffi = β;
+  libglvnd = β;
+  libpng = β;
+  libvdpau = β;
+  libxcb = β;
+  libxshmfence = β;
+  nspr = β;
+  nss = β;
+  pango = β;
+  pcre = β;
+  pixman = β;
+  stdenv = α;
+  unzip = ζ;
+  zlib = β;
+} ->
+ι

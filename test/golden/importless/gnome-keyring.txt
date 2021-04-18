@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.enable = β,
+  γ.gcr = δ,
+  γ.gnome-keyring = ε,
+  ζ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      security =
+        { pam = {services = {login = {enableGnomeKeyring = Bool;};};};
+          wrappers =
+            {gnome-keyring-daemon = {capabilities = String; source = String;};};
+        };
+      services = {dbus = {packages = [δ];};};
+      xdg = {portal = {extraPortals = [η];};};
+    } ->
+    θ,
+  ζ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  ζ.teams = λ,
+  ζ.types = μ,
+  ν.gnome-keyring = α,
+  ξ.gnome3 = ν,
+  ο.services = ξ,
+  π.gnome3 = γ,
+  ρ.gnome3 = γ,
+  σ.gnome3 = γ,
+  λ.members = τ,
+  υ.gnome = λ,
+  μ.bool = ι
+) =>
+{config = α; lib = ζ; pkgs = γ;} ->
+{ config = θ;
+  meta = {maintainers = τ;};
+  options = {services = {gnome3 = {gnome-keyring = {enable = κ;};};};};
+}

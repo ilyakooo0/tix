@@ -1,0 +1,10 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.enableGhostscriptFonts = β,
+  γ.mkIf = β -> {fonts = {fonts = [String];};} -> δ,
+  γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
+  γ.types = η,
+  θ.fonts = α,
+  η.bool = ε
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = δ; options = {fonts = {enableGhostscriptFonts = ζ;};};}

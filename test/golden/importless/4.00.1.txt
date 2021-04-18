@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.isAarch32 = Bool,
+  α.isMips = Bool,
+  α.lib = β,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [γ];
+      configureFlags = [String];
+      installTargets = String;
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = [δ];
+          longDescription = String;
+          platforms = ε;
+        };
+      passthru = {nativeCompilers = Bool;};
+      pname = String;
+      postBuild = String;
+      preConfigure = String;
+      prefixKey = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.optionals = Bool -> [String] -> [String],
+  θ.optionalString = Bool -> String -> String,
+  ι.optional = Bool -> String -> [γ],
+  κ.lgpl2 = δ,
+  κ.licenses = λ,
+  κ.linux = ε,
+  κ.platforms = μ,
+  κ.qpl = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  ncurses = γ;
+  stdenv = α;
+  xlibsWrapper = String;
+} ->
+η

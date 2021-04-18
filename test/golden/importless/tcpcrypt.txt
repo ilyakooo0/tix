@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.tcpcrypt = β,
+  α.tcpcryptd = γ,
+  δ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { tcpcrypt =
+                { after = [String];
+                  description = String;
+                  path = [ζ];
+                  postStop = String;
+                  preStart = String;
+                  script = String;
+                  wantedBy = [String];
+                };
+            };
+        };
+      users = {users = {tcpcryptd = {description = String; uid = γ;};};};
+    } ->
+    η,
+  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  δ.types = κ,
+  λ.iptables = ζ,
+  λ.procps = ζ,
+  λ.tcpcrypt = ζ,
+  β.enable = ε,
+  μ.networking = α,
+  ν.uids = α,
+  ξ.ids = ν,
+  κ.bool = θ
+) =>
+{config = α; lib = δ; pkgs = λ;} ->
+{config = η; options = {networking = {tcpcrypt = {enable = ι;};};};}

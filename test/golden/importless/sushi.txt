@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ε];};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.teams = ι,
+  γ.types = κ,
+  λ.sushi = δ,
+  μ.sushi = α,
+  ν.gnome3 = μ,
+  ξ.services = ν,
+  ι.members = ο,
+  π.gnome = ι,
+  κ.bool = η,
+  ρ.gnome3 = λ,
+  σ.gnome3 = λ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = ζ;
+  meta = {maintainers = ο;};
+  options = {services = {gnome3 = {sushi = {enable = θ;};};};};
+}

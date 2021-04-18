@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.xbanish = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { user =
+            { services =
+                { xbanish =
+                    { description = String;
+                      partOf = [String];
+                      serviceConfig = {ExecStart = String; Restart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption =
+    {default = String; description = String; example = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.services = α,
+  ι.str = η
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = ζ; options = {services = {xbanish = {arguments = θ; enable = δ;};};};}

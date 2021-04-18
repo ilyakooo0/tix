@@ -1,0 +1,51 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.asar = β,
+  γ.lib = δ,
+  γ.mkDerivation =
+    { buildInputs = [ε];
+      desktopItem = ζ;
+      dontBuild = Bool;
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [θ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [β];
+      pname = String;
+      postFixup = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.libXScrnSaver = ε,
+  λ.libXext = ε,
+  λ.libxkbfile = ε,
+  δ.chrisaw = θ,
+  δ.licenses = μ,
+  δ.maintainers = ν,
+  μ.unfree = η
+) =>
+{ autoPatchelfHook = β;
+  electron_4 = ξ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  makeDesktopItem =
+    { categories = String;
+      desktopName = String;
+      exec = String;
+      icon = String;
+      name = String;
+      type = String;
+    } ->
+    ζ;
+  makeWrapper = β;
+  nodePackages = α;
+  nss = ε;
+  stdenv = γ;
+  xdg_utils = ο;
+  xorg = λ;
+} ->
+κ

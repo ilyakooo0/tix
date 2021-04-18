@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.peti = δ,
+  α.qyliss = δ,
+  β.gpl3 = ε
+) =>
+{ buildPythonPackage =
+    { disabled = Bool;
+      doCheck = Bool;
+      meta = {description = String; license = ε; maintainers = [δ];};
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  fetchgit =
+    {leaveDotGit = Bool; rev = String; sha256 = String; url = String;} -> θ;
+  git = ζ;
+  hyperkitty = η;
+  isPy3k = Bool;
+  lib = α;
+  makeWrapper = ζ;
+  postorius = η;
+  sassc = κ;
+  whoosh = η;
+} ->
+ι

@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.enable = Bool,
+  α.iwd = β,
+  γ.dtzWill = δ,
+  γ.maintainers = ε,
+  γ.mic92 = δ,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { assertions = [{assertion = Bool; message = String;}];
+      environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ]; services = {iwd = {wantedBy = [String];};};};
+    } ->
+    λ,
+  μ.iwd = θ,
+  β.enable = η,
+  ν.wireless = α,
+  ξ.networking = ν,
+  ο.wireless = α,
+  π.networking = ο
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = λ;
+  meta = {maintainers = [δ];};
+  options = {networking = {wireless = {iwd = {enable = ζ;};};};};
+}

@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { dontAutoPatchelf = Bool;
+      dontPatchELF = Bool;
+      dontPatchShebangs = Bool;
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          longDescription = String;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      phases = [String];
+      pname = String;
+      src = η;
+      unpackPhase = String;
+      version = String;
+    } ->
+    θ,
+  β.colemickens = δ,
+  β.forkk = δ,
+  β.licenses = ι,
+  β.lnl7 = δ,
+  β.maintainers = κ,
+  β.pjones = δ,
+  β.platforms = λ,
+  β.thoughtpolice = δ,
+  ι.unfree = γ,
+  λ.linux = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  rpmextract = ζ;
+  stdenv = α;
+} ->
+θ

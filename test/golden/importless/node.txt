@@ -1,0 +1,21 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( β.node = γ,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = String; type = ε;} -> ζ,
+  δ.types = η,
+  θ.exporters = β,
+  ι.prometheus = θ,
+  κ.services = ι,
+  η.listOf = λ -> ε,
+  μ.str = λ,
+  ν.listOf = ξ -> ο,
+  π.str = ξ
+) =>
+{config = β; lib = δ; options = ρ; pkgs = σ;} ->
+{ extraOpts = {disabledCollectors = ζ; enabledCollectors = τ;};
+  port = Integer;
+  serviceOpts =
+    { serviceConfig =
+        {DynamicUser = Bool; ExecStart = String; RuntimeDirectory = String;};
+    };
+}

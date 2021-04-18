@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.herbstluftwm = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {xserver = {windowManager = {session = η;};};};
+    } ->
+    θ,
+  γ.mkOption = {default = Null; description = String; type = ι;} -> κ,
+  γ.nullOr = λ -> ι,
+  γ.optionalString = Bool -> String -> μ,
+  γ.path = λ,
+  γ.singleton = {name = String; start = String;} -> η,
+  γ.types = ν,
+  ξ.herbstluftwm = ζ,
+  β.configFile = Null,
+  β.enable = ε,
+  ο.windowManager = α,
+  π.xserver = ο,
+  ρ.services = π
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = θ;
+  options =
+    { services =
+        { xserver =
+            {windowManager = {herbstluftwm = {configFile = κ; enable = δ;};};};
+        };
+    };
+}

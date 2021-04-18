@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.bsd3 = β,
+  α.maintainers = γ,
+  α.unix = δ,
+  ε.args = ζ,
+  ε.matchable = ζ,
+  η.licenses = α,
+  θ.lib = η,
+  γ.corngood = ι,
+  κ.lib = α,
+  λ.platforms = α,
+  μ.lib = λ
+) =>
+{ chickenEggs = ε;
+  eggDerivation =
+    { buildInputs = [ζ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ι];
+          platforms = δ;
+        };
+      name = String;
+      src = ν;
+    } ->
+    ξ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ν;
+  stdenv = α;
+} ->
+ξ

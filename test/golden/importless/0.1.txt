@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.isMusl = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          platforms = ζ;
+          repositories = {git = String;};
+        };
+      nativeBuildInputs = [η];
+      outputBin = String;
+      outputs = [String];
+      patches = θ;
+      pname = String;
+      postFixup = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> Path -> θ,
+  λ.lib = α,
+  μ.hostPlatform = α,
+  γ.licenses = ν,
+  γ.platforms = ξ,
+  ν.lgpl2Plus = ε,
+  ξ.unix = ζ
+) =>
+{ autoreconfHook = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  lib = ο;
+  libusb1 = δ;
+  patchelf = η;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+κ

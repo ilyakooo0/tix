@@ -1,0 +1,39 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.robustirc-bridge = γ,
+  δ.mkEnableOption = String -> ε,
+  δ.mkIf =
+    ζ ->
+    { systemd =
+        { services =
+            { robustirc-bridge =
+                { after = [String];
+                  description = String;
+                  documentation = [String];
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      ExecStart = String;
+                      PrivateDevices = Bool;
+                      PrivateTmp = Bool;
+                      ProtectHome = Bool;
+                      ProtectSystem = Bool;
+                      Restart = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = θ;} ->
+    ι,
+  δ.types = κ,
+  γ.enable = ζ,
+  λ.services = β,
+  κ.listOf = μ -> θ,
+  ν.str = μ
+) =>
+{config = β; lib = δ; pkgs = ξ;} ->
+{ config = η;
+  options = {services = {robustirc-bridge = {enable = ε; extraFlags = ι;};};};
+}

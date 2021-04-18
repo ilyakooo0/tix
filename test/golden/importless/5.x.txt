@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      dontUseCmakeBuildDir = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.platforms = κ,
+  ι.lgpl21 = δ,
+  κ.all = ε
+) =>
+{ cmake = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  libdiscid = γ;
+  libxml2 = γ;
+  neon = γ;
+  pkgconfig = ζ;
+  stdenv = α;
+} ->
+θ

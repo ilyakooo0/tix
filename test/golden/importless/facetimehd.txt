@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.facetimehd = β,
+  α.kernelPackages = γ,
+  δ.mkEnableOption = String -> ε,
+  δ.mkIf =
+    ζ ->
+    { assertions = η;
+      boot =
+        { blacklistedKernelModules = [String];
+          extraModulePackages = [θ];
+          kernelModules = [String];
+        };
+      hardware = {firmware = [ι];};
+      powerManagement = {powerDownCommands = String; resumeCommands = String;};
+    } ->
+    κ,
+  δ.singleton = {assertion = λ; message = String;} -> η,
+  δ.versionAtLeast = μ -> String -> λ,
+  ν.facetimehd-firmware = ι,
+  γ.facetimehd = θ,
+  γ.version = μ,
+  ξ.boot = α,
+  β.enable = ζ,
+  ο.hardware = α,
+  π.kernel = γ
+) =>
+{config = α; lib = δ; pkgs = ν;} ->
+{config = κ; options = {hardware = {facetimehd = {enable = ε;};};};}

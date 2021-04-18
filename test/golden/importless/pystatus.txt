@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  γ.basiciw = δ,
+  γ.buildPythonApplication =
+    { buildInputs = [ε];
+      doCheck = Bool;
+      makeWrapperArgs = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          longDescription = String;
+          maintainers = [η];
+          platforms = θ;
+        };
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      propagatedBuildInputs = [δ];
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  γ.colour = δ,
+  γ.keyring = δ,
+  γ.netifaces = δ,
+  γ.psutil = δ,
+  γ.pygobject3 = δ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.mit = ζ,
+  μ.igsha = η,
+  ν.linux = θ
+) =>
+{ extraLibs = [δ];
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gobject-introspection = ε;
+  libnotify = ε;
+  libpulseaudio = ε;
+  python3Packages = γ;
+  stdenv = α;
+  wrapGAppsHook = ξ;
+} ->
+κ

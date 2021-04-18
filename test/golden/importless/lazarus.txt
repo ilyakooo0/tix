@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.cc = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [β];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      postInstall = String;
+      preBuild = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.licenses = ι,
+  γ.maintainers = κ,
+  γ.platforms = λ,
+  ι.gpl2Plus = δ,
+  κ.raskin = ε,
+  λ.linux = ζ
+) =>
+{ atk = β;
+  binutils = μ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  fpc = β;
+  gdb = ν;
+  gdk-pixbuf = β;
+  glib = β;
+  gnumake = ξ;
+  gtk2 = β;
+  libX11 = β;
+  libXext = β;
+  libXi = β;
+  makeWrapper = β;
+  pango = β;
+  stdenv = α;
+  xorgproto = β;
+} ->
+θ

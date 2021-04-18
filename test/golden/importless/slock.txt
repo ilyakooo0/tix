@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.slock = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      security = {wrappers = {slock = {source = String;};};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.slock = ε,
+  β.enable = δ,
+  λ.programs = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {programs = {slock = {enable = θ;};};};}

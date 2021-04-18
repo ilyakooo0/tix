@@ -1,0 +1,58 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( α.gateone = β,
+  γ.coreutils = δ,
+  γ.gateone = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        { services =
+            { gateone =
+                { description = String;
+                  path = [δ];
+                  preStart = String;
+                  requires = [String];
+                  serviceConfig =
+                    { ExecStart = String;
+                      Group = String;
+                      User = String;
+                      WorkingDirectory = θ;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {gateone = {gid = ι;};};
+          users = {gateone = {description = String; home = κ; uid = λ;};};
+        };
+    } ->
+    μ,
+  γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  γ.nix = δ,
+  γ.openssh = δ,
+  γ.procps = δ,
+  γ.pythonPackages = ο,
+  γ.types = π,
+  ρ.cacert = ε,
+  ρ.coreutils = ε,
+  ρ.openssh = ε,
+  ρ.procps = ε,
+  ρ.pythonPackages = σ,
+  β.enable = η,
+  β.settingsDir = θ,
+  τ.services = α,
+  υ.gids = α,
+  φ.ids = υ,
+  χ.uids = α,
+  ψ.ids = χ,
+  ο.gateone = δ,
+  π.path = ν,
+  ω.path = α1
+) =>
+{config = α; lib = γ; pkgs = ρ;} ->
+{ config = μ;
+  options =
+    {services = {gateone = {enable = ζ; pidDir = ξ; settingsDir = β2;};};};
+}

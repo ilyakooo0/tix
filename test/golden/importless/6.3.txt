@@ -1,0 +1,32 @@
+∀ β γ δ ε ζ η θ ι κ.
+(β.lib = γ, γ.licenses = δ, γ.maintainers = ε, δ.bsd2 = ζ) => { betamax = η;
+  betamax-matchers = η;
+  betamax-serializers = η;
+  buildPythonPackage =
+    { checkInputs = [η];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = ∀ α. α;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  mock = η;
+  prawcore = η;
+  pytest = η;
+  pytestrunner = θ;
+  requests-toolbelt = η;
+  six = η;
+  stdenv = β;
+  update_checker = η;
+  websocket_client = η;
+} ->
+κ

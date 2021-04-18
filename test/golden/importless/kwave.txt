@@ -1,0 +1,44 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.freezeboy = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2Plus = ζ,
+  ε.linux = η
+) =>
+{ alsaLib = θ;
+  audiofile = θ;
+  extra-cmake-modules = ι;
+  fftw = θ;
+  flac = θ;
+  id3lib = θ;
+  kcompletion = θ;
+  kconfig = θ;
+  kcrash = θ;
+  kdoctools = θ;
+  kiconthemes = θ;
+  kio = θ;
+  lib = α;
+  libmad = θ;
+  libogg = θ;
+  libopus = θ;
+  libpulseaudio = θ;
+  librsvg = θ;
+  libsamplerate = θ;
+  libvorbis = θ;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+    } ->
+    κ;
+  qtmultimedia = θ;
+} ->
+κ

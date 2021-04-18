@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { dontStrip = Bool;
+      installPhase = String;
+      meta = {license = γ; platforms = [String];};
+      passthru = {home = δ; jre = δ;};
+      pname = String;
+      postFixup = String;
+      src = ε;
+      version = String;
+    } ->
+    δ,
+  β.licenses = ζ,
+  ζ.unfree = γ
+) =>
+{ alsaLib = η;
+  freetype = θ;
+  requireFile = {name = String; sha256 = String; url = String;} -> ε;
+  setJavaClassPath = ι;
+  stdenv = α;
+  xorg = κ;
+  zlib = λ;
+} ->
+δ

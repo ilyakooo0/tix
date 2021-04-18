@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.enable = β,
+  α.oidentd = γ,
+  δ.mkIf =
+    β ->
+    { systemd =
+        { services =
+            { oidentd =
+                { after = [String];
+                  script = String;
+                  serviceConfig = {Type = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {oidentd = {gid = γ;};};
+          users = {oidentd = {description = String; group = String; uid = ε;};};
+        };
+    } ->
+    ζ,
+  δ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  δ.types = ι,
+  κ.oidentd = α,
+  λ.services = κ,
+  μ.gids = α,
+  ν.ids = μ,
+  ξ.uids = α,
+  ο.ids = ξ,
+  ι.bool = η
+) =>
+{config = α; lib = δ; pkgs = π;} ->
+{config = ζ; options = {services = {oidentd = {enable = θ;};};};}

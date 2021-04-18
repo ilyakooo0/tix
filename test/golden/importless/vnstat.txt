@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.vnstat = β,
+  γ.mkIf =
+    δ ->
+    { systemd =
+        { services =
+            { vnstat =
+                { after = [String];
+                  description = String;
+                  documentation = [String];
+                  path = [ε];
+                  preStart = String;
+                  serviceConfig =
+                    { ExecReload = String;
+                      ExecStart = String;
+                      MemoryDenyWriteExecute = Bool;
+                      PrivateDevices = Bool;
+                      PrivateTmp = Bool;
+                      ProtectControlGroups = Bool;
+                      ProtectHome = Bool;
+                      ProtectKernelModules = Bool;
+                      ProtectKernelTunables = Bool;
+                      ProtectSystem = String;
+                      RestrictNamespaces = Bool;
+                      RestrictRealtime = Bool;
+                      StateDirectory = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { users =
+            { vnstatd =
+                { createHome = Bool;
+                  description = String;
+                  home = String;
+                  isSystemUser = Bool;
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.coreutils = ε,
+  β.enable = δ,
+  λ.services = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {services = {vnstat = {enable = θ;};};};}

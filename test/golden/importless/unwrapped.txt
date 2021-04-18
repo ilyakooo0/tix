@@ -1,0 +1,80 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.chardet = β,
+  α.dateutil = β,
+  α.gdal = β,
+  α.gpl2Plus = γ,
+  α.jinja2 = β,
+  α.linux = δ,
+  α.lsix = ε,
+  α.maintainers = ζ,
+  α.numpy = β,
+  α.optional = Bool -> String -> [String],
+  α.owslib = β,
+  α.platforms = η,
+  α.psycopg2 = β,
+  α.pygments = β,
+  α.pyqt5 = β,
+  α.pytz = β,
+  α.pyyaml = β,
+  α.qscintilla-qt5 = β,
+  α.requests = β,
+  α.sip = β,
+  α.six = β,
+  α.urllib3 = β,
+  θ.licenses = α
+) =>
+{ bison = ι;
+  cmake = ι;
+  exiv2 = β;
+  fcgi = β;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  flex = ι;
+  geos = β;
+  grass = λ;
+  gsl = β;
+  hdf5 = β;
+  lib = α;
+  libspatialindex = β;
+  libspatialite = β;
+  libzip = β;
+  mkDerivation =
+    { buildInputs = [β];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [ε];
+          platforms = δ;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+      passthru = {python3Packages = μ; pythonBuildInputs = [β];};
+      pname = String;
+      postPatch = String;
+      src = κ;
+      version = String;
+    } ->
+    ν;
+  netcdf = β;
+  ninja = ι;
+  openssl = β;
+  postgresql = β;
+  proj = β;
+  python3Packages = μ;
+  qca-qt5 = β;
+  qscintilla = β;
+  qtbase = β;
+  qtkeychain = β;
+  qtsensors = β;
+  qtserialport = β;
+  qtwebkit = β;
+  qtxmlpatterns = β;
+  qwt = β;
+  sqlite = β;
+  txt2tags = β;
+  withGrass = Bool;
+  xlibsWrapper = β;
+} ->
+ν

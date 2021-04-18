@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.singularity = β,
+  γ.overrideAttrs = (δ -> {installPhase = String;}) -> ε,
+  ζ.mkEnableOption = String -> η,
+  ζ.mkIf =
+    θ ->
+    { environment = {systemPackages = [ε];};
+      security = {wrappers = {singularity-suid = {source = String;};};};
+      systemd = {tmpfiles = {rules = [String];};};
+    } ->
+    ι,
+  δ.installPhase = κ,
+  β.enable = θ,
+  λ.programs = α,
+  μ.singularity = γ
+) =>
+{config = α; lib = ζ; pkgs = γ;} ->
+{config = ι; options = {programs = {singularity = {enable = η;};};};}

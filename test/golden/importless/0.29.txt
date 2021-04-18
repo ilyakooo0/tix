@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.enableFeature = Bool -> String -> β,
+  α.isDarwin = γ,
+  α.lib = δ,
+  α.mkDerivation =
+    { buildInputs = [Null];
+      checkInputs = [ε];
+      configureFlags = [β];
+      doCheck = Bool;
+      meta =
+        {description = String; homepage = String; license = ζ; platforms = η;};
+      nativeBuildInputs = [θ];
+      passthru = {compressionSupport = Bool; sslSupport = Bool;};
+      patches = ι;
+      pname = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  α.optional = Bool -> Null -> [Null],
+  α.withFeature = Bool -> String -> β,
+  δ.optionals = γ -> [Path] -> ι,
+  μ.licenses = ν,
+  μ.platforms = ξ,
+  ν.lgpl2 = ζ,
+  ξ.unix = η,
+  ο.lib = α,
+  π.lib = α,
+  ρ.lib = α,
+  σ.lib = α,
+  τ.lib = α
+) =>
+{ compressionSupport = Bool;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  libxml2 = Null;
+  openssl = Null;
+  perl = ε;
+  pkgconfig = θ;
+  shared = Bool;
+  sslSupport = Bool;
+  static = Bool;
+  stdenv = α;
+  zlib = Null;
+} ->
+λ

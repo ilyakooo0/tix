@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.enableB43Firmware = β,
+  α.version = γ,
+  δ.builtins = ε,
+  δ.lessThan = Integer -> ζ -> η,
+  δ.mkIf = β -> {assertions = θ; hardware = {firmware = [ι];};} -> κ,
+  δ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  δ.singleton = {assertion = η; message = String;} -> θ,
+  δ.types = ν,
+  ξ.b43Firmware_5_1_138 = ι,
+  ο.kernel = α,
+  π.kernelPackages = ο,
+  ρ.boot = π,
+  σ.networking = α,
+  ε.compareVersions = γ -> String -> ζ,
+  ν.bool = λ
+) =>
+{config = α; lib = δ; pkgs = ξ;} ->
+{config = κ; options = {networking = {enableB43Firmware = μ;};};}

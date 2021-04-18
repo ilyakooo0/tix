@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.maintainers = β,
+  α.mkEnableOption = String -> γ,
+  α.mkIf =
+    δ ->
+    { systemd =
+        { user =
+            { services =
+                { waybar =
+                    { description = String;
+                      partOf = [String];
+                      script = String;
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    ε,
+  ζ.enable = δ,
+  β.FlorianFranzen = η,
+  θ.waybar = ζ,
+  ι.programs = θ
+) =>
+{config = ζ; lib = α; pkgs = κ;} ->
+{ config = ε;
+  meta = {maintainers = [η];};
+  options = {programs = {waybar = {enable = γ;};};};
+}

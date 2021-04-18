@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { dontBuild = Bool;
+      dontUnpack = Bool;
+      installPhase = String;
+      meta =
+        {description = String; homepage = String; license = γ; platforms = δ;};
+      name = String;
+    } ->
+    ε,
+  α.shell = ζ,
+  β.licenses = η,
+  β.platforms = θ,
+  η.mit = γ,
+  θ.linux = δ
+) =>
+{ stdenv = α;
+  substituteAll = {isExecutable = Bool; shell = ζ; src = Path;} -> ι;
+} ->
+ε

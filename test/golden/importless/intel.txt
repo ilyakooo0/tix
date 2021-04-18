@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.andir = δ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.unfreeRedistributableFirmware = γ,
+  λ.linux = ε
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  iucode-tool = ζ;
+  libarchive = ζ;
+  stdenv = α;
+} ->
+θ

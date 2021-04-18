@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { meta =
+        {description = String; license = γ; maintainers = [δ]; platforms = ε;};
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postInstall = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.cmake-modules = ζ,
+  β.dtzWill = δ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.asl20 = γ,
+  μ.linux = ε
+) =>
+{ cmake = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  pkgconfig = ζ;
+  stdenv = α;
+  webos = ι;
+} ->
+θ

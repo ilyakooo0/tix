@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.bsd2 = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      installFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  α.unix = ζ,
+  ι.licenses = α,
+  κ.lib = ι,
+  γ.dipinhora = ε,
+  γ.kamilchm = ε,
+  γ.patternspandemic = ε,
+  λ.lib = α,
+  μ.platforms = α,
+  ν.lib = μ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  ponyc = δ;
+  stdenv = α;
+} ->
+θ

@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.gpl2Plus = δ,
+  λ.jtojnar = ε,
+  μ.linux = ζ
+) =>
+{ deadbeef = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gtk3 = γ;
+  libxml2 = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

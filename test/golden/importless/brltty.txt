@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.brltty = β,
+  γ.mkIf =
+    δ ->
+    { systemd =
+        { services =
+            { brltty =
+                { after = [String];
+                  before = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      Nice = Integer;
+                      OOMScoreAdjust = Integer;
+                      ProtectHome = String;
+                      ProtectSystem = String;
+                      Restart = String;
+                      RestartSec = Integer;
+                      SystemCallArchitectures = String;
+                      TimeoutStartSec = Integer;
+                      TimeoutStopSec = Integer;
+                      Type = String;
+                    };
+                  unitConfig =
+                    { DefaultDependencies = String;
+                      Documentation = String;
+                      RequiresMountsFor = String;
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.types = θ,
+  β.enable = δ,
+  ι.services = α,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ε; options = {services = {brltty = {enable = η;};};};}

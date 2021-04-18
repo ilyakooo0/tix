@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.AndersonTorres = ε,
+  β.edwtjo = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.offline = ε,
+  β.optional = Bool -> String -> μ,
+  β.optionals = Bool -> [String] -> [String],
+  β.platforms = ν,
+  β.toString = μ -> String,
+  κ.mit = δ,
+  ν.linux = ζ
+) =>
+{ autoreconfHook = η;
+  boost = γ;
+  db5 = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libevent = γ;
+  miniupnpc = γ;
+  openssl = γ;
+  pkgconfig = η;
+  protobuf = γ;
+  qrencode = ξ;
+  qt4 = ξ;
+  stdenv = α;
+  utillinux = γ;
+  withGui = Bool;
+  zlib = γ;
+} ->
+ι

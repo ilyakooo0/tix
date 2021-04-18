@@ -1,0 +1,27 @@
+∀ β γ δ ε ζ η θ ι.
+( β.lib = γ,
+  δ.buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = ε;
+          maintainers = ∀ α. α;
+        };
+      pname = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  δ.pyspotify = ζ,
+  γ.licenses = ι,
+  ι.asl20 = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  mopidy = ζ;
+  pythonPackages = δ;
+  stdenv = β;
+} ->
+θ

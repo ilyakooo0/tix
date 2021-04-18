@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      installPhase = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preBuild = String;
+      qmakeFlags = [String];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.mit = δ,
+  λ.viric = ε,
+  μ.linux = ζ
+) =>
+{ boost = γ;
+  db = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gmp = γ;
+  mpfr = γ;
+  qmake4Hook = η;
+  qt4 = γ;
+  stdenv = α;
+} ->
+ι

@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ.
+(α.licenses = β, α.maintainers = γ, α.peterhoeg = δ, β.gpl3 = ε) => { baloo = ζ;
+  extra-cmake-modules = η;
+  fetchFromGitHub = θ;
+  kcmutils = ζ;
+  kconfig = ζ;
+  kcrash = ζ;
+  kdeclarative = ζ;
+  kdoctools = η;
+  kfilemetadata = ζ;
+  kinit = ζ;
+  kirigami2 = ζ;
+  lib = α;
+  libvlc = ι;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta = {description = String; license = ε; maintainers = [δ];};
+      name = String;
+      nativeBuildInputs = [η];
+      propagatedBuildInputs = [ζ];
+    } ->
+    κ;
+  qtmultimedia = ζ;
+  qtquickcontrols2 = ζ;
+  qtwebsockets = ζ;
+} ->
+κ

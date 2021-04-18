@@ -1,0 +1,71 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.lib = β,
+  α.mkDerivation =
+    { binPath = γ;
+      buildInputs = [δ];
+      dontBuild = Bool;
+      dontWrapGApps = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postFixup = String;
+      src = θ;
+      unpackCmd = String;
+      version = String;
+    } ->
+    ι,
+  κ.out = δ,
+  λ.makeBinPath = [μ] -> γ,
+  ν.libX11 = δ,
+  ν.libXau = δ,
+  ν.libXcursor = δ,
+  ν.libXdmcp = δ,
+  ν.libXext = δ,
+  ν.libXfixes = δ,
+  ν.libXrender = δ,
+  ν.libxcb = δ,
+  ν.libxkbfile = δ,
+  ν.xcbutil = δ,
+  ν.xcbutilwm = δ,
+  β.licenses = ξ,
+  β.maintainers = ο,
+  β.michalrus = ζ,
+  β.mrVanDalo = ζ,
+  ξ.unfree = ε
+) =>
+{ alsaLib = δ;
+  autoPatchelfHook = η;
+  bzip2 = κ;
+  cairo = δ;
+  dpkg = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  ffmpeg_3 = μ;
+  freetype = δ;
+  gdk-pixbuf = δ;
+  gtk2 = δ;
+  gtk3 = δ;
+  harfbuzz = δ;
+  jdk = π;
+  lib = λ;
+  libbsd = δ;
+  libjack2 = δ;
+  libpng = δ;
+  libxkbcommon = ρ;
+  makeWrapper = η;
+  pixman = δ;
+  stdenv = α;
+  wrapGAppsHook = η;
+  xdg_utils = μ;
+  xorg = ν;
+  zenity = μ;
+  zlib = δ;
+} ->
+ι

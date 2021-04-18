@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.hasPrefix = String -> β -> Bool,
+  α.removePrefix = String -> γ -> Null,
+  α.replaceStrings = [String] -> [String] -> Null -> δ,
+  α.stringLength = δ -> Integer,
+  α.throw = String -> String,
+  α.versionAtLeast = String -> String -> Bool
+) =>
+{lib = α;} ->
+ε ->
+ζ ->
+η ->
+θ ->
+{ __toString =
+    (ι.majMinTiny = String, ι.patchLevel = Null, ι.tail = String) => ι ->
+    String;
+  gitTag = String;
+  libDir = String;
+  majMin = String;
+  majMinTiny = String;
+  major = ι;
+  minor = ι;
+  patchLevel = Null;
+  tail = ι;
+  tiny = ι;
+}

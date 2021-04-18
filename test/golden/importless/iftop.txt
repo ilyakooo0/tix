@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.iftop = β,
+  γ.iftop = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    η ->
+    { environment = {systemPackages = [δ];};
+      security =
+        {wrappers = {iftop = {capabilities = String; source = String;};};};
+    } ->
+    θ,
+  β.enable = η,
+  ι.programs = α
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{config = θ; options = {programs = {iftop = {enable = ζ;};};};}

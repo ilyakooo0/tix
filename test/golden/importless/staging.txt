@@ -1,0 +1,19 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( (β) // ({meta = ∀ α. α;}) ~ (γ),
+  (δ) // ({description = String;}) ~ (ε),
+  ζ.getVersion = η -> θ,
+  ζ.overrideDerivation =
+    η -> (ι -> {buildInputs = [κ]; name = String; postPatch = String;}) -> β,
+  η.description = String,
+  η.meta = δ,
+  η.pkgArches = λ,
+  μ.mkBuildInputs = λ -> [String] -> [κ],
+  μ.staging = ν,
+  ι.buildInputs = [κ],
+  ι.postPatch = String,
+  ξ.lib = ζ,
+  ο.lib = ζ,
+  π.meta = η,
+  ν.version = θ
+) =>
+{callPackage = Path -> {} -> μ; stdenv = ζ; wineUnstable = η;} -> γ

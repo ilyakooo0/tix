@@ -1,0 +1,44 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.jluttine = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.gpl2 = δ,
+  μ.linux = ζ
+) =>
+{ autoreconfHook = η;
+  cmake = η;
+  fetchFromGitLab =
+    { domain = String;
+      group = String;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    θ;
+  fetchpatch = ν;
+  mediastreamer = γ;
+  openh264 = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

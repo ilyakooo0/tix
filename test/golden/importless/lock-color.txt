@@ -1,0 +1,47 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postInstall = String;
+      preInstall = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.malyn = ε,
+  β.platforms = μ,
+  κ.bsd3 = δ,
+  μ.x86 = ζ
+) =>
+{ autoreconfHook = η;
+  cairo = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libX11 = γ;
+  libev = γ;
+  libjpeg_turbo = γ;
+  libxcb = γ;
+  libxkbcommon = γ;
+  libxkbfile = γ;
+  pam = γ;
+  pkgconfig = η;
+  stdenv = α;
+  xcbutilimage = γ;
+  xcbutilkeysyms = γ;
+  xcbutilxrm = γ;
+} ->
+ι

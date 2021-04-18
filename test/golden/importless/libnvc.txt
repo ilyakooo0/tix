@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      makeFlags = [String];
+      meta =
+        {description = String; homepage = String; license = γ; platforms = δ;};
+      nativeBuildInputs = [ε];
+      patches = [Path];
+      pname = String;
+      postPatch = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  θ.licenses = ι,
+  θ.platforms = κ,
+  ι.bsd3 = γ,
+  κ.linux = δ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  lib = θ;
+  libcap = β;
+  libelf = β;
+  libseccomp = β;
+  pkgconfig = ε;
+  stdenv = α;
+} ->
+η

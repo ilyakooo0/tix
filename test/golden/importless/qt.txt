@@ -1,0 +1,57 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.isDarwin = Bool,
+  α.lib = β,
+  α.mkDerivation =
+    { buildCommand = String;
+      meta = γ;
+      nativeBuildInputs = [δ];
+      passthru = {unwrapped = ε;};
+      pname = String;
+      preferLocalBuild = Bool;
+      version = ζ;
+    } ->
+    η,
+  θ.meta = ι,
+  θ.unwrapped = κ,
+  λ.jinja2 = κ,
+  λ.python = κ,
+  ε.meta = γ,
+  ε.version = ζ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.peterhoeg = ξ,
+  μ.isc = ο,
+  ι.platforms = π
+) =>
+{ cmake = ρ;
+  doxygen = ρ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> σ;
+  makeWrapper = δ;
+  mkDerivation =
+    { buildInputs = [κ];
+      cmakeFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ο;
+          maintainers = [ξ];
+          platforms = π;
+          version = String;
+        };
+      nativeBuildInputs = [ρ];
+      pname = String;
+      preCheck = String;
+      src = σ;
+      version = String;
+    } ->
+    ε;
+  msgpack = κ;
+  neovim = θ;
+  pythonPackages = λ;
+  qtbase = κ;
+  stdenv = α;
+} ->
+η

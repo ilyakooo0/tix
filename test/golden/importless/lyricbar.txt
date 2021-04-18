@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.mit = δ,
+  λ.jtojnar = ε,
+  μ.linux = ζ
+) =>
+{ deadbeef = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gtkmm3 = γ;
+  libxmlxx3 = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

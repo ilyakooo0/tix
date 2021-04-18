@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.apcupsd = β,
+  γ.mkOption = {default = String; description = String; type = δ;} -> ε,
+  γ.types = ζ,
+  η.exporters = α,
+  θ.prometheus = η,
+  ι.services = θ,
+  ζ.str = δ,
+  κ.enum = [String] -> λ
+) =>
+{config = α; lib = γ; options = μ; pkgs = ν;} ->
+{ extraOpts = {apcupsdAddress = ε; apcupsdNetwork = ξ;};
+  port = Integer;
+  serviceOpts = {serviceConfig = {ExecStart = String;};};
+}

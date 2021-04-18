@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.hideProcessInformation = β,
+  α.proc = γ,
+  δ.maintainers = ε,
+  δ.mkIf =
+    β ->
+    { boot = {specialFileSystems = {/proc = {options = [String];};};};
+      systemd =
+        { services =
+            { systemd-logind =
+                {serviceConfig = {SupplementaryGroups = [String];};};
+            };
+        };
+      users = {groups = {proc = {gid = γ; members = [String];};};};
+    } ->
+    ζ,
+  δ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  δ.types = ι,
+  κ.security = α,
+  λ.gids = α,
+  μ.ids = λ,
+  ε.joachifm = ν,
+  ι.bool = η
+) =>
+{config = α; lib = δ;} ->
+{ config = ζ;
+  meta = {doc = Path; maintainers = [ν];};
+  options = {security = {hideProcessInformation = θ;};};
+}

@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.sikmir = ε,
+  ι.gpl2 = δ
+) =>
+{ cmake = ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  libusb-compat-0_1 = γ;
+  stdenv = α;
+} ->
+θ

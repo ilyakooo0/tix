@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.getVersion = β -> γ,
+  α.licenses = δ,
+  α.versionOlder = γ -> String -> ε,
+  ζ.name = β,
+  δ.fdl12 = η,
+  δ.gpl2 = η,
+  δ.lgpl21 = η
+) =>
+{ cyrus_sasl = ζ;
+  extra-cmake-modules = θ;
+  kcalendarcore = ζ;
+  kcontacts = ζ;
+  kdepimTeam = ι;
+  kdoctools = θ;
+  kio = ζ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {broken = ε; license = [η]; maintainers = ι;};
+      name = String;
+      nativeBuildInputs = [θ];
+    } ->
+    κ;
+  qtwebengine = ζ;
+} ->
+κ

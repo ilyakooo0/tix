@@ -1,0 +1,15 @@
+∀ β γ δ ε ζ η θ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildPhase = String;
+      configurePhase = String;
+      meta = {branch = String; platforms = δ;};
+      name = String;
+      src = ∀ α. α;
+      version = ∀ α. α;
+    } ->
+    ε,
+  γ.platforms = ζ,
+  ζ.all = δ
+) =>
+{src = η; stdenv = β; version = θ;} -> ε

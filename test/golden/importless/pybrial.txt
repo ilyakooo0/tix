@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  γ.src = δ,
+  γ.version = ε,
+  β.licenses = ζ,
+  β.maintainers = η,
+  β.timokau = θ,
+  ζ.gpl2 = ι
+) =>
+{ brial = γ;
+  buildPythonPackage =
+    { meta = {description = String; license = ι; maintainers = [θ];};
+      pname = String;
+      sourceRoot = String;
+      src = δ;
+      version = ε;
+    } ->
+    κ;
+  fetchFromGitHub = λ;
+  stdenv = α;
+} ->
+κ

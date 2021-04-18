@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.freezeboy = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2Plus = ζ,
+  ε.linux = η
+) =>
+{ extra-cmake-modules = θ;
+  kconfig = ι;
+  kcrash = ι;
+  kdoctools = ι;
+  kxmlgui = ι;
+  lib = α;
+  libkdegames = ι;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+    } ->
+    κ;
+} ->
+κ

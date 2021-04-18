@@ -1,0 +1,42 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = [η];
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      preConfigure = String;
+      pythonPath = ∀ α. α;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.asl20 = ε,
+  μ.bjornfor = ζ,
+  ν.linux = [η],
+  ξ.darwin = [η]
+) =>
+{ bison = δ;
+  boost = δ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  flex = δ;
+  libevent = δ;
+  openssl = δ;
+  pkgconfig = θ;
+  python = δ;
+  stdenv = β;
+  twisted = δ;
+  zlib = δ;
+} ->
+κ

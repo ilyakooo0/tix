@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.mtr = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      security =
+        {wrappers = {mtr-packet = {capabilities = String; source = String;};};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.mtr = λ,
+  β.enable = δ,
+  β.package = ε,
+  μ.programs = α,
+  ι.bool = η,
+  ν.package = ξ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {programs = {mtr = {enable = θ; package = ο;};};};}

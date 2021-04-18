@@ -1,0 +1,56 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { akonadi = δ;
+  akonadi-search = ε;
+  extra-cmake-modules = ζ;
+  kbookmarks = ε;
+  kcalutils = ε;
+  kcmutils = ε;
+  kcompletion = ε;
+  kconfig = ε;
+  kconfigwidgets = ε;
+  kcoreaddons = ε;
+  kdelibs4support = ε;
+  kdepim-addons = ε;
+  kdepim-apps-libs = ε;
+  kdepim-runtime = δ;
+  kdepimTeam = η;
+  kdoctools = ζ;
+  kguiaddons = ε;
+  ki18n = ε;
+  kiconthemes = ε;
+  kinit = ε;
+  kio = ε;
+  kldap = ε;
+  kmail-account-wizard = ε;
+  kmailtransport = ε;
+  knotifications = ε;
+  knotifyconfig = ε;
+  kontactinterface = ε;
+  kparts = ε;
+  kpty = ε;
+  kservice = ε;
+  ktextwidgets = ε;
+  ktnef = ε;
+  kwallet = δ;
+  kwidgetsaddons = ε;
+  kwindowsystem = ε;
+  kxmlgui = ε;
+  lib = α;
+  libgravatar = ε;
+  libkdepim = ε;
+  libksieve = ε;
+  mailcommon = ε;
+  messagelib = ε;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {license = [γ]; maintainers = η;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedUserEnvPkgs = [δ];
+    } ->
+    θ;
+  pim-sieve-editor = ε;
+  qtscript = ε;
+  qtwebengine = ε;
+} ->
+θ

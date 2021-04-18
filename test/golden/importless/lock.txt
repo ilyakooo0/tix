@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postInstall = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.domenkozar = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.malyn = ε,
+  β.platforms = μ,
+  κ.bsd3 = δ,
+  μ.all = ζ
+) =>
+{ cairo = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  libX11 = γ;
+  libev = γ;
+  libxcb = γ;
+  libxkbcommon = γ;
+  libxkbfile = γ;
+  pam = γ;
+  pkgconfig = η;
+  stdenv = α;
+  which = γ;
+  xcbutilimage = γ;
+  xcbutilkeysyms = γ;
+  xcbutilxrm = γ;
+} ->
+ι

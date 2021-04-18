@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    {services = {pipewire = {enable = Bool;};}; systemd = {packages = [ε];};} ->
+    ζ,
+  γ.teams = η,
+  θ.gnome-remote-desktop = ε,
+  ι.gnome-remote-desktop = α,
+  κ.gnome3 = ι,
+  λ.services = κ,
+  η.members = μ,
+  ν.gnome = η,
+  ξ.gnome3 = θ
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{ config = ζ;
+  meta = {maintainers = μ;};
+  options = {services = {gnome3 = {gnome-remote-desktop = {enable = δ;};};};};
+}

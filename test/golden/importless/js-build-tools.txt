@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ
+) =>
+{ buildOcaml =
+    { buildInputs = [η];
+      configurePhase = String;
+      dontAddPrefix = Bool;
+      hasSharedObjects = Bool;
+      installPhase = String;
+      meta = {description = String; license = ε; maintainers = [ζ];};
+      minimumSupportedOcamlVersion = String;
+      name = String;
+      patches = [Path];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  ocaml_oasis = η;
+  opaline = η;
+  stdenv = α;
+} ->
+ι

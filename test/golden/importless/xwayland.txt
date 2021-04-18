@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  γ.overrideAttrs =
+    ( δ ->
+      { buildInputs = [ε];
+        configureFlags = [String];
+        meta =
+          { description = String;
+            homepage = String;
+            license = ζ;
+            platforms = η;
+          };
+        name = String;
+        postInstall = String;
+        propagatedBuildInputs = [θ];
+      }
+    ) ->
+    ι,
+  δ.buildInputs = [ε],
+  δ.propagatedBuildInputs = [θ],
+  β.licenses = κ,
+  β.platforms = λ,
+  κ.mit = ζ,
+  λ.linux = η
+) =>
+{ egl-wayland = ε;
+  epoxy = θ;
+  libunwind = θ;
+  libxslt = θ;
+  makeWrapper = θ;
+  stdenv = α;
+  wayland = θ;
+  wayland-protocols = θ;
+  xkbcomp = μ;
+  xkeyboard_config = ν;
+  xorgserver = γ;
+} ->
+ι

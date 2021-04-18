@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.freezeboy = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2Plus = ζ,
+  ε.linux = η
+) =>
+{ extra-cmake-modules = θ;
+  kdeclarative = ι;
+  knewstuff = ι;
+  lib = α;
+  libkdegames = ι;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta =
+        { description = String;
+          license = ζ;
+          longDescription = String;
+          maintainers = [β];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+    } ->
+    κ;
+} ->
+κ

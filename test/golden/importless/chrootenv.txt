@@ -1,0 +1,62 @@
+∀ θ ι κ λ μ ν ξ ο π.
+( θ.licenses = ι,
+  θ.linux = κ,
+  θ.maintainers = λ,
+  θ.mog = μ,
+  θ.platforms = ν,
+  ι.asl20 = ξ
+) =>
+{ buildFHSUserEnv =
+    { extraInstallCommands = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ξ;
+          maintainers = [μ];
+          platforms = κ;
+        };
+      multiPkgs =
+        ∀ α β γ δ ε ζ η.
+        ( α.git = β,
+          α.override =
+            { packageOverrides =
+                (γ.callPackage = Path -> {} -> δ) => γ ->
+                ε -> {platformio = δ;};
+            } ->
+            β,
+          α.zlib = β,
+          β.pkgs = ζ,
+          ζ.bottle = β,
+          ζ.pip = β,
+          ζ.platformio = β,
+          ζ.setuptools = β,
+          η.python3 = α
+        ) =>
+        α -> [β];
+      name = String;
+      runScript = String;
+      targetPkgs =
+        ∀ α β γ δ ε ζ η.
+        ( α.git = β,
+          α.override =
+            { packageOverrides =
+                (γ.callPackage = Path -> {} -> δ) => γ ->
+                ε -> {platformio = δ;};
+            } ->
+            β,
+          α.zlib = β,
+          β.pkgs = ζ,
+          ζ.bottle = β,
+          ζ.pip = β,
+          ζ.platformio = β,
+          ζ.setuptools = β,
+          η.python3 = α
+        ) =>
+        α -> [β];
+    } ->
+    ο;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> π;
+  lib = θ;
+} ->
+ο

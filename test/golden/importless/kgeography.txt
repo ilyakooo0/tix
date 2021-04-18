@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ.
+(α.globin = β, α.licenses = γ, γ.gpl2 = δ, ε.maintainers = α) => { cmake = ζ;
+  extra-cmake-modules = ζ;
+  kconfigwidgets = η;
+  kcrash = η;
+  kdoctools = η;
+  kitemviews = η;
+  kxmlgui = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  qtbase = η;
+} ->
+θ

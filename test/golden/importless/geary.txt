@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.geary = β,
+  γ.geary = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    η ->
+    { environment = {systemPackages = [δ];};
+      programs = {dconf = {enable = Bool;};};
+      services =
+        { gnome3 =
+            { gnome-keyring = {enable = Bool;};
+              gnome-online-accounts = {enable = Bool;};
+            };
+        };
+    } ->
+    θ,
+  ε.teams = ι,
+  β.enable = η,
+  κ.programs = α,
+  λ.gnome3 = γ,
+  ι.members = μ,
+  ν.gnome = ι
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{ config = θ;
+  meta = {maintainers = μ;};
+  options = {programs = {geary = {enable = ζ;};};};
+}

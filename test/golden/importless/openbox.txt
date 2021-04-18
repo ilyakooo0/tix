@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mkEnableOption = String -> β,
+  α.mkIf =
+    γ ->
+    { environment = {systemPackages = [δ];};
+      services =
+        { xserver =
+            {windowManager = {session = [{name = String; start = String;}];};};
+        };
+    } ->
+    ε,
+  ζ.openbox = δ,
+  η.openbox = θ,
+  θ.enable = γ,
+  ι.windowManager = η,
+  κ.xserver = ι,
+  λ.services = κ
+) =>
+{config = η; lib = α; pkgs = ζ;} ->
+{ config = ε;
+  options =
+    {services = {xserver = {windowManager = {openbox = {enable = β;};};};};};
+}

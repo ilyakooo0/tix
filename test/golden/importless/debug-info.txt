@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ.
+( α.enableDebugInfo = β,
+  γ.mkIf =
+    β ->
+    { environment =
+        { extraOutputsToInstall = [String];
+          variables = {NIX_DEBUG_INFO_DIRS = [String];};
+        };
+    } ->
+    δ,
+  γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
+  γ.types = η,
+  θ.environment = α,
+  η.bool = ε
+) =>
+{config = α; lib = γ;} ->
+{config = δ; options = {environment = {enableDebugInfo = ζ;};};}

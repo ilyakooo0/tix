@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      fixupPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.dev = η,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.bsd3 = δ,
+  μ.karolchmist = ε,
+  ξ.virusdave = ε,
+  ν.all = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  jre = η;
+  makeWrapper = γ;
+  ncurses = κ;
+  stdenv = α;
+} ->
+ι

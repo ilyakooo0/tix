@@ -1,0 +1,10 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.ledger = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf = ε -> {services = {udev = {packages = [ζ];};};} -> η,
+  θ.ledger-udev-rules = ζ,
+  β.enable = ε,
+  ι.hardware = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {hardware = {ledger = {enable = δ;};};};}

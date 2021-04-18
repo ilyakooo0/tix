@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.dtzWill = ε,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.bsd2 = δ,
+  λ.all = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  fuse = γ;
+  stdenv = α;
+  zlib = γ;
+} ->
+θ

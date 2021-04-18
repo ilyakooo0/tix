@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.buildRustPackage =
+    { buildInputs = [β];
+      cargoPatches = [Path];
+      cargoSha256 = String;
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.lib = κ,
+  κ.licenses = λ,
+  κ.maintainers = μ,
+  κ.platforms = ν,
+  λ.mit = γ,
+  μ.turbomack = δ,
+  ν.linux = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  openssl = β;
+  pkg-config = ζ;
+  rustPlatform = α;
+  stdenv = ι;
+} ->
+θ

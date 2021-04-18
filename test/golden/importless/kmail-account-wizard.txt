@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { akonadi = δ;
+  extra-cmake-modules = ε;
+  kcmutils = δ;
+  kcrash = δ;
+  kdbusaddons = δ;
+  kdepimTeam = ζ;
+  kdoctools = ε;
+  kidentitymanagement = δ;
+  kldap = δ;
+  kmailtransport = δ;
+  knewstuff = δ;
+  knotifications = δ;
+  knotifyconfig = δ;
+  kparts = δ;
+  kross = δ;
+  ktexteditor = δ;
+  kwallet = δ;
+  lib = α;
+  libkdepim = δ;
+  libkleo = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+    } ->
+    η;
+  pimcommon = δ;
+  qttools = δ;
+  shared-mime-info = ε;
+} ->
+η

@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  γ.buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      pname = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.fetchPypi = {pname = String; sha256 = String; version = String;} -> η,
+  β.licenses = ι,
+  β.maintainers = κ,
+  ι.mit = δ,
+  κ.nickhu = ε
+) =>
+{mopidy = ζ; python3Packages = γ; stdenv = α;} -> θ

@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.platforms = κ,
+  ι.lgpl3 = δ,
+  λ.gpl3 = δ,
+  κ.all = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  globalplatform = γ;
+  openssl_1_0_2 = γ;
+  pcsclite = γ;
+  pkgconfig = ζ;
+  stdenv = α;
+} ->
+θ

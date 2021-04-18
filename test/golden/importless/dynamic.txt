@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = ε;
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.meta = κ,
+  γ.python = η,
+  κ.license = δ,
+  λ.maintainers = ε,
+  μ.platforms = ζ
+) =>
+{ autoreconfHook = η;
+  docutils = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  pkgconfig = η;
+  stdenv = α;
+  varnish = γ;
+} ->
+ι

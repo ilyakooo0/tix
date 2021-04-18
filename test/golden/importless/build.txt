@@ -1,0 +1,51 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      hardeningDisable = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patches = θ;
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      src = ι;
+      version = κ;
+    } ->
+    λ,
+  β.licenses = μ,
+  β.ma27 = ε,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.mit = δ,
+  ξ.linux = ζ
+) =>
+{ alsaLib = γ;
+  asciidoc = γ;
+  cairo = γ;
+  configFile = Null;
+  docbook_xsl = γ;
+  fetchFromGitHub = {owner = String; repo = String; rev = ο; sha256 = π;} -> ι;
+  gdk-pixbuf = γ;
+  lib = ρ;
+  libconfig = γ;
+  libxslt = γ;
+  makeWrapper = γ;
+  pango = γ;
+  patches = θ;
+  pkgconfig = η;
+  rev = ο;
+  sha256 = π;
+  stdenv = α;
+  version = κ;
+  wirelesstools = γ;
+  xcbutilwm = γ;
+} ->
+λ

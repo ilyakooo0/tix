@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.brillo = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {udev = {packages = [η];};};
+    } ->
+    θ,
+  ι.brillo = ζ,
+  β.enable = ε,
+  κ.hardware = α
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = θ; options = {hardware = {brillo = {enable = δ;};};};}

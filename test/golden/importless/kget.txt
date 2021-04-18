@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ.
+( α.gpl2 = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.peterhoeg = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kcmutils = η;
+  kcompletion = η;
+  kcoreaddons = η;
+  kdelibs4support = η;
+  kdoctools = ζ;
+  knotifyconfig = η;
+  kparts = η;
+  kwallet = η;
+  kwidgetsaddons = η;
+  kwindowsystem = η;
+  kxmlgui = η;
+  lib = α;
+  libgcrypt = η;
+  libktorrent = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [β]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  qca-qt5 = η;
+  qgpgme = η;
+} ->
+θ

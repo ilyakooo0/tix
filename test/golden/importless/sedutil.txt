@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.sedutil = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { boot = {kernelParams = [String];};
+      environment = {systemPackages = [ζ];};
+    } ->
+    η,
+  γ.sedutil = ζ,
+  β.enable = ε,
+  θ.programs = α
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = η; options = {programs = {sedutil = {enable = δ;};};};}

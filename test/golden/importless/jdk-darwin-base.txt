@@ -1,0 +1,34 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( γ.packageType = String,
+  δ.lib = ε,
+  δ.maintainers = ζ,
+  δ.mkDerivation =
+    { dontStrip = Integer;
+      installPhase = String;
+      meta =
+        { description = String;
+          license = η;
+          maintainers = [θ];
+          platforms = [String];
+        };
+      name = String;
+      passthru = {home = ι; jre = ι;};
+      src = κ;
+    } ->
+    ι,
+  δ.name = λ,
+  ε.licenses = μ,
+  ε.taku0 = θ,
+  μ.gpl2Classpath = η,
+  ν.lib = δ,
+  ξ.cpu = δ,
+  ο.parsed = ξ,
+  π.hostPlatform = ο
+) =>
+γ ->
+{ fetchurl =
+    {sha256 = ∀ α β. (α.sha256 = β) => β; url = ∀ α β. (α.url = β) => β;} -> κ;
+  stdenv = δ;
+  swingSupport = Bool;
+} ->
+ι

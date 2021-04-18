@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lgpl21 = β,
+  α.maintainers = γ,
+  α.unix = δ,
+  ε.gerbilPackage =
+    { gambit-params = ζ;
+      gerbil = η;
+      gerbil-package = String;
+      git-version = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [θ];
+          platforms = δ;
+        };
+      pname = String;
+      softwareName = String;
+      src = ι;
+      version = String;
+      version-path = String;
+    } ->
+    κ,
+  λ.unstable-params = ζ,
+  μ.licenses = α,
+  γ.fare = θ,
+  ν.platforms = α
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gambit-support = λ;
+  gerbil-support = ε;
+  gerbil-unstable = η;
+  lib = α;
+} ->
+κ

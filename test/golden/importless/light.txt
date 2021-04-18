@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.light = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      services = {udev = {packages = [ζ];};};
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.light = ε,
+  β.enable = δ,
+  μ.programs = α,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = η; options = {programs = {light = {enable = ι;};};};}

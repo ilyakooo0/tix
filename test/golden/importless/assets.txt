@@ -1,0 +1,29 @@
+∀ β γ δ ε ζ η θ ι κ.
+( β.lib = γ,
+  β.mkDerivation =
+    { dontBuild = Bool;
+      dontFixup = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = δ;
+          maintainers = [ε];
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.licenses = ι,
+  γ.maintainers = κ,
+  γ.peterhoeg = ε,
+  ι.unfree = δ
+) =>
+{ gogUnpackHook = ζ;
+  requireFile = {message = String; name = String; sha256 = String;} -> η;
+  stdenv = β;
+} ->
+{descent1-assets = θ; descent2-assets = θ;}

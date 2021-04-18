@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  γ.jerith666 = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kdelibs4support = η;
+  kdnssd = η;
+  kdoctools = ζ;
+  lib = α;
+  libXdamage = θ;
+  libXtst = θ;
+  libvncserver = θ;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedBuildInputs = [η];
+    } ->
+    ι;
+  qtx11extras = θ;
+} ->
+ι

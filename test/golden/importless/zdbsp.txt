@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      sourceRoot = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.ertes = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.gpl2Plus = δ,
+  μ.linux = ζ
+) =>
+{ cmake = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  stdenv = α;
+  unzip = η;
+  zlib = γ;
+} ->
+ι

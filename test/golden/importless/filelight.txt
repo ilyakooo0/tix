@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl2 = δ,
+  γ.fridh = ε,
+  γ.vcunat = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kdoctools = ζ;
+  kio = η;
+  kparts = η;
+  kxmlgui = η;
+  lib = α;
+  mkDerivation =
+    { meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  qtscript = η;
+  solid = η;
+} ->
+θ

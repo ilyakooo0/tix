@@ -1,0 +1,84 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( ( { beamDeps = [β];
+      buildInputs = [γ];
+      buildPhase = Null;
+      buildPlugins = [β];
+      compilePorts = Bool;
+      configurePhase = Null;
+      enableDebugInfo = Bool;
+      installPhase = Null;
+      meta = {};
+      name = δ;
+      postPatch = String;
+      setupHook = Null;
+      src = ε;
+      version = ζ;
+    }
+  ) //
+  ( η
+  ) ~
+  ( {buildInputs = [θ]; name = String;}
+  ),
+  ( { buildInputs = [γ];
+      buildPhase = String;
+      buildPlugins = [β];
+      compilePorts = Bool;
+      configurePhase = String;
+      dontStrip = Bool;
+      installPhase = String;
+      meta = ∀ α. α;
+      name = String;
+      passthru = {beamDeps = [β]; env = ι; packageName = δ;};
+      postPatch = String;
+      propagatedBuildInputs = κ;
+      setupHook = λ;
+      src = ε;
+      version = ζ;
+    }
+  ) //
+  ( μ
+  ) ~
+  ( η
+  ),
+  ν.lib = ξ,
+  ν.mkDerivation = {buildInputs = [θ]; name = String;} -> ι,
+  γ.debugInfo = Bool,
+  γ.meta = ο,
+  π.optionalString = Bool -> String -> ρ,
+  ξ.filterAttrs =
+    (σ -> Null -> Bool) ->
+    { buildPhase = Null;
+      configurePhase = Null;
+      installPhase = Null;
+      setupHook = Null;
+    } ->
+    μ,
+  ξ.fix = (θ -> ι) -> τ,
+  ξ.unique = [β] -> κ,
+  ο.platforms = υ
+) =>
+{ erlang = γ;
+  lib = π;
+  libyaml = γ;
+  openssl = γ;
+  pc = β;
+  rebar3 = γ;
+  stdenv = ν;
+  writeText = String -> String -> λ;
+} ->
+{ beamDeps = [β];
+  buildInputs = [γ];
+  buildPhase = Null;
+  buildPlugins = [β];
+  compilePorts = Bool;
+  configurePhase = Null;
+  enableDebugInfo = Bool;
+  installPhase = Null;
+  meta = {};
+  name = δ;
+  postPatch = String;
+  setupHook = Null;
+  src = ε;
+  version = ζ;
+} ->
+τ

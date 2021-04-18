@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.peterhoeg = δ,
+  ε.meta = ζ,
+  η.meta = θ,
+  β.gpl2 = ι,
+  ζ.platforms = κ,
+  θ.homepage = λ
+) =>
+{ extra-cmake-modules = μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  kwindowsystem = ε;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ε];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = λ;
+          license = ι;
+          maintainers = [δ];
+          platforms = κ;
+        };
+      nativeBuildInputs = [μ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    ν;
+  plasma-framework = ε;
+} ->
+ν

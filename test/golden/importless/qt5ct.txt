@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enable = β,
+  γ.maintainers = δ,
+  γ.mkIf =
+    β ->
+    { environment =
+        {systemPackages = [ε]; variables = {QT_QPA_PLATFORMTHEME = String;};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.qt5ct = ε,
+  γ.types = ι,
+  κ.qt5ct = α,
+  λ.programs = κ,
+  δ.romildo = μ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = ζ;
+  meta = {maintainers = [μ];};
+  options = {programs = {qt5ct = {enable = θ;};};};
+}

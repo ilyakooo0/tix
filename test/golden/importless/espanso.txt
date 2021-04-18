@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.espanso = β,
+  γ.espanso = δ,
+  γ.libnotify = δ,
+  γ.maintainers = ε,
+  γ.mkIf =
+    ζ ->
+    { environment = {systemPackages = [η];};
+      systemd =
+        { user =
+            { services =
+                { espanso =
+                    { description = String;
+                      path = [δ];
+                      serviceConfig = {ExecStart = String; Restart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    θ,
+  γ.numkem = ι,
+  γ.options = κ,
+  γ.xclip = δ,
+  λ.espanso = η,
+  β.enable = ζ,
+  μ.services = α,
+  κ.mkEnableOption = String -> ν
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = θ;
+  meta = {maintainers = [ι];};
+  options = {services = {espanso = {enable = ν;};};};
+}

@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.maintainers = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta = {description = String; homepage = String; maintainers = [γ];};
+      name = String;
+      propagatedBuildInputs = [δ];
+      src = ε;
+    } ->
+    ζ,
+  η.python = δ,
+  β.matthiasbeyer = γ,
+  θ.lib = α
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+  python3Packages = η;
+  stdenv = α;
+} ->
+ζ

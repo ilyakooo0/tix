@@ -1,0 +1,44 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν.
+( β.lib = γ,
+  δ.buildPythonApplication =
+    { checkPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preBuild = String;
+      preFixup = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  δ.dnspython = θ,
+  δ.ecdsa = θ,
+  δ.jsonrpclib-pelix = θ,
+  δ.pbkdf2 = θ,
+  δ.protobuf = θ,
+  δ.py_scrypt = θ,
+  δ.pyaes = θ,
+  δ.pyqt5 = θ,
+  δ.pysocks = θ,
+  δ.qrcode = θ,
+  δ.requests = θ,
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.mit = ε,
+  ν.linux = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ι;
+  python3Packages = δ;
+  stdenv = β;
+  wrapQtAppsHook = η;
+} ->
+κ

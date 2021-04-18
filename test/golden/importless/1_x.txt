@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  β.jluttine = γ,
+  β.licenses = δ,
+  β.maintainers = ε,
+  δ.lgpl3 = ζ
+) =>
+{ buildPythonPackage =
+    { checkInputs = [η];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [γ];
+        };
+      pname = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  cairocffi = θ;
+  cssselect2 = η;
+  defusedxml = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  fontconfig = η;
+  nose = η;
+  pillow = η;
+  stdenv = α;
+  tinycss2 = η;
+} ->
+κ

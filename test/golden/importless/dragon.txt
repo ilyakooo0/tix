@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ.
+( α.jonathanreeve = β,
+  α.licenses = γ,
+  γ.fdl12 = δ,
+  γ.gpl2 = δ,
+  ε.maintainers = α
+) =>
+{ baloo = ζ;
+  baloo-widgets = ζ;
+  extra-cmake-modules = η;
+  kactivities = ζ;
+  kbookmarks = ζ;
+  kcmutils = ζ;
+  kcompletion = ζ;
+  kconfig = ζ;
+  kcoreaddons = ζ;
+  kdbusaddons = ζ;
+  kdelibs4support = ζ;
+  kdoctools = η;
+  kfilemetadata = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kinit = ζ;
+  kio = ζ;
+  knewstuff = ζ;
+  knotifications = ζ;
+  kparts = ζ;
+  ktexteditor = ζ;
+  kwindowsystem = ζ;
+  lib = α;
+  mkDerivation =
+    { meta = {description = String; license = [δ]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [η];
+      outputs = [String];
+      propagatedBuildInputs = [ζ];
+    } ->
+    θ;
+  phonon = ζ;
+  phonon-backend-gstreamer = ζ;
+  solid = ζ;
+} ->
+θ

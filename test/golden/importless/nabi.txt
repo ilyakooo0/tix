@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η.
+( α.enabled = String,
+  β.nabi = γ,
+  δ.mkIf =
+    Bool ->
+    { environment =
+        { variables =
+            { GTK_IM_MODULE = String;
+              QT_IM_MODULE = String;
+              XMODIFIERS = String;
+            };
+        };
+      i18n = {inputMethod = {package = γ;};};
+      services = {xserver = {displayManager = {sessionCommands = String;};};};
+    } ->
+    ε,
+  ζ.inputMethod = α,
+  η.i18n = ζ
+) =>
+{config = α; lib = δ; pkgs = β;} -> {config = ε;}

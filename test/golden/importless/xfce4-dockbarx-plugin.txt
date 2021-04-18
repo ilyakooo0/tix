@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postFixup = String;
+      postPatch = String;
+      pythonPath = [γ];
+      rev = String;
+      src = θ;
+      ver = String;
+      version = String;
+    } ->
+    ι,
+  κ.libxfce4util = γ,
+  κ.xfce4-dev-tools = γ,
+  κ.xfce4-panel = γ,
+  κ.xfconf = γ,
+  λ.wrapPython = γ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.mit = δ,
+  ν.volth = ε,
+  ξ.linux = ζ
+) =>
+{ bash = ο;
+  dockbarx = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gtk2 = γ;
+  pkgconfig = η;
+  python2 = γ;
+  pythonPackages = λ;
+  stdenv = α;
+  vala_0_46 = γ;
+  wafHook = η;
+  xfce = κ;
+} ->
+ι

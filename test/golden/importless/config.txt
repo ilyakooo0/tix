@@ -1,0 +1,7 @@
+∀ α β γ δ ε.
+( α.lib = β,
+  α.mkDerivation =
+    {installPhase = String; name = String; phases = String;} -> γ,
+  β.concatMapStrings = (δ -> String) -> ε -> String
+) =>
+{stdenv = α;} -> {paths = ε;} -> γ

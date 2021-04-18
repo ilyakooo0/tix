@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.dotlambda = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  ε.buildPythonApplication =
+    { checkInputs = [ζ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [β];
+        };
+      pname = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  ε.pkgs = λ,
+  γ.gpl3Plus = η,
+  μ.pkgs = ε,
+  λ.defusedxml = θ,
+  λ.passlib = θ,
+  λ.python-dateutil = θ,
+  λ.setuptools = θ,
+  λ.vobject = θ,
+  ν.pytest = ζ,
+  ν.pytest-flake8 = ζ,
+  ν.pytest-isort = ζ,
+  ν.pytestcov = ζ,
+  ν.pytestrunner = ζ,
+  ν.waitress = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  lib = α;
+  python3 = ε;
+} ->
+κ

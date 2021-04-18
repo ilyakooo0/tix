@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      preBuild = ι;
+      src = κ;
+    } ->
+    λ,
+  α.optionalString = β -> String -> ι,
+  μ.lib = α,
+  γ.licenses = ν,
+  γ.maintainers = ξ,
+  γ.platforms = ο,
+  γ.ttuegel = ζ,
+  γ.unix = η,
+  ν.mit = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> κ;
+  flex = δ;
+  libX11 = π;
+  libxcb = δ;
+  pkgconfig = θ;
+  stdenv = α;
+  xkeyboard_config = δ;
+  yacc = δ;
+} ->
+λ

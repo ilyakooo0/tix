@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  α.mkDerivation =
+    { CPP = String;
+      buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          platforms = [String];
+        };
+      name = String;
+      postInstall = String;
+      src = ε;
+    } ->
+    ζ,
+  β.licenses = η,
+  η.gpl2 = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ε;
+  gawk = γ;
+  libxml2 = γ;
+  openssl = γ;
+  readline = γ;
+  stdenv = α;
+} ->
+ζ

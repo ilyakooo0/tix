@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { CFLAGS = δ;
+      buildInputs = [ε];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      name = ι;
+      nativeBuildInputs = [ε];
+      patches = κ;
+      postPatch = λ;
+      prePatch = String;
+      src = μ;
+    } ->
+    ν,
+  α.optionalString = β -> String -> δ,
+  ξ.lib = α,
+  γ.licenses = ο,
+  γ.maintainers = π,
+  γ.platforms = ρ,
+  ο.mit = ζ,
+  π.vrthra = η,
+  ρ.unix = θ,
+  σ.lib = α
+) =>
+{ customConfig = Null;
+  name = ι;
+  ncurses = ε;
+  patches = κ;
+  src = μ;
+  stdenv = α;
+} ->
+ν

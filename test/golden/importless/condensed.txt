@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ.
+( α.dtzWill = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.ofl = ζ,
+  ε.all = η
+) =>
+{ fetchzip =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      name = String;
+      postFetch = String;
+      sha256 = String;
+      url = String;
+    } ->
+    θ;
+  lib = α;
+} ->
+θ

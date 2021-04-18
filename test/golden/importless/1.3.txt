@@ -1,0 +1,90 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( β.arch = String,
+  β.isDarwin = Bool,
+  β.lib = γ,
+  β.maintainers = δ,
+  β.mit = ε,
+  β.mkDerivation =
+    { LD_LIBRARY_PATH = ζ;
+      buildInputs = [η];
+      checkTarget = String;
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [θ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ι];
+      passthru =
+        { maintenanceVersion = String;
+          majorVersion = String;
+          minorVersion = String;
+          site = String;
+        };
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      preBuild = String;
+      preCheck = String;
+      prePatch = String;
+      src = κ;
+      version = ∀ α. α;
+    } ->
+    λ,
+  β.optionals = μ -> [ν] -> [η],
+  β.system = ξ,
+  η.dev = η,
+  η.isILP64 = Bool,
+  γ.garrison = θ,
+  γ.head = ο -> π,
+  γ.makeLibraryPath = [η] -> ζ,
+  γ.raskin = θ,
+  γ.rob = θ,
+  γ.splitString = String -> ξ -> ο,
+  γ.throw = String -> ρ,
+  σ.licenses = β,
+  τ.lib = σ,
+  υ.lib = β,
+  φ.gcc = β,
+  χ.platform = φ,
+  ψ.hostPlatform = χ,
+  ω.lib = β
+) =>
+{ ApplicationServices = ν;
+  CoreServices = ν;
+  arpack = η;
+  blas = η;
+  cmake = α1;
+  curl = ι;
+  fetchFromGitHub = β2;
+  fetchurl = γ3;
+  fetchzip = {sha256 = String; url = String;} -> κ;
+  fftw = η;
+  fftwSinglePrec = η;
+  gfortran = ι;
+  gmp = η;
+  lapack = η;
+  libgit2 = η;
+  libunwind = η;
+  m4 = ι;
+  makeWrapper = ι;
+  mpfr = η;
+  openlibm = η;
+  openspecfun = η;
+  patchelf = ι;
+  pcre2 = η;
+  perl = ι;
+  python2 = ι;
+  readline = η;
+  stdenv = β;
+  utf8proc = η;
+  which = ι;
+  zlib = η;
+} ->
+λ

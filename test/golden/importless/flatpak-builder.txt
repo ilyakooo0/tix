@@ -1,0 +1,18 @@
+∀ α β γ δ ε.
+( α.flatpak-builder = β,
+  γ.installedTestsDependencies = [β]
+) =>
+{ makeInstalledTest =
+    { testConfig =
+        { environment = {systemPackages = [β];};
+          services = {flatpak = {enable = Bool;};};
+          virtualisation = {diskSize = Integer;};
+          xdg = {portal = {enable = Bool;};};
+        };
+      testRunnerFlags = String;
+      tested = δ;
+    } ->
+    ε;
+  pkgs = α;
+} ->
+ε

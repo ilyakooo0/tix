@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.mstpd = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        { services =
+            { mstpd =
+                { description = String;
+                  serviceConfig =
+                    {ExecStart = String; PIDFile = String; Type = String;};
+                  unitConfig = {ConditionCapability = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.mstpd = ε,
+  β.enable = δ,
+  λ.services = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {services = {mstpd = {enable = θ;};};};}

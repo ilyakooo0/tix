@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patches = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl2 = δ,
+  μ.bjornfor = ε,
+  ν.linux = ζ
+) =>
+{ cups = γ;
+  fetchpatch = {sha256 = String; url = String;} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  glib = γ;
+  intltool = η;
+  pkgconfig = η;
+  polkit = γ;
+  stdenv = α;
+} ->
+κ

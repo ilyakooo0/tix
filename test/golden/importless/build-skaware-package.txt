@@ -1,0 +1,47 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.isDarwin = Bool,
+  α.isc = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { configureFlags = [String];
+      dontDisableStatic = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = δ;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      outputs = [String];
+      pname = η;
+      postFixup = String;
+      postInstall = String;
+      src = θ;
+      version = ι;
+    } ->
+    κ,
+  γ.all = ζ,
+  γ.maintainers = λ,
+  γ.optional = μ -> String -> [String],
+  ν.platforms = γ,
+  ξ.licenses = α,
+  ο.lib = ξ,
+  λ.Profpatsch = ε,
+  λ.pmahoney = ε
+) =>
+{ cleanPackaging = π;
+  fetchurl = {sha256 = ρ; url = String;} -> θ;
+  stdenv = α;
+} ->
+{ configureFlags = [String];
+  description = δ;
+  maintainers = [ε];
+  outputs = [String];
+  platforms = ζ;
+  pname = η;
+  postInstall = σ;
+  sha256 = ρ;
+  version = ι;
+} ->
+κ

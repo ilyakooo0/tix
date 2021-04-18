@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.enable = β,
+  α.kernel = γ,
+  δ.getVersion = γ -> ε,
+  δ.mkIf =
+    β ->
+    { systemd =
+        { services =
+            { klogd =
+                { description = String;
+                  path = [ζ];
+                  script = String;
+                  unitConfig = {ConditionVirtualization = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  δ.mkOption = {default = θ; description = String; type = ι;} -> κ,
+  δ.types = λ,
+  δ.versionOlder = ε -> String -> θ,
+  μ.sysklogd = ζ,
+  ν.klogd = α,
+  ξ.services = ν,
+  ο.kernelPackages = α,
+  π.boot = ο,
+  λ.bool = ι
+) =>
+{config = α; lib = δ; pkgs = μ;} ->
+{config = η; options = {services = {klogd = {enable = κ;};};};}

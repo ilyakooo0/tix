@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.bsd3 = β,
+  α.gpl2 = β,
+  α.lgpl21 = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.peterhoeg = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kcodecs = η;
+  kdoctools = ζ;
+  ki18n = η;
+  kio = η;
+  kwidgetsaddons = η;
+  lib = α;
+  libmusicbrainz5 = η;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta = {license = [β]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedBuildInputs = [η];
+    } ->
+    ι;
+  qtbase = θ;
+} ->
+ι

@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.enable = β,
+  α.rdnssd = γ,
+  δ.mkIf =
+    β ->
+    { assertions = [{assertion = ε; message = String;}];
+      systemd =
+        { services =
+            { rdnssd =
+                { after = [String];
+                  description = String;
+                  postStop = String;
+                  preStart = String;
+                  serviceConfig =
+                    {ExecStart = String; PIDFile = String; Type = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users = {users = {rdnssd = {description = String; uid = γ;};};};
+    } ->
+    ζ,
+  δ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  δ.types = ι,
+  κ.writeScript = String -> String -> λ,
+  μ.rdnssd = α,
+  ν.services = μ,
+  ξ.resolvconf = α,
+  ο.networking = ξ,
+  π.uids = α,
+  ρ.ids = π,
+  ι.bool = η
+) =>
+{config = α; lib = δ; pkgs = κ;} ->
+{config = ζ; options = {services = {rdnssd = {enable = θ;};};};}

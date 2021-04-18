@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configurePhase = String;
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.withPackages = (λ -> [μ]) -> γ,
+  λ.Mako = μ,
+  β.jb55 = ε,
+  β.licenses = ν,
+  β.maintainers = ξ,
+  β.platforms = ο,
+  ν.mit = δ,
+  ο.linux = ζ
+) =>
+{ autoconf = η;
+  autogen = η;
+  automake = η;
+  fetchpatch = π;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gettext = η;
+  gmp = γ;
+  libtool = η;
+  pkgconfig = η;
+  python3 = κ;
+  sqlite = γ;
+  stdenv = α;
+  unzip = η;
+  which = η;
+  zlib = γ;
+} ->
+ι

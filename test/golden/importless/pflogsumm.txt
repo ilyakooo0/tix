@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.gpl2Plus = β,
+  α.maintainers = γ,
+  δ.DateCalc = ε,
+  δ.buildPerlPackage =
+    { buildInputs = [ε];
+      doCheck = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ζ];
+        };
+      outputs = [String];
+      pname = String;
+      preConfigure = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.licenses = α,
+  κ.lib = ι,
+  γ.schneefux = ζ,
+  λ.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  perlPackages = δ;
+  stdenv = α;
+} ->
+θ

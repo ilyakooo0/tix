@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+      versionDate = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.mit = δ,
+  λ.mmahut = ε,
+  μ.linux = ζ
+) =>
+{ autoreconfHook = η;
+  boost = γ;
+  db5 = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libevent = γ;
+  miniupnpc = γ;
+  openssl = γ;
+  pkgconfig = η;
+  protobuf = γ;
+  stdenv = α;
+  utillinux = γ;
+  zlib = γ;
+} ->
+ι

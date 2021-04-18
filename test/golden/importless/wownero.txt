@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postUnpack = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.fuwa = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.bsd3 = δ,
+  μ.linux = ζ
+) =>
+{ boost = γ;
+  cmake = η;
+  fetchgit =
+    {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> ν;
+  libsodium = γ;
+  miniupnpc_2 = γ;
+  openssl = γ;
+  rapidjson = γ;
+  readline = γ;
+  stdenv = α;
+  unbound = γ;
+} ->
+ι

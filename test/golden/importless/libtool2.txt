@@ -1,0 +1,35 @@
+∀ β γ δ ε ζ η θ ι κ.
+( β.lib = γ,
+  β.mkDerivation =
+    { doCheck = Bool;
+      doInstallCheck = Bool;
+      dontPatchShebangs = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      pname = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.licenses = ι,
+  γ.platforms = κ,
+  ι.gpl2Plus = δ,
+  κ.unix = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  help2man = ζ;
+  m4 = ζ;
+  perl = ζ;
+  stdenv = β;
+} ->
+θ

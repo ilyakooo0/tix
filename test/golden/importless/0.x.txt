@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.gebner = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.marcus7070 = β,
+  γ.mit = ε
+) =>
+{ buildPythonPackage =
+    { checkInputs = [ζ];
+      checkPhase = String;
+      disabled = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [β];
+        };
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  cloudpickle = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  flaky = ζ;
+  ipykernel = η;
+  isPy3k = Bool;
+  jupyter_client = η;
+  lib = α;
+  matplotlib = ζ;
+  numpy = ζ;
+  pandas = ζ;
+  pytest = ζ;
+  pyzmq = η;
+  scipy = ζ;
+  wurlitzer = η;
+  xarray = ζ;
+} ->
+ι

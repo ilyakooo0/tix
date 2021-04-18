@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.mkDerivation =
+    { buildInputs = [β];
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+          version = ζ;
+        };
+      outputs = [String];
+      phases = [String];
+      pname = String;
+      src = η;
+      version = ζ;
+    } ->
+    θ,
+  ι.gpl3 = γ,
+  ι.licenses = κ,
+  ι.maintainers = λ,
+  ι.peterhoeg = δ,
+  ι.platforms = μ,
+  ν.DigestSHA1 = β,
+  ν.FileRemove = β,
+  ν.Later = β,
+  ν.MailBox = β,
+  ν.MailMaildir = β,
+  ν.MailTools = β,
+  ν.StringShellQuote = β,
+  ν.TermReadLineGnu = β,
+  ξ.src = η,
+  ξ.version = ζ,
+  μ.unix = ε
+) =>
+{ coreutils = ο;
+  lib = ι;
+  makeWrapper = β;
+  notmuch = ξ;
+  perl = β;
+  perlPackages = ν;
+  stdenv = α;
+} ->
+θ

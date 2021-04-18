@@ -1,0 +1,62 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.isAarch64 = Bool,
+  β.bsd3 = γ,
+  β.fdl12 = γ,
+  β.gpl2 = γ,
+  β.lgpl21 = γ,
+  β.licenses = δ,
+  β.linux = ε,
+  β.maintainers = ζ,
+  β.optional = Bool -> Null -> [η],
+  β.ttuegel = θ,
+  β.turion = θ,
+  ι.platforms = β
+) =>
+{ breeze-icons = η;
+  chmlib = Null;
+  discount = η;
+  djvulibre = η;
+  ebook_tools = η;
+  extra-cmake-modules = κ;
+  kactivities = η;
+  karchive = η;
+  kbookmarks = η;
+  kcompletion = η;
+  kconfig = η;
+  kconfigwidgets = η;
+  kcoreaddons = η;
+  kcrash = η;
+  kdbusaddons = η;
+  kdegraphics-mobipocket = η;
+  kdoctools = κ;
+  khtml = η;
+  kiconthemes = η;
+  kio = η;
+  kjs = η;
+  kparts = η;
+  kpty = η;
+  kpurpose = η;
+  kwallet = η;
+  kwindowsystem = η;
+  lib = β;
+  libkexiv2 = η;
+  libspectre = η;
+  libzip = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta =
+        {homepage = String; license = [γ]; maintainers = [θ]; platforms = ε;};
+      name = String;
+      nativeBuildInputs = [κ];
+      postPatch = String;
+    } ->
+    λ;
+  phonon = η;
+  poppler = η;
+  qca-qt5 = η;
+  qtdeclarative = η;
+  qtsvg = η;
+  stdenv = α;
+  threadweaver = η;
+} ->
+λ

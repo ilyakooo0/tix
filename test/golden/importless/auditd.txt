@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    { boot = {kernelParams = [String];};
+      environment = {systemPackages = [ε];};
+      systemd =
+        { services =
+            { auditd =
+                { description = String;
+                  path = [ζ];
+                  serviceConfig = {ExecStart = String; ExecStartPre = String;};
+                  unitConfig =
+                    { ConditionSecurity = [String];
+                      ConditionVirtualization = String;
+                      DefaultDependencies = Bool;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  θ.audit = ε,
+  ι.auditd = α,
+  κ.security = ι
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {security = {auditd = {enable = δ;};};};}

@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  γ.overrideAttrs =
+    ( δ ->
+      { meta =
+          { description = String;
+            homepage = String;
+            license = ε;
+            maintainers = [ζ];
+            platforms = η;
+          };
+        name = String;
+        src = θ;
+        version = String;
+      }
+    ) ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.teto = ζ,
+  κ.gpl2Plus = ε,
+  μ.linux = η
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  nettools = γ;
+  stdenv = α;
+} ->
+ι

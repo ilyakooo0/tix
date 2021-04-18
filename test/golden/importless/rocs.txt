@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.fdl12 = β,
+  α.gpl2 = β,
+  α.knairda = γ,
+  α.lgpl21 = β,
+  α.licenses = δ,
+  α.linux = ε,
+  α.maintainers = ζ,
+  η.platforms = α
+) =>
+{ boost = θ;
+  extra-cmake-modules = ι;
+  grantlee = θ;
+  karchive = θ;
+  kcrash = θ;
+  kdeclarative = θ;
+  kdoctools = ι;
+  kguiaddons = θ;
+  ktexteditor = θ;
+  kxmlgui = θ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [β];
+          maintainers = [γ];
+          platforms = ε;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+    } ->
+    κ;
+  qtbase = θ;
+  qtquickcontrols = θ;
+  qtscript = θ;
+  qtwebkit = θ;
+  qtxmlpatterns = θ;
+} ->
+κ

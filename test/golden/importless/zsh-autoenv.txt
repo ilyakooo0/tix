@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.zsh-autoenv = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf = ε -> {programs = {zsh = {interactiveShellInit = String;};};} -> ζ,
+  γ.mkOption =
+    {default = η; defaultText = String; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.zsh-autoenv = η,
+  β.enable = ε,
+  μ.zsh = α,
+  ν.programs = μ,
+  κ.package = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = ζ;
+  options = {programs = {zsh = {zsh-autoenv = {enable = δ; package = ι;};};};};
+}

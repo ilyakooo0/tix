@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { configurePhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platform = ε;
+        };
+      name = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.licenses = θ,
+  β.maintainers = ι,
+  β.nrdxp = δ,
+  β.platforms = κ,
+  θ.mit = γ,
+  κ.all = ε
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  git = λ;
+  stdenv = α;
+} ->
+η

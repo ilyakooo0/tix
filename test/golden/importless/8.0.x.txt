@@ -1,0 +1,56 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.optionals = δ -> [ε] -> [ζ],
+  α.orivej = η,
+  α.platforms = θ,
+  ι.isDarwin = κ,
+  ι.isLinux = δ,
+  ι.mkDerivation =
+    { buildInputs = [ζ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = λ;
+          maintainers = [η];
+          platforms = μ;
+        };
+      nativeBuildInputs = [ν];
+      outputs = [String];
+      passthru =
+        {client = ξ; connector-c = ξ; mysqlVersion = String; server = ξ;};
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      src = ο;
+      version = String;
+    } ->
+    ξ,
+  β.gpl2 = λ,
+  θ.unix = μ
+) =>
+{ CoreServices = π;
+  bison = ν;
+  boost = ζ;
+  cctools = π;
+  cmake = ν;
+  developer_cmds = π;
+  fetchurl = {sha256 = String; url = String;} -> ο;
+  icu = ζ;
+  lib = α;
+  libedit = ζ;
+  libevent = ζ;
+  lz4 = ζ;
+  ncurses = ζ;
+  numactl = ε;
+  openssl = ζ;
+  perl = ρ;
+  pkgconfig = ν;
+  protobuf = ζ;
+  re2 = ζ;
+  readline = ζ;
+  stdenv = ι;
+  zlib = ζ;
+} ->
+ξ

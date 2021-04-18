@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      postPatch = String;
+      rev = String;
+      src = θ;
+      ver = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.mit = δ,
+  λ.volth = ε,
+  μ.linux = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gtk2 = γ;
+  libwnck = γ;
+  libxfce4util = γ;
+  pkgconfig = η;
+  python2 = γ;
+  stdenv = α;
+  vala_0_40 = γ;
+  wafHook = η;
+  xfce4-panel = γ;
+} ->
+ι

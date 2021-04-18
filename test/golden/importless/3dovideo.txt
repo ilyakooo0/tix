@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.bsd3 = β,
+  α.lib = γ,
+  α.mkDerivation = {buildCommand = String; name = String; src = δ;} -> ε,
+  γ.base = ζ,
+  γ.binary = ζ,
+  γ.bytestring = ζ,
+  γ.concatMapStrings = (η -> String) -> θ -> String,
+  γ.filepath = ζ,
+  γ.lessThan = η -> Integer -> ι,
+  γ.mkDerivation =
+    { buildDepends = [ζ];
+      description = String;
+      isExecutable = Bool;
+      isLibrary = Bool;
+      license = β;
+      pname = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  γ.optionalString = ι -> String -> μ,
+  γ.range = Integer -> Integer -> θ,
+  γ.tar = ζ,
+  γ.toString = η -> μ,
+  ν.licenses = α,
+  ξ.lib = ν
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> κ;
+  haskellPackages = ο;
+  requireFile = {message = String; name = String; sha256 = String;} -> δ;
+  stdenv = α;
+  writeText = String -> String -> π;
+} ->
+ε

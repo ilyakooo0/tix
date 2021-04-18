@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.modemmanager = β,
+  γ.mkOption = {default = String; description = String; type = δ;} -> ε,
+  γ.types = ζ,
+  η.exporters = α,
+  θ.prometheus = η,
+  ι.services = θ,
+  ζ.str = δ
+) =>
+{config = α; lib = γ; options = κ; pkgs = λ;} ->
+{ extraOpts = {refreshRate = ε;};
+  port = Integer;
+  serviceOpts =
+    {serviceConfig = {ExecStart = String; SupplementaryGroups = String;};};
+}

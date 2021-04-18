@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ,
+  η.ericbmerritt = ζ
+) =>
+{ buildOcamlJane =
+    { hash = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+        };
+      minimumSupportedOcamlVersion = String;
+      name = String;
+      propagatedBuildInputs = [θ];
+      version = String;
+    } ->
+    ι;
+  stdenv = α;
+  type_conv = θ;
+} ->
+ι

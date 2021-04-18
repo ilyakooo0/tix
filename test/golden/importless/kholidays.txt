@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  β.lgpl21 = δ,
+  γ.bkchr = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kdoctools = ζ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+    } ->
+    θ;
+  qtbase = η;
+  qtdeclarative = η;
+  qttools = η;
+} ->
+θ

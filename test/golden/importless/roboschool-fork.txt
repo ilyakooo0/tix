@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.lib = δ,
+  α.mkDerivation =
+    { buildInputs = [ε];
+      cmakeFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          longDescription = String;
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      patches = [Path];
+      pname = String;
+      postPatch = ι;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  α.optionalString = μ -> String -> ι,
+  α.optionals = γ -> [ν] -> [ε],
+  ξ.lib = α,
+  ο.lib = α,
+  π.lib = α,
+  δ.licenses = ρ,
+  δ.platforms = σ,
+  ρ.zlib = ζ,
+  σ.unix = η,
+  τ.lib = α
+) =>
+{ Cocoa = υ;
+  OpenGL = υ;
+  cmake = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  freeglut = ν;
+  libGL = ν;
+  libGLU = ν;
+  stdenv = α;
+} ->
+λ

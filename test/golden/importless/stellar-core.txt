@@ -1,0 +1,44 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      patches = [Path];
+      preConfigure = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+    } ->
+    ι,
+  β.chris-martin = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  κ.asl20 = δ
+) =>
+{ autoconf = γ;
+  automake = γ;
+  bison = η;
+  fetchgit =
+    { fetchSubmodules = Bool;
+      leaveDotGit = Bool;
+      rev = String;
+      sha256 = String;
+      url = String;
+    } ->
+    θ;
+  flex = η;
+  git = γ;
+  libtool = γ;
+  pkgconfig = ζ;
+  postgresql = η;
+  stdenv = α;
+} ->
+ι

@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ.
+( α.licenses = β,
+  β.fdl12 = γ,
+  β.gpl2 = γ,
+  β.lgpl21 = γ
+) =>
+{ extra-cmake-modules = δ;
+  kcoreaddons = ε;
+  kdoctools = δ;
+  kio = ε;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {license = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+    } ->
+    ζ;
+  qtxmlpatterns = ε;
+} ->
+ζ

@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.optional = β -> κ -> [η],
+  λ.lib = α,
+  γ.ehmry = ε,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.platforms = ξ,
+  μ.gpl2 = δ,
+  ξ.unix = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  fixDarwinDylibNames = κ;
+  meson = η;
+  ninja = η;
+  stdenv = α;
+} ->
+ι

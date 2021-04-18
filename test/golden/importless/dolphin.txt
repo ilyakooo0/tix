@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.ttuegel = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  ε.maintainers = α
+) =>
+{ baloo = ζ;
+  baloo-widgets = ζ;
+  extra-cmake-modules = η;
+  kactivities = ζ;
+  kbookmarks = ζ;
+  kcmutils = ζ;
+  kcompletion = ζ;
+  kconfig = ζ;
+  kcoreaddons = ζ;
+  kdbusaddons = ζ;
+  kdelibs4support = ζ;
+  kdoctools = η;
+  kfilemetadata = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kinit = ζ;
+  kio = ζ;
+  knewstuff = ζ;
+  knotifications = ζ;
+  kparts = ζ;
+  ktexteditor = ζ;
+  kwindowsystem = ζ;
+  lib = α;
+  mkDerivation =
+    { cmakeFlags = [String];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [η];
+      outputs = [String];
+      propagatedBuildInputs = [ζ];
+      propagatedUserEnvPkgs = [ζ];
+    } ->
+    θ;
+  phonon = ζ;
+  qtwayland = ζ;
+  solid = ζ;
+  wayland = ζ;
+} ->
+θ

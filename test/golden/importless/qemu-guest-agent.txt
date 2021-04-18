@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.qemuGuest = β,
+  γ.mkIf = δ -> ε -> ζ,
+  γ.mkMerge =
+    [ { services = {udev = {extraRules = String;};};
+        systemd =
+          { services =
+              { qemu-guest-agent =
+                  { description = String;
+                    serviceConfig =
+                      { ExecStart = String;
+                        Restart = String;
+                        RestartSec = Integer;
+                      };
+                  };
+              };
+          };
+      }
+    ] ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = δ,
+  κ.services = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = ζ; options = {services = {qemuGuest = {enable = θ;};};};}

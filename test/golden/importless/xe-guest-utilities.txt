@@ -1,0 +1,52 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.xe-guest-utilities = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { services = {udev = {packages = [ζ];};};
+      systemd =
+        { mounts =
+            [ { description = String;
+                type = String;
+                unitConfig =
+                  {ConditionPathExists = String; RefuseManualStop = String;};
+                what = String;
+                where = String;
+              }
+            ];
+          services =
+            { xe-daemon =
+                { after = [String];
+                  description = String;
+                  path = [η];
+                  requires = [String];
+                  serviceConfig =
+                    {ExecStart = String; ExecStop = String; PIDFile = String;};
+                  wantedBy = [String];
+                };
+              xe-linux-distribution =
+                { before = [String];
+                  description = String;
+                  path = [θ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      RemainAfterExit = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+          tmpfiles = {rules = [String];};
+        };
+    } ->
+    ι,
+  κ.coreutils = η,
+  κ.gawk = θ,
+  κ.gnused = θ,
+  κ.iproute = η,
+  κ.xe-guest-utilities = ζ,
+  β.enable = ε,
+  λ.services = α
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ι; options = {services = {xe-guest-utilities = {enable = δ;};};};}

@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η.
+(α.licenses = β, β.gpl2 = γ, β.lgpl21 = γ) => { akonadi = δ;
+  extra-cmake-modules = ε;
+  kdbusaddons = δ;
+  kdepimTeam = ζ;
+  ki18n = δ;
+  kio = δ;
+  kitemmodels = δ;
+  kmime = δ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      outputs = [String];
+    } ->
+    η;
+  shared-mime-info = ε;
+} ->
+η

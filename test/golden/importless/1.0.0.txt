@@ -1,0 +1,43 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      installFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      outputs = [String];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.optionals = Bool -> [String] -> [String],
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.mit = ε,
+  ν.unix = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  lib = κ;
+  libGL = ξ;
+  libX11 = ξ;
+  libXext = ξ;
+  libXfixes = ξ;
+  libdrm = δ;
+  libffi = ξ;
+  libva1-minimal = ξ;
+  mesa = ο;
+  minimal = Bool;
+  pkgconfig = η;
+  stdenv = β;
+  wayland = ξ;
+} ->
+ι

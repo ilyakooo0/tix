@@ -1,0 +1,8 @@
+∀ α β γ δ ε.
+( α.concatMapStrings = β -> γ -> String,
+  α.fixedWidthNumber = Integer -> β,
+  α.head = δ -> String,
+  α.splitVersion = ε -> δ,
+  α.tail = δ -> γ
+) =>
+α -> ε -> String

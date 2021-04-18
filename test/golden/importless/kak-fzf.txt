@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.assertOneOf = String -> β -> [String] -> Bool,
+  α.lib = γ,
+  α.mkDerivation =
+    { configurePhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platform = ζ;
+        };
+      name = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.pname = β,
+  κ.asserts = α,
+  λ.lib = κ,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.nrdxp = ε,
+  γ.platforms = ξ,
+  μ.mit = δ,
+  ξ.all = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  fzf = ι;
+  stdenv = α;
+} ->
+θ

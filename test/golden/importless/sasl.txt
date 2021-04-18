@@ -1,0 +1,44 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { LC_ALL = String;
+      PKG_CONFIG_GSIGNOND_GPLUGINSDIR = String;
+      buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.worldofpeace = ε,
+  κ.lgpl21Plus = δ,
+  μ.linux = ζ
+) =>
+{ check = η;
+  docbook_xml_dtd_43 = η;
+  docbook_xml_dtd_45 = η;
+  docbook_xsl = η;
+  fetchFromGitLab =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  glib = γ;
+  glibcLocales = η;
+  gobject-introspection = η;
+  gsasl = γ;
+  gsignond = γ;
+  gtk-doc = η;
+  meson = η;
+  ninja = η;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

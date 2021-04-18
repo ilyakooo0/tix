@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      src = θ;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.mit = δ,
+  λ.vyp = ε,
+  μ.linux = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  fontconfig = γ;
+  libX11 = γ;
+  libXext = γ;
+  libXft = γ;
+  ncurses = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

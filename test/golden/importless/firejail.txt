@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.firejail = β,
+  γ.literalExample = String -> δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      security = {wrappers = {firejail = {source = String;};};};
+    } ->
+    ι,
+  γ.mkOption =
+    {default = {}; description = String; example = δ; type = κ;} -> λ,
+  γ.peterhoeg = μ,
+  γ.types = ν,
+  ξ.firejail = θ,
+  ξ.runCommand =
+    String ->
+    {allowSubstitutes = Bool; preferLocalBuild = Bool;} -> String -> θ,
+  β.enable = η,
+  ο.programs = α,
+  ν.attrsOf = π -> κ,
+  ρ.path = π
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = ι;
+  meta = {maintainers = [μ];};
+  options = {programs = {firejail = {enable = ζ; wrappedBinaries = λ;};};};
+}

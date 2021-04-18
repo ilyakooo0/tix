@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_LINK = String;
+      buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.orivej = ε,
+  β.platforms = λ,
+  ι.zlib = δ,
+  λ.linux = ζ
+) =>
+{ fetchzip = {sha256 = String; stripRoot = Bool; url = String;} -> η;
+  libpng = γ;
+  stdenv = α;
+  zlib = γ;
+  zopfli = γ;
+} ->
+θ

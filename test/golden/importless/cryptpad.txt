@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.cryptpad = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { cryptpad =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      Environment = [String];
+                      ExecStart = String;
+                      PrivateTmp = Bool;
+                      Restart = String;
+                      StateDirectory = String;
+                      WorkingDirectory = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption =
+    {default = String; defaultText = String; description = String; type = η;} ->
+    θ,
+  γ.types = ι,
+  κ.cryptpad = λ,
+  β.enable = ε,
+  μ.services = α,
+  ι.path = η,
+  ν.package = ξ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{ config = ζ;
+  options =
+    {services = {cryptpad = {configFile = θ; enable = δ; package = ο;};};};
+}

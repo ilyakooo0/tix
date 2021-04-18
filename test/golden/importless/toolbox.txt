@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.licenses = β,
+  γ.badi = δ,
+  γ.linux = ε,
+  γ.mkDerivation =
+    { buildInputs = [ζ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [η];
+          longDescription = String;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      phases = [String];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.mit = η,
+  κ.maintainers = γ,
+  λ.lib = κ,
+  μ.platforms = γ,
+  ν.lib = μ
+) =>
+{ fetchzip = {sha256 = String; url = String;} -> θ;
+  glib = ξ;
+  gtk = ο;
+  lib = α;
+  libXtst = π;
+  makeDesktopItem =
+    { categories = String;
+      comment = String;
+      desktopName = String;
+      exec = String;
+      extraEntries = String;
+      genericName = String;
+      icon = String;
+      name = String;
+    } ->
+    ρ;
+  makeWrapper = ζ;
+  stdenv = γ;
+  zlib = σ;
+} ->
+ι

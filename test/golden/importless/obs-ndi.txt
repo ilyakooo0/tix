@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patches = [Path];
+      pname = String;
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.linux = ζ,
+  β.maintainers = λ,
+  β.peti = ε,
+  β.platforms = μ,
+  κ.gpl2 = δ
+) =>
+{ cmake = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  ndi = γ;
+  obs-studio = γ;
+  qtbase = γ;
+  stdenv = α;
+} ->
+ι

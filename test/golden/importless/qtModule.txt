@@ -1,0 +1,44 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( ( β
+  ) //
+  ( { meta = ∀ α. α;
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+      patches = δ;
+      postFixup = String;
+      preConfigure = String;
+      preHook = String;
+      propagatedBuildInputs = [ε];
+      setOutputFlags = Bool;
+      src = ζ;
+    }
+  ) ~
+  ( η
+  ),
+  θ.licenses = ι,
+  θ.maintainers = κ,
+  θ.platforms = λ,
+  μ.qmake = γ,
+  β.meta = {},
+  β.name = ν,
+  β.nativeBuildInputs = [γ],
+  β.outputs = [String],
+  β.patches = δ,
+  β.propagatedBuildInputs = [ε],
+  β.qtInputs = [ε],
+  β.setOutputFlags = Bool,
+  β.src = ζ,
+  β.version = ξ,
+  λ.unix = ο,
+  κ.bkchr = π,
+  κ.periklis = π,
+  κ.qknight = π,
+  κ.ttuegel = π,
+  ι.fdl13 = ρ,
+  ι.gpl2 = ρ,
+  ι.lgpl21 = ρ,
+  ι.lgpl3 = ρ
+) =>
+{lib = θ; mkDerivation = η -> σ; perl = γ;} ->
+{patches = τ; self = μ; srcs = υ;} -> β -> σ

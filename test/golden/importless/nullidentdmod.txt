@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.nullidentdmod = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { nullidentdmod@ =
+                { description = String;
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      ExecStart = String;
+                      StandardInput = String;
+                      StandardOutput = String;
+                    };
+                };
+            };
+          sockets =
+            { nullidentdmod =
+                { description = String;
+                  listenStreams = [String];
+                  socketConfig = {Accept = Bool;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption =
+    {default = Null; description = String; example = String; type = η;} -> θ,
+  γ.nullOr = ι -> η,
+  γ.str = ι,
+  γ.types = κ,
+  β.enable = ε,
+  λ.services = α
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = ζ;
+  options = {services = {nullidentdmod = {enable = δ; userid = θ;};};};
+}

@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.bladeRF = β,
+  γ.mkIf =
+    δ ->
+    { services = {udev = {packages = [ε];};};
+      users = {groups = {bladerf = {};};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.libbladeRF = ε,
+  β.enable = δ,
+  λ.hardware = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {hardware = {bladeRF = {enable = θ;};};};}

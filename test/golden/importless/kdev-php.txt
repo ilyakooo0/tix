@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [γ];
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.licenses = κ,
+  ι.maintainers = λ,
+  ι.platforms = μ,
+  κ.gpl2 = γ,
+  λ.aanderse = δ,
+  μ.linux = ε
+) =>
+{ cmake = ζ;
+  extra-cmake-modules = ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  kdevelop-pg-qt = β;
+  kdevelop-unwrapped = β;
+  ktexteditor = β;
+  lib = ι;
+  stdenv = α;
+  threadweaver = β;
+} ->
+θ

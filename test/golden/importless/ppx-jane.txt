@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ
+) =>
+{ buildOcamlJane =
+    { hash = String;
+      meta = {description = String; license = ε; maintainers = [ζ];};
+      name = String;
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  ppx_assert = η;
+  ppx_bench = η;
+  ppx_bin_prot = η;
+  ppx_compare = η;
+  ppx_custom_printf = η;
+  ppx_driver = η;
+  ppx_enumerate = η;
+  ppx_expect = η;
+  ppx_fail = η;
+  ppx_fields_conv = η;
+  ppx_here = η;
+  ppx_inline_test = η;
+  ppx_let = η;
+  ppx_pipebang = η;
+  ppx_sexp_conv = η;
+  ppx_sexp_message = η;
+  ppx_sexp_value = η;
+  ppx_typerep_conv = η;
+  ppx_variants_conv = η;
+  stdenv = α;
+} ->
+θ

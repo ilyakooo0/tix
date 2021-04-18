@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.liboping = β,
+  γ.liboping = δ,
+  γ.map = (ε -> {}) -> [String] -> ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
+    {environment = {systemPackages = [δ];}; security = {wrappers = ι;};} -> κ,
+  γ.mkMerge = ζ -> ι,
+  β.enable = θ,
+  λ.programs = α
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = κ; options = {programs = {liboping = {enable = η;};};};}

@@ -1,0 +1,48 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      patches = [Path];
+      postPatch = String;
+      preConfigure = String;
+      src = θ;
+    } ->
+    ι,
+  γ.gpl2 = ε,
+  γ.lgpl2Plus = ε,
+  γ.licenses = κ,
+  γ.platforms = λ,
+  λ.linux = ζ
+) =>
+{ dbus = δ;
+  dbus-glib = δ;
+  docbook_xsl = δ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  glib = δ;
+  intltool = δ;
+  libatasmart = δ;
+  libgudev = δ;
+  libuuid = δ;
+  libxslt = δ;
+  lvm2 = δ;
+  mdadm = μ;
+  parted = δ;
+  pkgconfig = η;
+  polkit = δ;
+  sg3_utils = δ;
+  stdenv = β;
+  udev = δ;
+  utillinux = ν;
+} ->
+ι

@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  β.lgpl21 = δ,
+  γ.rnhmjoj = ε
+) =>
+{ extra-cmake-modules = ζ;
+  freecell-solver = η;
+  knewstuff = η;
+  lib = α;
+  libkdegames = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  shared-mime-info = ζ;
+} ->
+θ

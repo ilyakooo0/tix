@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = String;
+      buildInputs = [γ];
+      checkPhase = String;
+      configureFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.wxWindows = δ,
+  κ.lnl7 = ε,
+  λ.darwin = ζ
+) =>
+{ AGL = γ;
+  Cocoa = γ;
+  Kernel = γ;
+  derez = γ;
+  expat = γ;
+  fetchzip = {sha256 = String; url = String;} -> η;
+  libiconv = γ;
+  libjpeg = γ;
+  libpng = γ;
+  libtiff = γ;
+  rez = γ;
+  setfile = γ;
+  stdenv = α;
+  zlib = γ;
+} ->
+θ

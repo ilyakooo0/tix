@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.uptimed = β,
+  γ.mkIf =
+    δ ->
+    { systemd =
+        { services =
+            { uptimed =
+                { description = String;
+                  preStart = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      IOSchedulingClass = String;
+                      InaccessibleDirectories = String;
+                      Nice = Integer;
+                      NoNewPrivileges = String;
+                      PrivateNetwork = String;
+                      PrivateTmp = String;
+                      ReadWriteDirectories = String;
+                      Restart = String;
+                      User = String;
+                    };
+                  unitConfig = {Documentation = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { users =
+            { uptimed =
+                { createHome = Bool;
+                  description = String;
+                  home = String;
+                  uid = ε;
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = δ,
+  κ.services = α,
+  λ.uids = α,
+  μ.ids = λ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{config = ζ; options = {services = {uptimed = {enable = θ;};};};}

@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.googleOsLogin = β,
+  γ.mkIf =
+    δ ->
+    { environment =
+        { etc =
+            { ssh/authorized_keys_command_google_oslogin =
+                {mode = String; text = String;};
+            };
+        };
+      security =
+        { pam =
+            { services =
+                { sshd =
+                    { googleOsLoginAccountVerification = Bool;
+                      makeHomeDir = Bool;
+                    };
+                };
+            };
+          sudo = {extraConfig = String;};
+        };
+      services =
+        { openssh =
+            { authorizedKeysCommand = String;
+              authorizedKeysCommandUser = String;
+            };
+        };
+      system =
+        { nssDatabases = {group = [String]; passwd = [String];};
+          nssModules = [ε];
+        };
+      systemd = {tmpfiles = {rules = [String];};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.google-compute-engine-oslogin = ε,
+  β.enable = δ,
+  λ.security = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {security = {googleOsLogin = {enable = θ;};};};}

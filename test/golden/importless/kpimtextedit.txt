@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.getVersion = β -> γ,
+  α.licenses = δ,
+  α.versionOlder = γ -> String -> ε,
+  ζ.name = β,
+  δ.fdl12 = η,
+  δ.gpl2 = η,
+  δ.lgpl21 = η
+) =>
+{ extra-cmake-modules = θ;
+  grantlee = ζ;
+  kcodecs = ζ;
+  kconfigwidgets = ζ;
+  kdepimTeam = ι;
+  kdesignerplugin = ζ;
+  kdoctools = θ;
+  kemoticons = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kio = ζ;
+  ktextwidgets = κ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {broken = ε; license = [η]; maintainers = ι;};
+      name = String;
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      propagatedBuildInputs = [κ];
+    } ->
+    λ;
+  qtspeech = ζ;
+  qttools = ζ;
+  sonnet = ζ;
+  syntax-highlighting = ζ;
+} ->
+λ

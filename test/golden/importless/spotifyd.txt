@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.spotifyd = β,
+  γ.cfg = δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { systemd =
+        { services =
+            { spotifyd =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { CacheDirectory = String;
+                      DynamicUser = Bool;
+                      ExecStart = String;
+                      Restart = String;
+                      RestartSec = Integer;
+                      SupplementaryGroups = [String];
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.writeText = String -> ν -> ξ,
+  β.enable = η,
+  ο.services = α,
+  δ.config = ν,
+  ε.anderslundstedt = π,
+  λ.lines = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = θ;
+  meta = {maintainers = [π];};
+  options = {services = {spotifyd = {config = κ; enable = ζ;};};};
+}

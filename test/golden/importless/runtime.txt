@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildCommand = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+        };
+      name = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  β.abbradar = δ,
+  β.hrdinka = δ,
+  β.licenses = η,
+  β.maintainers = θ,
+  η.unfreeRedistributable = γ
+) =>
+{ fetchurl = {name = String; sha256 = String; url = String;} -> ε;
+  stdenv = α;
+} ->
+ζ

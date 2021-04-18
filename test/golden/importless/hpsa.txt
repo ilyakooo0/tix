@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.enable = β,
+  γ.licenses = δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    β ->
+    { boot =
+        { initrd =
+            {availableKernelModules = [String]; kernelModules = [String];};
+        };
+      environment = {systemPackages = [η];};
+    } ->
+    θ,
+  γ.volth = ι,
+  κ.dpkg = λ,
+  κ.fetchurl = {sha256 = String; url = String;} -> μ,
+  κ.mkDerivation =
+    { dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ν;
+          maintainers = [ι];
+          platforms = [String];
+        };
+      nativeBuildInputs = [λ];
+      pname = String;
+      src = μ;
+      unpackPhase = String;
+      version = String;
+    } ->
+    η,
+  ξ.HPSmartArray = α,
+  ο.raid = ξ,
+  π.hardware = ο,
+  δ.unfreeRedistributable = ν,
+  ρ.stdenv = κ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = θ; options = {hardware = {raid = {HPSmartArray = {enable = ζ;};};};};}

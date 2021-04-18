@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.earvstedt = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  γ.bsd3 = ε
+) =>
+{ buildPythonPackage =
+    { checkInputs = [ζ];
+      checkPhase = String;
+      disabled = η;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [β];
+        };
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  django = ζ;
+  django-crispy-forms = ζ;
+  djangorestframework = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  lib = α;
+  mock = ζ;
+  python = κ;
+  pythonOlder = String -> η;
+  pytz = ζ;
+} ->
+ι

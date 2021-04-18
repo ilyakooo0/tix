@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.hdapsd = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { boot = {kernelModules = [String];};
+      services = {udev = {packages = [ζ];};};
+      systemd = {packages = [ζ];};
+    } ->
+    η,
+  θ.hdapsd = ζ,
+  β.enable = ε,
+  ι.services = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {services = {hdapsd = {enable = δ;};};};}

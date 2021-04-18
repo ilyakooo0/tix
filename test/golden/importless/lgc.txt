@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          longDescription = String;
+          maintainers = [δ];
+        };
+      nativeBuildInputs = [ε];
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.avnik = δ,
+  β.licenses = θ,
+  β.maintainers = ι,
+  β.rht = δ,
+  θ.ofl = γ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  fontforge = ε;
+  stdenv = α;
+} ->
+η

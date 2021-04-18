@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.racoon = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { racoon =
+                { after = [String];
+                  description = String;
+                  preStart = String;
+                  serviceConfig =
+                    { ExecReload = String;
+                      ExecStart = String;
+                      PIDFile = String;
+                      Restart = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = String; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.services = α,
+  ι.str = η,
+  λ.path = μ
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = ζ;
+  options = {services = {racoon = {config = θ; configPath = ξ; enable = δ;};};};
+}

@@ -1,0 +1,54 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( β.isWindows = Bool,
+  β.lib = γ,
+  β.mkDerivation =
+    {buildPhase = String; installPhase = String; name = String; src = δ;} -> ε,
+  ζ.platforms = η,
+  θ.optionalString = Bool -> String -> ι,
+  κ.override = {pip = Null;} -> λ,
+  μ.override = {setuptools = Null; wheel = Null;} -> λ,
+  ν.hostPlatform = β,
+  γ.licenses = ξ,
+  γ.psfl = ο,
+  γ.zpl20 = ο,
+  π.meta = ζ,
+  ρ.strings = θ
+) =>
+{ bootstrapped-pip = λ;
+  buildPythonPackage =
+    { catchConflicts = Bool;
+      doCheck = Bool;
+      format = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ο];
+          platforms = η;
+          priority = Integer;
+        };
+      nativeBuildInputs = [λ];
+      pipInstallFlags = [String];
+      pname = ∀ α. α;
+      preBuild = ι;
+      src = ε;
+      version = ∀ α. α;
+    } ->
+    σ;
+  callPackage = τ;
+  fetchFromGitHub =
+    { name = String;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    δ;
+  lib = θ;
+  pipInstallHook = κ;
+  python = ζ;
+  setuptoolsBuildHook = μ;
+  stdenv = β;
+  unzip = υ;
+  wrapPython = φ;
+} ->
+σ

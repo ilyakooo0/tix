@@ -1,0 +1,27 @@
+∀ β γ δ ε ζ η θ ι κ λ.
+( β.lib = γ,
+  β.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = δ;
+          platforms = ε;
+        };
+      pname = String;
+      src = ζ;
+      version = η;
+    } ->
+    θ,
+  ι.version = η,
+  γ.licenses = κ,
+  γ.platforms = λ,
+  κ.cc-by-sa-30 = δ,
+  λ.linux = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  stdenv = β;
+  zeroad-unwrapped = ι;
+} ->
+θ

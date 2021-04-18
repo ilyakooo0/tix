@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.sysdig = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { boot = {extraModulePackages = [ζ];};
+      environment = {systemPackages = [η];};
+    } ->
+    θ,
+  ι.sysdig = η,
+  β.enable = ε,
+  κ.programs = α,
+  λ.kernelPackages = α,
+  μ.boot = λ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = θ; options = {programs = {sysdig = {enable = δ;};};};}

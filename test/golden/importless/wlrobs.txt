@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [Null];
+      installPhase = String;
+      mesonFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = [String];
+        };
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  β.grahamc = δ,
+  β.licenses = η,
+  β.maintainers = θ,
+  η.gpl3 = γ
+) =>
+{ dmabufSupport = Bool;
+  fetchhg = {rev = String; sha256 = String; url = String;} -> ε;
+  libGL = Null;
+  libX11 = Null;
+  libdrm = Null;
+  meson = Null;
+  ninja = Null;
+  obs-studio = Null;
+  pkgconfig = Null;
+  stdenv = α;
+  wayland = Null;
+} ->
+ζ

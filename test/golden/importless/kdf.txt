@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.peterhoeg = γ,
+  β.gpl2 = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kcmutils = η;
+  kdoctools = ζ;
+  ki18n = η;
+  kiconthemes = η;
+  kio = η;
+  knotifications = η;
+  kxmlgui = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+} ->
+θ

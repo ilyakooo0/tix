@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.ati_drivers_x11 = β,
+  α.videoDrivers = γ,
+  δ.elem = String -> γ -> ε,
+  δ.mkIf =
+    ε ->
+    { boot = {blacklistedKernelModules = [String]; extraModulePackages = [β];};
+      environment = {etc = {ati = {source = String;};}; systemPackages = [β];};
+      hardware =
+        {opengl = {package = β; package32 = ζ; setLdLibraryPath = Bool;};};
+      nixpkgs = {config = {xorg = {abiCompat = String;};};};
+      services = {xserver = {drivers = η;};};
+    } ->
+    θ,
+  δ.singleton = {display = Bool; modules = [β]; name = String;} -> η,
+  ι.override = {kernel = Null; libsOnly = Bool;} -> ζ,
+  κ.xserver = α,
+  λ.services = κ,
+  μ.kernelPackages = α,
+  ν.boot = μ,
+  ξ.ati_drivers_x11 = ι,
+  ο.linuxPackages = ξ,
+  π.pkgsi686Linux = ο
+) =>
+{config = α; lib = δ; pkgs = ι;} -> {config = θ;}

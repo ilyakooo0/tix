@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.icewm = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {xserver = {windowManager = {session = η;};};};
+    } ->
+    θ,
+  γ.singleton = {name = String; start = String;} -> η,
+  ι.icewm = ζ,
+  β.enable = ε,
+  κ.windowManager = α,
+  λ.xserver = κ,
+  μ.services = λ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{ config = θ;
+  options =
+    {services = {xserver = {windowManager = {icewm = {enable = δ;};};};};};
+}

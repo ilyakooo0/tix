@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.enable = β,
+  α.usePostgreSQL = Bool,
+  γ.coreutils = δ,
+  γ.gawk = δ,
+  γ.gnugrep = δ,
+  γ.gnused = δ,
+  γ.jre = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    β ->
+    { assertions = ζ;
+      systemd =
+        { services =
+            { openfire =
+                { after = [String];
+                  description = String;
+                  path = [δ];
+                  script = String;
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.openfire = δ,
+  γ.optional = κ -> String -> [String],
+  γ.singleton = {assertion = Bool; message = String;} -> ζ,
+  γ.types = λ,
+  γ.which = δ,
+  μ.openfire = α,
+  ν.services = μ,
+  ξ.openfire = α,
+  ο.services = ξ,
+  π.postgresql = α,
+  ρ.services = π,
+  σ.openfire = α,
+  τ.services = σ,
+  λ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = υ;} ->
+{ config = η;
+  options = {services = {openfire = {enable = ε; usePostgreSQL = ι;};};};
+}

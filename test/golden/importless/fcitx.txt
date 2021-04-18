@@ -1,0 +1,45 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8.
+( (β) // ({check = γ -> Bool; name = String;}) ~ (δ),
+  ε.enabled = String,
+  ε.fcitx = ζ,
+  η.fcitx-engines = θ,
+  η.override = {plugins = ι;} -> κ,
+  λ.attrByPath = [String] -> Bool -> γ -> Bool,
+  λ.attrNames = μ -> ν,
+  λ.cfg = ξ,
+  λ.check = γ -> Bool,
+  λ.concatStringsSep = String -> ο -> π,
+  λ.const = ρ -> σ,
+  λ.filterAttrs = σ -> θ -> μ,
+  λ.isDerivation = ρ,
+  λ.listOf = τ -> υ,
+  λ.literalExample = String -> φ,
+  λ.map = (χ -> String) -> ν -> ο,
+  λ.mkIf =
+    Bool ->
+    { environment =
+        { variables =
+            { GTK_IM_MODULE = String;
+              QT_IM_MODULE = String;
+              XMODIFIERS = String;
+            };
+        };
+      i18n = {inputMethod = {package = κ;};};
+      services = {xserver = {displayManager = {sessionCommands = String;};};};
+    } ->
+    ψ,
+  λ.mkOption =
+    {default = ∀ α. α; description = String; example = φ; type = υ;} -> ω,
+  λ.types = α1,
+  β2.inputMethod = ε,
+  γ3.i18n = β2,
+  δ4.inputMethod = ε,
+  ε5.i18n = δ4,
+  ζ6.fcitx = η,
+  ξ.engines = ι,
+  α1.package = β,
+  η7.package = λ,
+  θ8.types = η7
+) =>
+{config = ε; lib = λ; pkgs = η;} ->
+{config = ψ; options = {i18n = {inputMethod = {fcitx = {engines = ω;};};};};}

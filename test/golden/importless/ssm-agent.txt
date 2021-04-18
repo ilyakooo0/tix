@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.ssm-agent = β,
+  γ.coreutils = δ,
+  γ.ssm-agent = ε,
+  γ.writeScriptBin = String -> String -> δ,
+  ζ.mkEnableOption = String -> η,
+  ζ.mkIf =
+    θ ->
+    { systemd =
+        { services =
+            { ssm-agent =
+                { after = [String];
+                  description = ι;
+                  path = [δ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      KillMode = String;
+                      Restart = String;
+                      RestartSec = String;
+                    };
+                  users = {extraUsers = {ssm-user = {};};};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    κ,
+  ζ.mkOption =
+    {default = ε; defaultText = String; description = String; type = λ;} -> μ,
+  ζ.types = ν,
+  β.enable = θ,
+  β.meta = ξ,
+  ο.services = α,
+  ξ.description = ι,
+  π.package = β,
+  ν.path = λ
+) =>
+{config = α; lib = ζ; pkgs = γ;} ->
+{config = κ; options = {services = {ssm-agent = {enable = η; package = μ;};};};}

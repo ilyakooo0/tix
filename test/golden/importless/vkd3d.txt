@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.lgpl21 = δ,
+  κ.marius851000 = ε,
+  λ.linux = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  spirv-headers = γ;
+  stdenv = α;
+  vulkan-headers = γ;
+  vulkan-loader = γ;
+} ->
+θ

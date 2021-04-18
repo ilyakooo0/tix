@@ -1,0 +1,15 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.unixODBCDrivers = γ,
+  δ.concatMapStringsSep = String -> (ε -> String) -> ζ -> η,
+  δ.literalExample = String -> θ,
+  δ.mkIf = Bool -> {environment = {etc = {odbcinst.ini = {text = η;};};};} -> ι,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = θ; type = κ;} -> λ,
+  δ.types = μ,
+  ν.environment = β,
+  ξ.environment = β,
+  μ.listOf = ο -> κ,
+  π.package = ο
+) =>
+{config = β; lib = δ;} ->
+{config = ι; options = {environment = {unixODBCDrivers = λ;};};}

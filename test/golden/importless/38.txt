@@ -1,0 +1,51 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.buildPlatform = γ,
+  β.hostPlatform = γ,
+  β.isDarwin = δ,
+  β.lib = ε,
+  β.mkDerivation =
+    { buildInputs = [ζ];
+      configureFlags = [String];
+      configurePlatforms = ∀ α. α;
+      depsBuildBuild = [η];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          maintainers = [θ];
+          platforms = ι;
+        };
+      nativeBuildInputs = [κ];
+      pname = String;
+      postFixup = String;
+      postUnpack = String;
+      preConfigure = String;
+      src = λ;
+      version = String;
+    } ->
+    μ,
+  β.optional = δ -> ν -> [ζ],
+  ξ.cc = η,
+  ε.maintainers = ο,
+  ε.optionals = Bool -> [String] -> [String],
+  ε.platforms = π,
+  ο.abbradar = θ,
+  π.unix = ι,
+  ρ.lib = β,
+  σ.stdenv = ξ
+) =>
+{ buildPackages = ξ;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  gnused_422 = κ;
+  icu = ζ;
+  libffi = ζ;
+  libobjc = ν;
+  perl = κ;
+  pkgconfig = κ;
+  python2 = κ;
+  readline = ζ;
+  stdenv = β;
+  zip = κ;
+  zlib = ζ;
+} ->
+μ

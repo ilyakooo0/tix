@@ -1,0 +1,50 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.clickhouse = β,
+  γ.mkDefault = String -> δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    ζ ->
+    { environment =
+        { etc =
+            { clickhouse-server/config.xml = {source = String;};
+              clickhouse-server/users.xml = {source = String;};
+            };
+          systemPackages = [η];
+        };
+      systemd =
+        { services =
+            { clickhouse =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ConfigurationDirectory = String;
+                      ExecStart = String;
+                      Group = String;
+                      LogsDirectory = String;
+                      StateDirectory = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      time = {timeZone = δ;};
+      users =
+        { groups = {clickhouse = {gid = θ;};};
+          users =
+            { clickhouse =
+                {description = String; group = String; name = String; uid = ι;};
+            };
+        };
+    } ->
+    κ,
+  λ.clickhouse = η,
+  β.enable = ζ,
+  μ.services = α,
+  ν.gids = α,
+  ξ.ids = ν,
+  ο.uids = α,
+  π.ids = ο
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = κ; options = {services = {clickhouse = {enable = ε;};};};}

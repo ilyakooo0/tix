@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.buildPythonApplication =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [γ];
+        };
+      pname = String;
+      propagatedBuildInputs = [δ];
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  α.nagiosplugin = δ,
+  η.licenses = θ,
+  η.maintainers = ι,
+  η.symphorien = γ,
+  θ.gpl2 = β
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+  lib = η;
+  python3Packages = α;
+} ->
+ζ

@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.steam-hardware = β,
+  γ.mkIf =
+    δ ->
+    { boot = {kernelModules = [String];};
+      services = {udev = {packages = [ε];};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.steam = ε,
+  β.enable = δ,
+  λ.hardware = α,
+  ι.bool = η,
+  μ.steamPackages = κ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {hardware = {steam-hardware = {enable = θ;};};};}

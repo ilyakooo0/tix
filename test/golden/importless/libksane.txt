@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.pshendry = δ,
+  β.gpl2 = ε
+) =>
+{ extra-cmake-modules = ζ;
+  ki18n = η;
+  ktextwidgets = η;
+  kwallet = η;
+  kwidgetsaddons = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = ε; maintainers = [δ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  qtbase = η;
+  sane-backends = η;
+} ->
+θ

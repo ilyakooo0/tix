@@ -1,0 +1,59 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.getBin = β -> γ,
+  α.gpl2Plus = δ,
+  α.licenses = ε,
+  α.maintainers = ζ,
+  α.makeBinPath = [η] -> θ,
+  α.makeLibraryPath = [η] -> ι,
+  α.phreedom = κ,
+  α.platforms = λ,
+  α.sander = κ,
+  λ.linux = μ
+) =>
+{ cdparanoia = η;
+  cdrdao = η;
+  cdrtools = η;
+  dvdplusrwtools = η;
+  extra-cmake-modules = ν;
+  ffmpeg_3 = η;
+  flac = η;
+  karchive = η;
+  kcmutils = η;
+  kdoctools = ν;
+  kfilemetadata = η;
+  kinit = β;
+  knewstuff = η;
+  knotifyconfig = η;
+  kxmlgui = η;
+  lame = η;
+  lib = α;
+  libburn = η;
+  libdvdcss = η;
+  libdvdread = η;
+  libkcddb = η;
+  libmad = η;
+  libmpcdec = η;
+  libmusicbrainz3 = η;
+  libsamplerate = η;
+  libsndfile = η;
+  libvorbis = η;
+  makeWrapper = ν;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [κ]; platforms = μ;};
+      name = String;
+      nativeBuildInputs = [ν];
+      postFixup = String;
+      propagatedUserEnvPkgs = [γ];
+    } ->
+    ξ;
+  normalize = η;
+  qtwebkit = η;
+  shared-mime-info = η;
+  solid = η;
+  sox = η;
+  taglib = η;
+  transcode = η;
+  vcdimager = η;
+} ->
+ξ

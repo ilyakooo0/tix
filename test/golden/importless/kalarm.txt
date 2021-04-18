@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, α.rittelle = γ, β.gpl2 = δ, ε.maintainers = α) => { akonadi =
+    ζ;
+  akonadi-contacts = ζ;
+  akonadi-mime = ζ;
+  extra-cmake-modules = ζ;
+  kalarmcal = ζ;
+  kauth = ζ;
+  kcalendarcore = ζ;
+  kcalutils = ζ;
+  kcmutils = ζ;
+  kcodecs = ζ;
+  kcompletion = ζ;
+  kconfig = ζ;
+  kconfigwidgets = ζ;
+  kdbusaddons = ζ;
+  kdelibs4support = ζ;
+  kdepim-apps-libs = ζ;
+  kdepim-runtime = η;
+  kdoctools = ζ;
+  kguiaddons = ζ;
+  kholidays = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kidentitymanagement = ζ;
+  kimap = ζ;
+  kio = ζ;
+  kjobwidgets = ζ;
+  kmailtransport = ζ;
+  kmime = ζ;
+  knotifications = ζ;
+  kpimtextedit = ζ;
+  kservice = ζ;
+  kwidgetsaddons = ζ;
+  kwindowsystem = ζ;
+  kxmlgui = ζ;
+  lib = α;
+  libkdepim = ζ;
+  mailcommon = ζ;
+  messagelib = ζ;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedUserEnvPkgs = [η];
+    } ->
+    θ;
+  phonon = ζ;
+  pimcommon = ζ;
+  qtx11extras = ζ;
+} ->
+θ

@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.orivej = γ,
+  β.fdl12 = δ,
+  β.gpl2Plus = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kcrash = η;
+  kdbusaddons = η;
+  kdoctools = ζ;
+  kguiaddons = η;
+  ki18n = η;
+  kparts = η;
+  kwidgetsaddons = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+} ->
+θ

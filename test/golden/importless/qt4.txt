@@ -1,0 +1,28 @@
+∀ β γ δ ε ζ η θ ι.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = ∀ α. α;
+      dontAddPrefix = Bool;
+      installFlags = ε;
+      meta = {broken = Bool;};
+      pname = String;
+      preConfigure = String;
+      preFixup = String;
+      src = ζ;
+      version = η;
+    } ->
+    θ,
+  δ.installFlags = ε,
+  δ.src = ζ,
+  δ.version = η,
+  ι.pyqt4 = δ
+) =>
+{ backintime-common = δ;
+  gettext = δ;
+  makeWrapper = δ;
+  python3 = δ;
+  python3Packages = ι;
+  stdenv = β;
+} ->
+θ

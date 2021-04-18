@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ.
+(α.licenses = β, β.gpl3 = γ, β.lgpl21 = γ) => { extra-cmake-modules = δ;
+  gpsd = ε;
+  kdoctools = δ;
+  knewstuff = ε;
+  kparts = ε;
+  krunner = ε;
+  lib = α;
+  mkDerivation =
+    { meta = {license = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+      preConfigure = String;
+      propagatedBuildInputs = [ε];
+    } ->
+    ζ;
+  perl = δ;
+  qtquickcontrols = ε;
+  qtscript = ε;
+  qtsvg = ε;
+  qtwebengine = ε;
+  shared-mime-info = ε;
+} ->
+ζ

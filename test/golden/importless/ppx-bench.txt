@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ
+) =>
+{ buildOcamlJane =
+    { hasSharedObjects = Bool;
+      hash = String;
+      meta = {description = String; license = ε; maintainers = [ζ];};
+      minimumSupportedOcamlVersion = String;
+      name = String;
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  ppx_core = η;
+  ppx_driver = η;
+  ppx_inline_test = η;
+  ppx_tools = η;
+  stdenv = α;
+} ->
+θ

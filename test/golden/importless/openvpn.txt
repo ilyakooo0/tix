@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.peterhoeg = δ,
+  ε.buildPythonApplication =
+    { doCheck = Bool;
+      meta = {description = String; license = ζ; maintainers = [δ];};
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.mit = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  lib = α;
+  python3Packages = ε;
+} ->
+θ

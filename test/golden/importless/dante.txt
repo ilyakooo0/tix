@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.dante = β,
+  γ.arobyn = δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { assertions = [{assertion = Bool; message = String;}];
+      systemd =
+        { services =
+            { dante =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecReload = String;
+                      ExecStart = String;
+                      Restart = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {dante = {};};
+          users =
+            { dante =
+                {description = String; group = String; isSystemUser = Bool;};
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.writeText = String -> String -> ν,
+  β.config = String,
+  β.enable = η,
+  ξ.services = α,
+  λ.lines = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = θ;
+  meta = {maintainers = [δ];};
+  options = {services = {dante = {config = κ; enable = ζ;};};};
+}

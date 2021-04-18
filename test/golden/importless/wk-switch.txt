@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  γ.buildPythonApplication =
+    { doCheck = Bool;
+      dontBuild = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.i3ipc = η,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.synthetica = ε,
+  κ.mit = δ,
+  μ.linux = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  python3Packages = γ;
+  stdenv = α;
+} ->
+ι

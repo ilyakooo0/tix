@@ -1,0 +1,5 @@
+∀ α β γ δ ε ζ.
+(α.types = β, β.attrsOf = γ -> δ, β.either = ε -> ζ -> γ, β.str = ε) => { lib =
+    α;
+} ->
+{freeformType = δ;}

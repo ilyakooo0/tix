@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { cyrus_sasl = δ;
+  extra-cmake-modules = ε;
+  kcoreaddons = δ;
+  kdepimTeam = ζ;
+  kdoctools = ε;
+  ki18n = η;
+  kio = η;
+  kmime = δ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      outputs = [String];
+      propagatedBuildInputs = [δ];
+    } ->
+    θ;
+} ->
+θ

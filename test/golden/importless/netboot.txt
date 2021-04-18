@@ -1,0 +1,58 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.initrd = β,
+  α.squashfsStore = γ,
+  α.storeContents = δ,
+  α.toplevel = ε,
+  ζ.literalExample = String -> η,
+  ζ.mkOption = {description = String; example = η;} -> θ,
+  ι.callPackage = Path -> {storeContents = δ;} -> κ,
+  ι.grub2 = λ,
+  ι.grub2_efi = λ,
+  ι.makeInitrd =
+    { compressor = μ;
+      contents = [{object = γ; symlink = String;}];
+      prepend = [String];
+    } ->
+    ν,
+  ι.syslinux = λ,
+  ι.system = String,
+  ι.writeTextDir = String -> String -> ξ,
+  ο.build = α,
+  π.system = ο,
+  β.compressor = μ,
+  ρ.boot = α,
+  σ.build = α,
+  τ.system = σ,
+  υ.netboot = α,
+  φ.hostPlatform = ι,
+  χ.stdenv = φ
+) =>
+{config = α; lib = ζ; pkgs = ι;} ->
+{ config =
+    { boot =
+        { initrd =
+            {availableKernelModules = [String]; kernelModules = [String];};
+          loader = {grub = {enable = Bool;}; timeout = Integer;};
+          postBootCommands = String;
+        };
+      environment = {systemPackages = [λ];};
+      fileSystems =
+        { / = {fsType = String; options = [String];};
+          /nix/.ro-store =
+            { device = String;
+              fsType = String;
+              neededForBoot = Bool;
+              options = [String];
+            };
+          /nix/.rw-store =
+            {fsType = String; neededForBoot = Bool; options = [String];};
+          /nix/store = {device = String; fsType = String; options = [String];};
+        };
+      netboot = {storeContents = [ε];};
+      system =
+        { build =
+            {netbootIpxeScript = ξ; netbootRamdisk = ν; squashfsStore = κ;};
+        };
+    };
+  options = {netboot = {storeContents = θ;};};
+}

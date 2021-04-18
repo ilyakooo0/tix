@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enable = β,
+  γ.maintainers = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
+      systemd = {packages = [θ];};
+    } ->
+    ι,
+  γ.worldofpeace = κ,
+  λ.zeitgeist = ζ,
+  μ.zeitgeist = α,
+  ν.services = μ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = ι;
+  meta = {maintainers = [κ];};
+  options = {services = {zeitgeist = {enable = ε;};};};
+}

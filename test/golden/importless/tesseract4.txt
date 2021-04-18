@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.asl20 = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+          platforms = [ζ];
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.platforms = κ,
+  λ.licenses = α,
+  μ.lib = λ,
+  γ.earvstedt = ε,
+  γ.viric = ε,
+  ν.lib = α,
+  κ.darwin = [ζ],
+  κ.linux = [ζ],
+  ξ.lib = α
+) =>
+{ autoconf-archive = η;
+  autoreconfHook = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  icu = δ;
+  leptonica = δ;
+  libpng = δ;
+  libtiff = δ;
+  opencl-headers = δ;
+  pango = δ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

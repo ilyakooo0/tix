@@ -1,0 +1,68 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.lib = δ,
+  α.mkDerivation =
+    { CXXFLAGS = String;
+      NIX_LDFLAGS = ε;
+      buildInputs = [ζ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [η];
+          platforms = θ;
+        };
+      nativeBuildInputs = [ι];
+      outputs = [String];
+      passthru =
+        {client = κ; connector-c = κ; mysqlVersion = String; server = κ;};
+      pname = String;
+      postInstall = String;
+      preConfigure = λ;
+      prePatch = String;
+      src = μ;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> String -> λ,
+  α.optionalString = γ -> String -> ε,
+  α.optionals = ν -> [ξ] -> [ζ],
+  ο.lib = α,
+  δ.artistic1 = η,
+  δ.bsd0 = η,
+  δ.bsd2 = η,
+  δ.bsd3 = η,
+  δ.bsdOriginal = η,
+  δ.gpl2 = η,
+  δ.lgpl2 = η,
+  δ.lgpl21 = η,
+  δ.licenses = π,
+  δ.mit = η,
+  δ.platforms = ρ,
+  δ.publicDomain = η,
+  σ.zlib = η,
+  ρ.unix = θ,
+  τ.lib = α,
+  υ.lib = α
+) =>
+{ CoreServices = ξ;
+  bison = ι;
+  boost = ζ;
+  cctools = ξ;
+  cmake = ι;
+  developer_cmds = ξ;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  libedit = ζ;
+  libevent = ζ;
+  lz4 = ζ;
+  ncurses = ζ;
+  openssl = ζ;
+  perl = ξ;
+  pkgconfig = ι;
+  protobuf = ζ;
+  readline = ζ;
+  stdenv = α;
+  zlib = ζ;
+} ->
+κ

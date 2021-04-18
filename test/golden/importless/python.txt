@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.asl20 = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.thoughtpolice = ε,
+  ζ.pythonsrc = η,
+  ζ.version = θ
+) =>
+{ buildPythonPackage =
+    { doCheck = Bool;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = [β];
+          maintainers = [ε];
+        };
+      patchPhase = String;
+      pname = String;
+      src = η;
+      unpackCmd = String;
+      version = θ;
+    } ->
+    ι;
+  foundationdb = ζ;
+  lib = α;
+} ->
+ι

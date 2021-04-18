@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {enable = Bool; packages = [ε];};};
+      systemd =
+        { services =
+            { wicd =
+                { after = [String];
+                  before = [String];
+                  script = String;
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.wicd = δ,
+  λ.wicd = α,
+  μ.networking = λ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {networking = {wicd = {enable = θ;};};};}

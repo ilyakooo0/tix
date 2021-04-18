@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( α.master = β,
+  α.source = γ,
+  δ.writeText = String -> ε -> ζ,
+  η.aneeshusa = θ,
+  η.builtins = ι,
+  η.cfg = κ,
+  η.maintainers = λ,
+  η.mkEnableOption = String -> μ,
+  η.mkIf =
+    ν ->
+    { environment =
+        {etc = {salt/master = {source = ζ;};}; systemPackages = [ξ];};
+      systemd =
+        { services =
+            { salt-master =
+                { after = [String];
+                  description = String;
+                  path = [ο];
+                  restartTriggers = [γ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      LimitNOFILE = Integer;
+                      NotifyAccess = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    π,
+  η.mkOption = {default = {}; description = String; type = ρ;} -> σ,
+  η.recursiveUpdate = {default_include = String; pki_dir = String;} -> τ -> υ,
+  η.salt = ξ,
+  η.types = φ,
+  η.utillinux = ο,
+  β.enable = ν,
+  χ.salt = α,
+  ψ.services = χ,
+  ω.salt/master = α,
+  α1.etc = ω,
+  β2.environment = α1,
+  κ.configuration = τ,
+  ι.toJSON = υ -> ε,
+  φ.attrs = ρ
+) =>
+{config = α; lib = η; pkgs = δ;} ->
+{ config = π;
+  meta = {maintainers = [θ];};
+  options =
+    {services = {salt = {master = {configuration = σ; enable = μ;};};};};
+}

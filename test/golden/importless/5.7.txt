@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = [η];
+        };
+      nativeBuildInputs = θ;
+      patches = [Path];
+      pname = String;
+      prePatch = ι;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  α.optional = μ -> ν -> θ,
+  α.optionalString = β -> String -> ι,
+  ξ.lib = α,
+  ο.lib = α,
+  γ.darwin = [η],
+  γ.licenses = π,
+  γ.linux = [η],
+  γ.maggesi = ζ,
+  γ.maintainers = ρ,
+  γ.platforms = σ,
+  π.lgpl21 = ε
+) =>
+{ autoreconfHook = ν;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  gmp = δ;
+  libffi = δ;
+  stdenv = α;
+} ->
+λ

@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.squeezelite = β,
+  γ.builtins = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    ζ ->
+    { systemd =
+        { services =
+            { squeezelite =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      ExecStart = String;
+                      StateDirectory = η;
+                      SupplementaryGroups = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  β.enable = ζ,
+  μ.services = α,
+  δ.baseNameOf = String -> η,
+  λ.str = ι
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = θ;
+  options = {services = {squeezelite = {enable = ε; extraArguments = κ;};};};
+}

@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.lib = δ,
+  α.mkDerivation =
+    { NIX_LDFLAGS = ε;
+      buildInputs = [ζ];
+      meta =
+        {description = String; homepage = String; license = η; platforms = θ;};
+      name = String;
+      outputs = [String];
+      patches = [ι];
+      preFixup = κ;
+      propagatedBuildInputs = [λ];
+      src = μ;
+    } ->
+    ν,
+  α.optional = γ -> Null -> [λ],
+  α.optionalString = ξ -> String -> κ,
+  α.optionals = β -> [ο] -> [λ],
+  π.lib = α,
+  ρ.lib = α,
+  σ.lib = α,
+  δ.licenses = τ,
+  δ.platforms = υ,
+  τ.lgpl21 = η,
+  υ.unix = θ,
+  φ.lib = α
+) =>
+{ IOKit = ο;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> ι;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  lib = χ;
+  libobjc = ο;
+  pkgconfig = ζ;
+  stdenv = α;
+  systemd = Null;
+} ->
+ν

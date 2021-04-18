@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = δ;
+          platforms = ε;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      src = η;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.platforms = κ,
+  ι.lgpl3 = δ,
+  κ.unix = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  m4 = γ;
+  pkgconfig = ζ;
+  stdenv = α;
+} ->
+θ

@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.enable = β,
+  α.rtkit = γ,
+  δ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      security = {polkit = {enable = Bool;};};
+      services = {dbus = {packages = [ζ];};};
+      systemd = {packages = [η];};
+      users = {users = {rtkit = {description = String; uid = γ;};};};
+    } ->
+    θ,
+  δ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  δ.types = λ,
+  μ.rtkit = ε,
+  ν.rtkit = α,
+  ξ.security = ν,
+  ο.uids = α,
+  π.ids = ο,
+  λ.bool = ι
+) =>
+{config = α; lib = δ; pkgs = μ;} ->
+{config = θ; options = {security = {rtkit = {enable = κ;};};};}

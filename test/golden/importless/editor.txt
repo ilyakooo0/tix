@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.toLower = String -> γ,
+  δ.lib = α,
+  β.licenses = ε,
+  β.maintainers = ζ,
+  β.platforms = η,
+  β.tadeokondrak = θ,
+  ε.mit = ι,
+  η.all = κ
+) =>
+{ fetchFromBitbucket =
+    {owner = String; repo = String; rev = γ; sha256 = String;} -> λ;
+  mkDerivation =
+    { buildInputs = [μ];
+      dontWrapQtApps = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ι;
+          maintainers = [θ];
+          platforms = κ;
+        };
+      nativeBuildInputs = [ν];
+      pname = String;
+      preConfigure = String;
+      preFixup = String;
+      src = λ;
+      version = String;
+    } ->
+    ξ;
+  python3 = ο;
+  qmake = ν;
+  qtbase = μ;
+  qtwebsockets = μ;
+  stdenv = α;
+  vapoursynth = μ;
+} ->
+ξ

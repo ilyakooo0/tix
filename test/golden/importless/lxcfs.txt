@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lxcfs = β,
+  γ.maintainers = δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { lxcfs =
+                { before = [String];
+                  description = String;
+                  restartIfChanged = Bool;
+                  serviceConfig =
+                    { ExecStart = String;
+                      ExecStartPre = String;
+                      ExecStopPost = String;
+                      KillMode = String;
+                      Restart = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.lxc = α,
+  λ.virtualisation = κ,
+  δ.mic92 = μ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = ζ;
+  meta = {maintainers = [μ];};
+  options = {virtualisation = {lxc = {lxcfs = {enable = θ;};};};};
+}

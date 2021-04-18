@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.platforms = δ,
+  β.gpl2 = ε,
+  γ.shamilton = ζ,
+  δ.linux = η
+) =>
+{ cmake = θ;
+  extra-cmake-modules = θ;
+  fetchurl = ι;
+  kactivities = κ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [κ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+    } ->
+    λ;
+  qtbase = κ;
+} ->
+λ

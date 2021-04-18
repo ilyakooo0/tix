@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.enable = β,
+  γ.tracker-miners = δ,
+  ε.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ζ];};};
+      systemd = {packages = [η];};
+    } ->
+    θ,
+  ε.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  ε.teams = λ,
+  ε.types = μ,
+  ν.tracker-miners = α,
+  ξ.gnome3 = ν,
+  ο.services = ξ,
+  λ.members = π,
+  ρ.gnome = λ,
+  μ.bool = ι
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{ config = θ;
+  meta = {maintainers = π;};
+  options = {services = {gnome3 = {tracker-miners = {enable = κ;};};};};
+}

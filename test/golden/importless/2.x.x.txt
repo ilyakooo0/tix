@@ -1,0 +1,47 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl3 = δ,
+  γ.joelmo = ε
+) =>
+{ autoreconfHook = ζ;
+  boost = η;
+  buildPythonPackage =
+    { buildInputs = [θ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      format = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  cairomm = η;
+  cgal = η;
+  expat = η;
+  fetchpatch = λ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  gmp = η;
+  gobject-introspection = η;
+  gtk3 = η;
+  lib = α;
+  matplotlib = η;
+  mpfr = η;
+  ncurses = θ;
+  pkg-config = ζ;
+  pycairo = η;
+  pygobject3 = η;
+  python = η;
+  pythonAtLeast = μ;
+  scipy = η;
+  sparsehash = η;
+} ->
+κ

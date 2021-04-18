@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      dontStrip = Bool;
+      meta = {description = String; license = δ; platforms = ε;};
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.platforms = κ,
+  ι.mit = δ,
+  κ.linux = ε
+) =>
+{ autoreconfHook = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  mono = γ;
+  pkgconfig = ζ;
+  stdenv = α;
+} ->
+θ

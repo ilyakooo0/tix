@@ -1,0 +1,45 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.gpl2 = γ,
+  β.linux = δ,
+  β.maintainers = ε,
+  ζ.mkDerivation =
+    { alt_wrapper = Path;
+      buildInputs = [η];
+      builder = Path;
+      cctools_port = θ;
+      ldid = θ;
+      meta =
+        { description = String;
+          hydraPlatforms = ∀ α. α;
+          license = γ;
+          maintainers = [ι];
+          platforms = δ;
+        };
+      name = String;
+      sdk = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  μ.licenses = β,
+  ν.lib = μ,
+  ε.fxfactorial = ι,
+  ξ.lib = β,
+  ο.platforms = β,
+  π.lib = ο
+) =>
+{ autoconf = η;
+  automake = η;
+  clang = η;
+  clangStdenv = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  git = η;
+  gnutar = η;
+  libtool = η;
+  openssl = η;
+  requireFile = {message = String; name = String; sha256 = String;} -> κ;
+  stdenv = β;
+  xz = η;
+} ->
+λ

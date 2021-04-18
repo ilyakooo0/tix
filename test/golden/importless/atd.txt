@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+( α.atd = β,
+  γ.builtins = δ,
+  γ.map =
+    ( ε ->
+      { name = String;
+        value =
+          { group = String;
+            owner = String;
+            setgid = Bool;
+            setuid = Bool;
+            source = String;
+          };
+      }
+    ) ->
+    [String] -> ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      security = {pam = {services = {atd = {};};}; wrappers = ι;};
+      systemd =
+        { services =
+            { atd =
+                { description = String;
+                  path = [θ];
+                  preStart = String;
+                  script = String;
+                  serviceConfig = {Type = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {atd = {gid = κ;};};
+          users = {atd = {description = String; home = String; uid = λ;};};
+        };
+    } ->
+    μ,
+  γ.mkOption = {default = Bool; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  π.at = θ,
+  β.enable = η,
+  ρ.services = α,
+  σ.gids = α,
+  τ.ids = σ,
+  υ.uids = α,
+  φ.ids = υ,
+  δ.listToAttrs = ζ -> ι,
+  ο.bool = ν,
+  χ.bool = ψ
+) =>
+{config = α; lib = γ; pkgs = π;} ->
+{config = μ; options = {services = {atd = {allowEveryone = ξ; enable = ω;};};};}

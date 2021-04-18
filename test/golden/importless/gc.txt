@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.mkDerivation =
+    { buildInputs = [β];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      name = String;
+      rev = String;
+      src = ζ;
+    } ->
+    η,
+  θ.licenses = ι,
+  θ.maintainers = κ,
+  θ.offline = δ,
+  θ.rev = λ,
+  μ.platforms = ε,
+  ι.asl20 = γ,
+  ν.meta = μ
+) =>
+{ coreutils = ξ;
+  docker = μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = λ; sha256 = String;} -> ζ;
+  findutils = ο;
+  gnugrep = π;
+  gnused = ρ;
+  lib = θ;
+  makeWrapper = β;
+  procps = σ;
+  stdenv = α;
+} ->
+η

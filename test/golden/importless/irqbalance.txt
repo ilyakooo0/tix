@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.irqbalance = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        {packages = [η]; services = {irqbalance = {wantedBy = [String];};};};
+    } ->
+    θ,
+  ι.irqbalance = ζ,
+  β.enable = ε,
+  κ.services = α
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = θ; options = {services = {irqbalance = {enable = δ;};};};}

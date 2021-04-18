@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.dtzWill = δ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.gpl3 = γ,
+  λ.linux = ε
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  gnome-themes-extra = ζ;
+  inkscape_0 = ζ;
+  stdenvNoCC = α;
+  xcursorgen = ζ;
+} ->
+θ

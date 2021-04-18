@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.cleanTmpDir = β,
+  α.tmpOnTmpfs = γ,
+  δ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
+  δ.optional = γ -> String -> η,
+  δ.types = θ,
+  ι.boot = α,
+  κ.boot = α,
+  θ.bool = ε,
+  λ.bool = μ
+) =>
+{config = α; lib = δ;} ->
+{ config =
+    {systemd = {additionalUpstreamSystemUnits = η; tmpfiles = {rules = ν;};};};
+  options = {boot = {cleanTmpDir = ζ; tmpOnTmpfs = ξ;};};
+}

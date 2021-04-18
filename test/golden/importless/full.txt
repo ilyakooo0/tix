@@ -1,0 +1,31 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildCommand = String;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = [δ];
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+    } ->
+    θ,
+  γ.free = δ,
+  γ.licenses = ι,
+  γ.linux = ζ,
+  γ.maintainers = κ,
+  γ.peterhoeg = ε,
+  γ.platforms = λ,
+  γ.unfree = δ
+) =>
+{ descent1-assets = μ;
+  descent2-assets = ν;
+  dxx-rebirth = ξ;
+  makeWrapper = η;
+  stdenv = β;
+} ->
+{d1x-rebirth-full = θ; d2x-rebirth-full = θ;}

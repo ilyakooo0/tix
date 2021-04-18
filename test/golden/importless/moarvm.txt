@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      configureScript = String;
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.optionals = β -> [κ] -> [δ],
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  γ.sgo = ζ,
+  γ.thoughtpolice = ζ,
+  γ.vrthra = ζ,
+  λ.artistic2 = ε,
+  ν.unix = η,
+  ξ.lib = α
+) =>
+{ ApplicationServices = κ;
+  CoreServices = κ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  perl = δ;
+  stdenv = α;
+} ->
+ι

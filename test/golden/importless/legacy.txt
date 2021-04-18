@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.gpl2 = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { hardeningDisable = [String];
+      installPhase = String;
+      makeFlags = [String];
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = β;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      preBuild = String;
+      src = η;
+    } ->
+    θ,
+  α.platforms = ι,
+  κ.licenses = α,
+  λ.lib = κ,
+  γ.raskin = δ,
+  μ.lib = α,
+  ι.linux = ε,
+  ν.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  gcj = ζ;
+  stdenv = α;
+  unzip = ζ;
+} ->
+θ

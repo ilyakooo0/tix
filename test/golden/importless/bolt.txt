@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {udev = {packages = [ε];};};
+      systemd = {packages = [ζ];};
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.bolt = δ,
+  μ.bolt = α,
+  ν.hardware = μ,
+  ξ.services = ν,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = η; options = {services = {hardware = {bolt = {enable = ι;};};};};}

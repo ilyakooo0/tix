@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ε];};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.dleyna-server = δ,
+  λ.dleyna-server = α,
+  μ.services = λ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {services = {dleyna-server = {enable = θ;};};};}

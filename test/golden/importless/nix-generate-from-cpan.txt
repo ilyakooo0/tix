@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.maintainers = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta = {description = String; maintainers = [δ]; platforms = ε;};
+      name = String;
+      phases = [String];
+    } ->
+    ζ,
+  α.unix = ε,
+  η.CPANPLUS = γ,
+  η.GetoptLongDescriptive = γ,
+  η.LogLog4perl = γ,
+  η.Readonly = γ,
+  β.eelco = δ,
+  β.rycee = δ,
+  θ.lib = α,
+  ι.platforms = α,
+  κ.lib = ι
+) =>
+{makeWrapper = γ; perl = γ; perlPackages = η; stdenv = α;} -> ζ

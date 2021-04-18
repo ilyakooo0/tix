@@ -1,0 +1,40 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.lib = γ,
+  β.makeBinPath = [δ] -> ε,
+  β.mkDerivation =
+    { dontBuild = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = ∀ α. α;
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.lib = β,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.platforms = ξ,
+  μ.mit = ζ,
+  ξ.linux = η
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gawk = δ;
+  i3 = δ;
+  jq = δ;
+  libnotify = δ;
+  makeWrapper = θ;
+  rofi = δ;
+  stdenv = β;
+  vim = δ;
+  xdotool = δ;
+  xrandr = δ;
+} ->
+κ

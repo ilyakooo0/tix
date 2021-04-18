@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment =
+        {extraSetup = String; pathsToLink = [String]; systemPackages = [δ];};
+    } ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.teams = θ,
+  γ.types = ι,
+  κ.shared-mime-info = δ,
+  λ.mime = α,
+  μ.xdg = λ,
+  θ.members = ν,
+  ξ.freedesktop = θ,
+  ι.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{ config = ε;
+  meta = {maintainers = ν;};
+  options = {xdg = {mime = {enable = η;};};};
+}

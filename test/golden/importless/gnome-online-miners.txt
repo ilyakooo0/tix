@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.enable = β,
+  γ.gnome-online-miners = δ,
+  ε.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ζ];};};
+    } ->
+    η,
+  ε.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  ε.teams = κ,
+  ε.types = λ,
+  μ.gnome-online-miners = α,
+  ν.gnome3 = μ,
+  ξ.services = ν,
+  ο.gnome3 = γ,
+  π.gnome3 = γ,
+  κ.members = ρ,
+  σ.gnome = κ,
+  λ.bool = θ
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{ config = η;
+  meta = {maintainers = ρ;};
+  options = {services = {gnome3 = {gnome-online-miners = {enable = ι;};};};};
+}

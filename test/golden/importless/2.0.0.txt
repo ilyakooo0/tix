@@ -1,0 +1,42 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      buildPhase = String;
+      configurePhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patches = [Path];
+      pname = String;
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.withPackages = (λ -> [μ]) -> δ,
+  λ.requests = μ,
+  γ.licenses = ν,
+  γ.maintainers = ξ,
+  γ.platforms = ο,
+  ν.asl20 = ε,
+  ο.all = ζ
+) =>
+{ bash = π;
+  coreutils = ρ;
+  erlang = δ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  icu = δ;
+  makeWrapper = η;
+  openssl = δ;
+  python3 = κ;
+  spidermonkey = δ;
+  stdenv = β;
+} ->
+ι

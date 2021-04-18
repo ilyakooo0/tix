@@ -1,0 +1,37 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( γ.lib = δ,
+  ε.mountPoint = ζ,
+  ε.neededForBoot = η,
+  θ.device = ι,
+  θ.mountPoint = κ,
+  δ.attrNames = Bool -> λ,
+  δ.concatStringsSep = String -> μ -> String,
+  δ.elem = ζ -> [String] -> Bool,
+  δ.flatten = ν -> ξ,
+  δ.hasPrefix = String -> κ -> Bool,
+  δ.imap0 = (ο -> Bool -> ν) -> Bool -> ν,
+  δ.imap1 = (π -> ρ -> String) -> σ -> μ,
+  δ.isAttrs = Bool -> Bool,
+  δ.isList = Bool -> Bool,
+  δ.listToAttrs = ξ -> τ,
+  δ.map = (String -> ν) -> λ -> ν,
+  δ.nameValuePair = String -> υ -> ν,
+  δ.removePrefix = String -> φ -> χ,
+  δ.replaceChars = [String] -> [String] -> χ -> ψ,
+  δ.throw = String -> String,
+  δ.types = ω,
+  ω.check = String -> Bool,
+  α1.shellPackage = ω,
+  β2.check = String -> Bool,
+  γ3.package = β2
+) =>
+γ ->
+{ escapeSystemdPath = φ -> ψ;
+  fsBefore = ∀ α β. (α.mountPoint = β) => α -> θ -> Bool;
+  fsNeededForBoot = ε -> Bool;
+  genJqSecretsReplacementSnippet = ∀ α. Bool -> α -> String;
+  genJqSecretsReplacementSnippet' = ∀ α β. α -> Bool -> β -> String;
+  pathsNeededForBoot = [String];
+  recursiveGetAttrWithJqPrefix = ∀ α. Bool -> α -> τ;
+  toShellPath = String -> String;
+}

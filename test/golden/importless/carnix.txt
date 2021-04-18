@@ -1,0 +1,209 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.attrsets = β,
+  α.lists = γ,
+  δ.0.10.0 = {aho_corasick = {0.6.10 = {memchr = String;};};} -> {} -> ε,
+  β.recursiveUpdate = ζ,
+  γ.fold = η,
+  θ.carnix = δ,
+  ι.crates = θ
+) =>
+{ buildPlatform = κ;
+  buildRustCrate = λ;
+  buildRustCrateHelpers = μ;
+  cratesIO = δ;
+  fetchgit = ν;
+  lib = α;
+} ->
+{ __all = [ε];
+  carnix = {} -> ε;
+  crates = δ;
+  deps =
+    { aho_corasick = {0.6.10 = {memchr = String;};};
+      ansi_term = {0.11.0 = {winapi = String;};};
+      argon2rs = {0.2.5 = {blake2_rfc = String; scoped_threadpool = String;};};
+      arrayvec = {0.4.10 = {nodrop = String;};};
+      atty = {0.2.11 = {libc = String; termion = String; winapi = String;};};
+      autocfg = {0.1.2 = {};};
+      backtrace =
+        { 0.3.14 =
+            { autocfg = String;
+              backtrace_sys = String;
+              cfg_if = String;
+              libc = String;
+              rustc_demangle = String;
+              winapi = String;
+            };
+        };
+      backtrace_sys = {0.1.28 = {cc = String; libc = String;};};
+      bitflags = {1.0.4 = {};};
+      blake2_rfc = {0.2.18 = {arrayvec = String; constant_time_eq = String;};};
+      carnix =
+        { 0.10.0 =
+            { clap = String;
+              dirs = String;
+              env_logger = String;
+              failure = String;
+              failure_derive = String;
+              itertools = String;
+              log = String;
+              nom = String;
+              regex = String;
+              serde = String;
+              serde_derive = String;
+              serde_json = String;
+              tempdir = String;
+              toml = String;
+              url = String;
+            };
+        };
+      cc = {1.0.32 = {};};
+      cfg_if = {0.1.7 = {};};
+      clap =
+        { 2.32.0 =
+            { ansi_term = String;
+              atty = String;
+              bitflags = String;
+              strsim = String;
+              textwrap = String;
+              unicode_width = String;
+              vec_map = String;
+            };
+        };
+      cloudabi = {0.0.3 = {bitflags = String;};};
+      constant_time_eq = {0.1.3 = {};};
+      dirs = {1.0.5 = {libc = String; redox_users = String; winapi = String;};};
+      either = {1.5.1 = {};};
+      env_logger =
+        { 0.6.1 =
+            { atty = String;
+              humantime = String;
+              log = String;
+              regex = String;
+              termcolor = String;
+            };
+        };
+      failure = {0.1.5 = {backtrace = String; failure_derive = String;};};
+      failure_derive =
+        { 0.1.5 =
+            { proc_macro2 = String;
+              quote = String;
+              syn = String;
+              synstructure = String;
+            };
+        };
+      fuchsia_cprng = {0.1.1 = {};};
+      humantime = {1.2.0 = {quick_error = String;};};
+      idna =
+        { 0.1.5 =
+            { matches = String;
+              unicode_bidi = String;
+              unicode_normalization = String;
+            };
+        };
+      itertools = {0.8.0 = {either = String;};};
+      itoa = {0.4.3 = {};};
+      lazy_static = {1.3.0 = {};};
+      libc = {0.2.50 = {};};
+      log = {0.4.6 = {cfg_if = String;};};
+      matches = {0.1.8 = {};};
+      memchr = {1.0.2 = {libc = String;}; 2.2.0 = {};};
+      nodrop = {0.1.13 = {};};
+      nom = {3.2.1 = {memchr = String;};};
+      percent_encoding = {1.0.1 = {};};
+      proc_macro2 = {0.4.27 = {unicode_xid = String;};};
+      quick_error = {1.2.2 = {};};
+      quote = {0.6.11 = {proc_macro2 = String;};};
+      rand =
+        { 0.4.6 =
+            { fuchsia_cprng = String;
+              libc = String;
+              rand_core = String;
+              rdrand = String;
+              winapi = String;
+            };
+        };
+      rand_core = {0.3.1 = {rand_core = String;}; 0.4.0 = {};};
+      rand_os =
+        { 0.1.3 =
+            { cloudabi = String;
+              fuchsia_cprng = String;
+              libc = String;
+              rand_core = String;
+              rdrand = String;
+              winapi = String;
+            };
+        };
+      rdrand = {0.4.0 = {rand_core = String;};};
+      redox_syscall = {0.1.51 = {};};
+      redox_termios = {0.1.1 = {redox_syscall = String;};};
+      redox_users =
+        { 0.3.0 =
+            { argon2rs = String;
+              failure = String;
+              rand_os = String;
+              redox_syscall = String;
+            };
+        };
+      regex =
+        { 1.1.2 =
+            { aho_corasick = String;
+              memchr = String;
+              regex_syntax = String;
+              thread_local = String;
+              utf8_ranges = String;
+            };
+        };
+      regex_syntax = {0.6.5 = {ucd_util = String;};};
+      remove_dir_all = {0.5.1 = {winapi = String;};};
+      rustc_demangle = {0.1.13 = {};};
+      ryu = {0.2.7 = {};};
+      scoped_threadpool = {0.1.9 = {};};
+      serde = {1.0.89 = {};};
+      serde_derive =
+        {1.0.89 = {proc_macro2 = String; quote = String; syn = String;};};
+      serde_json = {1.0.39 = {itoa = String; ryu = String; serde = String;};};
+      smallvec = {0.6.9 = {};};
+      strsim = {0.7.0 = {};};
+      syn =
+        { 0.15.29 =
+            {proc_macro2 = String; quote = String; unicode_xid = String;};
+        };
+      synstructure =
+        { 0.10.1 =
+            { proc_macro2 = String;
+              quote = String;
+              syn = String;
+              unicode_xid = String;
+            };
+        };
+      tempdir = {0.3.7 = {rand = String; remove_dir_all = String;};};
+      termcolor = {1.0.4 = {wincolor = String;};};
+      termion =
+        { 1.5.1 =
+            {libc = String; redox_syscall = String; redox_termios = String;};
+        };
+      textwrap = {0.10.0 = {unicode_width = String;};};
+      thread_local = {0.3.6 = {lazy_static = String;};};
+      toml = {0.5.0 = {serde = String;};};
+      ucd_util = {0.1.3 = {};};
+      unicode_bidi = {0.3.4 = {matches = String;};};
+      unicode_normalization = {0.1.8 = {smallvec = String;};};
+      unicode_width = {0.1.5 = {};};
+      unicode_xid = {0.1.0 = {};};
+      url =
+        { 1.7.2 = {idna = String; matches = String; percent_encoding = String;};
+        };
+      utf8_ranges = {1.0.2 = {};};
+      vec_map = {0.8.1 = {};};
+      winapi =
+        { 0.3.6 =
+            { winapi_i686_pc_windows_gnu = String;
+              winapi_x86_64_pc_windows_gnu = String;
+            };
+        };
+      winapi_i686_pc_windows_gnu = {0.4.0 = {};};
+      winapi_util = {0.1.2 = {winapi = String;};};
+      winapi_x86_64_pc_windows_gnu = {0.4.0 = {};};
+      wincolor = {1.0.1 = {winapi = String; winapi_util = String;};};
+    };
+}

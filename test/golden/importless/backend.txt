@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.gpl3Plus = β,
+  α.maintainers = γ,
+  δ.gtk3 = ε,
+  δ.poppler_gi = ε,
+  ζ.licenses = α,
+  γ.aszlig = η,
+  γ.symphorien = η
+) =>
+{ buildPythonPackage =
+    { disabled = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [η];
+        };
+      patchPhase = String;
+      pname = String;
+      preCheck = String;
+      propagatedBuildInputs = [ε];
+      sourceRoot = String;
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  distro = ε;
+  fetchFromGitLab =
+    { domain = String;
+      group = String;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    θ;
+  isPy3k = Bool;
+  isPyPy = Bool;
+  lib = α;
+  libinsane = ε;
+  natsort = ε;
+  pillow = ε;
+  pkgs = δ;
+  pycountry = ε;
+  pyenchant = ε;
+  pygobject3 = ε;
+  pyocr = ε;
+  python-Levenshtein = ε;
+  simplebayes = ε;
+  termcolor = ε;
+  whoosh = ε;
+} ->
+ι

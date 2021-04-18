@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        {description = String; license = δ; maintainers = [ε]; platforms = ζ;};
+      name = String;
+      nativeBuildInputs = [η];
+      preFixup = String;
+      prePatch = String;
+      src = θ;
+    } ->
+    ι,
+  κ.adwaita-icon-theme = γ,
+  β.cdepillabout = ε,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl2 = δ,
+  ν.linux = ζ
+) =>
+{ cmake = γ;
+  fcitx = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gnome3 = κ;
+  gtk3 = γ;
+  isocodes = γ;
+  makeWrapper = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

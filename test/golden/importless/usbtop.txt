@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.usbtop = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { boot = {kernelModules = [String];};
+      environment = {systemPackages = [ζ];};
+    } ->
+    η,
+  γ.usbtop = ζ,
+  β.enable = ε,
+  θ.programs = α
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = η; options = {programs = {usbtop = {enable = δ;};};};}

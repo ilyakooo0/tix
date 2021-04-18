@@ -1,0 +1,8 @@
+∀ α β γ δ ε ζ η.
+( α.videoDrivers = β,
+  γ.elem = String -> β -> δ,
+  γ.mkIf = δ -> {boot = {blacklistedKernelModules = [String];};} -> ε,
+  ζ.xserver = α,
+  η.services = ζ
+) =>
+{config = α; lib = γ;} -> {config = ε;}

@@ -1,0 +1,54 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.eadwu = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.optional = Bool -> String -> [ε],
+  α.platforms = ζ,
+  η.mkDerivation =
+    { MODULE_LOAD_DIR = String;
+      POLKIT_ACTION_DIR = String;
+      SYSTEM_BUS_DIR = String;
+      buildInputs = [θ];
+      cmakeFlags = [ε];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ι;
+          maintainers = [β];
+          platforms = κ;
+        };
+      nativeBuildInputs = [λ];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      src = μ;
+      version = String;
+    } ->
+    ν,
+  γ.gpl3 = ι,
+  ζ.linux = κ
+) =>
+{ cmake = λ;
+  dbus = λ;
+  ddcutil = ξ;
+  enableDdc = Bool;
+  enableDpms = Bool;
+  enableGamma = Bool;
+  enableScreen = Bool;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> μ;
+  glib = θ;
+  lib = α;
+  libXdmcp = θ;
+  libXext = ο;
+  libXrandr = π;
+  libmodule = θ;
+  libpthreadstubs = θ;
+  pcre = θ;
+  pkgconfig = λ;
+  polkit = θ;
+  stdenv = η;
+  udev = θ;
+  utillinux = θ;
+} ->
+ν

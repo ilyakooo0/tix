@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.kbdlight = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      security = {wrappers = {kbdlight = {source = String;};};};
+    } ->
+    η,
+  θ.kbdlight = ζ,
+  β.enable = ε,
+  ι.programs = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {programs = {kbdlight = {enable = δ;};};};}

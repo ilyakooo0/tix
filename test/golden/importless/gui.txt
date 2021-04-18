@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( α.composeExtensions = β,
+  α.foldr = β -> (γ -> δ -> {}) -> [ε] -> ζ,
+  α.licenses = η,
+  α.maintainers = θ,
+  α.platforms = ι,
+  α.primeos = κ,
+  λ.override = {packageOverrides = ζ;} -> μ,
+  μ.buildPythonPackage =
+    { doCheck = Bool;
+      dontWrapQtApps = Bool;
+      meta =
+        { changelog = String;
+          description = String;
+          homepage = String;
+          license = ν;
+          longDescription = String;
+          maintainers = [κ];
+          platforms = ξ;
+        };
+      name = String;
+      nativeBuildInputs = [ο];
+      pname = String;
+      postFixup = String;
+      propagatedBuildInputs = [π];
+      src = ρ;
+    } ->
+    σ,
+  μ.pkgs = τ,
+  η.gpl3Plus = ν,
+  ι.linux = ξ,
+  υ.pkgs = μ,
+  τ.distro = π,
+  τ.jsonschema = π,
+  τ.psutil = π,
+  τ.pyqt5 = φ,
+  τ.sentry-sdk = π,
+  τ.setuptools = π,
+  τ.sip = π,
+  φ.override = {withWebSockets = Bool;} -> π
+) =>
+{ branch = χ;
+  commonOverrides = [ε];
+  mkOverride = ψ;
+  sha256Hash = ω;
+  stable = α1;
+  version = β2;
+} ->
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = ω;} -> ρ;
+  lib = α;
+  python3 = λ;
+  wrapQtAppsHook = ο;
+} ->
+σ

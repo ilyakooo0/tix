@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.enable = β,
+  α.stateVersion = γ,
+  δ.gnome-initial-setup = ε,
+  δ.writeScript = String -> String -> ζ,
+  δ.writeTextFile = {destination = String; name = String; text = String;} -> η,
+  θ.mkEnableOption = String -> ι,
+  θ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        { packages = [κ];
+          user =
+            { targets =
+                { gnome-session = {wants = [String];};
+                  gnome-session@gnome-initial-setup = {wants = [String];};
+                };
+            };
+        };
+    } ->
+    λ,
+  θ.optional = μ -> η -> [ε],
+  θ.teams = ν,
+  θ.versionOlder = γ -> String -> μ,
+  ξ.gnome-initial-setup = α,
+  ο.gnome3 = ξ,
+  π.services = ο,
+  ρ.system = α,
+  σ.gnome3 = δ,
+  τ.gnome3 = δ,
+  ν.members = υ,
+  φ.gnome = ν
+) =>
+{config = α; lib = θ; pkgs = δ;} ->
+{ config = λ;
+  meta = {maintainers = υ;};
+  options = {services = {gnome3 = {gnome-initial-setup = {enable = ι;};};};};
+}

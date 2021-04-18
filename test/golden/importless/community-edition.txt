@@ -1,0 +1,44 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν.
+( γ.lib = δ,
+  γ.mkDerivation =
+    { doInstallCheck = Bool;
+      dontStrip = Bool;
+      installCheckPhase = String;
+      installPhase = ∀ β. β;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ε];
+          maintainers = [ζ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [η];
+      passthru = {home = θ;};
+      pname = String;
+      postFixup = String;
+      preFixup = String;
+      propagatedBuildInputs = [ι];
+      srcs = [κ];
+      unpackPhase = String;
+      version = String;
+    } ->
+    θ,
+  δ.bandresen = ζ,
+  δ.bsd3 = ε,
+  δ.glittershark = ζ,
+  δ.gpl2Classpath = ε,
+  δ.hlolli = ζ,
+  δ.licenses = λ,
+  δ.maintainers = μ,
+  δ.upl = ε,
+  δ.volth = ζ
+) =>
+{ fetchurl = {sha256 = ∀ α. α; url = String;} -> κ;
+  glibc = ν;
+  perl = η;
+  setJavaClassPath = ι;
+  stdenv = γ;
+  unzip = η;
+  zlib = ι;
+} ->
+{graalvm11-ce = θ; graalvm8-ce = θ;}

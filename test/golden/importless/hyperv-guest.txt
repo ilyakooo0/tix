@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.bin = β,
+  α.hypervGuest = γ,
+  α.lib = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    η ->
+    { boot = {initrd = {kernelModules = [String];}; kernelParams = [String];};
+      environment = {systemPackages = [β];};
+      security = {rngd = {enable = Bool;};};
+      services = {udev = {packages = θ;};};
+      systemd =
+        {packages = [δ]; targets = {hyperv-daemons = {wantedBy = [String];};};};
+    } ->
+    ι,
+  ε.mkOption =
+    {default = String; description = String; example = String; type = κ;} -> λ,
+  ε.singleton = μ -> θ,
+  ε.types = ν,
+  ξ.writeTextFile = {destination = String; name = String; text = String;} -> μ,
+  γ.enable = η,
+  ο.virtualisation = α,
+  π.hyperv-daemons = α,
+  ρ.kernelPackages = π,
+  σ.boot = ρ,
+  τ.hyperv-daemons = α,
+  υ.kernelPackages = τ,
+  φ.boot = υ,
+  ν.str = κ
+) =>
+{config = α; lib = ε; pkgs = ξ;} ->
+{ config = ι;
+  options = {virtualisation = {hypervGuest = {enable = ζ; videoMode = λ;};};};
+}

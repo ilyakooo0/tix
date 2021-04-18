@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.metacity = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {xserver = {windowManager = {session = η;};};};
+    } ->
+    θ,
+  γ.singleton = {name = String; start = String;} -> η,
+  ι.gnome3 = κ,
+  β.enable = ε,
+  λ.windowManager = α,
+  μ.xserver = λ,
+  ν.services = μ,
+  κ.metacity = ζ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{ config = θ;
+  options =
+    {services = {xserver = {windowManager = {metacity = {enable = δ;};};};};};
+}

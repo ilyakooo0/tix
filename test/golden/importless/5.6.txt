@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.isDarwin = β,
+  α.lgpl21 = γ,
+  α.maggesi = δ,
+  α.mkDerivation =
+    { buildInputs = ε;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          longDescription = String;
+          maintainers = [δ];
+          platforms = ζ;
+        };
+      pname = String;
+      prePatch = η;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.optional = β -> κ -> ε,
+  α.optionalString = λ -> String -> η,
+  α.platforms = μ,
+  ν.lib = α,
+  ξ.licenses = α,
+  ο.lib = ξ,
+  π.maintainers = α,
+  ρ.lib = π,
+  μ.linux = ζ,
+  σ.lib = α,
+  τ.lib = α
+) =>
+{ autoreconfHook = κ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  stdenv = α;
+} ->
+ι

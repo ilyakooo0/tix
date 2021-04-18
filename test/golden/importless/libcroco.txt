@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = ε;
+      meta =
+        {description = String; homepage = String; license = ζ; platforms = η;};
+      nativeBuildInputs = [θ];
+      outputBin = String;
+      outputs = [String];
+      passthru = {updateScript = ι;};
+      pname = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  α.optional = β -> String -> ε,
+  μ.updateScript = {packageName = String;} -> ι,
+  γ.licenses = ν,
+  γ.platforms = ξ,
+  ν.lgpl2 = ζ,
+  ξ.unix = η,
+  ο.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> κ;
+  glib = δ;
+  gnome3 = μ;
+  libxml2 = δ;
+  pkgconfig = θ;
+  stdenv = α;
+} ->
+λ

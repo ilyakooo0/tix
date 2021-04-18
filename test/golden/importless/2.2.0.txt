@@ -1,0 +1,35 @@
+∀ β γ δ ε ζ η θ ι κ.
+( β.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      doCheck = Bool;
+      hardeningDisable = [String];
+      installPhase = String;
+      meta =
+        { description = String;
+          knownVulnerabilities = [String];
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      name = String;
+      postPatch = String;
+      preBuild = String;
+      src = ∀ α. α;
+    } ->
+    ζ,
+  η.cstrahan = ε,
+  η.licenses = θ,
+  η.maintainers = ι,
+  η.mdaiter = ε,
+  θ.asl20 = δ
+) =>
+{ erlang = γ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  lib = η;
+  pam = γ;
+  stdenv = β;
+  unzip = γ;
+  which = γ;
+} ->
+ζ

@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enable = β,
+  γ.grahamc = δ,
+  γ.maintainers = ε,
+  γ.mkIf =
+    β ->
+    { systemd =
+        { packages = [ζ];
+          services =
+            { mcelog =
+                { serviceConfig =
+                    { PrivateNetwork = Bool;
+                      PrivateTmp = Bool;
+                      ProtectHome = Bool;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.mcelog = ζ,
+  μ.mcelog = α,
+  ν.hardware = μ,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = η;
+  meta = {maintainers = [δ];};
+  options = {hardware = {mcelog = {enable = ι;};};};
+}

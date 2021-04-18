@@ -1,0 +1,58 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.makeLibraryPath = [γ] -> δ,
+  ε.lib = α,
+  β.licenses = ζ,
+  β.maintainers = η,
+  ζ.unfree = θ,
+  η.rittelle = ι
+) =>
+{ alsaLib = γ;
+  expat = γ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  glib = γ;
+  libGL = γ;
+  libX11 = γ;
+  libXcursor = γ;
+  libXext = γ;
+  libXi = γ;
+  libXrandr = γ;
+  libXrender = γ;
+  libxcb = γ;
+  makeDesktopItem =
+    { categories = String;
+      comment = String;
+      desktopName = String;
+      exec = String;
+      genericName = String;
+      icon = String;
+      name = String;
+    } ->
+    λ;
+  mkDerivation =
+    { buildInputs = [γ];
+      desktopItem = λ;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [ι];
+          platforms = [String];
+        };
+      pname = String;
+      src = κ;
+      version = String;
+    } ->
+    μ;
+  nspr = γ;
+  nss = γ;
+  qtbase = γ;
+  qtdeclarative = γ;
+  qtlocation = γ;
+  qtsvg = γ;
+  qtwebchannel = γ;
+  qtwebengine = γ;
+  stdenv = α;
+} ->
+μ

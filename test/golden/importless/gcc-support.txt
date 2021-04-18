@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildCommand = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = [String];
+        };
+      pname = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  β.aerialx = δ,
+  β.licenses = η,
+  β.maintainers = θ,
+  η.bsd3 = γ
+) =>
+{fetchzip = {sha256 = String; url = String;} -> ε; stdenvNoCC = α;} -> ζ

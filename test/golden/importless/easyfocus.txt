@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.dev = γ,
+  λ.dev = γ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  β.teto = ε,
+  μ.gpl3 = δ,
+  ξ.linux = ζ,
+  ο.libX11 = κ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  glib = λ;
+  i3ipc-glib = γ;
+  libxcb = γ;
+  pkgconfig = η;
+  stdenv = α;
+  xcbutilkeysyms = γ;
+  xorg = κ;
+  xorgproto = γ;
+} ->
+ι

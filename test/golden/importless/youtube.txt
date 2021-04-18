@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  γ.beautifulsoup4 = δ,
+  γ.buildPythonApplication =
+    { doCheck = Bool;
+      meta = {description = String; license = ε; maintainers = [ζ];};
+      patchPhase = String;
+      pname = String;
+      propagatedBuildInputs = [δ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.cachetools = δ,
+  γ.fetchPypi = {pname = String; sha256 = String; version = String;} -> η,
+  γ.youtube-dl = δ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  ι.asl20 = ε,
+  κ.spwhitt = ζ
+) =>
+{mopidy = δ; python3Packages = γ; stdenv = α;} -> θ

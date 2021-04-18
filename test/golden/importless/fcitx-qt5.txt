@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.ericsagnes = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2 = ζ,
+  ε.linux = η
+) =>
+{ cmake = θ;
+  extra-cmake-modules = θ;
+  fcitx = ι;
+  fetchFromGitLab =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      preConfigure = String;
+      src = κ;
+      version = String;
+    } ->
+    λ;
+  pkgconfig = θ;
+  qtbase = ι;
+} ->
+λ

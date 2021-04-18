@@ -1,0 +1,29 @@
+∀ β γ δ ε ζ η θ ι κ λ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.licenses = κ,
+  γ.platforms = λ,
+  κ.gpl2Plus = ε,
+  λ.unix = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  libusb1-axoloti = δ;
+  pkgconfig = η;
+  stdenv = β;
+} ->
+ι

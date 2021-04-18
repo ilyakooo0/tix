@@ -1,0 +1,74 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( ( { buildInputs = [β];
+      buildPhase = Null;
+      checkouts = Null;
+      configurePhase = Null;
+      enableDebugInfo = Bool;
+      installPhase = Null;
+      meta = {};
+      name = γ;
+      profile = String;
+      releaseType = δ;
+      setupHook = Null;
+      src = ε;
+      version = ζ;
+    }
+  ) //
+  ( η
+  ) ~
+  ( {buildInputs = [θ]; name = String;}
+  ),
+  ( { buildInputs = [β];
+      buildPhase = String;
+      configurePhase = String;
+      dontStrip = Bool;
+      installPhase = String;
+      meta = ∀ α. α;
+      name = String;
+      passthru = {env = ι; packageName = γ;};
+      propagatedBuildInputs = [Null];
+      setupHook = κ;
+      src = ε;
+      version = ζ;
+    }
+  ) //
+  ( λ
+  ) ~
+  ( η
+  ),
+  μ.lib = ν,
+  μ.mkDerivation = {buildInputs = [θ]; name = String;} -> ι,
+  β.meta = ξ,
+  ν.filterAttrs =
+    (ο -> Null -> Bool) ->
+    { buildPhase = Null;
+      configurePhase = Null;
+      installPhase = Null;
+      setupHook = Null;
+    } ->
+    λ,
+  ν.fix = (θ -> ι) -> π,
+  ξ.platforms = ρ
+) =>
+{ erlang = β;
+  lib = σ;
+  openssl = β;
+  rebar3 = β;
+  stdenv = μ;
+  writeText = String -> String -> κ;
+} ->
+{ buildInputs = [β];
+  buildPhase = Null;
+  checkouts = Null;
+  configurePhase = Null;
+  enableDebugInfo = Bool;
+  installPhase = Null;
+  meta = {};
+  name = γ;
+  profile = String;
+  releaseType = δ;
+  setupHook = Null;
+  src = ε;
+  version = ζ;
+} ->
+π

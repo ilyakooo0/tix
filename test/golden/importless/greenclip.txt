@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.greenclip = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        { user =
+            { services =
+                { greenclip =
+                    { after = [String];
+                      description = String;
+                      enable = Bool;
+                      serviceConfig = {ExecStart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption =
+    {default = θ; defaultText = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.greenclip = θ,
+  β.enable = ε,
+  β.package = ζ,
+  ν.services = α,
+  λ.package = ι,
+  ξ.haskellPackages = μ
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = η; options = {services = {greenclip = {enable = δ; package = κ;};};};}

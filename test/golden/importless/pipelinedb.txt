@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      makeFlags = [String];
+      meta =
+        { broken = δ;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      pname = String;
+      preConfigure = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.platforms = η,
+  γ.version = κ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.versionOlder = κ -> String -> δ,
+  λ.asl20 = ε,
+  μ.marsam = ζ,
+  ν.meta = γ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  openssl = γ;
+  postgresql = γ;
+  stdenv = α;
+  zeromq = γ;
+} ->
+ι

@@ -1,0 +1,7 @@
+∀ α β γ δ ε.
+(α.gnupg = β, α.ostree = β) => { lib = γ;
+  makeInstalledTest =
+    {testConfig = {environment = {systemPackages = [β];};}; tested = δ;} -> ε;
+  pkgs = α;
+} ->
+ε

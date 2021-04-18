@@ -1,0 +1,53 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.isAarch64 = Bool,
+  α.isMips = Bool,
+  α.isi686 = Bool,
+  α.isx86_64 = Bool,
+  α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      checkPhase = String;
+      configureFlags = [γ];
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { branch = String;
+          broken = Bool;
+          description = String;
+          homepage = String;
+          license = [δ];
+          longDescription = String;
+          maintainers = [ε];
+          platforms = [ζ];
+        };
+      metaocaml = η;
+      passthru = {nativeCompilers = Bool;};
+      pname = String;
+      postConfigure = String;
+      prefixKey = String;
+      src = η;
+      version = String;
+      x11env = θ;
+      x11inc = String;
+      x11lib = String;
+    } ->
+    ι,
+  β.optionals = Bool -> [String] -> [γ],
+  κ.darwin = [ζ],
+  κ.lgpl2 = δ,
+  κ.licenses = λ,
+  κ.linux = [ζ],
+  κ.maintainers = μ,
+  κ.platforms = ν,
+  κ.qpl = δ,
+  κ.thoughtpolice = ε
+) =>
+{ buildEnv = {name = String; paths = [String];} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  libX11 = String;
+  ncurses = γ;
+  stdenv = α;
+  xorgproto = String;
+} ->
+ι

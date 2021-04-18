@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.optionals = β -> [δ] -> ε,
+  ζ.lib = α,
+  γ.RaghavSood = η,
+  γ.adisbladis = η,
+  γ.gpl3 = θ,
+  γ.lgpl3 = θ,
+  γ.licenses = ι,
+  γ.lionello = η,
+  γ.maintainers = κ,
+  γ.xrelkd = η
+) =>
+{ IOKit = δ;
+  buildGoModule =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [θ];
+          maintainers = [η];
+        };
+      pname = String;
+      propagatedBuildInputs = ε;
+      runVend = Bool;
+      src = λ;
+      subPackages = [String];
+      vendorSha256 = String;
+      version = String;
+    } ->
+    μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  libobjc = δ;
+  stdenv = α;
+} ->
+μ

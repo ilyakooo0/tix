@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      checkPhase = String;
+      configurePhase = String;
+      createFindlibDestdir = Bool;
+      doCheck = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      src = η;
+    } ->
+    θ,
+  γ.platforms = ζ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  ι.lgpl21 = δ,
+  κ.vbgl = ε,
+  λ.meta = γ
+) =>
+{ fetchzip = {sha256 = String; url = String;} -> η;
+  findlib = γ;
+  ocaml = γ;
+  ocamlbuild = γ;
+  stdenv = α;
+} ->
+θ

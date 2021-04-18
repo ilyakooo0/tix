@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.freezeboy = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2Plus = ζ,
+  ε.linux = η
+) =>
+{ avogadro = θ;
+  extra-cmake-modules = ι;
+  kdoctools = κ;
+  ki18n = κ;
+  kio = κ;
+  kparts = κ;
+  kplotting = κ;
+  kunitconversion = κ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [κ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+    } ->
+    λ;
+  openbabel = κ;
+  qtscript = κ;
+} ->
+λ

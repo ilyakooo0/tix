@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        {description = String; homepage = δ; license = ε; maintainers = [ζ];};
+      nativeBuildInputs = [η];
+      pname = String;
+      postPatch = String;
+      postUnpack = String;
+      qmakeFlags = [String];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  θ.homepage = δ,
+  β.dtzWill = ζ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.mic92 = ζ,
+  κ.gpl3 = ε,
+  μ.meta = θ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  pkgconfig = η;
+  python3 = γ;
+  qmake = η;
+  qtbase = γ;
+  qtsvg = γ;
+  qtwebengine = γ;
+  r2-for-cutter = γ;
+  stdenv = α;
+  wrapQtAppsHook = γ;
+} ->
+ι

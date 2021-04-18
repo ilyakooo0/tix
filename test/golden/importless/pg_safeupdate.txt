@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  γ.platforms = ε,
+  β.licenses = θ,
+  θ.postgresql = δ,
+  ι.meta = γ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  postgresql = γ;
+  stdenv = α;
+} ->
+η

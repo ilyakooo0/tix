@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.builtins = β,
+  α.cdepillabout = γ,
+  α.licenses = δ,
+  α.maintainers = ε,
+  α.sander = γ,
+  ζ.version = η,
+  β.stringLength = String -> Integer,
+  δ.virtualbox-puel = θ
+) =>
+{ fetchurl =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [γ];
+          platforms = [String];
+        };
+      name = String;
+      sha256 = String;
+      url = String;
+    } ->
+    ι;
+  lib = α;
+  virtualbox = ζ;
+} ->
+ι

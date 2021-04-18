@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.enable = β,
+  α.rpc = γ,
+  δ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        {packages = [ζ]; services = {rpcbind = {wantedBy = [String];};};};
+      users = {users = {rpc = {group = String; uid = γ;};};};
+    } ->
+    η,
+  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  δ.types = κ,
+  λ.rpcbind = ε,
+  μ.rpcbind = α,
+  ν.services = μ,
+  ξ.uids = α,
+  ο.ids = ξ,
+  κ.bool = θ
+) =>
+{config = α; lib = δ; pkgs = λ;} ->
+{config = η; options = {services = {rpcbind = {enable = ι;};};};}

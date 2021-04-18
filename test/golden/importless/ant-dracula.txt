@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      pname = String;
+      propagatedUserEnvPkgs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.alexarice = δ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.gpl3 = γ,
+  λ.all = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  gtk-engine-murrine = ζ;
+  stdenv = α;
+} ->
+θ

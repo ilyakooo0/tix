@@ -1,0 +1,102 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( α.agent = β,
+  α.enable = Bool,
+  γ.coreutils = δ,
+  γ.findutils = δ,
+  γ.gawk = δ,
+  γ.gnugrep = δ,
+  γ.makeWrapper = ε,
+  γ.mkIf =
+    ζ ->
+    { assertions = [{assertion = Bool; message = String;}];
+      boot = {initrd = {kernelModules = [String];};};
+      environment = {etc = {waagent.conf = {text = String;};};};
+      networking =
+        { dhcpcd = {persistent = Bool;};
+          firewall = {allowedUDPPorts = [Integer];};
+        };
+      services =
+        { logrotate = {config = String; enable = Bool;};
+          udev = {packages = [η];};
+        };
+      systemd =
+        { services =
+            { consume-hypervisor-entropy =
+                { before = [String];
+                  description = String;
+                  path = [θ];
+                  script = String;
+                  serviceConfig =
+                    { RemainAfterExit = Bool;
+                      StandardError = String;
+                      StandardOutput = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+              waagent =
+                { after = [String];
+                  description = String;
+                  path = [ι];
+                  serviceConfig = {ExecStart = String; Type = String;};
+                  unitConfig = {ConditionPathExists = String;};
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+          targets = {provisioned = {description = String;};};
+        };
+    } ->
+    κ,
+  γ.mkOption = {default = Bool; description = String;} -> λ,
+  γ.nettools = δ,
+  γ.openssh = δ,
+  γ.openssl = δ,
+  γ.parted = δ,
+  γ.procps = δ,
+  γ.python = ε,
+  γ.pythonPackages = μ,
+  γ.shadow = δ,
+  γ.stdenv = ν,
+  γ.utillinux = δ,
+  ξ.bash = ι,
+  ξ.coreutils = θ,
+  ξ.e2fsprogs = ι,
+  ξ.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ο,
+  ξ.isi686 = Bool,
+  ξ.isx86_64 = Bool,
+  ξ.writeScript = String -> String -> π,
+  β.enable = ζ,
+  ρ.azure = α,
+  σ.virtualisation = ρ,
+  τ.networkmanager = α,
+  υ.networking = τ,
+  ν.mkDerivation =
+    { buildInputs = [ε];
+      buildPhase = Bool;
+      configurePhase = Bool;
+      installPhase = String;
+      name = String;
+      patches = [Path];
+      pythonPath = [φ];
+      runtimeDeps = [δ];
+      src = ο;
+    } ->
+    η,
+  μ.pyasn1 = φ,
+  χ.wrapPython = ε,
+  ψ.stdenv = ξ,
+  ω.stdenv = ξ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = κ;
+  options =
+    { virtualisation =
+        { azure =
+            { agent =
+                {enable = λ; mountResourceDisk = α1; verboseLogging = β2;};
+            };
+        };
+    };
+}

@@ -1,0 +1,43 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.isAarch32 = Bool,
+  β.lib = γ,
+  β.mkDerivation =
+    { NIX_LDFLAGS = String;
+      buildInputs = [δ];
+      configureFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [δ];
+      postPatch = String;
+      propagatedBuildInputs = η;
+      src = θ;
+    } ->
+    ι,
+  β.optionals = Bool -> [κ] -> [δ],
+  λ.lib = β,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.platforms = ξ,
+  μ.gpl3Plus = ε,
+  ξ.all = ζ,
+  ο.lib = β
+) =>
+{ autoreconfHook = δ;
+  check = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libconfig = δ;
+  libopus = κ;
+  libsodium = δ;
+  libvpx = π;
+  ncurses = δ;
+  pkgconfig = δ;
+  stdenv = β;
+} ->
+ι

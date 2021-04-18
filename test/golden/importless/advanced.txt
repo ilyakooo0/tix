@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  β.darwin = [γ],
+  β.gnu = [γ],
+  β.jfrankenau = δ,
+  β.licenses = ε,
+  β.linux = [γ],
+  β.maintainers = ζ,
+  β.platforms = η,
+  ε.gpl3Plus = θ
+) =>
+{ boost = ι;
+  cmake = κ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  libjpeg = ι;
+  libpng = ι;
+  libtiff = ι;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [δ];
+          platforms = [γ];
+        };
+      nativeBuildInputs = [κ];
+      pname = String;
+      src = λ;
+      version = String;
+    } ->
+    μ;
+  qtbase = ι;
+  qttools = κ;
+  stdenv = α;
+} ->
+μ

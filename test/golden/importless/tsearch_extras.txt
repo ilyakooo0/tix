@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativenativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.platforms = ζ,
+  β.DerTim1 = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  κ.postgresql = δ,
+  μ.meta = γ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  pkgconfig = η;
+  postgresql = γ;
+  stdenv = α;
+} ->
+ι

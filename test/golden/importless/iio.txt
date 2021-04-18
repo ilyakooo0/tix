@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.enable = β,
+  γ.iio-sensor-proxy = δ,
+  γ.mkIf =
+    β ->
+    { boot = {initrd = {availableKernelModules = [String];};};
+      environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ε];}; udev = {packages = [ζ];};};
+      systemd = {packages = [η];};
+    } ->
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.iio = α,
+  ν.sensor = μ,
+  ξ.hardware = ν,
+  λ.bool = ι
+) =>
+{config = α; lib = γ; pkgs = ο;} ->
+{config = θ; options = {hardware = {sensor = {iio = {enable = κ;};};};};}

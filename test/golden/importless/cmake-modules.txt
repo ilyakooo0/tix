@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { meta = {description = String; license = γ; maintainers = [δ];};
+      nativeBuildInputs = [ε];
+      pname = String;
+      prePatch = String;
+      setupHook = Path;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.dtzWill = δ,
+  β.licenses = θ,
+  β.maintainers = ι,
+  θ.asl20 = γ
+) =>
+{ cmake = ε;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  stdenv = α;
+} ->
+η

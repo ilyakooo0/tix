@@ -1,0 +1,51 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.marcweber = β,
+  α.mit = γ,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = String;
+      buildInputs = [δ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      hardeningDisable = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [β];
+          platforms = [ε];
+        };
+      patches = [Path];
+      pname = String;
+      preBuild = String;
+      preConfigure = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  α.platforms = θ,
+  ι.numpy = δ,
+  κ.licenses = α,
+  λ.lib = κ,
+  μ.maintainers = α,
+  ν.lib = μ,
+  θ.darwin = [ε],
+  θ.linux = [ε],
+  ξ.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  geos = ο;
+  libgeotiff = δ;
+  libjpeg = δ;
+  libpng = δ;
+  libtiff = δ;
+  mysql57 = π;
+  openssl = δ;
+  postgresql = ρ;
+  proj = δ;
+  python = δ;
+  pythonPackages = ι;
+  stdenv = α;
+  unzip = δ;
+  zlib = σ;
+} ->
+η

@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          longDescription = String;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ζ.meta = ι,
+  κ.TAPParserSourceHandlerpgTAP = ζ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.willibutz = δ,
+  λ.mit = γ,
+  ι.platforms = ε
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  perl = ζ;
+  perlPackages = κ;
+  postgresql = ζ;
+  stdenv = α;
+  which = ζ;
+} ->
+θ

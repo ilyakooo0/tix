@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.isLinux = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = [η];
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      postInstall = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optionals = β -> [λ] -> [δ],
+  γ.bjornfor = ζ,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.platforms = ξ,
+  μ.gpl3Plus = ε,
+  ξ.linux = [η],
+  ο.darwin = [η],
+  π.lib = α,
+  ρ.lib = α
+) =>
+{ airspy = δ;
+  boost = δ;
+  cmake = δ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ι;
+  gnuradio = δ;
+  hackrf = δ;
+  libbladeRF = δ;
+  makeWrapper = δ;
+  pkgconfig = θ;
+  python = Null;
+  pythonSupport = Bool;
+  rtl-sdr = δ;
+  soapysdr-with-plugins = λ;
+  stdenv = α;
+  swig = Null;
+  uhd = δ;
+} ->
+κ

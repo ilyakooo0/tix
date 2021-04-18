@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ.
+(α.versions = β, γ.name = String) => { R = γ;
+  lib = α;
+  packages = [γ];
+  qtbase = δ;
+  recommendedPackages = [γ];
+  rstudio = γ;
+  runCommand =
+    String ->
+    { allowSubstitutes = Bool;
+      buildInputs = [γ];
+      dontWrapQtApps = Bool;
+      fixLibsR = String;
+      nativeBuildInputs = [ε];
+      preferLocalBuild = Bool;
+    } ->
+    String -> ζ;
+  wrapQtAppsHook = ε;
+} ->
+ζ

@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      passthru = {updateScript = θ;};
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.archiveLister = String -> String -> μ,
+  λ.updateScript =
+    {attrPath = String; pname = String; version = String; versionLister = μ;} ->
+    θ,
+  β.licenses = ν,
+  β.maintainers = ξ,
+  β.platforms = ο,
+  ν.gpl2Plus = δ,
+  ξ.AndersonTorres = ε,
+  ο.linux = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ι;
+  gtk2 = γ;
+  intltool = η;
+  libxfce4ui = γ;
+  libxfce4util = γ;
+  pkgconfig = η;
+  stdenv = α;
+  xfce = λ;
+  xfce4-panel = γ;
+} ->
+κ

@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ.
+( α.gpl2 = β,
+  α.maintainers = γ,
+  δ.licenses = α,
+  γ.ttuegel = ε
+) =>
+{ extra-cmake-modules = ζ;
+  karchive = η;
+  kconfig = η;
+  ki18n = η;
+  kiconthemes = η;
+  kio = η;
+  kservice = η;
+  kwindowsystem = η;
+  kxmlgui = η;
+  lib = α;
+  libkipi = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  qtbase = η;
+  qtsvg = η;
+  qtxmlpatterns = η;
+} ->
+θ

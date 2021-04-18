@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    { environment =
+        { etc =
+            { chromium/native-messaging-hosts/ = {source = String;};
+              chromium/policies/managed/ = {source = String;};
+              opt/brave/native-messaging-hosts/ = {source = String;};
+              opt/brave/policies/managed/ = {source = String;};
+              opt/chrome/native-messaging-hosts/ = {source = String;};
+              opt/chrome/policies/managed/ = {source = String;};
+              opt/vivaldi/native-messaging-hosts/ = {source = String;};
+              opt/vivaldi/policies/managed/ = {source = String;};
+            };
+        };
+      nixpkgs = {config = {firefox = {enableBrowserpass = Bool;};};};
+    } ->
+    ε,
+  ζ.browserpass = α,
+  η.programs = ζ
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ε; options = {programs = {browserpass = {enable = δ;};};};}

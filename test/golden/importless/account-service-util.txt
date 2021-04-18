@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.buildPythonApplication =
+    { buildInputs = [β];
+      dontUnpack = Bool;
+      format = String;
+      installPhase = String;
+      meta = {maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      propagatedBuildInputs = [ε];
+      src = Path;
+      strictDeps = Bool;
+    } ->
+    ζ,
+  α.pkgs = η,
+  θ.maintainers = ι,
+  θ.worldofpeace = γ,
+  κ.pkgs = α,
+  η.ordered-set = ε,
+  η.pygobject3 = ε
+) =>
+{ accountsservice = β;
+  glib = β;
+  gobject-introspection = δ;
+  lib = θ;
+  python3 = α;
+  wrapGAppsHook = δ;
+} ->
+ζ

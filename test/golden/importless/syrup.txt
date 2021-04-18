@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      makeFlags = [String];
+      meta =
+        {description = String; license = δ; maintainers = [ε]; platforms = ζ;};
+      pname = String;
+      sourceRoot = String;
+      src = η;
+      version = θ;
+    } ->
+    ι,
+  κ.src = η,
+  κ.version = θ,
+  β.gebner = ε,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.unfreeRedistributable = δ,
+  ν.unix = ζ
+) =>
+{glucose = κ; stdenv = α; zlib = γ;} -> ι

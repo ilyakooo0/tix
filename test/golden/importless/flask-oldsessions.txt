@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  β.timokau = ε,
+  γ.bsd2 = ζ
+) =>
+{ buildPythonPackage =
+    { checkPhase = String;
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [ε];
+        };
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  flask = η;
+  python = κ;
+  stdenv = α;
+} ->
+ι

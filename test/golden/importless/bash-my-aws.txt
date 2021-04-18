@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.programs = β,
+  γ.bash-my-aws = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    ζ ->
+    { environment = {systemPackages = [δ];};
+      programs = {bash = {interactiveShellInit = String;};};
+    } ->
+    η,
+  β.bash-my-aws = θ,
+  θ.enable = ζ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = η; options = {programs = {bash-my-aws = {enable = ε;};};};}

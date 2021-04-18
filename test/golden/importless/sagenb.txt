@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  β.timokau = ε,
+  γ.gpl3Plus = ζ
+) =>
+{ buildPythonPackage =
+    { doCheck = Bool;
+      meta = {description = String; license = ζ; maintainers = [ε];};
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  flask = η;
+  flask-autoindex = η;
+  flask-babel = η;
+  flask-oldsessions = η;
+  flask-openid = η;
+  mathjax = κ;
+  python = λ;
+  stdenv = α;
+  twisted = η;
+} ->
+ι

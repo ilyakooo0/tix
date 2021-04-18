@@ -1,0 +1,50 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+( α.minion = β,
+  α.source = γ,
+  δ.writeText = String -> ε -> ζ,
+  η.builtins = θ,
+  η.cfg = ι,
+  η.mkEnableOption = String -> κ,
+  η.mkIf =
+    λ ->
+    { environment =
+        {etc = {salt/minion = {source = ζ;};}; systemPackages = [μ];};
+      systemd =
+        { services =
+            { salt-minion =
+                { after = [String];
+                  description = String;
+                  path = [ν];
+                  restartTriggers = [γ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      LimitNOFILE = Integer;
+                      NotifyAccess = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ξ,
+  η.mkOption = {default = {}; description = String; type = ο;} -> π,
+  η.recursiveUpdate = {default_include = String; pki_dir = String;} -> ρ -> σ,
+  η.salt = μ,
+  η.types = τ,
+  η.utillinux = ν,
+  β.enable = λ,
+  υ.salt = α,
+  φ.services = υ,
+  χ.salt/minion = α,
+  ψ.etc = χ,
+  ω.environment = ψ,
+  ι.configuration = ρ,
+  θ.toJSON = σ -> ε,
+  τ.attrs = ο
+) =>
+{config = α; lib = η; pkgs = δ;} ->
+{ config = ξ;
+  options =
+    {services = {salt = {minion = {configuration = π; enable = κ;};};};};
+}

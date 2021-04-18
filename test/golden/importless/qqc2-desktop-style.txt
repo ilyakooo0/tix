@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ.
+(α.maintainers = β, β.ttuegel = γ) => { extra-cmake-modules = δ;
+  kconfig = ε;
+  kiconthemes = ε;
+  kirigami2 = ε;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+    } ->
+    ζ;
+  qtquickcontrols2 = ε;
+  qtx11extras = ε;
+} ->
+ζ

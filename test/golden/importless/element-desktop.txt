@@ -1,0 +1,48 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.lib = γ,
+  δ.meta = ε,
+  γ.licenses = ζ,
+  γ.teams = η,
+  ζ.asl20 = θ,
+  η.members = ι,
+  κ.matrix = η,
+  ε.platforms = λ
+) =>
+{ electron_9 = δ;
+  element-web = μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ν;
+  makeDesktopItem =
+    { categories = String;
+      comment = ∀ α. α;
+      desktopName = String;
+      exec = String;
+      extraEntries = String;
+      genericName = String;
+      icon = String;
+      name = String;
+    } ->
+    ξ;
+  makeWrapper = ο;
+  mkYarnPackage =
+    { desktopItem = ξ;
+      distPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = ι;
+          platforms = λ;
+        };
+      name = String;
+      nativeBuildInputs = [ο];
+      packageJSON = Path;
+      src = ∀ α. α;
+      version = ∀ α. α;
+      yarnNix = Path;
+    } ->
+    π;
+  stdenv = β;
+} ->
+π

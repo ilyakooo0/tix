@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.traceroute = β,
+  γ.mkIf =
+    δ ->
+    { security =
+        {wrappers = {traceroute = {capabilities = String; source = String;};};};
+    } ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.types = θ,
+  β.enable = δ,
+  ι.programs = α,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ε; options = {programs = {traceroute = {enable = η;};};};}

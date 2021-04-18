@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.extractType2 = {name = String; src = β;} -> γ,
+  α.wrapType2 =
+    { extraInstallCommands = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      name = String;
+      src = β;
+    } ->
+    ζ,
+  η.lib = θ,
+  θ.extends = ε,
+  θ.licenses = ι,
+  θ.maintainers = κ,
+  ι.mit = δ
+) =>
+{ appimageTools = α;
+  fetchurl = {sha256 = String; url = String;} -> β;
+  stdenv = η;
+} ->
+ζ

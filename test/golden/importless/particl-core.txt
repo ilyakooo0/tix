@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preCheck = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.hexdump = γ,
+  β.demyanrogozhin = ε,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.optionals = Bool -> [String] -> [String],
+  β.platforms = ν,
+  λ.mit = δ,
+  ν.unix = ζ
+) =>
+{ autoreconfHook = η;
+  boost = γ;
+  db48 = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  libevent = γ;
+  miniupnpc = γ;
+  openssl = γ;
+  pkgconfig = η;
+  python3 = γ;
+  stdenv = α;
+  unixtools = κ;
+  zeromq = γ;
+  zlib = γ;
+} ->
+ι

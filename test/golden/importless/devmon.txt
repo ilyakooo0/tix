@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.procps = β,
+  α.udevil = β,
+  α.udisks2 = β,
+  α.which = β,
+  γ.devmon = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    η ->
+    { services = {udisks2 = {enable = Bool;};};
+      systemd =
+        { user =
+            { services =
+                { devmon =
+                    { description = String;
+                      path = [β];
+                      serviceConfig = {ExecStart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    θ,
+  δ.enable = η,
+  ι.services = γ
+) =>
+{config = γ; lib = ε; pkgs = α;} ->
+{config = θ; options = {services = {devmon = {enable = ζ;};};};}

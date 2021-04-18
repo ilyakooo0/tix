@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.kodi = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      services =
+        { xserver =
+            {desktopManager = {session = [{name = String; start = String;}];};};
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.kodi = ε,
+  β.enable = δ,
+  λ.desktopManager = α,
+  μ.xserver = λ,
+  ν.services = μ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{ config = ζ;
+  options =
+    {services = {xserver = {desktopManager = {kodi = {enable = θ;};};};};};
+}

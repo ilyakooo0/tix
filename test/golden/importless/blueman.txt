@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.blueman = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
+      systemd = {packages = [θ];};
+    } ->
+    ι,
+  κ.blueman = ζ,
+  β.enable = ε,
+  λ.services = α
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ι; options = {services = {blueman = {enable = δ;};};};}

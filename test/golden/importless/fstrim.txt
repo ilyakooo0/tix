@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.fstrim = β,
+  γ.gnidorah = δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { systemd =
+        { packages = [θ];
+          timers =
+            {fstrim = {timerConfig = {OnCalendar = ι;}; wantedBy = [String];};};
+        };
+    } ->
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  ξ.utillinux = θ,
+  β.enable = η,
+  β.interval = ι,
+  ο.services = α,
+  ν.str = λ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = κ;
+  meta = {maintainers = [δ];};
+  options = {services = {fstrim = {enable = ζ; interval = μ;};};};
+}

@@ -1,0 +1,8 @@
+∀ α β γ δ ε ζ η θ.
+( α.supportedFilesystems = β,
+  γ.any = (String -> Bool) -> β -> δ,
+  γ.mkIf = δ -> {system = {fsPackages = [ε];};} -> ζ,
+  η.ntfs3g = ε,
+  θ.boot = α
+) =>
+{config = α; lib = γ; pkgs = η;} -> {config = ζ;}

@@ -1,0 +1,69 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.lib = δ,
+  α.optionalString = ε,
+  α.optionals = β -> [ζ] -> η,
+  δ.licenses = θ,
+  δ.maintainers = ι,
+  δ.optional = Bool -> [Null] -> [κ],
+  δ.optionals = Bool -> [String] -> [String],
+  δ.platforms = λ,
+  δ.tfmoraes = μ,
+  δ.unix = ν,
+  ξ.lib = α,
+  ο.lib = α,
+  π.lib = α,
+  θ.bsd3 = ρ
+) =>
+{ ApplicationServices = σ;
+  CFNetwork = σ;
+  Cocoa = σ;
+  CoreServices = σ;
+  CoreText = σ;
+  DiskArbitration = σ;
+  GLUT = σ;
+  IOKit = σ;
+  IOSurface = σ;
+  ImageIO = σ;
+  OpenGL = σ;
+  Security = σ;
+  cmake = τ;
+  enablePython = Bool;
+  enableQt = Bool;
+  fetchpatch = υ;
+  fetchurl = {sha256 = String; url = String;} -> φ;
+  libGL = χ;
+  libGLU = χ;
+  libX11 = χ;
+  libXt = χ;
+  libobjc = ζ;
+  libtiff = κ;
+  mkDerivation =
+    { buildInputs = [κ];
+      cmakeFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ρ;
+          maintainers = [μ];
+          platforms = ν;
+        };
+      name = String;
+      nativeBuildInputs = [τ];
+      postPatch = ψ;
+      preBuild = String;
+      propagatedBuildInputs = η;
+      src = φ;
+    } ->
+    ω;
+  python = Null;
+  qtbase = α1;
+  qttools = α1;
+  qtx11extras = α1;
+  stdenv = α;
+  xorgproto = χ;
+  xpc = σ;
+} ->
+ω

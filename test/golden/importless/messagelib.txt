@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { akonadi = δ;
+  akonadi-mime = δ;
+  akonadi-notes = δ;
+  akonadi-search = δ;
+  extra-cmake-modules = ε;
+  gpgme = δ;
+  grantlee = δ;
+  grantleetheme = δ;
+  karchive = δ;
+  kcodecs = δ;
+  kconfig = δ;
+  kconfigwidgets = δ;
+  kcontacts = δ;
+  kdepim-apps-libs = δ;
+  kdepimTeam = ζ;
+  kdoctools = ε;
+  kiconthemes = δ;
+  kidentitymanagement = δ;
+  kio = δ;
+  kjobwidgets = δ;
+  kldap = δ;
+  kmailtransport = δ;
+  kmbox = δ;
+  kmime = δ;
+  kwindowsystem = δ;
+  lib = α;
+  libgravatar = δ;
+  libkdepim = δ;
+  libkleo = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      outputs = [String];
+      propagatedBuildInputs = [δ];
+    } ->
+    η;
+  pimcommon = δ;
+  qca-qt5 = δ;
+  qtwebengine = δ;
+  syntax-highlighting = δ;
+} ->
+η

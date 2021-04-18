@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, α.maintainers = γ, β.gpl2 = δ, γ.raskin = ε) => { boost = ζ;
+  extra-cmake-modules = η;
+  karchive = ζ;
+  kcrash = ζ;
+  kdoctools = η;
+  kiconthemes = ζ;
+  kparts = ζ;
+  ktexteditor = ζ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [η];
+    } ->
+    θ;
+  qtsvg = ζ;
+  qtxmlpatterns = ζ;
+} ->
+θ

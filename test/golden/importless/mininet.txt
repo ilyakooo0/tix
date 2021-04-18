@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.mininet = β,
+  γ.ethtool = δ,
+  γ.iperf = δ,
+  γ.iproute = δ,
+  γ.makeSearchPath = String -> [δ] -> ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      virtualisation = {vswitch = {enable = Bool;};};
+    } ->
+    ι,
+  γ.socat = δ,
+  κ.makeWrapper = λ,
+  κ.runCommand = String -> {buildInputs = [λ];} -> String -> θ,
+  κ.withPackages = (μ -> [ν]) -> ξ,
+  κ.wrapPython = λ,
+  μ.mininet-python = ν,
+  β.enable = η,
+  ο.programs = α,
+  π.python = κ,
+  ρ.pythonPackages = κ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ι; options = {programs = {mininet = {enable = ζ;};};};}

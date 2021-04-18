@@ -1,0 +1,61 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( β.buildPlatform = γ,
+  β.hostPlatform = γ,
+  β.lib = δ,
+  β.mkDerivation =
+    { buildInputs = [ε];
+      configureFlags = [String];
+      configurePlatforms = ∀ α. α;
+      depsBuildBuild = [ζ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [θ];
+          platforms = ι;
+        };
+      nativeBuildInputs = [κ];
+      outputs = [String];
+      patches = [λ];
+      pname = String;
+      preConfigure = String;
+      preFixup = String;
+      setOutputFlags = Bool;
+      src = μ;
+      version = String;
+    } ->
+    ν,
+  β.optionals = Bool -> [String] -> [String],
+  ξ.cc = ζ,
+  ο.llvm = κ,
+  δ.licenses = π,
+  δ.maintainers = ρ,
+  δ.platforms = σ,
+  π.gpl2 = η,
+  ρ.abbradar = θ,
+  σ.linux = ι,
+  τ.lib = β,
+  υ.stdenv = ξ
+) =>
+{ autoconf213 = κ;
+  buildPackages = ξ;
+  cargo = κ;
+  fetchpatch = {sha256 = String; url = String;} -> λ;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  icu67 = ε;
+  llvmPackages = ο;
+  nspr = ε;
+  perl = κ;
+  pkgconfig = κ;
+  python3 = κ;
+  readline = ε;
+  rust-cbindgen = κ;
+  rustc = κ;
+  stdenv = β;
+  which = κ;
+  yasm = κ;
+  zip = κ;
+  zlib = ε;
+} ->
+ν

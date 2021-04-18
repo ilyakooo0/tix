@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { KERNEL_SRC = String;
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = ζ;
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.grsecurity = Bool,
+  ι.moduleBuildDependencies = ζ,
+  ι.version = κ,
+  β.edwtjo = δ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  β.versionAtLeast = ξ -> String -> Bool,
+  β.versionOlder = κ -> String -> Bool,
+  λ.gpl2 = γ,
+  ν.linux = ε,
+  ο.features = ι
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  kernel = ι;
+  stdenv = α;
+} ->
+θ

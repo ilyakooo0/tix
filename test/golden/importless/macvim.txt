@@ -1,0 +1,52 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      patches = [Path];
+      pname = String;
+      postConfigure = String;
+      postInstall = String;
+      postPatch = String;
+      preConfigure = String;
+      sandboxProfile = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  γ.cstrahan = ζ,
+  γ.licenses = λ,
+  γ.lilyball = ζ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.vim = ε,
+  ν.darwin = η
+) =>
+{ cscope = δ;
+  darwin = ξ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gettext = δ;
+  luajit = δ;
+  ncurses = δ;
+  perl = δ;
+  pkgconfig = θ;
+  python27 = Null;
+  python37 = Null;
+  ruby = δ;
+  runCommand = String -> {} -> String -> θ;
+  stdenv = β;
+  tcl = δ;
+  usePython27 = Bool;
+} ->
+κ

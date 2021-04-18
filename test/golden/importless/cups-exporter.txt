@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.platforms = δ,
+  ε.buildPythonApplication =
+    { fixupPhase = String;
+      format = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      passthru = {tests = {cups = ι;};};
+      pname = String;
+      propagatedBuildInputs = [κ];
+      src = λ;
+      version = String;
+    } ->
+    μ,
+  ε.prometheus_client = κ,
+  ε.pycups = κ,
+  ν.prometheus-exporters = ξ,
+  β.unfree = ζ,
+  γ.mmahut = η,
+  δ.all = θ,
+  ξ.cups = ι
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  lib = α;
+  nixosTests = ν;
+  python3Packages = ε;
+} ->
+μ

@@ -1,0 +1,23 @@
+∀ β γ δ ε ζ η θ.
+(β.licenses = γ, β.maintainers = δ, γ.gpl2 = ε) => { extra-cmake-modules = ζ;
+  kcmutils = η;
+  kdelibs4support = η;
+  kdesu = η;
+  kdoctools = ζ;
+  khtml = η;
+  lib = β;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [ε]; maintainers = ∀ α. α;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      postPatch = String;
+    } ->
+    θ;
+  qtscript = η;
+  qtwayland = η;
+  qtwebengine = η;
+  qtwebkit = η;
+  qtx11extras = η;
+} ->
+θ

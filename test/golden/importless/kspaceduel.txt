@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ.
+(α.licenses = β, β.gpl3 = γ, β.lgpl21 = γ) => { cmake = δ;
+  extra-cmake-modules = δ;
+  kconfigwidgets = ε;
+  kcrash = ε;
+  kdbusaddons = ε;
+  ki18n = ε;
+  kxmlgui = ε;
+  lib = α;
+  libkdegames = ε;
+  mkDerivation =
+    { meta = {license = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+      propagatedBuildInputs = [ε];
+    } ->
+    ζ;
+} ->
+ζ

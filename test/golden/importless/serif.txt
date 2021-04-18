@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  β.maintainers = γ,
+  β.platforms = δ,
+  β.raskin = ε,
+  δ.all = ζ
+) =>
+{ fetchzip =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      postFetch = String;
+      sha256 = String;
+      url = [String];
+    } ->
+    η;
+  stdenv = α;
+} ->
+η

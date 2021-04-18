@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      patches = [Path];
+      postPatch = String;
+      src = η;
+    } ->
+    θ,
+  α.optionalString = Bool -> String -> String,
+  γ.api_version = Integer,
+  ι.lib = α,
+  β.licenses = κ,
+  β.platforms = λ,
+  κ.gpl3Plus = δ,
+  λ.linux = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  pkgconfig = ζ;
+  portaudio = γ;
+  sox = μ;
+  stdenv = α;
+  unzip = γ;
+  wxGTK = γ;
+} ->
+θ

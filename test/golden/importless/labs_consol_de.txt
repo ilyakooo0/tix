@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      prePatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.DBDsybase = γ,
+  ι.NetSNMP = γ,
+  ι.perl = γ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.peterhoeg = ε,
+  κ.gpl2 = δ
+) =>
+{ autoreconfHook = ζ;
+  coreutils = μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ν;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  gnugrep = ξ;
+  gnused = ο;
+  makeWrapper = ζ;
+  perlPackages = ι;
+  stdenv = α;
+} ->
+{check-mssql-health = θ; check-nwc-health = θ; check-ups-health = θ;}

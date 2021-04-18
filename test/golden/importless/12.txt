@@ -1,0 +1,29 @@
+∀ β γ δ ε ζ η θ ι κ.
+( β.buildPlatform = γ,
+  β.hostPlatform = γ,
+  β.lib = δ,
+  β.mkDerivation =
+    { configureFlags = [String];
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      name = String;
+      outputs = [String];
+      passthru = {zlib = Null;};
+      postInstall = String;
+      propagatedBuildInputs = [Null];
+      src = η;
+    } ->
+    θ,
+  δ.licenses = ι,
+  δ.platforms = κ,
+  ι.libpng = ε,
+  κ.unix = ζ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = β; zlib = Null;} ->
+θ

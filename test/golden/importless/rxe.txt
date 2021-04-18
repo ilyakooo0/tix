@@ -1,0 +1,36 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.rxe = γ,
+  δ.map = (ε -> String) -> ζ -> η,
+  δ.mkEnableOption = String -> θ,
+  δ.mkIf =
+    ι ->
+    { systemd =
+        { services =
+            { rxe =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = η;
+                      ExecStop = κ;
+                      RemainAfterExit = Bool;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    λ,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = μ;} ->
+    ν,
+  δ.types = ξ,
+  γ.enable = ι,
+  γ.interfaces = ζ,
+  ο.networking = β,
+  ξ.listOf = π -> μ,
+  ρ.str = π
+) =>
+{config = β; lib = δ; pkgs = σ;} ->
+{config = λ; options = {networking = {rxe = {enable = θ; interfaces = ν;};};};}

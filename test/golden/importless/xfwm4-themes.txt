@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      passthru = {updateScript = ζ;};
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.archiveLister = String -> String -> κ,
+  ι.updateScript =
+    {attrPath = String; pname = String; version = String; versionLister = κ;} ->
+    ζ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl3 = γ,
+  μ.volth = δ,
+  ν.linux = ε
+) =>
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; xfce = ι;} -> θ

@@ -1,0 +1,32 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.all = γ,
+  β.gpl2 = δ,
+  β.mkDerivation =
+    { buildInputs = [ε];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = ∀ α. α;
+          platforms = γ;
+        };
+      name = String;
+      src = ζ;
+    } ->
+    η,
+  θ.withPackages = (ι -> [κ]) -> ε,
+  ι.sphinx = κ,
+  λ.licenses = β,
+  μ.lib = λ,
+  ν.platforms = β,
+  ξ.lib = ν
+) =>
+{ cmake = ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  pysideApiextractor = ε;
+  python2 = θ;
+  qt4 = ε;
+  stdenv = β;
+} ->
+η

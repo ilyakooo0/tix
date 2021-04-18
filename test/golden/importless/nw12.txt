@@ -1,0 +1,61 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      phases = [String];
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  α.system = String,
+  θ.libX11 = ι,
+  θ.libXcomposite = ι,
+  θ.libXcursor = ι,
+  θ.libXdamage = ι,
+  θ.libXext = ι,
+  θ.libXfixes = ι,
+  θ.libXi = ι,
+  θ.libXrandr = ι,
+  θ.libXrender = ι,
+  θ.libXtst = ι,
+  κ.hostPlatform = α,
+  β.licenses = λ,
+  β.maintainers = μ,
+  λ.bsd3 = δ,
+  μ.offline = ε
+) =>
+{ alsaLib = ι;
+  atk = ι;
+  buildEnv =
+    {extraOutputsToInstall = [String]; name = String; paths = [ι];} -> ν;
+  cairo = ι;
+  dbus = ι;
+  expat = ι;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
+  fontconfig = ι;
+  freetype = ι;
+  gconf = ι;
+  gdk-pixbuf = ι;
+  glib = ι;
+  gtk2 = ι;
+  lib = ξ;
+  libcap = ι;
+  libnotify = ι;
+  makeWrapper = γ;
+  nspr = ι;
+  nss = ι;
+  pango = ι;
+  stdenv = α;
+  systemd = ο;
+  xorg = θ;
+} ->
+η

@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preConfigure = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.optional = Bool -> Null -> [γ],
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.peti = ε,
+  β.platforms = μ,
+  κ.gpl2Plus = δ,
+  μ.linux = ζ,
+  ν.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  gtk2 = γ;
+  libX11 = γ;
+  libusb-compat-0_1 = Null;
+  pkgconfig = η;
+  sane-backends = γ;
+  stdenv = α;
+} ->
+ι

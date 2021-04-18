@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+( α.fileSystems = β,
+  α.supportedFilesystems = γ,
+  δ.concatStrings = ε -> String,
+  δ.elem = String -> γ -> ζ,
+  δ.filterAttrs = (η -> θ -> Bool) -> β -> {},
+  δ.head = ι -> κ,
+  δ.mapAttrsToList = (λ -> μ -> String) -> {} -> ε,
+  δ.mkIf = ζ -> ν -> ξ,
+  δ.mkMerge =
+    [{boot = {kernelPackages = ο;}; system = {fsPackages = [π];};}] -> ν,
+  δ.splitString = String -> ρ -> ι,
+  σ.bcachefs-tools = π,
+  σ.linuxPackages_testing_bcachefs = ο,
+  τ.fsNeededForBoot = θ -> Bool,
+  θ.fsType = υ,
+  μ.device = φ,
+  χ.boot = α,
+  ψ.initrd = α,
+  ω.boot = ψ
+) =>
+{config = α; lib = δ; pkgs = σ; utils = τ;} -> {config = ξ;}

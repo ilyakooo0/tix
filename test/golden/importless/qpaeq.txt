@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.withPackages = (β -> [γ]) -> δ,
+  ε.lgpl2Plus = ζ,
+  ε.maintainers = η,
+  ε.unix = θ,
+  ι.src = κ,
+  ι.version = λ,
+  β.dbus-python = μ,
+  β.pyqt5 = γ,
+  ν.licenses = ε,
+  η.lovek323 = ξ,
+  η.mkg20001 = ξ,
+  ο.platforms = ε
+) =>
+{ fetchurl = π;
+  lib = ε;
+  makeDesktopItem =
+    { categories = String;
+      desktopName = String;
+      exec = String;
+      genericName = String;
+      icon = String;
+      name = String;
+      startupNotify = String;
+    } ->
+    ρ;
+  mkDerivation =
+    { buildInputs = [δ];
+      dontBuild = Bool;
+      dontConfigure = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [ξ];
+          platforms = θ;
+        };
+      pname = String;
+      preFixup = String;
+      src = κ;
+      version = λ;
+    } ->
+    σ;
+  pulseaudio = ι;
+  python3 = α;
+} ->
+σ

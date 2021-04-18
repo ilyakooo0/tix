@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.gpl2 = β,
+  α.maintainers = γ,
+  δ.licenses = α,
+  γ.fridh = ε
+) =>
+{ extra-cmake-modules = ζ;
+  karchive = η;
+  kcrash = η;
+  kdbusaddons = η;
+  kdoctools = ζ;
+  ki18n = η;
+  kiconthemes = η;
+  knewstuff = η;
+  knotifications = η;
+  knotifyconfig = η;
+  konsole = θ;
+  kparts = η;
+  kwindowsystem = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedBuildInputs = [η];
+      propagatedUserEnvPkgs = [θ];
+    } ->
+    ι;
+  qtx11extras = η;
+} ->
+ι

@@ -1,0 +1,40 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.lldpd = γ,
+  δ.concatStringsSep = String -> ε -> ζ,
+  δ.mkEnableOption = String -> η,
+  δ.mkIf =
+    θ ->
+    { environment = {systemPackages = [ι];};
+      systemd =
+        { packages = [κ];
+          services =
+            { lldpd =
+                {environment = {LLDPD_OPTIONS = ζ;}; wantedBy = [String];};
+            };
+        };
+      users =
+        { groups = {_lldpd = {};};
+          users =
+            { _lldpd =
+                { description = String;
+                  group = String;
+                  home = String;
+                  isSystemUser = Bool;
+                };
+            };
+        };
+    } ->
+    λ,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = μ;} ->
+    ν,
+  δ.types = ξ,
+  ο.lldpd = ι,
+  γ.enable = θ,
+  γ.extraArgs = ε,
+  π.services = β,
+  ξ.listOf = ρ -> μ,
+  σ.str = ρ
+) =>
+{config = β; lib = δ; pkgs = ο;} ->
+{config = λ; options = {services = {lldpd = {enable = η; extraArgs = ν;};};};}

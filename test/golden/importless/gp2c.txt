@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          downloadPage = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.AndersonTorres = ε,
+  β.licenses = θ,
+  β.maintainers = ι,
+  θ.gpl2Plus = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  pari = γ;
+  perl = γ;
+  stdenv = α;
+} ->
+η

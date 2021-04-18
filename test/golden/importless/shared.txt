@@ -1,0 +1,96 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7.
+( β.arch = String,
+  β.isDarwin = Bool,
+  β.lib = γ,
+  β.maintainers = δ,
+  β.mit = ε,
+  β.mkDerivation =
+    { LD_LIBRARY_PATH = ζ;
+      buildInputs = [η];
+      checkTarget = String;
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [θ];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ι];
+      passthru =
+        { maintenanceVersion = κ;
+          majorVersion = λ;
+          minorVersion = μ;
+          site = String;
+        };
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      preBuild = String;
+      preCheck = String;
+      prePatch = String;
+      src = ν;
+      version = ∀ α. α;
+    } ->
+    ξ,
+  β.optionals = ο -> [π] -> [η],
+  β.system = ρ,
+  η.dev = η,
+  η.isILP64 = Bool,
+  γ.garrison = θ,
+  γ.head = σ -> τ,
+  γ.makeLibraryPath = [η] -> ζ,
+  γ.raskin = θ,
+  γ.rob = θ,
+  γ.splitString = String -> ρ -> σ,
+  γ.throw = String -> υ,
+  φ.licenses = β,
+  χ.lib = φ,
+  ψ.lib = β,
+  ω.gcc = β,
+  α1.platform = ω,
+  β2.hostPlatform = α1,
+  γ3.lib = β
+) =>
+{ libuvSha256 = String;
+  libuvVersion = δ4;
+  maintenanceVersion = κ;
+  majorVersion = λ;
+  minorVersion = μ;
+  src_sha256 = ε5;
+} ->
+{ ApplicationServices = π;
+  CoreServices = π;
+  arpack = η;
+  blas = η;
+  cmake = ζ6;
+  curl = ι;
+  fetchurl = {sha256 = String; url = String;} -> η7;
+  fetchzip = {sha256 = ε5; url = String;} -> ν;
+  fftw = η;
+  fftwSinglePrec = η;
+  gfortran = ι;
+  gmp = η;
+  lapack = η;
+  libgit2 = η;
+  libunwind = η;
+  m4 = ι;
+  makeWrapper = ι;
+  mpfr = η;
+  openlibm = η;
+  openspecfun = η;
+  patchelf = ι;
+  pcre2 = η;
+  perl = ι;
+  python2 = ι;
+  readline = η;
+  stdenv = β;
+  utf8proc = η;
+  which = ι;
+  zlib = η;
+} ->
+ξ

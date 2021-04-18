@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { makeFlags = [String];
+      meta = {description = String; license = γ; platforms = δ;};
+      nativeBuildInputs = [ε];
+      patches = [ζ];
+      pname = String;
+      postInstall = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.platforms = κ,
+  ι.gpl3 = γ,
+  κ.all = δ
+) =>
+{ curl = λ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  fetchpatch = {sha256 = String; url = String;} -> ζ;
+  file = μ;
+  makeWrapper = ε;
+  openssl = ν;
+  stdenv = α;
+  which = ξ;
+} ->
+θ

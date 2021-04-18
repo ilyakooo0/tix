@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.bin = γ,
+  λ.GConf = γ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.gpl3 = δ,
+  ν.romildo = ε,
+  ξ.linux = ζ
+) =>
+{ cmake = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  fltk = γ;
+  gettext = η;
+  glib = κ;
+  gnome2 = λ;
+  hicolor-icon-theme = γ;
+  libGL = γ;
+  libXpm = γ;
+  pkgconfig = η;
+  stdenv = α;
+  which = γ;
+} ->
+ι

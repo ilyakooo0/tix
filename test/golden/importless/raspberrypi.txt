@@ -1,0 +1,16 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildCommand = String;
+      meta = {description = String; homepage = γ; license = δ; platforms = ε;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      passthru = {overlays = String;};
+    } ->
+    η,
+  ζ.meta = θ,
+  θ.homepage = γ,
+  ι.license = δ,
+  κ.platforms = ε
+) =>
+{raspberrypifw = ζ; stdenvNoCC = α;} -> η

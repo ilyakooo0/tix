@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.lib = β,
+  γ.prometheus-exporters = δ,
+  ε.meta = ζ,
+  β.globin = η,
+  β.licenses = θ,
+  β.maintainers = ι,
+  β.optional = Bool -> κ -> λ,
+  β.optionalString = Bool -> String -> μ,
+  β.optionals = Bool -> [{goPackagePath = String; src = ε;}] -> ν,
+  β.willibutz = η,
+  θ.asl20 = ξ,
+  δ.postfix = ο,
+  ζ.homepage = π
+) =>
+{ buildGoPackage =
+    { buildFlags = ρ;
+      buildInputs = σ;
+      extraSrcs = ν;
+      goDeps = Path;
+      goPackagePath = String;
+      meta =
+        {description = String; homepage = π; license = ξ; maintainers = [η];};
+      nativeBuildInputs = λ;
+      passthru = {tests = {postfix = ο;};};
+      pname = String;
+      postInstall = μ;
+      src = ε;
+      version = String;
+    } ->
+    τ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+  lib = υ;
+  makeWrapper = κ;
+  nixosTests = γ;
+  stdenv = α;
+  systemd = φ;
+  withSystemdSupport = Bool;
+} ->
+τ

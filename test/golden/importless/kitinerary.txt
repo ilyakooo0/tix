@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ.
+( α.bkchr = β,
+  α.licenses = γ,
+  γ.lgpl21 = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kcalendarcore = η;
+  kcontacts = η;
+  ki18n = η;
+  kmime = η;
+  kpkpass = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+    } ->
+    θ;
+  poppler = η;
+  qtbase = η;
+  qtdeclarative = η;
+  shared-mime-info = ζ;
+} ->
+θ

@@ -1,0 +1,27 @@
+∀ β γ δ ε ζ η θ ι κ λ.
+( β.lib = γ,
+  δ.buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          hydraPlatforms = ∀ α. α;
+          license = ε;
+          maintainers = [ζ];
+        };
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  δ.cachetools = η,
+  δ.fetchPypi = {pname = String; sha256 = String; version = String;} -> θ,
+  δ.gmusicapi = η,
+  δ.requests = η,
+  γ.licenses = κ,
+  γ.maintainers = λ,
+  κ.asl20 = ε,
+  λ.jgillich = ζ
+) =>
+{mopidy = η; python3Packages = δ; stdenv = β;} -> ι

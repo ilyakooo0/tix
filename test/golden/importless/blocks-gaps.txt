@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = γ;
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postFixup = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.carlsverre = ε,
+  β.intersectLists = [String] -> [String] -> κ,
+  β.length = κ -> Integer,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.optional = Bool -> ν -> γ,
+  β.platforms = ξ,
+  λ.gpl3 = δ,
+  ξ.linux = ζ
+) =>
+{ acpi = ο;
+  alsaUtils = π;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  iproute = ρ;
+  makeWrapper = η;
+  perl = ν;
+  scripts = [String];
+  stdenv = α;
+  sysstat = σ;
+} ->
+ι

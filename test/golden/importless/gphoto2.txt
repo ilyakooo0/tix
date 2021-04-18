@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.maintainers = δ,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      services = {udev = {packages = [ζ];};};
+      users = {groups = {camera = {};};};
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.gphoto2 = ε,
+  λ.libgphoto2 = ζ,
+  μ.gphoto2 = α,
+  ν.programs = μ,
+  δ.league = ξ,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = η;
+  meta = {maintainers = [ξ];};
+  options = {programs = {gphoto2 = {enable = ι;};};};
+}

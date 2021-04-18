@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      doInstallCheck = Bool;
+      dontBuild = Bool;
+      dontConfigure = Bool;
+      installCheckPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.peterhoeg = ε,
+  ι.mit = δ
+) =>
+{ autoPatchelfHook = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  lib = λ;
+  popt = γ;
+  stdenv = α;
+} ->
+θ

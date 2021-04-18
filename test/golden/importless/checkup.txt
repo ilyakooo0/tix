@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      patchPhase = String;
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.etu = δ,
+  β.licenses = θ,
+  β.maintainers = ι,
+  β.platforms = κ,
+  θ.gpl3 = γ,
+  κ.unix = ε
+) =>
+{ curl = λ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  findutils = μ;
+  gnugrep = ν;
+  gnused = ξ;
+  stdenv = α;
+} ->
+η

@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patchPhase = String;
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.platforms = ζ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.marsam = ε,
+  β.volth = ε,
+  κ.asl20 = δ,
+  μ.meta = γ
+) =>
+{ cmake = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  openssl = γ;
+  postgresql = γ;
+  stdenv = α;
+} ->
+ι

@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.enable = β,
+  γ.system-config-printer = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    β ->
+    { services =
+        { dbus = {packages = [δ];};
+          packagekit = {enable = Bool;};
+          udev = {packages = [η];};
+        };
+      systemd = {packages = [θ];};
+    } ->
+    ι,
+  κ.system-config-printer = α,
+  λ.services = κ
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{config = ι; options = {services = {system-config-printer = {enable = ζ;};};};}

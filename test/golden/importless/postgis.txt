@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { NIX_LDFLAGS = String;
+      buildInputs = [δ];
+      dontDisableStatic = Bool;
+      meta =
+        { changelog = String;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      pname = String;
+      postConfigure = String;
+      postInstall = String;
+      preConfigure = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> λ -> [δ],
+  δ.meta = μ,
+  γ.licenses = ν,
+  γ.maintainers = ξ,
+  ν.gpl2 = ε,
+  ξ.marcweber = ζ,
+  ο.lib = α,
+  μ.platforms = η
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ι;
+  file = π;
+  gdal = δ;
+  geos = δ;
+  json_c = δ;
+  libiconv = λ;
+  libxml2 = δ;
+  perl = θ;
+  pkgconfig = θ;
+  postgresql = δ;
+  proj = δ;
+  protobufc = δ;
+  stdenv = α;
+} ->
+κ

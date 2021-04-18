@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.rongcuid = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  β.lgpl21 = δ,
+  ε.maintainers = α
+) =>
+{ alsaLib = ζ;
+  extra-cmake-modules = η;
+  kcoreaddons = ζ;
+  kdelibs4support = ζ;
+  kdoctools = η;
+  kglobalaccel = ζ;
+  kxmlgui = ζ;
+  lib = α;
+  libcanberra_kde = ζ;
+  libpulseaudio = ζ;
+  mkDerivation =
+    { buildInputs = [ζ];
+      cmakeFlags = [String];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [η];
+    } ->
+    θ;
+  plasma-framework = ζ;
+} ->
+θ

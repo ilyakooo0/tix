@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { autoreconfPhase = String;
+      buildInputs = [γ];
+      buildPhase = String;
+      hardeningDisable = [String];
+      installPhase = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.raskin = ε,
+  κ.gpl2 = δ,
+  μ.linux = ζ
+) =>
+{ SDL = γ;
+  SDL_gfx = γ;
+  SDL_image = γ;
+  SDL_mixer = γ;
+  SDL_ttf = γ;
+  autoreconfHook = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  jam = η;
+  libGL = γ;
+  libGLU = γ;
+  libX11 = γ;
+  libxml2 = γ;
+  libxslt = γ;
+  physfs = γ;
+  pkgconfig = η;
+  stdenv = α;
+  xorgproto = γ;
+  zlib = γ;
+} ->
+ι

@@ -1,0 +1,71 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.linux = β,
+  α.toString = [String] -> γ,
+  α.versionAtLeast = δ -> String -> Bool,
+  α.viric = ε,
+  ζ.maintainers = η,
+  ζ.mkDerivation =
+    { NIX_CFLAGS_COMPILE = γ;
+      buildInputs = [θ];
+      doCheck = Bool;
+      doInstallCheck = Bool;
+      hardeningDisable = [String];
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          maintainers = [ε];
+          platforms = β;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      postPatch = String;
+      preConfigure = String;
+      preFixup = String;
+      separateDebugInfo = Bool;
+      src = ι;
+    } ->
+    κ,
+  ζ.optional = Bool -> Null -> [θ],
+  ζ.platforms = λ,
+  μ.makeFlags = [String],
+  μ.src = ι,
+  μ.version = δ,
+  ν.stapBuild = θ,
+  ξ.lib = ζ,
+  ο.lib = ζ,
+  π.lib = ζ
+) =>
+{ asciidoc = θ;
+  audit = θ;
+  binutils = ρ;
+  bison = θ;
+  docbook_xml_dtd_45 = θ;
+  docbook_xsl = θ;
+  elfutils = θ;
+  flex = θ;
+  gtk2 = Null;
+  kernel = μ;
+  lib = α;
+  libbfd = θ;
+  libiberty = θ;
+  libopcodes = θ;
+  libunwind = θ;
+  libxslt = θ;
+  makeWrapper = θ;
+  newt = θ;
+  numactl = θ;
+  openssl = θ;
+  perl = θ;
+  pkgconfig = θ;
+  python2 = θ;
+  python3 = θ;
+  slang = θ;
+  stdenv = ζ;
+  systemtap = ν;
+  withGtk = Bool;
+  xmlto = θ;
+  zlib = θ;
+} ->
+κ

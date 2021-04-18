@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.optional = Bool -> Null -> [γ],
+  δ.lib = α,
+  β.gpl2Plus = ε,
+  β.lgpl21Plus = ε,
+  β.licenses = ζ,
+  β.platforms = η,
+  η.linux = θ
+) =>
+{ buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ε];
+          platforms = θ;
+        };
+      patches = [Path];
+      pname = String;
+      postPatch = String;
+      propagatedBuildInputs = [γ];
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  cryptsetup = γ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  libselinux = γ;
+  lsof = λ;
+  multipath_tools = μ;
+  pyblock = γ;
+  pykickstart = γ;
+  pyparted = γ;
+  stdenv = α;
+  systemd = Null;
+  useNixUdev = Bool;
+  utillinux = ν;
+} ->
+κ

@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      jarName = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      phases = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.asl20 = δ,
+  κ.offline = ε,
+  λ.unix = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  jre = γ;
+  makeWrapper = γ;
+  stdenv = α;
+} ->
+θ

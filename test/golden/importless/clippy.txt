@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.optionalString = δ -> String -> ε,
+  α.optionals = β -> [ζ] -> [η],
+  θ.buildRustPackage =
+    { RUSTC_BOOTSTRAP = Integer;
+      buildAndTestSubdir = String;
+      buildInputs = [η];
+      cargoVendorDir = String;
+      doCheck = Bool;
+      dontUpdateAutotoolsGnuConfigScripts = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ι];
+          maintainers = [κ];
+          platforms = λ;
+        };
+      name = String;
+      preFixup = ε;
+      src = μ;
+      version = ν;
+    } ->
+    ξ,
+  η.llvm = η,
+  η.src = μ,
+  η.version = ν,
+  ο.lib = α,
+  γ.asl20 = ι,
+  γ.basvandijk = κ,
+  γ.licenses = π,
+  γ.maintainers = ρ,
+  γ.mit = ι,
+  γ.platforms = σ,
+  σ.unix = λ,
+  τ.lib = α
+) =>
+{ Security = ζ;
+  lib = υ;
+  patchelf = φ;
+  rustPlatform = θ;
+  rustc = η;
+  stdenv = α;
+} ->
+ξ

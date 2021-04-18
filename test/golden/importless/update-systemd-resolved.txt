@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.lib = β,
+  α.mkDerivation =
+    { buildFlags = [String];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.eadwu = δ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.gpl3 = γ,
+  λ.unix = ε
+) =>
+{ coreutils = μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  iproute = ν;
+  lib = ξ;
+  makeWrapper = ζ;
+  stdenv = α;
+  systemd = ο;
+  utillinux = π;
+} ->
+θ

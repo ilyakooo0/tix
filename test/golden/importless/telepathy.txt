@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ε];};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.teams = ι,
+  γ.types = κ,
+  λ.telepathy-mission-control = δ,
+  μ.telepathy = α,
+  ν.services = μ,
+  ι.members = ξ,
+  ο.gnome = ι,
+  κ.bool = η
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{ config = ζ;
+  meta = {maintainers = ξ;};
+  options = {services = {telepathy = {enable = θ;};};};
+}

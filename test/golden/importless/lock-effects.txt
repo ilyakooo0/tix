@@ -1,0 +1,44 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      mesonFlags = [String];
+      meta =
+        { description = String;
+          homepage = δ;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      postPatch = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  ι.meta = λ,
+  β.gnxlxnxx = ζ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.mit = ε,
+  ξ.linux = η,
+  λ.homepage = δ
+) =>
+{ cairo = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gdk-pixbuf = γ;
+  libxkbcommon = γ;
+  meson = θ;
+  ninja = θ;
+  pam = γ;
+  pkgconfig = θ;
+  scdoc = θ;
+  stdenv = α;
+  wayland = γ;
+  wayland-protocols = γ;
+} ->
+κ

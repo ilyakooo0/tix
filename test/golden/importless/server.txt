@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.server = β,
+  γ.torque = δ,
+  ε.inetutils = δ,
+  ε.mkEnableOption = String -> ζ,
+  ε.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      systemd =
+        { services =
+            { torque-scheduler =
+                { after = [String];
+                  path = [δ];
+                  requires = [String];
+                  serviceConfig =
+                    {ExecStart = String; PIDFile = String; Type = String;};
+                };
+              torque-server =
+                { after = [String];
+                  before = [String];
+                  path = [δ];
+                  requires = [String];
+                  serviceConfig =
+                    { ExecStart = String;
+                      ExecStop = String;
+                      PIDFile = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+              torque-server-init =
+                { path = [δ];
+                  script = String;
+                  serviceConfig = {RemainAfterExit = Bool; Type = String;};
+                  unitConfig = {ConditionPathExists = String;};
+                };
+              trqauthd =
+                { after = [String];
+                  path = [δ];
+                  requires = [String];
+                  serviceConfig = {ExecStart = String; Type = String;};
+                };
+            };
+        };
+    } ->
+    ι,
+  ε.procps = δ,
+  ε.utillinux = δ,
+  β.enable = η,
+  κ.torque = α,
+  λ.services = κ
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{config = ι; options = {services = {torque = {server = {enable = ζ;};};};};}

@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.cstrahan = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = δ;
+      configureFlags = [String];
+      configureScript = String;
+      enableParallelBuilding = Bool;
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [β];
+          platforms = [String];
+          priority = Integer;
+        };
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      setOutputFlags = Bool;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  α.optional = Bool -> ι -> δ,
+  α.optionals = Bool -> [String] -> [String],
+  γ.licenses = κ,
+  λ.lib = α,
+  μ.lib = α,
+  κ.openssl = ε,
+  ν.maintainers = α,
+  ξ.lib = ν
+) =>
+{ cryptodev = ι;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  perl = ζ;
+  stdenv = α;
+  withCryptodev = Bool;
+  zlib = ζ;
+} ->
+θ

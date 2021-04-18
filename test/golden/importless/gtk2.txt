@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.mkDerivation =
+    { buildInputs = [β];
+      configureFlags = [String];
+      installFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.licenses = κ,
+  ι.maintainers = λ,
+  ι.platforms = μ,
+  κ.gpl3 = γ,
+  λ.msteen = δ,
+  μ.linux = ε
+) =>
+{ autoconf = ζ;
+  dbus-glib = β;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  file = ν;
+  glib = β;
+  gtk2 = β;
+  json-glib = β;
+  lib = ι;
+  libappindicator-gtk2 = β;
+  libdbusmenu-gtk2 = β;
+  libindicator-gtk2 = β;
+  pkgconfig = ζ;
+  stdenv = α;
+} ->
+θ

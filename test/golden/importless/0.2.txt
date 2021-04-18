@@ -1,0 +1,55 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.lib = γ,
+  β.mkDerivation =
+    { FONTCONFIG_FILE = δ;
+      PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = String;
+      buildInputs = [ε];
+      doCheck = Bool;
+      mesonFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      nativeBuildInputs = [ι];
+      outputs = [String];
+      pname = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  μ.gst-plugins-base = ε,
+  μ.gstreamer = ε,
+  ν.libX11 = ε,
+  γ.jtojnar = η,
+  γ.licenses = ξ,
+  γ.maintainers = ο,
+  γ.platforms = π,
+  ξ.lgpl21 = ζ,
+  π.linux = θ
+) =>
+{ SDL2 = ε;
+  alsaLib = ε;
+  dbus = ε;
+  doxygen = ι;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  ffmpeg_3 = ε;
+  glib = ε;
+  graphviz = ι;
+  gst_all_1 = μ;
+  libjack2 = ε;
+  libva = ε;
+  makeFontsConf = {fontDirectories = ∀ α. α;} -> δ;
+  meson = ι;
+  ninja = ι;
+  pkgconfig = ι;
+  sbc = ε;
+  stdenv = β;
+  udev = ε;
+  valgrind = ι;
+  xorg = ν;
+} ->
+λ

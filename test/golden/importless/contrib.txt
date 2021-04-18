@@ -1,0 +1,63 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5.
+( (β) // ({description = String; homepage = String;}) ~ (γ),
+  δ.lib = ε,
+  δ.mkDerivation =
+    { doInstallCheck = Bool;
+      dontBuild = Bool;
+      dontConfigure = Bool;
+      installCheckPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      nativeBuildInputs = [ι];
+      outputs = [String];
+      pname = String;
+      src = κ;
+      version = λ;
+    } ->
+    μ,
+  ν.maintainers = η,
+  ν.meta = β,
+  ν.src = κ,
+  ν.version = λ,
+  ξ.buildPythonApplication =
+    { dontBuild = Bool;
+      dontConfigure = Bool;
+      format = String;
+      installPhase = String;
+      lname = String;
+      meta = ∀ α. α;
+      pname = String;
+      propagatedBuildInputs = [ο];
+      src = π;
+      version = ρ;
+    } ->
+    σ,
+  ξ.i3ipc = ο,
+  ε.evils = η,
+  ε.licenses = τ,
+  ε.maintainers = υ,
+  ε.platforms = φ,
+  τ.mit = ζ,
+  φ.all = θ,
+  χ.meta = ν
+) =>
+{ coreutils = ψ;
+  fetchurl = ω;
+  grim = α1;
+  installShellFiles = ι;
+  jq = β2;
+  libnotify = γ3;
+  makeWrapper = ι;
+  python3Packages = ξ;
+  slurp = δ4;
+  stdenv = δ;
+  sway-unwrapped = ν;
+  wl-clipboard = ε5;
+} ->
+{grimshot = μ; inactive-windows-transparency = σ;}

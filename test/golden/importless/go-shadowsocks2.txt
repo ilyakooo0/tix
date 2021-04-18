@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.server = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { go-shadowsocks2-server =
+                { after = [String];
+                  description = String;
+                  serviceConfig = {DynamicUser = Bool; ExecStart = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {description = String; example = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.go-shadowsocks2 = α,
+  λ.services = κ,
+  ι.str = η
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = ζ;
+  options =
+    { services =
+        {go-shadowsocks2 = {server = {enable = δ; listenAddress = θ;};};};
+    };
+}

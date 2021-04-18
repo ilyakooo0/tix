@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.bandwhich = β,
+  γ.bandwhich = δ,
+  γ.filalex77 = ε,
+  γ.maintainers = ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [δ];};
+      security =
+        {wrappers = {bandwhich = {capabilities = String; source = String;};};};
+    } ->
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  β.enable = η,
+  μ.programs = α,
+  λ.bool = ι
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = θ;
+  meta = {maintainers = [ε];};
+  options = {programs = {bandwhich = {enable = κ;};};};
+}

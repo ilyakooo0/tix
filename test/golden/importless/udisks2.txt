@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ε];}; udev = {packages = [ζ];};};
+      systemd = {packages = [η]; tmpfiles = {rules = [String];};};
+    } ->
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.udisks2 = δ,
+  ν.udisks2 = α,
+  ξ.services = ν,
+  λ.bool = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = θ; options = {services = {udisks2 = {enable = κ;};};};}

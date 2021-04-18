@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ.
+( α.glib = β,
+  α.gnome-photos = γ,
+  α.gsettings-desktop-schemas = δ,
+  α.stdenv = ε,
+  α.wrapGAppsHook = β,
+  ε.mkDerivation =
+    { buildInputs = [δ];
+      dontUnpack = Bool;
+      installPhase = String;
+      name = String;
+      nativeBuildInputs = [β];
+    } ->
+    ζ
+) =>
+{ makeInstalledTest =
+    { preTestScript = String;
+      testConfig =
+        { environment = {systemPackages = [ζ];};
+          programs = {dconf = {enable = Bool;};};
+          services =
+            { dbus = {packages = [γ];};
+              gnome3 = {at-spi2-core = {enable = Bool;};};
+            };
+        };
+      tested = η;
+      withX11 = Bool;
+    } ->
+    θ;
+  pkgs = α;
+} ->
+θ

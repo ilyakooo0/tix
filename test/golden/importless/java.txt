@@ -1,0 +1,17 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( (β) // ({description = String;}) ~ (γ),
+  δ.java = ε,
+  ζ.mkEnableOption = String -> β,
+  ζ.mkIf =
+    η -> {environment = {shellInit = String; systemPackages = [θ];};} -> ι,
+  ζ.mkOption =
+    {default = κ; defaultText = String; description = String; type = λ;} -> μ,
+  ζ.types = ν,
+  ξ.jdk = κ,
+  ε.enable = η,
+  ε.package = θ,
+  ο.programs = δ,
+  ν.package = λ
+) =>
+{config = δ; lib = ζ; pkgs = ξ;} ->
+{config = ι; options = {programs = {java = {enable = ∀ α. α; package = μ;};};};}

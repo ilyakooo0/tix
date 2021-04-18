@@ -1,0 +1,27 @@
+∀ β γ δ ε ζ η θ ι.
+( β.licenses = γ,
+  β.rittelle = δ,
+  γ.gpl2 = ε,
+  ζ.maintainers = β
+) =>
+{ extra-cmake-modules = η;
+  gettext = θ;
+  kcompletion = θ;
+  kconfig = θ;
+  kcoreaddons = θ;
+  kdbusaddons = θ;
+  kdoctools = η;
+  kitemviews = θ;
+  kwidgetsaddons = θ;
+  lib = β;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta = {license = [ε]; maintainers = [δ];};
+      name = String;
+      nativeBuildInputs = [η];
+      propagatedUserEnvPkgs = ∀ α. α;
+    } ->
+    ι;
+  python = θ;
+} ->
+ι

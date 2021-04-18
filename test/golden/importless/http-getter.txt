@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.licenses = θ,
+  β.platforms = ι,
+  θ.gpl3 = δ,
+  ι.unix = ε
+) =>
+{ cmake = γ;
+  curl = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  pkgconfig = γ;
+  stdenv = α;
+} ->
+η

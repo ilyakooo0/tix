@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.manveru = δ,
+  ε.buildCrystalPackage =
+    { crystalBinaries = {crystal2nix = {src = String;};};
+      doInstallCheck = Bool;
+      format = String;
+      meta = {description = String; license = ζ; maintainers = [δ];};
+      nixPrefetchGit = String;
+      pname = String;
+      unpackPhase = String;
+      version = String;
+    } ->
+    η,
+  β.mit = ζ
+) =>
+{crystal = ε; lib = α; nix-prefetch-git = θ;} -> η

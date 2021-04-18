@@ -1,0 +1,9 @@
+∀ α β γ δ ε ζ η θ.
+( α.enable = β,
+  γ.mkIf = β -> {environment = {pathsToLink = [String];};} -> δ,
+  γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
+  γ.types = η,
+  θ.appstream = α,
+  η.bool = ε
+) =>
+{config = α; lib = γ;} -> {config = δ; options = {appstream = {enable = ζ;};};}

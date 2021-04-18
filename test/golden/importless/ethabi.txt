@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  γ.buildRustPackage =
+    { cargoSha256 = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          version = String;
+        };
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  β.licenses = θ,
+  β.maintainers = ι,
+  θ.gpl3 = δ,
+  ι.dbrock = ε
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  rustPlatform = γ;
+  stdenv = α;
+} ->
+η

@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.libgnomecanvas = γ,
+  κ.libgnomecanvasmm = γ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl3 = δ,
+  μ.romildo = ε,
+  ν.unix = ζ
+) =>
+{ autoreconfHook = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gnome2 = κ;
+  gtkmm2 = γ;
+  intltool = η;
+  libgtop = γ;
+  libxfce4ui = γ;
+  libxfce4util = γ;
+  lm_sensors = γ;
+  pkgconfig = η;
+  stdenv = α;
+  xfce = ξ;
+  xfce4-panel = γ;
+} ->
+ι

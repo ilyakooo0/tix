@@ -1,0 +1,60 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
+λ11 μ12.
+( α.nscd = β,
+  α.path = γ,
+  α.source = δ,
+  ε.builtins = ζ,
+  ε.mkIf =
+    η ->
+    { environment = {etc = {nscd.conf = {text = θ;};};};
+      systemd =
+        { services =
+            { nscd =
+                { description = String;
+                  environment = {LD_LIBRARY_PATH = γ;};
+                  restartTriggers = [δ];
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      ExecReload = [String];
+                      ExecStart = String;
+                      PIDFile = String;
+                      Restart = String;
+                      RuntimeDirectory = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ι,
+  ε.mkOption = {default = κ; description = String; type = λ;} -> μ,
+  ε.types = ν,
+  ξ.bin = ο,
+  ξ.libc = String,
+  π.nssModules = α,
+  ρ.system = π,
+  β.config = θ,
+  β.enable = η,
+  σ.services = α,
+  τ.hosts = α,
+  υ.etc = τ,
+  φ.environment = υ,
+  χ.nsswitch.conf = α,
+  ψ.etc = χ,
+  ω.environment = ψ,
+  α1.nscd.conf = α,
+  β2.etc = α1,
+  γ3.environment = β2,
+  ζ.readFile = Path -> κ,
+  ν.lines = λ,
+  δ4.bool = ε5,
+  ζ6.hostPlatform = ξ,
+  η7.stdenv = ζ6,
+  θ8.libc = ξ,
+  ι9.cc = θ8,
+  κ10.stdenv = ι9,
+  λ11.glibc = ξ
+) =>
+{config = α; lib = ε; pkgs = ξ;} ->
+{config = ι; options = {services = {nscd = {config = μ; enable = μ12;};};};}

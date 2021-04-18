@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.bkchr = β,
+  α.licenses = γ,
+  α.versionOlder = δ -> String -> ε,
+  ζ.version = δ,
+  γ.lgpl21 = η,
+  θ.maintainers = α
+) =>
+{ extra-cmake-modules = ι;
+  karchive = ζ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ζ];
+      meta = {broken = ε; license = [η]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [ι];
+      outputs = [String];
+    } ->
+    κ;
+  qtbase = ζ;
+  shared-mime-info = ι;
+} ->
+κ

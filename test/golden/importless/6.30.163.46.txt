@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          downloadPage = String;
+          homepage = String;
+          license = δ;
+        };
+      phases = [String];
+      pname = String;
+      sourceRoot = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  β.licenses = η,
+  η.unfree = δ
+) =>
+{ b43FirmwareCutter = γ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
+  stdenv = α;
+} ->
+ζ

@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.enable = β,
+  γ.gnome-online-accounts = δ,
+  ε.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services = {dbus = {packages = [ζ];};};
+    } ->
+    η,
+  ε.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  ε.teams = κ,
+  ε.types = λ,
+  μ.gnome-online-accounts = α,
+  ν.gnome3 = μ,
+  ξ.services = ν,
+  κ.members = ο,
+  π.gnome = κ,
+  λ.bool = θ
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{ config = η;
+  meta = {maintainers = ο;};
+  options = {services = {gnome3 = {gnome-online-accounts = {enable = ι;};};};};
+}

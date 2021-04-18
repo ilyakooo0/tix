@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.sundtek = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        { services =
+            { sundtek =
+                { description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      ExecStop = String;
+                      RemainAfterExit = Bool;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  θ.sundtek = ζ,
+  β.enable = ε,
+  ι.services = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {services = {sundtek = {enable = δ;};};};}

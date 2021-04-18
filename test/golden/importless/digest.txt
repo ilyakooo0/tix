@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = [String];
+      buildInputs = [γ];
+      configureFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = ε;
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      postPatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.meta = κ,
+  κ.license = δ,
+  λ.maintainers = ε,
+  μ.platforms = ζ
+) =>
+{ autoreconfHook = η;
+  docutils = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libmhash = γ;
+  pkgconfig = η;
+  stdenv = α;
+  varnish = γ;
+} ->
+ι

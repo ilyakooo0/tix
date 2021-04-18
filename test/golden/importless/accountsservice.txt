@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.enable = β,
+  α.mutableUsers = Bool,
+  γ.mkIf =
+    β ->
+    { environment = {pathsToLink = [String]; systemPackages = [δ];};
+      services = {dbus = {packages = [ε];};};
+      systemd = {packages = [ζ]; services = {accounts-daemon = η;};};
+    } ->
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.optionalAttrs = Bool -> {environment = {NIXOS_USERS_PURE = String;};} -> λ,
+  γ.recursiveUpdate =
+    {environment = {XDG_DATA_DIRS = String;}; wantedBy = [String];} -> λ -> η,
+  γ.teams = μ,
+  γ.types = ν,
+  ξ.accountsservice = δ,
+  ο.accounts-daemon = α,
+  π.services = ο,
+  ρ.users = α,
+  μ.members = σ,
+  τ.freedesktop = μ,
+  ν.bool = ι
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = θ;
+  meta = {maintainers = σ;};
+  options = {services = {accounts-daemon = {enable = κ;};};};
+}

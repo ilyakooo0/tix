@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.kwohlfahrt = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  α.versionAtLeast = ζ -> String -> Bool,
+  η.mkDerivation =
+    { installFlags = [String];
+      makeFlags = θ;
+      meta =
+        {description = String; license = ι; maintainers = [β]; platforms = κ;};
+      name = String;
+      preConfigure = String;
+      separateDebugInfo = Bool;
+      src = λ;
+    } ->
+    μ,
+  ν.makeFlags = θ,
+  ν.src = λ,
+  ν.version = ζ,
+  γ.gpl2 = ι,
+  ε.linux = κ
+) =>
+{lib = α; linux = ν; stdenv = η;} -> μ

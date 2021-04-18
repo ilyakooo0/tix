@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  α.mkDerivation =
+    { installPhase = String;
+      meta = {};
+      name = String;
+      phases = [String];
+      src = γ;
+      unpackCmd = String;
+    } ->
+    δ
+) =>
+{fetchurl = {sha256 = ε; url = String;} -> γ; stdenv = α;} ->
+{meta = {}; pkg = ζ; sha256 = ε; version = η;} -> δ

@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.vim = β,
+  γ.mkIf =
+    δ ->
+    {environment = {systemPackages = [ε]; variables = {EDITOR = ζ;};};} -> η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.mkOverride = Integer -> String -> ζ,
+  γ.types = κ,
+  λ.vim = ε,
+  β.defaultEditor = δ,
+  μ.programs = α,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = η; options = {programs = {vim = {defaultEditor = ι;};};};}

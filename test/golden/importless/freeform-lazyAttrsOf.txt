@@ -1,0 +1,7 @@
+∀ α β γ δ ε ζ.
+( α.types = β,
+  β.either = γ -> δ -> ε,
+  β.lazyAttrsOf = ε -> ζ,
+  β.str = γ
+) =>
+{lib = α;} -> {freeformType = ζ;}

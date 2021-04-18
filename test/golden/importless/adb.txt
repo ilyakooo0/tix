@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.enable = β,
+  γ.lowPrio = δ -> ε,
+  γ.maintainers = ζ,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      services = {udev = {packages = [η];};};
+      users = {groups = {adbusers = {};};};
+    } ->
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.android-udev-rules = η,
+  μ.platform-tools = δ,
+  ν.adb = α,
+  ξ.programs = ν,
+  ζ.mic92 = ο,
+  λ.bool = ι,
+  π.androidPkgs_9_0 = μ,
+  ρ.androidenv = π
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = θ;
+  meta = {maintainers = [ο];};
+  options = {programs = {adb = {enable = κ;};};};
+}

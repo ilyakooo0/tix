@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.gebner = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.gpl2Plus = δ,
+  μ.linux = ζ
+) =>
+{ cmake = γ;
+  doxygen = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  ibus = γ;
+  icu = γ;
+  pkgconfig = η;
+  qt4 = γ;
+  stdenv = α;
+} ->
+ι

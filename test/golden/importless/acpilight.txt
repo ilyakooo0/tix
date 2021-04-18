@@ -1,0 +1,12 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.acpilight = β,
+  γ.acpilight = δ,
+  γ.mkIf = ε -> {services = {udev = {packages = [δ];};};} -> ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.hardware = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = ζ; options = {hardware = {acpilight = {enable = θ;};};};}

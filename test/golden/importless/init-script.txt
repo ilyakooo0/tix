@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  γ.mkIf = β -> {system = {build = {installBootLoader = δ;};};} -> ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.types = θ,
+  ι.bash = κ,
+  ι.coreutils = λ,
+  ι.gnugrep = λ,
+  ι.gnused = λ,
+  ι.substituteAll =
+    {bash = κ; isExecutable = Bool; path = [λ]; src = Path;} -> δ,
+  μ.initScript = α,
+  ν.loader = μ,
+  ξ.boot = ν,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = ι;} ->
+{config = ε; options = {boot = {loader = {initScript = {enable = η;};};};};}

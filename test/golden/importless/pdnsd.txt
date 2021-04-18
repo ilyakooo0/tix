@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.pdnsd = β,
+  γ.pdnsd = δ,
+  γ.writeText = String -> String -> ε,
+  ζ.mkEnableOption = String -> η,
+  ζ.mkIf =
+    θ ->
+    { systemd =
+        { services =
+            { pdnsd =
+                { after = [String];
+                  description = String;
+                  preStart = String;
+                  serviceConfig = {ExecStart = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ι,
+  ζ.mkOption = {default = String; description = String; type = κ;} -> λ,
+  ζ.types = μ,
+  β.enable = θ,
+  ν.services = α,
+  μ.str = κ,
+  ξ.lines = ο,
+  π.lines = ρ,
+  σ.lines = τ
+) =>
+{config = α; lib = ζ; pkgs = γ;} ->
+{ config = ι;
+  options =
+    { services =
+        { pdnsd =
+            { cacheDir = λ;
+              enable = η;
+              extraConfig = υ;
+              globalConfig = φ;
+              serverConfig = χ;
+            };
+        };
+    };
+}

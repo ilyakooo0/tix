@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ
+) =>
+{ async_kernel = η;
+  bin_prot = η;
+  buildOcamlJane =
+    { hash = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+        };
+      name = String;
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  core_kernel = η;
+  fieldslib = η;
+  ppx_assert = η;
+  ppx_bench = η;
+  ppx_driver = η;
+  ppx_expect = η;
+  ppx_inline_test = η;
+  ppx_jane = η;
+  sexplib = η;
+  stdenv = α;
+  typerep = η;
+  variantslib = η;
+} ->
+θ

@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.tailscale = β,
+  γ.danderson = δ,
+  γ.maintainers = ε,
+  γ.mbaillie = δ,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { systemd =
+        { services =
+            { tailscale =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { CacheDirectory = String;
+                      CacheDirectoryMode = Integer;
+                      ExecStart = String;
+                      Restart = String;
+                      RuntimeDirectory = String;
+                      RuntimeDirectoryMode = Integer;
+                      StateDirectory = String;
+                      StateDirectoryMode = Integer;
+                    };
+                  unitConfig =
+                    { StartLimitBurst = Integer;
+                      StartLimitIntervalSec = Integer;
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {default = Integer; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  β.enable = η,
+  μ.services = α,
+  λ.port = ι
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = θ;
+  meta = {maintainers = [δ];};
+  options = {services = {tailscale = {enable = ζ; port = κ;};};};
+}

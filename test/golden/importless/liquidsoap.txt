@@ -1,0 +1,66 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
+λ11 μ12 ν13 ξ14.
+( α.liquidsoap = β,
+  α.streams = γ,
+  δ.builtins = ε,
+  δ.literalExample = String -> ζ,
+  δ.map =
+    ( η ->
+      { name = η;
+        value =
+          { after = [String];
+            description = String;
+            path = [θ];
+            serviceConfig =
+              {ExecStart = String; LogsDirectory = String; User = String;};
+            wantedBy = [String];
+          };
+      }
+    ) ->
+    ι -> κ,
+  δ.mkIf =
+    Bool ->
+    { systemd = {services = λ;};
+      users =
+        { groups = {liquidsoap = {gid = β;};};
+          users =
+            { liquidsoap =
+                { createHome = Bool;
+                  description = String;
+                  extraGroups = [String];
+                  group = String;
+                  home = String;
+                  uid = μ;
+                };
+            };
+        };
+    } ->
+    ν,
+  δ.mkOption =
+    { default = {};
+      description = String;
+      example = {myStream1 = ζ; myStream2 = ξ; myStream3 = ο;};
+      type = π;
+    } ->
+    ρ,
+  δ.types = σ,
+  τ.wget = θ,
+  υ.liquidsoap = α,
+  φ.services = υ,
+  χ.liquidsoap = α,
+  ψ.services = χ,
+  ω.gids = α,
+  α1.ids = ω,
+  β2.uids = α,
+  γ3.ids = β2,
+  ε.attrNames = γ -> ι,
+  δ4.getAttr = η -> ε5 -> ζ6,
+  η7.length = ι -> Integer,
+  θ8.listToAttrs = κ -> λ,
+  σ.attrsOf = ι9 -> π,
+  κ10.either = λ11 -> μ12 -> ι9,
+  ν13.path = λ11,
+  ξ14.str = μ12
+) =>
+{config = α; lib = δ; pkgs = τ;} ->
+{config = ν; options = {services = {liquidsoap = {streams = ρ;};};};}

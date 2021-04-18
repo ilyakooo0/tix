@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.licenses = β,
+  α.ttuegel = γ,
+  β.gpl3 = δ,
+  β.lgpl2 = δ,
+  β.lgpl3 = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kactivities = η;
+  kconfig = η;
+  kcrash = η;
+  kdbusaddons = η;
+  kdoctools = ζ;
+  kguiaddons = η;
+  ki18n = η;
+  kiconthemes = η;
+  kinit = η;
+  kio = η;
+  kitemmodels = η;
+  kjobwidgets = η;
+  knewstuff = η;
+  knotifications = η;
+  konsole = θ;
+  kparts = η;
+  ktexteditor = η;
+  kwallet = η;
+  kwindowsystem = η;
+  kxmlgui = η;
+  lib = α;
+  libgit2 = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      postPatch = String;
+      propagatedUserEnvPkgs = [θ];
+    } ->
+    ι;
+  plasma-framework = η;
+  qtscript = η;
+  threadweaver = η;
+} ->
+ι

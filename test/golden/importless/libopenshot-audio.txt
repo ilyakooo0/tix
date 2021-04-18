@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.AndersonTorres = ε,
+  β.gpl3Plus = δ,
+  β.licenses = κ,
+  β.linux = ζ,
+  β.maintainers = λ,
+  β.platforms = μ
+) =>
+{ alsaLib = γ;
+  cmake = η;
+  doxygen = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  libX11 = γ;
+  libXcursor = γ;
+  libXext = γ;
+  libXft = γ;
+  libXinerama = γ;
+  libXrandr = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

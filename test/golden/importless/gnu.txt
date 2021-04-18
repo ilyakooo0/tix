@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.gnu = β,
+  γ.grub2 = δ,
+  γ.mkIf =
+    β ->
+    { boot = {loader = {grub = {enable = Bool; version = Integer;};};};
+      environment = {systemPackages = [ε];};
+      programs = {ssh = {startAgent = Bool;};};
+      services =
+        { lshd = {enable = Bool;};
+          openssh = {enable = Bool;};
+          xserver = {startGnuPGAgent = Bool;};
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.nano = ε,
+  γ.parted = ε,
+  γ.stdenv = ι,
+  γ.texinfo = ε,
+  γ.types = κ,
+  γ.zile = ε,
+  λ.isAarch32 = Bool,
+  ι.optional = Bool -> δ -> [ε],
+  μ.lib = ι,
+  ν.isAarch32 = Bool,
+  κ.bool = η,
+  ξ.stdenv = λ
+) =>
+{config = α; lib = γ; pkgs = λ;} -> {config = ζ; options = {gnu = θ;};}

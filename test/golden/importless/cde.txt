@@ -1,0 +1,66 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.xserver = β,
+  γ.bitmap = δ,
+  γ.listOf = ε -> ζ,
+  γ.literalExample = String -> η,
+  γ.maintainers = θ,
+  γ.mkEnableOption = String -> ι,
+  γ.mkIf =
+    Bool ->
+    { environment = {systemPackages = κ;};
+      security =
+        { wrappers =
+            {dtmail = {group = String; setgid = Bool; source = String;};};
+        };
+      services =
+        { rpcbind = {enable = Bool;};
+          xinetd =
+            { enable = Bool;
+              services =
+                [ { extraConfig = String;
+                    name = String;
+                    protocol = String;
+                    server = String;
+                    user = String;
+                  }
+                ];
+            };
+          xserver =
+            {desktopManager = {session = [{name = String; start = String;}];};};
+        };
+      system = {activationScripts = {setup-cde = String;};};
+      users = {groups = {mail = {};};};
+    } ->
+    λ,
+  γ.mkOption =
+    {default = [δ]; description = String; example = η; type = ζ;} -> μ,
+  γ.package = ε,
+  γ.types = ν,
+  γ.xclock = δ,
+  γ.xdpyinfo = δ,
+  γ.xfd = δ,
+  γ.xload = δ,
+  γ.xlsfonts = δ,
+  γ.xrefresh = δ,
+  γ.xwd = δ,
+  γ.xwininfo = δ,
+  γ.xwud = δ,
+  ξ.xorg = ο,
+  β.cde = π,
+  β.enable = Bool,
+  ρ.services = α,
+  π.enable = Bool,
+  π.extraPackages = κ,
+  σ.desktopManager = β,
+  θ.gnidorah = τ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = λ;
+  meta = {maintainers = [τ];};
+  options =
+    { services =
+        { xserver =
+            {desktopManager = {cde = {enable = ι; extraPackages = μ;};};};
+        };
+    };
+}

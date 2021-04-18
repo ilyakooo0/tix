@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.licenses = β,
+  α.ttuegel = γ,
+  β.gpl2 = δ,
+  β.lgpl21 = δ,
+  ε.maintainers = α
+) =>
+{ exiv2 = ζ;
+  extra-cmake-modules = η;
+  gperf = ζ;
+  ilmbase = θ;
+  kactivities = ζ;
+  karchive = ζ;
+  kbookmarks = ζ;
+  kconfig = ζ;
+  kconfigwidgets = ζ;
+  kcoreaddons = ζ;
+  kdbusaddons = ζ;
+  kdelibs4support = ζ;
+  kdnssd = ζ;
+  kdoctools = η;
+  kdsoap = ζ;
+  kguiaddons = ζ;
+  khtml = ζ;
+  ki18n = ζ;
+  kiconthemes = ζ;
+  kio = ζ;
+  kpty = ζ;
+  lib = α;
+  libmtp = ζ;
+  libssh = ζ;
+  mkDerivation =
+    { CXXFLAGS = [String];
+      buildInputs = [ζ];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [η];
+    } ->
+    ι;
+  openexr = ζ;
+  openslp = ζ;
+  phonon = ζ;
+  qtsvg = ζ;
+  samba = ζ;
+  shared-mime-info = η;
+  solid = ζ;
+  syntax-highlighting = ζ;
+} ->
+ι

@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.optionals = β -> [δ] -> [ε],
+  ζ.buildRustPackage =
+    { buildInputs = [ε];
+      cargoBuildFlags = [String];
+      cargoSha256 = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [θ];
+          platforms = ι;
+        };
+      nativeBuildInputs = [ε];
+      patches = [Path];
+      pname = String;
+      preFixup = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  ζ.licenses = μ,
+  ζ.maintainers = ν,
+  ζ.platforms = ξ,
+  ζ.sgo = θ,
+  ο.libxcb = ε,
+  π.lib = α,
+  μ.gpl3 = η,
+  ξ.unix = ι
+) =>
+{ AppKit = δ;
+  Security = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  gpgme = ε;
+  lib = ρ;
+  libgpgerror = ε;
+  ncurses = ε;
+  openssl = ε;
+  pkgconfig = ε;
+  python3 = ε;
+  rustPlatform = ζ;
+  stdenv = α;
+  xorg = ο;
+} ->
+λ

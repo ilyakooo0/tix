@@ -1,0 +1,58 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { CXXFLAGS = String;
+      buildInputs = [δ];
+      cmakeFlags = [String];
+      enableParallelBuilding = Bool;
+      hardeningDisable = [String];
+      meta =
+        {description = String; homepage = String; license = ε; platforms = ζ;};
+      nativeBuildInputs = [η];
+      patches = [θ];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      src = ι;
+      version = κ;
+    } ->
+    λ,
+  α.optionals = β -> [μ] -> [δ],
+  ν.Carbon = μ,
+  ν.Cocoa = μ,
+  ν.Foundation = μ,
+  ν.bootstrap_cmds = μ,
+  ν.libobjc = μ,
+  ν.xpc = μ,
+  ξ.lib = α,
+  γ.licenses = ο,
+  γ.platforms = π,
+  ο.ncsa = ε,
+  π.all = ζ,
+  ρ.libs = ν,
+  σ.apple_sdk = ρ,
+  τ.frameworks = ν,
+  υ.apple_sdk = τ,
+  φ.frameworks = ν,
+  χ.apple_sdk = φ,
+  ψ.frameworks = ν,
+  ω.apple_sdk = ψ
+) =>
+{ clang-unwrapped = α1;
+  cmake = η;
+  darwin = ν;
+  fetch = String -> String -> ι;
+  fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> θ;
+  libedit = δ;
+  libxml2 = δ;
+  llvm = δ;
+  ncurses = δ;
+  python3 = η;
+  stdenv = α;
+  swig = η;
+  version = κ;
+  which = η;
+  zlib = δ;
+} ->
+λ

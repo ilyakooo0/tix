@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.maintainers = β,
+  α.mit = γ,
+  δ.prometheus-exporters = ε,
+  ζ.licenses = α,
+  β.MostAwesomeDude = η,
+  β.willibutz = η,
+  ε.varnish = θ
+) =>
+{ buildGoModule =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [η];
+        };
+      nativeBuildInputs = [ι];
+      passthru = {tests = {varnish = θ;};};
+      pname = String;
+      postInstall = String;
+      src = κ;
+      vendorSha256 = String;
+      version = String;
+    } ->
+    λ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  lib = α;
+  makeWrapper = ι;
+  nixosTests = δ;
+  varnish = μ;
+} ->
+λ

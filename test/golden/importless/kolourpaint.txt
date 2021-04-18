@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.fridh = β,
+  α.licenses = γ,
+  γ.gpl2 = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  kdelibs4support = η;
+  kdoctools = ζ;
+  lib = α;
+  libkexiv2 = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+} ->
+θ

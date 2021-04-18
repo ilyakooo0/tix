@@ -1,0 +1,16 @@
+∀ β γ δ ε ζ η θ.
+( β.lib = γ,
+  β.mkDerivation =
+    { NIX_CFLAGS_COMPILE = String;
+      buildInputs = [δ];
+      meta = {description = String; maintainers = ∀ α. α; platforms = ε;};
+      pname = String;
+      src = ζ;
+      version = String;
+    } ->
+    η,
+  γ.platforms = θ,
+  θ.linux = ε
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ζ; libtool = δ; stdenv = β;} ->
+η

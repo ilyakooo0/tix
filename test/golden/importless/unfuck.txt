@@ -1,0 +1,79 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      dontStrip = Bool;
+      enableParallelBuilding = Bool;
+      hardeningDisable = [String];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      passthru = {dfVersion = θ;};
+      src = ι;
+    } ->
+    κ,
+  λ.abbradar = ε,
+  λ.getAttr =
+    θ ->
+    { 0.43.05 = {sha256 = String; unfuckRelease = String;};
+      0.44.05 = {sha256 = String; unfuckRelease = String;};
+      0.44.09 = {sha256 = String; unfuckRelease = String;};
+      0.44.10 = {sha256 = String; unfuckRelease = String;};
+      0.44.11 = {sha256 = String; unfuckRelease = String;};
+      0.44.12 = {sha256 = String; unfuckRelease = String;};
+      0.47.01 = {sha256 = String; unfuckRelease = String;};
+      0.47.02 = {sha256 = String; unfuckRelease = String;};
+      0.47.04 = {sha256 = String; unfuckRelease = String;};
+    } ->
+    μ,
+  λ.hasAttr =
+    θ ->
+    { 0.43.05 = {sha256 = String; unfuckRelease = String;};
+      0.44.05 = {sha256 = String; unfuckRelease = String;};
+      0.44.09 = {sha256 = String; unfuckRelease = String;};
+      0.44.10 = {sha256 = String; unfuckRelease = String;};
+      0.44.11 = {sha256 = String; unfuckRelease = String;};
+      0.44.12 = {sha256 = String; unfuckRelease = String;};
+      0.47.01 = {sha256 = String; unfuckRelease = String;};
+      0.47.02 = {sha256 = String; unfuckRelease = String;};
+      0.47.04 = {sha256 = String; unfuckRelease = String;};
+    } ->
+    Bool,
+  λ.licenses = ν,
+  λ.maintainers = ξ,
+  λ.numinit = ε,
+  λ.platforms = ο,
+  λ.throw = String -> μ,
+  μ.sha256 = π,
+  μ.unfuckRelease = ρ,
+  ν.free = δ,
+  ο.linux = ζ
+) =>
+{ SDL = γ;
+  SDL_image = γ;
+  SDL_ttf = γ;
+  cmake = η;
+  dfVersion = θ;
+  fetchFromGitHub = {owner = String; repo = String; rev = ρ; sha256 = π;} -> ι;
+  glew = γ;
+  glib = σ;
+  gtk2 = γ;
+  lib = λ;
+  libGL = γ;
+  libSM = γ;
+  libsndfile = γ;
+  ncurses = γ;
+  openalSoft = γ;
+  pkg-config = η;
+  stdenv = α;
+  zlib = γ;
+} ->
+κ

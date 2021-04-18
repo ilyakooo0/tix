@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  γ.prometheus-exporters = δ,
+  ε.meta = ζ,
+  β.globin = η,
+  β.licenses = θ,
+  β.ma27 = η,
+  β.maintainers = ι,
+  β.willibutz = η,
+  θ.asl20 = κ,
+  δ.dnsmasq = λ,
+  ζ.homepage = μ
+) =>
+{ buildGoModule =
+    { doCheck = Bool;
+      meta =
+        {description = String; homepage = μ; license = κ; maintainers = [η];};
+      passthru = {tests = {dnsmasq = λ;};};
+      pname = String;
+      src = ε;
+      vendorSha256 = String;
+      version = String;
+    } ->
+    ν;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
+  nixosTests = γ;
+  stdenv = α;
+} ->
+ν

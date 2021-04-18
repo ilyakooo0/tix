@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      dontBuild = Bool;
+      installFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      postFixup = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.fpletz = ε,
+  β.licenses = ι,
+  β.lovek323 = ε,
+  β.maintainers = κ,
+  β.platforms = λ,
+  β.tadfisher = ε,
+  ι.gpl3Plus = δ,
+  λ.unix = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  stdenv = α;
+  tomb = γ;
+} ->
+θ

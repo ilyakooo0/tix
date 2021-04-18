@@ -1,0 +1,44 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( β.lib = γ,
+  β.mkDerivation =
+    { NIX_CFLAGS_COMPILE = String;
+      buildInputs = [δ];
+      configureFlags = [String];
+      installFlags = [String];
+      meta =
+        {homepage = String; license = ε; maintainers = [ζ]; platforms = η;};
+      nativeBuildInputs = [θ];
+      passthru = {xgreeters = ι;};
+      pname = String;
+      postInstall = String;
+      preConfigure = String;
+      src = κ;
+      version = ∀ α. α;
+    } ->
+    λ,
+  β.optional = Bool -> String -> [String],
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.ocharles = ζ,
+  γ.platforms = ξ,
+  μ.gpl3 = ε,
+  ξ.linux = η,
+  ο.lib = β
+) =>
+{ at-spi2-core = π;
+  exo = δ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  gtk2 = δ;
+  gtk3 = δ;
+  hicolor-icon-theme = δ;
+  intltool = θ;
+  librsvg = δ;
+  lightdm = δ;
+  lightdm_gtk_greeter = ρ;
+  linkFarm = String -> [{name = String; path = String;}] -> ι;
+  pkgconfig = θ;
+  stdenv = β;
+  useGTK2 = Bool;
+  wrapGAppsHook = θ;
+} ->
+λ

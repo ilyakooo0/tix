@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.enable = Bool,
+  α.stateVersion = β,
+  α.xterm = γ,
+  δ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {xserver = {desktopManager = {session = η;};};};
+    } ->
+    θ,
+  δ.mkOption =
+    {default = Bool; defaultText = String; description = String; type = ι;} ->
+    κ,
+  δ.singleton = {name = String; start = String;} -> η,
+  δ.types = λ,
+  δ.versionOlder = β -> String -> Bool,
+  μ.xterm = ζ,
+  ν.xserver = α,
+  ξ.services = ν,
+  γ.enable = ε,
+  ο.desktopManager = α,
+  π.xserver = ο,
+  ρ.services = π,
+  σ.system = α,
+  τ.system = α,
+  λ.bool = ι
+) =>
+{config = α; lib = δ; pkgs = μ;} ->
+{ config = θ;
+  options =
+    {services = {xserver = {desktopManager = {xterm = {enable = κ;};};};};};
+}

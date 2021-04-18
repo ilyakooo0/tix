@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.getBin = β -> γ,
+  α.licenses = δ,
+  α.maintainers = ε,
+  δ.fdl12 = ζ,
+  δ.gpl2 = ζ,
+  δ.lgpl21 = ζ,
+  ε.ttuegel = η,
+  ε.turion = η
+) =>
+{ extra-cmake-modules = θ;
+  kbookmarks = β;
+  kcompletion = β;
+  kconfig = β;
+  kconfigwidgets = β;
+  kcoreaddons = β;
+  kdelibs4support = β;
+  kdoctools = θ;
+  kguiaddons = β;
+  ki18n = β;
+  kiconthemes = β;
+  kinit = β;
+  kio = β;
+  knewstuff = β;
+  knotifications = β;
+  knotifyconfig = β;
+  kparts = β;
+  kpty = β;
+  kservice = β;
+  ktextwidgets = β;
+  kwidgetsaddons = β;
+  kwindowsystem = β;
+  kxmlgui = β;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [β];
+      meta = {license = [ζ]; maintainers = [η];};
+      name = String;
+      nativeBuildInputs = [θ];
+      propagatedUserEnvPkgs = [γ];
+    } ->
+    ι;
+  qtscript = β;
+} ->
+ι

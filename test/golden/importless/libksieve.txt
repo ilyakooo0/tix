@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { akonadi = δ;
+  extra-cmake-modules = ε;
+  karchive = δ;
+  kcompletion = δ;
+  kdepimTeam = ζ;
+  kdoctools = ε;
+  kiconthemes = δ;
+  kidentitymanagement = δ;
+  kio = δ;
+  kmailtransport = δ;
+  knewstuff = δ;
+  kwindowsystem = δ;
+  kxmlgui = δ;
+  lib = α;
+  libkdepim = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      outputs = [String];
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  pimcommon = δ;
+  qtwebengine = δ;
+  syntax-highlighting = η;
+} ->
+θ

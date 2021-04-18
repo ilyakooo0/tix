@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.gpl2Plus = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      passthru = {version = String;};
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.unix = ζ,
+  κ.licenses = α,
+  λ.lib = κ,
+  γ.ocharles = ε,
+  μ.lib = α,
+  ν.platforms = α,
+  ξ.lib = ν
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  notmuch = δ;
+  openssl = δ;
+  pkgconfig = η;
+  sqlite = δ;
+  stdenv = α;
+  xapian = δ;
+  zlib = δ;
+} ->
+ι

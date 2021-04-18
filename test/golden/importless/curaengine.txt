@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      patches = [Path];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.chaduffy = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.agpl3 = δ,
+  μ.linux = ζ
+) =>
+{ callPackage = ν;
+  cmake = η;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> θ;
+  fetchpatch = ξ;
+  gcc8Stdenv = α;
+  libarcusLulzbot = γ;
+  protobuf = γ;
+  stb = γ;
+} ->
+ι

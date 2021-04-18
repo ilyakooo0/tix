@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ.
+( α.environment = β,
+  γ.mkAfter = [String] -> δ,
+  γ.mkDefault = String -> ε
+) =>
+{config = α; lib = γ;} ->
+{ config =
+    { environment =
+        { extraInit = String;
+          profileRelativeSessionVariables =
+            { GTK_PATH = [String];
+              INFOPATH = [String];
+              KDEDIRS = [String];
+              LIBEXEC_PATH = [String];
+              MOZ_PLUGIN_PATH = [String];
+              PATH = [String];
+              QTWEBKIT_PLUGIN_PATH = [String];
+              QT_PLUGIN_PATH = [String];
+              XDG_CONFIG_DIRS = [String];
+              XDG_DATA_DIRS = [String];
+            };
+          profiles = δ;
+          variables =
+            { EDITOR = ε;
+              NIXPKGS_CONFIG = String;
+              PAGER = ζ;
+              XDG_CONFIG_DIRS = [String];
+            };
+        };
+    };
+}

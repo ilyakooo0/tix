@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      moduleName = String;
+      name = String;
+      nativeBuildInputs = [η];
+      postInstall = String;
+      src = θ;
+      versionMajor = String;
+      versionMinor = String;
+    } ->
+    ι,
+  β.antono = ε,
+  β.astsmtl = ε,
+  β.lethalman = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.lgpl2 = δ,
+  μ.linux = ζ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  glib = γ;
+  gobject-introspection = γ;
+  gtk3 = γ;
+  intltool = γ;
+  ncurses = γ;
+  pkgconfig = η;
+  stdenv = α;
+} ->
+ι

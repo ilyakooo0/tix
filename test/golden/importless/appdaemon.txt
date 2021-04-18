@@ -1,0 +1,69 @@
+∀ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10 λ11.
+( ω.dotlambda = α1,
+  ω.licenses = β2,
+  ω.maintainers = γ3,
+  ω.peterhoeg = α1,
+  δ4.override =
+    { packageOverrides =
+        ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+        ( α.overridePythonAttrs = (β -> {src = γ; version = String;}) -> δ,
+          β.override = ε,
+          ζ.override = η,
+          θ.override = ι,
+          κ.override = λ,
+          μ.aiohttp-jinja2 = α,
+          ν.bcrypt = α,
+          ξ.jinja2 = α,
+          ο.yarl = α,
+          π.src = β,
+          ρ.src = ζ,
+          σ.src = θ,
+          τ.src = κ
+        ) =>
+        υ -> α -> {aiohttp-jinja2 = δ; bcrypt = φ; jinja2 = χ; yarl = ψ;};
+    } ->
+    ε5,
+  ε5.buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ6;
+          maintainers = [α1];
+        };
+      pname = String;
+      postPatch = String;
+      propagatedBuildInputs = [η7];
+      src = θ8;
+      version = String;
+    } ->
+    ι9,
+  ε5.pkgs = κ10,
+  β2.mit = ζ6,
+  λ11.pkgs = ε5,
+  κ10.aiohttp = η7,
+  κ10.aiohttp-jinja2 = η7,
+  κ10.astral = η7,
+  κ10.bcrypt = η7,
+  κ10.daemonize = η7,
+  κ10.dateutil = η7,
+  κ10.deepdiff = η7,
+  κ10.feedparser = η7,
+  κ10.iso8601 = η7,
+  κ10.jinja2 = η7,
+  κ10.paho-mqtt = η7,
+  κ10.pid = η7,
+  κ10.python-socketio = η7,
+  κ10.pyyaml = η7,
+  κ10.requests = η7,
+  κ10.setuptools = η7,
+  κ10.voluptuous = η7,
+  κ10.websocket_client = η7,
+  κ10.yarl = η7
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ8;
+  lib = ω;
+  python3 = δ4;
+} ->
+ι9

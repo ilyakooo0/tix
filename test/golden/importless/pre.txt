@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      outputs = [String];
+      patches = [θ];
+      pname = String;
+      prePatch = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  β.fpletz = ε,
+  β.lassulus = ε,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl2Plus = δ,
+  ν.unix = ζ
+) =>
+{ autoreconfHook = η;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ι;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> θ;
+  lzo = γ;
+  ncurses = γ;
+  openssl = γ;
+  readline = γ;
+  stdenv = α;
+  texinfo = η;
+  zlib = γ;
+} ->
+κ

@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [δ];
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        {description = String; homepage = String; license = ε; platforms = ζ;};
+      name = String;
+      patchPhase = String;
+      postInstall = String;
+      preInstall = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+    } ->
+    ι,
+  γ.licenses = κ,
+  γ.optionals = β -> [Null] -> [δ],
+  γ.platforms = λ,
+  κ.free = ε,
+  λ.mesaPlatforms = ζ
+) =>
+{ AGL = Null;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  libGLU = η;
+  libXi = δ;
+  libXmu = δ;
+  stdenv = α;
+  xlibsWrapper = δ;
+} ->
+ι

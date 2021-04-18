@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  γ.buildRustPackage =
+    { buildInputs = [δ];
+      cargoSha256 = String;
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  β.backuitist = ζ,
+  β.globin = ζ,
+  β.licenses = λ,
+  β.ma27 = ζ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.gpl3 = ε,
+  ν.linux = η
+) =>
+{ dbus = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  libpulseaudio = δ;
+  pkgconfig = θ;
+  rustPlatform = γ;
+  stdenv = α;
+} ->
+κ

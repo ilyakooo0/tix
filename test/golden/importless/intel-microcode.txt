@@ -1,0 +1,15 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.updateMicrocode = β,
+  γ.mkIf = β -> {boot = {initrd = {prepend = δ;};};} -> ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.mkOrder = Integer -> [String] -> δ,
+  γ.types = θ,
+  ι.intel = α,
+  κ.cpu = ι,
+  λ.hardware = κ,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = ε;
+  options = {hardware = {cpu = {intel = {updateMicrocode = η;};};};};
+}

@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.isx86_64 = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = [String];
+      buildInputs = [δ];
+      configureFlags = ε;
+      hardeningDisable = [String];
+      meta =
+        { broken = Bool;
+          description = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> String -> ε,
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.gpl2Plus = ζ,
+  μ.raskin = η,
+  ν.linux = θ,
+  ξ.lib = α
+) =>
+{allegro = δ; fetchurl = {sha256 = String; url = String;} -> ι; stdenv = α;} ->
+κ

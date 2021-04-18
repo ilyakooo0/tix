@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postUnpack = String;
+      src = θ;
+      version = ι;
+    } ->
+    κ,
+  λ.src = θ,
+  λ.version = ι,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.gpl3Plus = δ,
+  ν.bachp = ε,
+  ξ.linux = ζ
+) =>
+{ autoreconfHook = η;
+  check = γ;
+  dsview = λ;
+  glib = γ;
+  pkgconfig = η;
+  python3 = γ;
+  stdenv = α;
+} ->
+κ

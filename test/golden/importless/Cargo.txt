@@ -1,0 +1,56 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.optionals = β -> [δ] -> [ε],
+  ζ.buildRustPackage =
+    { RUSTC_BOOTSTRAP = Integer;
+      buildAndTestSubdir = String;
+      buildInputs = [ε];
+      cargoVendorDir = String;
+      checkPhase = String;
+      doCheck = Bool;
+      dontUpdateAutotoolsGnuConfigScripts = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [η];
+          maintainers = [θ];
+          platforms = ι;
+        };
+      name = String;
+      nativeBuildInputs = [κ];
+      passthru = {rustc = λ;};
+      postInstall = String;
+      src = μ;
+      version = ν;
+    } ->
+    ξ,
+  λ.src = μ,
+  λ.version = ν,
+  ο.lib = α,
+  γ.licenses = π,
+  γ.maintainers = ρ,
+  γ.platforms = σ,
+  γ.retrry = θ,
+  π.mit = η,
+  τ.asl20 = η,
+  σ.unix = ι
+) =>
+{ CoreFoundation = δ;
+  Security = δ;
+  cacert = ε;
+  cmake = κ;
+  curl = ε;
+  file = ε;
+  installShellFiles = κ;
+  libiconv = δ;
+  makeWrapper = κ;
+  openssl = ε;
+  pkgconfig = κ;
+  python3 = ε;
+  rustPlatform = ζ;
+  rustc = λ;
+  stdenv = α;
+  zlib = ε;
+} ->
+ξ

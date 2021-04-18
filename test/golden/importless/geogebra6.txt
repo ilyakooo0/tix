@@ -1,0 +1,35 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( (β) // ({license = γ; maintainers = [δ]; platforms = ε;}) ~ (ζ),
+  η.lib = θ,
+  η.mkDerivation =
+    { desktopItem = ι;
+      dontBuild = Bool;
+      dontConfigure = Bool;
+      installPhase = String;
+      meta = ∀ α. α;
+      name = String;
+      nativeBuildInputs = [κ];
+      src = λ;
+      srcIcon = μ;
+      unpackPhase = String;
+      version = String;
+    } ->
+    ν,
+  ξ.desktopItem = ι,
+  ξ.meta = β,
+  ξ.srcIcon = μ,
+  θ.licenses = ο,
+  θ.maintainers = π,
+  θ.platforms = ρ,
+  θ.voidless = δ,
+  ο.geogebra = γ,
+  ρ.linux = ε
+) =>
+{ electron_6 = σ;
+  fetchurl = {sha256 = String; urls = [String];} -> λ;
+  geogebra = ξ;
+  makeWrapper = κ;
+  stdenv = η;
+  unzip = κ;
+} ->
+ν

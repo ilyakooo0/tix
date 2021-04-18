@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          platforms = [δ];
+        };
+      nativeBuildInputs = [ε];
+      patches = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.freebsd = [δ],
+  β.licenses = ι,
+  β.linux = [δ],
+  β.platforms = κ,
+  ι.gpl3 = γ
+) =>
+{ autoreconfHook = ε;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  fetchpatch = {sha256 = String; url = String;} -> ζ;
+  pkg-config = ε;
+  stdenv = α;
+} ->
+θ

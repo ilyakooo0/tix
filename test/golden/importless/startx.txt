@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.startx = β,
+  γ.mkForce = Bool -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services =
+        { xserver =
+            { displayManager =
+                {job = {execCmd = String;}; lightdm = {enable = δ;};};
+              exportConfiguration = Bool;
+            };
+        };
+      systemd = {services = {display-manager = {enable = Bool;};};};
+    } ->
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  γ.xorg = λ,
+  β.enable = ε,
+  μ.displayManager = α,
+  ν.xserver = μ,
+  ξ.services = ν,
+  λ.xinit = ζ,
+  κ.bool = θ
+) =>
+{config = α; lib = γ; pkgs = ο;} ->
+{ config = η;
+  options =
+    {services = {xserver = {displayManager = {startx = {enable = ι;};};};};};
+}

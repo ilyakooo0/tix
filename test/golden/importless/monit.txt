@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.monit = β,
+  α.source = γ,
+  δ.monit = ε,
+  ζ.mkEnableOption = String -> η,
+  ζ.mkIf =
+    θ ->
+    { environment =
+        {etc = {monitrc = {mode = String; text = ι;};}; systemPackages = [ε];};
+      systemd =
+        { services =
+            { monit =
+                { after = [String];
+                  description = String;
+                  restartTriggers = [γ];
+                  serviceConfig =
+                    { ExecReload = String;
+                      ExecStart = String;
+                      ExecStop = String;
+                      KillMode = String;
+                      Restart = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    κ,
+  ζ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  ζ.types = ν,
+  β.config = ι,
+  β.enable = θ,
+  ξ.services = α,
+  ο.monitrc = α,
+  π.etc = ο,
+  ρ.environment = π,
+  ν.lines = λ
+) =>
+{config = α; lib = ζ; pkgs = δ;} ->
+{config = κ; options = {services = {monit = {config = μ; enable = η;};};};}

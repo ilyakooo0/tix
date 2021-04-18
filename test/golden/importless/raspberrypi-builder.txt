@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ.
+( α.buildPackages = β,
+  α.raspberrypifw = γ,
+  α.substituteAll =
+    { bash = δ;
+      configTxt = ε;
+      firmware = γ;
+      isExecutable = Bool;
+      path = [ζ];
+      src = Path;
+    } ->
+    η,
+  β.bash = δ,
+  θ.coreutils = ζ,
+  θ.gnugrep = ζ,
+  θ.gnused = ζ
+) =>
+{configTxt = ε; pkgs = α;} -> η

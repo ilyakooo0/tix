@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  γ.buildPythonApplication =
+    { checkInputs = [δ];
+      checkPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      patches = [Path];
+      prePatch = String;
+      propagatedBuildInputs = [δ];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.nose = δ,
+  β.licenses = κ,
+  β.lovesegfault = ζ,
+  β.maintainers = λ,
+  κ.mit = ε
+) =>
+{ beets = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  flac = δ;
+  liboggz = δ;
+  mp3val = δ;
+  pythonPackages = γ;
+  stdenv = α;
+} ->
+ι

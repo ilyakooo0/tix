@@ -1,0 +1,30 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ.
+( γ.fetchFromGitHub =
+    { fetchSubmodules = Bool;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    δ,
+  γ.libtensorflow-bin = ε,
+  ζ.doJailbreak = η -> θ,
+  ζ.overrideCabal = ι -> (κ -> {src = δ;}) -> λ,
+  μ.tensorflow = ι,
+  μ.tensorflow-core-ops = ι,
+  μ.tensorflow-logging = ι,
+  μ.tensorflow-opgen = ι,
+  μ.tensorflow-ops = ι,
+  μ.tensorflow-proto = ι,
+  λ.overrideAttrs = ν
+) =>
+{haskellLib = ζ; pkgs = γ;} ->
+ξ ->
+μ ->
+{ tensorflow = ∀ α β. (α.override = {libtensorflow = ε;} -> β) => β;
+  tensorflow-core-ops = ∀ α. α;
+  tensorflow-logging = ∀ α. α;
+  tensorflow-opgen = ∀ α. α;
+  tensorflow-ops = ∀ α. α;
+  tensorflow-proto = θ;
+}

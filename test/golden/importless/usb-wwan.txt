@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.mkIf =
+    β ->
+    { environment = {etc = {usb_modeswitch.d = {source = String;};};};
+      services = {udev = {packages = [δ];};};
+      systemd = {packages = [ε];};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  γ.usb-modeswitch = ε,
+  γ.usb-modeswitch-data = δ,
+  κ.usbWwan = α,
+  λ.hardware = κ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = ζ; options = {hardware = {usbWwan = {enable = θ;};};};}

@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.mullvad-vpn = β,
+  γ.maintainers = δ,
+  γ.mkIf =
+    ε ->
+    { boot = {kernelModules = [String];};
+      systemd =
+        { services =
+            { mullvad-daemon =
+                { after = [String];
+                  description = String;
+                  path = [String];
+                  serviceConfig =
+                    { ExecStart = String;
+                      Restart = String;
+                      RestartSec = Integer;
+                      StartLimitBurst = Integer;
+                      StartLimitIntervalSec = Integer;
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.iproute = String,
+  β.enable = ε,
+  λ.services = α,
+  δ.xfix = μ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{ config = ζ;
+  meta = {maintainers = [μ];};
+  options = {services = {mullvad-vpn = {enable = θ;};};};
+}

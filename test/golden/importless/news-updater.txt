@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.gpl3 = β,
+  α.maintainers = γ,
+  δ.buildPythonApplication =
+    { doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ε];
+        };
+      name = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.licenses = α,
+  κ.lib = ι,
+  γ.schneefux = ε,
+  λ.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  php = ζ;
+  python3Packages = δ;
+  stdenv = α;
+} ->
+θ

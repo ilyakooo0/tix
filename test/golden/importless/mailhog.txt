@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.mailhog = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { mailhog =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    {ExecStart = String; Type = String; User = ζ;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { users =
+            {mailhog = {description = String; isSystemUser = Bool; name = η;};};
+        };
+    } ->
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  β.enable = ε,
+  β.user = ζ,
+  μ.services = α,
+  λ.str = ι
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{config = θ; options = {services = {mailhog = {enable = δ; user = κ;};};};}

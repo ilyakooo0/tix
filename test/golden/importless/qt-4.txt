@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { meta =
+        {description = String; license = γ; maintainers = [δ]; platforms = ε;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      postFixup = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.lgpl21 = γ,
+  λ.ttuegel = δ,
+  μ.linux = ε
+) =>
+{ automoc4 = ζ;
+  cmake = ζ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  glib = η;
+  pkgconfig = ζ;
+  polkit = η;
+  qt4 = η;
+  stdenv = α;
+} ->
+ι

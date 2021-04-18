@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.i2p = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { i2p =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      Restart = String;
+                      User = String;
+                      WorkingDirectory = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {i2p = {gid = ζ;};};
+          users =
+            { i2p =
+                { createHome = Bool;
+                  description = String;
+                  group = String;
+                  home = String;
+                  uid = η;
+                };
+            };
+        };
+    } ->
+    θ,
+  β.enable = ε,
+  ι.services = α,
+  κ.gids = α,
+  λ.ids = κ,
+  μ.uids = α,
+  ν.ids = μ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{config = θ; options = {services = {i2p = {enable = δ;};};};}

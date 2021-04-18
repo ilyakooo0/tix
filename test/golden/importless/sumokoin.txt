@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.fpletz = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  ζ.mkDerivation =
+    { buildInputs = [η];
+      cmakeFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [β];
+          platforms = ι;
+        };
+      nativeBuildInputs = [κ];
+      pname = String;
+      postPatch = String;
+      src = λ;
+      version = String;
+    } ->
+    μ,
+  γ.bsd3 = θ,
+  ε.linux = ι
+) =>
+{ boost = η;
+  cmake = κ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  lib = α;
+  libunwind = η;
+  lmdb = η;
+  miniupnpc = η;
+  openssl = η;
+  stdenv = ζ;
+  unbound = η;
+} ->
+μ

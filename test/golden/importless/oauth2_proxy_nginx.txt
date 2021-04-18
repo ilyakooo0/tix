@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( α.httpAddress = β,
+  α.nginx = γ,
+  δ.hasPrefix = String -> ε -> Bool,
+  δ.map = (ζ -> {}) -> η -> [θ],
+  δ.mkIf = Bool -> {enable = Bool;} -> ι,
+  δ.mkMerge = [θ] -> κ,
+  δ.mkOption = {default = β; description = String; type = λ;} -> μ,
+  δ.optional = Bool -> {recommendedProxySettings = Bool;} -> [θ],
+  δ.types = ν,
+  γ.proxy = ε,
+  γ.virtualHosts = ξ,
+  ο.oauth2_proxy = α,
+  π.services = ο,
+  ρ.oauth2_proxy = α,
+  σ.services = ρ,
+  ν.str = λ,
+  τ.listOf = υ -> φ,
+  χ.str = υ
+) =>
+{config = α; lib = δ;} ->
+{ config = {services = {nginx = κ; oauth2_proxy = ι;};};
+  options =
+    {services = {oauth2_proxy = {nginx = {proxy = μ; virtualHosts = ψ;};};};};
+}

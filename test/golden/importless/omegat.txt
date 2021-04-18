@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      pname = String;
+      src = ζ;
+      unpackCmd = String;
+      version = String;
+    } ->
+    η,
+  β.licenses = θ,
+  β.maintainers = ι,
+  β.t184256 = ε,
+  θ.gpl3Plus = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  jdk = κ;
+  makeWrapper = γ;
+  stdenv = α;
+  unzip = γ;
+} ->
+η

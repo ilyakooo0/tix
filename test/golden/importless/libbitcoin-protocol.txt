@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [ζ];
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      propagatedBuildInputs = [θ];
+      src = ι;
+    } ->
+    κ,
+  β.asymmetric = ε,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.agpl3 = δ,
+  ν.linux = [ζ],
+  ξ.darwin = [ζ]
+) =>
+{ autoreconfHook = η;
+  boost = ο;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  libbitcoin = γ;
+  pkgconfig = η;
+  secp256k1 = γ;
+  stdenv = α;
+  zeromq = θ;
+} ->
+κ

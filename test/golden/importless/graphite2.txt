@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      checkInputs = [ε];
+      doCheck = Bool;
+      meta =
+        {description = String; license = ζ; maintainers = [η]; platforms = θ;};
+      nativeBuildInputs = [ι];
+      patches = κ;
+      pname = String;
+      src = λ;
+      version = String;
+    } ->
+    μ,
+  α.optionals = β -> [Path] -> κ,
+  ν.lib = α,
+  γ.licenses = ξ,
+  γ.maintainers = ο,
+  γ.platforms = π,
+  ξ.lgpl21 = ζ,
+  ο.raskin = η,
+  π.unix = θ
+) =>
+{ cmake = ι;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  freetype = δ;
+  pkgconfig = ι;
+  python = ε;
+  stdenv = α;
+} ->
+μ

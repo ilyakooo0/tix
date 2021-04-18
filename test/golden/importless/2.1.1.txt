@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      buildPhase = String;
+      doCheck = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          knownVulnerabilities = [String];
+          license = ε;
+          maintainers = [ζ];
+          platforms = [String];
+        };
+      name = String;
+      postPatch = String;
+      preBuild = String;
+      src = η;
+    } ->
+    θ,
+  ι.licenses = κ,
+  ι.maintainers = λ,
+  ι.mdaiter = ζ,
+  ι.optional = γ -> [μ] -> [δ],
+  ι.optionals = β -> [Null] -> [δ],
+  κ.asl20 = ε
+) =>
+{ Carbon = Null;
+  Cocoa = Null;
+  erlang = δ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  git = δ;
+  lib = ι;
+  pam = μ;
+  stdenv = α;
+  unzip = δ;
+  wget = δ;
+  which = δ;
+} ->
+θ

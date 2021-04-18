@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_LINK = String;
+      buildInputs = [γ];
+      configureFlags = [String];
+      doCheck = Bool;
+      meta =
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      name = String;
+      nativeBuildInputs = [ζ];
+      postInstall = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+    } ->
+    ι,
+  α.optional = Bool -> κ -> [γ],
+  α.optionals = Bool -> [String] -> [String],
+  β.licenses = λ,
+  β.platforms = μ,
+  λ.asl20 = δ,
+  μ.unix = ε,
+  ν.lib = α,
+  ξ.lib = α,
+  ο.lib = α,
+  π.lib = α,
+  ρ.lib = α
+) =>
+{ curl = γ;
+  db = σ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gmp = γ;
+  libmysqlclient = κ;
+  librdf_rasqal = η;
+  libxml2 = γ;
+  libxslt = γ;
+  openssl = γ;
+  pcre = γ;
+  perl = ζ;
+  pkgconfig = ζ;
+  postgresql = τ;
+  sqlite = υ;
+  stdenv = α;
+  withBdb = Bool;
+  withMysql = Bool;
+  withPostgresql = Bool;
+  withSqlite = Bool;
+} ->
+ι

@@ -1,0 +1,62 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.isClang = β,
+  α.mkDerivation =
+    { CXXFLAGS = γ;
+      buildInputs = [δ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      patches = [Path];
+      propagatedBuildInputs = [ι];
+      src = κ;
+    } ->
+    λ,
+  α.optionalString = β -> String -> γ,
+  μ.licenses = ν,
+  μ.maintainers = ξ,
+  μ.optional = Bool -> Null -> [ι],
+  μ.optionals = Bool -> [ο] -> [ι],
+  μ.platforms = π,
+  μ.ttuegel = ζ,
+  ρ.lib = α,
+  σ.cc = α,
+  ν.gpl2 = ε,
+  π.all = η
+) =>
+{ cairo = ο;
+  cmake = θ;
+  curl = ο;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  fontconfig = ι;
+  freetype = ι;
+  gobject-introspection = Null;
+  introspectionSupport = Bool;
+  lcms = ο;
+  lib = μ;
+  libiconv = δ;
+  libintl = δ;
+  libjpeg = ι;
+  minimal = Bool;
+  ninja = θ;
+  openjpeg = ι;
+  pkgconfig = θ;
+  poppler_data = τ;
+  qt5Support = Bool;
+  qtbase = Null;
+  stdenv = α;
+  suffix = String;
+  utils = Bool;
+  withData = Bool;
+  zlib = ι;
+} ->
+λ

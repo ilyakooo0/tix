@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preAutoreconf = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.teto = ε,
+  κ.gpl3 = δ,
+  μ.linux = ζ
+) =>
+{ autoreconfHook = η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gobject-introspection = γ;
+  gtk-doc = γ;
+  json-glib = γ;
+  libxcb = γ;
+  pkgconfig = η;
+  stdenv = α;
+  which = η;
+  xorgproto = γ;
+} ->
+ι

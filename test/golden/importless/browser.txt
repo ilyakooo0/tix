@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      meta =
+        { description = String;
+          homepage = δ;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  ι.meta = λ,
+  β.dotlambda = ζ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.unlicense = ε,
+  ξ.linux = η,
+  λ.homepage = δ
+) =>
+{ cmake = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  qtbase = γ;
+  stdenv = α;
+  wrapQtAppsHook = θ;
+} ->
+κ

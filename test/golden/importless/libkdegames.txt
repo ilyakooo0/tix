@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl2 = δ,
+  γ.lheckemann = ε
+) =>
+{ extra-cmake-modules = ζ;
+  kdeclarative = η;
+  kdelibs4support = η;
+  kdnssd = η;
+  kdoctools = ζ;
+  knewstuff = η;
+  lib = α;
+  libsndfile = η;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+  openal = η;
+  qtdeclarative = η;
+  qtquickcontrols = η;
+} ->
+θ

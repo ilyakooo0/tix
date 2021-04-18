@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.isDarwin = β,
+  α.isLinux = γ,
+  α.lib = δ,
+  ε.version = ζ,
+  δ.optional = γ -> η -> [θ],
+  δ.optionalString = β -> String -> ι,
+  δ.versionAtLeast = ζ -> String -> Bool
+) =>
+{ alsaLib = η;
+  gst-plugins-base = θ;
+  gstreamer = θ;
+  libpulseaudio = θ;
+  pkgconfig = κ;
+  qtModule =
+    { NIX_LDFLAGS = ι;
+      buildInputs = [θ];
+      name = String;
+      nativeBuildInputs = [κ];
+      outputs = [String];
+      qmakeFlags = [String];
+      qtInputs = [ε];
+    } ->
+    λ;
+  qtbase = ε;
+  qtdeclarative = ε;
+  stdenv = α;
+  wayland = μ;
+} ->
+λ

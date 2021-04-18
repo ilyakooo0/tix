@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.attrValues = β -> γ,
+  α.filter = (δ -> Bool) -> γ -> ε,
+  α.maintainers = ζ,
+  α.nixType = δ -> String,
+  α.offline = η,
+  α.substring = Integer -> Integer -> String -> θ,
+  ι.buildNodePackage =
+    { deps = ε;
+      meta = {description = String; homepage = String; maintainers = [η];};
+      name = String;
+      rev = String;
+      src = κ;
+      version = θ;
+    } ->
+    λ,
+  ι.override = {generated = Path; self = β;} -> β,
+  μ.strings = α
+) =>
+{ fetchgit = {rev = String; sha256 = String; url = String;} -> κ;
+  lib = α;
+  nodePackages = ι;
+} ->
+λ

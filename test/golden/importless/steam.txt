@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  α.steam = γ,
+  δ.maintainers = ε,
+  δ.mkEnableOption = String -> ζ,
+  δ.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      hardware =
+        { opengl = {driSupport32Bit = Bool; enable = Bool;};
+          pulseaudio = {support32Bit = β;};
+          steam-hardware = {enable = Bool;};
+        };
+    } ->
+    ι,
+  δ.mkg20001 = κ,
+  λ.steam = θ,
+  γ.enable = η,
+  μ.programs = α,
+  ν.pulseaudio = α,
+  ξ.hardware = ν
+) =>
+{config = α; lib = δ; pkgs = λ;} ->
+{ config = ι;
+  meta = {maintainers = [κ];};
+  options = {programs = {steam = {enable = ζ;};};};
+}

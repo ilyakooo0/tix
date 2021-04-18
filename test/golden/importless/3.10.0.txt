@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.licenses = β,
+  α.linux = γ,
+  α.mkDerivation =
+    { buildFlags = [String];
+      buildInputs = [String];
+      configureFlags = [String];
+      installTargets = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [δ];
+          platforms = γ;
+        };
+      patchPhase = String;
+      pname = String;
+      postBuild = String;
+      prefixKey = String;
+      src = ε;
+      version = String;
+    } ->
+    ζ,
+  β.lgpl2 = δ,
+  β.qpl = δ,
+  η.lib = α,
+  θ.platforms = α,
+  ι.lib = θ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ε;
+  ncurses = String;
+  stdenv = α;
+  xlibsWrapper = String;
+} ->
+ζ

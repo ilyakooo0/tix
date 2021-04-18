@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.enable = β,
+  α.powerdns = γ,
+  δ.mkEnableOption = String -> ε,
+  δ.mkIf =
+    β ->
+    { systemd =
+        { services =
+            { pdns =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { CapabilityBoundingSet = String;
+                      ExecStart = String;
+                      ExecStartPre = String;
+                      NoNewPrivileges = Bool;
+                      PrivateDevices = Bool;
+                      ProtectHome = Bool;
+                      ProtectSystem = String;
+                      Restart = String;
+                      RestartSec = String;
+                      RestrictAddressFamilies = String;
+                      StartLimitInterval = String;
+                    };
+                  unitConfig = {Documentation = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  δ.mkOption = {default = String; description = String; type = η;} -> θ,
+  δ.types = ι,
+  κ.writeTextDir = String -> String -> λ,
+  μ.services = α,
+  ν.powerdns = α,
+  ξ.services = ν,
+  ι.lines = η
+) =>
+{config = α; lib = δ; pkgs = κ;} ->
+{ config = ζ;
+  options = {services = {powerdns = {enable = ε; extraConfig = θ;};};};
+}

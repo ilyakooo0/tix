@@ -1,0 +1,31 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      installPhase = String;
+      meta =
+        { description = String;
+          hydraPlatforms = ∀ α. α;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      phases = [String];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.licenses = κ,
+  γ.maintainers = λ,
+  γ.obadz = ζ,
+  γ.platforms = μ,
+  κ.gpl2Plus = ε,
+  μ.linux = η
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  makeWrapper = δ;
+  python2 = ν;
+  stdenv = β;
+} ->
+ι

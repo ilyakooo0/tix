@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
+λ11 μ12 ν13 ξ14 ο15 π16 ρ17 σ18 τ19.
+( α.callPackage =
+    Path ->
+    {} ->
+    { artifactId = String;
+      groupId = String;
+      sha512 = β;
+      type = γ;
+      version = String;
+    } ->
+    δ,
+  α.javaPackages = ε,
+  α.map = (ζ -> δ) -> [{sha512 = String; type = String;}] -> η,
+  ζ.sha512 = β,
+  ζ.type = γ,
+  θ.sha512 = ι,
+  θ.type = κ,
+  λ.sha512 = μ,
+  λ.type = ν,
+  ξ.sha512 = ο,
+  ξ.type = π,
+  ρ.sha512 = σ,
+  ρ.type = τ,
+  υ.sha512 = φ,
+  υ.type = χ,
+  ψ.sha512 = ω,
+  ψ.type = α1,
+  β2.sha512 = γ3,
+  β2.type = δ4,
+  ε5.sha512 = ζ6,
+  ε5.type = η7,
+  θ8.sha512 = ι9,
+  θ8.type = κ10
+) =>
+{pkgs = α;} ->
+{ animalSniffer_1_11 = η;
+  fetchMaven =
+    { artifactId = String;
+      groupId = String;
+      sha512 = β;
+      type = γ;
+      version = String;
+    } ->
+    δ;
+  mavenClean_2_5 = λ11;
+  mavenCompiler_3_1 = μ12;
+  mavenEnforcer_1_3_1 = ν13;
+  mavenInstall_2_4 = ξ14;
+  mavenJar_2_4 = ο15;
+  mavenReplacer_1_5_3 = π16;
+  mavenResources_2_6 = ρ17;
+  mavenSurefire_2_12_4 = σ18;
+  mavenSurefire_2_17 = τ19;
+}

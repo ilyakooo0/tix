@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.freetds = β,
+  γ.attrNames = β -> δ,
+  γ.concatStrings = ε -> ζ,
+  γ.length = δ -> Integer,
+  γ.literalExample = String -> η,
+  γ.mapAttrsToList = (θ -> ι -> String) -> β -> ε,
+  γ.mkIf =
+    Bool ->
+    { environment =
+        { etc = {freetds.conf = {text = ζ;};};
+          variables =
+            {FREETDS = String; FREETDSCONF = String; SYBASE = String;};
+        };
+    } ->
+    κ,
+  γ.mkOption =
+    {default = {}; description = String; example = η; type = λ;} -> μ,
+  γ.types = ν,
+  ξ.environment = α,
+  ν.attrsOf = ο -> λ,
+  π.str = ο
+) =>
+{config = α; lib = γ; pkgs = ρ;} ->
+{config = κ; options = {environment = {freetds = μ;};};}

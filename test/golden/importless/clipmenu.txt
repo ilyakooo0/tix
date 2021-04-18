@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.clipmenu = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        { user =
+            { services =
+                { clipmenu =
+                    { after = [String];
+                      description = String;
+                      enable = Bool;
+                      serviceConfig = {ExecStart = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption =
+    {default = θ; defaultText = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.clipmenu = θ,
+  β.enable = ε,
+  β.package = ζ,
+  ν.services = α,
+  λ.package = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = η; options = {services = {clipmenu = {enable = δ; package = κ;};};};}

@@ -1,0 +1,4 @@
+∀ α β.
+( α.mkDefault = {hardware = {enableRedistributableFirmware = Bool;};} -> β
+) =>
+{lib = α;} -> {config = β;}

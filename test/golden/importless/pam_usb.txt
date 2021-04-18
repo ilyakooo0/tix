@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.services = β,
+  α.usb = γ,
+  δ.any = ε -> ζ -> Bool,
+  δ.attrByPath = [String] -> Bool -> ε,
+  δ.attrValues = β -> ζ,
+  δ.mkIf =
+    Bool ->
+    { environment = {systemPackages = [η];};
+      security =
+        { wrappers =
+            {pmount = {source = String;}; pumount = {source = String;};};
+        };
+    } ->
+    θ,
+  δ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  δ.types = λ,
+  μ.pmount = η,
+  γ.enable = Bool,
+  ν.pam = α,
+  ξ.security = ν,
+  ο.pam = α,
+  π.security = ο,
+  λ.bool = ι
+) =>
+{config = α; lib = δ; pkgs = μ;} ->
+{config = θ; options = {security = {pam = {usb = {enable = κ;};};};};}

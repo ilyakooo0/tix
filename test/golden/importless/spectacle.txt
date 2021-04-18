@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η.
+(α.maintainers = β, α.ttuegel = γ) => { extra-cmake-modules = δ;
+  kconfig = ε;
+  kcoreaddons = ε;
+  kdbusaddons = ε;
+  kdeclarative = ε;
+  kdoctools = δ;
+  ki18n = ε;
+  kio = ε;
+  kipi-plugins = ε;
+  knewstuff = ε;
+  knotifications = ε;
+  kscreen = ε;
+  kwayland = ε;
+  kwidgetsaddons = ε;
+  kwindowsystem = ε;
+  kxmlgui = ε;
+  lib = α;
+  libkipi = ε;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      postPatch = String;
+      propagatedUserEnvPkgs = [ε];
+    } ->
+    ζ;
+  qttools = η;
+  qtx11extras = ε;
+  xcb-util-cursor = ε;
+} ->
+ζ

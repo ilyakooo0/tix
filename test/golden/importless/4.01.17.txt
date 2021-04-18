@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.makeLibraryPath = [γ] -> String,
+  α.mkDerivation =
+    { dontPatchELF = Bool;
+      dontStrip = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  α.system = String,
+  ι.lib = α,
+  κ.hostPlatform = α,
+  λ.hostPlatform = α,
+  β.joko = ε,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.unfree = δ,
+  ξ.linux = ζ
+) =>
+{ cups = γ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  libusb-compat-0_1 = γ;
+  stdenv = α;
+} ->
+θ

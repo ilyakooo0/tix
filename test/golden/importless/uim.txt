@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enabled = String,
+  α.uim = β,
+  γ.uim = δ,
+  ε.mkIf =
+    Bool ->
+    { environment =
+        { variables =
+            { GTK_IM_MODULE = String;
+              QT_IM_MODULE = String;
+              XMODIFIERS = String;
+            };
+        };
+      i18n = {inputMethod = {package = δ;};};
+      services = {xserver = {displayManager = {sessionCommands = String;};};};
+    } ->
+    ζ,
+  ε.mkOption =
+    {default = String; description = String; example = String; type = η;} -> θ,
+  ε.types = ι,
+  κ.inputMethod = α,
+  λ.i18n = κ,
+  μ.inputMethod = α,
+  ν.i18n = μ,
+  ι.enum = [String] -> η
+) =>
+{config = α; lib = ε; pkgs = γ;} ->
+{config = ζ; options = {i18n = {inputMethod = {uim = {toolbar = θ;};};};};}

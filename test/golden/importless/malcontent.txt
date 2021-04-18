@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.enable = β,
+  γ.malcontent = δ,
+  γ.malcontent-ui = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [δ];};
+      services =
+        {accounts-daemon = {enable = Bool;}; dbus = {packages = [ζ];};};
+    } ->
+    η,
+  θ.out = ζ,
+  ι.malcontent = α,
+  κ.services = ι,
+  λ.malcontent = θ
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {services = {malcontent = {enable = ε;};};};}

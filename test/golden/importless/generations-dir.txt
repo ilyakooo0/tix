@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.enable = β,
+  α.generationsDir = γ,
+  δ.mkIf =
+    β ->
+    { system =
+        { boot = {loader = {id = String; kernelFile = ε;};};
+          build = {installBootLoader = ζ;};
+        };
+    } ->
+    η,
+  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  δ.types = κ,
+  λ.bash = μ,
+  λ.coreutils = ν,
+  λ.gnugrep = ν,
+  λ.gnused = ν,
+  λ.hostPlatform = ξ,
+  λ.substituteAll =
+    {bash = μ; copyKernels = ο; isExecutable = Bool; path = [ν]; src = Path;} ->
+    ζ,
+  γ.copyKernels = ο,
+  π.loader = α,
+  ρ.boot = π,
+  σ.generationsDir = α,
+  τ.loader = σ,
+  υ.boot = τ,
+  κ.bool = θ,
+  φ.bool = χ,
+  ξ.platform = ψ,
+  ω.stdenv = λ,
+  ψ.kernelTarget = ε
+) =>
+{config = α; lib = δ; pkgs = λ;} ->
+{ config = η;
+  options =
+    {boot = {loader = {generationsDir = {copyKernels = ι; enable = α1;};};};};
+}

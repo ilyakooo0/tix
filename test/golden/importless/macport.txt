@@ -1,0 +1,63 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { CFLAGS = String;
+      LDFLAGS = String;
+      buildInputs = [γ];
+      configureFlags = [String];
+      doCheck = Bool;
+      emacsName = String;
+      enableParallelBuilding = Bool;
+      hiresSrc = δ;
+      macportSrc = δ;
+      macportVersion = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      postUnpack = String;
+      src = δ;
+      version = String;
+    } ->
+    ι,
+  β.jwiegley = ζ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.matthewbauer = ζ,
+  β.platforms = μ,
+  κ.gpl3Plus = ε,
+  μ.darwin = η
+) =>
+{ AppKit = γ;
+  Carbon = γ;
+  Cocoa = γ;
+  GSS = γ;
+  IOKit = γ;
+  ImageCaptureCore = γ;
+  ImageIO = γ;
+  OSAKit = γ;
+  Quartz = γ;
+  QuartzCore = γ;
+  WebKit = γ;
+  autoconf = θ;
+  automake = θ;
+  fetchurl = {sha256 = String; url = String;} -> δ;
+  gettext = γ;
+  gnutls = γ;
+  libxml2 = γ;
+  ncurses = γ;
+  pkgconfig = θ;
+  stdenv = α;
+  texinfo = γ;
+} ->
+ι

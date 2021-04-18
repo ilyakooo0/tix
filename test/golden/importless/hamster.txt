@@ -1,0 +1,21 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      services = {dbus = {packages = [ζ];};};
+    } ->
+    η,
+  θ.hamster = ε,
+  θ.maintainers = ι,
+  κ.hamster = α,
+  λ.programs = κ,
+  μ.meta = θ,
+  ν.hamster = μ
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{ config = η;
+  meta = {maintainers = ι;};
+  options = {programs = {hamster = {enable = δ;};};};
+}

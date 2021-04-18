@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      createFindlibDestdir = Bool;
+      installPhase = String;
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      name = String;
+      preConfigure = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  ι.lgpl2 = δ,
+  κ.vbgl = ε
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  findlib = γ;
+  freetype = ζ;
+  ghostscript = γ;
+  giflib = ζ;
+  graphicsmagick = γ;
+  libXpm = ζ;
+  libjpeg = ζ;
+  libpng = ζ;
+  libtiff = ζ;
+  ocaml = γ;
+  omake = γ;
+  stdenv = α;
+} ->
+θ

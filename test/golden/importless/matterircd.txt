@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  γ.meta = δ,
+  β.fpletz = ε,
+  β.licenses = ζ,
+  β.maintainers = η,
+  β.platforms = θ,
+  ζ.mit = ι,
+  θ.unix = κ,
+  δ.homepage = λ
+) =>
+{ buildGoPackage =
+    { goPackagePath = String;
+      meta =
+        { description = String;
+          homepage = λ;
+          license = ι;
+          maintainers = [ε];
+          platforms = κ;
+        };
+      pname = String;
+      src = γ;
+      version = String;
+    } ->
+    μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> γ;
+  stdenv = α;
+} ->
+μ

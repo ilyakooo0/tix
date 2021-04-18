@@ -1,0 +1,42 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      enableParallelBuilding = Bool;
+      meta =
+        { branch = String;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = [η];
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      postPatch = String;
+      preFixup = ι;
+      qmakeFlags = [String];
+      src = κ;
+    } ->
+    λ,
+  α.optionalString = β -> String -> ι,
+  α.optionals = μ -> [ν] -> [δ],
+  α.qwt = ε,
+  ξ.lib = α,
+  γ.maintainers = ο,
+  γ.platforms = π,
+  ρ.licenses = α,
+  σ.lib = ρ,
+  ο.bjornfor = ζ,
+  π.linux = [η],
+  τ.darwin = [η],
+  υ.lib = α
+) =>
+{ AGL = ν;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  qmake4Hook = θ;
+  qt4 = δ;
+  stdenv = α;
+} ->
+λ

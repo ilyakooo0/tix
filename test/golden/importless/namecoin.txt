@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.AndersonTorres = ε,
+  β.doublec = ε,
+  β.infinisil = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.optional = Bool -> String -> μ,
+  β.optionals = Bool -> [ν] -> [γ],
+  β.platforms = ξ,
+  β.toString = μ -> String,
+  κ.mit = δ,
+  ξ.linux = ζ
+) =>
+{ autoreconfHook = η;
+  boost = γ;
+  db4 = γ;
+  eject = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  hexdump = η;
+  libevent = γ;
+  miniupnpc = γ;
+  openssl = γ;
+  pkgconfig = η;
+  protobuf = ν;
+  qrencode = ν;
+  qt4 = ν;
+  stdenv = α;
+  withGui = Bool;
+} ->
+ι

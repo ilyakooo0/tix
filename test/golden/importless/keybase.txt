@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.keybase = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        { user =
+            { services =
+                { keybase =
+                    { description = String;
+                      environment = {KEYBASE_SERVICE_TYPE = String;};
+                      serviceConfig =
+                        { EnvironmentFile = [String];
+                          ExecStart = String;
+                          PrivateTmp = Bool;
+                          Restart = String;
+                          Type = String;
+                        };
+                      unitConfig = {ConditionUser = String;};
+                      wantedBy = [String];
+                    };
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.keybase = ε,
+  β.enable = δ,
+  λ.services = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{config = ζ; options = {services = {keybase = {enable = θ;};};};}

@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { downloadPhase = String;
+      impureEnvVars = γ;
+      installPhase = String;
+      meta = {};
+      name = String;
+      outputHash = δ;
+      outputHashAlgo = String;
+      outputHashMode = String;
+      phases = [String];
+    } ->
+    ε,
+  α.proxyImpureEnvVars = γ,
+  ζ.fetchers = α,
+  η.lib = ζ
+) =>
+{rebar3 = θ; stdenv = α;} ->
+{meta = {}; name = ι; sha256 = δ; src = κ; version = λ;} -> ε

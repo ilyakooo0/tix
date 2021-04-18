@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.powertop = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { powertop =
+                { after = [String];
+                  description = String;
+                  path = [ζ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      RemainAfterExit = String;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  θ.kmod = ζ,
+  β.enable = ε,
+  ι.powerManagement = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = η; options = {powerManagement = {powertop = {enable = δ;};};};}

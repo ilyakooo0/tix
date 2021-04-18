@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.bsd3 = β,
+  α.fdl12 = β,
+  α.gpl2 = β,
+  α.lgpl21 = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.peterhoeg = ε,
+  α.platforms = ζ,
+  ζ.linux = η
+) =>
+{ extra-cmake-modules = θ;
+  kdoctools = θ;
+  kio = ι;
+  kparts = ι;
+  kwindowsystem = ι;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ι];
+      meta =
+        {homepage = String; license = [β]; maintainers = [ε]; platforms = η;};
+      name = String;
+      nativeBuildInputs = [θ];
+    } ->
+    κ;
+} ->
+κ

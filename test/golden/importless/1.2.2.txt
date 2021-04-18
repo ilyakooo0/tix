@@ -1,0 +1,42 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      doCheck = Bool;
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      pname = String;
+      postConfigure = String;
+      postInstall = String;
+      postUnpack = String;
+      preConfigure = String;
+      src = ∀ α. α;
+      version = String;
+    } ->
+    θ,
+  ι.versionAtLeast = κ -> String -> Bool,
+  δ.version = κ,
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.lgpl21Plus = ε,
+  μ.henrytill = ζ,
+  ν.all = η
+) =>
+{ aspcud = ξ;
+  curl = δ;
+  fetchurl = {sha256 = String; url = String;} -> ο;
+  lib = ι;
+  makeWrapper = δ;
+  ncurses = δ;
+  ocaml = δ;
+  stdenv = β;
+  unzip = δ;
+} ->
+θ

@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.isDarwin = β,
+  α.lib = γ,
+  γ.AndersonTorres = δ,
+  γ.licenses = ε,
+  γ.maintainers = ζ,
+  γ.offline = δ,
+  γ.optional = Bool -> String -> η,
+  γ.optionals = Bool -> [String] -> [String],
+  γ.platforms = θ,
+  γ.toString = η -> String,
+  ε.mit = ι,
+  θ.unix = κ
+) =>
+{ AppKit = λ;
+  autoreconfHook = μ;
+  boost = ν;
+  db48 = ν;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ξ;
+  glib = ν;
+  libevent = ν;
+  miniupnpc = ν;
+  mkDerivation =
+    { buildInputs = [ν];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { broken = β;
+          description = String;
+          homepage = String;
+          license = ι;
+          longDescription = String;
+          maintainers = [δ];
+          platforms = κ;
+        };
+      name = String;
+      nativeBuildInputs = [μ];
+      src = ξ;
+      version = String;
+    } ->
+    ο;
+  openssl = ν;
+  pkgconfig = μ;
+  protobuf = ν;
+  qrencode = π;
+  qtbase = π;
+  qttools = π;
+  stdenv = α;
+  utillinux = ν;
+  withGui = Bool;
+  zeromq = ν;
+  zlib = ν;
+} ->
+ο

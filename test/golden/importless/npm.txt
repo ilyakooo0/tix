@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.npm = β,
+  γ.lines = δ,
+  γ.literalExample = String -> ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { environment =
+        { etc = {npmrc = {text = θ;};};
+          systemPackages = [ι];
+          variables = {NPM_CONFIG_GLOBALCONFIG = String;};
+        };
+    } ->
+    κ,
+  γ.mkOption =
+    {default = String; description = String; example = String; type = δ;} -> λ,
+  γ.types = μ,
+  ν.npm = ξ,
+  β.enable = η,
+  β.npmrc = θ,
+  β.package = ι,
+  ο.programs = α,
+  π.types = γ,
+  μ.path = ρ,
+  σ.nodePackages = ν
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = κ;
+  options = {programs = {npm = {enable = ζ; npmrc = λ; package = τ;};};};
+}

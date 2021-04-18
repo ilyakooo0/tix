@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  γ.ipfs = δ,
+  β.fpletz = ε,
+  β.licenses = ζ,
+  β.maintainers = η,
+  β.platforms = θ,
+  ζ.mit = ι,
+  θ.unix = κ
+) =>
+{ buildGoModule =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = ι;
+          maintainers = [ε];
+          platforms = κ;
+        };
+      passthru = {tests = {ipfs = δ;};};
+      pname = String;
+      postInstall = String;
+      postUnpack = String;
+      rev = String;
+      sourceRoot = String;
+      src = λ;
+      subPackages = [String];
+      vendorSha256 = Null;
+      version = String;
+    } ->
+    μ;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  nixosTests = γ;
+  stdenv = α;
+} ->
+μ

@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configurePhase = String;
+      installPhase = String;
+      meta = {description = String; license = δ; maintainers = [ε];};
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = String;
+      version = String;
+    } ->
+    η,
+  β.jD91mZM2 = ε,
+  β.licenses = θ,
+  β.maintainers = ι,
+  θ.lgpl3 = δ
+) =>
+{ cmake = ζ;
+  fetchFromGitHub = κ;
+  glib = γ;
+  gtk2 = γ;
+  gtk3 = γ;
+  stdenv = α;
+  vala = ζ;
+} ->
+η

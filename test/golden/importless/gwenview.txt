@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.getBin = β -> γ,
+  α.licenses = δ,
+  α.ttuegel = ε,
+  δ.fdl12 = ζ,
+  δ.gpl2 = ζ,
+  η.maintainers = α
+) =>
+{ baloo = γ;
+  exiv2 = γ;
+  extra-cmake-modules = θ;
+  kactivities = γ;
+  kdelibs4support = γ;
+  kdoctools = θ;
+  kinit = β;
+  kio = γ;
+  kipi-plugins = γ;
+  lcms2 = γ;
+  lib = α;
+  libkdcraw = γ;
+  libkipi = γ;
+  mkDerivation =
+    { buildInputs = [γ];
+      meta = {license = [ζ]; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [θ];
+      propagatedUserEnvPkgs = [γ];
+    } ->
+    ι;
+  phonon = γ;
+  qtimageformats = γ;
+  qtsvg = γ;
+  qtx11extras = γ;
+} ->
+ι

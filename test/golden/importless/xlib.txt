@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { mesonFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = δ;
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.licenses = κ,
+  β.platforms = λ,
+  β.teams = μ,
+  κ.lgpl21Plus = γ,
+  μ.members = δ,
+  ν.gnome = μ,
+  λ.unix = ε
+) =>
+{ docbook-xsl-nons = ζ;
+  docbook_xml_dtd_43 = ζ;
+  fetchFromGitLab =
+    { domain = String;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    θ;
+  gdk-pixbuf = η;
+  gtk-doc = ζ;
+  libX11 = η;
+  meson = ζ;
+  ninja = ζ;
+  pkg-config = ζ;
+  stdenv = α;
+} ->
+ι

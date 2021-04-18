@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.CoreFoundation = β,
+  α.WebKit = β,
+  γ.isDarwin = δ,
+  γ.lib = ε,
+  ζ.frameworks = α,
+  η.apple_sdk = ζ,
+  θ.frameworks = α,
+  ι.apple_sdk = θ,
+  ε.optional = κ -> [β] -> λ,
+  ε.optionalString = δ -> String -> μ
+) =>
+{ darwin = α;
+  qtModule =
+    { NIX_LDFLAGS = μ;
+      buildInputs = λ;
+      name = String;
+      outputs = [String];
+      qtInputs = [ν];
+    } ->
+    ξ;
+  qtdeclarative = ν;
+  qtwebengine = ν;
+  stdenv = γ;
+} ->
+ξ

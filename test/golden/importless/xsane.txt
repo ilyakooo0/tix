@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.gpl2Plus = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { buildInputs = [Null];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [δ];
+          platforms = ε;
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      preConfigure = String;
+      src = η;
+    } ->
+    θ,
+  α.optional = Bool -> Null -> [Null],
+  α.platforms = ι,
+  κ.licenses = α,
+  λ.lib = κ,
+  γ.peti = δ,
+  μ.lib = α,
+  ι.linux = ε,
+  ν.lib = α,
+  ξ.lib = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  gimp = Null;
+  gimpSupport = Bool;
+  gtk2 = Null;
+  libX11 = Null;
+  libpng = Null;
+  libusb-compat-0_1 = Null;
+  pkgconfig = ζ;
+  sane-backends = Null;
+  sane-frontends = Null;
+  stdenv = α;
+} ->
+θ

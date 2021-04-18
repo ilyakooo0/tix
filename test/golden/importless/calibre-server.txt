@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.calibre-server = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        { services =
+            { calibre-server =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    {ExecStart = String; Restart = String; User = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {calibre-server = {gid = η;};};
+          users = {calibre-server = {group = String; uid = θ;};};
+        };
+    } ->
+    ι,
+  γ.mkOption = {description = String; type = κ;} -> λ,
+  γ.types = μ,
+  ν.calibre = ζ,
+  β.enable = ε,
+  ξ.services = α,
+  ο.gids = α,
+  π.ids = ο,
+  ρ.uids = α,
+  σ.ids = ρ,
+  μ.path = κ
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = ι;
+  options = {services = {calibre-server = {enable = δ; libraryDir = λ;};};};
+}

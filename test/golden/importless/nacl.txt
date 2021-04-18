@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [ζ];
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postInstall = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  α.optionals = Bool -> [Null] -> [γ],
+  κ.lib = α,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.mog = ε,
+  β.platforms = ν,
+  λ.gpl3Plus = δ,
+  ν.linux = [ζ],
+  ξ.darwin = [ζ]
+) =>
+{ boost = γ;
+  cmake = γ;
+  cppunit = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gnuradio = γ;
+  libsodium = γ;
+  makeWrapper = γ;
+  pkgconfig = η;
+  python = Null;
+  pythonSupport = Bool;
+  stdenv = α;
+  swig = Null;
+  uhd = γ;
+} ->
+ι

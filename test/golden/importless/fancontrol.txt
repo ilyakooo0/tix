@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.fancontrol = β,
+  γ.cfg = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    ζ ->
+    { systemd =
+        { services =
+            { fancontrol =
+                { after = [String];
+                  description = String;
+                  serviceConfig = {ExecStart = String; Type = String;};
+                  unitConfig = {Documentation = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption =
+    {default = Null; description = String; example = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.writeText = String -> μ -> ν,
+  β.enable = ζ,
+  ξ.hardware = α,
+  δ.config = μ,
+  κ.nullOr = ο -> θ,
+  π.lines = ο
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = η; options = {hardware = {fancontrol = {config = ι; enable = ε;};};};}

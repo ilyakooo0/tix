@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.licenses = β,
+  α.ttuegel = γ,
+  β.bsd3 = δ,
+  β.gpl2 = δ,
+  ε.maintainers = α
+) =>
+{ extra-cmake-modules = ζ;
+  ffmpeg_3 = η;
+  kio = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {license = [δ]; maintainers = [γ];};
+      name = String;
+      nativeBuildInputs = [ζ];
+    } ->
+    θ;
+} ->
+θ

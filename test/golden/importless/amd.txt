@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      name = String;
+      sourceRoot = String;
+      src = ζ;
+    } ->
+    η,
+  β.licenses = θ,
+  β.platforms = ι,
+  θ.unfreeRedistributableFirmware = δ,
+  ι.linux = ε
+) =>
+{firmwareLinuxNonfree = ζ; libarchive = γ; stdenv = α;} -> η

@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.platforms = δ,
+  α.willibutz = ε,
+  ζ.prometheus-exporters = η,
+  β.mit = θ,
+  δ.unix = ι,
+  η.nextcloud = κ
+) =>
+{ buildGoPackage =
+    { doCheck = Bool;
+      goDeps = Path;
+      goPackagePath = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [ε];
+          platforms = ι;
+        };
+      passthru = {tests = {nextcloud = κ;};};
+      pname = String;
+      src = λ;
+      version = String;
+    } ->
+    μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  lib = α;
+  nixosTests = ζ;
+} ->
+μ

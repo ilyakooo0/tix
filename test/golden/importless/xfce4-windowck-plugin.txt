@@ -1,0 +1,56 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      passthru = {updateScript = θ;};
+      pname = String;
+      preConfigure = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.gitLister = μ -> ν,
+  λ.updateScript =
+    { attrPath = String;
+      pname = String;
+      rev-prefix = String;
+      version = String;
+      versionLister = ν;
+    } ->
+    θ,
+  ι.homepage = μ,
+  β.licenses = ξ,
+  β.maintainers = ο,
+  β.platforms = π,
+  ξ.gpl2Plus = δ,
+  ο.volth = ε,
+  π.unix = ζ,
+  ρ.meta = ι
+) =>
+{ exo = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  gtk2 = γ;
+  imagemagick = γ;
+  intltool = η;
+  libwnck = γ;
+  libxfce4ui = γ;
+  libxfce4util = γ;
+  pkgconfig = η;
+  python3 = γ;
+  stdenv = α;
+  xfce = λ;
+  xfce4-dev-tools = γ;
+  xfce4-panel = γ;
+  xfconf = γ;
+} ->
+κ

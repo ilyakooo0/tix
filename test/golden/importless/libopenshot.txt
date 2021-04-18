@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { LIBOPENSHOT_AUDIO_DIR = γ;
+      UNITTEST++_INCLUDE_DIR = String;
+      buildInputs = [δ];
+      cmakeFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          longDescription = String;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      patchPhase = String;
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  β.AndersonTorres = ζ,
+  β.gpl3Plus = ε,
+  β.licenses = λ,
+  β.linux = η,
+  β.maintainers = μ,
+  β.platforms = ν
+) =>
+{ cmake = θ;
+  cppzmq = δ;
+  doxygen = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  ffmpeg_3 = δ;
+  imagemagick = δ;
+  libopenshot-audio = γ;
+  pkgconfig = θ;
+  python3 = δ;
+  qtbase = δ;
+  qtmultimedia = δ;
+  stdenv = α;
+  swig = δ;
+  unittest-cpp = δ;
+  zeromq = δ;
+} ->
+κ

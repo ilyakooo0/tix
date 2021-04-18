@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  α.mkDerivation =
+    { dontUnpack = Bool;
+      installPhase = String;
+      meta =
+        {description = String; homepage = String; license = γ; platforms = δ;};
+      name = String;
+      passthru = {gnomeFilePath = String; kdeFilePath = String;};
+      src = ε;
+    } ->
+    ζ,
+  β.licenses = η,
+  β.platforms = θ,
+  η.free = γ,
+  θ.all = δ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = α;} ->
+{ dracula = ζ;
+  gnome-dark = ζ;
+  mosaic-blue = ζ;
+  nineish = ζ;
+  nineish-dark-gray = ζ;
+  simple-blue = ζ;
+  simple-dark-gray = ζ;
+  simple-dark-gray-bootloader = ζ;
+  simple-dark-gray-bottom = ζ;
+  simple-light-gray = ζ;
+  simple-red = ζ;
+  stripes = ζ;
+  stripes-logo = ζ;
+}

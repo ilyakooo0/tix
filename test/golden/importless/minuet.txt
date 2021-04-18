@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ.
+( α.HaoZeke = β,
+  α.gpl3 = γ,
+  α.lgpl21 = γ,
+  α.licenses = δ,
+  α.maintainers = ε,
+  α.peterhoeg = β
+) =>
+{ drumstick = ζ;
+  extra-cmake-modules = η;
+  fluidsynth = ζ;
+  gettext = η;
+  kcoreaddons = ζ;
+  kcrash = ζ;
+  kdoctools = η;
+  lib = α;
+  mkDerivation =
+    { enableParallelBuilding = Bool;
+      meta = {license = [γ]; maintainers = [β];};
+      name = String;
+      nativeBuildInputs = [η];
+      propagatedBuildInputs = [ζ];
+    } ->
+    θ;
+  python = η;
+  qtdeclarative = η;
+  qtquickcontrols2 = ζ;
+  qtsvg = ζ;
+  qttools = ζ;
+} ->
+θ

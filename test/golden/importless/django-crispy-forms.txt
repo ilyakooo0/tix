@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ.
+( α.earvstedt = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  γ.mit = ε
+) =>
+{ buildPythonPackage =
+    { checkInputs = [ζ];
+      checkPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [β];
+        };
+      pname = String;
+      postUnpack = String;
+      src = η;
+      version = String;
+    } ->
+    θ;
+  django = ζ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  lib = α;
+  pytest-django = ζ;
+  pytest_4 = ζ;
+} ->
+θ

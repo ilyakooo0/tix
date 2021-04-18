@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.lib = β,
+  α.mkDerivation =
+    {installPhase = String; name = String; nativeBuildInputs = [γ]; src = δ;} ->
+    ε,
+  ζ.overrideAttrs =
+    ( η ->
+      { NIX_CFLAGS_COMPILE = String;
+        buildInputs = [θ];
+        cmakeFlags = [String];
+        meta =
+          { description = String;
+            homepage = String;
+            license = ι;
+            maintainers = [κ];
+            platforms = [String];
+          };
+        name = String;
+        nativeBuildInputs = [λ];
+        patches = [Path];
+        postInstall = String;
+        preConfigure = String;
+        src = δ;
+        version = String;
+      }
+    ) ->
+    μ,
+  ν.overrideAttrs = (ξ -> {src = δ; version = String;}) -> θ,
+  η.buildInputs = [θ],
+  η.cmakeFlags = [String],
+  η.nativeBuildInputs = [λ],
+  β.gnidorah = κ,
+  β.licenses = ο,
+  β.maintainers = π,
+  ο.gpl3 = ι
+) =>
+{ cmake = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
+  luajit = θ;
+  makeWrapper = λ;
+  mygui = ν;
+  openmw = ζ;
+  stdenv = α;
+} ->
+μ

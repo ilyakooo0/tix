@@ -1,0 +1,44 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( β.cc = γ,
+  β.lib = δ,
+  β.makeLibraryPath = [γ] -> ε,
+  β.mkDerivation =
+    { installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      nativeBuildInputs = [ι];
+      pname = String;
+      src = κ;
+      version = ∀ α. α;
+    } ->
+    λ,
+  μ.lib = β,
+  ν.cc = β,
+  δ.makeBinPath = [ξ] -> ο,
+  π.cransom = η,
+  π.licenses = ρ,
+  π.maintainers = σ,
+  π.platforms = τ,
+  ρ.asl20 = ζ,
+  τ.unix = θ
+) =>
+{ bash = ξ;
+  coreutils = ι;
+  fetchurl = {sha256 = υ; url = String;} -> κ;
+  gawk = ξ;
+  getopt = ξ;
+  jre = ξ;
+  makeWrapper = ι;
+  procps = ξ;
+  python = φ;
+  sha256 = υ;
+  stdenv = β;
+  version = χ;
+  which = ξ;
+} ->
+λ

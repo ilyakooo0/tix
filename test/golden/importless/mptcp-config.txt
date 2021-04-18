@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+(α.kernel = β, β.module = γ, β.yes = δ, ε.lib = α) => {stdenv = α;} ->
+{ DEFAULT_DUMMY = δ;
+  DEFAULT_MPTCP_PM = {freeform = String;};
+  DEFAULT_MPTCP_SCHED = {freeform = String;};
+  IPV6 = ζ;
+  IP_MULTIPLE_TABLES = η;
+  MPTCP = θ;
+  MPTCP_FULLMESH = ι;
+  MPTCP_NDIFFPORTS = κ;
+  MPTCP_PM_ADVANCED = λ;
+  MPTCP_SCHED_ADVANCED = μ;
+  TCP_CONG_BALIA = γ;
+  TCP_CONG_LIA = ν;
+  TCP_CONG_OLIA = ξ;
+  TCP_CONG_WVEGAS = ο;
+}

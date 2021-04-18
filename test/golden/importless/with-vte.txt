@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ.
+(α.doc = β, α.man = β, α.out = β) => { geany = α;
+  lndir = γ;
+  makeWrapper = δ;
+  symlinkJoin =
+    { name = String;
+      nativeBuildInputs = [δ];
+      paths = [β];
+      postBuild = String;
+    } ->
+    ε;
+  vte = ζ;
+} ->
+ε

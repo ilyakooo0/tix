@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  γ.asl20 = ε,
+  δ.maurer = ζ
+) =>
+{ buildOcamlJane =
+    { hash = String;
+      meta = {description = String; license = ε; maintainers = [ζ];};
+      name = String;
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  ppx_core = η;
+  ppx_tools = η;
+  ppx_type_conv = η;
+  stdenv = α;
+} ->
+θ

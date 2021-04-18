@@ -1,0 +1,22 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.gdk-pixbuf = γ,
+  δ.cfg = ε,
+  δ.mkIf =
+    Bool ->
+    {environment = {variables = {GDK_PIXBUF_MODULE_FILE = String;};};} -> ζ,
+  δ.mkOption = {default = ∀ α. α; description = String; type = η;} -> θ,
+  δ.types = ι,
+  δ.unique = [κ] -> λ,
+  μ.gdk-pixbuf = κ,
+  μ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ν,
+  γ.modulePackages = ξ,
+  ο.xserver = β,
+  π.services = ο,
+  ε.modulePackages = [κ],
+  ι.listOf = ρ -> η,
+  σ.package = ρ
+) =>
+{config = β; lib = δ; pkgs = μ;} ->
+{ config = ζ;
+  options = {services = {xserver = {gdk-pixbuf = {modulePackages = θ;};};};};
+}

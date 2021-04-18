@@ -1,0 +1,42 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.is64bit = Bool,
+  β.isAarch32 = Bool,
+  β.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      configurePhase = String;
+      doCheck = ∀ α. α;
+      enableParallelBuilding = Bool;
+      installPhase = String;
+      meta =
+        {description = String; license = δ; maintainers = [ε]; platforms = ζ;};
+      nativeBuildInputs = [η];
+      pname = String;
+      postUnpack = String;
+      prePatch = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.cstrahan = ε,
+  κ.licenses = λ,
+  κ.maintainers = μ,
+  κ.platforms = ν,
+  κ.proglodyte = ε,
+  λ.bsd3 = δ,
+  ν.linux = ζ
+) =>
+{ doCheck = Bool;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ξ;
+  glib = γ;
+  gn = η;
+  lib = κ;
+  ninja = η;
+  pkgconfig = η;
+  python = γ;
+  snapshot = Bool;
+  stdenv = β;
+} ->
+ι

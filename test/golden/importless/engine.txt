@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ε];
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> λ -> [δ],
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.platforms = ξ,
+  μ.gpl3 = ε,
+  ν.aanderse = ζ,
+  ξ.unix = η,
+  ο.lib = α
+) =>
+{ Cocoa = λ;
+  SDL2 = δ;
+  SDL2_image = δ;
+  SDL2_mixer = δ;
+  SDL2_ttf = δ;
+  cmake = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  stdenv = α;
+} ->
+κ

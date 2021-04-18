@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.linux = β,
+  α.maintainers = γ,
+  α.mit = δ,
+  ε.mkDerivation =
+    { buildInputs = [ζ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          longDescription = String;
+          maintainers = [η];
+          platforms = β;
+        };
+      nativeBuildInputs = [θ];
+      passthru = {version = String;};
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.licenses = α,
+  γ.primeos = η,
+  μ.platforms = α
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> ι;
+  lib = α;
+  pkgconfig = θ;
+  stdenv = ε;
+  wayland = ζ;
+} ->
+κ

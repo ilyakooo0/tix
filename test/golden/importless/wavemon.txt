@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.wavemon = β,
+  γ.mkIf =
+    δ ->
+    { environment = {systemPackages = [ε];};
+      security =
+        {wrappers = {wavemon = {capabilities = String; source = String;};};};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  γ.wavemon = ε,
+  β.enable = δ,
+  κ.programs = α,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = λ;} ->
+{config = ζ; options = {programs = {wavemon = {enable = θ;};};};}

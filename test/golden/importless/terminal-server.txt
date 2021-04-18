@@ -1,0 +1,50 @@
+∀ β γ δ ε ζ η.
+( β.bash = γ,
+  β.gawk = γ,
+  β.nettools = γ,
+  β.openssl = γ,
+  β.out = γ,
+  β.procps = γ,
+  β.shadow = γ,
+  β.utillinux = γ,
+  β.which = γ,
+  β.xauth = γ,
+  δ.xorgserver = β,
+  ε.xorg = δ,
+  ζ.xorg = β
+) =>
+{lib = η; pkgs = β;} ->
+{ config =
+    { services =
+        { xserver =
+            { displayManager = {gdm = {enable = Bool;};};
+              enable = Bool;
+              videoDrivers = ∀ α. α;
+            };
+        };
+      systemd =
+        { services =
+            { terminal-server@ =
+                { description = String;
+                  environment = {FD_GEOM = String; FD_XDMCP_IF = String;};
+                  path = [γ];
+                  serviceConfig =
+                    { ExecStart = String;
+                      KillMode = String;
+                      StandardError = String;
+                      StandardInput = String;
+                      StandardOutput = String;
+                    };
+                };
+            };
+          sockets =
+            { terminal-server =
+                { before = [String];
+                  description = String;
+                  socketConfig = {Accept = Bool; ListenStream = Integer;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    };
+}

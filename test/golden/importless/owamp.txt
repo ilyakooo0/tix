@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ.
+( α.owamp = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { owamp =
+                { description = String;
+                  serviceConfig =
+                    { AmbientCapabilities = String;
+                      ExecStart = String;
+                      Group = String;
+                      PrivateTmp = Bool;
+                      Restart = String;
+                      RuntimeDirectory = String;
+                      StateDirectory = String;
+                      Type = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {owamp = {};};
+          users =
+            { owamp =
+                {description = String; group = String; isSystemUser = Bool;};
+            };
+        };
+    } ->
+    ζ,
+  β.enable = ε,
+  η.services = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ζ; options = {services = {owamp = {enable = δ;};};};}

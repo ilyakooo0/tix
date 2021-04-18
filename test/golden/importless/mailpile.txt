@@ -1,0 +1,54 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( α.enable = β,
+  α.mailpile = γ,
+  δ.cfg = ε,
+  δ.mkEnableOption = String -> ζ,
+  δ.mkIf =
+    β ->
+    { environment = {systemPackages = [η];};
+      systemd =
+        { services =
+            { mailpile =
+                { after = [String];
+                  description = String;
+                  environment = {MAILPILE_HOME = String;};
+                  serviceConfig =
+                    { ExecStart = String;
+                      KillMode = String;
+                      KillSignal = String;
+                      TimeoutSec = Integer;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {mailpile = {gid = θ;};};
+          users =
+            { mailpile =
+                { createHome = Bool;
+                  description = String;
+                  home = String;
+                  uid = ι;
+                };
+            };
+        };
+    } ->
+    κ,
+  δ.mkOption = {default = String; description = String;} -> λ,
+  μ.mailpile = η,
+  ν.services = α,
+  ξ.mailpile = α,
+  ο.services = ξ,
+  π.gids = α,
+  ρ.ids = π,
+  σ.uids = α,
+  τ.ids = σ,
+  ε.port = υ,
+  φ.hostname = χ
+) =>
+{config = α; lib = δ; pkgs = μ;} ->
+{ config = κ;
+  options = {services = {mailpile = {enable = ζ; hostname = λ; port = ψ;};};};
+}

@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.mkIf = β -> {environment = {pathsToLink = [String];};} -> δ,
+  γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
+  γ.teams = η,
+  γ.types = θ,
+  ι.menus = α,
+  κ.xdg = ι,
+  η.members = λ,
+  μ.freedesktop = η,
+  θ.bool = ε
+) =>
+{config = α; lib = γ;} ->
+{ config = δ;
+  meta = {maintainers = λ;};
+  options = {xdg = {menus = {enable = ζ;};};};
+}

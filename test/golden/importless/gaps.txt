@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  γ.overrideAttrs =
+    ( δ ->
+      { enableParallelBuilding = Bool;
+        meta =
+          { description = String;
+            homepage = String;
+            license = ε;
+            longDescription = String;
+            maintainers = [ζ];
+            platforms = η;
+          };
+        name = String;
+        nativeBuildInputs = [θ];
+        src = ι;
+        version = String;
+      }
+    ) ->
+    κ,
+  δ.nativeBuildInputs = [θ],
+  β.fmthoma = ζ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.bsd3 = ε,
+  ν.all = η
+) =>
+{ autoreconfHook = θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  i3 = γ;
+  stdenv = α;
+} ->
+κ

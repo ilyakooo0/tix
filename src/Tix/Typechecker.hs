@@ -62,7 +62,7 @@ getType r =
           . runReader nullSpan
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
-          . runReader (M.empty :: VariableMap)
+          . runVariableMapEff
           . evalState @Substitution mempty
           . runState @[(TypeVariable, SrcSpan)] []
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))
@@ -94,6 +94,23 @@ runFreshSrc =
             return v
           MinFreshFromNow -> send MinFreshFromNow
       )
+
+data VariableMapEff x where
+  LookupVariable :: VarName -> VariableMapEff (Maybe Scheme)
+
+runVariableMapEff :: Eff (VariableMapEff ': effs) a -> Eff effs a
+runVariableMapEff = interpret $ \(LookupVariable _) -> pure Nothing
+
+lookupVar :: Member VariableMapEff eff => VarName -> Eff eff (Maybe Scheme)
+lookupVar = send . LookupVariable
+
+replaceVariablesM :: Member VariableMapEff eff => (VarName -> Eff eff (Maybe Scheme)) -> Eff eff x -> Eff eff x
+replaceVariablesM f = interpose $ \(LookupVariable x) -> f x
+
+localVariablesMap :: Member VariableMapEff eff => Map VarName Scheme -> Eff eff x -> Eff eff x
+localVariablesMap m = interpose $ \(LookupVariable x) -> case M.lookup x m of
+  Just t -> pure $ Just t
+  Nothing -> lookupVar x
 
 data Constraint = !NType :~ !NType
   deriving stock (Eq, Ord, Show)
@@ -273,7 +290,7 @@ type InferEffs =
      Writer PredicateError,
      Writer Pred,
      State (MKM.Map Pred),
-     Reader VariableMap,
+     VariableMapEff,
      Writer UnifyingError,
      Writer InferError,
      State Substitution,
@@ -309,13 +326,6 @@ type VariableMap = Map VarName Scheme
 
 (~~) :: Member (Writer Constraint) r => NType -> NType -> Eff r ()
 lhs ~~ rhs = tell $ lhs :~ rhs
-
-withBindings ::
-  (Member (Reader VariableMap) effs) =>
-  VariableMap ->
-  Eff effs a ->
-  Eff effs a
-withBindings bindings = local (bindings <>)
 
 instantiate ::
   forall effs.
@@ -357,8 +367,8 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NEnvPath {} -> return . NAtomic $ Path
   NStr {} -> return $ NAtomic String
   NSym var ->
-    ask @VariableMap
-      >>= maybe (scheme . NTypeVariable <$> throwTV (UndefinedVariable var)) return . M.lookup var
+    lookupVar var
+      >>= maybe (scheme . NTypeVariable <$> throwTV (UndefinedVariable var)) return
       >>= instantiate -- I have no idea if this covers all cases.
   NList xs -> do
     xs' <- traverse infer xs
@@ -428,7 +438,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NSet NRecursive xs -> NAttrSet <$> inferRecBinding xs
   NLet bindings body -> do
     bindingsT <- inferRecBinding bindings
-    withBindings bindingsT $ infer body
+    localVariablesMap bindingsT $ infer body
   NHasAttr attrSet path -> do
     setT <- infer attrSet
     -- this should infer optional type
@@ -449,7 +459,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
                   )
         let setT = NAttrSet $ setBindings
         return (setT, maybe M.empty (`M.singleton` scheme setT) binding <> setBindings)
-    bodyT <- withBindings varMap $ infer body
+    bodyT <- localVariablesMap varMap $ infer body
     return $ paramT :-> bodyT
   NIf cond t f -> do
     condT <- infer cond
@@ -458,7 +468,18 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     fT <- infer f
     tT ~~ fT
     return tT
-  -- NWith set body -> do
+  NWith set body -> do
+    setT <- infer set
+    let f = case setT of
+          NAttrSet vars -> localVariablesMap vars
+          other -> replaceVariablesM $ \var -> do
+            lookupVar var >>= \case
+              Just t -> pure $ Just t
+              Nothing -> do
+                (_, res) <- lookupAttrSet other (pure var)
+                pure $ Just . scheme $ NTypeVariable res
+
+    f $ infer body
   --   -- TODO: implement fallback variable lookup -> specify that the set should have the key.
   --   setT <- infer set
   --   vars <- expectAttrSet setT
@@ -575,7 +596,7 @@ inferComponents n ((S.toList -> paths) : otherComponents) = do
 
           -- (type, tv)
           tvsTypes <-
-            withBindings tvs $
+            localVariablesMap tvs $
               tvsExprs' & traverse . traverse . _1 %%~ infer
           for_ tvsTypes $ traverse (uncurry (~~))
           return $ fmap fst <$> tvsTypes
@@ -586,7 +607,7 @@ inferComponents n ((S.toList -> paths) : otherComponents) = do
     return (schemes, schemes')
 
   otherBindings <-
-    withBindings schemes' $ inferComponents n otherComponents
+    localVariablesMap schemes' $ inferComponents n otherComponents
   return $ M.unionWith mergeBindings schemes otherBindings
   where
     bindingToNExpr :: NonEmpty VarName -> NExprLoc -> Binding NExpr

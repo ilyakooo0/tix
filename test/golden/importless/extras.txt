@@ -1,0 +1,60 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = γ;
+      buildInputs = [δ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optionalString = Bool -> String -> γ,
+  α.optionals = Bool -> [String] -> [String],
+  β.ekleog = ζ,
+  β.gebner = ζ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.platforms = ν,
+  λ.isc = ε,
+  ν.linux = η,
+  ξ.lib = α,
+  ο.lib = α,
+  π.lib = α,
+  ρ.lib = α,
+  σ.lib = α,
+  τ.lib = α,
+  υ.lib = α,
+  φ.lib = α,
+  χ.lib = α
+) =>
+{ enableLua = Bool;
+  enableMysql = Bool;
+  enablePerl = Bool;
+  enablePostgres = Bool;
+  enablePython = Bool;
+  enableRedis = Bool;
+  enableSqlite = Bool;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  hiredis = δ;
+  libasr = δ;
+  libevent = δ;
+  libmysqlclient = δ;
+  lua5 = δ;
+  openssl = δ;
+  perl = δ;
+  pkgconfig = θ;
+  postgresql = δ;
+  python2 = δ;
+  sqlite = δ;
+  stdenv = α;
+} ->
+κ

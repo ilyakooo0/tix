@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.asl20 = β,
+  α.getVersion = γ -> δ,
+  α.lib = ε,
+  α.mkDerivation =
+    { makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ζ];
+        };
+      pname = String;
+      postInstall = String;
+      postUnpack = String;
+      preInstall = String;
+      sourceRoot = String;
+      src = η;
+      version = δ;
+    } ->
+    θ,
+  γ.src = η,
+  ε.maintainers = ι,
+  ε.ris = ζ,
+  κ.licenses = α,
+  λ.lib = κ,
+  μ.lib = α
+) =>
+{aflplusplus = γ; stdenv = α;} -> θ

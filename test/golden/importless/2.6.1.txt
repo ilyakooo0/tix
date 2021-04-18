@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.buildPlatform = β,
+  α.hostPlatform = β,
+  α.isCygwin = Bool,
+  α.isDarwin = Bool,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      meta =
+        {description = String; homepage = String; license = ε; platforms = ζ;};
+      name = String;
+      postConfigure = η;
+      postPatch = String;
+      preConfigure = θ;
+      propagatedBuildInputs = [ι];
+      src = κ;
+    } ->
+    λ,
+  α.optionalString = Bool -> String -> η,
+  α.optionals = Bool -> [String] -> θ,
+  γ.licenses = μ,
+  γ.platforms = ν,
+  μ.bsd2 = ε,
+  ν.unix = ζ,
+  ξ.lib = α,
+  ο.lib = α,
+  π.lib = α
+) =>
+{ bison = δ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  m4 = ι;
+  stdenv = α;
+} ->
+λ

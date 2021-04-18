@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.atkinschang = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  ζ.buildInputs = η,
+  ζ.doCheck = θ,
+  ζ.nativeBuildInputs = ι,
+  ζ.src = κ,
+  ζ.vendorSha256 = λ,
+  ζ.version = μ,
+  γ.asl20 = ν,
+  ε.darwin = ξ
+) =>
+{ buildGoModule =
+    { buildInputs = η;
+      buildPhase = String;
+      doCheck = θ;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ν;
+          maintainers = [β];
+          platforms = ξ;
+        };
+      nativeBuildInputs = ι;
+      pname = String;
+      src = κ;
+      vendorSha256 = λ;
+      version = μ;
+    } ->
+    ο;
+  lib = α;
+  minikube = ζ;
+} ->
+ο

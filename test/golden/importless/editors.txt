@@ -1,0 +1,63 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( γ.edwtjo = δ,
+  γ.gpl2 = ε,
+  γ.gpl2Plus = ε,
+  γ.lib = ζ,
+  γ.linux = η,
+  γ.mkDerivation =
+    { application = θ;
+      buildInputs = [ι];
+      buildPhase = String;
+      description = ∀ β. β;
+      dontStrip = Bool;
+      editorItem = κ;
+      exec = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [δ];
+          platforms = η;
+        };
+      module = ∀ β. β;
+      patchPhase = String;
+      pname = ∀ β. β;
+      src = ∀ β. β;
+      version = ∀ β. β;
+    } ->
+    λ,
+  γ.replaceChars = [String] -> [String] -> String -> String,
+  ζ.removeSuffix = String -> μ -> String,
+  ζ.toLower = ν -> μ,
+  ξ.maintainers = γ,
+  ο.lib = ξ,
+  π.platforms = γ,
+  ρ.lib = π,
+  σ.lib = γ,
+  τ.licenses = γ,
+  υ.lib = τ,
+  φ.licenses = γ,
+  χ.lib = φ
+) =>
+{ ant = ι;
+  fetchcvs =
+    {cvsRoot = String; module = String; sha256 = String; tag = String;} -> ψ;
+  gsettings-desktop-schemas = ι;
+  gtk3 = ι;
+  jdk = ι;
+  jre = ι;
+  makeDesktopItem =
+    { categories = String;
+      comment = ∀ α. α;
+      desktopName = String;
+      exec = String;
+      genericName = String;
+      name = ∀ α. α;
+    } ->
+    κ;
+  makeWrapper = ι;
+  stdenv = γ;
+  sweethome3dApp = θ;
+} ->
+{furniture-editor = λ; textures-editor = λ;}

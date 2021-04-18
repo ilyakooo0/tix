@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η.
+(α.maintainers = β, β.brainrape = γ, β.steshaw = γ) => { SDL2 = δ;
+  SDL2_gfx = δ;
+  build-idris-package =
+    { extraBuildInputs = [δ];
+      idrisDeps = [ε];
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          maintainers = [γ];
+        };
+      name = String;
+      prePatch = String;
+      src = ζ;
+      version = String;
+    } ->
+    η;
+  effects = ε;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  lib = α;
+  pkgconfig = δ;
+} ->
+η

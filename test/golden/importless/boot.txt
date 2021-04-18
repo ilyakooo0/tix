@@ -1,0 +1,28 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.darwin = β,
+  α.maintainers = γ,
+  γ.gridaphobe = δ,
+  ε.lib = α,
+  ζ.platforms = α,
+  η.lib = ζ
+) =>
+{ appleDerivation =
+    { buildInputs = [θ];
+      buildPhase = String;
+      installPhase = String;
+      meta = {maintainers = [δ]; platforms = β;};
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      patchPhase = String;
+      preBuild = String;
+      setOutputFlags = Bool;
+    } ->
+    ι;
+  bsdmake = θ;
+  fetchzip = {sha256 = String; url = String;} -> κ;
+  flex = θ;
+  perl = θ;
+  stdenv = α;
+  yacc = θ;
+} ->
+ι

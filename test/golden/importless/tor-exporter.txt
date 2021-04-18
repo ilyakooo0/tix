@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.delroth = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  ζ.buildPythonApplication =
+    { fixupPhase = String;
+      format = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [β];
+          platforms = θ;
+        };
+      name = String;
+      passthru = {tests = {tor = ι;};};
+      propagatedBuildInputs = [κ];
+      src = λ;
+      version = String;
+    } ->
+    μ,
+  ζ.prometheus_client = κ,
+  ζ.retrying = κ,
+  ζ.stem = κ,
+  ν.prometheus-exporters = ξ,
+  γ.mit = η,
+  ε.unix = θ,
+  ξ.tor = ι
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  lib = α;
+  nixosTests = ν;
+  python3Packages = ζ;
+} ->
+μ

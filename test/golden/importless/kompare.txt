@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ.
+(α.licenses = β, β.gpl2 = γ) => { extra-cmake-modules = δ;
+  kdoctools = δ;
+  kiconthemes = ε;
+  kparts = ε;
+  ktexteditor = ε;
+  kwidgetsaddons = ε;
+  lib = α;
+  libkomparediff2 = ε;
+  mkDerivation =
+    { buildInputs = [ε];
+      meta = {license = [γ];};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+    } ->
+    ζ;
+} ->
+ζ

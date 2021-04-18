@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      sourceRoot = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.aanderse = ε,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.asl20 = δ,
+  λ.unix = ζ
+) =>
+{ apr = γ;
+  fetchurl = {sha512 = String; url = String;} -> η;
+  jdk = γ;
+  openssl = γ;
+  stdenv = α;
+} ->
+θ

@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.concatStringsSep = String -> [String] -> β,
+  α.isUnix = γ,
+  α.isx86 = Bool,
+  α.lib = δ,
+  α.mkDerivation =
+    { buildInputs = [ε];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        {description = String; license = ζ; maintainers = [η]; platforms = θ;};
+      name = String;
+      sourceRoot = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = γ -> String -> [String],
+  λ.lib = α,
+  μ.lib = α,
+  ν.hostPlatform = α,
+  ξ.lib = α,
+  ο.hostPlatform = α,
+  δ.licenses = π,
+  δ.maintainers = ρ,
+  δ.platforms = σ,
+  δ.raskin = η,
+  π.gpl3Plus = ζ,
+  σ.linux = θ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = α; unzip = ε;} -> κ

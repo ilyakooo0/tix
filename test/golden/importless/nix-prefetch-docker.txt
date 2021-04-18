@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { dontUnpack = Bool;
+      installPhase = String;
+      meta = {description = String; maintainers = [γ]; platforms = δ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      preferLocalBuild = Bool;
+    } ->
+    ζ,
+  β.maintainers = η,
+  β.offline = γ,
+  β.platforms = θ,
+  θ.unix = δ
+) =>
+{jq = ι; makeWrapper = ε; nix = κ; skopeo = λ; stdenv = α;} -> ζ

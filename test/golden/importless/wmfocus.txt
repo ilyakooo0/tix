@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  γ.buildRustPackage =
+    { buildInputs = [δ];
+      cargoBuildFlags = [String];
+      cargoSha256 = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.xcbutilkeysyms = δ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  β.synthetica = ζ,
+  μ.mit = ε,
+  ξ.linux = η
+) =>
+{ cairo = δ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  libxkbcommon = δ;
+  pkgconfig = θ;
+  python3 = θ;
+  rustPlatform = γ;
+  stdenv = α;
+  xorg = λ;
+} ->
+κ

@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.logkeys = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { logkeys =
+                { description = String;
+                  serviceConfig =
+                    {ExecStart = String; ExecStop = String; Type = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  γ.mkOption =
+    {default = Null; description = String; example = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.services = α,
+  ι.nullOr = λ -> η,
+  μ.str = λ
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{config = ζ; options = {services = {logkeys = {device = θ; enable = δ;};};};}

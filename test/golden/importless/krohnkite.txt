@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.seqizz = δ,
+  ε.meta = ζ,
+  η.meta = θ,
+  β.mit = ι,
+  ζ.platforms = κ,
+  θ.homepage = λ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  kcoreaddons = ε;
+  kwindowsystem = ε;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [ε];
+      dontBuild = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = λ;
+          license = ι;
+          maintainers = [δ];
+          platforms = κ;
+        };
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    μ;
+  plasma-framework = ε;
+  systemsettings = ε;
+} ->
+μ

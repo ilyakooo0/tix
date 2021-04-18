@@ -1,0 +1,28 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( β.ofono = γ,
+  δ.cfg = ε,
+  δ.concatMapStringsSep = String -> (ζ -> String) -> η -> θ,
+  δ.literalExample = String -> ι,
+  δ.mkEnableOption = String -> κ,
+  δ.mkIf =
+    λ ->
+    { services = {dbus = {packages = [μ];};};
+      systemd =
+        { packages = [ν];
+          services = {ofono = {environment = {OFONO_PLUGIN_PATH = ξ;};};};
+        };
+    } ->
+    ο,
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = ι; type = π;} -> ρ,
+  δ.types = σ,
+  τ.ofono = μ,
+  γ.enable = λ,
+  γ.plugins = υ,
+  φ.services = β,
+  ε.plugins = η,
+  σ.listOf = χ -> π,
+  ψ.package = χ
+) =>
+{config = β; lib = δ; pkgs = τ;} ->
+{config = ο; options = {services = {ofono = {enable = κ; plugins = ρ;};};};}

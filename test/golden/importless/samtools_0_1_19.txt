@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      patches = [Path];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.platforms = λ,
+  ι.mit = δ,
+  κ.unode = ε,
+  λ.unix = ζ
+) =>
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; zlib = γ;} -> θ

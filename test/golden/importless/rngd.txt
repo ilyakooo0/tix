@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.rngd = β,
+  γ.mkIf =
+    δ ->
+    { systemd =
+        { services =
+            { rngd =
+                { after = [String];
+                  before = [String];
+                  bindsTo = [String];
+                  conflicts = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      NoNewPrivileges = Bool;
+                      PrivateNetwork = Bool;
+                      ProtectHome = Bool;
+                      ProtectSystem = String;
+                    };
+                  unitConfig = {DefaultDependencies = Bool;};
+                };
+            };
+        };
+    } ->
+    ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.optionalString = θ -> String -> String,
+  γ.types = ι,
+  β.debug = θ,
+  β.enable = δ,
+  κ.security = α,
+  ι.bool = ζ,
+  λ.bool = μ
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{config = ε; options = {security = {rngd = {debug = η; enable = ξ;};};};}

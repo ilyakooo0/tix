@@ -1,0 +1,47 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = δ;
+      buildInputs = [ε];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ζ];
+          maintainers = [η];
+          platforms = θ;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+      postInstall = String;
+      preConfigure = String;
+      src = κ;
+    } ->
+    λ,
+  α.optionalString = β -> String -> δ,
+  α.sharedLibrary = μ,
+  ε.isILP64 = Bool,
+  ν.extensions = α,
+  ξ.hostPlatform = ν,
+  ο.lib = α,
+  γ.bsd2 = ζ,
+  γ.gpl2Plus = ζ,
+  γ.lgpl21Plus = ζ,
+  γ.licenses = π,
+  γ.maintainers = ρ,
+  γ.platforms = σ,
+  γ.ttuegel = η,
+  γ.unix = θ,
+  τ.lib = α,
+  υ.lib = α
+) =>
+{ blas = ε;
+  cudatoolkit = φ;
+  enableCuda = Bool;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  gfortran = ι;
+  lapack = ε;
+  stdenv = α;
+} ->
+λ

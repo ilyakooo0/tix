@@ -1,0 +1,50 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.maintainers = β,
+  β.Frostman = γ,
+  β.aanderse = δ,
+  β.adisbladis = ε,
+  β.andrew-d = δ,
+  β.arianvp = δ,
+  β.c00w = γ,
+  β.cstrahan = γ,
+  β.dasj19 = ζ,
+  β.ekleog = η,
+  β.emily = δ,
+  β.etu = θ,
+  β.fadenb = η,
+  β.flokli = δ,
+  β.globin = θ,
+  β.hedning = ζ,
+  β.jtojnar = ι,
+  β.kalbasit = γ,
+  β.m1cr0man = δ,
+  β.ma27 = η,
+  β.mdlayher = γ,
+  β.mguentner = η,
+  β.mic92 = γ,
+  β.mkg20001 = κ,
+  β.mmilata = λ,
+  β.orivej = γ,
+  β.pacien = η,
+  β.petabyteboy = λ,
+  β.prusnak = λ,
+  β.ralith = η,
+  β.rvolosatovs = γ,
+  β.ryantm = λ,
+  β.saschagrunert = ε,
+  β.talyz = θ,
+  β.vdemeester = ε,
+  β.worldofpeace = ι,
+  β.zowoq = γ
+) =>
+{lib = α;} ->
+{ acme = {members = [δ]; scope = String;};
+  cinnamon = {members = [κ]; scope = String;};
+  freedesktop = {members = [ι]; scope = String;};
+  gnome = {members = [ζ]; scope = String;};
+  golang = {members = [γ]; scope = String;};
+  jitsi = {members = [λ]; scope = String;};
+  matrix = {members = [η]; scope = String;};
+  php = {members = [θ]; scope = String;};
+  podman = {members = [ε]; scope = String;};
+}

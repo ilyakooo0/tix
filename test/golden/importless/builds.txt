@@ -1,0 +1,43 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( β.lib = γ,
+  δ.nativeBuildInputs = ε,
+  γ.eadwu = ζ,
+  γ.licenses = η,
+  γ.maintainers = θ,
+  η.agpl3 = ι
+) =>
+{ buildGoModule =
+    { doCheck = Bool;
+      pname = String;
+      src = κ;
+      vendorSha256 = String;
+      version = String;
+    } ->
+    λ;
+  buildPythonPackage =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = ι;
+          maintainers = [ζ];
+        };
+      nativeBuildInputs = ε;
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      preBuild = String;
+      propagatedBuildInputs = [δ];
+      src = μ;
+      version = ∀ α. α;
+    } ->
+    ν;
+  celery = δ;
+  fetchgit = {rev = ∀ α. α; sha256 = String; url = String;} -> μ;
+  markdown = δ;
+  python = ξ;
+  pyyaml = δ;
+  redis = δ;
+  srht = δ;
+  stdenv = β;
+} ->
+ν

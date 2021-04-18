@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.offline = δ,
+  α.platforms = ε,
+  α.zowoq = δ,
+  β.asl20 = ζ,
+  ε.unix = η
+) =>
+{ buildGoModule =
+    { buildPhase = String;
+      deleteVendor = Bool;
+      doCheck = Bool;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [δ];
+          platforms = η;
+        };
+      pname = String;
+      src = θ;
+      vendorSha256 = String;
+      version = String;
+    } ->
+    ι;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  lib = α;
+} ->
+ι

@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ.
+(α.licenses = β, β.fdl12 = γ, β.gpl2 = γ, β.lgpl21 = γ) => { boost = δ;
+  extra-cmake-modules = ε;
+  kcodecs = δ;
+  kcompletion = δ;
+  kconfig = δ;
+  kcoreaddons = δ;
+  kdepimTeam = ζ;
+  kdoctools = ε;
+  ki18n = δ;
+  kitemmodels = δ;
+  kpimtextedit = δ;
+  kwidgetsaddons = δ;
+  kwindowsystem = δ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [δ];
+      meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [ε];
+      outputs = [String];
+      propagatedBuildInputs = [η];
+    } ->
+    θ;
+  qgpgme = η;
+} ->
+θ

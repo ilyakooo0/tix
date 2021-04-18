@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installTargets = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = [String];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = θ;
+    } ->
+    ι,
+  κ.src = η,
+  κ.version = θ,
+  λ.gst-plugins-base = γ,
+  λ.gstreamer = γ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  μ.bsd3 = δ,
+  ν.lewo = ε
+) =>
+{ glib = γ;
+  glib-networking = γ;
+  gsettings-desktop-schemas = γ;
+  gst_all_1 = λ;
+  gtk3 = γ;
+  next = κ;
+  pkg-config = ζ;
+  stdenv = α;
+  webkitgtk = γ;
+  wrapGAppsHook = ζ;
+} ->
+ι

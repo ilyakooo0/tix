@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+          repositories = {git = String;};
+        };
+      nativeBuildInputs = [η];
+      patches = [Path];
+      pname = String;
+      postInstall = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.domenkozar = ε,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.phreedom = ε,
+  β.platforms = μ,
+  β.qknight = ε,
+  κ.gpl2 = δ,
+  μ.linux = ζ
+) =>
+{ alure = γ;
+  boost = γ;
+  cmake = γ;
+  curl = γ;
+  doxygen = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gettext = γ;
+  glib = γ;
+  gtk2 = γ;
+  jsoncpp = γ;
+  libX11 = γ;
+  libnotify = γ;
+  libpng = γ;
+  libtorrentRasterbar = γ;
+  makeWrapper = γ;
+  minizip = γ;
+  openal = γ;
+  pcre = γ;
+  pkgconfig = η;
+  spring = ν;
+  stdenv = α;
+  wxGTK30 = γ;
+} ->
+ι

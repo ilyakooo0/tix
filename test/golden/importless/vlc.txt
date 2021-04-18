@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [δ];
+          platforms = ε;
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  ι.bsd3 = δ,
+  ι.lgpl2Plus = δ,
+  ι.licenses = κ,
+  ι.platforms = λ,
+  λ.linux = ε
+) =>
+{ cmake = ζ;
+  debug = Bool;
+  extra-cmake-modules = ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  lib = ι;
+  libvlc = γ;
+  phonon = γ;
+  pkgconfig = ζ;
+  qtbase = γ;
+  qttools = ζ;
+  qtx11extras = γ;
+  stdenv = α;
+} ->
+θ

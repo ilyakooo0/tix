@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.enable = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    β ->
+    { environment = {systemPackages = [ε];};
+      systemd =
+        { services =
+            { das_watchdog =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      RemainAfterExit = Bool;
+                      Type = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    ζ,
+  η.das_watchdog = ε,
+  θ.das_watchdog = α,
+  ι.services = θ
+) =>
+{config = α; lib = γ; pkgs = η;} ->
+{config = ζ; options = {services = {das_watchdog = {enable = δ;};};};}

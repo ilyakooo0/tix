@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.enable = β,
+  γ.maintainers = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    β ->
+    {services = {dbus = {packages = [ζ];};}; systemd = {packages = [η];};} -> θ,
+  γ.worldofpeace = ι,
+  κ.bamf = ζ,
+  λ.bamf = α,
+  μ.services = λ
+) =>
+{config = α; lib = γ; pkgs = κ;} ->
+{ config = θ;
+  meta = {maintainers = [ι];};
+  options = {services = {bamf = {enable = ε;};};};
+}

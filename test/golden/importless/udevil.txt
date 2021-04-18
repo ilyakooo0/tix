@@ -1,0 +1,9 @@
+∀ α β γ δ ε ζ η θ.
+( α.udevil = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf = ε -> {security = {wrappers = {udevil = {source = String;};};};} -> ζ,
+  β.enable = ε,
+  η.programs = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ζ; options = {programs = {udevil = {enable = δ;};};};}

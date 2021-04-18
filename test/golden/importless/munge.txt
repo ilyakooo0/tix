@@ -1,0 +1,45 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.munge = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      systemd =
+        { services =
+            { munged =
+                { after = [String];
+                  path = [η];
+                  serviceConfig =
+                    { ExecReload = String;
+                      ExecStart = String;
+                      ExecStartPre = String;
+                      Group = String;
+                      PIDFile = String;
+                      RuntimeDirectory = String;
+                      StateDirectory = String;
+                      StateDirectoryMode = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {munge = {};};
+          users =
+            { munge =
+                {description = String; group = String; isSystemUser = Bool;};
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.coreutils = η,
+  μ.munge = ζ,
+  β.enable = ε,
+  ν.services = α,
+  λ.path = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{config = θ; options = {services = {munge = {enable = δ; password = κ;};};};}

@@ -1,0 +1,14 @@
+∀ α β γ δ ε ζ η θ.
+( α.iotop = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { security =
+        {wrappers = {iotop = {capabilities = String; source = String;};};};
+    } ->
+    ζ,
+  β.enable = ε,
+  η.programs = α
+) =>
+{config = α; lib = γ; pkgs = θ;} ->
+{config = ζ; options = {programs = {iotop = {enable = δ;};};};}

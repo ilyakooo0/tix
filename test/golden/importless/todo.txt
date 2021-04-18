@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  γ.nativeBuildInputs = δ,
+  β.eadwu = ε,
+  β.licenses = ζ,
+  β.maintainers = η,
+  ζ.agpl3 = θ
+) =>
+{ alembic = γ;
+  buildPythonPackage =
+    { checkInputs = [ι];
+      dontUseSetuptoolsCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          maintainers = [ε];
+        };
+      nativeBuildInputs = δ;
+      patches = [Path];
+      pname = String;
+      preBuild = String;
+      propagatedBuildInputs = [γ];
+      src = κ;
+      version = String;
+    } ->
+    λ;
+  factory_boy = ι;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> κ;
+  pystache = γ;
+  pytest = ι;
+  python = μ;
+  redis = γ;
+  srht = γ;
+  stdenv = α;
+  writeText = ν;
+} ->
+λ

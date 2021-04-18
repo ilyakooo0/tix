@@ -1,0 +1,61 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.sysstat = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { sysstat =
+                { description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      LogsDirectory = String;
+                      RemainAfterExit = Bool;
+                      Type = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+              sysstat-collect =
+                { description = String;
+                  serviceConfig =
+                    {ExecStart = String; Type = String; User = String;};
+                  unitConfig = {Documentation = String;};
+                };
+              sysstat-summary =
+                { description = String;
+                  serviceConfig =
+                    {ExecStart = String; Type = String; User = String;};
+                  unitConfig = {Documentation = String;};
+                };
+            };
+          timers =
+            { sysstat-collect =
+                { description = String;
+                  timerConfig = {OnCalendar = ζ;};
+                  wantedBy = [String];
+                };
+              sysstat-summary =
+                { description = String;
+                  timerConfig = {OnCalendar = String;};
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    η,
+  γ.mkOption = {default = String; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  β.collect-frequency = ζ,
+  β.enable = ε,
+  λ.services = α,
+  κ.str = θ,
+  μ.str = ν
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = η;
+  options =
+    { services =
+        {sysstat = {collect-args = ι; collect-frequency = ο; enable = δ;};};
+    };
+}

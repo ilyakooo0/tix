@@ -1,0 +1,46 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( β.enable = Bool,
+  β.flatpak = γ,
+  δ.literalExample = String -> ε,
+  δ.mkEnableOption = String -> ζ,
+  δ.mkIf =
+    η ->
+    { assertions = [{assertion = Bool; message = String;}];
+      environment = {profiles = [String]; systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
+      users =
+        { groups = {flatpak = {};};
+          users =
+            { flatpak =
+                {description = String; group = String; isSystemUser = Bool;};
+            };
+        };
+    } ->
+    λ,
+  δ.mkOption =
+    { default = ∀ α. α;
+      description = String;
+      example = ε;
+      internal = Bool;
+      type = μ;
+    } ->
+    ν,
+  δ.types = ξ,
+  ο.flatpak = θ,
+  ο.maintainers = π,
+  γ.enable = η,
+  γ.guiPackages = [θ],
+  ρ.services = β,
+  σ.portal = β,
+  τ.xdg = σ,
+  ξ.listOf = υ -> μ,
+  φ.package = υ,
+  χ.meta = ο,
+  ψ.flatpak = χ
+) =>
+{config = β; lib = δ; pkgs = ο;} ->
+{ config = λ;
+  meta = {doc = Path; maintainers = π;};
+  options = {services = {flatpak = {enable = ζ; guiPackages = ν;};};};
+}

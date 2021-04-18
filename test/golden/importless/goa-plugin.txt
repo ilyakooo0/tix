@@ -1,0 +1,31 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  γ.buildPythonPackage =
+    { buildInputs = [δ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  β.doronbehar = ζ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  κ.gpl2 = ε,
+  μ.linux = η
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gnome-online-accounts = δ;
+  gobject-introspection = δ;
+  python3Packages = γ;
+  stdenv = α;
+} ->
+ι

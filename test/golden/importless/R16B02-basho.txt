@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.asl20 = β,
+  α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> γ,
+  α.fetchurl = {sha256 = String; url = String;} -> δ,
+  α.maintainers = ε,
+  ζ.licenses = α,
+  η.lib = ζ,
+  θ.stdenv = η,
+  ε.mdaiter = ι,
+  κ.lib = α,
+  λ.stdenv = κ
+) =>
+{ mkDerivation =
+    { baseName = String;
+      enableHipe = Bool;
+      installTargets = String;
+      meta =
+        { description = String;
+          homepage = String;
+          knownVulnerabilities = [String];
+          license = β;
+          longDescription = String;
+          maintainers = [ι];
+          platforms = [String];
+        };
+      postInstall = String;
+      preConfigure = String;
+      src = γ;
+      version = String;
+    } ->
+    μ;
+  pkgs = α;
+} ->
+μ

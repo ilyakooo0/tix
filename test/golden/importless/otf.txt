@@ -1,0 +1,32 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lgpl21Plus = β,
+  α.linux = γ,
+  α.maintainers = δ,
+  α.mkDerivation =
+    { buildInputs = [ε];
+      meta =
+        { description = String;
+          homepage = String;
+          license = β;
+          maintainers = [ζ];
+          platforms = γ;
+        };
+      name = String;
+      outputs = [String];
+      postInstall = String;
+      src = η;
+    } ->
+    θ,
+  ι.licenses = α,
+  κ.lib = ι,
+  δ.bendlas = ζ,
+  λ.lib = α,
+  μ.platforms = α,
+  ν.lib = μ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  freetype = ε;
+  libXaw = ε;
+  stdenv = α;
+} ->
+θ

@@ -1,0 +1,53 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.buildPlatform = γ,
+  β.hostPlatform = γ,
+  β.lib = δ,
+  β.mkDerivation =
+    { buildInputs = [ε];
+      configureFlags = [String];
+      configurePlatforms = ∀ α. α;
+      depsBuildBuild = [ζ];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [θ];
+          platforms = ι;
+        };
+      nativeBuildInputs = [κ];
+      outputs = [String];
+      patches = [λ];
+      pname = String;
+      preConfigure = String;
+      preFixup = String;
+      setOutputFlags = Bool;
+      src = μ;
+      version = String;
+    } ->
+    ν,
+  ξ.cc = ζ,
+  δ.licenses = ο,
+  δ.maintainers = π,
+  δ.optionals = Bool -> [String] -> [String],
+  δ.platforms = ρ,
+  ο.gpl2 = η,
+  π.abbradar = θ,
+  ρ.linux = ι,
+  σ.stdenv = ξ
+) =>
+{ autoconf213 = κ;
+  buildPackages = ξ;
+  fetchpatch = {sha256 = String; url = String;} -> λ;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  icu = ε;
+  perl = κ;
+  pkgconfig = κ;
+  python2 = κ;
+  readline = ε;
+  stdenv = β;
+  which = κ;
+  zip = κ;
+  zlib = ε;
+} ->
+ν

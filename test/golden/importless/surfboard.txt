@@ -1,0 +1,18 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.surfboard = β,
+  γ.mkOption = {default = String; description = String; type = δ;} -> ε,
+  γ.types = ζ,
+  η.exporters = α,
+  θ.prometheus = η,
+  ι.services = θ,
+  ζ.str = δ
+) =>
+{config = α; lib = γ; options = κ; pkgs = λ;} ->
+{ extraOpts = {modemAddress = ε;};
+  port = Integer;
+  serviceOpts =
+    { description = String;
+      serviceConfig = {ExecStart = String;};
+      unitConfig = {Documentation = String;};
+    };
+}

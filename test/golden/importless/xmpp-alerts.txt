@@ -1,0 +1,51 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.xmpp-alerts = β,
+  γ.builtins = δ,
+  γ.cfg = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { systemd =
+        { services =
+            { prometheus-xmpp-alerts =
+                { after = [String];
+                  serviceConfig =
+                    { DynamicUser = Bool;
+                      ExecStart = String;
+                      NoNewPrivileges = Bool;
+                      PrivateDevices = Bool;
+                      PrivateTmp = Bool;
+                      ProtectControlGroups = Bool;
+                      ProtectHome = Bool;
+                      ProtectKernelModules = Bool;
+                      ProtectKernelTunables = Bool;
+                      ProtectSystem = String;
+                      Restart = String;
+                      RestrictAddressFamilies = [String];
+                      SystemCallArchitectures = String;
+                      SystemCallFilter = [String];
+                    };
+                  wantedBy = [String];
+                  wants = [String];
+                };
+            };
+        };
+    } ->
+    θ,
+  γ.mkOption = {description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.writeText = String -> ν -> ξ,
+  β.enable = η,
+  ο.prometheus = α,
+  π.services = ο,
+  δ.toJSON = ρ -> ν,
+  ε.configuration = ρ,
+  λ.attrs = ι
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = θ;
+  options =
+    { services =
+        {prometheus = {xmpp-alerts = {configuration = κ; enable = ζ;};};};
+    };
+}

@@ -1,0 +1,76 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.gpl2Plus = β,
+  α.lgpl2Plus = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  ζ.clang-unwrapped = η,
+  ζ.llvm = η,
+  δ.ambrop72 = θ,
+  ε.linux = ι
+) =>
+{ boost = κ;
+  cmake = λ;
+  extra-cmake-modules = λ;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  gettext = λ;
+  grantlee = κ;
+  karchive = κ;
+  kcmutils = κ;
+  kconfig = κ;
+  kcrash = κ;
+  kde-cli-tools = ν;
+  kdeclarative = κ;
+  kdevelop-pg-qt = η;
+  kdoctools = κ;
+  kguiaddons = κ;
+  ki18n = κ;
+  kiconthemes = κ;
+  kio = κ;
+  kitemmodels = κ;
+  kitemviews = κ;
+  kjobwidgets = κ;
+  knewstuff = κ;
+  knotifyconfig = κ;
+  konsole = κ;
+  kparts = κ;
+  kpurpose = κ;
+  krunner = κ;
+  ktexteditor = κ;
+  kwindowsystem = κ;
+  kxmlgui = κ;
+  lib = α;
+  libkomparediff2 = κ;
+  libksysguard = κ;
+  llvmPackages = ζ;
+  makeWrapper = λ;
+  mkDerivation =
+    { buildInputs = [η];
+      cmakeFlags = [String];
+      dontWrapQtApps = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [β];
+          longDescription = String;
+          maintainers = [θ];
+          platforms = ι;
+        };
+      nativeBuildInputs = [λ];
+      pname = String;
+      postInstall = String;
+      propagatedBuildInputs = [κ];
+      src = μ;
+      version = String;
+    } ->
+    ξ;
+  pkgconfig = λ;
+  plasma-framework = κ;
+  qtbase = ο;
+  qtquickcontrols = κ;
+  qttools = π;
+  qtwebkit = κ;
+  shared-mime-info = κ;
+  threadweaver = κ;
+} ->
+ξ

@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      buildPhase = String;
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+        };
+      nativeBuildInputs = [ζ];
+      pname = String;
+      postPatch = String;
+      src = η;
+      version = String;
+    } ->
+    θ,
+  β.dtzWill = ε,
+  β.licenses = ι,
+  β.maintainers = κ,
+  ι.lgpl3 = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  glib = γ;
+  gobject-introspection = ζ;
+  pkgconfig = ζ;
+  python3 = ζ;
+  stdenv = α;
+  vala = ζ;
+} ->
+θ

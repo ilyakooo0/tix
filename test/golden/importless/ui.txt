@@ -1,0 +1,48 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      mesonFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      outputs = [String];
+      patches = [Path];
+      pname = String;
+      propagatedBuildInputs = [θ];
+      src = ι;
+      version = κ;
+    } ->
+    λ,
+  θ.src = ι,
+  θ.version = κ,
+  β.jtojnar = ε,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.lgpl21Plus = δ,
+  ξ.unix = ζ
+) =>
+{ accountsservice = θ;
+  dbus = γ;
+  desktop-file-utils = η;
+  flatpak = γ;
+  glib = θ;
+  glib-testing = γ;
+  gobject-introspection = η;
+  gtk3 = θ;
+  itstool = η;
+  malcontent = θ;
+  meson = η;
+  ninja = η;
+  pkg-config = η;
+  polkit = γ;
+  stdenv = α;
+  wrapGAppsHook = η;
+} ->
+λ

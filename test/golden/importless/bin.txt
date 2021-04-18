@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ ι.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  β.platforms = ε,
+  γ.ofl = ζ,
+  δ.cstrahan = η,
+  ε.all = θ
+) =>
+{ fetchzip =
+    { meta =
+        { description = String;
+          downloadPage = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
+        };
+      name = String;
+      postFetch = String;
+      sha256 = String;
+      url = String;
+    } ->
+    ι;
+  stdenv = α;
+} ->
+ι

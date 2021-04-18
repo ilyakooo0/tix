@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.couchpotato = β,
+  γ.mkEnableOption = String -> δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { couchpotato =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      Group = String;
+                      Restart = String;
+                      StateDirectory = String;
+                      Type = String;
+                      User = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+      users =
+        { groups = {couchpotato = {gid = ζ;};};
+          users =
+            { couchpotato =
+                {description = String; group = String; home = String; uid = η;};
+            };
+        };
+    } ->
+    θ,
+  β.enable = ε,
+  ι.services = α,
+  κ.gids = α,
+  λ.ids = κ,
+  μ.uids = α,
+  ν.ids = μ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{config = θ; options = {services = {couchpotato = {enable = δ;};};};}

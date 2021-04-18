@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.fvwm = β,
+  γ.cfg = δ,
+  γ.mkEnableOption = String -> ε,
+  γ.mkIf =
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {xserver = {windowManager = {session = θ;};};};
+    } ->
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.singleton = {name = String; start = String;} -> θ,
+  γ.types = μ,
+  ν.override = {gestures = ξ;} -> η,
+  β.enable = ζ,
+  ο.windowManager = α,
+  π.xserver = ο,
+  ρ.services = π,
+  δ.gestures = ξ,
+  μ.bool = κ,
+  σ.fvwm = ν
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{ config = ι;
+  options =
+    { services =
+        {xserver = {windowManager = {fvwm = {enable = ε; gestures = λ;};};};};
+    };
+}

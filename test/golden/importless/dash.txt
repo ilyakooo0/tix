@@ -1,0 +1,43 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.lib = β,
+  γ.buildPythonApplication =
+    { meta =
+        { description = String;
+          homepage = String;
+          knownVulnerabilities = [String];
+          license = δ;
+          maintainers = [ε];
+        };
+      pname = String;
+      preInstall = String;
+      propagatedBuildInputs = [ζ];
+      src = η;
+      version = String;
+    } ->
+    θ,
+  γ.dnspython = ζ,
+  γ.ecdsa = ζ,
+  γ.jsonrpclib = ζ,
+  γ.mnemonic = ζ,
+  γ.pbkdf2 = ζ,
+  γ.protobuf = ζ,
+  γ.pyaes = ζ,
+  γ.pyasn1 = ζ,
+  γ.pyasn1-modules = ζ,
+  γ.pycrypto = ζ,
+  γ.pyqt4 = ζ,
+  γ.qrcode = ζ,
+  γ.requests = ζ,
+  γ.tlslite-ng = ζ,
+  γ.trezor = ζ,
+  γ.x11_hash = ζ,
+  β.licenses = ι,
+  β.maintainers = κ,
+  β.np = ε,
+  ι.gpl3 = δ
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  python2Packages = γ;
+  stdenv = α;
+} ->
+θ

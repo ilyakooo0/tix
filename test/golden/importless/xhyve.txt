@@ -1,0 +1,38 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  β.licenses = γ,
+  β.maintainers = δ,
+  β.periklis = ε,
+  β.platforms = ζ,
+  γ.bsd3 = η,
+  ζ.darwin = θ
+) =>
+{ Hypervisor = ι;
+  buildGoPackage =
+    { buildFlags = String;
+      buildInputs = [ι];
+      goPackagePath = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [ε];
+          platforms = θ;
+        };
+      nativeBuildInputs = [κ];
+      patches = λ;
+      pname = String;
+      preBuild = String;
+      src = μ;
+      version = String;
+    } ->
+    ν;
+  cctools = ξ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> μ;
+  fetchpatch = {sha256 = String; url = String;} -> λ;
+  pkgconfig = κ;
+  stdenv = α;
+  vmnet = ι;
+} ->
+ν

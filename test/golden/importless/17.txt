@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι.
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { backports_functools_lru_cache = ε;
+  backports_unittest-mock = ε;
+  buildPythonPackage =
+    { checkInputs = [ε];
+      checkPhase = String;
+      meta = {description = String; homepage = String; license = δ;};
+      nativeBuildInputs = [ζ];
+      pname = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι;
+  cheroot = η;
+  contextlib2 = η;
+  fetchPypi = {pname = String; sha256 = String; version = String;} -> θ;
+  objgraph = ε;
+  pathpy = ε;
+  portend = η;
+  pytest = ε;
+  pytestcov = ε;
+  requests_toolbelt = ε;
+  routes = η;
+  setuptools_scm = ζ;
+  six = η;
+  stdenv = α;
+  zc_lockfile = η;
+} ->
+ι

@@ -1,0 +1,36 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [δ];
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      preConfigure = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.isILP64 = Bool,
+  β.bsd2 = δ,
+  β.gpl2Plus = δ,
+  β.lgpl21Plus = δ,
+  β.licenses = κ,
+  β.maintainers = λ,
+  β.platforms = μ,
+  β.ttuegel = ε,
+  β.unix = ζ
+) =>
+{ blas = γ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gfortran = η;
+  lapack = γ;
+  stdenv = α;
+} ->
+ι

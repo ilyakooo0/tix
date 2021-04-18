@@ -1,0 +1,34 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      installPhase = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      pname = String;
+      postPatch = String;
+      propagatedBuildInputs = [η];
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  κ.libX11 = γ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  β.nickhu = ε,
+  β.platforms = ν,
+  λ.bsd3 = δ,
+  ν.linux = ζ
+) =>
+{ fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  i3lock = η;
+  stdenv = α;
+  xorg = κ;
+} ->
+ι

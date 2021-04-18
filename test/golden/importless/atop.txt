@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.atop = β,
+  γ.concatStrings = δ -> ε,
+  γ.mapAttrsToList = (ζ -> η -> String) -> θ -> δ,
+  γ.mkIf = Bool -> {environment = {etc = {atoprc = {text = ε;};};};} -> ι,
+  γ.mkOption =
+    { default = {};
+      description = String;
+      example = {flags = String; interval = Integer;};
+      type = κ;
+    } ->
+    λ,
+  γ.types = μ,
+  β.settings = {},
+  ν.programs = α,
+  μ.attrs = κ
+) =>
+{config = α; lib = γ;} ->
+{config = ι; options = {programs = {atop = {settings = λ;};};};}

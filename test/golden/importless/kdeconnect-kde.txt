@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ.
+( α.fridh = β,
+  α.gpl2 = γ,
+  α.licenses = δ,
+  α.maintainers = ε
+) =>
+{ extra-cmake-modules = ζ;
+  fetchpatch = {sha256 = String; url = String;} -> η;
+  kcmutils = θ;
+  kconfigwidgets = θ;
+  kdbusaddons = θ;
+  kdoctools = ζ;
+  ki18n = θ;
+  kiconthemes = θ;
+  kio = θ;
+  kirigami2 = θ;
+  knotifications = θ;
+  kpeople = θ;
+  kpeoplevcard = θ;
+  kwayland = θ;
+  lib = α;
+  libXtst = θ;
+  libfakekey = θ;
+  makeWrapper = ζ;
+  mkDerivation =
+    { buildInputs = [θ];
+      meta =
+        { description = String;
+          homepage = String;
+          license = [γ];
+          maintainers = [β];
+        };
+      name = String;
+      nativeBuildInputs = [ζ];
+      patches = [η];
+      qtWrapperArgs = [String];
+    } ->
+    ι;
+  pulseaudio-qt = θ;
+  qca-qt5 = θ;
+  qtgraphicaleffects = θ;
+  qtmultimedia = θ;
+  qtx11extras = θ;
+  sshfs = κ;
+} ->
+ι

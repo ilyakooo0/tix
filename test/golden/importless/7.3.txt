@@ -1,0 +1,46 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.isDarwin = β,
+  α.lib = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      commit = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  α.optional = β -> λ -> [δ],
+  μ.Cocoa = λ,
+  γ.amiloradovsky = ζ,
+  γ.licenses = ν,
+  γ.maintainers = ξ,
+  γ.platforms = ο,
+  ν.lgpl21 = ε,
+  ο.all = η,
+  π.lib = α,
+  ρ.frameworks = μ,
+  σ.apple_sdk = ρ
+) =>
+{ cmake = θ;
+  darwin = μ;
+  fetchpatch = τ;
+  fetchurl = {name = String; sha256 = String; url = String;} -> ι;
+  libGL = δ;
+  libGLU = δ;
+  libXext = δ;
+  libXi = δ;
+  libXmu = δ;
+  ninja = θ;
+  stdenv = α;
+  tcl = δ;
+  tk = δ;
+} ->
+κ

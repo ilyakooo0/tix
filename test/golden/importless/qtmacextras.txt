@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ.
+( α.lib = β,
+  β.maintainers = γ,
+  β.periklis = δ,
+  β.platforms = ε,
+  ε.darwin = ζ
+) =>
+{ qtModule =
+    { meta = {maintainers = [δ]; platforms = ζ;};
+      name = String;
+      qtInputs = [η];
+    } ->
+    θ;
+  qtbase = η;
+  stdenv = α;
+} ->
+θ

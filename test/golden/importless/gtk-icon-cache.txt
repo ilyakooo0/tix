@@ -1,0 +1,13 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.enable = β,
+  γ.mkIf = β -> {environment = {extraSetup = String;};} -> δ,
+  γ.mkOption = {default = ε; description = String; type = ζ;} -> η,
+  γ.types = θ,
+  ι.iconCache = α,
+  κ.gtk = ι,
+  λ.xserver = α,
+  μ.services = λ,
+  θ.bool = ζ
+) =>
+{config = α; lib = γ; pkgs = ν;} ->
+{config = δ; options = {gtk = {iconCache = {enable = η;};};};}

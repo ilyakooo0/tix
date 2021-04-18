@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.lib = β,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = γ;
+      buildInputs = [δ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      patches = [Path];
+      pname = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.gst-libav = μ,
+  λ.gst-plugins-bad = μ,
+  λ.gst-plugins-base = δ,
+  λ.gst-plugins-good = μ,
+  λ.gst-plugins-ugly = μ,
+  λ.gstreamer = δ,
+  λ.licenses = ν,
+  λ.maintainers = ξ,
+  λ.makeSearchPathOutput = String -> String -> [μ] -> ο,
+  λ.platforms = π,
+  λ.toString = [String] -> γ,
+  λ.ttuegel = ζ,
+  ν.lgpl21 = ε,
+  π.linux = η
+) =>
+{ cmake = θ;
+  debug = Bool;
+  extra-cmake-modules = θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  gst_all_1 = ρ;
+  lib = λ;
+  phonon = δ;
+  pkgconfig = θ;
+  qtbase = δ;
+  qttools = θ;
+  qtx11extras = δ;
+  stdenv = α;
+} ->
+κ

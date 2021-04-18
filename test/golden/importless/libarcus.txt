@@ -1,0 +1,37 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  β.chaduffy = γ,
+  β.licenses = δ,
+  β.maintainers = ε,
+  β.platforms = ζ,
+  δ.lgpl3Plus = η,
+  ζ.linux = θ
+) =>
+{ buildPythonPackage =
+    { buildInputs = [ι];
+      disabled = κ;
+      format = String;
+      meta =
+        { description = String;
+          homepage = String;
+          license = η;
+          maintainers = [γ];
+          platforms = θ;
+        };
+      nativeBuildInputs = [λ];
+      pname = String;
+      postPatch = String;
+      propagatedBuildInputs = [μ];
+      src = ν;
+      version = String;
+    } ->
+    ξ;
+  cmake = λ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ν;
+  fetchurl = ο;
+  protobuf = ι;
+  pythonOlder = String -> κ;
+  sip = μ;
+  stdenv = α;
+} ->
+ξ

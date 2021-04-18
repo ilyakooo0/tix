@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.licenses = β,
+  α.maintainers = γ,
+  α.mkDerivation =
+    { buildInputs = [δ];
+      checkInputs = [ε];
+      doCheck = Bool;
+      doInstallCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = [ζ];
+          maintainers = [η];
+          platforms = θ;
+        };
+      name = String;
+      nativeBuildInputs = [ι];
+      postInstall = String;
+      propagatedBuildInputs = [κ];
+      src = λ;
+    } ->
+    μ,
+  α.unix = θ,
+  β.asl20 = ζ,
+  β.lgpl21 = ζ,
+  ν.lib = α,
+  γ.marcweber = η,
+  ξ.lib = α,
+  ο.platforms = α,
+  π.lib = ο
+) =>
+{ fetchurl = {sha256 = String; url = String;} -> λ;
+  gmp = δ;
+  librdf_raptor2 = κ;
+  libxml2 = δ;
+  pcre = δ;
+  perl = ε;
+  pkgconfig = ι;
+  stdenv = α;
+} ->
+μ

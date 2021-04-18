@@ -1,0 +1,24 @@
+∀ α β γ δ ε ζ η.
+( α.licenses = β,
+  β.fdl12 = γ,
+  β.gpl2 = γ,
+  β.lgpl21 = γ
+) =>
+{ extra-cmake-modules = δ;
+  kcalendarcore = ε;
+  kcalutils = ε;
+  kcontacts = ε;
+  kdelibs4support = ε;
+  kdepimTeam = ζ;
+  kdoctools = δ;
+  lib = α;
+  mkDerivation =
+    { meta = {license = [γ]; maintainers = ζ;};
+      name = String;
+      nativeBuildInputs = [δ];
+      outputs = [String];
+      propagatedBuildInputs = [ε];
+    } ->
+    η;
+} ->
+η

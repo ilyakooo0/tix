@@ -1,0 +1,50 @@
+∀ α β γ δ ε ζ.
+(α.licenses = β, β.gpl2Plus = γ) => { breeze-icons = δ;
+  breeze-qt5 = δ;
+  extra-cmake-modules = ε;
+  ffmpeg-full = δ;
+  frei0r = δ;
+  karchive = δ;
+  kconfig = δ;
+  kcrash = δ;
+  kdbusaddons = δ;
+  kdeclarative = δ;
+  kdoctools = ε;
+  kfilemetadata = δ;
+  kguiaddons = δ;
+  ki18n = δ;
+  kiconthemes = δ;
+  kinit = δ;
+  knewstuff = δ;
+  knotifications = δ;
+  knotifyconfig = δ;
+  kplotting = δ;
+  kpurpose = δ;
+  ktextwidgets = δ;
+  lib = α;
+  libv4l = δ;
+  mkDerivation =
+    { buildInputs = [δ];
+      dontWrapGApps = Bool;
+      ffmpeg = δ;
+      meta = {license = [γ];};
+      mlt = δ;
+      name = String;
+      nativeBuildInputs = [ε];
+      patches = [Path];
+      postPatch = String;
+      preFixup = String;
+      qtWrapperArgs = [String];
+    } ->
+    ζ;
+  mlt = δ;
+  phonon-backend-gstreamer = δ;
+  qtdeclarative = δ;
+  qtmultimedia = δ;
+  qtquickcontrols2 = δ;
+  qtscript = δ;
+  rttr = δ;
+  shared-mime-info = δ;
+  wrapGAppsHook = δ;
+} ->
+ζ

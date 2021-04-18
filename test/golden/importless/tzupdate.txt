@@ -1,0 +1,30 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.tzupdate = β,
+  γ.maintainers = δ,
+  γ.mkIf =
+    ε ->
+    { systemd =
+        { services =
+            { tzupdate =
+                { after = [String];
+                  description = String;
+                  serviceConfig = {ExecStart = String; Type = String;};
+                  wants = [String];
+                };
+            };
+        };
+      time = {timeZone = Null;};
+    } ->
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  β.enable = ε,
+  κ.services = α,
+  δ.michaelpj = λ,
+  ι.bool = η
+) =>
+{config = α; lib = γ; pkgs = μ;} ->
+{ config = ζ;
+  meta = {maintainers = [λ];};
+  options = {services = {tzupdate = {enable = θ;};};};
+}

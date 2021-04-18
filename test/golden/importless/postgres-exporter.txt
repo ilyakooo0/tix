@@ -1,0 +1,29 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.fpletz = β,
+  α.globin = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.willibutz = β,
+  ε.prometheus-exporters = ζ,
+  η.meta = θ,
+  γ.asl20 = ι,
+  ζ.postgres = κ,
+  θ.homepage = λ
+) =>
+{ buildGoPackage =
+    { doCheck = Bool;
+      goPackagePath = String;
+      meta =
+        {description = String; homepage = λ; license = ι; maintainers = [β];};
+      passthru = {tests = {postgres = κ;};};
+      pname = String;
+      src = η;
+      version = String;
+    } ->
+    μ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  lib = α;
+  nixosTests = ε;
+} ->
+μ

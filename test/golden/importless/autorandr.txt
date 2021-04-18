@@ -1,0 +1,39 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.autorandr = β,
+  γ.gnidorah = δ,
+  γ.maintainers = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {udev = {packages = [ι];};};
+      systemd =
+        { services =
+            { autorandr =
+                { after = [String];
+                  description = String;
+                  serviceConfig =
+                    { ExecStart = String;
+                      RemainAfterExit = Bool;
+                      StartLimitBurst = Integer;
+                      StartLimitInterval = Integer;
+                      Type = String;
+                    };
+                  wantedBy = [String];
+                };
+            };
+        };
+    } ->
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  ξ.autorandr = θ,
+  β.enable = η,
+  ο.services = α,
+  ν.str = λ
+) =>
+{config = α; lib = γ; pkgs = ξ;} ->
+{ config = κ;
+  meta = {maintainers = [δ];};
+  options = {services = {autorandr = {defaultTarget = μ; enable = ζ;};};};
+}

@@ -1,0 +1,41 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.makeBinPath = [γ] -> δ,
+  α.mkDerivation =
+    { makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      postInstall = String;
+      postPatch = String;
+      src = ι;
+      version = String;
+    } ->
+    κ,
+  λ.lib = α,
+  β.licenses = μ,
+  β.ma27 = ζ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  μ.mit = ε,
+  ξ.linux = η
+) =>
+{ coreutils = γ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  fontconfig = γ;
+  gawk = γ;
+  getopt = γ;
+  grim = γ;
+  imagemagick = γ;
+  makeWrapper = θ;
+  stdenv = α;
+  swaylock = γ;
+} ->
+κ

@@ -1,0 +1,23 @@
+∀ α β γ δ ε ζ η.
+( α.maintainers = β,
+  α.mit = γ,
+  δ.licenses = α,
+  β.imuli = ε
+) =>
+{ build-idris-package =
+    { meta =
+        { description = String;
+          homepage = String;
+          license = γ;
+          maintainers = [ε];
+        };
+      name = String;
+      src = ζ;
+      version = String;
+    } ->
+    η;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  lib = α;
+} ->
+η

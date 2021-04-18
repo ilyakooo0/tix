@@ -1,0 +1,35 @@
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.dtzWill = β,
+  α.licenses = γ,
+  α.maintainers = δ,
+  α.platforms = ε,
+  γ.gpl2Plus = ζ,
+  ε.linux = η
+) =>
+{ cmake = θ;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [κ];
+      cmakeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [β];
+          platforms = η;
+        };
+      nativeBuildInputs = [θ];
+      pname = String;
+      postPatch = String;
+      src = ι;
+      version = String;
+    } ->
+    λ;
+  modemmanager-qt = κ;
+  networkmanager-qt = κ;
+  qtbase = κ;
+  qttools = θ;
+} ->
+λ
