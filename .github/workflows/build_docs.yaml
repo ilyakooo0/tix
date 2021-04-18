@@ -11,15 +11,12 @@ jobs:
   linux:
     name: Build docs
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: docs
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: cachix/install-nix-action@v13
       - name: Create /nix/store
         run: |
-          sudo rm -rf /nix/store
+          # sudo rm -rf /nix/store
           sudo mkdir -p /nix/store
           sudo chown --verbose "$USER:" /nix/store
       - name: Cache
@@ -27,12 +24,13 @@ jobs:
         with:
           path: |
             /nix/store
-          key: ${{ runner.os }}-nix-${{ hashFiles('**.nix') }}
+          key: ${{ runner.os }}-nix-docs-${{ hashFiles('docs/**/*.nix') }}
           restore-keys: |
-            ${{ runner.os }}-nix-
+            ${{ runner.os }}-nix-docs-
       - name: Build
         id: build
         run: |
+          cd docs
           mkdir res
           for f in $(nix-build)
           do
@@ -41,7 +39,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: docs
-          path: res/*.pdf
+          path: docs/res/*.pdf
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -49,7 +47,7 @@ jobs:
           # prerelease: true
           title: "Docs"
           files: |
-            res/*.pdf
+            docs/res/*.pdf
       # - name: Create Release
       #   uses: actions/create-release@v1
       #   env:
