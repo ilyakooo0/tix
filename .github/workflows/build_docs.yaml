@@ -16,7 +16,7 @@ jobs:
         working-directory: docs
     steps:
       - uses: actions/checkout@v1
-      - uses: cachix/install-nix-action@v12
+      - uses: cachix/install-nix-action@v13
       - name: Create /nix/store
         run: |
           sudo rm -rf /nix/store
@@ -27,7 +27,9 @@ jobs:
         with:
           path: |
             /nix/store
-          key: ${{ runner.os }}-nix
+          key: ${{ runner.os }}-nix-${{ hashFiles('**.nix') }}
+          restore-keys: |
+            ${{ runner.os }}-nix-
       - name: Build
         id: build
         run: |
