@@ -1,0 +1,7 @@
+verbatimEnvironments:
+  code: 1
+
+defaultIndent: "  "
+
+fileExtensionPreference:
+  lhs: 1

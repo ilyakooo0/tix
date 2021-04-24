@@ -1,4 +1,28 @@
 {
+    "GOST": {
+        "branch": "master",
+        "description": "BibTEX support for GOST standard bibliographies",
+        "homepage": "",
+        "owner": "kia999",
+        "repo": "GOST",
+        "rev": "072a2ef457b5dc9e5ddc6bfeb0b6f81d4147a328",
+        "sha256": "1969lf1jlnnmi6sr44qskac1537s094mk21kqsm30j7qlfmhdk1q",
+        "type": "tarball",
+        "url": "https://github.com/kia999/GOST/archive/072a2ef457b5dc9e5ddc6bfeb0b6f81d4147a328.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "TechDoc": {
+        "branch": "master",
+        "description": "📄🖋️💻 LaTeX document class for technical documents at SE HSE",
+        "homepage": "https://iko.soy/kursach/techDoc",
+        "owner": "ilyakooo0",
+        "repo": "TechDoc",
+        "rev": "2af7b7ed1ca066eb58e7f4b737ef14eeb83bf97c",
+        "sha256": "0cn5y1bj7sp129s41bmv3kz0k5f4hxqgclndpz1l554shs3s07fg",
+        "type": "tarball",
+        "url": "https://github.com/ilyakooo0/TechDoc/archive/2af7b7ed1ca066eb58e7f4b737ef14eeb83bf97c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
@@ -12,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "release-20.09",
+        "branch": "latex-search-path",
         "description": "Nix Packages collection",
         "homepage": "",
-        "owner": "NixOS",
+        "owner": "ilyakooo0",
         "repo": "nixpkgs",
-        "rev": "68e1d0bf8d5066139105ad73d0d65845fb4fc953",
-        "sha256": "0licfz0wgjkpkrpyzv1cv35f83grxndsr9vb34pidgn3zdjl4nf2",
+        "rev": "f442957911c2e1354863285dbb42bcd2c1e24c90",
+        "sha256": "1z33xs6g2hld31abns71xnxckcrlvbj1r8lald1gvy2drkgsag4y",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/68e1d0bf8d5066139105ad73d0d65845fb4fc953.tar.gz",
+        "url": "https://github.com/ilyakooo0/nixpkgs/archive/f442957911c2e1354863285dbb42bcd2c1e24c90.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
