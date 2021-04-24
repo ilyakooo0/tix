@@ -7,7 +7,7 @@ let
       x = pkgs.runCommand "lhs2Tex-${name}"
         { } ''
         mkdir $out
-        ${pkgs.haskellPackages.lhs2tex}/bin/lhs2TeX --output=$out/${name}.tex ${file}
+        ${pkgs.haskellPackages.lhs2tex}/bin/lhs2TeX --output="$out/${name}.tex" ${file}
       '';
     in
     "${x}/${name}.tex";
@@ -44,6 +44,6 @@ builtins.listToAttrs (map
   [
     ./tech_spec.tex
     ./project_proposal.tex
-    ./paper.lhs
+    # ./paper.lhs
   ]
 )
