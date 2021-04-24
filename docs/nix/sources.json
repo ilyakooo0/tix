@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "latex-search-path",
+        "branch": "master",
         "description": "Nix Packages collection",
         "homepage": "",
-        "owner": "ilyakooo0",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f442957911c2e1354863285dbb42bcd2c1e24c90",
-        "sha256": "1z33xs6g2hld31abns71xnxckcrlvbj1r8lald1gvy2drkgsag4y",
+        "rev": "7b2982e22eb3ca5016161abc0946f88bb43b1e09",
+        "sha256": "0qd8dhqvjz2j2k5mnx7cldir2d3mmv37msp337k99dq76wif3xnp",
         "type": "tarball",
-        "url": "https://github.com/ilyakooo0/nixpkgs/archive/f442957911c2e1354863285dbb42bcd2c1e24c90.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/7b2982e22eb3ca5016161abc0946f88bb43b1e09.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

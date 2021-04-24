@@ -38,7 +38,7 @@ builtins.listToAttrs (map
           };
         };
         # , copySources ? false
-        searchPath = [ (pkgs.lib.cleanSource ./.) ];
+        # searchPath = [ (pkgs.lib.cleanSource ./.) ];
       };
     })
   [
