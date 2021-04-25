@@ -17,10 +17,10 @@
         "homepage": "https://iko.soy/kursach/techDoc",
         "owner": "ilyakooo0",
         "repo": "TechDoc",
-        "rev": "2af7b7ed1ca066eb58e7f4b737ef14eeb83bf97c",
-        "sha256": "0cn5y1bj7sp129s41bmv3kz0k5f4hxqgclndpz1l554shs3s07fg",
+        "rev": "ab77f326ffe0ff054308ca48221940ec3809d4db",
+        "sha256": "0m94dwd7pjsgrfk8hra3gyhbd2wxk07xsdxb386vbymmk9cvfxji",
         "type": "tarball",
-        "url": "https://github.com/ilyakooo0/TechDoc/archive/2af7b7ed1ca066eb58e7f4b737ef14eeb83bf97c.tar.gz",
+        "url": "https://github.com/ilyakooo0/TechDoc/archive/ab77f326ffe0ff054308ca48221940ec3809d4db.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {

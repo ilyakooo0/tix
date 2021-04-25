@@ -7,6 +7,8 @@
 
 \selectlanguage{english}
 
+\sectionsAreChapters
+
 \floatstyle{boxed}
 \newfloat{Listing}{hbp}{lst}
 
@@ -16,8 +18,8 @@
 
 \year{2021}
 \title{Static analyzer for the Nix Expression Language}
-\author{Студент группы БПИ 174}{И. И. Костюченко}
-% \academicTeacher{Доцент департамента программной инженерии факультета компьютерных наук, канд. техн. наук}{Х. М. Салех}
+\author{Student, BSE174}{I. I. Kostyuchenko}
+\academicTeacher{Associate Professor, PhD}{V. V. Kuliamin}
 
 % \documentTitle{Техническое задание}
 % \documentCode{RU.17701729.04.03-01 ТЗ 01-1}
@@ -94,7 +96,7 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
     URI                  & A string literal representing a URI. Does not require quoting.                            & \texttt{https://example.com}           \\ \hline
     Path literal         & A path literal referring to either a relative or absolute path. Does not require quoting. & \texttt{../../directory/file.txt}      \\ \hline
     Integer              & The current C implementation of Nix allows values of 64-bit signed integers.              & \texttt{69} \newline \texttt{-42}      \\ \hline
-    Float                & Floating point integers.                                                                  & \texttt{42.9} \newline \texttt{-69.42} \\ \hline
+    Float                & Floating point numbers.                                                                   & \texttt{42.9} \newline \texttt{-69.42} \\ \hline
     Bool                 & Boolean values.                                                                           & \texttt{true} \newline \texttt{false}  \\ \hline
     Null                 & A type with a single value.                                                               & \texttt{null}                          \\ \hline
   \end{tabular}
