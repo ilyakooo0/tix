@@ -14,19 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: cachix/install-nix-action@v13
-      - name: Create /nix/store
-        run: |
-          # sudo rm -rf /nix/store
-          sudo mkdir -p /nix/store
-          sudo chown --verbose "$USER:" /nix/store
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            /nix/store
-          key: ${{ runner.os }}-nix-docs-${{ hashFiles('docs/**/*.nix') }}
-          restore-keys: |
-            ${{ runner.os }}-nix-docs-
       - name: Build
         id: build
         run: |
