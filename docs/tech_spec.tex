@@ -10,7 +10,7 @@
 \newcommand{\req}[1][]{\refstepcounter{req}\label{req:#1}\paragraph{\fbox{\textsf{\textsc{REQ}-\thereq}}}}
 \newcommand{\refreq}[1]{\hyperref[req:#1]{\fbox{\textsf{REQ-\ref*{req:#1}}}}}
 
-\title{Technical Specification for the Language Server for the Nix Expression Language}
+\title{Technical Specification for the Static Analyzer for the Nix Expression Language}
 \author{Kostyuchenko Ilya}
 \date{}
 
@@ -26,15 +26,13 @@
 
 \section{Purpose}
 
-The purpose of Tix is to simplify development in the Nix expression language.
+The purpose of the \emph{Static analyzer for the Nix Expression Language} (later referred to as \emph{Tix} for brevity) is to simplify development in the Nix expression language.
 
 \section{Scope}
 
 The project consists of developing the following components:
 
 \paragraph{The Tix type checker} is a program which is designed to statically analyze the given Nix expression language source code and deduce the types of subexpressions used within while detecting some errors made by the programmer (type mismatch errors, which usually arise due to programming mistakes).
-
-\paragraph{The Tix language server} is a program which implements the Language Server Protocol and is used to integrate the Tix type checker with existing code editors to aid with development.
 
 \section{Product perspective}
 
@@ -52,11 +50,11 @@ The application does not provide a hardware interface.
 
 \subsection{Software interfaces}
 
-The application allows interactions through the Language Server Protocol.
+The application allows interactions through standard UNIX input-output capabilities.
 
 \subsection{Communications interfaces}
 
-The application communicates with the code editor process through the Language Server Protocol using JSON-RPC requests. These requests can be over the network or local to the machine – however, the user decides to set it up.
+The application communicates with the user by reading input from the file system or terminal emulator, and outputting results to the standard UNIX output handle.
 
 \subsection{Memory}
 
@@ -64,12 +62,10 @@ The memory required to run the system depends on the size of the project being p
 
 \subsection{Operations}
 
-The application supports the following operations initiated by the code editor:
+The application supports the following operations:
 
 \begin{enumerate}
   \item Typecheck the current file and report errors
-  \item Go to the definition of a variable
-  \item Identify the type of a selected expression expression
 \end{enumerate}
 
 \subsection{Site adaptation requirements}
@@ -85,30 +81,19 @@ No interaction with services in performed.
 The application provides the following functionality to the user:
 
 \begin{enumerate}
-  \item While the user is editing a Nix expression language file the application will indicate potentially incorrect subexpressions based on type mismatches
-  \item While the user is exploring a Nix expression language project the application will provide:
-        \begin{enumerate}
-          \item type information for subexpressions the user is inspecting
-          \item definitions of variables a user is inspecting
-        \end{enumerate}
+  \item Checks user-supplied programs for type incompatibilities
+  \item Reports the resulting types of user-supplied expressions
 \end{enumerate}
 
 \section{User characteristics}
 
-The user of the application will need intermediate technical skills to set up the application to work with their text editor of choice. More precisely, the user will need to have the following (approximate and incomplete) list of skills:
-
-\begin{enumerate}
-  \item Understand on a high level what a language server is and its role in code editing
-  \item Be familiar with the repositories of packages for their text editor of choice
-  \item Be able to perform intermediate configuration of their text editor of choice and installed packages
-  \item Have basic server administration skills if they are planning to run the server remotely
-\end{enumerate}
+The user of the application will need intermediate technical skills to set up the program. More precisely, the user will need to have basic understanding of how to use their operating system and command line.
 
 \section{Limitations}
 
 \subsection{Interface to other applications}
 
-The integration with the text editor of choice should be compatible with version 3.15 of the Language Server Protocol.
+Other applications can be interfaced with through standard input-output handles.
 
 \subsection{Criticality of the application}
 
@@ -125,7 +110,7 @@ The contents of this document assume the following:
 
 \section{Apportioning of requirements}
 
-The application is a self-contained executable file that, when executed, functions as a standalone language server. The only requirement that the application externally imposes is the requirement to set up the language sever to function with the desired text editor. There already exist numerous implementation for language server support for many text editors.
+The application is a self-contained executable file that, when executed, functions as a typechecker.
 
 \section{Specified requirements}
 
@@ -137,51 +122,31 @@ The application is a self-contained executable file that, when executed, functio
 
 \req[typechecking] The system should perform type checking for expression where under conditions from \refreq{restrictons}.
 
-\req The system should analyze conditional statements where the condition consists only of type checks and boolean operators built into the Nix expression language.
-
 \req The system should analyze the types and presence of attributes in attribute sets under conditions from \refreq{restrictons}.
 
-\req The system should report encountered typechecking errors through means defined by the Language Server Protocol.
-
-\req The system should provide the location of definitions for all locally used terms under conditions from \refreq{restrictons}.
+\req The system should report encountered typechecking errors.
 
 \req The system should report the use of undefined terms through means defined by the Language Server Protocol under conditions from \refreq{restrictons}.
 
-\req The system should report the types of requested expressions through means defined by the Language Server Protocol if the type of the requested expression is unambiguously inferable during typechecking (\refreq{typechecking}).
-
-\req The system should provide code completions suggestions from the variables currently in scope and expressions built into the language under conditions from \refreq{restrictons}.
-
-\req The system should provide a way for the programmer to explicitly annotate types of expressions which will influence type checking.
-
 \section{Usability requirements}
 
-\req The system should be able to process expressions using the nixpkgs repository.
+\req The system should be able to process expressions from the nixpkgs repository.
 
 \req The system should never fail in unrecoverable ways in external imported expressions – if there are type errors in external code the system should resolve the errors automatically.
 
 \section{Performance requirements}
 
-\req The system should process incoming requests within 1 second (the system should formulate a response, not necessarily finish performing the requested action).
-
-\req The system should process incoming requests from a single client.
+\req The system should process incoming requests within 1 minute.
 
 \section{External interfaces}
 
-The only external interface of the system is the Language Server Protocol.
+The only external interfaces of the system are standard input-output handles.
 
-\paragraph{The purpose} of this interface is to provide easy interoperability with a wide range of potential code editors a user might want to use\footnote{\url{https://microsoft.github.io/language-server-protocol/implementors/tools/}}.
-
-\paragraph{The source of input} is the code editor the user uses sending requesting information about the semantics of the file currently being edited in response to the actions the user is taking while browsing or editing source code in the Nix expression language.
-
-\paragraph{The destination of the input} is the code editor the user is using which has requested information about the source code.
-
-\paragraph{Data and command formats} are defined by the Language Server Protocol\footnote{\url{https://microsoft.github.io/language-server-protocol/specifications/specification-current/}}.
+\paragraph{The purpose} of this interface is to provide easy way to provide programs to typecheck as inputs.
 
 \section{Functions}
 
-The fundamental functions of the system are queries: get the type of an expression, get the definition of a variable, get code completion. All of the responses to the queries can be generated from an \emph{analysis context} which is generated from the current file the user is viewing and any other files it imports.
-
-If the context \emph{analysis context} is already generated then the responses are formulated as follows. If the \emph{analysis context} is not present, then it is generated prior to processing the request.
+The fundamental functions of the system are queries: get the type of an expression.
 
 \subsection{Generating the type of an expression}
 
@@ -230,7 +195,7 @@ If the context \emph{analysis context} is already generated then the responses a
 
 \subsection{Error handling}
 
-If the system encounters a typing error in the user's code, then the error is returned to the user through means defined in the Language Serer Protocol.
+If the system encounters a typing error in the user's code, then the error is returned to the user.
 
 If the system encounters an internal (as opposed to a user error) the error is written to the standard error output.
 
@@ -265,7 +230,6 @@ The following approaches and methods are planned to be employed to qualify the s
 
 \begin{enumerate}
   \item Automated hand-written unit-tests
-  \item Automated randomly generated property tests
   \item Manual testing
 \end{enumerate}
 
