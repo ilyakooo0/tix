@@ -3,6 +3,7 @@
 \documentclass[]{TechDoc}
 
 \usepackage{float}
+\usepackage{mathtools}
 
 \selectlanguage{english}
 
@@ -13,6 +14,7 @@
 
 %include polycode.fmt
 
+\year{2021}
 \title{Static analyzer for the Nix Expression Language}
 \author{Студент группы БПИ 174}{И. И. Костюченко}
 % \academicTeacher{Доцент департамента программной инженерии факультета компьютерных наук, канд. техн. наук}{Х. М. Салех}
@@ -304,23 +306,82 @@ Even if all of the information necessary for detailed error messages is collecte
 
 Hughes introduced a general-purpose algebraic pretty-printer~\cite{hughes1995design}, which was later improved upon~\cite{wadler2003prettier}, to solve precisely this problem. Using one of the pretty-printers based on that research is the industry standard and will be used by our type checker.
 
-\subsection{Language Server Architecture}
+% \subsection{Language Server Architecture}
 
-A Language Server is a server providing language-specific code analysis. It communicates with various code editors using the Language Server Protocol\footnote{\url{https://microsoft.github.io/language-server-protocol/}}.
+% A Language Server is a server providing language-specific code analysis. It communicates with various code editors using the Language Server Protocol\footnote{\url{https://microsoft.github.io/language-server-protocol/}}.
 
-Language Servers have received wide adoption across a large variety of programming languages. Integrating the developed type checker into a Language Server with ``go-to-definition'' and ``show types on hover'' support would significantly improve the experience of developing in the Nix Expression Language.
+% Language Servers have received wide adoption across a large variety of programming languages. Integrating the developed type checker into a Language Server with ``go-to-definition'' and ``show types on hover'' support would significantly improve the experience of developing in the Nix Expression Language.
 
-One of the actively developed language servers is the Haskell Language Server\footnote{\url{https://github.com/haskell/haskell-language-server}}. To manage the complexities of tracking changes in files and dependencies between them, the Haskell Language Server employs the Shake library~\cite{mitchell2012shake}. It is described as an alternative to Make\footnote{\url{https://www.gnu.org/software/make/}} embedded as a DSL into Haskell with the ability to dynamically update the dependency tree, among other improvements.
+% One of the actively developed language servers is the Haskell Language Server\footnote{\url{https://github.com/haskell/haskell-language-server}}. To manage the complexities of tracking changes in files and dependencies between them, the Haskell Language Server employs the Shake library~\cite{mitchell2012shake}. It is described as an alternative to Make\footnote{\url{https://www.gnu.org/software/make/}} embedded as a DSL into Haskell with the ability to dynamically update the dependency tree, among other improvements.
 
-As it is already tested as the basis for a Language Server implementation, building our Language Server on top of the Shake library seems like the correct architectural decision.
+% As it is already tested as the basis for a Language Server implementation, building our Language Server on top of the Shake library seems like the correct architectural decision.
 
-\subsection{Conclusion}
+\section{Architecture}
+
+\subsection{Effect system}
+
+\subsubsection{Monad transformers}
+
+Developing a typechecker requires working with a large amount of non-trivial algorithms which influence each other in complex ways. A widespread way of dealing with such situations is introducing a common computational environment through which different parts of the program can interact (instead of ``manually'' passing state around). A well-established way of handling state in purely functional programming languages is the \emph{Monad} abstraction~\cite{moggi1988computational}.
+
+It is natural to want to abstract of the underlying monad – explicitly declare what features a function actually needs the monad to have. Furthermore, it is desireable to decompose the features of the a monad not only in function definitions, but also at the call site – it is desireable to be able to conjure up monads with desireable traits in an as-hoc manner. This has been achieved a while ago with \emph{monad transformers}~\cite{liang1995monad}.
+
+A drawback of monad transformers is their somewhat rigid nature – every behavior a monad needs to have needs to be defined as a distinct transformer with appropriate instances. The instances need to only implement the desired behavior, but also explicitly ``pass through'' \emph{all} other effects that it might be used in combination with. This means that adding extra behavior leads to a large amount of boilerplate. Furthermore, monads themselves (monad transformers) are not in general composable, leading a whole other set of problems. In addition, it is cumbersome to locally change parts of the underlying implementation of a monad dynamically – it might be useful to tweak some behavior in only part of an algorithm, leaving the rest to the abstract implementation; monad transformers don't really have such capabilities.
+
+\subsubsection{Free monad extensible effects}
+
+Recently a ne aprproach to effect systems has been getting more attention – \emph{free monads algebraic effects}~\cite{kiselyov2015freer, ploeg2014reflection, kiselyov2013extensible}. This approach solves the problems with monad transformers mentioned above. Rather than being transformers, effects are described as \emph{functors}. The composability problem is resolved due to functors being in general composable. Contrary to how monad transformers operate, effects (or their carriers) in \emph{free monads algebraic effects} (we will from now on refer to them as just \emph{algebraic effects}) don't have any particulare inrpretation of the effect associated with them. Effects are interpreted in an ad-hoc way at the call site. Furthermore this allows us to dynamically modify the behavior of effects without changing the types or implementations of functions we wish to change the behavior of. How we use \emph{algebraic effects} will be discussed in more detail in section~\ref{sec:implementation}.
+
+\subsection{Type system}
+
+As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not to just add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developer typechecker processes a program without errors, then the program should have no type errors during execution.
+
+\subsection{Polymorphism} \label{sec:polymorphism}
+
+Dynamic languages have potenitally limitless polymorphism – you can pass anything of any types to any function and it can potentially work without errors – it is in principal possible to check the ``types'' of passed values at runtime. This leads to the fact that there is really no way to know which ``types'' are acceptable in which positions without executing the program.
+
+The Nix community, just like with any other language, has developed idiomatic ways of solving problems. Some of these idioms are heavily based on polymorphic behavior at runtime. We should strive to develop a type system which supports as much of idiomatic behavior as possible (and where not possible, similar behavior should be expressible within the type system).
+
+Parametric polymorphism has proven to strike a nice balance between strictness, expressiveness and type inference. We feel it will be most useful as a type system for \emph{Nix}.
+
+Inferring types with parametric polymorphism implies generalizing the inferred types at certain points in the program. Generalization is also known as ``closing over type variable'' – it can be though of as explicitly choosing a point where the variable is quantified over. Figure~\ref{eq:closing} is an example of closing for a type variable.
+
+Traditionally in languages similar to \emph{simply-typed lambda calculus} generalization is performed in \emph{let} declarations – so-called \emph{let-generalization}. \emph{Nix} has a very similar \emph{let} construct as discussed in section~\ref{sec:let} which is also a great point to perform type generalization.
+
+\begin{figure}
+
+  \[
+    (\alpha \rightarrow \beta \rightarrow \alpha) \xrightarrow{\text{close over } \alpha} (\forall \alpha.\; \alpha \rightarrow \beta \rightarrow \alpha)
+  \]
+  \caption{An example of closing over $\protect\alpha$. $\protect\beta$ is considered to be an open type variable.}
+  \label{fig:closing}
+\end{figure}
+
+Apart from \emph{let expression} Nix also has \emph{attribute sets} discussed in section~\ref{sec:attrSet}, definitions in which are semantically similar to those in \emph{let expressions}. \emph{Attribute set} definitions also seem like a good point for \emph{generalization}.
+
+\subsection{Inferring recursive types}
+
+Recursive definitions pose a challenge for type inference without developer-supplied type annotations (which will be the case for the vast majority of code). There are three major approaches to inferring types of recursive definitions:
+
+\begin{enumerate}
+  \item Infer all recursive definitions as being monomorphic. This is the approach taken in \emph{Standard ML}~\cite{milner1990definition}. The obvious drawback is the fact that types are monomorphic. This is not something we want as discussed in section~\ref{sec:polymorphism}.
+  \item Analyze the call graph of recursive definitions, separate the definitions into strongly connected components, topologically sort the components, and infer the types of each strongly connected component separately. This is the approach taken in \emph{Haskell}~\cite{damas1982principal}. While this approach yields polymorphic types, it does not produce the ``most polymorphic'' (principal) types.
+  \item The last implements a more complicated iteration-based type inference algorithm with a user-configurable number of iterations.~\cite{goldberg2000mercury} If the specified number of iterations is not enough to deduce the type of a recursive definition, it is rejected. The clear upside of this approach is that the inferred type (if it is given enough iterations and succeeds) is the principal (most general, most polymorphic) type of the expression.
+\end{enumerate}
+
+While the last approach would allow us to in theory type more programs, we feel that tasking the user with configuring the typechecker would make the barrier to entry higher than it needs, and in practice the second approach would be useful enough (and faster), so that is the approach we chose to go with.
+
+\subsection{Row-polymorphism}
+
+\section{Implementation} \label{sec:implementation}
+
+\section{Conclusion}
 
 Nix is a rapidly growing ecosystem. At the time of writing, nixpkgs, the Nix package registry, contains over 60000 packages\footnote{\url{https://github.com/NixOS/nixpkgs}} that can be either installed or used as dependencies in other projects. There is much interest in the approach used by Nix, and making the ever-growing codebase of configurations easier to manage and extend would be a welcome development.
 
 Even though the developed type checker will need to check code for an existing dynamic language, and no type checker can cover all of the valid cases, producing false negatives, covering most of the cases encountered in practice would be useful enough to be worth using. Furthermore, plenty of research has already been conducted on which the Nix Expression Language type checker can be based.
 
-Integrating the type checker into a Language Server would provide additional utility and afford the ability to implement additional features, such as ``go-to-definition'' in a practical way.
+\newpage
 
 \bibliographystyle{gost2008}
 \bibliography{bibl}
