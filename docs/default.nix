@@ -15,15 +15,15 @@ let
 in
 builtins.listToAttrs (map
   (file':
-    let file = if pkgs.lib.hasSuffix ".lhs" file' then lhs2tex file' else file';
+    let file = if pkgs.lib.hasSuffix ".lhs" file'.file then lhs2tex file'.file else file'.file;
     in
     {
-      name = filename file';
+      name = filename file'.file;
       value = pkgs.texFunctions.runLaTeX {
         rootFile = file;
         # , generatePDF ? true # generate PDF, not DVI
         # , generatePS ? false # generate PS in addition to DVI
-        extraFiles = [ (sources.TechDoc + "/TechDoc.cls") ];
+        extraFiles = file'.extraFiles or [ ];
         # , compressBlanksInIndex ? true
         # , packages ? [ ]
         texPackages = {
@@ -38,12 +38,11 @@ builtins.listToAttrs (map
           };
         };
         # , copySources ? false
-        # searchPath = [ (pkgs.lib.cleanSource ./.) ];
       };
     })
   [
-    ./tech_spec.tex
-    ./project_proposal.tex
-    # ./paper.lhs
+    { file = ./tech_spec.tex; }
+    { file = ./project_proposal.tex; }
+    { file = ./paper.lhs; extraFiles = [ (sources.TechDoc + "/TechDoc.cls") ./bibl.bib ]; }
   ]
 )
