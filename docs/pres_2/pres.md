@@ -16,6 +16,8 @@ _Author:_ Kostyuchenko Ilya
 
 _Supervisor:_ Victor Kuliamin, Associate Professor, PhD
 
+#### _Source code:_ [github.com/ilyakooo0/tix](https://github.com/ilyakooo0/tix)
+
 ---
 
 > Nix is a powerful package manager that makes package management reliable and reproducible.
