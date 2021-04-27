@@ -21,8 +21,8 @@
 \author{Student, BSE174}{I. I. Kostyuchenko}
 \academicTeacher{Associate Professor, PhD}{V. V. Kuliamin}
 
-% \documentTitle{Техническое задание}
-% \documentCode{RU.17701729.04.03-01 ТЗ 01-1}
+\documentTitle{Explanatory note}
+\documentCode{RU.17701729.04.05-01 ПЗ 01-1}
 
 \begin{document}
 \maketitle
