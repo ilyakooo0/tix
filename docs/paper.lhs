@@ -31,6 +31,16 @@
   Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become quite complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language.
 \end{abstract}
 
+\begin{otherlanguage}{russian}
+
+\begin{abstract}
+Настройка и сборка даже самых простых программных проектов часто бывает непростой задачей -- для этого требуется загрузить и установить большое количество необходимого программного обеспечения. Это часто делает проблематичным воспроизведение сборок проекта на разных компьютерах. Менеджер пакетов Nix стремится решить эту проблему, предоставляя единый язык для описания пакетов программного обеспечения чисто функциональным способом. Этот язык называется языком Nix Expression Language. Поскольку вся сложность конфигурации программного обеспечения должна быть выражена на языке Nix Expression Language, сами выражения часто становятся довольно сложными, что затрудняет понимание и расширение существующих выражений без ошибок. Широко распространенным инструментом для облегчения понимания и проверки корректности выражений на других языках является статическая проверка типов. В этой статье будут рассмотрены методы, которые можно использовать для добавления статической проверки типов в язык выражений Nix Expression Language.
+\end{abstract}
+
+\end{otherlanguage}
+
+\parr{Source code} \url{https://github.com/ilyakooo0/tix}
+
 \newpage
 
 \tableofcontents
@@ -346,7 +356,7 @@ The Nix community, just like with any other language, has developed idiomatic wa
 
 Parametric polymorphism has proven to strike a nice balance between strictness, expressiveness and type inference. We feel it will be most useful as a type system for \emph{Nix}.
 
-Inferring types with parametric polymorphism implies generalizing the inferred types at certain points in the program. Generalization is also known as ``closing over type variable'' – it can be though of as explicitly choosing a point where the variable is quantified over. Figure~\ref{eq:closing} is an example of closing for a type variable.
+Inferring types with parametric polymorphism implies generalizing the inferred types at certain points in the program. Generalization is also known as ``closing over type variable'' – it can be though of as explicitly choosing a point where the variable is quantified over. Figure~\ref{fig:closing} is an example of closing for a type variable.
 
 Traditionally in languages similar to \emph{simply-typed lambda calculus} generalization is performed in \emph{let} declarations – so-called \emph{let-generalization}. \emph{Nix} has a very similar \emph{let} construct as discussed in section~\ref{sec:let} which is also a great point to perform type generalization.
 
