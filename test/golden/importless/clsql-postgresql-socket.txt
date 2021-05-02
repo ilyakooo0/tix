@@ -1,0 +1,16 @@
+∀ β γ δ.
+( β.clsql = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.md5 = γ,
+  β.uffi = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

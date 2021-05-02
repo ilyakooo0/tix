@@ -1,19 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.bcc = β,
-  α.enable = γ,
-  δ.mkEnableOption = String -> ε,
-  δ.mkIf =
-    γ ->
-    { boot = {extraModulePackages = [β];};
-      environment = {systemPackages = [ζ];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  β.bcc = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    ε ->
+    { boot = {extraModulePackages = [δ];};
+      environment = {systemPackages = [η];};
     } ->
-    η,
-  θ.bcc = α,
-  ι.programs = θ,
-  κ.kernelPackages = α,
-  λ.boot = κ,
-  μ.kernelPackages = α,
-  ν.boot = μ
+    θ,
+  ι.bcc = β,
+  κ.programs = ι,
+  λ.kernelPackages = β,
+  μ.boot = λ,
+  ν.kernelPackages = β,
+  ξ.boot = ν
 ) =>
-{config = α; lib = δ;} ->
-{config = η; options = {programs = {bcc = {enable = ε;};};};}
+α -> {config = θ; options = {programs = {bcc = {enable = ζ;};};};}

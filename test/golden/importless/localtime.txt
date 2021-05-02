@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.localtime = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.localtime = ε,
   γ.mkIf =
-    δ ->
-    { environment = {systemPackages = [ε];};
+    ζ ->
+    { environment = {systemPackages = [η];};
       services =
         { geoclue2 =
             { appConfig = {localtime = {isAllowed = Bool; isSystem = Bool;};};
@@ -10,7 +13,7 @@
             };
         };
       systemd =
-        { packages = [ζ];
+        { packages = [θ];
           services =
             { localtime =
                 {serviceConfig = {Restart = String;}; wantedBy = [String];};
@@ -18,15 +21,14 @@
         };
       users = {users = {localtimed = {description = String;};};};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.out = ε,
-  β.enable = δ,
-  μ.services = α,
-  κ.bool = θ,
-  ν.localtime = λ,
-  ξ.localtime = λ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.out = η,
+  ε.enable = ζ,
+  ν.services = β,
+  ξ.localtime = δ,
+  ο.localtime = δ,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = η; options = {services = {localtime = {enable = ι;};};};}
+α -> {config = ι; options = {services = {localtime = {enable = λ;};};};}

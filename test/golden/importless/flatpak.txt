@@ -1,14 +1,17 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
-( β.enable = Bool,
-  β.flatpak = γ,
-  δ.literalExample = String -> ε,
-  δ.mkEnableOption = String -> ζ,
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.enable = Bool,
+  γ.flatpak = ζ,
+  δ.literalExample = String -> η,
+  δ.mkEnableOption = String -> θ,
   δ.mkIf =
-    η ->
+    ι ->
     { assertions = [{assertion = Bool; message = String;}];
-      environment = {profiles = [String]; systemPackages = [θ];};
-      services = {dbus = {packages = [ι];};};
-      systemd = {packages = [κ];};
+      environment = {profiles = [String]; systemPackages = [κ];};
+      services = {dbus = {packages = [λ];};};
+      systemd = {packages = [μ];};
       users =
         { groups = {flatpak = {};};
           users =
@@ -17,30 +20,30 @@
             };
         };
     } ->
-    λ,
+    ν,
   δ.mkOption =
     { default = ∀ α. α;
       description = String;
-      example = ε;
+      example = η;
       internal = Bool;
-      type = μ;
+      type = ξ;
     } ->
-    ν,
-  δ.types = ξ,
-  ο.flatpak = θ,
-  ο.maintainers = π,
-  γ.enable = η,
-  γ.guiPackages = [θ],
-  ρ.services = β,
-  σ.portal = β,
-  τ.xdg = σ,
-  ξ.listOf = υ -> μ,
-  φ.package = υ,
-  χ.meta = ο,
-  ψ.flatpak = χ
+    ο,
+  δ.types = π,
+  ε.flatpak = κ,
+  ε.maintainers = ρ,
+  ζ.enable = ι,
+  ζ.guiPackages = [κ],
+  σ.services = γ,
+  τ.portal = γ,
+  υ.xdg = τ,
+  φ.meta = ε,
+  χ.flatpak = φ,
+  π.listOf = ψ -> ξ,
+  ω.package = ψ
 ) =>
-{config = β; lib = δ; pkgs = ο;} ->
-{ config = λ;
-  meta = {doc = Path; maintainers = π;};
-  options = {services = {flatpak = {enable = ζ; guiPackages = ν;};};};
+β ->
+{ config = ν;
+  meta = {doc = Path; maintainers = ρ;};
+  options = {services = {flatpak = {enable = θ; guiPackages = ο;};};};
 }

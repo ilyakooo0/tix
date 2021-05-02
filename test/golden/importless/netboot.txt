@@ -1,33 +1,36 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
-( α.initrd = β,
-  α.squashfsStore = γ,
-  α.storeContents = δ,
-  α.toplevel = ε,
-  ζ.literalExample = String -> η,
-  ζ.mkOption = {description = String; example = η;} -> θ,
-  ι.callPackage = Path -> {storeContents = δ;} -> κ,
-  ι.grub2 = λ,
-  ι.grub2_efi = λ,
-  ι.makeInitrd =
-    { compressor = μ;
-      contents = [{object = γ; symlink = String;}];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.initrd = ε,
+  β.squashfsStore = ζ,
+  β.storeContents = η,
+  β.toplevel = θ,
+  γ.literalExample = String -> ι,
+  γ.mkOption = {description = String; example = ι;} -> κ,
+  δ.callPackage = Path -> {storeContents = η;} -> λ,
+  δ.grub2 = μ,
+  δ.grub2_efi = μ,
+  δ.makeInitrd =
+    { compressor = ν;
+      contents = [{object = ζ; symlink = String;}];
       prepend = [String];
     } ->
-    ν,
-  ι.syslinux = λ,
-  ι.system = String,
-  ι.writeTextDir = String -> String -> ξ,
-  ο.build = α,
-  π.system = ο,
-  β.compressor = μ,
-  ρ.boot = α,
-  σ.build = α,
+    ξ,
+  δ.syslinux = μ,
+  δ.system = String,
+  δ.writeTextDir = String -> String -> ο,
+  π.hostPlatform = δ,
+  ρ.stdenv = π,
+  σ.build = β,
   τ.system = σ,
-  υ.netboot = α,
-  φ.hostPlatform = ι,
-  χ.stdenv = φ
+  ε.compressor = ν,
+  υ.boot = β,
+  φ.build = β,
+  χ.system = φ,
+  ψ.netboot = β
 ) =>
-{config = α; lib = ζ; pkgs = ι;} ->
+α ->
 { config =
     { boot =
         { initrd =
@@ -35,7 +38,7 @@
           loader = {grub = {enable = Bool;}; timeout = Integer;};
           postBootCommands = String;
         };
-      environment = {systemPackages = [λ];};
+      environment = {systemPackages = [μ];};
       fileSystems =
         { / = {fsType = String; options = [String];};
           /nix/.ro-store =
@@ -48,11 +51,11 @@
             {fsType = String; neededForBoot = Bool; options = [String];};
           /nix/store = {device = String; fsType = String; options = [String];};
         };
-      netboot = {storeContents = [ε];};
+      netboot = {storeContents = [θ];};
       system =
         { build =
-            {netbootIpxeScript = ξ; netbootRamdisk = ν; squashfsStore = κ;};
+            {netbootIpxeScript = ο; netbootRamdisk = ξ; squashfsStore = λ;};
         };
     };
-  options = {netboot = {storeContents = θ;};};
+  options = {netboot = {storeContents = κ;};};
 }

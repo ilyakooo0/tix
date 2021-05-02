@@ -1,0 +1,23 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.cffi = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.iolib_dot_asdf = γ,
+  β.iolib_dot_base = γ,
+  β.iolib_dot_common-lisp = γ,
+  β.iolib_dot_conf = γ,
+  β.split-sequence = γ,
+  β.trivial-features = γ,
+  β.uiop = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
+    ε ->
+    { environment = {systemPackages = [η];};
       systemd =
         { services =
             { das_watchdog =
@@ -20,10 +23,9 @@
             };
         };
     } ->
-    ζ,
-  η.das_watchdog = ε,
-  θ.das_watchdog = α,
-  ι.services = θ
+    θ,
+  δ.das_watchdog = η,
+  ι.das_watchdog = β,
+  κ.services = ι
 ) =>
-{config = α; lib = γ; pkgs = η;} ->
-{config = ζ; options = {services = {das_watchdog = {enable = δ;};};};}
+α -> {config = θ; options = {services = {das_watchdog = {enable = ζ;};};};}

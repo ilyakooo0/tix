@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.tailscale = β,
-  γ.danderson = δ,
-  γ.maintainers = ε,
-  γ.mbaillie = δ,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tailscale = ε,
+  γ.danderson = ζ,
+  γ.maintainers = η,
+  γ.mbaillie = ζ,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { systemd =
         { services =
             { tailscale =
@@ -31,15 +34,15 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {default = Integer; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  β.enable = η,
-  μ.services = α,
-  λ.port = ι
+    κ,
+  γ.mkOption = {default = Integer; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  ε.enable = ι,
+  ξ.services = β,
+  ν.port = λ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = θ;
-  meta = {maintainers = [δ];};
-  options = {services = {tailscale = {enable = ζ; port = κ;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = [ζ];};
+  options = {services = {tailscale = {enable = θ; port = μ;};};};
 }

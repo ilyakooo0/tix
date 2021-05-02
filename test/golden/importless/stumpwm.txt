@@ -1,22 +1,25 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.stumpwm = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.stumpwm = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {xserver = {windowManager = {session = η;};};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {xserver = {windowManager = {session = ι;};};};
     } ->
-    θ,
-  γ.singleton = {name = String; start = String;} -> η,
-  ι.stumpwm = ζ,
-  β.enable = ε,
-  κ.windowManager = α,
-  λ.xserver = κ,
-  μ.services = λ,
-  ν.lispPackages = ι
+    κ,
+  γ.singleton = {name = String; start = String;} -> ι,
+  δ.stumpwm = θ,
+  ε.enable = η,
+  λ.windowManager = β,
+  μ.xserver = λ,
+  ν.services = μ,
+  ξ.lispPackages = δ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{ config = θ;
+α ->
+{ config = κ;
   options =
-    {services = {xserver = {windowManager = {stumpwm = {enable = δ;};};};};};
+    {services = {xserver = {windowManager = {stumpwm = {enable = ζ;};};};};};
 }

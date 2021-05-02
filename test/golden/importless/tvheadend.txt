@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.tvheadend = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tvheadend = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { tvheadend =
@@ -28,23 +31,23 @@
                 { createHome = Bool;
                   description = String;
                   home = String;
-                  uid = ζ;
+                  uid = θ;
                 };
             };
         };
     } ->
-    η,
-  γ.mkOption = {default = Integer; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  β.enable = ε,
-  λ.services = α,
-  μ.uids = α,
-  ν.ids = μ,
-  κ.int = θ,
-  ξ.int = ο
+    ι,
+  γ.mkOption = {default = Integer; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  ε.enable = η,
+  ν.services = β,
+  ξ.uids = β,
+  ο.ids = ξ,
+  μ.int = κ,
+  π.int = ρ
 ) =>
-{config = α; lib = γ; pkgs = π;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
-    {services = {tvheadend = {enable = δ; htspPort = ι; httpPort = ρ;};};};
+    {services = {tvheadend = {enable = ζ; htspPort = λ; httpPort = σ;};};};
 }

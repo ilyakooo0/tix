@@ -1,7 +1,8 @@
-∀ α β γ δ ε.
-( α.between = Integer -> Integer -> β,
-  α.mkOption = {type = β;} -> γ,
-  δ.ints = α,
-  ε.types = δ
+∀ α β γ δ ε ζ.
+( α.lib = β,
+  β.between = Integer -> Integer -> γ,
+  β.mkOption = {type = γ;} -> δ,
+  ε.ints = β,
+  ζ.types = ε
 ) =>
-{lib = α;} -> {options = {value = γ;};}
+α -> {options = {value = δ;};}

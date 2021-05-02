@@ -1,27 +1,30 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.enable = β,
-  γ.lowPrio = δ -> ε,
-  γ.maintainers = ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.lowPrio = ζ -> η,
+  γ.maintainers = θ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {udev = {packages = [η];};};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {udev = {packages = [ι];};};
       users = {groups = {adbusers = {};};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.android-udev-rules = η,
-  μ.platform-tools = δ,
-  ν.adb = α,
-  ξ.programs = ν,
-  ζ.mic92 = ο,
-  λ.bool = ι,
-  π.androidPkgs_9_0 = μ,
-  ρ.androidenv = π
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.android-udev-rules = ι,
+  δ.platform-tools = ζ,
+  ξ.adb = β,
+  ο.programs = ξ,
+  π.androidPkgs_9_0 = δ,
+  ρ.androidenv = π,
+  θ.mic92 = σ,
+  ν.bool = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = θ;
-  meta = {maintainers = [ο];};
-  options = {programs = {adb = {enable = κ;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = [σ];};
+  options = {programs = {adb = {enable = μ;};};};
 }

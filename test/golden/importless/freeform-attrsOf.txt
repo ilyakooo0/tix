@@ -1,5 +1,8 @@
-∀ α β γ δ ε ζ.
-(α.types = β, β.attrsOf = γ -> δ, β.either = ε -> ζ -> γ, β.str = ε) => { lib =
-    α;
-} ->
-{freeformType = δ;}
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  β.types = γ,
+  γ.attrsOf = δ -> ε,
+  γ.either = ζ -> η -> δ,
+  γ.str = ζ
+) =>
+α -> {freeformType = ε;}

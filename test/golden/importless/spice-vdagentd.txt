@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.spice-vdagentd = β,
-  γ.spice-vdagent = δ,
-  ε.mkEnableOption = String -> ζ,
-  ε.mkIf =
-    η ->
-    { environment = {systemPackages = [δ];};
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.spice-vdagentd = ε,
+  δ.spice-vdagent = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
+    { environment = {systemPackages = [ζ];};
       systemd =
         { services =
             { spice-vdagentd =
@@ -16,9 +19,8 @@
             };
         };
     } ->
-    θ,
-  β.enable = η,
-  ι.services = α
+    ι,
+  ε.enable = θ,
+  κ.services = β
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{config = θ; options = {services = {spice-vdagentd = {enable = ζ;};};};}
+α -> {config = ι; options = {services = {spice-vdagentd = {enable = η;};};};}

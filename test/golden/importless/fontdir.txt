@@ -1,12 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.enableFontDir = β,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enableFontDir = ε,
   γ.mkIf =
-    β -> {environment = {pathsToLink = [String]; systemPackages = [δ];};} -> ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  ι.runCommand = String -> {preferLocalBuild = Bool;} -> String -> δ,
-  κ.fonts = α,
-  θ.bool = ζ
+    ε -> {environment = {pathsToLink = [String]; systemPackages = [ζ];};} -> η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  δ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ζ,
+  λ.fonts = β,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{config = ε; options = {fonts = {enableFontDir = η;};};}
+α -> {config = η; options = {fonts = {enableFontDir = ι;};};}

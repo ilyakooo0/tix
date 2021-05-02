@@ -1,12 +1,15 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.autorandr = β,
-  γ.gnidorah = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.autorandr = ε,
+  γ.gnidorah = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
-    { environment = {systemPackages = [θ];};
-      services = {udev = {packages = [ι];};};
+    ι ->
+    { environment = {systemPackages = [κ];};
+      services = {udev = {packages = [λ];};};
       systemd =
         { services =
             { autorandr =
@@ -24,16 +27,16 @@
             };
         };
     } ->
-    κ,
-  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  ξ.autorandr = θ,
-  β.enable = η,
-  ο.services = α,
-  ν.str = λ
+    μ,
+  γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  δ.autorandr = κ,
+  ε.enable = ι,
+  π.services = β,
+  ο.str = ν
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{ config = κ;
-  meta = {maintainers = [δ];};
-  options = {services = {autorandr = {defaultTarget = μ; enable = ζ;};};};
+α ->
+{ config = μ;
+  meta = {maintainers = [ζ];};
+  options = {services = {autorandr = {defaultTarget = ξ; enable = θ;};};};
 }

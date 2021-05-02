@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ.
-( α.safeeyes = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.safeeyes = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { user =
             { services =
@@ -22,9 +25,8 @@
             };
         };
     } ->
-    ζ,
-  β.enable = ε,
-  η.services = α
+    θ,
+  ε.enable = η,
+  ι.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = ζ; options = {services = {safeeyes = {enable = δ;};};};}
+α -> {config = θ; options = {services = {safeeyes = {enable = ζ;};};};}

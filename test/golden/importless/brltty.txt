@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.brltty = β,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.brltty = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { systemd =
         { services =
             { brltty =
@@ -32,12 +35,11 @@
             };
         };
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  β.enable = δ,
-  ι.services = α,
-  θ.bool = ζ
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  ε.enable = ζ,
+  λ.services = β,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ε; options = {services = {brltty = {enable = η;};};};}
+α -> {config = η; options = {services = {brltty = {enable = ι;};};};}

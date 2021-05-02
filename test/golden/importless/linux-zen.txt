@@ -1,0 +1,22 @@
+∀ α β γ δ ε ζ η θ.
+( ( α
+  ) //
+  ( { extraMeta = {branch = String; maintainers = [β];};
+      isZen = Bool;
+      modDirVersion = String;
+      src = γ;
+      version = String;
+    }
+  ) ~
+  ( δ
+  ),
+  α.argsOverride = {},
+  α.buildLinux = δ -> ε,
+  α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> γ,
+  α.stdenv = ζ,
+  ζ.maintainers = η,
+  η.atemu = β,
+  θ.lib = ζ
+) =>
+α -> ε

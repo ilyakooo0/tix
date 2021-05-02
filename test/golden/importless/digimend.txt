@@ -1,19 +1,22 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.digimend = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.digimend = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { boot = {extraModulePackages = [β];};
+    η ->
+    { boot = {extraModulePackages = [ε];};
       environment =
         {etc = {X11/xorg.conf.d/50-digimend.conf = {source = String;};};};
       services = {xserver = {wacom = {enable = Bool;};};};
     } ->
-    ζ,
-  η.kernelPackages = α,
-  θ.boot = η,
-  ι.enable = ε,
-  κ.xserver = α,
-  λ.services = κ
+    θ,
+  ι.kernelPackages = β,
+  κ.boot = ι,
+  λ.enable = η,
+  μ.xserver = β,
+  ν.services = μ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = ζ; options = {services = {xserver = {digimend = {enable = δ;};};};};}
+α ->
+{config = θ; options = {services = {xserver = {digimend = {enable = ζ;};};};};}

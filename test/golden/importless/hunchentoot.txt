@@ -1,0 +1,34 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.bordeaux-threads = γ,
+  β.cffi = γ,
+  β.chunga = γ,
+  β.cl-base64 = γ,
+  β.cl-fad = γ,
+  β.cl-ppcre = γ,
+  β.cl-who = γ,
+  β.cl_plus_ssl = γ,
+  β.drakma = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.flexi-streams = γ,
+  β.md5 = γ,
+  β.rfc2388 = γ,
+  β.split-sequence = γ,
+  β.trivial-backtrace = γ,
+  β.trivial-features = γ,
+  β.trivial-garbage = γ,
+  β.trivial-gray-streams = γ,
+  β.usocket = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

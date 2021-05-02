@@ -1,17 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.zsh-autoenv = β,
-  γ.mkEnableOption = String -> δ,
-  γ.mkIf = ε -> {programs = {zsh = {interactiveShellInit = String;};};} -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.zsh-autoenv = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf = η -> {programs = {zsh = {interactiveShellInit = String;};};} -> θ,
   γ.mkOption =
-    {default = η; defaultText = String; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.zsh-autoenv = η,
-  β.enable = ε,
-  μ.zsh = α,
-  ν.programs = μ,
-  κ.package = θ
+    {default = ι; defaultText = String; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.zsh-autoenv = ι,
+  ε.enable = η,
+  ν.zsh = β,
+  ξ.programs = ν,
+  μ.package = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = ζ;
-  options = {programs = {zsh = {zsh-autoenv = {enable = δ; package = ι;};};};};
+α ->
+{ config = θ;
+  options = {programs = {zsh = {zsh-autoenv = {enable = ζ; package = λ;};};};};
 }

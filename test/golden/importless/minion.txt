@@ -1,21 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
-( α.minion = β,
-  α.source = γ,
-  δ.writeText = String -> ε -> ζ,
-  η.builtins = θ,
-  η.cfg = ι,
-  η.mkEnableOption = String -> κ,
-  η.mkIf =
-    λ ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.minion = ε,
+  β.source = ζ,
+  δ.writeText = String -> η -> θ,
+  γ.builtins = ι,
+  γ.cfg = κ,
+  γ.mkEnableOption = String -> λ,
+  γ.mkIf =
+    μ ->
     { environment =
-        {etc = {salt/minion = {source = ζ;};}; systemPackages = [μ];};
+        {etc = {salt/minion = {source = θ;};}; systemPackages = [ν];};
       systemd =
         { services =
             { salt-minion =
                 { after = [String];
                   description = String;
-                  path = [ν];
-                  restartTriggers = [γ];
+                  path = [ξ];
+                  restartTriggers = [ζ];
                   serviceConfig =
                     { ExecStart = String;
                       LimitNOFILE = Integer;
@@ -27,24 +30,24 @@
             };
         };
     } ->
-    ξ,
-  η.mkOption = {default = {}; description = String; type = ο;} -> π,
-  η.recursiveUpdate = {default_include = String; pki_dir = String;} -> ρ -> σ,
-  η.salt = μ,
-  η.types = τ,
-  η.utillinux = ν,
-  β.enable = λ,
-  υ.salt = α,
-  φ.services = υ,
-  χ.salt/minion = α,
-  ψ.etc = χ,
-  ω.environment = ψ,
-  ι.configuration = ρ,
-  θ.toJSON = σ -> ε,
-  τ.attrs = ο
+    ο,
+  γ.mkOption = {default = {}; description = String; type = π;} -> ρ,
+  γ.recursiveUpdate = {default_include = String; pki_dir = String;} -> σ -> τ,
+  γ.salt = ν,
+  γ.types = υ,
+  γ.utillinux = ξ,
+  κ.configuration = σ,
+  ε.enable = μ,
+  φ.salt = β,
+  χ.services = φ,
+  ι.toJSON = τ -> η,
+  ψ.salt/minion = β,
+  ω.etc = ψ,
+  α1.environment = ω,
+  υ.attrs = π
 ) =>
-{config = α; lib = η; pkgs = δ;} ->
-{ config = ξ;
+α ->
+{ config = ο;
   options =
-    {services = {salt = {minion = {configuration = π; enable = κ;};};};};
+    {services = {salt = {minion = {configuration = ρ; enable = λ;};};};};
 }

@@ -1,5 +1,5 @@
-∀ γ δ.
-(γ.docker = δ) => {pkgs = γ;} ->
+∀ γ δ ε.
+(γ.pkgs = δ, δ.docker = ε) => γ ->
 { nixpkgs =
     { config =
         { packageOverrides =
@@ -20,5 +20,5 @@
             };
         };
     };
-  virtualisation = {docker = {enable = Bool; package = δ;};};
+  virtualisation = {docker = {enable = Bool; package = ε;};};
 }

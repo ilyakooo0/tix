@@ -1,0 +1,11 @@
+∀ β γ δ.
+(β.fare-utils = γ, β.fetchurl = {sha256 = String; url = String;} -> δ) => β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

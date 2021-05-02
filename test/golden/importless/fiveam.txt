@@ -1,0 +1,17 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.net_dot_didierverna_dot_asdf-flv = γ,
+  β.trivial-backtrace = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

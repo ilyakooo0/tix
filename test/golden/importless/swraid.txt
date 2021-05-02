@@ -1,10 +1,10 @@
-∀ α β γ δ.
-(α.mdadm = β) => {pkgs = α;} ->
+∀ α β γ δ ε.
+(α.pkgs = β, β.mdadm = γ) => α ->
 { boot =
     { initrd =
         {availableKernelModules = [String]; extraUdevRulesCommands = String;};
     };
-  environment = {systemPackages = [β];};
-  services = {udev = {packages = [γ];};};
-  systemd = {packages = [δ];};
+  environment = {systemPackages = [γ];};
+  services = {udev = {packages = [δ];};};
+  systemd = {packages = [ε];};
 }

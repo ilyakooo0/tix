@@ -1,5 +1,5 @@
-∀ α β.
-{config = α; pkgs = β;} ->
+∀ α β γ.
+(α.config = β, α.pkgs = γ) => α ->
 { systemd =
     { services =
         { amazon-init =

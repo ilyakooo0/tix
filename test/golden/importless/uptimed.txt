@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.uptimed = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.uptimed = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { systemd =
         { services =
             { uptimed =
@@ -30,19 +33,18 @@
                 { createHome = Bool;
                   description = String;
                   home = String;
-                  uid = ε;
+                  uid = η;
                 };
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = δ,
-  κ.services = α,
-  λ.uids = α,
-  μ.ids = λ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = ζ,
+  μ.services = β,
+  ν.uids = β,
+  ξ.ids = ν,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{config = ζ; options = {services = {uptimed = {enable = θ;};};};}
+α -> {config = θ; options = {services = {uptimed = {enable = κ;};};};}

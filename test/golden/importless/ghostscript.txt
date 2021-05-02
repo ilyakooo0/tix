@@ -1,10 +1,12 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.enableGhostscriptFonts = β,
-  γ.mkIf = β -> {fonts = {fonts = [String];};} -> δ,
-  γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
-  γ.types = η,
-  θ.fonts = α,
-  η.bool = ε
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enableGhostscriptFonts = ε,
+  γ.mkIf = ε -> {fonts = {fonts = [String];};} -> ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  κ.fonts = β,
+  ι.bool = η
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{config = δ; options = {fonts = {enableGhostscriptFonts = ζ;};};}
+α -> {config = ζ; options = {fonts = {enableGhostscriptFonts = θ;};};}

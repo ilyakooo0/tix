@@ -1,0 +1,24 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.bordeaux-threads = γ,
+  β.cffi = γ,
+  β.cffi-grovel = γ,
+  β.cffi-toolchain = γ,
+  β.cl-utilities = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.iterate = γ,
+  β.trivial-backtrace = γ,
+  β.trivial-features = γ,
+  β.trivial-utf-8 = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

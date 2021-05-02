@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ.
+∀ α β γ δ ε ζ η.
 ( α.mkDerivation =
     { buildInputs = [β];
       dontBuild = Bool;
@@ -8,6 +8,9 @@
       unpackPhase = String;
       version = ε;
     } ->
-    ζ
+    ζ,
+  η.name = γ,
+  η.src = δ,
+  η.version = ε
 ) =>
-{stdenv = α; unzip = β;} -> {name = γ; src = δ; version = ε;} -> ζ
+{stdenv = α; unzip = β;} -> η -> ζ

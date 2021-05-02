@@ -1,8 +1,11 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( β.robustirc-bridge = γ,
-  δ.mkEnableOption = String -> ε,
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.robustirc-bridge = ζ,
+  δ.mkEnableOption = String -> η,
   δ.mkIf =
-    ζ ->
+    θ ->
     { systemd =
         { services =
             { robustirc-bridge =
@@ -23,17 +26,17 @@
             };
         };
     } ->
-    η,
-  δ.mkOption =
-    {default = ∀ α. α; description = String; example = [String]; type = θ;} ->
     ι,
-  δ.types = κ,
-  γ.enable = ζ,
-  λ.services = β,
-  κ.listOf = μ -> θ,
-  ν.str = μ
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = κ;} ->
+    λ,
+  δ.types = μ,
+  ζ.enable = θ,
+  ν.services = γ,
+  μ.listOf = ξ -> κ,
+  ο.str = ξ
 ) =>
-{config = β; lib = δ; pkgs = ξ;} ->
-{ config = η;
-  options = {services = {robustirc-bridge = {enable = ε; extraFlags = ι;};};};
+β ->
+{ config = ι;
+  options = {services = {robustirc-bridge = {enable = η; extraFlags = λ;};};};
 }

@@ -1,19 +1,21 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.disable = β,
-  α.kernelPackages = γ,
-  δ.bool = ε,
-  δ.mkIf =
-    β ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  β.disable = δ,
+  β.kernelPackages = ε,
+  γ.bool = ζ,
+  γ.mkIf =
+    δ ->
     { boot =
         { blacklistedKernelModules = [String];
-          extraModulePackages = [ζ];
+          extraModulePackages = [η];
           kernelModules = [String];
         };
       systemd =
         { services =
             { bbswitch =
                 { description = String;
-                  path = [η];
+                  path = [θ];
                   serviceConfig =
                     { ExecStart = String;
                       ExecStop = String;
@@ -25,13 +27,12 @@
             };
         };
     } ->
-    θ,
-  δ.mkOption = {default = Bool; description = String; type = ε;} -> ι,
-  γ.bbswitch = ζ,
-  κ.boot = α,
-  λ.nvidiaOptimus = α,
-  μ.hardware = λ,
-  ν.types = δ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> κ,
+  ε.bbswitch = η,
+  λ.boot = β,
+  μ.nvidiaOptimus = β,
+  ν.hardware = μ,
+  ξ.types = γ
 ) =>
-{config = α; lib = δ;} ->
-{config = θ; options = {hardware = {nvidiaOptimus = {disable = ι;};};};}
+α -> {config = ι; options = {hardware = {nvidiaOptimus = {disable = κ;};};};}

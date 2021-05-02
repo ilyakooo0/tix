@@ -1,18 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.steam-hardware = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.steam-hardware = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { boot = {kernelModules = [String];};
-      services = {udev = {packages = [ε];};};
+      services = {udev = {packages = [η];};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.steam = ε,
-  β.enable = δ,
-  λ.hardware = α,
-  ι.bool = η,
-  μ.steamPackages = κ
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.steam = η,
+  ε.enable = ζ,
+  μ.hardware = β,
+  ν.steamPackages = δ,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {hardware = {steam-hardware = {enable = θ;};};};}
+α -> {config = θ; options = {hardware = {steam-hardware = {enable = κ;};};};}

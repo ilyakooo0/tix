@@ -1,14 +1,16 @@
-∀ α β γ δ ε ζ η θ.
-( α.iotop = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.iotop = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { security =
         {wrappers = {iotop = {capabilities = String; source = String;};};};
     } ->
-    ζ,
-  β.enable = ε,
-  η.programs = α
+    θ,
+  ε.enable = η,
+  ι.programs = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = ζ; options = {programs = {iotop = {enable = δ;};};};}
+α -> {config = θ; options = {programs = {iotop = {enable = ζ;};};};}

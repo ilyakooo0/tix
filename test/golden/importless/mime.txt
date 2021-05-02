@@ -1,23 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
+    ε ->
     { environment =
-        {extraSetup = String; pathsToLink = [String]; systemPackages = [δ];};
+        {extraSetup = String; pathsToLink = [String]; systemPackages = [ζ];};
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.teams = θ,
-  γ.types = ι,
-  κ.shared-mime-info = δ,
-  λ.mime = α,
-  μ.xdg = λ,
-  θ.members = ν,
-  ξ.freedesktop = θ,
-  ι.bool = ζ
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.teams = κ,
+  γ.types = λ,
+  δ.shared-mime-info = ζ,
+  μ.mime = β,
+  ν.xdg = μ,
+  κ.members = ξ,
+  ο.freedesktop = κ,
+  λ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{ config = ε;
-  meta = {maintainers = ν;};
-  options = {xdg = {mime = {enable = η;};};};
+α ->
+{ config = η;
+  meta = {maintainers = ξ;};
+  options = {xdg = {mime = {enable = ι;};};};
 }

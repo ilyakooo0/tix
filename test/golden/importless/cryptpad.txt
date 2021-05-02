@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.cryptpad = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.cryptpad = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { cryptpad =
@@ -22,19 +25,19 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption =
-    {default = String; defaultText = String; description = String; type = η;} ->
     θ,
-  γ.types = ι,
-  κ.cryptpad = λ,
-  β.enable = ε,
-  μ.services = α,
-  ι.path = η,
-  ν.package = ξ
+  γ.mkOption =
+    {default = String; defaultText = String; description = String; type = ι;} ->
+    κ,
+  γ.types = λ,
+  δ.cryptpad = μ,
+  ε.enable = η,
+  ν.services = β,
+  λ.path = ι,
+  ξ.package = ο
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{ config = ζ;
+α ->
+{ config = θ;
   options =
-    {services = {cryptpad = {configFile = θ; enable = δ; package = ο;};};};
+    {services = {cryptpad = {configFile = κ; enable = ζ; package = π;};};};
 }

@@ -1,22 +1,25 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.windowmaker = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.windowmaker = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {xserver = {windowManager = {session = η;};};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {xserver = {windowManager = {session = ι;};};};
     } ->
-    θ,
-  γ.singleton = {name = String; start = String;} -> η,
-  ι.windowmaker = ζ,
-  β.enable = ε,
-  κ.windowManager = α,
-  λ.xserver = κ,
-  μ.services = λ
+    κ,
+  γ.singleton = {name = String; start = String;} -> ι,
+  δ.windowmaker = θ,
+  ε.enable = η,
+  λ.windowManager = β,
+  μ.xserver = λ,
+  ν.services = μ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{ config = θ;
+α ->
+{ config = κ;
   options =
-    { services = {xserver = {windowManager = {windowmaker = {enable = δ;};};};};
+    { services = {xserver = {windowManager = {windowmaker = {enable = ζ;};};};};
     };
 }

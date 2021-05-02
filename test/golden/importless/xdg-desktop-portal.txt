@@ -1,6 +1,6 @@
-∀ α β γ.
-(α.xdg-desktop-portal = β) => { makeInstalledTest =
-    {meta = {broken = Bool;}; tested = β;} -> γ;
-  pkgs = α;
-} ->
-γ
+∀ α β γ δ.
+( α.makeInstalledTest = {meta = {broken = Bool;}; tested = β;} -> γ,
+  α.pkgs = δ,
+  δ.xdg-desktop-portal = β
+) =>
+α -> γ

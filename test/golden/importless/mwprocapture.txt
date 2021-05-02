@@ -1,26 +1,27 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.kernelPackages = β,
-  α.mwProCapture = γ,
-  δ.mkEnableOption = String -> ε,
-  δ.mkIf =
-    ζ ->
-    { assertions = η;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  β.kernelPackages = δ,
+  β.mwProCapture = ε,
+  γ.mkEnableOption = String -> ζ,
+  γ.mkIf =
+    η ->
+    { assertions = θ;
       boot =
         { extraModprobeConfig = String;
-          extraModulePackages = [θ];
+          extraModulePackages = [ι];
           kernelModules = [String];
         };
-      environment = {systemPackages = [ι];};
+      environment = {systemPackages = [κ];};
     } ->
-    κ,
-  δ.singleton = {assertion = λ; message = String;} -> η,
-  δ.versionAtLeast = μ -> String -> λ,
-  β.mwprocapture = θ,
-  β.version = μ,
-  ν.boot = α,
-  γ.enable = ζ,
-  ξ.hardware = α,
-  ο.kernel = β
+    λ,
+  γ.singleton = {assertion = μ; message = String;} -> θ,
+  γ.versionAtLeast = ν -> String -> μ,
+  δ.mwprocapture = ι,
+  δ.version = ν,
+  ξ.boot = β,
+  ε.enable = η,
+  ο.hardware = β,
+  π.kernel = δ
 ) =>
-{config = α; lib = δ;} ->
-{config = κ; options = {hardware = {mwProCapture = {enable = ε;};};};}
+α -> {config = λ; options = {hardware = {mwProCapture = {enable = ζ;};};};}

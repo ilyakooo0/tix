@@ -1,0 +1,37 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.cffi = γ,
+  β.cffi-grovel = γ,
+  β.cffi-toolchain = γ,
+  β.cl-annot = γ,
+  β.cl-ppcre = γ,
+  β.cl-syntax = γ,
+  β.cl-syntax-annot = γ,
+  β.cl-utilities = γ,
+  β.fast-http = γ,
+  β.fast-io = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.flexi-streams = γ,
+  β.jonathan = γ,
+  β.named-readtables = γ,
+  β.proc-parse = γ,
+  β.quri = γ,
+  β.smart-buffer = γ,
+  β.split-sequence = γ,
+  β.static-vectors = γ,
+  β.trivial-features = γ,
+  β.trivial-gray-streams = γ,
+  β.trivial-types = γ,
+  β.xsubseq = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

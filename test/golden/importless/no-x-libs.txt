@@ -1,45 +1,47 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9.
-( α.noXlibs = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9
+κ10.
+( α.config = β,
+  α.lib = γ,
+  δ.override = ε,
+  β.noXlibs = ζ,
   γ.const =
     ( δ ->
-      { cairo = ε;
-        dbus = ζ;
-        gobject-introspection = η;
-        networkmanager-fortisslvpn = θ;
-        networkmanager-iodine = ι;
-        networkmanager-l2tp = κ;
-        networkmanager-openconnect = λ;
-        networkmanager-openvpn = μ;
-        networkmanager-vpnc = ν;
-        qemu = ξ;
+      { cairo = η;
+        dbus = θ;
+        gobject-introspection = ι;
+        networkmanager-fortisslvpn = κ;
+        networkmanager-iodine = λ;
+        networkmanager-l2tp = μ;
+        networkmanager-openconnect = ν;
+        networkmanager-openvpn = ξ;
+        networkmanager-vpnc = ο;
+        qemu = π;
       }
     ) ->
-    ο,
-  γ.mkForce = Bool -> π,
+    ρ,
+  γ.mkForce = Bool -> σ,
   γ.mkIf =
-    β ->
+    ζ ->
     { fonts = {fontconfig = {enable = Bool;};};
-      nixpkgs = {overlays = ρ;};
+      nixpkgs = {overlays = τ;};
       programs = {ssh = {setXAuthLocation = Bool;};};
-      security = {pam = {services = {su = {forwardXAuth = π;};};};};
+      security = {pam = {services = {su = {forwardXAuth = σ;};};};};
     } ->
-    σ,
-  γ.mkOption = {default = Bool; description = String; type = τ;} -> υ,
-  γ.singleton = ο -> ρ,
-  γ.types = φ,
-  δ.override = χ,
-  ψ.environment = α,
-  φ.bool = τ,
-  ω.cairo = δ,
-  α1.dbus = δ,
-  β2.gobject-introspection = δ,
-  γ3.networkmanager-fortisslvpn = δ,
-  δ4.networkmanager-iodine = δ,
-  ε5.networkmanager-l2tp = δ,
-  ζ6.networkmanager-openconnect = δ,
-  η7.networkmanager-openvpn = δ,
-  θ8.networkmanager-vpnc = δ,
-  ι9.qemu = δ
+    υ,
+  γ.mkOption = {default = Bool; description = String; type = φ;} -> χ,
+  γ.singleton = ρ -> τ,
+  γ.types = ψ,
+  ω.environment = β,
+  ψ.bool = φ,
+  α1.cairo = δ,
+  β2.dbus = δ,
+  γ3.gobject-introspection = δ,
+  δ4.networkmanager-fortisslvpn = δ,
+  ε5.networkmanager-iodine = δ,
+  ζ6.networkmanager-l2tp = δ,
+  η7.networkmanager-openconnect = δ,
+  θ8.networkmanager-openvpn = δ,
+  ι9.networkmanager-vpnc = δ,
+  κ10.qemu = δ
 ) =>
-{config = α; lib = γ;} ->
-{config = σ; options = {environment = {noXlibs = υ;};};}
+α -> {config = υ; options = {environment = {noXlibs = χ;};};}

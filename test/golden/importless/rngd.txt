@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.rngd = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.rngd = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { systemd =
         { services =
             { rngd =
@@ -22,15 +25,14 @@
             };
         };
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.optionalString = θ -> String -> String,
-  γ.types = ι,
-  β.debug = θ,
-  β.enable = δ,
-  κ.security = α,
-  ι.bool = ζ,
-  λ.bool = μ
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.optionalString = κ -> String -> String,
+  γ.types = λ,
+  ε.debug = κ,
+  ε.enable = ζ,
+  μ.security = β,
+  λ.bool = θ,
+  ν.bool = ξ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{config = ε; options = {security = {rngd = {debug = η; enable = ξ;};};};}
+α -> {config = η; options = {security = {rngd = {debug = ι; enable = ο;};};};}

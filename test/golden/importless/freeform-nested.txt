@@ -1,7 +1,7 @@
-∀ α β γ δ.
-( α.bool = β,
-  α.mkOption = {default = Bool; type = β;} -> γ,
-  δ.types = α
+∀ α β γ δ ε.
+( α.lib = β,
+  β.bool = γ,
+  β.mkOption = {default = Bool; type = γ;} -> δ,
+  ε.types = β
 ) =>
-{lib = α;} ->
-{config = {nest = {bar = String;};}; options = {nest = {foo = γ;};};}
+α -> {config = {nest = {bar = String;};}; options = {nest = {foo = δ;};};}

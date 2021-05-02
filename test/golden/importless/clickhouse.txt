@@ -1,15 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.clickhouse = β,
-  γ.mkDefault = String -> δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.clickhouse = ε,
+  γ.mkDefault = String -> ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ζ ->
+    θ ->
     { environment =
         { etc =
             { clickhouse-server/config.xml = {source = String;};
               clickhouse-server/users.xml = {source = String;};
             };
-          systemPackages = [η];
+          systemPackages = [ι];
         };
       systemd =
         { services =
@@ -28,23 +31,22 @@
                 };
             };
         };
-      time = {timeZone = δ;};
+      time = {timeZone = ζ;};
       users =
-        { groups = {clickhouse = {gid = θ;};};
+        { groups = {clickhouse = {gid = κ;};};
           users =
             { clickhouse =
-                {description = String; group = String; name = String; uid = ι;};
+                {description = String; group = String; name = String; uid = λ;};
             };
         };
     } ->
-    κ,
-  λ.clickhouse = η,
-  β.enable = ζ,
-  μ.services = α,
-  ν.gids = α,
-  ξ.ids = ν,
-  ο.uids = α,
-  π.ids = ο
+    μ,
+  δ.clickhouse = ι,
+  ε.enable = θ,
+  ν.services = β,
+  ξ.gids = β,
+  ο.ids = ξ,
+  π.uids = β,
+  ρ.ids = π
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = κ; options = {services = {clickhouse = {enable = ε;};};};}
+α -> {config = μ; options = {services = {clickhouse = {enable = η;};};};}

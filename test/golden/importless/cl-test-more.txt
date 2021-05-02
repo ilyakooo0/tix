@@ -1,0 +1,20 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.anaphora = γ,
+  β.cl-ansi-text = γ,
+  β.cl-colors = γ,
+  β.cl-ppcre = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.let-plus = γ,
+  β.prove = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

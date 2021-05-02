@@ -1,16 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.traceroute = β,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.traceroute = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { security =
         {wrappers = {traceroute = {capabilities = String; source = String;};};};
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  β.enable = δ,
-  ι.programs = α,
-  θ.bool = ζ
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  ε.enable = ζ,
+  λ.programs = β,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ε; options = {programs = {traceroute = {enable = η;};};};}
+α -> {config = η; options = {programs = {traceroute = {enable = ι;};};};}

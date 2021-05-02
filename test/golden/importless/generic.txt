@@ -1,44 +1,43 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
-( β.cc = γ,
-  β.lib = δ,
-  β.makeLibraryPath = [γ] -> ε,
-  β.mkDerivation =
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( β.bash = γ,
+  β.coreutils = δ,
+  β.fetchurl = {sha256 = ε; url = String;} -> ζ,
+  β.gawk = γ,
+  β.getopt = γ,
+  β.jre = γ,
+  β.makeWrapper = δ,
+  β.procps = γ,
+  β.python = η,
+  β.sha256 = ε,
+  β.stdenv = θ,
+  β.version = ι,
+  β.which = γ,
+  θ.cc = κ,
+  θ.lib = λ,
+  θ.makeLibraryPath = [κ] -> μ,
+  θ.mkDerivation =
     { installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
-          maintainers = [η];
-          platforms = θ;
+          license = ν;
+          maintainers = [ξ];
+          platforms = ο;
         };
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [δ];
       pname = String;
-      src = κ;
+      src = ζ;
       version = ∀ α. α;
     } ->
-    λ,
-  μ.lib = β,
-  ν.cc = β,
-  δ.makeBinPath = [ξ] -> ο,
-  π.cransom = η,
-  π.licenses = ρ,
-  π.maintainers = σ,
-  π.platforms = τ,
-  ρ.asl20 = ζ,
-  τ.unix = θ
+    π,
+  ρ.lib = θ,
+  σ.cc = θ,
+  λ.makeBinPath = [γ] -> τ,
+  υ.cransom = ξ,
+  υ.licenses = φ,
+  υ.maintainers = χ,
+  υ.platforms = ψ,
+  φ.asl20 = ν,
+  ψ.unix = ο
 ) =>
-{ bash = ξ;
-  coreutils = ι;
-  fetchurl = {sha256 = υ; url = String;} -> κ;
-  gawk = ξ;
-  getopt = ξ;
-  jre = ξ;
-  makeWrapper = ι;
-  procps = ξ;
-  python = φ;
-  sha256 = υ;
-  stdenv = β;
-  version = χ;
-  which = ξ;
-} ->
-λ
+β -> π

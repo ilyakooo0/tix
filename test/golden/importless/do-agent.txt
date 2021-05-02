@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.do-agent = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.do-agent = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
-        { packages = [ζ];
+        { packages = [θ];
           services =
             { do-agent =
                 { serviceConfig = {DynamicUser = Bool; ExecStart = [String];};
@@ -13,10 +16,9 @@
             };
         };
     } ->
-    η,
-  θ.do-agent = ζ,
-  β.enable = ε,
-  ι.services = α
+    ι,
+  δ.do-agent = θ,
+  ε.enable = η,
+  κ.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {services = {do-agent = {enable = δ;};};};}
+α -> {config = ι; options = {services = {do-agent = {enable = ζ;};};};}

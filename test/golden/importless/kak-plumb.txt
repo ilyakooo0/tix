@@ -1,30 +1,29 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.lib = β,
-  α.mkDerivation =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β,
+  α.kakoune-unwrapped = γ,
+  α.plan9port = δ,
+  α.stdenv = ε,
+  ε.lib = ζ,
+  ε.mkDerivation =
     { installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [δ];
-          platforms = ε;
+          license = η;
+          maintainers = [θ];
+          platforms = ι;
         };
       pname = String;
-      src = ζ;
+      src = β;
       version = String;
     } ->
-    η,
-  β.eraserhd = δ,
-  β.licenses = θ,
-  β.maintainers = ι,
-  β.platforms = κ,
-  θ.unlicense = γ,
-  κ.all = ε
+    κ,
+  ζ.eraserhd = θ,
+  ζ.licenses = λ,
+  ζ.maintainers = μ,
+  ζ.platforms = ν,
+  λ.unlicense = η,
+  ν.all = ι
 ) =>
-{ fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  kakoune-unwrapped = λ;
-  plan9port = μ;
-  stdenv = α;
-} ->
-η
+α -> κ

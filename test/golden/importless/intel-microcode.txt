@@ -1,15 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.updateMicrocode = β,
-  γ.mkIf = β -> {boot = {initrd = {prepend = δ;};};} -> ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.mkOrder = Integer -> [String] -> δ,
-  γ.types = θ,
-  ι.intel = α,
-  κ.cpu = ι,
-  λ.hardware = κ,
-  θ.bool = ζ
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.updateMicrocode = ε,
+  γ.mkIf = ε -> {boot = {initrd = {prepend = ζ;};};} -> η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.mkOrder = Integer -> [String] -> ζ,
+  γ.types = κ,
+  λ.intel = β,
+  μ.cpu = λ,
+  ν.hardware = μ,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = ε;
-  options = {hardware = {cpu = {intel = {updateMicrocode = η;};};};};
+α ->
+{ config = η;
+  options = {hardware = {cpu = {intel = {updateMicrocode = ι;};};};};
 }

@@ -1,4 +1,5 @@
-∀ α β.
-( α.mkDefault = {hardware = {enableRedistributableFirmware = Bool;};} -> β
+∀ α β γ.
+( α.lib = β,
+  β.mkDefault = {hardware = {enableRedistributableFirmware = Bool;};} -> γ
 ) =>
-{lib = α;} -> {config = β;}
+α -> {config = γ;}

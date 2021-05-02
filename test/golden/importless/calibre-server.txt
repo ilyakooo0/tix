@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.calibre-server = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.calibre-server = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { services =
             { calibre-server =
@@ -16,23 +19,23 @@
             };
         };
       users =
-        { groups = {calibre-server = {gid = η;};};
-          users = {calibre-server = {group = String; uid = θ;};};
+        { groups = {calibre-server = {gid = ι;};};
+          users = {calibre-server = {group = String; uid = κ;};};
         };
     } ->
-    ι,
-  γ.mkOption = {description = String; type = κ;} -> λ,
-  γ.types = μ,
-  ν.calibre = ζ,
-  β.enable = ε,
-  ξ.services = α,
-  ο.gids = α,
-  π.ids = ο,
-  ρ.uids = α,
-  σ.ids = ρ,
-  μ.path = κ
+    λ,
+  γ.mkOption = {description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  δ.calibre = θ,
+  ε.enable = η,
+  ο.services = β,
+  π.gids = β,
+  ρ.ids = π,
+  σ.uids = β,
+  τ.ids = σ,
+  ξ.path = μ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = ι;
-  options = {services = {calibre-server = {enable = δ; libraryDir = λ;};};};
+α ->
+{ config = λ;
+  options = {services = {calibre-server = {enable = ζ; libraryDir = ν;};};};
 }

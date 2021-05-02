@@ -1,5 +1,6 @@
-∀ α β γ δ.
-( α.mkMerge =
+∀ α β γ δ ε.
+( α.lib = β,
+  β.mkMerge =
     [ { boot =
           { kernel =
               { sysctl =
@@ -13,18 +14,18 @@
           { interfaces =
               { eth1 =
                   { ipv4 =
-                      {addresses = [{address = β; prefixLength = Integer;}];};
-                    ipv6 =
                       {addresses = [{address = γ; prefixLength = Integer;}];};
+                    ipv6 =
+                      {addresses = [{address = δ; prefixLength = Integer;}];};
                   };
               };
             useDHCP = Bool;
           };
       }
     ] ->
-    δ
+    ε
 ) =>
-{lib = α;} ->
+α ->
 { extraConfig =
     { boot =
         { kernel =
@@ -39,15 +40,15 @@
         { interfaces =
             { eth1 =
                 { ipv4 =
-                    {addresses = [{address = β; prefixLength = Integer;}];};
-                  ipv6 =
                     {addresses = [{address = γ; prefixLength = Integer;}];};
+                  ipv6 =
+                    {addresses = [{address = δ; prefixLength = Integer;}];};
                 };
             };
           useDHCP = Bool;
         };
     };
-  ip4 = β;
-  ip6 = γ;
+  ip4 = γ;
+  ip6 = δ;
 } ->
-δ
+ε

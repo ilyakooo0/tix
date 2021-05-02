@@ -1,22 +1,25 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [η];};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    θ,
-  ι.maintainers = κ,
-  ι.sysprof = ε,
-  λ.sysprof = α,
-  μ.services = λ,
-  ν.meta = ι,
-  ξ.sysprof = ν
+    κ,
+  δ.maintainers = λ,
+  δ.sysprof = η,
+  μ.sysprof = β,
+  ν.services = μ,
+  ξ.meta = δ,
+  ο.sysprof = ξ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{ config = θ;
-  meta = {maintainers = κ;};
-  options = {services = {sysprof = {enable = δ;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = λ;};
+  options = {services = {sysprof = {enable = ζ;};};};
 }

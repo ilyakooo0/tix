@@ -1,26 +1,29 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {packages = [ε];};};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.teams = ι,
-  γ.types = κ,
-  λ.sushi = δ,
-  μ.sushi = α,
-  ν.gnome3 = μ,
-  ξ.services = ν,
-  ι.members = ο,
-  π.gnome = ι,
-  κ.bool = η,
-  ρ.gnome3 = λ,
-  σ.gnome3 = λ
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.teams = λ,
+  γ.types = μ,
+  δ.sushi = ζ,
+  ν.sushi = β,
+  ξ.gnome3 = ν,
+  ο.services = ξ,
+  π.gnome3 = δ,
+  ρ.gnome3 = δ,
+  λ.members = σ,
+  τ.gnome = λ,
+  μ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = ζ;
-  meta = {maintainers = ο;};
-  options = {services = {gnome3 = {sushi = {enable = θ;};};};};
+α ->
+{ config = θ;
+  meta = {maintainers = σ;};
+  options = {services = {gnome3 = {sushi = {enable = κ;};};};};
 }

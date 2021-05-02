@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.i2p = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.i2p = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { i2p =
@@ -19,25 +22,24 @@
             };
         };
       users =
-        { groups = {i2p = {gid = ζ;};};
+        { groups = {i2p = {gid = θ;};};
           users =
             { i2p =
                 { createHome = Bool;
                   description = String;
                   group = String;
                   home = String;
-                  uid = η;
+                  uid = ι;
                 };
             };
         };
     } ->
-    θ,
-  β.enable = ε,
-  ι.services = α,
-  κ.gids = α,
-  λ.ids = κ,
-  μ.uids = α,
-  ν.ids = μ
+    κ,
+  ε.enable = η,
+  λ.services = β,
+  μ.gids = β,
+  ν.ids = μ,
+  ξ.uids = β,
+  ο.ids = ξ
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{config = θ; options = {services = {i2p = {enable = δ;};};};}
+α -> {config = κ; options = {services = {i2p = {enable = ζ;};};};}

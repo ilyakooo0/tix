@@ -1,17 +1,19 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.hostPlatform = β,
-  α.kexectools = γ,
-  α.platforms = δ,
-  ε.any = ζ -> δ -> η,
-  ε.mkIf =
-    η ->
-    { environment = {systemPackages = [γ];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.lib = β,
+  α.pkgs = γ,
+  γ.hostPlatform = δ,
+  γ.kexectools = ε,
+  γ.platforms = ζ,
+  β.any = η -> ζ -> θ,
+  β.mkIf =
+    θ ->
+    { environment = {systemPackages = [ε];};
       systemd =
         { services =
             { prepare-kexec =
                 { before = [String];
                   description = String;
-                  path = [θ];
+                  path = [ι];
                   script = String;
                   serviceConfig = {Type = String;};
                   unitConfig = {DefaultDependencies = Bool;};
@@ -20,11 +22,11 @@
             };
         };
     } ->
-    ι,
-  ε.platformMatch = β -> ζ,
-  κ.stdenv = α,
-  λ.meta = α,
-  μ.kexectools = λ,
-  ν.meta = ε
+    κ,
+  β.platformMatch = δ -> η,
+  λ.meta = β,
+  μ.stdenv = γ,
+  ν.meta = γ,
+  ξ.kexectools = ν
 ) =>
-{lib = ε; pkgs = α;} -> {config = ι;}
+α -> {config = κ;}

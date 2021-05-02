@@ -1,12 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.tuxedo-keyboard = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tuxedo-keyboard = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε -> {boot = {extraModulePackages = [β]; kernelModules = [String];};} -> ζ,
-  η.kernelPackages = α,
-  θ.boot = η,
-  ι.enable = ε,
-  κ.hardware = α
+    η -> {boot = {extraModulePackages = [ε]; kernelModules = [String];};} -> θ,
+  ι.kernelPackages = β,
+  κ.boot = ι,
+  λ.enable = η,
+  μ.hardware = β
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = ζ; options = {hardware = {tuxedo-keyboard = {enable = δ;};};};}
+α -> {config = θ; options = {hardware = {tuxedo-keyboard = {enable = ζ;};};};}

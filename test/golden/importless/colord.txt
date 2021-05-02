@@ -1,21 +1,23 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.colord = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.colord = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];}; udev = {packages = [θ];};};
-      systemd = {packages = [ι]; tmpfiles = {packages = [κ];};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];}; udev = {packages = [κ];};};
+      systemd = {packages = [λ]; tmpfiles = {packages = [μ];};};
       users =
         { groups = {colord = {};};
           users =
             {colord = {group = String; home = String; isSystemUser = Bool;};};
         };
     } ->
-    λ,
-  μ.colord = ζ,
-  β.enable = ε,
-  ν.services = α
+    ν,
+  δ.colord = θ,
+  ε.enable = η,
+  ξ.services = β
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = λ; options = {services = {colord = {enable = δ;};};};}
+α -> {config = ν; options = {services = {colord = {enable = ζ;};};};}

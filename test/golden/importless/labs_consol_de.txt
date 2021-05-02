@@ -1,39 +1,38 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
 ( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       meta =
-        { description = String;
-          homepage = String;
-          license = δ;
-          maintainers = [ε];
-        };
-      nativeBuildInputs = [ζ];
-      pname = String;
+        {description = δ; homepage = String; license = ε; maintainers = [ζ];};
+      nativeBuildInputs = [η];
+      pname = θ;
       postFixup = String;
       postInstall = String;
       prePatch = String;
-      src = η;
-      version = String;
+      src = ι;
+      version = κ;
     } ->
-    θ,
-  ι.DBDsybase = γ,
-  ι.NetSNMP = γ,
-  ι.perl = γ,
-  β.licenses = κ,
-  β.maintainers = λ,
-  β.peterhoeg = ε,
-  κ.gpl2 = δ
+    λ,
+  μ.DBDsybase = ν,
+  μ.NetSNMP = ξ,
+  μ.perl = γ,
+  ο.buildInputs = [γ],
+  π.buildInputs = [γ],
+  ρ.buildInputs = [γ],
+  β.licenses = σ,
+  β.maintainers = τ,
+  β.peterhoeg = ζ,
+  σ.gpl2 = ε
 ) =>
-{ autoreconfHook = ζ;
-  coreutils = μ;
+{ autoreconfHook = η;
+  coreutils = υ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ν;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  gnugrep = ξ;
-  gnused = ο;
-  makeWrapper = ζ;
-  perlPackages = ι;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> φ;
+  fetchurl = {sha256 = χ; url = String;} -> ι;
+  gnugrep = ψ;
+  gnused = ω;
+  makeWrapper = η;
+  perlPackages = μ;
   stdenv = α;
 } ->
-{check-mssql-health = θ; check-nwc-health = θ; check-ups-health = θ;}
+{check-mssql-health = λ; check-nwc-health = λ; check-ups-health = λ;}

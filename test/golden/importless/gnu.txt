@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gnu = β,
-  γ.grub2 = δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.gnu = ε,
+  γ.grub2 = ζ,
   γ.mkIf =
-    β ->
+    ε ->
     { boot = {loader = {grub = {enable = Bool; version = Integer;};};};
-      environment = {systemPackages = [ε];};
+      environment = {systemPackages = [η];};
       programs = {ssh = {startAgent = Bool;};};
       services =
         { lshd = {enable = Bool;};
@@ -12,19 +15,19 @@
           xserver = {startGnuPGAgent = Bool;};
         };
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.nano = ε,
-  γ.parted = ε,
-  γ.stdenv = ι,
-  γ.texinfo = ε,
-  γ.types = κ,
-  γ.zile = ε,
-  λ.isAarch32 = Bool,
-  ι.optional = Bool -> δ -> [ε],
-  μ.lib = ι,
-  ν.isAarch32 = Bool,
-  κ.bool = η,
-  ξ.stdenv = λ
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.nano = η,
+  γ.parted = η,
+  γ.stdenv = λ,
+  γ.texinfo = η,
+  γ.types = μ,
+  γ.zile = η,
+  δ.isAarch32 = Bool,
+  ν.stdenv = δ,
+  λ.optional = Bool -> ζ -> [η],
+  ξ.lib = λ,
+  ο.isAarch32 = Bool,
+  μ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = λ;} -> {config = ζ; options = {gnu = θ;};}
+α -> {config = θ; options = {gnu = κ;};}

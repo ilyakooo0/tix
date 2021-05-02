@@ -1,5 +1,5 @@
-∀ β.
-{fetchurl = {sha256 = String; url = String;} -> β;} ->
+∀ β γ.
+(β.fetchurl = {sha256 = String; url = String;} -> γ) => β ->
 { asdFilesToKeep = [String];
   baseName = String;
   deps = ∀ α. α;
@@ -7,6 +7,6 @@
   overrides = ∀ α. α -> α;
   packageName = String;
   parasites = [String];
-  src = β;
+  src = γ;
   version = String;
 }

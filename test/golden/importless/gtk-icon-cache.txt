@@ -1,13 +1,15 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.enable = β,
-  γ.mkIf = β -> {environment = {extraSetup = String;};} -> δ,
-  γ.mkOption = {default = ε; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  ι.iconCache = α,
-  κ.gtk = ι,
-  λ.xserver = α,
-  μ.services = λ,
-  θ.bool = ζ
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkIf = ε -> {environment = {extraSetup = String;};} -> ζ,
+  γ.mkOption = {default = η; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.iconCache = β,
+  μ.gtk = λ,
+  ν.xserver = β,
+  ξ.services = ν,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{config = δ; options = {gtk = {iconCache = {enable = η;};};};}
+α -> {config = ζ; options = {gtk = {iconCache = {enable = ι;};};};}

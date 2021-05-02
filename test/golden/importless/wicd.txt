@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {enable = Bool; packages = [ε];};};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {enable = Bool; packages = [η];};};
       systemd =
         { services =
             { wicd =
@@ -16,13 +19,12 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.wicd = δ,
-  λ.wicd = α,
-  μ.networking = λ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.wicd = ζ,
+  μ.wicd = β,
+  ν.networking = μ,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {networking = {wicd = {enable = θ;};};};}
+α -> {config = θ; options = {networking = {wicd = {enable = κ;};};};}

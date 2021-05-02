@@ -1,8 +1,7 @@
-∀ α β γ δ.
-( α.overrideAttrs = (β -> {pname = String; src = γ; version = String;}) -> δ
+∀ α β γ δ ε.
+( α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β,
+  α.openttd = γ,
+  γ.overrideAttrs = (δ -> {pname = String; src = β; version = String;}) -> ε
 ) =>
-{ fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> γ;
-  openttd = α;
-} ->
-δ
+α -> ε

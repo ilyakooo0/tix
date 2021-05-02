@@ -1,0 +1,23 @@
+∀ β γ δ ε ζ η θ ι κ.
+( ( β
+  ) //
+  ( { extraMeta = {branch = String; hydraPlatforms = ∀ α. α;};
+      modDirVersion = Null;
+      src = γ;
+      version = String;
+    }
+  ) ~
+  ( δ
+  ),
+  β.argsOverride = {},
+  β.buildLinux = δ -> ε,
+  β.buildPackages = ζ,
+  β.fetchurl = {sha256 = String; url = String;} -> γ,
+  β.modDirVersionArg = Null,
+  β.perl = η,
+  β.stdenv = θ,
+  θ.lib = ι,
+  ι.builtins = κ,
+  κ.replaceStrings = [String] -> [String] -> String -> Null
+) =>
+β -> ε

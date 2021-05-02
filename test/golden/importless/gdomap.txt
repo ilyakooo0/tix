@@ -1,25 +1,27 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
+    ε ->
     { systemd =
         { services =
             { gdomap =
                 { after = [String];
                   description = String;
-                  path = [ε];
+                  path = [η];
                   serviceConfig = {ExecStart = String;};
                   wantedBy = [String];
                 };
             };
         };
     } ->
-    ζ,
-  η.base = ε,
-  θ.gdomap = α,
-  ι.services = θ,
-  κ.gnustep = η
+    θ,
+  δ.base = η,
+  ι.gdomap = β,
+  κ.services = ι,
+  λ.gnustep = δ
 ) =>
-{config = α; lib = γ; pkgs = η;} ->
-{config = ζ; options = {services = {gdomap = {enable = δ;};};};}
+α -> {config = θ; options = {services = {gdomap = {enable = ζ;};};};}

@@ -1,0 +1,86 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7.
+( ( γ
+  ) //
+  ( { dontBuild = Bool;
+      installPhase = String;
+      meta = ∀ β. β;
+      name = String;
+      postInstall = String;
+      src = δ;
+    }
+  ) ~
+  ( ε
+  ),
+  ( ζ
+  ) //
+  ( { buildInputs = [η];
+      nativeBuildInputs = [θ];
+      postFixup = String;
+      propagatedBuildInputs = [ι];
+    }
+  ) ~
+  ( { buildInputs = [η];
+      meta = ∀ β. β;
+      passthru = {wrap = κ; wrapWithBuildEnv = λ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = μ;
+    }
+  ),
+  ( ν
+  ) //
+  ( {buildInputs = [η]; postFixup = String;}
+  ) ~
+  ( { buildInputs = [η];
+      meta = ∀ β. β;
+      passthru = {wrap = κ; wrapWithBuildEnv = λ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = μ;
+    }
+  ),
+  ξ.lib = ο,
+  ξ.mkDerivation =
+    { buildInputs = [η];
+      meta = ∀ α. α;
+      passthru = {wrap = κ; wrapWithBuildEnv = λ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = μ;
+    } ->
+    ι,
+  ξ.strings = π,
+  ρ.scripts = [σ],
+  τ.scripts = [σ],
+  π.baseName = σ,
+  π.concatStringsSep = String -> υ -> φ,
+  π.licenses = χ,
+  π.magnetophon = ψ,
+  π.maintainers = ω,
+  π.map = (α1 -> String) -> [ι] -> υ,
+  π.platforms = β2,
+  π.pmahoney = ψ,
+  π.src = δ,
+  π.version = μ,
+  π.wrap = κ,
+  π.wrapWithBuildEnv = λ,
+  γ3.lib = ξ,
+  χ.gpl2 = δ4,
+  β2.linux = ε5
+) =>
+{ coreutils = ζ6;
+  fetchurl = {sha256 = String; url = String;} -> η7;
+  makeWrapper = η;
+  pkgconfig = θ;
+  stdenv = ξ;
+} ->
+ι

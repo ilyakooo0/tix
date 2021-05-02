@@ -1,34 +1,37 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( γ.memoryAllocator = δ,
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( γ.config = δ,
+  γ.lib = ε,
+  γ.pkgs = ζ,
+  η.libPath = θ,
+  δ.memoryAllocator = ι,
   ε.attrNames =
     { graphene-hardened = {description = String; libPath = String;};
       jemalloc = {description = String; libPath = String;};
       scudo = {description = String; libPath = String;};
     } ->
     [String],
-  ε.baseNameOf = ζ -> η,
-  ε.maintainers = θ,
+  ε.baseNameOf = θ -> κ,
+  ε.maintainers = λ,
   ε.mkIf =
     Bool ->
-    {environment = {etc = {ld-nix.so.preload = {text = String;};};};} -> ι,
-  ε.mkOption = {default = String; description = String; type = κ;} -> λ,
-  ε.types = μ,
-  ν.runCommand =
+    {environment = {etc = {ld-nix.so.preload = {text = String;};};};} -> μ,
+  ε.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  ε.types = ο,
+  ζ.runCommand =
     String ->
     { allowSubstitutes = Bool;
-      libName = η;
+      libName = κ;
       origLibPath = ∀ α β. (α.libPath = β) => β;
       preferLocalBuild = Bool;
     } ->
-    String -> ξ,
-  ο.libPath = ζ,
-  δ.provider = String,
-  π.environment = γ,
-  θ.joachifm = ρ,
-  μ.enum = [String] -> κ
+    String -> π,
+  ι.provider = String,
+  ρ.environment = δ,
+  λ.joachifm = σ,
+  ο.enum = [String] -> ν
 ) =>
-{config = γ; lib = ε; pkgs = ν;} ->
-{ config = ι;
-  meta = {maintainers = [ρ];};
-  options = {environment = {memoryAllocator = {provider = λ;};};};
+γ ->
+{ config = μ;
+  meta = {maintainers = [σ];};
+  options = {environment = {memoryAllocator = {provider = ξ;};};};
 }

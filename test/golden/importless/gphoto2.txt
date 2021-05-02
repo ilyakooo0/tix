@@ -1,24 +1,27 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
-  γ.maintainers = δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.maintainers = ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {udev = {packages = [ζ];};};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {udev = {packages = [θ];};};
       users = {groups = {camera = {};};};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.gphoto2 = ε,
-  λ.libgphoto2 = ζ,
-  μ.gphoto2 = α,
-  ν.programs = μ,
-  δ.league = ξ,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.gphoto2 = η,
+  δ.libgphoto2 = θ,
+  ν.gphoto2 = β,
+  ξ.programs = ν,
+  ζ.league = ο,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = η;
-  meta = {maintainers = [ξ];};
-  options = {programs = {gphoto2 = {enable = ι;};};};
+α ->
+{ config = ι;
+  meta = {maintainers = [ο];};
+  options = {programs = {gphoto2 = {enable = λ;};};};
 }

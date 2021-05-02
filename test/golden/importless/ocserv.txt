@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.ocserv = β,
-  γ.ocserv = δ,
-  ε.mkEnableOption = String -> ζ,
-  ε.mkIf =
-    η ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.ocserv = ε,
+  δ.ocserv = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
     { environment =
-        {etc = {ocserv/ocserv.conf = {text = θ;};}; systemPackages = [δ];};
+        {etc = {ocserv/ocserv.conf = {text = ι;};}; systemPackages = [ζ];};
       security = {pam = {services = {ocserv = {};};};};
       systemd =
         { services =
@@ -24,13 +27,13 @@
             };
         };
     } ->
-    ι,
-  ε.mkOption = {description = String; example = String; type = κ;} -> λ,
-  ε.types = μ,
-  β.config = θ,
-  β.enable = η,
-  ν.services = α,
-  μ.lines = κ
+    κ,
+  γ.mkOption = {description = String; example = String; type = λ;} -> μ,
+  γ.types = ν,
+  ε.config = ι,
+  ε.enable = θ,
+  ξ.services = β,
+  ν.lines = λ
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{config = ι; options = {services = {ocserv = {config = λ; enable = ζ;};};};}
+α ->
+{config = κ; options = {services = {ocserv = {config = μ; enable = η;};};};}

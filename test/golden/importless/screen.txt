@@ -1,17 +1,19 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.screen = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.screen = ε,
   γ.mkIf =
     Bool ->
-    { environment = {etc = {screenrc = {text = δ;};}; systemPackages = [ε];};
+    { environment = {etc = {screenrc = {text = ζ;};}; systemPackages = [η];};
       security = {pam = {services = {screen = {};};};};
     } ->
-    ζ,
-  γ.mkOption = {default = String; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.screen = ε,
-  β.screenrc = String,
-  λ.programs = α,
-  ι.lines = η
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.screen = η,
+  λ.lines = ι,
+  ε.screenrc = String,
+  μ.programs = β
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {programs = {screen = {screenrc = θ;};};};}
+α -> {config = θ; options = {programs = {screen = {screenrc = κ;};};};}

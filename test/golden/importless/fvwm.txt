@@ -1,29 +1,32 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.fvwm = β,
-  γ.cfg = δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.fvwm = ε,
+  γ.cfg = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ζ ->
-    { environment = {systemPackages = [η];};
-      services = {xserver = {windowManager = {session = θ;};};};
+    θ ->
+    { environment = {systemPackages = [ι];};
+      services = {xserver = {windowManager = {session = κ;};};};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.singleton = {name = String; start = String;} -> θ,
-  γ.types = μ,
-  ν.override = {gestures = ξ;} -> η,
-  β.enable = ζ,
-  ο.windowManager = α,
-  π.xserver = ο,
-  ρ.services = π,
-  δ.gestures = ξ,
-  μ.bool = κ,
-  σ.fvwm = ν
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.singleton = {name = String; start = String;} -> κ,
+  γ.types = ξ,
+  δ.override = {gestures = ο;} -> ι,
+  π.fvwm = δ,
+  ζ.gestures = ο,
+  ε.enable = θ,
+  ρ.windowManager = β,
+  σ.xserver = ρ,
+  τ.services = σ,
+  ξ.bool = μ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = ι;
+α ->
+{ config = λ;
   options =
     { services =
-        {xserver = {windowManager = {fvwm = {enable = ε; gestures = λ;};};};};
+        {xserver = {windowManager = {fvwm = {enable = η; gestures = ν;};};};};
     };
 }

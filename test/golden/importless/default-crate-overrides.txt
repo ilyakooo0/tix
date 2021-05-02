@@ -1,65 +1,65 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( β.isDarwin = γ,
-  β.optional = δ -> ε -> ζ,
-  β.optionals = γ -> [ε] -> [η],
-  θ.frameworks = ι,
-  κ.lib = β,
-  λ.lib = β,
-  ι.Security = ε,
-  μ.apple_sdk = θ,
-  ν.CoreFoundation = ε,
-  ξ.apple_sdk = θ
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( β.cairo = γ,
+  β.curl = δ,
+  β.darwin = ε,
+  β.dbus = δ,
+  β.dbus-glib = ζ,
+  β.foundationdb = η,
+  β.gdk-pixbuf = θ,
+  β.gmp = ι,
+  β.libgit2 = δ,
+  β.libiconv = κ,
+  β.libsodium = δ,
+  β.libssh2 = δ,
+  β.openssl = δ,
+  β.pkgconfig = δ,
+  β.postgresql = δ,
+  β.python3 = λ,
+  β.sqlite = δ,
+  β.stdenv = μ,
+  β.zlib = δ,
+  μ.isDarwin = ν,
+  μ.optional = ξ -> κ -> ο,
+  μ.optionals = ν -> [κ] -> [δ],
+  ε.frameworks = π,
+  π.Security = κ,
+  ρ.apple_sdk = ε,
+  σ.CoreFoundation = κ,
+  τ.apple_sdk = ε,
+  υ.lib = μ,
+  φ.lib = μ
 ) =>
-{ cairo = ο;
-  curl = η;
-  darwin = θ;
-  dbus = η;
-  dbus-glib = π;
-  foundationdb = ρ;
-  gdk-pixbuf = σ;
-  gmp = τ;
-  libgit2 = η;
-  libiconv = ε;
-  libsodium = η;
-  libssh2 = η;
-  openssl = η;
-  pkgconfig = η;
-  postgresql = η;
-  python3 = υ;
-  sqlite = η;
-  stdenv = β;
-  zlib = η;
-} ->
-{ cairo-rs = ∀ α. α -> {buildInputs = [ο];};
-  cargo = ∀ α. α -> {buildInputs = [η];};
+β ->
+{ cairo-rs = ∀ α. α -> {buildInputs = [γ];};
+  cargo = ∀ α. α -> {buildInputs = [δ];};
   curl-sys =
     ∀ α.
     α ->
-    { buildInputs = [η];
+    { buildInputs = [δ];
       extraLinkFlags = [String];
-      propagatedBuildInputs = [η];
+      propagatedBuildInputs = [δ];
     };
-  dbus = ∀ α. α -> {buildInputs = [η];};
-  foundationdb = ∀ α. α -> {buildInputs = [ρ];};
-  foundationdb-sys = ∀ α. α -> {buildInputs = [ρ];};
-  gdk-pixbuf = ∀ α. α -> {buildInputs = [σ];};
-  gdk-pixbuf-sys = ∀ α. α -> {buildInputs = [π];};
-  gio-sys = ∀ α. α -> {buildInputs = [π];};
-  gobject-sys = ∀ α. α -> {buildInputs = [π];};
-  libdbus-sys = ∀ α. α -> {buildInputs = [η];};
+  dbus = ∀ α. α -> {buildInputs = [δ];};
+  foundationdb = ∀ α. α -> {buildInputs = [η];};
+  foundationdb-sys = ∀ α. α -> {buildInputs = [η];};
+  gdk-pixbuf = ∀ α. α -> {buildInputs = [θ];};
+  gdk-pixbuf-sys = ∀ α. α -> {buildInputs = [ζ];};
+  gio-sys = ∀ α. α -> {buildInputs = [ζ];};
+  gobject-sys = ∀ α. α -> {buildInputs = [ζ];};
+  libdbus-sys = ∀ α. α -> {buildInputs = [δ];};
   libgit2-sys =
-    ∀ α. α -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [η];};
-  libsqlite3-sys = ∀ α. α -> {buildInputs = [η];};
-  libssh2-sys = ∀ α. α -> {buildInputs = [η];};
-  libz-sys = ∀ α. α -> {buildInputs = [η]; extraLinkFlags = [String];};
-  openssl = ∀ α. α -> {buildInputs = [η];};
-  openssl-sys = ∀ α. α -> {buildInputs = [η];};
-  pq-sys = ∀ α. α -> {buildInputs = [η];};
+    ∀ α. α -> {LIBGIT2_SYS_USE_PKG_CONFIG = Bool; buildInputs = [δ];};
+  libsqlite3-sys = ∀ α. α -> {buildInputs = [δ];};
+  libssh2-sys = ∀ α. α -> {buildInputs = [δ];};
+  libz-sys = ∀ α. α -> {buildInputs = [δ]; extraLinkFlags = [String];};
+  openssl = ∀ α. α -> {buildInputs = [δ];};
+  openssl-sys = ∀ α. α -> {buildInputs = [δ];};
+  pq-sys = ∀ α. α -> {buildInputs = [δ];};
   rink =
     ∀ α.
-    α -> {buildInputs = [τ]; crateBin = [{name = String; path = String;}];};
-  security-framework-sys = ∀ α. α -> {propagatedBuildInputs = [ε];};
-  serde_derive = ∀ α. α -> {buildInputs = ζ;};
-  thrussh-libsodium = ∀ α. α -> {buildInputs = [η];};
-  xcb = ∀ α. α -> {buildInputs = [υ];};
+    α -> {buildInputs = [ι]; crateBin = [{name = String; path = String;}];};
+  security-framework-sys = ∀ α. α -> {propagatedBuildInputs = [κ];};
+  serde_derive = ∀ α. α -> {buildInputs = ο;};
+  thrussh-libsodium = ∀ α. α -> {buildInputs = [δ];};
+  xcb = ∀ α. α -> {buildInputs = [λ];};
 }

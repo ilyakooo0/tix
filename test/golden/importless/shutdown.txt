@@ -1,5 +1,5 @@
-∀ α β γ.
-{config = α; lib = β; pkgs = γ;} ->
+∀ α β γ δ.
+(α.config = β, α.lib = γ, α.pkgs = δ) => α ->
 { boot = {kernel = {sysctl = {kernel.poweroff_cmd = String;};};};
   systemd =
     { services =

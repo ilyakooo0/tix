@@ -1,17 +1,20 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( (β) // ({description = String;}) ~ (γ),
-  δ.java = ε,
+  δ.config = ε,
+  δ.lib = ζ,
+  δ.pkgs = η,
+  ε.java = θ,
   ζ.mkEnableOption = String -> β,
   ζ.mkIf =
-    η -> {environment = {shellInit = String; systemPackages = [θ];};} -> ι,
+    ι -> {environment = {shellInit = String; systemPackages = [κ];};} -> λ,
   ζ.mkOption =
-    {default = κ; defaultText = String; description = String; type = λ;} -> μ,
-  ζ.types = ν,
-  ξ.jdk = κ,
-  ε.enable = η,
-  ε.package = θ,
-  ο.programs = δ,
-  ν.package = λ
+    {default = μ; defaultText = String; description = String; type = ν;} -> ξ,
+  ζ.types = ο,
+  η.jdk = μ,
+  θ.enable = ι,
+  θ.package = κ,
+  π.programs = ε,
+  ο.package = ν
 ) =>
-{config = δ; lib = ζ; pkgs = ξ;} ->
-{config = ι; options = {programs = {java = {enable = ∀ α. α; package = μ;};};};}
+δ ->
+{config = λ; options = {programs = {java = {enable = ∀ α. α; package = ξ;};};};}

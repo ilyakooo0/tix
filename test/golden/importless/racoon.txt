@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.racoon = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.racoon = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { racoon =
@@ -21,15 +24,15 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {default = String; description = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = ε,
-  κ.services = α,
-  ι.str = η,
-  λ.path = μ
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = η,
+  μ.services = β,
+  λ.str = ι,
+  ν.path = ξ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = ζ;
-  options = {services = {racoon = {config = θ; configPath = ξ; enable = δ;};};};
+α ->
+{ config = θ;
+  options = {services = {racoon = {config = κ; configPath = ο; enable = ζ;};};};
 }

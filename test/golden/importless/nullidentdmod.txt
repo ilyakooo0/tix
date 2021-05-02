@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.nullidentdmod = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.nullidentdmod = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { nullidentdmod@ =
@@ -25,16 +28,16 @@
             };
         };
     } ->
-    ζ,
+    θ,
   γ.mkOption =
-    {default = Null; description = String; example = String; type = η;} -> θ,
-  γ.nullOr = ι -> η,
-  γ.str = ι,
-  γ.types = κ,
-  β.enable = ε,
-  λ.services = α
+    {default = Null; description = String; example = String; type = ι;} -> κ,
+  γ.nullOr = λ -> ι,
+  γ.str = λ,
+  γ.types = μ,
+  ε.enable = η,
+  ν.services = β
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = ζ;
-  options = {services = {nullidentdmod = {enable = δ; userid = θ;};};};
+α ->
+{ config = θ;
+  options = {services = {nullidentdmod = {enable = ζ; userid = κ;};};};
 }

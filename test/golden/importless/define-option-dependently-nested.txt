@@ -1,5 +1,7 @@
-∀ β γ δ.
+∀ β γ δ ε.
 ( ({value = Integer;}) // (β) ~ (γ),
-  δ.optionalAttrs = Bool -> {enable = Bool;} -> β
+  δ.lib = ε,
+  δ.options = Bool,
+  ε.optionalAttrs = Bool -> {enable = Bool;} -> β
 ) =>
-{lib = δ; options = Bool;} -> {config = {set = ∀ α. α;};}
+δ -> {config = {set = ∀ α. α;};}

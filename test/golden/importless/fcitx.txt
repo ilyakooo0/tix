@@ -1,21 +1,24 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9.
 ( (β) // ({check = γ -> Bool; name = String;}) ~ (δ),
-  ε.enabled = String,
-  ε.fcitx = ζ,
-  η.fcitx-engines = θ,
-  η.override = {plugins = ι;} -> κ,
-  λ.attrByPath = [String] -> Bool -> γ -> Bool,
-  λ.attrNames = μ -> ν,
-  λ.cfg = ξ,
-  λ.check = γ -> Bool,
-  λ.concatStringsSep = String -> ο -> π,
-  λ.const = ρ -> σ,
-  λ.filterAttrs = σ -> θ -> μ,
-  λ.isDerivation = ρ,
-  λ.listOf = τ -> υ,
-  λ.literalExample = String -> φ,
-  λ.map = (χ -> String) -> ν -> ο,
-  λ.mkIf =
+  ε.config = ζ,
+  ε.lib = η,
+  ε.pkgs = θ,
+  ζ.enabled = String,
+  ζ.fcitx = ι,
+  θ.fcitx-engines = κ,
+  θ.override = {plugins = λ;} -> μ,
+  η.attrByPath = [String] -> Bool -> γ -> Bool,
+  η.attrNames = ν -> ξ,
+  η.cfg = ο,
+  η.check = γ -> Bool,
+  η.concatStringsSep = String -> π -> ρ,
+  η.const = σ -> τ,
+  η.filterAttrs = τ -> κ -> ν,
+  η.isDerivation = σ,
+  η.listOf = υ -> φ,
+  η.literalExample = String -> χ,
+  η.map = (ψ -> String) -> ξ -> π,
+  η.mkIf =
     Bool ->
     { environment =
         { variables =
@@ -24,22 +27,22 @@
               XMODIFIERS = String;
             };
         };
-      i18n = {inputMethod = {package = κ;};};
+      i18n = {inputMethod = {package = μ;};};
       services = {xserver = {displayManager = {sessionCommands = String;};};};
     } ->
-    ψ,
-  λ.mkOption =
-    {default = ∀ α. α; description = String; example = φ; type = υ;} -> ω,
-  λ.types = α1,
-  β2.inputMethod = ε,
-  γ3.i18n = β2,
-  δ4.inputMethod = ε,
-  ε5.i18n = δ4,
-  ζ6.fcitx = η,
-  ξ.engines = ι,
-  α1.package = β,
-  η7.package = λ,
-  θ8.types = η7
+    ω,
+  η.mkOption =
+    {default = ∀ α. α; description = String; example = χ; type = φ;} -> α1,
+  η.types = β2,
+  γ3.fcitx = θ,
+  ο.engines = λ,
+  β2.package = β,
+  δ4.package = η,
+  ε5.types = δ4,
+  ζ6.inputMethod = ζ,
+  η7.i18n = ζ6,
+  θ8.inputMethod = ζ,
+  ι9.i18n = θ8
 ) =>
-{config = ε; lib = λ; pkgs = η;} ->
-{config = ψ; options = {i18n = {inputMethod = {fcitx = {engines = ω;};};};};}
+ε ->
+{config = ω; options = {i18n = {inputMethod = {fcitx = {engines = α1;};};};};}

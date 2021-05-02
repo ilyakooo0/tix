@@ -1,17 +1,19 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {packages = [ε];};};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.dleyna-renderer = δ,
-  λ.dleyna-renderer = α,
-  μ.services = λ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.dleyna-renderer = ζ,
+  μ.dleyna-renderer = β,
+  ν.services = μ,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {services = {dleyna-renderer = {enable = θ;};};};}
+α -> {config = θ; options = {services = {dleyna-renderer = {enable = κ;};};};}

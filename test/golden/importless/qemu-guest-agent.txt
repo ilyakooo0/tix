@@ -1,6 +1,9 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.qemuGuest = β,
-  γ.mkIf = δ -> ε -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.qemuGuest = ε,
+  γ.mkIf = ζ -> η -> θ,
   γ.mkMerge =
     [ { services = {udev = {extraRules = String;};};
         systemd =
@@ -17,12 +20,11 @@
           };
       }
     ] ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = δ,
-  κ.services = α,
-  ι.bool = η
+    η,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = ζ,
+  μ.services = β,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = ζ; options = {services = {qemuGuest = {enable = θ;};};};}
+α -> {config = θ; options = {services = {qemuGuest = {enable = κ;};};};}

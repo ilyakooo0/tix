@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.enable = β,
-  γ.members = δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.members = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    β ->
-    { services = {dbus = {packages = [ζ];};};
+    ε ->
+    { services = {dbus = {packages = [θ];};};
       systemd =
         { user =
             { services =
@@ -18,15 +21,15 @@
             };
         };
     } ->
-    η,
-  θ.gcr = ζ,
-  ι.nm-applet = α,
-  κ.programs = ι,
-  λ.freedesktop = γ,
-  μ.teams = λ
+    ι,
+  δ.gcr = θ,
+  κ.nm-applet = β,
+  λ.programs = κ,
+  μ.freedesktop = γ,
+  ν.teams = μ
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{ config = η;
-  meta = {maintainers = δ;};
-  options = {programs = {nm-applet = {enable = ε;};};};
+α ->
+{ config = ι;
+  meta = {maintainers = ζ;};
+  options = {programs = {nm-applet = {enable = η;};};};
 }

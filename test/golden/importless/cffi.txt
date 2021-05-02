@@ -1,0 +1,20 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.cl-json = γ,
+  β.cl-ppcre = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.trivial-features = γ,
+  β.uiop = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

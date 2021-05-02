@@ -1,24 +1,27 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.mom = β,
-  γ.torque = δ,
-  γ.writeText = String -> String -> ε,
-  ζ.inetutils = δ,
-  ζ.mkEnableOption = String -> η,
-  ζ.mkIf =
-    θ ->
-    { environment = {systemPackages = [ι];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.mom = ε,
+  δ.torque = ζ,
+  δ.writeText = String -> String -> η,
+  γ.inetutils = ζ,
+  γ.mkEnableOption = String -> θ,
+  γ.mkIf =
+    ι ->
+    { environment = {systemPackages = [κ];};
       systemd =
         { services =
             { torque-mom =
                 { after = [String];
-                  path = [δ];
+                  path = [ζ];
                   requires = [String];
                   serviceConfig =
                     {ExecStart = String; PIDFile = String; Type = String;};
                   wantedBy = [String];
                 };
               torque-mom-init =
-                { path = [δ];
+                { path = [ζ];
                   script = String;
                   serviceConfig = {Type = String;};
                   unitConfig = {ConditionPathExists = String;};
@@ -26,17 +29,17 @@
             };
         };
     } ->
-    κ,
-  ζ.mkOption = {description = String; type = λ;} -> μ,
-  ζ.procps = δ,
-  ζ.types = ν,
-  ζ.utillinux = δ,
-  β.enable = θ,
-  ξ.torque = α,
-  ο.services = ξ,
-  ν.str = λ
+    λ,
+  γ.mkOption = {description = String; type = μ;} -> ν,
+  γ.procps = ζ,
+  γ.types = ξ,
+  γ.utillinux = ζ,
+  ε.enable = ι,
+  ο.torque = β,
+  π.services = ο,
+  ξ.str = μ
 ) =>
-{config = α; lib = ζ; pkgs = γ;} ->
-{ config = κ;
-  options = {services = {torque = {mom = {enable = η; serverNode = μ;};};};};
+α ->
+{ config = λ;
+  options = {services = {torque = {mom = {enable = θ; serverNode = ν;};};};};
 }

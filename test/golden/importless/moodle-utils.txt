@@ -1,24 +1,29 @@
-∀ δ ε ζ η θ ι.
-( δ.mkDerivation =
-    { buildInputs = [ε];
-      buildPhase = String;
-      configurePhase = String;
+∀ ε ζ η θ ι κ λ μ ν ξ ο.
+( ( ε
+  ) //
+  ( { buildInputs = [ζ];
+      buildPhase = η;
+      configurePhase = θ;
       installPhase = String;
-      name = ζ;
-      pluginType = η;
-      src = θ;
-    } ->
-    ι
+      name = ι;
+      pluginType = κ;
+    }
+  ) ~
+  ( λ
+  ),
+  μ.stdenv = ν,
+  μ.unzip = ζ,
+  ξ.buildInputs = [ζ],
+  ν.mkDerivation = λ -> ο
 ) =>
-{stdenv = δ; unzip = ε;} ->
+μ ->
 { buildMoodlePlugin =
-    ∀ α β γ.
-    { buildInputs = [ε];
-      buildPhase = String;
-      configurePhase = String;
-      name = α;
-      pluginType = β;
-      src = γ;
-    } ->
-    ι;
+    ∀ α β γ δ.
+    ( α.buildPhase = String,
+      α.configurePhase = String,
+      α.name = β,
+      α.pluginType = γ,
+      α.src = δ
+    ) =>
+    α -> ο;
 }

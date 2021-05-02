@@ -1,0 +1,12 @@
+∀ α β γ δ ε ζ η θ ι.
+( (α) // ({patches = [β]; src = γ; version = String;}) ~ (δ),
+  α.callPackage = Path -> δ -> ε,
+  α.fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> β,
+  α.fetchurl = {sha256 = String; url = String;} -> γ,
+  α.stdenv = ζ,
+  ζ.isClang = η,
+  ζ.optionals = η -> [β] -> [β],
+  θ.lib = ζ,
+  ι.cc = ζ
+) =>
+α -> ε

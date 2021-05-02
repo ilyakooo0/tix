@@ -1,22 +1,25 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.plotinus = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.plotinus = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { environment =
         {variables = {GTK3_MODULES = [String]; XDG_DATA_DIRS = [String];};};
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  ι.maintainers = κ,
-  β.enable = δ,
-  λ.programs = α,
-  θ.bool = ζ,
-  μ.meta = ι,
-  ν.plotinus = μ
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  δ.maintainers = λ,
+  ε.enable = ζ,
+  μ.programs = β,
+  ν.meta = δ,
+  ξ.plotinus = ν,
+  κ.bool = θ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{ config = ε;
-  meta = {doc = Path; maintainers = κ;};
-  options = {programs = {plotinus = {enable = η;};};};
+α ->
+{ config = η;
+  meta = {doc = Path; maintainers = λ;};
+  options = {programs = {plotinus = {enable = ι;};};};
 }

@@ -1,34 +1,37 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( α.iproute2 = β,
-  γ.fileContents = String -> δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.iproute2 = ε,
+  γ.fileContents = String -> ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ζ ->
+    θ ->
     { environment =
         { etc =
-            { iproute2/bpf_pinning = {mode = String; text = δ;};
-              iproute2/ematch_map = {mode = String; text = η;};
-              iproute2/group = {mode = String; text = θ;};
-              iproute2/nl_protos = {mode = String; text = ι;};
-              iproute2/rt_dsfield = {mode = String; text = κ;};
-              iproute2/rt_protos = {mode = String; text = λ;};
-              iproute2/rt_realms = {mode = String; text = μ;};
-              iproute2/rt_scopes = {mode = String; text = ν;};
-              iproute2/rt_tables = {mode = String; text = ξ;};
+            { iproute2/bpf_pinning = {mode = String; text = ζ;};
+              iproute2/ematch_map = {mode = String; text = ι;};
+              iproute2/group = {mode = String; text = κ;};
+              iproute2/nl_protos = {mode = String; text = λ;};
+              iproute2/rt_dsfield = {mode = String; text = μ;};
+              iproute2/rt_protos = {mode = String; text = ν;};
+              iproute2/rt_realms = {mode = String; text = ξ;};
+              iproute2/rt_scopes = {mode = String; text = ο;};
+              iproute2/rt_tables = {mode = String; text = π;};
             };
         };
     } ->
-    ο,
-  γ.mkOption = {default = String; description = String; type = π;} -> ρ,
-  γ.optionalString = Bool -> String -> ξ,
-  γ.types = σ,
-  β.enable = ζ,
-  β.rttablesExtraConfig = String,
-  τ.networking = α,
-  σ.lines = π
+    ρ,
+  γ.mkOption = {default = String; description = String; type = σ;} -> τ,
+  γ.optionalString = Bool -> String -> π,
+  γ.types = υ,
+  ε.enable = θ,
+  ε.rttablesExtraConfig = String,
+  φ.networking = β,
+  υ.lines = σ
 ) =>
-{config = α; lib = γ; pkgs = υ;} ->
-{ config = ο;
+α ->
+{ config = ρ;
   options =
-    {networking = {iproute2 = {enable = ε; rttablesExtraConfig = ρ;};};};
+    {networking = {iproute2 = {enable = η; rttablesExtraConfig = τ;};};};
 }

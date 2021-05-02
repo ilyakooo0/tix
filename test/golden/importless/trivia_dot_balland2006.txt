@@ -1,0 +1,24 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.closer-mop = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.introspect-environment = γ,
+  β.iterate = γ,
+  β.lisp-namespace = γ,
+  β.trivia_dot_level0 = γ,
+  β.trivia_dot_level1 = γ,
+  β.trivia_dot_level2 = γ,
+  β.trivia_dot_trivial = γ,
+  β.trivial-cltl2 = γ,
+  β.type-i = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

@@ -1,0 +1,25 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.closer-mop = γ,
+  β.fare-quasiquote = γ,
+  β.fare-quasiquote-readtable = γ,
+  β.fare-utils = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.lisp-namespace = γ,
+  β.named-readtables = γ,
+  β.trivia_dot_level0 = γ,
+  β.trivia_dot_level1 = γ,
+  β.trivia_dot_level2 = γ,
+  β.trivia_dot_trivial = γ,
+  β.trivial-cltl2 = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

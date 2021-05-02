@@ -1,19 +1,22 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.procps = β,
-  α.udevil = β,
-  α.udisks2 = β,
-  α.which = β,
-  γ.devmon = δ,
-  ε.mkEnableOption = String -> ζ,
-  ε.mkIf =
-    η ->
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  δ.procps = ε,
+  δ.udevil = ε,
+  δ.udisks2 = ε,
+  δ.which = ε,
+  β.devmon = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
     { services = {udisks2 = {enable = Bool;};};
       systemd =
         { user =
             { services =
                 { devmon =
                     { description = String;
-                      path = [β];
+                      path = [ε];
                       serviceConfig = {ExecStart = String;};
                       wantedBy = [String];
                     };
@@ -21,9 +24,8 @@
             };
         };
     } ->
-    θ,
-  δ.enable = η,
-  ι.services = γ
+    ι,
+  ζ.enable = θ,
+  κ.services = β
 ) =>
-{config = γ; lib = ε; pkgs = α;} ->
-{config = θ; options = {services = {devmon = {enable = ζ;};};};}
+α -> {config = ι; options = {services = {devmon = {enable = η;};};};}

@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
-( α.pdnsd = β,
-  γ.pdnsd = δ,
-  γ.writeText = String -> String -> ε,
-  ζ.mkEnableOption = String -> η,
-  ζ.mkIf =
-    θ ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.pdnsd = ε,
+  δ.pdnsd = ζ,
+  δ.writeText = String -> String -> η,
+  γ.mkEnableOption = String -> θ,
+  γ.mkIf =
+    ι ->
     { systemd =
         { services =
             { pdnsd =
@@ -17,26 +20,26 @@
             };
         };
     } ->
-    ι,
-  ζ.mkOption = {default = String; description = String; type = κ;} -> λ,
-  ζ.types = μ,
-  β.enable = θ,
-  ν.services = α,
-  μ.str = κ,
-  ξ.lines = ο,
-  π.lines = ρ,
-  σ.lines = τ
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  ε.enable = ι,
+  ξ.services = β,
+  ν.str = λ,
+  ο.lines = π,
+  ρ.lines = σ,
+  τ.lines = υ
 ) =>
-{config = α; lib = ζ; pkgs = γ;} ->
-{ config = ι;
+α ->
+{ config = κ;
   options =
     { services =
         { pdnsd =
-            { cacheDir = λ;
-              enable = η;
-              extraConfig = υ;
-              globalConfig = φ;
-              serverConfig = χ;
+            { cacheDir = μ;
+              enable = θ;
+              extraConfig = φ;
+              globalConfig = χ;
+              serverConfig = ψ;
             };
         };
     };

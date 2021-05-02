@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.enable = β,
-  γ.grahamc = δ,
-  γ.maintainers = ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.grahamc = ζ,
+  γ.maintainers = η,
   γ.mkIf =
-    β ->
+    ε ->
     { systemd =
-        { packages = [ζ];
+        { packages = [θ];
           services =
             { mcelog =
                 { serviceConfig =
@@ -18,16 +21,16 @@
             };
         };
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.mcelog = ζ,
-  μ.mcelog = α,
-  ν.hardware = μ,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.mcelog = θ,
+  ν.mcelog = β,
+  ξ.hardware = ν,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = η;
-  meta = {maintainers = [δ];};
-  options = {hardware = {mcelog = {enable = ι;};};};
+α ->
+{ config = ι;
+  meta = {maintainers = [ζ];};
+  options = {hardware = {mcelog = {enable = λ;};};};
 }

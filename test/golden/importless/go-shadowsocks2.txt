@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.server = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.server = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { go-shadowsocks2-server =
@@ -14,18 +17,18 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {description = String; example = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = ε,
-  κ.go-shadowsocks2 = α,
-  λ.services = κ,
-  ι.str = η
+    θ,
+  γ.mkOption = {description = String; example = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = η,
+  μ.go-shadowsocks2 = β,
+  ν.services = μ,
+  λ.str = ι
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = ζ;
+α ->
+{ config = θ;
   options =
     { services =
-        {go-shadowsocks2 = {server = {enable = δ; listenAddress = θ;};};};
+        {go-shadowsocks2 = {server = {enable = ζ; listenAddress = κ;};};};
     };
 }

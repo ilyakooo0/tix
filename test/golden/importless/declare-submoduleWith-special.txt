@@ -1,16 +1,17 @@
-∀ ε ζ η θ ι.
-( (ε) // ({foo = String;}) ~ (ζ),
-  ε.mkOption = {default = {}; type = η;} -> θ,
-  ε.submoduleWith =
+∀ ζ η θ ι κ λ.
+( (ζ) // ({foo = String;}) ~ (η),
+  θ.lib = ζ,
+  ζ.mkOption = {default = {}; type = ι;} -> κ,
+  ζ.submoduleWith =
     { modules =
-        ∀ β γ δ.
-        (β.foo = γ, β.mkOption = {default = γ;} -> δ) => [ ( {lib = β;} ->
-            {options = {foo = δ;};}
+        ∀ β γ δ ε.
+        (β.lib = γ, γ.foo = δ, γ.mkOption = {default = δ;} -> ε) => [ ( β ->
+            {options = {foo = ε;};}
           )
         ];
       specialArgs = {lib = ∀ α. α;};
     } ->
-    η,
-  ι.types = ε
+    ι,
+  λ.types = ζ
 ) =>
-{lib = ε;} -> {options = {submodule = θ;};}
+θ -> {options = {submodule = κ;};}

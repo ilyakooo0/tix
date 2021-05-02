@@ -1,1 +1,1 @@
-∀ α. {lib = α;} -> {disabledModules = [Path];}
+∀ α β. (α.lib = β) => α -> {disabledModules = [Path];}

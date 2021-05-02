@@ -1,30 +1,33 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( α.npm = β,
-  γ.lines = δ,
-  γ.literalExample = String -> ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.npm = ε,
+  γ.lines = ζ,
+  γ.literalExample = String -> η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { environment =
-        { etc = {npmrc = {text = θ;};};
-          systemPackages = [ι];
+        { etc = {npmrc = {text = κ;};};
+          systemPackages = [λ];
           variables = {NPM_CONFIG_GLOBALCONFIG = String;};
         };
     } ->
-    κ,
+    μ,
   γ.mkOption =
-    {default = String; description = String; example = String; type = δ;} -> λ,
-  γ.types = μ,
-  ν.npm = ξ,
-  β.enable = η,
-  β.npmrc = θ,
-  β.package = ι,
-  ο.programs = α,
-  π.types = γ,
-  μ.path = ρ,
-  σ.nodePackages = ν
+    {default = String; description = String; example = String; type = ζ;} -> ν,
+  γ.types = ξ,
+  δ.npm = ο,
+  ε.enable = ι,
+  ε.npmrc = κ,
+  ε.package = λ,
+  π.programs = β,
+  ρ.types = γ,
+  σ.nodePackages = δ,
+  ξ.path = τ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = κ;
-  options = {programs = {npm = {enable = ζ; npmrc = λ; package = τ;};};};
+α ->
+{ config = μ;
+  options = {programs = {npm = {enable = θ; npmrc = ν; package = υ;};};};
 }

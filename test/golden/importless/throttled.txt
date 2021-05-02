@@ -1,23 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.throttled = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.throttled = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment = {etc = {lenovo_fix.conf = {source = String;};};};
       systemd =
-        {packages = [ζ]; services = {lenovo_fix = {wantedBy = [String];};};};
+        {packages = [θ]; services = {lenovo_fix = {wantedBy = [String];};};};
     } ->
-    η,
-  γ.mkOption = {default = String; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.throttled = ζ,
-  λ.writeText = String -> μ -> String,
-  β.enable = ε,
-  β.extraConfig = String,
-  ν.services = α,
-  κ.str = θ
+    ι,
+  γ.mkOption = {default = String; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.throttled = θ,
+  δ.writeText = String -> ν -> String,
+  ε.enable = η,
+  ε.extraConfig = String,
+  ξ.services = β,
+  μ.str = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = η;
-  options = {services = {throttled = {enable = δ; extraConfig = ι;};};};
+α ->
+{ config = ι;
+  options = {services = {throttled = {enable = ζ; extraConfig = λ;};};};
 }

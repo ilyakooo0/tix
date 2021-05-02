@@ -1,15 +1,17 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.kbdlight = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.kbdlight = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       security = {wrappers = {kbdlight = {source = String;};};};
     } ->
-    η,
-  θ.kbdlight = ζ,
-  β.enable = ε,
-  ι.programs = α
+    ι,
+  δ.kbdlight = θ,
+  ε.enable = η,
+  κ.programs = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {programs = {kbdlight = {enable = δ;};};};}
+α -> {config = ι; options = {programs = {kbdlight = {enable = ζ;};};};}

@@ -1,15 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
+    ε ->
     { boot = {kernelParams = [String];};
-      environment = {systemPackages = [ε];};
+      environment = {systemPackages = [η];};
       systemd =
         { services =
             { auditd =
                 { description = String;
-                  path = [ζ];
+                  path = [θ];
                   serviceConfig = {ExecStart = String; ExecStartPre = String;};
                   unitConfig =
                     { ConditionSecurity = [String];
@@ -21,10 +24,9 @@
             };
         };
     } ->
-    η,
-  θ.audit = ε,
-  ι.auditd = α,
-  κ.security = ι
+    ι,
+  δ.audit = η,
+  κ.auditd = β,
+  λ.security = κ
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {security = {auditd = {enable = δ;};};};}
+α -> {config = ι; options = {security = {auditd = {enable = ζ;};};};}

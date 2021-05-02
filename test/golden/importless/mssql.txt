@@ -1,0 +1,20 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.cffi = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.garbage-pools = γ,
+  β.iterate = γ,
+  β.parse-number = γ,
+  β.trivial-features = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

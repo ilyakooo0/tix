@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.xe-guest-utilities = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.xe-guest-utilities = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { services = {udev = {packages = [ζ];};};
+    η ->
+    { services = {udev = {packages = [θ];};};
       systemd =
         { mounts =
             [ { description = String;
@@ -18,7 +21,7 @@
             { xe-daemon =
                 { after = [String];
                   description = String;
-                  path = [η];
+                  path = [ι];
                   requires = [String];
                   serviceConfig =
                     {ExecStart = String; ExecStop = String; PIDFile = String;};
@@ -27,7 +30,7 @@
               xe-linux-distribution =
                 { before = [String];
                   description = String;
-                  path = [θ];
+                  path = [κ];
                   serviceConfig =
                     { ExecStart = String;
                       RemainAfterExit = String;
@@ -39,14 +42,14 @@
           tmpfiles = {rules = [String];};
         };
     } ->
-    ι,
-  κ.coreutils = η,
-  κ.gawk = θ,
-  κ.gnused = θ,
-  κ.iproute = η,
-  κ.xe-guest-utilities = ζ,
-  β.enable = ε,
-  λ.services = α
+    λ,
+  δ.coreutils = ι,
+  δ.gawk = κ,
+  δ.gnused = κ,
+  δ.iproute = ι,
+  δ.xe-guest-utilities = θ,
+  ε.enable = η,
+  μ.services = β
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ι; options = {services = {xe-guest-utilities = {enable = δ;};};};}
+α ->
+{config = λ; options = {services = {xe-guest-utilities = {enable = ζ;};};};}

@@ -1,22 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
-( α.fileSystems = β,
-  α.supportedFilesystems = γ,
-  δ.concatStrings = ε -> String,
-  δ.elem = String -> γ -> ζ,
-  δ.filterAttrs = (η -> θ -> Bool) -> β -> {},
-  δ.head = ι -> κ,
-  δ.mapAttrsToList = (λ -> μ -> String) -> {} -> ε,
-  δ.mkIf = ζ -> ν -> ξ,
-  δ.mkMerge =
-    [{boot = {kernelPackages = ο;}; system = {fsPackages = [π];};}] -> ν,
-  δ.splitString = String -> ρ -> ι,
-  σ.bcachefs-tools = π,
-  σ.linuxPackages_testing_bcachefs = ο,
-  τ.fsNeededForBoot = θ -> Bool,
-  θ.fsType = υ,
-  μ.device = φ,
-  χ.boot = α,
-  ψ.initrd = α,
-  ω.boot = ψ
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  α.utils = ε,
+  ζ.fsType = η,
+  θ.device = ι,
+  β.fileSystems = κ,
+  β.supportedFilesystems = λ,
+  γ.concatStrings = μ -> String,
+  γ.elem = String -> λ -> ν,
+  γ.filterAttrs = (ξ -> ζ -> Bool) -> κ -> {},
+  γ.head = ο -> π,
+  γ.mapAttrsToList = (ρ -> θ -> String) -> {} -> μ,
+  γ.mkIf = ν -> σ -> τ,
+  γ.mkMerge =
+    [{boot = {kernelPackages = υ;}; system = {fsPackages = [φ];};}] -> σ,
+  γ.splitString = String -> χ -> ο,
+  δ.bcachefs-tools = φ,
+  δ.linuxPackages_testing_bcachefs = υ,
+  ε.fsNeededForBoot = ζ -> Bool,
+  ψ.boot = β,
+  ω.initrd = β,
+  α1.boot = ω
 ) =>
-{config = α; lib = δ; pkgs = σ; utils = τ;} -> {config = ξ;}
+α -> {config = τ;}

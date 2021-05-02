@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ.
-( α.owamp = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.owamp = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { owamp =
@@ -30,9 +33,8 @@
             };
         };
     } ->
-    ζ,
-  β.enable = ε,
-  η.services = α
+    θ,
+  ε.enable = η,
+  ι.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = ζ; options = {services = {owamp = {enable = δ;};};};}
+α -> {config = θ; options = {services = {owamp = {enable = ζ;};};};}

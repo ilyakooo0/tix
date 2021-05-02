@@ -1,1 +1,1 @@
-∀ α β. {config = α; lib = β;} -> String
+∀ α β γ. (α.config = β, α.lib = γ) => α -> String

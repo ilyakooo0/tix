@@ -1,8 +1,9 @@
-∀ α β γ δ ε ζ.
-( α.attrsOf = β -> γ,
-  α.mkOption = {default = {}; type = γ;} -> δ,
-  α.str = β,
-  ε.types = α,
-  ζ.types = α
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  β.attrsOf = γ -> δ,
+  β.mkOption = {default = {}; type = δ;} -> ε,
+  β.str = γ,
+  ζ.types = β,
+  η.types = β
 ) =>
-{lib = α;} -> {options = {value = δ;};}
+α -> {options = {value = ε;};}

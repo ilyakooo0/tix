@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.clipmenu = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.clipmenu = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { user =
             { services =
@@ -18,15 +21,15 @@
             };
         };
     } ->
-    η,
+    ι,
   γ.mkOption =
-    {default = θ; defaultText = String; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.clipmenu = θ,
-  β.enable = ε,
-  β.package = ζ,
-  ν.services = α,
-  λ.package = ι
+    {default = κ; defaultText = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.clipmenu = κ,
+  ε.enable = η,
+  ε.package = θ,
+  ξ.services = β,
+  ν.package = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = η; options = {services = {clipmenu = {enable = δ; package = κ;};};};}
+α ->
+{config = ι; options = {services = {clipmenu = {enable = ζ; package = μ;};};};}

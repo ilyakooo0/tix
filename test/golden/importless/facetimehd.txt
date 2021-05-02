@@ -1,28 +1,30 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.facetimehd = β,
-  α.kernelPackages = γ,
-  δ.mkEnableOption = String -> ε,
-  δ.mkIf =
-    ζ ->
-    { assertions = η;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.facetimehd = ε,
+  β.kernelPackages = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
+    { assertions = ι;
       boot =
         { blacklistedKernelModules = [String];
-          extraModulePackages = [θ];
+          extraModulePackages = [κ];
           kernelModules = [String];
         };
-      hardware = {firmware = [ι];};
+      hardware = {firmware = [λ];};
       powerManagement = {powerDownCommands = String; resumeCommands = String;};
     } ->
-    κ,
-  δ.singleton = {assertion = λ; message = String;} -> η,
-  δ.versionAtLeast = μ -> String -> λ,
-  ν.facetimehd-firmware = ι,
-  γ.facetimehd = θ,
-  γ.version = μ,
-  ξ.boot = α,
-  β.enable = ζ,
-  ο.hardware = α,
-  π.kernel = γ
+    μ,
+  γ.singleton = {assertion = ν; message = String;} -> ι,
+  γ.versionAtLeast = ξ -> String -> ν,
+  δ.facetimehd-firmware = λ,
+  ζ.facetimehd = κ,
+  ζ.version = ξ,
+  ο.boot = β,
+  ε.enable = θ,
+  π.hardware = β,
+  ρ.kernel = ζ
 ) =>
-{config = α; lib = δ; pkgs = ν;} ->
-{config = κ; options = {hardware = {facetimehd = {enable = ε;};};};}
+α -> {config = μ; options = {hardware = {facetimehd = {enable = η;};};};}

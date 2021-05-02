@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.epmd = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.epmd = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { systemd =
         { services =
             { epmd =
@@ -22,14 +25,13 @@
             };
         };
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  ι.erlang = κ,
-  β.enable = δ,
-  λ.services = α,
-  θ.bool = ζ,
-  μ.package = ν
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  δ.erlang = λ,
+  ε.enable = ζ,
+  μ.services = β,
+  κ.bool = θ,
+  ν.package = ξ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{config = ε; options = {services = {epmd = {enable = η; package = ξ;};};};}
+α -> {config = η; options = {services = {epmd = {enable = ι; package = ο;};};};}

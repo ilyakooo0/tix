@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.mullvad-vpn = β,
-  γ.maintainers = δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.mullvad-vpn = ε,
+  γ.maintainers = ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { boot = {kernelModules = [String];};
       systemd =
         { services =
@@ -23,17 +26,17 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.iproute = String,
-  β.enable = ε,
-  λ.services = α,
-  δ.xfix = μ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.iproute = String,
+  ε.enable = η,
+  μ.services = β,
+  ζ.xfix = ν,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{ config = ζ;
-  meta = {maintainers = [μ];};
-  options = {services = {mullvad-vpn = {enable = θ;};};};
+α ->
+{ config = θ;
+  meta = {maintainers = [ν];};
+  options = {services = {mullvad-vpn = {enable = κ;};};};
 }

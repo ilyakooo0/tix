@@ -1,74 +1,55 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( ( { buildInputs = [β];
-      buildPhase = Null;
-      checkouts = Null;
-      configurePhase = Null;
-      enableDebugInfo = Bool;
-      installPhase = Null;
-      meta = {};
-      name = γ;
-      profile = String;
-      releaseType = δ;
-      setupHook = Null;
-      src = ε;
-      version = ζ;
-    }
-  ) //
-  ( η
-  ) ~
-  ( {buildInputs = [θ]; name = String;}
-  ),
-  ( { buildInputs = [β];
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( (β) // (γ) ~ ({buildInputs = [δ]; name = String;}),
+  ( { buildInputs = [ε];
       buildPhase = String;
       configurePhase = String;
       dontStrip = Bool;
       installPhase = String;
       meta = ∀ α. α;
       name = String;
-      passthru = {env = ι; packageName = γ;};
+      passthru = {env = ζ; packageName = η;};
       propagatedBuildInputs = [Null];
-      setupHook = κ;
-      src = ε;
-      version = ζ;
+      setupHook = θ;
+      src = ι;
+      version = κ;
     }
   ) //
   ( λ
   ) ~
-  ( η
+  ( γ
   ),
   μ.lib = ν,
-  μ.mkDerivation = {buildInputs = [θ]; name = String;} -> ι,
-  β.meta = ξ,
+  μ.mkDerivation = {buildInputs = [δ]; name = String;} -> ζ,
+  ε.meta = ξ,
+  β.buildInputs = [ε],
+  β.buildPhase = Null,
+  β.checkouts = Null,
+  β.configurePhase = Null,
+  β.enableDebugInfo = Bool,
+  β.installPhase = Null,
+  β.meta = {},
+  β.name = η,
+  β.profile = String,
+  β.releaseType = ο,
+  β.setupHook = Null,
+  β.src = ι,
+  β.version = κ,
   ν.filterAttrs =
-    (ο -> Null -> Bool) ->
+    (π -> Null -> Bool) ->
     { buildPhase = Null;
       configurePhase = Null;
       installPhase = Null;
       setupHook = Null;
     } ->
     λ,
-  ν.fix = (θ -> ι) -> π,
-  ξ.platforms = ρ
+  ν.fix = (δ -> ζ) -> ρ,
+  ξ.platforms = σ
 ) =>
-{ erlang = β;
-  lib = σ;
-  openssl = β;
-  rebar3 = β;
+{ erlang = ε;
+  lib = τ;
+  openssl = ε;
+  rebar3 = ε;
   stdenv = μ;
-  writeText = String -> String -> κ;
+  writeText = String -> String -> θ;
 } ->
-{ buildInputs = [β];
-  buildPhase = Null;
-  checkouts = Null;
-  configurePhase = Null;
-  enableDebugInfo = Bool;
-  installPhase = Null;
-  meta = {};
-  name = γ;
-  profile = String;
-  releaseType = δ;
-  setupHook = Null;
-  src = ε;
-  version = ζ;
-} ->
-π
+β -> ρ

@@ -1,16 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [η];};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    θ,
-  ι.neard = ε,
-  κ.neard = α,
-  λ.services = κ
+    κ,
+  δ.neard = η,
+  λ.neard = β,
+  μ.services = λ
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{config = θ; options = {services = {neard = {enable = δ;};};};}
+α -> {config = κ; options = {services = {neard = {enable = ζ;};};};}

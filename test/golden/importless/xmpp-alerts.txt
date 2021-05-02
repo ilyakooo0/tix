@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.xmpp-alerts = β,
-  γ.builtins = δ,
-  γ.cfg = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.xmpp-alerts = ε,
+  γ.builtins = ζ,
+  γ.cfg = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { systemd =
         { services =
             { prometheus-xmpp-alerts =
@@ -31,21 +34,21 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.writeText = String -> ν -> ξ,
-  β.enable = η,
-  ο.prometheus = α,
-  π.services = ο,
-  δ.toJSON = ρ -> ν,
-  ε.configuration = ρ,
-  λ.attrs = ι
+    κ,
+  γ.mkOption = {description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.writeText = String -> ξ -> ο,
+  ζ.toJSON = π -> ξ,
+  η.configuration = π,
+  ε.enable = ι,
+  ρ.prometheus = β,
+  σ.services = ρ,
+  ν.attrs = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = θ;
+α ->
+{ config = κ;
   options =
     { services =
-        {prometheus = {xmpp-alerts = {configuration = κ; enable = ζ;};};};
+        {prometheus = {xmpp-alerts = {configuration = μ; enable = θ;};};};
     };
 }

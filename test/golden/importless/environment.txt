@@ -1,9 +1,11 @@
-∀ α β γ δ ε ζ.
-( α.environment = β,
-  γ.mkAfter = [String] -> δ,
-  γ.mkDefault = String -> ε
+∀ α β γ δ ε ζ η.
+( α.config = β,
+  α.lib = γ,
+  β.environment = δ,
+  γ.mkAfter = [String] -> ε,
+  γ.mkDefault = String -> ζ
 ) =>
-{config = α; lib = γ;} ->
+α ->
 { config =
     { environment =
         { extraInit = String;
@@ -19,11 +21,11 @@
               XDG_CONFIG_DIRS = [String];
               XDG_DATA_DIRS = [String];
             };
-          profiles = δ;
+          profiles = ε;
           variables =
-            { EDITOR = ε;
+            { EDITOR = ζ;
               NIXPKGS_CONFIG = String;
-              PAGER = ζ;
+              PAGER = η;
               XDG_CONFIG_DIRS = [String];
             };
         };

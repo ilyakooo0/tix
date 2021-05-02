@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.sysstat = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.sysstat = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { sysstat =
@@ -32,7 +35,7 @@
           timers =
             { sysstat-collect =
                 { description = String;
-                  timerConfig = {OnCalendar = ζ;};
+                  timerConfig = {OnCalendar = θ;};
                   wantedBy = [String];
                 };
               sysstat-summary =
@@ -43,19 +46,19 @@
             };
         };
     } ->
-    η,
-  γ.mkOption = {default = String; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  β.collect-frequency = ζ,
-  β.enable = ε,
-  λ.services = α,
-  κ.str = θ,
-  μ.str = ν
+    ι,
+  γ.mkOption = {default = String; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  ε.collect-frequency = θ,
+  ε.enable = η,
+  ν.services = β,
+  μ.str = κ,
+  ξ.str = ο
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
     { services =
-        {sysstat = {collect-args = ι; collect-frequency = ο; enable = δ;};};
+        {sysstat = {collect-args = λ; collect-frequency = π; enable = ζ;};};
     };
 }

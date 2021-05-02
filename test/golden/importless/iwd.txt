@@ -1,27 +1,30 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.enable = Bool,
-  α.iwd = β,
-  γ.dtzWill = δ,
-  γ.maintainers = ε,
-  γ.mic92 = δ,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = Bool,
+  β.iwd = ε,
+  γ.dtzWill = ζ,
+  γ.maintainers = η,
+  γ.mic92 = ζ,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { assertions = [{assertion = Bool; message = String;}];
-      environment = {systemPackages = [θ];};
-      services = {dbus = {packages = [ι];};};
-      systemd = {packages = [κ]; services = {iwd = {wantedBy = [String];};};};
+      environment = {systemPackages = [κ];};
+      services = {dbus = {packages = [λ];};};
+      systemd = {packages = [μ]; services = {iwd = {wantedBy = [String];};};};
     } ->
-    λ,
-  μ.iwd = θ,
-  β.enable = η,
-  ν.wireless = α,
-  ξ.networking = ν,
-  ο.wireless = α,
-  π.networking = ο
+    ν,
+  δ.iwd = κ,
+  ε.enable = ι,
+  ξ.wireless = β,
+  ο.networking = ξ,
+  π.wireless = β,
+  ρ.networking = π
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = λ;
-  meta = {maintainers = [δ];};
-  options = {networking = {wireless = {iwd = {enable = ζ;};};};};
+α ->
+{ config = ν;
+  meta = {maintainers = [ζ];};
+  options = {networking = {wireless = {iwd = {enable = θ;};};};};
 }

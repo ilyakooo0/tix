@@ -1,6 +1,7 @@
-∀ α β γ δ.
-( α.mkOption = {default = {}; type = β;} -> γ,
-  α.submoduleWith = {modules = [Path];} -> β,
-  δ.types = α
+∀ α β γ δ ε.
+( α.lib = β,
+  β.mkOption = {default = {}; type = γ;} -> δ,
+  β.submoduleWith = {modules = [Path];} -> γ,
+  ε.types = β
 ) =>
-{lib = α;} -> {config = {submodule = Path;}; options = {submodule = γ;};}
+α -> {config = {submodule = Path;}; options = {submodule = δ;};}

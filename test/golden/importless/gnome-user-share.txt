@@ -1,21 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.enable = β,
-  γ.gnome-user-share = δ,
-  ε.mkEnableOption = String -> ζ,
-  ε.mkIf =
-    β ->
-    {environment = {systemPackages = [δ];}; systemd = {packages = [η];};} -> θ,
-  ε.teams = ι,
-  κ.gnome-user-share = α,
-  λ.gnome3 = κ,
-  μ.services = λ,
-  ν.gnome3 = γ,
-  ξ.gnome3 = γ,
-  ι.members = ο,
-  π.gnome = ι
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  δ.gnome-user-share = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    ε ->
+    {environment = {systemPackages = [ζ];}; systemd = {packages = [θ];};} -> ι,
+  γ.teams = κ,
+  λ.gnome-user-share = β,
+  μ.gnome3 = λ,
+  ν.services = μ,
+  ξ.gnome3 = δ,
+  ο.gnome3 = δ,
+  κ.members = π,
+  ρ.gnome = κ
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{ config = θ;
-  meta = {maintainers = ο;};
-  options = {services = {gnome3 = {gnome-user-share = {enable = ζ;};};};};
+α ->
+{ config = ι;
+  meta = {maintainers = π;};
+  options = {services = {gnome3 = {gnome-user-share = {enable = η;};};};};
 }

@@ -1,17 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.ssm-agent = β,
-  γ.coreutils = δ,
-  γ.ssm-agent = ε,
-  γ.writeScriptBin = String -> String -> δ,
-  ζ.mkEnableOption = String -> η,
-  ζ.mkIf =
-    θ ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.ssm-agent = ε,
+  δ.coreutils = ζ,
+  δ.ssm-agent = η,
+  δ.writeScriptBin = String -> String -> ζ,
+  γ.mkEnableOption = String -> θ,
+  γ.mkIf =
+    ι ->
     { systemd =
         { services =
             { ssm-agent =
                 { after = [String];
-                  description = ι;
-                  path = [δ];
+                  description = κ;
+                  path = [ζ];
                   serviceConfig =
                     { ExecStart = String;
                       KillMode = String;
@@ -24,16 +27,16 @@
             };
         };
     } ->
-    κ,
-  ζ.mkOption =
-    {default = ε; defaultText = String; description = String; type = λ;} -> μ,
-  ζ.types = ν,
-  β.enable = θ,
-  β.meta = ξ,
-  ο.services = α,
-  ξ.description = ι,
-  π.package = β,
-  ν.path = λ
+    λ,
+  γ.mkOption =
+    {default = η; defaultText = String; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  ε.enable = ι,
+  ε.meta = ο,
+  π.services = β,
+  ο.description = κ,
+  ρ.package = ε,
+  ξ.path = μ
 ) =>
-{config = α; lib = ζ; pkgs = γ;} ->
-{config = κ; options = {services = {ssm-agent = {enable = η; package = μ;};};};}
+α ->
+{config = λ; options = {services = {ssm-agent = {enable = θ; package = ν;};};};}

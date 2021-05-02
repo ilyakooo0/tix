@@ -1,14 +1,17 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.munge = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.munge = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { services =
             { munged =
                 { after = [String];
-                  path = [η];
+                  path = [ι];
                   serviceConfig =
                     { ExecReload = String;
                       ExecStart = String;
@@ -32,14 +35,14 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.coreutils = η,
-  μ.munge = ζ,
-  β.enable = ε,
-  ν.services = α,
-  λ.path = ι
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.coreutils = ι,
+  δ.munge = θ,
+  ε.enable = η,
+  ξ.services = β,
+  ν.path = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = θ; options = {services = {munge = {enable = δ; password = κ;};};};}
+α ->
+{config = κ; options = {services = {munge = {enable = ζ; password = μ;};};};}

@@ -1,20 +1,22 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.zmap = β,
-  γ.zmap = δ,
-  ε.mkEnableOption = String -> ζ,
-  ε.mkIf =
-    η ->
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  δ.zmap = ε,
+  β.zmap = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    θ ->
     { environment =
         { etc =
             { zmap/blacklist.conf = {source = String;};
               zmap/zmap.conf = {source = String;};
             };
-          systemPackages = [β];
+          systemPackages = [ε];
         };
     } ->
-    θ,
-  δ.enable = η,
-  ι.programs = γ
+    ι,
+  ζ.enable = θ,
+  κ.programs = β
 ) =>
-{config = γ; lib = ε; pkgs = α;} ->
-{config = θ; options = {programs = {zmap = {enable = ζ;};};};}
+α -> {config = ι; options = {programs = {zmap = {enable = η;};};};}

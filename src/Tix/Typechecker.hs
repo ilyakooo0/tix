@@ -449,16 +449,32 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
         t <- fresh
         return (NTypeVariable t, M.singleton name . scheme $ NTypeVariable t)
       ParamSet set variadic binding -> do
-        setBindings <-
-          M.fromList <$> set
-            `for` ( \(name, def) -> do
-                      t <- case def of
-                        Nothing -> NTypeVariable <$> fresh
-                        Just def' -> infer def'
-                      return (name, scheme t) -- TODO: This is bad: it probably shouldn't be a scheme
-                  )
-        let setT = NAttrSet $ setBindings
-        return (setT, maybe M.empty (`M.singleton` scheme setT) binding <> setBindings)
+        (paramT, varMap) <-
+          if variadic
+            then do
+              setT <- NTypeVariable <$> fresh
+              setBindings <-
+                M.fromList <$> set
+                  `for` ( \(name, def) -> do
+                            (_, NTypeVariable -> t) <- lookupAttrSet setT (pure name)
+                            case def of
+                              Nothing -> pure ()
+                              Just def' -> infer def' >>= (t ~~)
+                            return (name, scheme t)
+                        )
+              return (setT, setBindings)
+            else do
+              setBindings <-
+                M.fromList <$> set
+                  `for` ( \(name, def) -> do
+                            t <- case def of
+                              Nothing -> NTypeVariable <$> fresh
+                              Just def' -> infer def'
+                            return (name, scheme t)
+                        )
+              let setT = NAttrSet setBindings
+              return (setT, setBindings)
+        return (paramT, maybe M.empty (`M.singleton` scheme paramT) binding <> varMap)
     bodyT <- localVariablesMap varMap $ infer body
     return $ paramT :-> bodyT
   NIf cond t f -> do

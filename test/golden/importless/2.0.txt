@@ -1,34 +1,33 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gpl2 = β,
-  α.maintainers = γ,
-  α.mkDerivation =
-    { buildInputs = [δ];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.cmake = β,
+  α.fetchurl = {sha256 = String; url = String;} -> γ,
+  α.libgcrypt = β,
+  α.qt4 = β,
+  α.stdenv = δ,
+  α.xorg = ε,
+  δ.gpl2 = ζ,
+  δ.maintainers = η,
+  δ.mkDerivation =
+    { buildInputs = [β];
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [ε];
-          platforms = ζ;
+          license = ζ;
+          maintainers = [θ];
+          platforms = ι;
         };
       pname = String;
-      src = η;
+      src = γ;
       version = String;
     } ->
-    θ,
-  α.platforms = ι,
-  κ.libXtst = δ,
-  λ.licenses = α,
-  μ.lib = λ,
-  γ.qknight = ε,
-  ν.lib = α,
-  ι.linux = ζ,
-  ξ.lib = α
+    κ,
+  δ.platforms = λ,
+  ε.libXtst = β,
+  μ.licenses = δ,
+  ν.lib = μ,
+  η.qknight = θ,
+  ξ.lib = δ,
+  λ.linux = ι,
+  ο.lib = δ
 ) =>
-{ cmake = δ;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  libgcrypt = δ;
-  qt4 = δ;
-  stdenv = α;
-  xorg = κ;
-} ->
-θ
+α -> κ

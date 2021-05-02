@@ -1,7 +1,8 @@
-∀ α β γ δ ε ζ.
-( α.types = β,
-  β.either = γ -> δ -> ε,
-  β.lazyAttrsOf = ε -> ζ,
-  β.str = γ
+∀ α β γ δ ε ζ η.
+( α.lib = β,
+  β.types = γ,
+  γ.either = δ -> ε -> ζ,
+  γ.lazyAttrsOf = ζ -> η,
+  γ.str = δ
 ) =>
-{lib = α;} -> {freeformType = ζ;}
+α -> {freeformType = η;}

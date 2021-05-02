@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ.
-( α.urserver = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.urserver = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { networking =
         { firewall =
             {allowedTCPPorts = [Integer]; allowedUDPPorts = [Integer];};
@@ -27,9 +30,8 @@
             };
         };
     } ->
-    ζ,
-  β.enable = ε,
-  η.services = α
+    θ,
+  ε.enable = η,
+  ι.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = ζ; options = {services = {urserver = {enable = δ;};};};}
+α -> {config = θ; options = {services = {urserver = {enable = ζ;};};};}

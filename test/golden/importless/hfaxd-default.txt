@@ -1,1 +1,1 @@
-{} -> {ServerTracing = String; XferLogFile = String;}
+∀ α. α -> {ServerTracing = String; XferLogFile = String;}

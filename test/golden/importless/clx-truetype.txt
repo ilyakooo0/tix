@@ -1,0 +1,25 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.bordeaux-threads = γ,
+  β.cl-aa = γ,
+  β.cl-fad = γ,
+  β.cl-paths = γ,
+  β.cl-paths-ttf = γ,
+  β.cl-store = γ,
+  β.cl-vectors = γ,
+  β.clx = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.trivial-features = γ,
+  β.zpb-ttf = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

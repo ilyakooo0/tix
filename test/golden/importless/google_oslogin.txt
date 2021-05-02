@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.googleOsLogin = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.googleOsLogin = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { environment =
         { etc =
             { ssh/authorized_keys_command_google_oslogin =
@@ -27,17 +30,16 @@
         };
       system =
         { nssDatabases = {group = [String]; passwd = [String];};
-          nssModules = [ε];
+          nssModules = [η];
         };
       systemd = {tmpfiles = {rules = [String];};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.google-compute-engine-oslogin = ε,
-  β.enable = δ,
-  λ.security = α,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.google-compute-engine-oslogin = η,
+  ε.enable = ζ,
+  μ.security = β,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {security = {googleOsLogin = {enable = θ;};};};}
+α -> {config = θ; options = {security = {googleOsLogin = {enable = κ;};};};}

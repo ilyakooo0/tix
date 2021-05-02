@@ -1,0 +1,27 @@
+∀ α β γ δ ε ζ η θ.
+( ( α
+  ) //
+  ( { buildPhase = String;
+      checkPhase = String;
+      configurePhase = String;
+      installPhase = String;
+      modRoot = String;
+      passthru = {forCurses = Bool; forTiles = Bool;};
+      pname = String;
+    }
+  ) ~
+  ( β
+  ),
+  γ.mkDerivation = β -> δ,
+  ε.elem = String -> [String] -> Bool,
+  α.buildPhase = String,
+  α.checkPhase = String,
+  α.configurePhase = String,
+  α.installPhase = String,
+  α.modName = ζ,
+  α.modRoot = String,
+  α.pname = String,
+  α.src = η,
+  α.version = θ
+) =>
+{lib = ε; stdenvNoCC = γ; type = String;} -> α -> δ

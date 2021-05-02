@@ -1,19 +1,22 @@
-∀ β γ δ ε ζ η θ ι κ λ μ.
-( β.interfaces = γ,
-  δ.fold = (ε -> ε -> ε) -> String -> ζ -> η,
+∀ β γ δ ε ζ η θ ι κ λ μ ν.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.interfaces = ζ,
+  δ.fold = (η -> η -> η) -> String -> θ -> ι,
   δ.map =
-    ({interface = θ; method = String; password = String;} -> String) -> γ -> ζ,
+    ({interface = κ; method = String; password = String;} -> String) -> ζ -> θ,
   δ.mkOption =
     { default = ∀ α. α;
       description = String;
       example = [{interface = String; method = String; password = String;}];
     } ->
-    ι,
+    λ,
   δ.throw = String -> String,
-  κ.wakeonlan = β,
-  λ.services = κ
+  μ.wakeonlan = γ,
+  ν.services = μ
 ) =>
-{config = β; lib = δ; pkgs = μ;} ->
-{ config = {powerManagement = {powerDownCommands = η;};};
-  options = {services = {wakeonlan = {interfaces = ι;};};};
+β ->
+{ config = {powerManagement = {powerDownCommands = ι;};};
+  options = {services = {wakeonlan = {interfaces = λ;};};};
 }

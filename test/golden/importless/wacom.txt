@@ -1,21 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.wacom = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.wacom = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { environment =
         { etc = {X11/xorg.conf.d/70-wacom.conf = {source = String;};};
-          systemPackages = [ε];
+          systemPackages = [η];
         };
-      services = {udev = {packages = [ζ];}; xserver = {modules = [η];};};
+      services = {udev = {packages = [θ];}; xserver = {modules = [ι];};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.xf86_input_wacom = ε,
-  β.enable = δ,
-  ν.xserver = α,
-  ξ.services = ν,
-  λ.bool = ι
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.xf86_input_wacom = η,
+  ε.enable = ζ,
+  ξ.xserver = β,
+  ο.services = ξ,
+  ν.bool = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = θ; options = {services = {xserver = {wacom = {enable = κ;};};};};}
+α ->
+{config = κ; options = {services = {xserver = {wacom = {enable = μ;};};};};}

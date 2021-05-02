@@ -1,21 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {dbus = {packages = [ζ];};};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];};};
     } ->
-    η,
-  θ.hamster = ε,
-  θ.maintainers = ι,
-  κ.hamster = α,
-  λ.programs = κ,
-  μ.meta = θ,
-  ν.hamster = μ
+    ι,
+  δ.hamster = η,
+  δ.maintainers = κ,
+  λ.hamster = β,
+  μ.programs = λ,
+  ν.meta = δ,
+  ξ.hamster = ν
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{ config = η;
-  meta = {maintainers = ι;};
-  options = {programs = {hamster = {enable = δ;};};};
+α ->
+{ config = ι;
+  meta = {maintainers = κ;};
+  options = {programs = {hamster = {enable = ζ;};};};
 }

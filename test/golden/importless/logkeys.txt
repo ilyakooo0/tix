@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.logkeys = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.logkeys = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { logkeys =
@@ -14,14 +17,14 @@
             };
         };
     } ->
-    ζ,
+    θ,
   γ.mkOption =
-    {default = Null; description = String; example = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = ε,
-  κ.services = α,
-  ι.nullOr = λ -> η,
-  μ.str = λ
+    {default = Null; description = String; example = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = η,
+  μ.services = β,
+  λ.nullOr = ν -> ι,
+  ξ.str = ν
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{config = ζ; options = {services = {logkeys = {device = θ; enable = δ;};};};}
+α ->
+{config = θ; options = {services = {logkeys = {device = κ; enable = ζ;};};};}

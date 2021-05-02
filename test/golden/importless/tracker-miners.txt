@@ -1,25 +1,28 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.enable = β,
-  γ.tracker-miners = δ,
-  ε.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [η];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  δ.tracker-miners = ζ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
+      systemd = {packages = [θ];};
     } ->
-    θ,
-  ε.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  ε.teams = λ,
-  ε.types = μ,
-  ν.tracker-miners = α,
-  ξ.gnome3 = ν,
-  ο.services = ξ,
-  λ.members = π,
-  ρ.gnome = λ,
-  μ.bool = ι
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.teams = μ,
+  γ.types = ν,
+  ξ.tracker-miners = β,
+  ο.gnome3 = ξ,
+  π.services = ο,
+  μ.members = ρ,
+  σ.gnome = μ,
+  ν.bool = κ
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{ config = θ;
-  meta = {maintainers = π;};
-  options = {services = {gnome3 = {tracker-miners = {enable = κ;};};};};
+α ->
+{ config = ι;
+  meta = {maintainers = ρ;};
+  options = {services = {gnome3 = {tracker-miners = {enable = λ;};};};};
 }

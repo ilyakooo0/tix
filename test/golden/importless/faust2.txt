@@ -1,0 +1,113 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9.
+( ( γ
+  ) //
+  ( { dontBuild = Bool;
+      installPhase = String;
+      meta = ∀ β. β;
+      name = String;
+      postInstall = String;
+      src = δ;
+    }
+  ) ~
+  ( ε
+  ),
+  ( ζ
+  ) //
+  ( { buildInputs = [η];
+      libPath = θ;
+      nativeBuildInputs = [η];
+      postFixup = String;
+      propagatedBuildInputs = [ι];
+    }
+  ) ~
+  ( { buildInputs = [κ];
+      cmakeFlags = String;
+      meta = ∀ β. β;
+      nativeBuildInputs = [η];
+      passthru = {wrap = λ; wrapWithBuildEnv = μ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = ν;
+    }
+  ),
+  ( ξ
+  ) //
+  ( {buildInputs = [η]; postFixup = String;}
+  ) ~
+  ( { buildInputs = [κ];
+      cmakeFlags = String;
+      meta = ∀ β. β;
+      nativeBuildInputs = [η];
+      passthru = {wrap = λ; wrapWithBuildEnv = μ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = ν;
+    }
+  ),
+  ο.lib = π,
+  ο.makeLibraryPath = [ι] -> θ,
+  ο.mkDerivation =
+    { buildInputs = [κ];
+      cmakeFlags = String;
+      meta = ∀ α. α;
+      nativeBuildInputs = [η];
+      passthru = {wrap = λ; wrapWithBuildEnv = μ;};
+      pname = String;
+      postFixup = String;
+      postInstall = String;
+      preConfigure = String;
+      src = δ;
+      version = ν;
+    } ->
+    ι,
+  ο.strings = ρ,
+  σ.scripts = [τ],
+  υ.scripts = [τ],
+  ρ.baseName = τ,
+  ρ.concatStringsSep = String -> φ -> χ,
+  ρ.licenses = ψ,
+  ρ.magnetophon = ω,
+  ρ.maintainers = α1,
+  ρ.map = (β2 -> String) -> [ι] -> φ,
+  ρ.platforms = γ3,
+  ρ.pmahoney = ω,
+  ρ.src = δ,
+  ρ.version = ν,
+  ρ.wrap = λ,
+  ρ.wrapWithBuildEnv = μ,
+  δ4.lib = ο,
+  ψ.gpl2 = ε5,
+  γ3.linux = ζ6,
+  η7.lib = ο
+) =>
+{ cmake = η;
+  coreutils = θ8;
+  emscripten = κ;
+  fetchFromGitHub =
+    { fetchSubmodules = Bool;
+      owner = String;
+      repo = String;
+      rev = String;
+      sha256 = String;
+    } ->
+    ι9;
+  gnutls = κ;
+  libmicrohttpd = κ;
+  libsndfile = κ;
+  libtasn1 = κ;
+  llvm = κ;
+  makeWrapper = η;
+  openssl = κ;
+  p11-kit = κ;
+  pkgconfig = η;
+  stdenv = ο;
+  vim = η;
+  which = η;
+} ->
+ι

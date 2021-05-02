@@ -1,5 +1,5 @@
-∀ α.
-{lib = α;} ->
+∀ α β.
+(α.lib = β) => α ->
 { boot =
     { kernelParams = [String];
       loader = {grub = {splashImage = Null;};};

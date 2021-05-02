@@ -1,9 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.magic-wormhole-mailbox-server = β,
-  γ.baseNameOf = String -> δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  ε.magic-wormhole-mailbox-server = ζ,
+  ε.twisted = η,
+  β.magic-wormhole-mailbox-server = θ,
+  γ.baseNameOf = String -> ι,
+  γ.mkEnableOption = String -> κ,
   γ.mkIf =
-    ζ ->
+    λ ->
     { systemd =
         { services =
             { magic-wormhole-mailbox-server =
@@ -11,7 +16,7 @@
                   serviceConfig =
                     { DynamicUser = Bool;
                       ExecStart = String;
-                      StateDirectory = δ;
+                      StateDirectory = ι;
                       WorkingDirectory = String;
                     };
                   wantedBy = [String];
@@ -19,15 +24,13 @@
             };
         };
     } ->
-    η,
-  θ.withPackages = (ι -> [κ]) -> λ,
-  ι.magic-wormhole-mailbox-server = κ,
-  ι.twisted = μ,
-  β.enable = ζ,
-  ν.services = α,
-  ξ.python3 = θ
+    μ,
+  δ.withPackages = (ε -> [ζ]) -> ν,
+  ξ.python3 = δ,
+  θ.enable = λ,
+  ο.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{ config = η;
-  options = {services = {magic-wormhole-mailbox-server = {enable = ε;};};};
+α ->
+{ config = μ;
+  options = {services = {magic-wormhole-mailbox-server = {enable = κ;};};};
 }

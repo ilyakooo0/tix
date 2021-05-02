@@ -1,18 +1,21 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.isContainer = β,
-  γ.mkDefault = Bool -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.isContainer = ε,
+  γ.mkDefault = Bool -> ζ,
   γ.mkIf =
-    β ->
-    { documentation = {nixos = {enable = δ;};};
+    ε ->
+    { documentation = {nixos = {enable = ζ;};};
       environment = {variables = {NIX_REMOTE = String;};};
-      networking = {useHostResolvConf = ε;};
-      nix = {optimise = {automatic = ζ;};};
-      powerManagement = {enable = η;};
+      networking = {useHostResolvConf = η;};
+      nix = {optimise = {automatic = θ;};};
+      powerManagement = {enable = ι;};
       security = {audit = {enable = Bool;};};
-      services = {openssh = {startWhenNeeded = θ;}; udisks2 = {enable = ι;};};
+      services = {openssh = {startWhenNeeded = κ;}; udisks2 = {enable = λ;};};
       system = {build = {installBootLoader = String;};};
     } ->
-    κ,
-  λ.boot = α
+    μ,
+  ν.boot = β
 ) =>
-{config = α; lib = γ; pkgs = μ;} -> {config = κ;}
+α -> {config = μ;}

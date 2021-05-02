@@ -1,23 +1,25 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.enable = β,
-  α.rtkit = γ,
-  δ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.rtkit = ζ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [η];};
       security = {polkit = {enable = Bool;};};
-      services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [η];};
-      users = {users = {rtkit = {description = String; uid = γ;};};};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
+      users = {users = {rtkit = {description = String; uid = ζ;};};};
     } ->
-    θ,
-  δ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  δ.types = λ,
-  μ.rtkit = ε,
-  ν.rtkit = α,
-  ξ.security = ν,
-  ο.uids = α,
-  π.ids = ο,
-  λ.bool = ι
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.rtkit = η,
+  ξ.rtkit = β,
+  ο.security = ξ,
+  π.uids = β,
+  ρ.ids = π,
+  ν.bool = λ
 ) =>
-{config = α; lib = δ; pkgs = μ;} ->
-{config = θ; options = {security = {rtkit = {enable = κ;};};};}
+α -> {config = κ; options = {security = {rtkit = {enable = μ;};};};}

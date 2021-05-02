@@ -1,4 +1,5 @@
-{} ->
+∀ α.
+α ->
 { boot =
     { initrd = {kernelModules = [String];};
       loader = {grub = {device = String; version = Integer;};};

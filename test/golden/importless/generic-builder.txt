@@ -1,0 +1,40 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( (α) // ({name = String;}) ~ (β),
+  ( { NIX_CFLAGS_COMPILE = γ;
+      buildInputs = [δ];
+      buildPhase = String;
+      checkPhase = String;
+      configurePhase = String;
+      installFlags = [String];
+      installPhase = String;
+      postFixup = String;
+      rCommand = String;
+    }
+  ) //
+  ( β
+  ) ~
+  ( ε
+  ),
+  ζ.isDarwin = η,
+  ζ.mkDerivation = ε -> θ,
+  ζ.optionalString = η -> String -> γ,
+  ζ.optionals = Bool -> [ι] -> [δ],
+  α.buildInputs = [δ],
+  α.doCheck = Bool,
+  α.name = String,
+  α.requireX = Bool,
+  κ.lib = ζ,
+  λ.lib = ζ,
+  μ.lib = ζ
+) =>
+{ Cocoa = ν;
+  Foundation = ν;
+  R = δ;
+  gettext = δ;
+  gfortran = ν;
+  libcxx = ξ;
+  stdenv = ζ;
+  utillinux = ι;
+  xvfb_run = ι;
+} ->
+α -> θ

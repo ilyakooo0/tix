@@ -1,17 +1,19 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.bladeRF = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.bladeRF = ε,
   γ.mkIf =
-    δ ->
-    { services = {udev = {packages = [ε];};};
+    ζ ->
+    { services = {udev = {packages = [η];};};
       users = {groups = {bladerf = {};};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.libbladeRF = ε,
-  β.enable = δ,
-  λ.hardware = α,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.libbladeRF = η,
+  ε.enable = ζ,
+  μ.hardware = β,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {hardware = {bladeRF = {enable = θ;};};};}
+α -> {config = θ; options = {hardware = {bladeRF = {enable = κ;};};};}

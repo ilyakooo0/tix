@@ -1,45 +1,48 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( α.enable = β,
-  α.usePostgreSQL = Bool,
-  γ.coreutils = δ,
-  γ.gawk = δ,
-  γ.gnugrep = δ,
-  γ.gnused = δ,
-  γ.jre = δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.usePostgreSQL = Bool,
+  γ.coreutils = ζ,
+  γ.gawk = ζ,
+  γ.gnugrep = ζ,
+  γ.gnused = ζ,
+  γ.jre = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    β ->
-    { assertions = ζ;
+    ε ->
+    { assertions = θ;
       systemd =
         { services =
             { openfire =
                 { after = [String];
                   description = String;
-                  path = [δ];
+                  path = [ζ];
                   script = String;
                   wantedBy = [String];
                 };
             };
         };
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.openfire = δ,
-  γ.optional = κ -> String -> [String],
-  γ.singleton = {assertion = Bool; message = String;} -> ζ,
-  γ.types = λ,
-  γ.which = δ,
-  μ.openfire = α,
-  ν.services = μ,
-  ξ.openfire = α,
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.openfire = ζ,
+  γ.optional = μ -> String -> [String],
+  γ.singleton = {assertion = Bool; message = String;} -> θ,
+  γ.types = ν,
+  γ.which = ζ,
+  ξ.openfire = β,
   ο.services = ξ,
-  π.postgresql = α,
+  π.openfire = β,
   ρ.services = π,
-  σ.openfire = α,
+  σ.postgresql = β,
   τ.services = σ,
-  λ.bool = θ
+  υ.openfire = β,
+  φ.services = υ,
+  ν.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = υ;} ->
-{ config = η;
-  options = {services = {openfire = {enable = ε; usePostgreSQL = ι;};};};
+α ->
+{ config = ι;
+  options = {services = {openfire = {enable = η; usePostgreSQL = λ;};};};
 }

@@ -1,84 +1,64 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( ( { beamDeps = [β];
-      buildInputs = [γ];
-      buildPhase = Null;
-      buildPlugins = [β];
-      compilePorts = Bool;
-      configurePhase = Null;
-      enableDebugInfo = Bool;
-      installPhase = Null;
-      meta = {};
-      name = δ;
-      postPatch = String;
-      setupHook = Null;
-      src = ε;
-      version = ζ;
-    }
-  ) //
-  ( η
-  ) ~
-  ( {buildInputs = [θ]; name = String;}
-  ),
-  ( { buildInputs = [γ];
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( (β) // (γ) ~ ({buildInputs = [δ]; name = String;}),
+  ( { buildInputs = [ε];
       buildPhase = String;
-      buildPlugins = [β];
+      buildPlugins = [ζ];
       compilePorts = Bool;
       configurePhase = String;
       dontStrip = Bool;
       installPhase = String;
       meta = ∀ α. α;
       name = String;
-      passthru = {beamDeps = [β]; env = ι; packageName = δ;};
+      passthru = {beamDeps = [ζ]; env = η; packageName = θ;};
       postPatch = String;
-      propagatedBuildInputs = κ;
-      setupHook = λ;
-      src = ε;
-      version = ζ;
+      propagatedBuildInputs = ι;
+      setupHook = κ;
+      src = λ;
+      version = μ;
     }
   ) //
-  ( μ
+  ( ν
   ) ~
-  ( η
+  ( γ
   ),
-  ν.lib = ξ,
-  ν.mkDerivation = {buildInputs = [θ]; name = String;} -> ι,
-  γ.debugInfo = Bool,
-  γ.meta = ο,
-  π.optionalString = Bool -> String -> ρ,
-  ξ.filterAttrs =
-    (σ -> Null -> Bool) ->
+  ξ.lib = ο,
+  ξ.mkDerivation = {buildInputs = [δ]; name = String;} -> η,
+  ε.debugInfo = Bool,
+  ε.meta = π,
+  ρ.optionalString = Bool -> String -> σ,
+  β.beamDeps = [ζ],
+  β.buildInputs = [ε],
+  β.buildPhase = Null,
+  β.buildPlugins = [ζ],
+  β.compilePorts = Bool,
+  β.configurePhase = Null,
+  β.enableDebugInfo = Bool,
+  β.installPhase = Null,
+  β.meta = {},
+  β.name = θ,
+  β.postPatch = String,
+  β.setupHook = Null,
+  β.src = λ,
+  β.version = μ,
+  ο.filterAttrs =
+    (τ -> Null -> Bool) ->
     { buildPhase = Null;
       configurePhase = Null;
       installPhase = Null;
       setupHook = Null;
     } ->
-    μ,
-  ξ.fix = (θ -> ι) -> τ,
-  ξ.unique = [β] -> κ,
-  ο.platforms = υ
+    ν,
+  ο.fix = (δ -> η) -> υ,
+  ο.unique = [ζ] -> ι,
+  π.platforms = φ
 ) =>
-{ erlang = γ;
-  lib = π;
-  libyaml = γ;
-  openssl = γ;
-  pc = β;
-  rebar3 = γ;
-  stdenv = ν;
-  writeText = String -> String -> λ;
+{ erlang = ε;
+  lib = ρ;
+  libyaml = ε;
+  openssl = ε;
+  pc = ζ;
+  rebar3 = ε;
+  stdenv = ξ;
+  writeText = String -> String -> κ;
 } ->
-{ beamDeps = [β];
-  buildInputs = [γ];
-  buildPhase = Null;
-  buildPlugins = [β];
-  compilePorts = Bool;
-  configurePhase = Null;
-  enableDebugInfo = Bool;
-  installPhase = Null;
-  meta = {};
-  name = δ;
-  postPatch = String;
-  setupHook = Null;
-  src = ε;
-  version = ζ;
-} ->
-τ
+β -> υ

@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.teamviewer = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.teamviewer = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { services =
             { teamviewerd =
@@ -24,10 +27,9 @@
             };
         };
     } ->
-    η,
-  θ.teamviewer = ζ,
-  β.enable = ε,
-  ι.services = α
+    ι,
+  δ.teamviewer = θ,
+  ε.enable = η,
+  κ.services = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {services = {teamviewer = {enable = δ;};};};}
+α -> {config = ι; options = {services = {teamviewer = {enable = ζ;};};};}

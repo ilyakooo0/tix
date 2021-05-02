@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.fancontrol = β,
-  γ.cfg = δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.fancontrol = ε,
+  γ.cfg = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ζ ->
+    θ ->
     { systemd =
         { services =
             { fancontrol =
@@ -16,16 +19,16 @@
             };
         };
     } ->
-    η,
+    ι,
   γ.mkOption =
-    {default = Null; description = String; example = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.writeText = String -> μ -> ν,
-  β.enable = ζ,
-  ξ.hardware = α,
-  δ.config = μ,
-  κ.nullOr = ο -> θ,
-  π.lines = ο
+    {default = Null; description = String; example = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.writeText = String -> ν -> ξ,
+  ζ.config = ν,
+  ε.enable = θ,
+  ο.hardware = β,
+  μ.nullOr = π -> κ,
+  ρ.lines = π
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = η; options = {hardware = {fancontrol = {config = ι; enable = ε;};};};}
+α ->
+{config = ι; options = {hardware = {fancontrol = {config = λ; enable = η;};};};}

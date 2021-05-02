@@ -1,23 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.spectrwm = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.spectrwm = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       services =
         { xserver =
             {windowManager = {session = [{name = String; start = String;}];};};
         };
     } ->
-    η,
-  θ.spectrwm = ζ,
-  β.enable = ε,
-  ι.windowManager = α,
-  κ.xserver = ι,
-  λ.services = κ
+    ι,
+  δ.spectrwm = θ,
+  ε.enable = η,
+  κ.windowManager = β,
+  λ.xserver = κ,
+  μ.services = λ
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
-    {services = {xserver = {windowManager = {spectrwm = {enable = δ;};};};};};
+    {services = {xserver = {windowManager = {spectrwm = {enable = ζ;};};};};};
 }

@@ -1,10 +1,10 @@
-∀ α β.
-(α.e2fsprogs = β) => {pkgs = α;} ->
+∀ α β γ.
+(α.pkgs = β, β.e2fsprogs = γ) => α ->
 { config =
     { boot =
         { initrd =
             {availableKernelModules = [String]; extraUtilsCommands = String;};
         };
-      system = {fsPackages = [β];};
+      system = {fsPackages = [γ];};
     };
 }

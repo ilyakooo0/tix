@@ -1,11 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.enableIntel2200BGFirmware = β,
-  γ.intel2200BGFirmware = δ,
-  ε.bool = ζ,
-  ε.mkIf = β -> {hardware = {firmware = [δ];};} -> η,
-  ε.mkOption = {default = Bool; description = String; type = ζ;} -> θ,
-  ι.networking = α,
-  κ.types = ε
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enableIntel2200BGFirmware = ε,
+  δ.intel2200BGFirmware = ζ,
+  γ.bool = η,
+  γ.mkIf = ε -> {hardware = {firmware = [ζ];};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> ι,
+  κ.networking = β,
+  λ.types = γ
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{config = η; options = {networking = {enableIntel2200BGFirmware = θ;};};}
+α -> {config = θ; options = {networking = {enableIntel2200BGFirmware = ι;};};}

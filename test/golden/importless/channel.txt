@@ -1,7 +1,10 @@
-∀ α β γ δ ε ζ η.
-( α.cleanSource = β -> γ,
-  α.mkAfter = String -> δ,
-  ε.path = β,
-  ε.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ζ
+∀ α β γ δ ε ζ η θ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  γ.cleanSource = ε -> ζ,
+  γ.mkAfter = String -> η,
+  δ.path = ε,
+  δ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> θ
 ) =>
-{config = η; lib = α; pkgs = ε;} -> {boot = {postBootCommands = δ;};}
+α -> {boot = {postBootCommands = η;};}

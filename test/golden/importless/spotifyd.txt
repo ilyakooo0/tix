@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.spotifyd = β,
-  γ.cfg = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.spotifyd = ε,
+  γ.cfg = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { systemd =
         { services =
             { spotifyd =
@@ -23,18 +26,18 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.writeText = String -> ν -> ξ,
-  β.enable = η,
-  ο.services = α,
-  δ.config = ν,
-  ε.anderslundstedt = π,
-  λ.lines = ι
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.writeText = String -> ξ -> ο,
+  ζ.config = ξ,
+  ε.enable = ι,
+  π.services = β,
+  η.anderslundstedt = ρ,
+  ν.lines = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = θ;
-  meta = {maintainers = [π];};
-  options = {services = {spotifyd = {config = κ; enable = ζ;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = [ρ];};
+  options = {services = {spotifyd = {config = μ; enable = θ;};};};
 }

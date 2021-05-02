@@ -1,0 +1,27 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.bordeaux-threads = γ,
+  β.cffi = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.idna = γ,
+  β.iolib_dot_asdf = γ,
+  β.iolib_dot_base = γ,
+  β.iolib_dot_common-lisp = γ,
+  β.iolib_dot_conf = γ,
+  β.iolib_dot_grovel = γ,
+  β.split-sequence = γ,
+  β.swap-bytes = γ,
+  β.trivial-features = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

@@ -1,27 +1,29 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.services = β,
-  α.usb = γ,
-  δ.any = ε -> ζ -> Bool,
-  δ.attrByPath = [String] -> Bool -> ε,
-  δ.attrValues = β -> ζ,
-  δ.mkIf =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.services = ε,
+  β.usb = ζ,
+  γ.any = η -> θ -> Bool,
+  γ.attrByPath = [String] -> Bool -> η,
+  γ.attrValues = ε -> θ,
+  γ.mkIf =
     Bool ->
-    { environment = {systemPackages = [η];};
+    { environment = {systemPackages = [ι];};
       security =
         { wrappers =
             {pmount = {source = String;}; pumount = {source = String;};};
         };
     } ->
-    θ,
-  δ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  δ.types = λ,
-  μ.pmount = η,
-  γ.enable = Bool,
-  ν.pam = α,
-  ξ.security = ν,
-  ο.pam = α,
-  π.security = ο,
-  λ.bool = ι
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.pmount = ι,
+  ζ.enable = Bool,
+  ξ.pam = β,
+  ο.security = ξ,
+  π.pam = β,
+  ρ.security = π,
+  ν.bool = λ
 ) =>
-{config = α; lib = δ; pkgs = μ;} ->
-{config = θ; options = {security = {pam = {usb = {enable = κ;};};};};}
+α -> {config = κ; options = {security = {pam = {usb = {enable = μ;};};};};}

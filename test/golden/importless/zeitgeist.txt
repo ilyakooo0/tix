@@ -1,21 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.enable = β,
-  γ.maintainers = δ,
-  γ.mkEnableOption = String -> ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.maintainers = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
-      systemd = {packages = [θ];};
+    ε ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
     } ->
-    ι,
-  γ.worldofpeace = κ,
-  λ.zeitgeist = ζ,
-  μ.zeitgeist = α,
-  ν.services = μ
+    λ,
+  γ.worldofpeace = μ,
+  δ.zeitgeist = θ,
+  ν.zeitgeist = β,
+  ξ.services = ν
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = ι;
-  meta = {maintainers = [κ];};
-  options = {services = {zeitgeist = {enable = ε;};};};
+α ->
+{ config = λ;
+  meta = {maintainers = [μ];};
+  options = {services = {zeitgeist = {enable = η;};};};
 }

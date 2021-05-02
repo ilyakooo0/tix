@@ -1,5 +1,5 @@
-∀ α.
-{pkgs = α;} ->
+∀ α β.
+(α.pkgs = β) => α ->
 { AdminGroup = String;
   AnswerRotary = String;
   LogFileMode = String;

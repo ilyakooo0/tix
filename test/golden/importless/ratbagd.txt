@@ -1,16 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.ratbagd = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.ratbagd = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
-      systemd = {packages = [θ];};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
     } ->
-    ι,
-  κ.libratbag = ζ,
-  β.enable = ε,
-  λ.services = α
+    λ,
+  δ.libratbag = θ,
+  ε.enable = η,
+  μ.services = β
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ι; options = {services = {ratbagd = {enable = δ;};};};}
+α -> {config = λ; options = {services = {ratbagd = {enable = ζ;};};};}

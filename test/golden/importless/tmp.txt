@@ -1,16 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.cleanTmpDir = β,
-  α.tmpOnTmpfs = γ,
-  δ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
-  δ.optional = γ -> String -> η,
-  δ.types = θ,
-  ι.boot = α,
-  κ.boot = α,
-  θ.bool = ε,
-  λ.bool = μ
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  β.cleanTmpDir = δ,
+  β.tmpOnTmpfs = ε,
+  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
+  γ.optional = ε -> String -> θ,
+  γ.types = ι,
+  κ.boot = β,
+  λ.boot = β,
+  ι.bool = ζ,
+  μ.bool = ν
 ) =>
-{config = α; lib = δ;} ->
+α ->
 { config =
-    {systemd = {additionalUpstreamSystemUnits = η; tmpfiles = {rules = ν;};};};
-  options = {boot = {cleanTmpDir = ζ; tmpOnTmpfs = ξ;};};
+    {systemd = {additionalUpstreamSystemUnits = θ; tmpfiles = {rules = ξ;};};};
+  options = {boot = {cleanTmpDir = η; tmpOnTmpfs = ο;};};
 }

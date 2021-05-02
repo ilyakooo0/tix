@@ -1,27 +1,30 @@
-∀ α β γ δ.
-{ buildOcaml =
-    { buildInputs = [α];
+∀ α β γ δ ε ζ.
+( ( α
+  ) //
+  ( { buildInputs = [β];
       buildPhase = String;
       configurePhase = String;
       dontAddPrefix = Bool;
       hasSharedObjects = Bool;
-      hash = String;
       installPhase = String;
       minimumSupportedOcamlVersion = String;
-      name = β;
-      src = γ;
+      name = γ;
+      src = δ;
       version = String;
-    } ->
-    δ;
-  fetchurl = {sha256 = String; url = String;} -> γ;
-  js_build_tools = α;
-  ocaml_oasis = α;
-  opaline = α;
+    }
+  ) ~
+  ( ε
+  ),
+  α.buildInputs = [β],
+  α.hash = String,
+  α.minimumSupportedOcamlVersion = String,
+  α.name = γ,
+  α.version = String
+) =>
+{ buildOcaml = ε -> ζ;
+  fetchurl = {sha256 = String; url = String;} -> δ;
+  js_build_tools = β;
+  ocaml_oasis = β;
+  opaline = β;
 } ->
-{ buildInputs = [α];
-  hash = String;
-  minimumSupportedOcamlVersion = String;
-  name = β;
-  version = String;
-} ->
-δ
+α -> ζ

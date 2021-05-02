@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.logmein-hamachi = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.logmein-hamachi = ε,
   γ.mkIf =
-    δ ->
-    { environment = {systemPackages = [ε];};
+    ζ ->
+    { environment = {systemPackages = [η];};
       systemd =
         { services =
             { logmein-hamachi =
@@ -14,13 +17,12 @@
             };
         };
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.logmein-hamachi = ε,
-  β.enable = δ,
-  λ.services = α,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.logmein-hamachi = η,
+  ε.enable = ζ,
+  μ.services = β,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {services = {logmein-hamachi = {enable = θ;};};};}
+α -> {config = θ; options = {services = {logmein-hamachi = {enable = κ;};};};}

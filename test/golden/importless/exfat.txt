@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ.
-( α.supportedFilesystems = β,
-  γ.any = (String -> Bool) -> β -> δ,
-  γ.mkIf = δ -> {system = {fsPackages = [ε];};} -> ζ,
-  η.exfat = ε,
-  θ.boot = α
+∀ α β γ δ ε ζ η θ ι.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.supportedFilesystems = ε,
+  γ.any = (String -> Bool) -> ε -> ζ,
+  γ.mkIf = ζ -> {system = {fsPackages = [η];};} -> θ,
+  δ.exfat = η,
+  ι.boot = β
 ) =>
-{config = α; lib = γ; pkgs = η;} -> {config = ζ;}
+α -> {config = θ;}

@@ -1,4 +1,5 @@
-{} ->
+∀ α.
+α ->
 { ModemGroup = [String];
   ServerTracing = String;
   SessionTracing = String;

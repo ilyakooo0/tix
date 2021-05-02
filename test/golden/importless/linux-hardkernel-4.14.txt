@@ -1,0 +1,25 @@
+∀ α β γ δ ε ζ η θ ι.
+( ( α
+  ) //
+  ( { defconfig = String;
+      extraConfig = String;
+      extraMeta = {branch = String; platforms = [String];};
+      modDirVersion = String;
+      src = β;
+      version = String;
+    }
+  ) ~
+  ( γ
+  ),
+  α.argsOverride = {},
+  α.buildLinux = γ -> δ,
+  α.buildPackages = ε,
+  α.extraConfig = String,
+  α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β,
+  α.libelf = ζ,
+  α.perl = η,
+  α.stdenv = θ,
+  α.utillinux = ι
+) =>
+α -> δ

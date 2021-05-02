@@ -1,0 +1,14 @@
+∀ β γ δ.
+( β.fetchurl = {sha256 = String; url = String;} -> γ,
+  β.trivial-gray-streams = δ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [δ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = γ;
+  version = String;
+}

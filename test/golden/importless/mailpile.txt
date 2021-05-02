@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
-( α.enable = β,
-  α.mailpile = γ,
-  δ.cfg = ε,
-  δ.mkEnableOption = String -> ζ,
-  δ.mkIf =
-    β ->
-    { environment = {systemPackages = [η];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.mailpile = ζ,
+  γ.cfg = η,
+  γ.mkEnableOption = String -> θ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [ι];};
       systemd =
         { services =
             { mailpile =
@@ -24,31 +27,31 @@
             };
         };
       users =
-        { groups = {mailpile = {gid = θ;};};
+        { groups = {mailpile = {gid = κ;};};
           users =
             { mailpile =
                 { createHome = Bool;
                   description = String;
                   home = String;
-                  uid = ι;
+                  uid = λ;
                 };
             };
         };
     } ->
-    κ,
-  δ.mkOption = {default = String; description = String;} -> λ,
-  μ.mailpile = η,
-  ν.services = α,
-  ξ.mailpile = α,
-  ο.services = ξ,
-  π.gids = α,
-  ρ.ids = π,
-  σ.uids = α,
-  τ.ids = σ,
-  ε.port = υ,
-  φ.hostname = χ
+    μ,
+  γ.mkOption = {default = String; description = String;} -> ν,
+  δ.mailpile = ι,
+  η.port = ξ,
+  ο.hostname = π,
+  ρ.services = β,
+  σ.mailpile = β,
+  τ.services = σ,
+  υ.gids = β,
+  φ.ids = υ,
+  χ.uids = β,
+  ψ.ids = χ
 ) =>
-{config = α; lib = δ; pkgs = μ;} ->
-{ config = κ;
-  options = {services = {mailpile = {enable = ζ; hostname = λ; port = ψ;};};};
+α ->
+{ config = μ;
+  options = {services = {mailpile = {enable = θ; hostname = ν; port = ω;};};};
 }

@@ -1,0 +1,5 @@
+∀ α β γ.
+( (α) // ({patches = [Path]; sha256 = String; version = String;}) ~ (β),
+  α.callPackage = Path -> β -> γ
+) =>
+α -> γ

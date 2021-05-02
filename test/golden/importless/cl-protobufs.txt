@@ -1,0 +1,18 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.closer-mop = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.trivial-features = γ,
+  β.trivial-garbage = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

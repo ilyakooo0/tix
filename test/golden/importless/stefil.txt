@@ -1,0 +1,18 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.iterate = γ,
+  β.metabang-bind = γ,
+  β.swank = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

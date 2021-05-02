@@ -1,22 +1,24 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.enable = β,
-  α.rpc = γ,
-  δ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.rpc = ζ,
+  γ.mkIf =
+    ε ->
+    { environment = {systemPackages = [η];};
       systemd =
-        {packages = [ζ]; services = {rpcbind = {wantedBy = [String];};};};
-      users = {users = {rpc = {group = String; uid = γ;};};};
+        {packages = [θ]; services = {rpcbind = {wantedBy = [String];};};};
+      users = {users = {rpc = {group = String; uid = ζ;};};};
     } ->
-    η,
-  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  δ.types = κ,
-  λ.rpcbind = ε,
-  μ.rpcbind = α,
-  ν.services = μ,
-  ξ.uids = α,
-  ο.ids = ξ,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.rpcbind = η,
+  ν.rpcbind = β,
+  ξ.services = ν,
+  ο.uids = β,
+  π.ids = ο,
+  μ.bool = κ
 ) =>
-{config = α; lib = δ; pkgs = λ;} ->
-{config = η; options = {services = {rpcbind = {enable = ι;};};};}
+α -> {config = ι; options = {services = {rpcbind = {enable = λ;};};};}

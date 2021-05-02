@@ -1,27 +1,30 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.fstrim = β,
-  γ.gnidorah = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.fstrim = ε,
+  γ.gnidorah = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { systemd =
-        { packages = [θ];
+        { packages = [κ];
           timers =
-            {fstrim = {timerConfig = {OnCalendar = ι;}; wantedBy = [String];};};
+            {fstrim = {timerConfig = {OnCalendar = λ;}; wantedBy = [String];};};
         };
     } ->
-    κ,
-  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  ξ.utillinux = θ,
-  β.enable = η,
-  β.interval = ι,
-  ο.services = α,
-  ν.str = λ
+    μ,
+  γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  δ.utillinux = κ,
+  ε.enable = ι,
+  ε.interval = λ,
+  π.services = β,
+  ο.str = ν
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{ config = κ;
-  meta = {maintainers = [δ];};
-  options = {services = {fstrim = {enable = ζ; interval = μ;};};};
+α ->
+{ config = μ;
+  meta = {maintainers = [ζ];};
+  options = {services = {fstrim = {enable = θ; interval = ξ;};};};
 }

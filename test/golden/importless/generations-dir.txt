@@ -1,38 +1,41 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
-( α.enable = β,
-  α.generationsDir = γ,
-  δ.mkIf =
-    β ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.generationsDir = ζ,
+  γ.mkIf =
+    ε ->
     { system =
-        { boot = {loader = {id = String; kernelFile = ε;};};
-          build = {installBootLoader = ζ;};
+        { boot = {loader = {id = String; kernelFile = η;};};
+          build = {installBootLoader = θ;};
         };
     } ->
-    η,
-  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  δ.types = κ,
-  λ.bash = μ,
-  λ.coreutils = ν,
-  λ.gnugrep = ν,
-  λ.gnused = ν,
-  λ.hostPlatform = ξ,
-  λ.substituteAll =
-    {bash = μ; copyKernels = ο; isExecutable = Bool; path = [ν]; src = Path;} ->
-    ζ,
-  γ.copyKernels = ο,
-  π.loader = α,
-  ρ.boot = π,
-  σ.generationsDir = α,
-  τ.loader = σ,
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.bash = ν,
+  δ.coreutils = ξ,
+  δ.gnugrep = ξ,
+  δ.gnused = ξ,
+  δ.hostPlatform = ο,
+  δ.substituteAll =
+    {bash = ν; copyKernels = π; isExecutable = Bool; path = [ξ]; src = Path;} ->
+    θ,
+  ο.platform = ρ,
+  σ.stdenv = δ,
+  ρ.kernelTarget = η,
+  ζ.copyKernels = π,
+  τ.loader = β,
   υ.boot = τ,
-  κ.bool = θ,
-  φ.bool = χ,
-  ξ.platform = ψ,
-  ω.stdenv = λ,
-  ψ.kernelTarget = ε
+  φ.generationsDir = β,
+  χ.loader = φ,
+  ψ.boot = χ,
+  μ.bool = κ,
+  ω.bool = α1
 ) =>
-{config = α; lib = δ; pkgs = λ;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
-    {boot = {loader = {generationsDir = {copyKernels = ι; enable = α1;};};};};
+    {boot = {loader = {generationsDir = {copyKernels = λ; enable = β2;};};};};
 }

@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.tzupdate = β,
-  γ.maintainers = δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tzupdate = ε,
+  γ.maintainers = ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { tzupdate =
@@ -15,16 +18,16 @@
         };
       time = {timeZone = Null;};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = ε,
-  κ.services = α,
-  δ.michaelpj = λ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = η,
+  μ.services = β,
+  ζ.michaelpj = ν,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = ζ;
-  meta = {maintainers = [λ];};
-  options = {services = {tzupdate = {enable = θ;};};};
+α ->
+{ config = θ;
+  meta = {maintainers = [ν];};
+  options = {services = {tzupdate = {enable = κ;};};};
 }

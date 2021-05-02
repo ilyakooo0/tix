@@ -1,15 +1,17 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.vim = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.vim = ε,
   γ.mkIf =
-    δ ->
-    {environment = {systemPackages = [ε]; variables = {EDITOR = ζ;};};} -> η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.mkOverride = Integer -> String -> ζ,
-  γ.types = κ,
-  λ.vim = ε,
-  β.defaultEditor = δ,
-  μ.programs = α,
-  κ.bool = θ
+    ζ ->
+    {environment = {systemPackages = [η]; variables = {EDITOR = θ;};};} -> ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.mkOverride = Integer -> String -> θ,
+  γ.types = μ,
+  δ.vim = η,
+  ε.defaultEditor = ζ,
+  ν.programs = β,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = η; options = {programs = {vim = {defaultEditor = ι;};};};}
+α -> {config = ι; options = {programs = {vim = {defaultEditor = λ;};};};}

@@ -1,50 +1,53 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
-( α.mjpg-streamer = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.mjpg-streamer = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { mjpg-streamer =
                 { description = String;
                   script = String;
                   serviceConfig =
-                    { Group = ζ;
+                    { Group = θ;
                       Restart = String;
                       RestartSec = Integer;
-                      User = η;
+                      User = ι;
                     };
                   wantedBy = [String];
                 };
             };
         };
-      users = {users = θ;};
+      users = {users = κ;};
     } ->
-    ι,
-  γ.mkOption = {default = String; description = String; type = κ;} -> λ,
-  γ.optionalAttrs = Bool -> {mjpg-streamer = {group = μ; uid = ν;};} -> θ,
-  γ.types = ξ,
-  β.enable = ε,
-  β.group = ζ,
-  β.user = η,
-  ο.services = α,
-  π.uids = α,
-  ρ.ids = π,
-  ξ.str = κ,
-  σ.str = τ,
+    λ,
+  γ.mkOption = {default = String; description = String; type = μ;} -> ν,
+  γ.optionalAttrs = Bool -> {mjpg-streamer = {group = ξ; uid = ο;};} -> κ,
+  γ.types = π,
+  ε.enable = η,
+  ε.group = θ,
+  ε.user = ι,
+  ρ.services = β,
+  σ.uids = β,
+  τ.ids = σ,
+  π.str = μ,
   υ.str = φ,
-  χ.str = ψ
+  χ.str = ψ,
+  ω.str = α1
 ) =>
-{config = α; lib = γ; pkgs = ω;} ->
-{ config = ι;
+α ->
+{ config = λ;
   options =
     { services =
         { mjpg-streamer =
-            { enable = δ;
-              group = λ;
-              inputPlugin = α1;
-              outputPlugin = β2;
-              user = γ3;
+            { enable = ζ;
+              group = ν;
+              inputPlugin = β2;
+              outputPlugin = γ3;
+              user = δ4;
             };
         };
     };

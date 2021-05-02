@@ -1,0 +1,44 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.bordeaux-threads = γ,
+  β.closer-mop = γ,
+  β.fare-quasiquote = γ,
+  β.fare-quasiquote-extras = γ,
+  β.fare-quasiquote-optima = γ,
+  β.fare-quasiquote-readtable = γ,
+  β.fare-utils = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.global-vars = γ,
+  β.introspect-environment = γ,
+  β.iterate = γ,
+  β.lisp-namespace = γ,
+  β.named-readtables = γ,
+  β.optima = γ,
+  β.parse-declarations-1_dot_0 = γ,
+  β.parse-number = γ,
+  β.split-sequence = γ,
+  β.string-case = γ,
+  β.trivia = γ,
+  β.trivia_dot_balland2006 = γ,
+  β.trivia_dot_level0 = γ,
+  β.trivia_dot_level1 = γ,
+  β.trivia_dot_level2 = γ,
+  β.trivia_dot_quasiquote = γ,
+  β.trivia_dot_trivial = γ,
+  β.trivial-cltl2 = γ,
+  β.trivial-file-size = γ,
+  β.trivial-garbage = γ,
+  β.trivial-macroexpand-all = γ,
+  β.type-i = γ,
+  β.uiop = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

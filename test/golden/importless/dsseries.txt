@@ -1,22 +1,25 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
 ( (β) // ({description = String;}) ~ (γ),
-  δ.enable = Bool,
-  ε.mkEnableOption = String -> β,
-  ε.mkIf =
+  δ.config = ε,
+  δ.lib = ζ,
+  δ.pkgs = η,
+  ε.enable = Bool,
+  ζ.mkEnableOption = String -> β,
+  ζ.mkIf =
     Bool ->
     { boot = {kernelModules = [String];};
-      hardware = {sane = {extraBackends = [ζ];};};
-      services = {udev = {packages = [η];};};
+      hardware = {sane = {extraBackends = [θ];};};
+      services = {udev = {packages = [ι];};};
     } ->
-    θ,
-  ι.dsseries = ζ,
-  κ.sane = δ,
-  λ.hardware = κ,
-  μ.dsseries = δ,
-  ν.sane = μ,
-  ξ.hardware = ν
+    κ,
+  η.dsseries = θ,
+  λ.sane = ε,
+  μ.hardware = λ,
+  ν.dsseries = ε,
+  ξ.sane = ν,
+  ο.hardware = ξ
 ) =>
-{config = δ; lib = ε; pkgs = ι;} ->
-{ config = θ;
+δ ->
+{ config = κ;
   options = {hardware = {sane = {dsseries = {enable = ∀ α. α;};};};};
 }

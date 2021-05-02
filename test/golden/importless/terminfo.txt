@@ -1,5 +1,5 @@
-∀ α.
-{config = α;} ->
+∀ α β.
+(α.config = β) => α ->
 { config =
     { environment =
         { etc = {terminfo = {source = String;};};

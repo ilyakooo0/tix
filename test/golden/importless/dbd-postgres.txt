@@ -1,0 +1,27 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.bordeaux-threads = γ,
+  β.cl-annot = γ,
+  β.cl-postgres = γ,
+  β.cl-syntax = γ,
+  β.cl-syntax-annot = γ,
+  β.closer-mop = γ,
+  β.dbi = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.md5 = γ,
+  β.named-readtables = γ,
+  β.split-sequence = γ,
+  β.trivial-garbage = γ,
+  β.trivial-types = γ,
+  β.usocket = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

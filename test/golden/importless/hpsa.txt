@@ -1,42 +1,45 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.enable = β,
-  γ.licenses = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.licenses = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    β ->
+    ε ->
     { boot =
         { initrd =
             {availableKernelModules = [String]; kernelModules = [String];};
         };
-      environment = {systemPackages = [η];};
+      environment = {systemPackages = [ι];};
     } ->
-    θ,
-  γ.volth = ι,
-  κ.dpkg = λ,
-  κ.fetchurl = {sha256 = String; url = String;} -> μ,
-  κ.mkDerivation =
+    κ,
+  γ.volth = λ,
+  δ.dpkg = μ,
+  δ.fetchurl = {sha256 = String; url = String;} -> ν,
+  δ.mkDerivation =
     { dontStrip = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ν;
-          maintainers = [ι];
+          license = ξ;
+          maintainers = [λ];
           platforms = [String];
         };
-      nativeBuildInputs = [λ];
+      nativeBuildInputs = [μ];
       pname = String;
-      src = μ;
+      src = ν;
       unpackPhase = String;
       version = String;
     } ->
-    η,
-  ξ.HPSmartArray = α,
-  ο.raid = ξ,
-  π.hardware = ο,
-  δ.unfreeRedistributable = ν,
-  ρ.stdenv = κ
+    ι,
+  ο.stdenv = δ,
+  ζ.unfreeRedistributable = ξ,
+  π.HPSmartArray = β,
+  ρ.raid = π,
+  σ.hardware = ρ
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = θ; options = {hardware = {raid = {HPSmartArray = {enable = ζ;};};};};}
+α ->
+{config = κ; options = {hardware = {raid = {HPSmartArray = {enable = θ;};};};};}

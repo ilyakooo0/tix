@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.tiddlywiki = β,
-  γ.cfg = δ,
-  γ.concatStrings = ε -> ζ,
-  γ.mapAttrsToList = (η -> θ -> String) -> ι -> ε,
-  γ.mkEnableOption = String -> κ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tiddlywiki = ε,
+  γ.cfg = ζ,
+  γ.concatStrings = η -> θ,
+  γ.mapAttrsToList = (ι -> κ -> String) -> λ -> η,
+  γ.mkEnableOption = String -> μ,
   γ.mkIf =
-    λ ->
+    ν ->
     { systemd =
         { services =
             { tiddlywiki =
@@ -24,21 +27,21 @@
             };
         };
     } ->
-    μ,
+    ξ,
   γ.mkOption =
     { default = {};
       description = String;
       example = {credentials = String; port = Integer; readers = String;};
-      type = ν;
+      type = ο;
     } ->
-    ξ,
-  γ.types = ο,
-  β.enable = λ,
-  π.services = α,
-  δ.listenOptions = ι,
-  ο.attrs = ν
+    π,
+  γ.types = ρ,
+  ζ.listenOptions = λ,
+  ε.enable = ν,
+  σ.services = β,
+  ρ.attrs = ο
 ) =>
-{config = α; lib = γ; pkgs = ρ;} ->
-{ config = μ;
-  options = {services = {tiddlywiki = {enable = κ; listenOptions = ξ;};};};
+α ->
+{ config = ξ;
+  options = {services = {tiddlywiki = {enable = μ; listenOptions = π;};};};
 }

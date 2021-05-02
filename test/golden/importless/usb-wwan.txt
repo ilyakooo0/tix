@@ -1,19 +1,21 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
+    ε ->
     { environment = {etc = {usb_modeswitch.d = {source = String;};};};
-      services = {udev = {packages = [δ];};};
-      systemd = {packages = [ε];};
+      services = {udev = {packages = [ζ];};};
+      systemd = {packages = [η];};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  γ.usb-modeswitch = ε,
-  γ.usb-modeswitch-data = δ,
-  κ.usbWwan = α,
-  λ.hardware = κ,
-  ι.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  γ.usb-modeswitch = η,
+  γ.usb-modeswitch-data = ζ,
+  μ.usbWwan = β,
+  ν.hardware = μ,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = ζ; options = {hardware = {usbWwan = {enable = θ;};};};}
+α -> {config = θ; options = {hardware = {usbWwan = {enable = κ;};};};}

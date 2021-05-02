@@ -1,26 +1,29 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.packagekit = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.packagekit = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment =
         { etc =
             { PackageKit/PackageKit.conf = {text = String;};
               PackageKit/Vendor.conf = {text = String;};
             };
         };
-      services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [η];};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    θ,
-  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
-  γ.packagekit = ζ,
-  γ.types = λ,
-  β.enable = ε,
-  μ.services = α,
-  λ.enum = [String] -> ι
+    κ,
+  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
+  γ.packagekit = θ,
+  γ.types = ν,
+  ε.enable = η,
+  ξ.services = β,
+  ν.enum = [String] -> λ
 ) =>
-{config = α; lib = γ; pkgs = ν;} ->
-{ config = θ;
-  options = {services = {packagekit = {backend = κ; enable = δ;};};};
+α ->
+{ config = κ;
+  options = {services = {packagekit = {backend = μ; enable = ζ;};};};
 }

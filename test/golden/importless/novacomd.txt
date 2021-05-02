@@ -1,11 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.novacomd = β,
-  γ.dtzWill = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.novacomd = ε,
+  γ.dtzWill = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
-    { environment = {systemPackages = [θ];};
+    ι ->
+    { environment = {systemPackages = [κ];};
       systemd =
         { services =
             { novacomd =
@@ -16,14 +19,14 @@
             };
         };
     } ->
-    ι,
-  κ.novacom = θ,
-  β.enable = η,
-  λ.services = α,
-  μ.webos = κ
+    λ,
+  δ.novacom = κ,
+  ε.enable = ι,
+  μ.services = β,
+  ν.webos = δ
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{ config = ι;
-  meta = {maintainers = [δ];};
-  options = {services = {novacomd = {enable = ζ;};};};
+α ->
+{ config = λ;
+  meta = {maintainers = [ζ];};
+  options = {services = {novacomd = {enable = θ;};};};
 }

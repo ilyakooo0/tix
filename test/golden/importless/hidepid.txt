@@ -1,9 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.hideProcessInformation = β,
-  α.proc = γ,
-  δ.maintainers = ε,
-  δ.mkIf =
-    β ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  β.hideProcessInformation = δ,
+  β.proc = ε,
+  γ.maintainers = ζ,
+  γ.mkIf =
+    δ ->
     { boot = {specialFileSystems = {/proc = {options = [String];};};};
       systemd =
         { services =
@@ -11,19 +13,19 @@
                 {serviceConfig = {SupplementaryGroups = [String];};};
             };
         };
-      users = {groups = {proc = {gid = γ; members = [String];};};};
+      users = {groups = {proc = {gid = ε; members = [String];};};};
     } ->
-    ζ,
-  δ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  δ.types = ι,
-  κ.security = α,
-  λ.gids = α,
-  μ.ids = λ,
-  ε.joachifm = ν,
-  ι.bool = η
+    η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.security = β,
+  μ.gids = β,
+  ν.ids = μ,
+  ζ.joachifm = ξ,
+  κ.bool = θ
 ) =>
-{config = α; lib = δ;} ->
-{ config = ζ;
-  meta = {doc = Path; maintainers = [ν];};
-  options = {security = {hideProcessInformation = θ;};};
+α ->
+{ config = η;
+  meta = {doc = Path; maintainers = [ξ];};
+  options = {security = {hideProcessInformation = ι;};};
 }

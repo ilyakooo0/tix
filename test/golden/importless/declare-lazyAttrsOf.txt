@@ -1,9 +1,10 @@
-∀ α β γ δ ε ζ η.
+∀ α β γ δ ε ζ η θ.
 ( (α) // ({emptyValue = {value = String;};}) ~ (β),
-  γ.lazyAttrsOf = β -> δ,
-  γ.mkOption = {default = {}; type = δ;} -> ε,
-  γ.str = α,
-  ζ.types = γ,
-  η.types = γ
+  γ.lib = δ,
+  δ.lazyAttrsOf = β -> ε,
+  δ.mkOption = {default = {}; type = ε;} -> ζ,
+  δ.str = α,
+  η.types = δ,
+  θ.types = δ
 ) =>
-{lib = γ;} -> {options = {value = ε;};}
+γ -> {options = {value = ζ;};}

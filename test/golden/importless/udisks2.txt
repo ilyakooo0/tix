@@ -1,18 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {packages = [ε];}; udev = {packages = [ζ];};};
-      systemd = {packages = [η]; tmpfiles = {rules = [String];};};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];}; udev = {packages = [θ];};};
+      systemd = {packages = [ι]; tmpfiles = {rules = [String];};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.udisks2 = δ,
-  ν.udisks2 = α,
-  ξ.services = ν,
-  λ.bool = ι
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.udisks2 = ζ,
+  ξ.udisks2 = β,
+  ο.services = ξ,
+  ν.bool = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = θ; options = {services = {udisks2 = {enable = κ;};};};}
+α -> {config = κ; options = {services = {udisks2 = {enable = μ;};};};}

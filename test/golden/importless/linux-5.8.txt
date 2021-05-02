@@ -1,0 +1,26 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( ( α
+  ) //
+  ( { extraMeta = {branch = β;};
+      modDirVersion = Null;
+      src = γ;
+      version = String;
+    }
+  ) ~
+  ( δ
+  ),
+  α.argsOverride = {},
+  α.buildLinux = δ -> ε,
+  α.buildPackages = ζ,
+  α.fetchurl = {sha256 = String; url = String;} -> γ,
+  α.modDirVersionArg = Null,
+  α.perl = η,
+  α.stdenv = θ,
+  θ.lib = ι,
+  ι.concatStringsSep = String -> κ -> Null,
+  ι.splitVersion = String -> λ,
+  ι.take = Integer -> λ -> κ,
+  ι.versions = μ,
+  μ.majorMinor = String -> β
+) =>
+α -> ε

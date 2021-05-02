@@ -1,19 +1,21 @@
-∀ β γ δ ε ζ η.
-( β.bash = γ,
-  β.gawk = γ,
-  β.nettools = γ,
-  β.openssl = γ,
-  β.out = γ,
-  β.procps = γ,
-  β.shadow = γ,
-  β.utillinux = γ,
-  β.which = γ,
-  β.xauth = γ,
-  δ.xorgserver = β,
-  ε.xorg = δ,
-  ζ.xorg = β
+∀ β γ δ ε ζ η θ.
+( β.lib = γ,
+  β.pkgs = δ,
+  δ.bash = ε,
+  δ.gawk = ε,
+  δ.nettools = ε,
+  δ.openssl = ε,
+  δ.out = ε,
+  δ.procps = ε,
+  δ.shadow = ε,
+  δ.utillinux = ε,
+  δ.which = ε,
+  δ.xauth = ε,
+  ζ.xorgserver = δ,
+  η.xorg = ζ,
+  θ.xorg = δ
 ) =>
-{lib = η; pkgs = β;} ->
+β ->
 { config =
     { services =
         { xserver =
@@ -27,7 +29,7 @@
             { terminal-server@ =
                 { description = String;
                   environment = {FD_GEOM = String; FD_XDMCP_IF = String;};
-                  path = [γ];
+                  path = [ε];
                   serviceConfig =
                     { ExecStart = String;
                       KillMode = String;

@@ -1,12 +1,14 @@
-∀ α β γ δ ε ζ η θ ι κ λ.
-( α.acpilight = β,
-  γ.acpilight = δ,
-  γ.mkIf = ε -> {services = {udev = {packages = [δ];};};} -> ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  β.enable = ε,
-  κ.hardware = α,
-  ι.bool = η
+∀ α β γ δ ε ζ η θ ι κ λ μ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.acpilight = ε,
+  γ.acpilight = ζ,
+  γ.mkIf = η -> {services = {udev = {packages = [ζ];};};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.enable = η,
+  μ.hardware = β,
+  λ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = ζ; options = {hardware = {acpilight = {enable = θ;};};};}
+α -> {config = θ; options = {hardware = {acpilight = {enable = κ;};};};}

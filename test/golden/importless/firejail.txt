@@ -1,29 +1,32 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.firejail = β,
-  γ.literalExample = String -> δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.firejail = ε,
+  γ.literalExample = String -> ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
-    { environment = {systemPackages = [θ];};
+    ι ->
+    { environment = {systemPackages = [κ];};
       security = {wrappers = {firejail = {source = String;};};};
     } ->
-    ι,
+    λ,
   γ.mkOption =
-    {default = {}; description = String; example = δ; type = κ;} -> λ,
-  γ.peterhoeg = μ,
-  γ.types = ν,
-  ξ.firejail = θ,
-  ξ.runCommand =
+    {default = {}; description = String; example = ζ; type = μ;} -> ν,
+  γ.peterhoeg = ξ,
+  γ.types = ο,
+  δ.firejail = κ,
+  δ.runCommand =
     String ->
-    {allowSubstitutes = Bool; preferLocalBuild = Bool;} -> String -> θ,
-  β.enable = η,
-  ο.programs = α,
-  ν.attrsOf = π -> κ,
-  ρ.path = π
+    {allowSubstitutes = Bool; preferLocalBuild = Bool;} -> String -> κ,
+  ε.enable = ι,
+  π.programs = β,
+  ο.attrsOf = ρ -> μ,
+  σ.path = ρ
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{ config = ι;
-  meta = {maintainers = [μ];};
-  options = {programs = {firejail = {enable = ζ; wrappedBinaries = λ;};};};
+α ->
+{ config = λ;
+  meta = {maintainers = [ξ];};
+  options = {programs = {firejail = {enable = θ; wrappedBinaries = ν;};};};
 }

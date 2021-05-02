@@ -1,14 +1,17 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.powertop = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.powertop = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { systemd =
         { services =
             { powertop =
                 { after = [String];
                   description = String;
-                  path = [ζ];
+                  path = [θ];
                   serviceConfig =
                     { ExecStart = String;
                       RemainAfterExit = String;
@@ -19,10 +22,9 @@
             };
         };
     } ->
-    η,
-  θ.kmod = ζ,
-  β.enable = ε,
-  ι.powerManagement = α
+    ι,
+  δ.kmod = θ,
+  ε.enable = η,
+  κ.powerManagement = β
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {powerManagement = {powertop = {enable = δ;};};};}
+α -> {config = ι; options = {powerManagement = {powertop = {enable = ζ;};};};}

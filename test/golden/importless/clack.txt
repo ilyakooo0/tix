@@ -1,0 +1,22 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.bordeaux-threads = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.ironclad = γ,
+  β.lack = γ,
+  β.lack-component = γ,
+  β.lack-middleware-backtrace = γ,
+  β.lack-util = γ,
+  β.nibbles = γ,
+  β.uiop = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

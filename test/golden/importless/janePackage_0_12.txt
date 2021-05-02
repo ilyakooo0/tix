@@ -1,15 +1,23 @@
-∀ α β γ δ ε ζ η.
-(α.mit = β, γ.licenses = α) => { buildDunePackage =
-    { hash = δ;
-      meta = {homepage = String; license = β;};
+∀ α β γ δ ε ζ η θ ι.
+( ( α
+  ) //
+  ( { meta = {homepage = String; license = β;};
       minimumOCamlVersion = String;
-      pname = ε;
-      src = ζ;
+      src = γ;
       version = String;
-    } ->
-    η;
+    }
+  ) ~
+  ( δ
+  ),
+  ε.mit = β,
+  α.hash = ζ,
+  α.pname = η,
+  α.version = String,
+  θ.licenses = ε
+) =>
+{ buildDunePackage = δ -> ι;
   defaultVersion = String;
-  fetchFromGitHub = {owner = String; repo = ε; rev = String; sha256 = δ;} -> ζ;
-  lib = α;
+  fetchFromGitHub = {owner = String; repo = η; rev = String; sha256 = ζ;} -> γ;
+  lib = ε;
 } ->
-{hash = δ; pname = ε; version = String;} -> η
+α -> ι

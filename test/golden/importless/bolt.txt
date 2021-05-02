@@ -1,19 +1,22 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {udev = {packages = [ε];};};
-      systemd = {packages = [ζ];};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {udev = {packages = [η];};};
+      systemd = {packages = [θ];};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.bolt = δ,
-  μ.bolt = α,
-  ν.hardware = μ,
-  ξ.services = ν,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.bolt = ζ,
+  ν.bolt = β,
+  ξ.hardware = ν,
+  ο.services = ξ,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{config = η; options = {services = {hardware = {bolt = {enable = ι;};};};};}
+α ->
+{config = ι; options = {services = {hardware = {bolt = {enable = λ;};};};};}

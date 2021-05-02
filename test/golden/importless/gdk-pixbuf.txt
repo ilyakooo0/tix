@@ -1,22 +1,25 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( β.gdk-pixbuf = γ,
-  δ.cfg = ε,
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.gdk-pixbuf = ζ,
+  δ.cfg = η,
   δ.mkIf =
     Bool ->
-    {environment = {variables = {GDK_PIXBUF_MODULE_FILE = String;};};} -> ζ,
-  δ.mkOption = {default = ∀ α. α; description = String; type = η;} -> θ,
-  δ.types = ι,
-  δ.unique = [κ] -> λ,
-  μ.gdk-pixbuf = κ,
-  μ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ν,
-  γ.modulePackages = ξ,
-  ο.xserver = β,
-  π.services = ο,
-  ε.modulePackages = [κ],
-  ι.listOf = ρ -> η,
-  σ.package = ρ
+    {environment = {variables = {GDK_PIXBUF_MODULE_FILE = String;};};} -> θ,
+  δ.mkOption = {default = ∀ α. α; description = String; type = ι;} -> κ,
+  δ.types = λ,
+  δ.unique = [μ] -> ν,
+  ε.gdk-pixbuf = μ,
+  ε.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ξ,
+  η.modulePackages = [μ],
+  ζ.modulePackages = ο,
+  π.xserver = γ,
+  ρ.services = π,
+  λ.listOf = σ -> ι,
+  τ.package = σ
 ) =>
-{config = β; lib = δ; pkgs = μ;} ->
-{ config = ζ;
-  options = {services = {xserver = {gdk-pixbuf = {modulePackages = θ;};};};};
+β ->
+{ config = θ;
+  options = {services = {xserver = {gdk-pixbuf = {modulePackages = κ;};};};};
 }

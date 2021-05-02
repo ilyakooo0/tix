@@ -1,0 +1,33 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( ( α
+  ) //
+  ( { doCheck = Bool;
+      name = String;
+      postPatch = String;
+      sourceRoot = String;
+      src = β;
+      version = String;
+    }
+  ) ~
+  ( γ
+  ),
+  (δ) // ({datadog_checks_base = ε; python = ζ;}) ~ (η),
+  θ.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β,
+  θ.lib = ι,
+  κ.buildPythonPackage = γ -> ε,
+  κ.pkgs = λ,
+  κ.withPackages = (μ -> ν) -> ζ,
+  ι.attrValues = δ -> ν,
+  ι.mapAttrs = (ξ -> (λ -> [ε]) -> ε) -> ο -> δ,
+  ι.pg8000_1_12 = π,
+  ι.prometheus_client = ρ,
+  ι.protobuf = ρ,
+  ι.psycopg2 = π,
+  ι.requests = ρ,
+  ι.simplejson = ρ,
+  ι.uptime = ρ,
+  ι.uuid = ρ,
+  σ.pkgs = κ
+) =>
+{extraIntegrations = {}; pkgs = θ; python = κ;} -> η

@@ -1,14 +1,17 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.tcpcrypt = β,
-  α.tcpcryptd = γ,
-  δ.mkIf =
-    ε ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.tcpcrypt = ε,
+  β.tcpcryptd = ζ,
+  γ.mkIf =
+    η ->
     { systemd =
         { services =
             { tcpcrypt =
                 { after = [String];
                   description = String;
-                  path = [ζ];
+                  path = [θ];
                   postStop = String;
                   preStart = String;
                   script = String;
@@ -16,19 +19,18 @@
                 };
             };
         };
-      users = {users = {tcpcryptd = {description = String; uid = γ;};};};
+      users = {users = {tcpcryptd = {description = String; uid = ζ;};};};
     } ->
-    η,
-  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  δ.types = κ,
-  λ.iptables = ζ,
-  λ.procps = ζ,
-  λ.tcpcrypt = ζ,
-  β.enable = ε,
-  μ.networking = α,
-  ν.uids = α,
-  ξ.ids = ν,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.iptables = θ,
+  δ.procps = θ,
+  δ.tcpcrypt = θ,
+  ε.enable = η,
+  ν.networking = β,
+  ξ.uids = β,
+  ο.ids = ξ,
+  μ.bool = κ
 ) =>
-{config = α; lib = δ; pkgs = λ;} ->
-{config = η; options = {networking = {tcpcrypt = {enable = ι;};};};}
+α -> {config = ι; options = {networking = {tcpcrypt = {enable = λ;};};};}

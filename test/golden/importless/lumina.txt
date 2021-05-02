@@ -1,27 +1,30 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.xserver = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.xserver = ε,
   γ.mkIf =
-    δ ->
-    { environment = {pathsToLink = [String]; systemPackages = [ε];};
-      services = {xserver = {displayManager = {sessionPackages = [ζ];};};};
+    ζ ->
+    { environment = {pathsToLink = [String]; systemPackages = [η];};
+      services = {xserver = {displayManager = {sessionPackages = [θ];};};};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.corePackages = [ε],
-  λ.lumina = ζ,
-  λ.preRequisitePackages = [ε],
-  β.lumina = μ,
-  ν.services = α,
-  μ.enable = δ,
-  ξ.desktopManager = β,
-  κ.bool = θ,
-  ο.lumina = λ,
-  π.lumina = λ,
-  ρ.lumina = λ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.corePackages = [η],
+  δ.lumina = θ,
+  δ.preRequisitePackages = [η],
+  ε.lumina = ν,
+  ξ.services = β,
+  ν.enable = ζ,
+  ο.desktopManager = ε,
+  π.lumina = δ,
+  ρ.lumina = δ,
+  σ.lumina = δ,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
-    {services = {xserver = {desktopManager = {lumina = {enable = ι;};};};};};
+    {services = {xserver = {desktopManager = {lumina = {enable = λ;};};};};};
 }

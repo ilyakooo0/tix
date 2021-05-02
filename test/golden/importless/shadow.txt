@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6.
 ( ( { newgidmap = {source = String;};
       newgrp = {source = String;};
       newuidmap = {source = String;};
@@ -10,31 +10,35 @@
   ) ~
   ( γ
   ),
-  δ.defaultUserShell = ε,
-  δ.mutableUsers = ζ,
-  η.literalExample = String -> θ,
-  η.mkOption = {description = String; example = θ; type = ι;} -> κ,
-  η.optional = ζ -> λ -> [μ],
-  η.optionalAttrs =
-    ν -> {chsh = {source = String;}; passwd = {source = String;};} -> β,
-  η.types = ξ,
-  ο.shadow = λ,
-  ο.writeText = String -> String -> π,
-  ρ.users = δ,
-  σ.users = δ,
-  τ.users = δ,
-  υ.users = δ,
-  ξ.check = ε -> φ,
-  χ.shellPackage = ξ,
-  ψ.either = ω -> α1 -> ι,
-  β2.path = ω,
-  γ3.shellPackage = α1
+  δ.config = ε,
+  δ.lib = ζ,
+  δ.pkgs = η,
+  δ.utils = θ,
+  ε.defaultUserShell = ι,
+  ε.mutableUsers = κ,
+  ζ.literalExample = String -> λ,
+  ζ.mkOption = {description = String; example = λ; type = μ;} -> ν,
+  ζ.optional = κ -> ξ -> [ο],
+  ζ.optionalAttrs =
+    π -> {chsh = {source = String;}; passwd = {source = String;};} -> β,
+  ζ.types = ρ,
+  η.shadow = ξ,
+  η.writeText = String -> String -> σ,
+  τ.users = ε,
+  ρ.check = ι -> υ,
+  φ.shellPackage = ρ,
+  χ.users = ε,
+  ψ.users = ε,
+  ω.users = ε,
+  α1.either = β2 -> γ3 -> μ,
+  δ4.path = β2,
+  ε5.shellPackage = γ3
 ) =>
-{config = δ; lib = η; pkgs = ο; utils = δ4;} ->
+δ ->
 { config =
     { environment =
-        { etc = {default/useradd = {source = π;}; login.defs = {source = ε5;};};
-          systemPackages = [μ];
+        { etc = {default/useradd = {source = σ;}; login.defs = {source = ζ6;};};
+          systemPackages = [ο];
         };
       security =
         { pam =
@@ -63,5 +67,5 @@
           wrappers = ∀ α. α;
         };
     };
-  options = {users = {defaultUserShell = κ;};};
+  options = {users = {defaultUserShell = ν;};};
 }

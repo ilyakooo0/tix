@@ -1,0 +1,20 @@
+∀ β γ δ.
+( β.anaphora = γ,
+  β.asdf-system-connections = γ,
+  β.cl-containers = γ,
+  β.cl-ppcre = γ,
+  β.dynamic-classes = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.metabang-bind = γ,
+  β.metatilities-base = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

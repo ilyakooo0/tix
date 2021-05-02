@@ -1,29 +1,32 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
+    ε ->
     { environment =
-        {etc = {rygel.conf = {source = String;};}; systemPackages = [δ];};
-      services = {dbus = {packages = [ε];};};
-      systemd = {packages = [ζ];};
+        {etc = {rygel.conf = {source = String;};}; systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
+      systemd = {packages = [θ];};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.teams = κ,
-  γ.types = λ,
-  μ.rygel = δ,
-  ν.rygel = α,
-  ξ.gnome3 = ν,
-  ο.services = ξ,
-  κ.members = π,
-  ρ.gnome = κ,
-  λ.bool = θ,
-  σ.gnome3 = μ,
-  τ.gnome3 = μ,
-  υ.gnome3 = μ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.teams = μ,
+  γ.types = ν,
+  δ.rygel = ζ,
+  ξ.rygel = β,
+  ο.gnome3 = ξ,
+  π.services = ο,
+  ρ.gnome3 = δ,
+  σ.gnome3 = δ,
+  τ.gnome3 = δ,
+  μ.members = υ,
+  φ.gnome = μ,
+  ν.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = η;
-  meta = {maintainers = π;};
-  options = {services = {gnome3 = {rygel = {enable = ι;};};};};
+α ->
+{ config = ι;
+  meta = {maintainers = υ;};
+  options = {services = {gnome3 = {rygel = {enable = λ;};};};};
 }

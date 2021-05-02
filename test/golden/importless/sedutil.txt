@@ -1,15 +1,17 @@
-∀ α β γ δ ε ζ η θ ι.
-( α.sedutil = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.sedutil = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { boot = {kernelParams = [String];};
-      environment = {systemPackages = [ζ];};
+      environment = {systemPackages = [θ];};
     } ->
-    η,
-  γ.sedutil = ζ,
-  β.enable = ε,
-  θ.programs = α
+    ι,
+  γ.sedutil = θ,
+  ε.enable = η,
+  κ.programs = β
 ) =>
-{config = α; lib = γ; pkgs = ι;} ->
-{config = η; options = {programs = {sedutil = {enable = δ;};};};}
+α -> {config = ι; options = {programs = {sedutil = {enable = ζ;};};};}

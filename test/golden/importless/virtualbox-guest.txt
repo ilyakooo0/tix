@@ -1,16 +1,19 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
-( α.guest = β,
-  α.kernelPackages = γ,
-  α.vboxsf = δ,
-  ε.mkIf = ζ -> η -> θ,
-  ε.mkMerge =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.guest = ε,
+  β.kernelPackages = ζ,
+  β.vboxsf = η,
+  γ.mkIf = θ -> ι -> κ,
+  γ.mkMerge =
     [ { assertions = [{assertion = Bool; message = String;}];
         boot =
-          { extraModulePackages = [ι];
+          { extraModulePackages = [λ];
             initrd = {supportedFilesystems = [String];};
             supportedFilesystems = [String];
           };
-        environment = {systemPackages = [κ];};
+        environment = {systemPackages = [μ];};
         services = {udev = {extraRules = String;};};
         systemd =
           { services =
@@ -24,30 +27,30 @@
                   };
               };
           };
-        users = {groups = {vboxsf = {gid = δ;};};};
+        users = {groups = {vboxsf = {gid = η;};};};
       }
     ] ->
-    η,
-  ε.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  ε.mkOverride = Integer -> [String] -> ν,
-  ε.types = ξ,
-  ο.isi686 = Bool,
-  ο.isx86_64 = Bool,
-  γ.virtualboxGuestAdditions = ι,
-  π.boot = α,
-  β.enable = ζ,
-  β.x11 = ρ,
-  σ.virtualbox = α,
-  τ.virtualisation = σ,
-  υ.gids = α,
-  φ.ids = υ,
-  ξ.bool = λ,
-  χ.bool = ψ,
-  ω.stdenv = ο,
-  α1.stdenv = ο
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = ν;} -> ξ,
+  γ.mkOverride = Integer -> [String] -> ο,
+  γ.types = π,
+  δ.isi686 = Bool,
+  δ.isx86_64 = Bool,
+  ζ.virtualboxGuestAdditions = λ,
+  ρ.boot = β,
+  ε.enable = θ,
+  ε.x11 = σ,
+  τ.virtualbox = β,
+  υ.virtualisation = τ,
+  φ.stdenv = δ,
+  χ.stdenv = δ,
+  ψ.gids = β,
+  ω.ids = ψ,
+  π.bool = ν,
+  α1.bool = β2
 ) =>
-{config = α; lib = ε; pkgs = ο;} ->
-{ config = θ;
+α ->
+{ config = κ;
   options =
-    {virtualisation = {virtualbox = {guest = {enable = μ; x11 = β2;};};};};
+    {virtualisation = {virtualbox = {guest = {enable = ξ; x11 = γ3;};};};};
 }

@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.enabled = String,
-  α.uim = β,
-  γ.uim = δ,
-  ε.mkIf =
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enabled = String,
+  β.uim = ε,
+  δ.uim = ζ,
+  γ.mkIf =
     Bool ->
     { environment =
         { variables =
@@ -11,18 +14,17 @@
               XMODIFIERS = String;
             };
         };
-      i18n = {inputMethod = {package = δ;};};
+      i18n = {inputMethod = {package = ζ;};};
       services = {xserver = {displayManager = {sessionCommands = String;};};};
     } ->
-    ζ,
-  ε.mkOption =
-    {default = String; description = String; example = String; type = η;} -> θ,
-  ε.types = ι,
-  κ.inputMethod = α,
-  λ.i18n = κ,
-  μ.inputMethod = α,
-  ν.i18n = μ,
-  ι.enum = [String] -> η
+    η,
+  γ.mkOption =
+    {default = String; description = String; example = String; type = θ;} -> ι,
+  γ.types = κ,
+  λ.inputMethod = β,
+  μ.i18n = λ,
+  ν.inputMethod = β,
+  ξ.i18n = ν,
+  κ.enum = [String] -> θ
 ) =>
-{config = α; lib = ε; pkgs = γ;} ->
-{config = ζ; options = {i18n = {inputMethod = {uim = {toolbar = θ;};};};};}
+α -> {config = η; options = {i18n = {inputMethod = {uim = {toolbar = ι;};};};};}

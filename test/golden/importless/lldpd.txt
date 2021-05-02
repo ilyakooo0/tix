@@ -1,15 +1,18 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( β.lldpd = γ,
-  δ.concatStringsSep = String -> ε -> ζ,
-  δ.mkEnableOption = String -> η,
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.lldpd = ζ,
+  δ.concatStringsSep = String -> η -> θ,
+  δ.mkEnableOption = String -> ι,
   δ.mkIf =
-    θ ->
-    { environment = {systemPackages = [ι];};
+    κ ->
+    { environment = {systemPackages = [λ];};
       systemd =
-        { packages = [κ];
+        { packages = [μ];
           services =
             { lldpd =
-                {environment = {LLDPD_OPTIONS = ζ;}; wantedBy = [String];};
+                {environment = {LLDPD_OPTIONS = θ;}; wantedBy = [String];};
             };
         };
       users =
@@ -24,17 +27,17 @@
             };
         };
     } ->
-    λ,
-  δ.mkOption =
-    {default = ∀ α. α; description = String; example = [String]; type = μ;} ->
     ν,
-  δ.types = ξ,
-  ο.lldpd = ι,
-  γ.enable = θ,
-  γ.extraArgs = ε,
-  π.services = β,
-  ξ.listOf = ρ -> μ,
-  σ.str = ρ
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = ξ;} ->
+    ο,
+  δ.types = π,
+  ε.lldpd = λ,
+  ζ.enable = κ,
+  ζ.extraArgs = η,
+  ρ.services = γ,
+  π.listOf = σ -> ξ,
+  τ.str = σ
 ) =>
-{config = β; lib = δ; pkgs = ο;} ->
-{config = λ; options = {services = {lldpd = {enable = η; extraArgs = ν;};};};}
+β ->
+{config = ν; options = {services = {lldpd = {enable = ι; extraArgs = ο;};};};}

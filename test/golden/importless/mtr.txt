@@ -1,20 +1,22 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.mtr = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.mtr = ε,
   γ.mkIf =
-    δ ->
-    { environment = {systemPackages = [ε];};
+    ζ ->
+    { environment = {systemPackages = [η];};
       security =
         {wrappers = {mtr-packet = {capabilities = String; source = String;};};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.mtr = λ,
-  β.enable = δ,
-  β.package = ε,
-  μ.programs = α,
-  ι.bool = η,
-  ν.package = ξ
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.mtr = μ,
+  ε.enable = ζ,
+  ε.package = η,
+  ν.programs = β,
+  λ.bool = ι,
+  ξ.package = ο
 ) =>
-{config = α; lib = γ; pkgs = κ;} ->
-{config = ζ; options = {programs = {mtr = {enable = θ; package = ο;};};};}
+α -> {config = θ; options = {programs = {mtr = {enable = κ; package = π;};};};}

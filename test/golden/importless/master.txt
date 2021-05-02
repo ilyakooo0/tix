@@ -1,23 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
-( α.master = β,
-  α.source = γ,
-  δ.writeText = String -> ε -> ζ,
-  η.aneeshusa = θ,
-  η.builtins = ι,
-  η.cfg = κ,
-  η.maintainers = λ,
-  η.mkEnableOption = String -> μ,
-  η.mkIf =
-    ν ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.master = ε,
+  β.source = ζ,
+  δ.writeText = String -> η -> θ,
+  γ.aneeshusa = ι,
+  γ.builtins = κ,
+  γ.cfg = λ,
+  γ.maintainers = μ,
+  γ.mkEnableOption = String -> ν,
+  γ.mkIf =
+    ξ ->
     { environment =
-        {etc = {salt/master = {source = ζ;};}; systemPackages = [ξ];};
+        {etc = {salt/master = {source = θ;};}; systemPackages = [ο];};
       systemd =
         { services =
             { salt-master =
                 { after = [String];
                   description = String;
-                  path = [ο];
-                  restartTriggers = [γ];
+                  path = [π];
+                  restartTriggers = [ζ];
                   serviceConfig =
                     { ExecStart = String;
                       LimitNOFILE = Integer;
@@ -29,25 +32,25 @@
             };
         };
     } ->
-    π,
-  η.mkOption = {default = {}; description = String; type = ρ;} -> σ,
-  η.recursiveUpdate = {default_include = String; pki_dir = String;} -> τ -> υ,
-  η.salt = ξ,
-  η.types = φ,
-  η.utillinux = ο,
-  β.enable = ν,
-  χ.salt = α,
-  ψ.services = χ,
-  ω.salt/master = α,
-  α1.etc = ω,
-  β2.environment = α1,
-  κ.configuration = τ,
-  ι.toJSON = υ -> ε,
-  φ.attrs = ρ
+    ρ,
+  γ.mkOption = {default = {}; description = String; type = σ;} -> τ,
+  γ.recursiveUpdate = {default_include = String; pki_dir = String;} -> υ -> φ,
+  γ.salt = ο,
+  γ.types = χ,
+  γ.utillinux = π,
+  λ.configuration = υ,
+  ε.enable = ξ,
+  ψ.salt = β,
+  ω.services = ψ,
+  κ.toJSON = φ -> η,
+  α1.salt/master = β,
+  β2.etc = α1,
+  γ3.environment = β2,
+  χ.attrs = σ
 ) =>
-{config = α; lib = η; pkgs = δ;} ->
-{ config = π;
-  meta = {maintainers = [θ];};
+α ->
+{ config = ρ;
+  meta = {maintainers = [ι];};
   options =
-    {services = {salt = {master = {configuration = σ; enable = μ;};};};};
+    {services = {salt = {master = {configuration = τ; enable = ν;};};};};
 }

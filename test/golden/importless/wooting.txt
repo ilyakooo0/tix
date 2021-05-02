@@ -1,16 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ.
-( α.enable = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [ε];};
-      services = {udev = {packages = [ζ];};};
+    ε ->
+    { environment = {systemPackages = [η];};
+      services = {udev = {packages = [θ];};};
     } ->
-    η,
-  θ.wootility = ε,
-  θ.wooting-udev-rules = ζ,
-  ι.wooting = α,
-  κ.hardware = ι
+    ι,
+  δ.wootility = η,
+  δ.wooting-udev-rules = θ,
+  κ.wooting = β,
+  λ.hardware = κ
 ) =>
-{config = α; lib = γ; pkgs = θ;} ->
-{config = η; options = {hardware = {wooting = {enable = δ;};};};}
+α -> {config = ι; options = {hardware = {wooting = {enable = ζ;};};};}

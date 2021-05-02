@@ -1,23 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.enable = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
   γ.mkIf =
-    β ->
-    { environment = {systemPackages = [δ];};
-      services = {dbus = {packages = [ε];};};
+    ε ->
+    { environment = {systemPackages = [ζ];};
+      services = {dbus = {packages = [η];};};
     } ->
-    ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.teams = ι,
-  γ.types = κ,
-  λ.telepathy-mission-control = δ,
-  μ.telepathy = α,
-  ν.services = μ,
-  ι.members = ξ,
-  ο.gnome = ι,
-  κ.bool = η
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.teams = λ,
+  γ.types = μ,
+  δ.telepathy-mission-control = ζ,
+  ν.telepathy = β,
+  ξ.services = ν,
+  λ.members = ο,
+  π.gnome = λ,
+  μ.bool = ι
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = ζ;
-  meta = {maintainers = ξ;};
-  options = {services = {telepathy = {enable = θ;};};};
+α ->
+{ config = θ;
+  meta = {maintainers = ο;};
+  options = {services = {telepathy = {enable = κ;};};};
 }

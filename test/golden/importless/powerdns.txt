@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.enable = β,
-  α.powerdns = γ,
-  δ.mkEnableOption = String -> ε,
-  δ.mkIf =
-    β ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.powerdns = ζ,
+  γ.mkEnableOption = String -> η,
+  γ.mkIf =
+    ε ->
     { systemd =
         { services =
             { pdns =
@@ -28,16 +31,16 @@
             };
         };
     } ->
-    ζ,
-  δ.mkOption = {default = String; description = String; type = η;} -> θ,
-  δ.types = ι,
-  κ.writeTextDir = String -> String -> λ,
-  μ.services = α,
-  ν.powerdns = α,
-  ξ.services = ν,
-  ι.lines = η
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.writeTextDir = String -> String -> μ,
+  ν.services = β,
+  ξ.powerdns = β,
+  ο.services = ξ,
+  λ.lines = ι
 ) =>
-{config = α; lib = δ; pkgs = κ;} ->
-{ config = ζ;
-  options = {services = {powerdns = {enable = ε; extraConfig = θ;};};};
+α ->
+{ config = θ;
+  options = {services = {powerdns = {enable = η; extraConfig = κ;};};};
 }

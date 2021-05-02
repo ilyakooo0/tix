@@ -1,8 +1,5 @@
-∀ α β γ δ ε.
-( α.flatpak-builder = β,
-  γ.installedTestsDependencies = [β]
-) =>
-{ makeInstalledTest =
+∀ α β γ δ ε ζ.
+( α.makeInstalledTest =
     { testConfig =
         { environment = {systemPackages = [β];};
           services = {flatpak = {enable = Bool;};};
@@ -10,9 +7,11 @@
           xdg = {portal = {enable = Bool;};};
         };
       testRunnerFlags = String;
-      tested = δ;
+      tested = γ;
     } ->
-    ε;
-  pkgs = α;
-} ->
-ε
+    δ,
+  α.pkgs = ε,
+  ε.flatpak-builder = β,
+  ζ.installedTestsDependencies = [β]
+) =>
+α -> δ

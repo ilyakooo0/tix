@@ -1,31 +1,33 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.enable = β,
-  α.enableFontDir = γ,
-  δ.mkIf =
-    β ->
-    { assertions = ε;
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.enableFontDir = ζ,
+  γ.mkIf =
+    ε ->
+    { assertions = η;
       systemd =
         { services =
             { xfs =
                 { after = [String];
                   description = String;
-                  path = [ζ];
+                  path = [θ];
                   script = String;
                   wantedBy = [String];
                 };
             };
         };
     } ->
-    η,
-  δ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  δ.singleton = {assertion = γ; message = String;} -> ε,
-  δ.types = κ,
-  λ.xfs = ζ,
-  μ.xfs = α,
-  ν.services = μ,
-  ξ.fonts = α,
-  κ.bool = θ,
-  ο.xorg = λ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.singleton = {assertion = ζ; message = String;} -> η,
+  γ.types = μ,
+  δ.xfs = θ,
+  ν.xfs = β,
+  ξ.services = ν,
+  ο.fonts = β,
+  π.xorg = δ,
+  μ.bool = κ
 ) =>
-{config = α; lib = δ; pkgs = λ;} ->
-{config = η; options = {services = {xfs = {enable = ι;};};};}
+α -> {config = ι; options = {services = {xfs = {enable = λ;};};};}

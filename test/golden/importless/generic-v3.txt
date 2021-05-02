@@ -1,13 +1,17 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
-( α.buildPlatform = β,
-  α.hostPlatform = β,
-  γ.cc = Null,
-  γ.stdenv = δ,
-  γ.which = Null,
-  α.bsd3 = ε,
-  α.isDarwin = ζ,
-  α.mkDerivation =
-    { buildInputs = [η];
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4.
+( α.autoreconfHook = Null,
+  α.buildPackages = β,
+  α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = γ;} -> δ,
+  α.gmock = ε,
+  α.sha256 = γ,
+  α.stdenv = ζ,
+  α.version = η,
+  α.zlib = θ,
+  ζ.bsd3 = ι,
+  ζ.isDarwin = κ,
+  ζ.mkDerivation =
+    { buildInputs = [θ];
       configureFlags = [String];
       doCheck = Bool;
       dontDisableStatic = Bool;
@@ -15,29 +19,29 @@
       meta =
         { description = String;
           homepage = String;
-          license = ε;
+          license = ι;
           longDescription = String;
-          platforms = θ;
+          platforms = λ;
         };
       nativeBuildInputs = [Null];
-      passthru = {version = ι;};
+      passthru = {version = η;};
       pname = String;
       postPatch = String;
-      src = κ;
-      version = ι;
+      src = δ;
+      version = η;
     } ->
-    λ,
-  α.optionalString = ζ -> String -> String,
-  α.unix = θ,
-  μ.licenses = α,
-  ν.lib = μ,
-  ξ.platforms = α,
-  ο.lib = ξ,
-  π.lib = α,
-  δ.bsd3 = ρ,
-  δ.isDarwin = σ,
-  δ.mkDerivation =
-    { buildInputs = [η];
+    μ,
+  ζ.optionalString = κ -> String -> String,
+  ζ.unix = λ,
+  ν.licenses = ζ,
+  ξ.lib = ν,
+  ο.platforms = ζ,
+  π.lib = ο,
+  ρ.lib = ζ,
+  σ.bsd3 = τ,
+  σ.isDarwin = υ,
+  σ.mkDerivation =
+    { buildInputs = [θ];
       configureFlags = [String];
       doCheck = Bool;
       dontDisableStatic = Bool;
@@ -45,35 +49,30 @@
       meta =
         { description = String;
           homepage = String;
-          license = ρ;
+          license = τ;
           longDescription = String;
-          platforms = τ;
+          platforms = φ;
         };
       nativeBuildInputs = [Null];
-      passthru = {version = ι;};
+      passthru = {version = η;};
       pname = String;
       postPatch = String;
-      src = κ;
-      version = ι;
+      src = δ;
+      version = η;
     } ->
     Null,
-  δ.optionalString = σ -> String -> String,
-  δ.unix = τ,
-  υ.licenses = δ,
-  φ.lib = υ,
-  χ.platforms = δ,
+  σ.optionalString = υ -> String -> String,
+  σ.unix = φ,
+  χ.licenses = σ,
   ψ.lib = χ,
-  ω.lib = δ,
-  α1.stdenv = γ
+  ω.platforms = σ,
+  α1.lib = ω,
+  β2.lib = σ,
+  ζ.buildPlatform = γ3,
+  ζ.hostPlatform = γ3,
+  β.cc = Null,
+  β.stdenv = σ,
+  β.which = Null,
+  δ4.stdenv = β
 ) =>
-{ autoreconfHook = Null;
-  buildPackages = γ;
-  fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = β2;} -> κ;
-  gmock = γ3;
-  sha256 = β2;
-  stdenv = α;
-  version = ι;
-  zlib = η;
-} ->
-λ
+α -> μ

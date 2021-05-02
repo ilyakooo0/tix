@@ -1,10 +1,13 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.dante = β,
-  γ.arobyn = δ,
-  γ.maintainers = ε,
-  γ.mkEnableOption = String -> ζ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.dante = ε,
+  γ.arobyn = ζ,
+  γ.maintainers = η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    η ->
+    ι ->
     { assertions = [{assertion = Bool; message = String;}];
       systemd =
         { services =
@@ -29,17 +32,17 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.writeText = String -> String -> ν,
-  β.config = String,
-  β.enable = η,
-  ξ.services = α,
-  λ.lines = ι
+    κ,
+  γ.mkOption = {description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.writeText = String -> String -> ξ,
+  ε.config = String,
+  ε.enable = ι,
+  ο.services = β,
+  ν.lines = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{ config = θ;
-  meta = {maintainers = [δ];};
-  options = {services = {dante = {config = κ; enable = ζ;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = [ζ];};
+  options = {services = {dante = {config = μ; enable = θ;};};};
 }

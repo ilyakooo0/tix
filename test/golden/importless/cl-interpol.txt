@@ -1,0 +1,18 @@
+∀ β γ δ.
+( β.cl-ppcre = γ,
+  β.cl-unicode = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.flexi-streams = γ,
+  β.named-readtables = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  parasites = [String];
+  src = δ;
+  version = String;
+}

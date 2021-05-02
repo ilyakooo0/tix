@@ -1,25 +1,26 @@
-∀ η.
-{system = η;} ->
+∀ θ ι.
+(θ.system = ι) => θ ->
 { baseConfig =
-    ∀ β γ δ ε ζ.
-    ( β.jq = γ,
-      β.makeWrapper = δ,
-      β.mkDerivation =
-        { buildInputs = [δ];
+    ∀ β γ δ ε ζ η.
+    ( β.pkgs = γ,
+      γ.jq = δ,
+      γ.makeWrapper = ε,
+      γ.mkDerivation =
+        { buildInputs = [ε];
           dontUnpack = Bool;
           installPhase = String;
           name = String;
           postFixup = String;
         } ->
-        γ,
-      β.writeTextDir = String -> String -> ε,
-      ζ.stdenv = β
+        δ,
+      γ.writeTextDir = String -> String -> ζ,
+      η.stdenv = γ
     ) =>
-    {pkgs = β;} ->
-    { environment = {systemPackages = [γ];};
+    β ->
+    { environment = {systemPackages = [δ];};
       nix =
         { binaryCaches = ∀ α. α;
-          buildMachines = [{hostName = String; systems = [η];}];
+          buildMachines = [{hostName = String; systems = [ι];}];
           distributedBuilds = Bool;
         };
       services =

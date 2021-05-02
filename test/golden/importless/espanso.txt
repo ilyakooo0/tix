@@ -1,17 +1,20 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.espanso = β,
-  γ.espanso = δ,
-  γ.libnotify = δ,
-  γ.maintainers = ε,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.espanso = ε,
+  γ.espanso = ζ,
+  γ.libnotify = ζ,
+  γ.maintainers = η,
   γ.mkIf =
-    ζ ->
-    { environment = {systemPackages = [η];};
+    θ ->
+    { environment = {systemPackages = [ι];};
       systemd =
         { user =
             { services =
                 { espanso =
                     { description = String;
-                      path = [δ];
+                      path = [ζ];
                       serviceConfig = {ExecStart = String; Restart = String;};
                       wantedBy = [String];
                     };
@@ -19,17 +22,17 @@
             };
         };
     } ->
-    θ,
-  γ.numkem = ι,
-  γ.options = κ,
-  γ.xclip = δ,
-  λ.espanso = η,
-  β.enable = ζ,
-  μ.services = α,
-  κ.mkEnableOption = String -> ν
+    κ,
+  γ.numkem = λ,
+  γ.options = μ,
+  γ.xclip = ζ,
+  δ.espanso = ι,
+  ε.enable = θ,
+  ν.services = β,
+  μ.mkEnableOption = String -> ξ
 ) =>
-{config = α; lib = γ; pkgs = λ;} ->
-{ config = θ;
-  meta = {maintainers = [ι];};
-  options = {services = {espanso = {enable = ν;};};};
+α ->
+{ config = κ;
+  meta = {maintainers = [λ];};
+  options = {services = {espanso = {enable = ξ;};};};
 }

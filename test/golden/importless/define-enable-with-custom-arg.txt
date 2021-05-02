@@ -1,1 +1,1 @@
-∀ α β. {custom = α; lib = β;} -> {config = {enable = α;};}
+∀ α β γ. (α.custom = β, α.lib = γ) => α -> {config = {enable = β;};}

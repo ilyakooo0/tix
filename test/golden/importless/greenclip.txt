@@ -1,9 +1,12 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.greenclip = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.greenclip = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { user =
             { services =
@@ -18,16 +21,16 @@
             };
         };
     } ->
-    η,
+    ι,
   γ.mkOption =
-    {default = θ; defaultText = String; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  μ.greenclip = θ,
-  β.enable = ε,
-  β.package = ζ,
-  ν.services = α,
-  λ.package = ι,
-  ξ.haskellPackages = μ
+    {default = κ; defaultText = String; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.greenclip = κ,
+  ε.enable = η,
+  ε.package = θ,
+  ξ.services = β,
+  ο.haskellPackages = δ,
+  ν.package = λ
 ) =>
-{config = α; lib = γ; pkgs = μ;} ->
-{config = η; options = {services = {greenclip = {enable = δ; package = κ;};};};}
+α ->
+{config = ι; options = {services = {greenclip = {enable = ζ; package = μ;};};};}

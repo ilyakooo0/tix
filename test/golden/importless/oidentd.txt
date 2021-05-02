@@ -1,8 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.enable = β,
-  α.oidentd = γ,
-  δ.mkIf =
-    β ->
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.enable = ε,
+  β.oidentd = ζ,
+  γ.mkIf =
+    ε ->
     { systemd =
         { services =
             { oidentd =
@@ -14,20 +17,19 @@
             };
         };
       users =
-        { groups = {oidentd = {gid = γ;};};
-          users = {oidentd = {description = String; group = String; uid = ε;};};
+        { groups = {oidentd = {gid = ζ;};};
+          users = {oidentd = {description = String; group = String; uid = η;};};
         };
     } ->
-    ζ,
-  δ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  δ.types = ι,
-  κ.oidentd = α,
-  λ.services = κ,
-  μ.gids = α,
-  ν.ids = μ,
-  ξ.uids = α,
+    θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  μ.oidentd = β,
+  ν.services = μ,
+  ξ.gids = β,
   ο.ids = ξ,
-  ι.bool = η
+  π.uids = β,
+  ρ.ids = π,
+  λ.bool = ι
 ) =>
-{config = α; lib = δ; pkgs = π;} ->
-{config = ζ; options = {services = {oidentd = {enable = θ;};};};}
+α -> {config = θ; options = {services = {oidentd = {enable = κ;};};};}

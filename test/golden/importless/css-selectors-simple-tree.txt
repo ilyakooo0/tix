@@ -1,0 +1,37 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.babel = γ,
+  β.buildnode = γ,
+  β.cl-html5-parser = γ,
+  β.cl-interpol = γ,
+  β.cl-ppcre = γ,
+  β.cl-unicode = γ,
+  β.closer-mop = γ,
+  β.closure-common = γ,
+  β.closure-html = γ,
+  β.collectors = γ,
+  β.css-selectors = γ,
+  β.cxml = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.flexi-streams = γ,
+  β.iterate = γ,
+  β.named-readtables = γ,
+  β.puri = γ,
+  β.split-sequence = γ,
+  β.string-case = γ,
+  β.swank = γ,
+  β.symbol-munger = γ,
+  β.trivial-features = γ,
+  β.trivial-gray-streams = γ,
+  β.yacc = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

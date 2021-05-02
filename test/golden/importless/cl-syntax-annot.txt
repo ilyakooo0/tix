@@ -1,0 +1,18 @@
+∀ β γ δ.
+( β.alexandria = γ,
+  β.cl-annot = γ,
+  β.cl-syntax = γ,
+  β.fetchurl = {sha256 = String; url = String;} -> δ,
+  β.named-readtables = γ,
+  β.trivial-types = γ
+) =>
+β ->
+{ asdFilesToKeep = [String];
+  baseName = String;
+  deps = [γ];
+  description = String;
+  overrides = ∀ α. α -> α;
+  packageName = String;
+  src = δ;
+  version = String;
+}

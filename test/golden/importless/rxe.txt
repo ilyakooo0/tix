@@ -1,17 +1,20 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( β.rxe = γ,
-  δ.map = (ε -> String) -> ζ -> η,
-  δ.mkEnableOption = String -> θ,
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( β.config = γ,
+  β.lib = δ,
+  β.pkgs = ε,
+  γ.rxe = ζ,
+  δ.map = (η -> String) -> θ -> ι,
+  δ.mkEnableOption = String -> κ,
   δ.mkIf =
-    ι ->
+    λ ->
     { systemd =
         { services =
             { rxe =
                 { after = [String];
                   description = String;
                   serviceConfig =
-                    { ExecStart = η;
-                      ExecStop = κ;
+                    { ExecStart = ι;
+                      ExecStop = μ;
                       RemainAfterExit = Bool;
                       Type = String;
                     };
@@ -21,16 +24,16 @@
             };
         };
     } ->
-    λ,
-  δ.mkOption =
-    {default = ∀ α. α; description = String; example = [String]; type = μ;} ->
     ν,
-  δ.types = ξ,
-  γ.enable = ι,
-  γ.interfaces = ζ,
-  ο.networking = β,
-  ξ.listOf = π -> μ,
-  ρ.str = π
+  δ.mkOption =
+    {default = ∀ α. α; description = String; example = [String]; type = ξ;} ->
+    ο,
+  δ.types = π,
+  ζ.enable = λ,
+  ζ.interfaces = θ,
+  ρ.networking = γ,
+  π.listOf = σ -> ξ,
+  τ.str = σ
 ) =>
-{config = β; lib = δ; pkgs = σ;} ->
-{config = λ; options = {networking = {rxe = {enable = θ; interfaces = ν;};};};}
+β ->
+{config = ν; options = {networking = {rxe = {enable = κ; interfaces = ο;};};};}

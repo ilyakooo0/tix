@@ -1,31 +1,34 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.herbstluftwm = β,
-  γ.mkEnableOption = String -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.herbstluftwm = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {xserver = {windowManager = {session = η;};};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {xserver = {windowManager = {session = ι;};};};
     } ->
-    θ,
-  γ.mkOption = {default = Null; description = String; type = ι;} -> κ,
-  γ.nullOr = λ -> ι,
-  γ.optionalString = Bool -> String -> μ,
-  γ.path = λ,
-  γ.singleton = {name = String; start = String;} -> η,
-  γ.types = ν,
-  ξ.herbstluftwm = ζ,
-  β.configFile = Null,
-  β.enable = ε,
-  ο.windowManager = α,
-  π.xserver = ο,
-  ρ.services = π
+    κ,
+  γ.mkOption = {default = Null; description = String; type = λ;} -> μ,
+  γ.nullOr = ν -> λ,
+  γ.optionalString = Bool -> String -> ξ,
+  γ.path = ν,
+  γ.singleton = {name = String; start = String;} -> ι,
+  γ.types = ο,
+  δ.herbstluftwm = θ,
+  ε.configFile = Null,
+  ε.enable = η,
+  π.windowManager = β,
+  ρ.xserver = π,
+  σ.services = ρ
 ) =>
-{config = α; lib = γ; pkgs = ξ;} ->
-{ config = θ;
+α ->
+{ config = κ;
   options =
     { services =
         { xserver =
-            {windowManager = {herbstluftwm = {configFile = κ; enable = δ;};};};
+            {windowManager = {herbstluftwm = {configFile = μ; enable = ζ;};};};
         };
     };
 }

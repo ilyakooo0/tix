@@ -1,15 +1,18 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.evdi = β,
-  α.videoDrivers = γ,
-  δ.elem = String -> γ -> ε,
-  δ.mkIf =
-    ε ->
-    { boot = {extraModulePackages = [β]; kernelModules = [String];};
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.evdi = ε,
+  β.videoDrivers = ζ,
+  γ.elem = String -> ζ -> η,
+  γ.mkIf =
+    η ->
+    { boot = {extraModulePackages = [ε]; kernelModules = [String];};
       environment =
         {etc = {X11/xorg.conf.d/40-displaylink.conf = {text = String;};};};
       powerManagement = {powerDownCommands = String; resumeCommands = String;};
       services =
-        { udev = {packages = [ζ];};
+        { udev = {packages = [θ];};
           xserver = {displayManager = {sessionCommands = String;};};
         };
       systemd =
@@ -28,12 +31,12 @@
             };
         };
     } ->
-    η,
-  θ.override = {evdi = β;} -> ζ,
-  ι.kernelPackages = α,
-  κ.boot = ι,
-  λ.xserver = α,
-  μ.services = λ,
-  ν.displaylink = θ
+    ι,
+  δ.override = {evdi = ε;} -> θ,
+  κ.kernelPackages = β,
+  λ.boot = κ,
+  μ.xserver = β,
+  ν.services = μ,
+  ξ.displaylink = δ
 ) =>
-{config = α; lib = δ; pkgs = θ;} -> {config = η;}
+α -> {config = ι;}

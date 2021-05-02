@@ -1,31 +1,34 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.startx = β,
-  γ.mkForce = Bool -> δ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.startx = ε,
+  γ.mkForce = Bool -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
+    η ->
+    { environment = {systemPackages = [θ];};
       services =
         { xserver =
             { displayManager =
-                {job = {execCmd = String;}; lightdm = {enable = δ;};};
+                {job = {execCmd = String;}; lightdm = {enable = ζ;};};
               exportConfiguration = Bool;
             };
         };
       systemd = {services = {display-manager = {enable = Bool;};};};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  γ.xorg = λ,
-  β.enable = ε,
-  μ.displayManager = α,
-  ν.xserver = μ,
-  ξ.services = ν,
-  λ.xinit = ζ,
-  κ.bool = θ
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  γ.xorg = ν,
+  ε.enable = η,
+  ξ.displayManager = β,
+  ο.xserver = ξ,
+  π.services = ο,
+  ν.xinit = θ,
+  μ.bool = κ
 ) =>
-{config = α; lib = γ; pkgs = ο;} ->
-{ config = η;
+α ->
+{ config = ι;
   options =
-    {services = {xserver = {displayManager = {startx = {enable = ι;};};};};};
+    {services = {xserver = {displayManager = {startx = {enable = λ;};};};};};
 }
