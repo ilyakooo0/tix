@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1.
 ( ( { newgidmap = {source = String;};
       newgrp = {source = String;};
       newuidmap = {source = String;};
@@ -30,14 +30,14 @@
   χ.users = ε,
   ψ.users = ε,
   ω.users = ε,
-  α1.either = β2 -> γ3 -> μ,
-  δ4.path = β2,
-  ε5.shellPackage = γ3
+  α1.either = β1 -> γ1 -> μ,
+  δ1.path = β1,
+  ε1.shellPackage = γ1
 ) =>
 δ ->
 { config =
     { environment =
-        { etc = {default/useradd = {source = σ;}; login.defs = {source = ζ6;};};
+        { etc = {default/useradd = {source = σ;}; login.defs = {source = ζ1;};};
           systemPackages = [ο];
         };
       security =

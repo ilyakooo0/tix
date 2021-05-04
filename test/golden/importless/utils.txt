@@ -1,4 +1,4 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
 ( γ.lib = δ,
   ε.mountPoint = ζ,
   ε.neededForBoot = η,
@@ -22,8 +22,8 @@
   δ.types = ω,
   ω.check = String -> Bool,
   α1.shellPackage = ω,
-  β2.check = String -> Bool,
-  γ3.package = β2
+  β1.check = String -> Bool,
+  γ1.package = β1
 ) =>
 γ ->
 { escapeSystemdPath = φ -> ψ;

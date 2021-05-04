@@ -1,5 +1,5 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
-λ11.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1.
 ( α.hostPlatform = β,
   α.isAarch32 = γ,
   α.isDarwin = δ,
@@ -39,16 +39,16 @@
   ψ.lib = α,
   ω.lib = α,
   α1.hostPlatform = α,
-  β2.lib = α,
-  γ3.hostPlatform = α,
-  δ4.lib = α,
-  ε5.hostPlatform = α,
-  ζ6.lib = α,
-  η7.hostPlatform = α,
-  θ8.hostPlatform = α,
-  ι9.lib = α,
-  κ10.lib = α,
-  λ11.lib = α
+  β1.lib = α,
+  γ1.hostPlatform = α,
+  δ1.lib = α,
+  ε1.hostPlatform = α,
+  ζ1.lib = α,
+  η1.hostPlatform = α,
+  θ1.hostPlatform = α,
+  ι1.lib = α,
+  κ1.lib = α,
+  λ1.lib = α
 ) =>
 { cmake = η;
   fetch = String -> String -> κ;

@@ -1,4 +1,4 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1.
 ( ( γ
   ) //
   ( { dontBuild = Bool;
@@ -74,20 +74,20 @@
   ρ.licenses = ψ,
   ρ.magnetophon = ω,
   ρ.maintainers = α1,
-  ρ.map = (β2 -> String) -> [ι] -> φ,
-  ρ.platforms = γ3,
+  ρ.map = (β1 -> String) -> [ι] -> φ,
+  ρ.platforms = γ1,
   ρ.pmahoney = ω,
   ρ.src = δ,
   ρ.version = ν,
   ρ.wrap = λ,
   ρ.wrapWithBuildEnv = μ,
-  δ4.lib = ο,
-  ψ.gpl2 = ε5,
-  γ3.linux = ζ6,
-  η7.lib = ο
+  δ1.lib = ο,
+  ψ.gpl2 = ε1,
+  γ1.linux = ζ1,
+  η1.lib = ο
 ) =>
 { cmake = η;
-  coreutils = θ8;
+  coreutils = θ1;
   emscripten = κ;
   fetchFromGitHub =
     { fetchSubmodules = Bool;
@@ -96,7 +96,7 @@
       rev = String;
       sha256 = String;
     } ->
-    ι9;
+    ι1;
   gnutls = κ;
   libmicrohttpd = κ;
   libsndfile = κ;

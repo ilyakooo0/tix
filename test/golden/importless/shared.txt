@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1.
 ( β.arch = String,
   β.isDarwin = Bool,
   β.lib = γ,
@@ -53,24 +53,24 @@
   ψ.lib = β,
   ω.gcc = β,
   α1.platform = ω,
-  β2.hostPlatform = α1,
-  γ3.lib = β
+  β1.hostPlatform = α1,
+  γ1.lib = β
 ) =>
 { libuvSha256 = String;
-  libuvVersion = δ4;
+  libuvVersion = δ1;
   maintenanceVersion = κ;
   majorVersion = λ;
   minorVersion = μ;
-  src_sha256 = ε5;
+  src_sha256 = ε1;
 } ->
 { ApplicationServices = π;
   CoreServices = π;
   arpack = η;
   blas = η;
-  cmake = ζ6;
+  cmake = ζ1;
   curl = ι;
-  fetchurl = {sha256 = String; url = String;} -> η7;
-  fetchzip = {sha256 = ε5; url = String;} -> ν;
+  fetchurl = {sha256 = String; url = String;} -> η1;
+  fetchzip = {sha256 = ε1; url = String;} -> ν;
   fftw = η;
   fftwSinglePrec = η;
   gfortran = ι;

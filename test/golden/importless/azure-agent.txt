@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -98,7 +98,7 @@
     { virtualisation =
         { azure =
             { agent =
-                {enable = ν; mountResourceDisk = β2; verboseLogging = γ3;};
+                {enable = ν; mountResourceDisk = β1; verboseLogging = γ1;};
             };
         };
     };

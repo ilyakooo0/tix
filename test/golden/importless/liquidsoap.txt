@@ -1,5 +1,5 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
-λ11 μ12 ν13 ξ14 ο15.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1 ξ1 ο1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -52,17 +52,17 @@
   φ.liquidsoap = β,
   χ.services = φ,
   ψ.getAttr = ι -> ω -> α1,
-  β2.liquidsoap = β,
-  γ3.services = β2,
-  δ4.length = λ -> Integer,
-  ε5.listToAttrs = μ -> ν,
-  ζ6.gids = β,
-  η7.ids = ζ6,
-  θ8.uids = β,
-  ι9.ids = θ8,
-  υ.attrsOf = κ10 -> σ,
-  λ11.either = μ12 -> ν13 -> κ10,
-  ξ14.path = μ12,
-  ο15.str = ν13
+  β1.liquidsoap = β,
+  γ1.services = β1,
+  δ1.length = λ -> Integer,
+  ε1.listToAttrs = μ -> ν,
+  ζ1.gids = β,
+  η1.ids = ζ1,
+  θ1.uids = β,
+  ι1.ids = θ1,
+  υ.attrsOf = κ1 -> σ,
+  λ1.either = μ1 -> ν1 -> κ1,
+  ξ1.path = μ1,
+  ο1.str = ν1
 ) =>
 α -> {config = ο; options = {services = {liquidsoap = {streams = τ;};};};}

@@ -54,7 +54,6 @@ instance MKM.Keyable Pred where
                 TBruijn _ -> S.empty
             )
 
--- this seems bad. It should not drop constraints.
 (//) :: NType -> NType -> NType -> Pred
 (//) = Update
 {-# INLINE (//) #-}
@@ -285,9 +284,10 @@ getDeBurjins' =
             TTypeVariable _ -> const S.empty
         )
 
-greek :: [Text]
-greek = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"]
-
 variableNames :: [Text]
 variableNames =
-  greek <> fmap (\(n, g) -> g <> T.pack (show n)) (zip [1 :: Int ..] greek)
+  fmap T.pack $
+    greek <> foldMap (\n -> (<> show n) <$> greek) ([1 :: Int ..] :: [Int])
+  where
+    greek :: [String]
+    greek = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"]

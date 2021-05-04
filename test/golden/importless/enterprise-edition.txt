@@ -1,4 +1,4 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1.
 ( γ.lib = δ,
   γ.mkDerivation =
     { doInstallCheck = Bool;
@@ -42,14 +42,14 @@
   gtk2 = ψ;
   gtk3 = ω;
   libGL = α1;
-  libav_0_8 = β2;
-  pango = γ3;
+  libav_0_8 = β1;
+  pango = γ1;
   perl = η;
   requireFile = {name = String; sha256 = ∀ α. α; url = String;} -> κ;
   setJavaClassPath = ι;
   stdenv = γ;
   unzip = η;
-  xorg = δ4;
+  xorg = δ1;
   zlib = ι;
 } ->
 {graalvm11-ee = θ; graalvm8-ee = θ;}

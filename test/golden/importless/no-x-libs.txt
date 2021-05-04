@@ -1,5 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9
-κ10.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1.
 ( α.config = β,
   α.lib = γ,
   δ.override = ε,
@@ -34,14 +33,14 @@
   ω.environment = β,
   ψ.bool = φ,
   α1.cairo = δ,
-  β2.dbus = δ,
-  γ3.gobject-introspection = δ,
-  δ4.networkmanager-fortisslvpn = δ,
-  ε5.networkmanager-iodine = δ,
-  ζ6.networkmanager-l2tp = δ,
-  η7.networkmanager-openconnect = δ,
-  θ8.networkmanager-openvpn = δ,
-  ι9.networkmanager-vpnc = δ,
-  κ10.qemu = δ
+  β1.dbus = δ,
+  γ1.gobject-introspection = δ,
+  δ1.networkmanager-fortisslvpn = δ,
+  ε1.networkmanager-iodine = δ,
+  ζ1.networkmanager-l2tp = δ,
+  η1.networkmanager-openconnect = δ,
+  θ1.networkmanager-openvpn = δ,
+  ι1.networkmanager-vpnc = δ,
+  κ1.qemu = δ
 ) =>
 α -> {config = υ; options = {environment = {noXlibs = χ;};};}

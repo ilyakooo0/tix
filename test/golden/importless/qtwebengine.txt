@@ -1,5 +1,5 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
-λ11 μ12 ν13 ξ14 ο15 π16 ρ17.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1 ξ1 ο1 π1 ρ1.
 ( α.libXcomposite = β,
   α.libXdamage = β,
   α.libpciaccess = β,
@@ -40,20 +40,20 @@
   ν.platforms = ψ,
   ω.cc = λ,
   α1.gcc = λ,
-  β2.platform = α1,
-  γ3.hostPlatform = β2,
-  ψ.unix = δ4,
-  ε5.hostPlatform = λ,
-  ζ6.hostPlatform = λ,
-  ο.frameworks = η7,
-  θ8.hostPlatform = λ,
-  ι9.hostPlatform = λ
+  β1.platform = α1,
+  γ1.hostPlatform = β1,
+  ψ.unix = δ1,
+  ε1.hostPlatform = λ,
+  ζ1.hostPlatform = λ,
+  ο.frameworks = η1,
+  θ1.hostPlatform = λ,
+  ι1.hostPlatform = λ
 ) =>
 { alsaLib = β;
-  bison = κ10;
-  coreutils = κ10;
+  bison = κ1;
+  coreutils = κ1;
   cups = φ;
-  darwin = λ11;
+  darwin = λ1;
   dbus = β;
   enableProprietaryCodecs = Bool;
   fetchpatch =
@@ -63,16 +63,16 @@
       stripLen = Integer;
       url = String;
     } ->
-    μ12;
+    μ1;
   ffmpeg_3 = Null;
-  flex = κ10;
+  flex = κ1;
   fontconfig = β;
   freetype = β;
-  git = κ10;
-  gn = κ10;
-  gperf = κ10;
-  harfbuzz = ν13;
-  icu = ν13;
+  git = κ1;
+  gn = κ1;
+  gperf = κ1;
+  harfbuzz = ν1;
+  icu = ν1;
   jsoncpp = β;
   lib = γ;
   libXScrnSaver = β;
@@ -81,21 +81,21 @@
   libXtst = β;
   libcap = β;
   libdrm = β;
-  libevent = ν13;
-  libjpeg = ν13;
-  libopus = ν13;
-  libpng = ν13;
-  libtiff = ν13;
-  libvpx = ν13;
-  libwebp = ν13;
+  libevent = ν1;
+  libjpeg = ν1;
+  libopus = ν1;
+  libpng = ν1;
+  libtiff = ν1;
+  libvpx = ν1;
+  libwebp = ν1;
   minizip = β;
-  ninja = κ10;
+  ninja = κ1;
   nss = β;
   openbsm = ξ;
   pciutils = β;
-  pkgconfig = κ10;
+  pkgconfig = κ1;
   protobuf = β;
-  python2 = κ10;
+  python2 = κ1;
   qtCompatVersion = θ;
   qtModule =
     { NIX_CFLAGS_COMPILE = [η];
@@ -108,32 +108,32 @@
       dontUseXcbuild = Bool;
       enableParallelBuilding = Bool;
       hardeningDisable = [String];
-      meta = {description = String; maintainers = [ρ]; platforms = δ4;};
+      meta = {description = String; maintainers = [ρ]; platforms = δ1;};
       name = String;
-      nativeBuildInputs = [κ10];
+      nativeBuildInputs = [κ1];
       outputs = [String];
-      patches = [μ12];
+      patches = [μ1];
       postInstall = ε;
       postPatch = String;
       preConfigure = String;
-      propagatedBuildInputs = [ν13];
+      propagatedBuildInputs = [ν1];
       qmakeFlags = [String];
-      qtInputs = [ξ14];
+      qtInputs = [ξ1];
     } ->
-    ο15;
-  qtdeclarative = ξ14;
-  qtlocation = ξ14;
-  qtquickcontrols = ξ14;
-  qtwebchannel = ξ14;
+    ο1;
+  qtdeclarative = ξ1;
+  qtlocation = ξ1;
+  qtquickcontrols = ξ1;
+  qtwebchannel = ξ1;
   runCommand = String -> {} -> String -> φ;
   snappy = β;
-  srtp = ν13;
+  srtp = ν1;
   stdenv = λ;
-  systemd = π16;
-  which = κ10;
+  systemd = π1;
+  which = κ1;
   writeScriptBin = String -> String -> φ;
-  xcbuild = ρ17;
+  xcbuild = ρ1;
   xorg = α;
   zlib = β;
 } ->
-ο15
+ο1

@@ -1,9 +1,9 @@
-∀ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10 λ11.
+∀ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1 λ1.
 ( ω.dotlambda = α1,
-  ω.licenses = β2,
-  ω.maintainers = γ3,
+  ω.licenses = β1,
+  ω.maintainers = γ1,
   ω.peterhoeg = α1,
-  δ4.override =
+  δ1.override =
     { packageOverrides =
         ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
         ( α.overridePythonAttrs = (β -> {src = γ; version = String;}) -> δ,
@@ -22,48 +22,48 @@
         ) =>
         υ -> α -> {aiohttp-jinja2 = δ; bcrypt = φ; jinja2 = χ; yarl = ψ;};
     } ->
-    ε5,
-  ε5.buildPythonApplication =
+    ε1,
+  ε1.buildPythonApplication =
     { doCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ζ6;
+          license = ζ1;
           maintainers = [α1];
         };
       pname = String;
       postPatch = String;
-      propagatedBuildInputs = [η7];
-      src = θ8;
+      propagatedBuildInputs = [η1];
+      src = θ1;
       version = String;
     } ->
-    ι9,
-  ε5.pkgs = κ10,
-  β2.mit = ζ6,
-  λ11.pkgs = ε5,
-  κ10.aiohttp = η7,
-  κ10.aiohttp-jinja2 = η7,
-  κ10.astral = η7,
-  κ10.bcrypt = η7,
-  κ10.daemonize = η7,
-  κ10.dateutil = η7,
-  κ10.deepdiff = η7,
-  κ10.feedparser = η7,
-  κ10.iso8601 = η7,
-  κ10.jinja2 = η7,
-  κ10.paho-mqtt = η7,
-  κ10.pid = η7,
-  κ10.python-socketio = η7,
-  κ10.pyyaml = η7,
-  κ10.requests = η7,
-  κ10.setuptools = η7,
-  κ10.voluptuous = η7,
-  κ10.websocket_client = η7,
-  κ10.yarl = η7
+    ι1,
+  ε1.pkgs = κ1,
+  β1.mit = ζ1,
+  λ1.pkgs = ε1,
+  κ1.aiohttp = η1,
+  κ1.aiohttp-jinja2 = η1,
+  κ1.astral = η1,
+  κ1.bcrypt = η1,
+  κ1.daemonize = η1,
+  κ1.dateutil = η1,
+  κ1.deepdiff = η1,
+  κ1.feedparser = η1,
+  κ1.iso8601 = η1,
+  κ1.jinja2 = η1,
+  κ1.paho-mqtt = η1,
+  κ1.pid = η1,
+  κ1.python-socketio = η1,
+  κ1.pyyaml = η1,
+  κ1.requests = η1,
+  κ1.setuptools = η1,
+  κ1.voluptuous = η1,
+  κ1.websocket_client = η1,
+  κ1.yarl = η1
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ8;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ1;
   lib = ω;
-  python3 = δ4;
+  python3 = δ1;
 } ->
-ι9
+ι1

@@ -1,5 +1,5 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
-λ11 μ12 ν13.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -46,18 +46,17 @@
   ε.config = κ,
   ε.enable = ι,
   α1.services = β,
-  β2.hosts = β,
-  γ3.etc = β2,
-  δ4.environment = γ3,
-  ε5.nsswitch.conf = β,
-  ζ6.etc = ε5,
-  η7.environment = ζ6,
-  θ8.nscd.conf = β,
-  ι9.etc = θ8,
-  κ10.environment = ι9,
+  β1.hosts = β,
+  γ1.etc = β1,
+  δ1.environment = γ1,
+  ε1.nsswitch.conf = β,
+  ζ1.etc = ε1,
+  η1.environment = ζ1,
+  θ1.nscd.conf = β,
+  ι1.etc = θ1,
+  κ1.environment = ι1,
   θ.readFile = Path -> μ,
   ο.lines = ν,
-  λ11.bool = μ12
+  λ1.bool = μ1
 ) =>
-α ->
-{config = λ; options = {services = {nscd = {config = ξ; enable = ν13;};};};}
+α -> {config = λ; options = {services = {nscd = {config = ξ; enable = ν1;};};};}

@@ -1,5 +1,5 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9 κ10
-λ11 μ12 ν13 ξ14 ο15 π16 ρ17 σ18 τ19.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1 ξ1 ο1 π1 ρ1 σ1 τ1.
 ( α.callPackage =
     Path ->
     {} ->
@@ -26,12 +26,12 @@
   υ.type = χ,
   ψ.sha512 = ω,
   ψ.type = α1,
-  β2.sha512 = γ3,
-  β2.type = δ4,
-  ε5.sha512 = ζ6,
-  ε5.type = η7,
-  θ8.sha512 = ι9,
-  θ8.type = κ10
+  β1.sha512 = γ1,
+  β1.type = δ1,
+  ε1.sha512 = ζ1,
+  ε1.type = η1,
+  θ1.sha512 = ι1,
+  θ1.type = κ1
 ) =>
 {pkgs = α;} ->
 { animalSniffer_1_11 = η;
@@ -43,13 +43,13 @@
       version = String;
     } ->
     δ;
-  mavenClean_2_5 = λ11;
-  mavenCompiler_3_1 = μ12;
-  mavenEnforcer_1_3_1 = ν13;
-  mavenInstall_2_4 = ξ14;
-  mavenJar_2_4 = ο15;
-  mavenReplacer_1_5_3 = π16;
-  mavenResources_2_6 = ρ17;
-  mavenSurefire_2_12_4 = σ18;
-  mavenSurefire_2_17 = τ19;
+  mavenClean_2_5 = λ1;
+  mavenCompiler_3_1 = μ1;
+  mavenEnforcer_1_3_1 = ν1;
+  mavenInstall_2_4 = ξ1;
+  mavenJar_2_4 = ο1;
+  mavenReplacer_1_5_3 = π1;
+  mavenResources_2_6 = ρ1;
+  mavenSurefire_2_12_4 = σ1;
+  mavenSurefire_2_17 = τ1;
 }

@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -45,9 +45,9 @@
         { mjpg-streamer =
             { enable = ζ;
               group = ν;
-              inputPlugin = β2;
-              outputPlugin = γ3;
-              user = δ4;
+              inputPlugin = β1;
+              outputPlugin = γ1;
+              user = δ1;
             };
         };
     };

@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1.
 ( (β) // ({description = String; homepage = String;}) ~ (γ),
   δ.lib = ε,
   δ.mkDerivation =
@@ -51,13 +51,13 @@
   fetchurl = ω;
   grim = α1;
   installShellFiles = ι;
-  jq = β2;
-  libnotify = γ3;
+  jq = β1;
+  libnotify = γ1;
   makeWrapper = ι;
   python3Packages = ξ;
-  slurp = δ4;
+  slurp = δ1;
   stdenv = δ;
   sway-unwrapped = ν;
-  wl-clipboard = ε5;
+  wl-clipboard = ε1;
 } ->
 {grimshot = μ; inactive-windows-transparency = σ;}

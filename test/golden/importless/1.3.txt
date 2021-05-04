@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
 ( β.arch = String,
   β.isDarwin = Bool,
   β.lib = γ,
@@ -62,8 +62,8 @@
   blas = η;
   cmake = α1;
   curl = ι;
-  fetchFromGitHub = β2;
-  fetchurl = γ3;
+  fetchFromGitHub = β1;
+  fetchurl = γ1;
   fetchzip = {sha256 = String; url = String;} -> κ;
   fftw = η;
   fftwSinglePrec = η;

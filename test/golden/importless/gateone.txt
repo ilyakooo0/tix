@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -52,10 +52,10 @@
   ψ.uids = β,
   ω.ids = ψ,
   σ.path = ο,
-  α1.path = β2
+  α1.path = β1
 ) =>
 α ->
 { config = ξ;
   options =
-    {services = {gateone = {enable = θ; pidDir = π; settingsDir = γ3;};};};
+    {services = {gateone = {enable = θ; pidDir = π; settingsDir = γ1;};};};
 }

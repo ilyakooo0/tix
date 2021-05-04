@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1.
 ( α.autoreconfHook = Null,
   α.buildPackages = β,
   α.fetchFromGitHub =
@@ -67,12 +67,12 @@
   ψ.lib = χ,
   ω.platforms = σ,
   α1.lib = ω,
-  β2.lib = σ,
-  ζ.buildPlatform = γ3,
-  ζ.hostPlatform = γ3,
+  β1.lib = σ,
+  ζ.buildPlatform = γ1,
+  ζ.hostPlatform = γ1,
   β.cc = Null,
   β.stdenv = σ,
   β.which = Null,
-  δ4.stdenv = β
+  δ1.stdenv = β
 ) =>
 α -> μ

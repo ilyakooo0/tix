@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3 δ4 ε5 ζ6 η7 θ8 ι9.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1.
 ( (β) // ({check = γ -> Bool; name = String;}) ~ (δ),
   ε.config = ζ,
   ε.lib = η,
@@ -33,16 +33,16 @@
     ω,
   η.mkOption =
     {default = ∀ α. α; description = String; example = χ; type = φ;} -> α1,
-  η.types = β2,
-  γ3.fcitx = θ,
+  η.types = β1,
+  γ1.fcitx = θ,
   ο.engines = λ,
-  β2.package = β,
-  δ4.package = η,
-  ε5.types = δ4,
-  ζ6.inputMethod = ζ,
-  η7.i18n = ζ6,
-  θ8.inputMethod = ζ,
-  ι9.i18n = θ8
+  β1.package = β,
+  δ1.package = η,
+  ε1.types = δ1,
+  ζ1.inputMethod = ζ,
+  η1.i18n = ζ1,
+  θ1.inputMethod = ζ,
+  ι1.i18n = θ1
 ) =>
 ε ->
 {config = ω; options = {i18n = {inputMethod = {fcitx = {engines = α1;};};};};}

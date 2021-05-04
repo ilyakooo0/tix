@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
 ( α.composeExtensions = β,
   α.foldr = β -> (γ -> δ -> {}) -> [ε] -> ζ,
   α.licenses = η,
@@ -44,7 +44,7 @@
   mkOverride = ψ;
   sha256Hash = ω;
   stable = α1;
-  version = β2;
+  version = β1;
 } ->
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = ω;} -> ρ;

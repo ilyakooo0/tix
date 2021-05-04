@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β2 γ3.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
@@ -47,10 +47,10 @@
   ψ.gids = β,
   ω.ids = ψ,
   π.bool = ν,
-  α1.bool = β2
+  α1.bool = β1
 ) =>
 α ->
 { config = κ;
   options =
-    {virtualisation = {virtualbox = {guest = {enable = ξ; x11 = γ3;};};};};
+    {virtualisation = {virtualbox = {guest = {enable = ξ; x11 = γ1;};};};};
 }
