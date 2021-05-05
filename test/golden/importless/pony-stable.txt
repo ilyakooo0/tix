@@ -1,13 +1,12 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.bsd2 = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       installFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
           platforms = ζ;
         };
@@ -16,19 +15,18 @@
       version = String;
     } ->
     θ,
-  α.unix = ζ,
-  ι.licenses = α,
-  κ.lib = ι,
-  γ.dipinhora = ε,
-  γ.kamilchm = ε,
-  γ.patternspandemic = ε,
-  λ.lib = α,
-  μ.platforms = α,
-  ν.lib = μ
+  β.licenses = ι,
+  ι.bsd2 = δ,
+  κ.maintainers = λ,
+  λ.dipinhora = ε,
+  λ.kamilchm = ε,
+  λ.patternspandemic = ε,
+  μ.platforms = ν,
+  ν.unix = ζ
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  ponyc = δ;
+  ponyc = γ;
   stdenv = α;
 } ->
 θ

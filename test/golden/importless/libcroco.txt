@@ -15,13 +15,12 @@
       version = String;
     } ->
     λ,
-  α.optional = β -> String -> ε,
   μ.updateScript = {packageName = String;} -> ι,
   γ.licenses = ν,
   γ.platforms = ξ,
   ν.lgpl2 = ζ,
   ξ.unix = η,
-  ο.lib = α
+  ο.optional = β -> String -> ε
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> κ;
   glib = δ;

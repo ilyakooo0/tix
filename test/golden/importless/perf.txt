@@ -3,7 +3,7 @@
   α.toString = [String] -> γ,
   α.versionAtLeast = δ -> String -> Bool,
   α.viric = ε,
-  ζ.maintainers = η,
+  ζ.lib = η,
   ζ.mkDerivation =
     { NIX_CFLAGS_COMPILE = γ;
       buildInputs = [θ];
@@ -27,15 +27,13 @@
       src = ι;
     } ->
     κ,
-  ζ.optional = Bool -> Null -> [θ],
-  ζ.platforms = λ,
-  μ.makeFlags = [String],
-  μ.src = ι,
-  μ.version = δ,
-  ν.stapBuild = θ,
-  ξ.lib = ζ,
-  ο.lib = ζ,
-  π.lib = ζ
+  λ.makeFlags = [String],
+  λ.src = ι,
+  λ.version = δ,
+  μ.stapBuild = θ,
+  η.optional = Bool -> Null -> [θ],
+  ν.maintainers = ξ,
+  ο.platforms = π
 ) =>
 { asciidoc = θ;
   audit = θ;
@@ -46,7 +44,7 @@
   elfutils = θ;
   flex = θ;
   gtk2 = Null;
-  kernel = μ;
+  kernel = λ;
   lib = α;
   libbfd = θ;
   libiberty = θ;
@@ -63,7 +61,7 @@
   python3 = θ;
   slang = θ;
   stdenv = ζ;
-  systemtap = ν;
+  systemtap = μ;
   withGtk = Bool;
   xmlto = θ;
   zlib = θ;

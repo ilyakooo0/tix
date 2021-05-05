@@ -1,9 +1,9 @@
-∀ α β γ δ ε ζ η.
+∀ α β γ δ ε ζ η θ.
 ( α.lib = β,
   β.mkOption =
     {default = String; description = String; example = String; type = γ;} -> δ,
-  β.str = γ,
-  ε.types = β,
-  ζ.types = β
+  β.types = ε,
+  ε.str = γ,
+  ζ.str = η
 ) =>
-α -> {options = {crt = δ; key = η;};}
+α -> {options = {crt = δ; key = θ;};}

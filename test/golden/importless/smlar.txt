@@ -16,12 +16,12 @@
       version = String;
     } ->
     θ,
-  γ.platforms = ζ,
-  β.licenses = ι,
-  β.maintainers = κ,
-  ι.bsd2 = δ,
-  κ.marsam = ε,
-  λ.meta = γ
+  γ.meta = ι,
+  β.licenses = κ,
+  β.maintainers = λ,
+  κ.bsd2 = δ,
+  λ.marsam = ε,
+  ι.platforms = ζ
 ) =>
 { fetchgit = {rev = String; sha256 = String; url = String;} -> η;
   postgresql = γ;

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xmpp-alerts = ε,
+  β.services = ε,
   γ.builtins = ζ,
   γ.cfg = η,
   γ.mkEnableOption = String -> θ,
@@ -40,9 +40,9 @@
   δ.writeText = String -> ξ -> ο,
   ζ.toJSON = π -> ξ,
   η.configuration = π,
-  ε.enable = ι,
-  ρ.prometheus = β,
-  σ.services = ρ,
+  ε.prometheus = ρ,
+  ρ.xmpp-alerts = σ,
+  σ.enable = ι,
   ν.attrs = λ
 ) =>
 α ->

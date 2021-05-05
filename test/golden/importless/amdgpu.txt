@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ.
 ( α.config = β,
   α.lib = γ,
-  β.videoDrivers = δ,
-  γ.elem = String -> δ -> ε,
-  γ.mkIf = ε -> {boot = {blacklistedKernelModules = [String];};} -> ζ,
-  η.xserver = β,
-  θ.services = η
+  β.services = δ,
+  γ.elem = String -> ε -> ζ,
+  γ.mkIf = ζ -> {boot = {blacklistedKernelModules = [String];};} -> η,
+  δ.xserver = θ,
+  θ.videoDrivers = ε
 ) =>
-α -> {config = ζ;}
+α -> {config = η;}

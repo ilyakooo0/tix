@@ -19,14 +19,13 @@
       src = θ;
     } ->
     ι,
-  β.optionals = Bool -> [κ] -> [δ],
-  λ.lib = β,
-  γ.licenses = μ,
-  γ.maintainers = ν,
-  γ.platforms = ξ,
+  γ.optionals = Bool -> [κ] -> [δ],
+  λ.licenses = μ,
+  λ.maintainers = ν,
+  λ.platforms = ξ,
   μ.gpl3Plus = ε,
   ξ.all = ζ,
-  ο.lib = β
+  ο.optionals = Bool -> [π] -> η
 ) =>
 { autoreconfHook = δ;
   check = δ;

@@ -21,8 +21,8 @@
   β.platforms = λ,
   β.teams = μ,
   κ.lgpl21Plus = γ,
-  μ.members = δ,
-  ν.gnome = μ,
+  μ.gnome = ν,
+  ν.members = δ,
   λ.unix = ε
 ) =>
 { docbook-xsl-nons = ζ;

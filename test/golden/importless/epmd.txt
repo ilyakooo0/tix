@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.epmd = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { systemd =
@@ -29,8 +29,8 @@
   γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
   γ.types = κ,
   δ.erlang = λ,
-  ε.enable = ζ,
-  μ.services = β,
+  ε.epmd = μ,
+  μ.enable = ζ,
   κ.bool = θ,
   ν.package = ξ
 ) =>

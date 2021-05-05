@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.ssm-agent = ε,
+  β.services = ε,
   δ.coreutils = ζ,
   δ.ssm-agent = η,
   δ.writeScriptBin = String -> String -> ζ,
@@ -31,11 +31,11 @@
   γ.mkOption =
     {default = η; defaultText = String; description = String; type = μ;} -> ν,
   γ.types = ξ,
-  ε.enable = ι,
-  ε.meta = ο,
-  π.services = β,
-  ο.description = κ,
-  ρ.package = ε,
+  ε.ssm-agent = ο,
+  ο.enable = ι,
+  ο.package = π,
+  π.meta = ρ,
+  ρ.description = κ,
   ξ.path = μ
 ) =>
 α ->

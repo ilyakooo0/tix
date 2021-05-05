@@ -1,21 +1,21 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.lassulus = β,
+( α.maintainers = β,
+  γ.lib = δ,
   γ.mkDerivation =
     { buildPhase = String;
       meta =
         { description = String;
           homepage = String;
-          maintainers = [β];
-          platforms = δ;
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
       phases = [String];
-      src = ε;
+      src = η;
     } ->
-    ζ,
-  γ.unix = δ,
-  η.maintainers = α,
-  θ.platforms = γ,
-  ι.lib = θ
+    θ,
+  β.lassulus = ε,
+  δ.platforms = ι,
+  ι.unix = ζ
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; lib = α; stdenv = γ;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> η; lib = α; stdenv = γ;} -> θ

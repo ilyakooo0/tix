@@ -1,13 +1,12 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.asl20 = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
           platforms = [ζ];
         };
@@ -17,26 +16,25 @@
       version = String;
     } ->
     ι,
-  α.platforms = κ,
-  λ.licenses = α,
-  μ.lib = λ,
-  γ.earvstedt = ε,
-  γ.viric = ε,
-  ν.lib = α,
-  κ.darwin = [ζ],
-  κ.linux = [ζ],
-  ξ.lib = α
+  β.licenses = κ,
+  κ.asl20 = δ,
+  λ.maintainers = μ,
+  μ.earvstedt = ε,
+  μ.viric = ε,
+  ν.platforms = ξ,
+  ξ.darwin = [ζ],
+  ξ.linux = [ζ]
 ) =>
 { autoconf-archive = η;
   autoreconfHook = η;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  icu = δ;
-  leptonica = δ;
-  libpng = δ;
-  libtiff = δ;
-  opencl-headers = δ;
-  pango = δ;
+  icu = γ;
+  leptonica = γ;
+  libpng = γ;
+  libtiff = γ;
+  opencl-headers = γ;
+  pango = γ;
   pkgconfig = η;
   stdenv = α;
 } ->

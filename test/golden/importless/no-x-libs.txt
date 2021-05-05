@@ -1,46 +1,56 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1 ξ1 ο1 π1 ρ1 σ1 τ1.
 ( α.config = β,
   α.lib = γ,
-  δ.override = ε,
-  β.noXlibs = ζ,
+  δ.cairo = ε,
+  δ.dbus = ζ,
+  δ.gobject-introspection = η,
+  δ.networkmanager-fortisslvpn = θ,
+  δ.networkmanager-iodine = ι,
+  δ.networkmanager-l2tp = κ,
+  δ.networkmanager-openconnect = λ,
+  δ.networkmanager-openvpn = μ,
+  δ.networkmanager-vpnc = ν,
+  δ.qemu = ξ,
+  β.environment = ο,
   γ.const =
     ( δ ->
-      { cairo = η;
-        dbus = θ;
-        gobject-introspection = ι;
-        networkmanager-fortisslvpn = κ;
-        networkmanager-iodine = λ;
-        networkmanager-l2tp = μ;
-        networkmanager-openconnect = ν;
-        networkmanager-openvpn = ξ;
-        networkmanager-vpnc = ο;
-        qemu = π;
+      { cairo = π;
+        dbus = ρ;
+        gobject-introspection = σ;
+        networkmanager-fortisslvpn = τ;
+        networkmanager-iodine = υ;
+        networkmanager-l2tp = φ;
+        networkmanager-openconnect = χ;
+        networkmanager-openvpn = ψ;
+        networkmanager-vpnc = ω;
+        qemu = α1;
       }
     ) ->
-    ρ,
-  γ.mkForce = Bool -> σ,
+    β1,
+  γ.mkForce = Bool -> γ1,
   γ.mkIf =
-    ζ ->
+    δ1 ->
     { fonts = {fontconfig = {enable = Bool;};};
-      nixpkgs = {overlays = τ;};
+      nixpkgs = {overlays = ε1;};
       programs = {ssh = {setXAuthLocation = Bool;};};
-      security = {pam = {services = {su = {forwardXAuth = σ;};};};};
+      security = {pam = {services = {su = {forwardXAuth = γ1;};};};};
     } ->
-    υ,
-  γ.mkOption = {default = Bool; description = String; type = φ;} -> χ,
-  γ.singleton = ρ -> τ,
-  γ.types = ψ,
-  ω.environment = β,
-  ψ.bool = φ,
-  α1.cairo = δ,
-  β1.dbus = δ,
-  γ1.gobject-introspection = δ,
-  δ1.networkmanager-fortisslvpn = δ,
-  ε1.networkmanager-iodine = δ,
-  ζ1.networkmanager-l2tp = δ,
-  η1.networkmanager-openconnect = δ,
-  θ1.networkmanager-openvpn = δ,
-  ι1.networkmanager-vpnc = δ,
-  κ1.qemu = δ
+    ζ1,
+  γ.mkOption = {default = Bool; description = String; type = η1;} -> θ1,
+  γ.singleton = β1 -> ε1,
+  γ.types = ι1,
+  ο.noXlibs = δ1,
+  ι1.bool = η1,
+  ε.override = κ1,
+  ζ.override = λ1,
+  η.override = μ1,
+  θ.override = ν1,
+  ι.override = ξ1,
+  κ.override = ο1,
+  λ.override = π1,
+  μ.override = ρ1,
+  ν.override = σ1,
+  ξ.override = τ1
 ) =>
-α -> {config = υ; options = {environment = {noXlibs = χ;};};}
+α -> {config = ζ1; options = {environment = {noXlibs = θ1;};};}

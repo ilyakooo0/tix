@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.bandwhich = ε,
+  β.programs = ε,
   γ.bandwhich = ζ,
   γ.filalex77 = η,
   γ.maintainers = θ,
@@ -15,8 +15,8 @@
     κ,
   γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
   γ.types = ν,
-  ε.enable = ι,
-  ξ.programs = β,
+  ε.bandwhich = ξ,
+  ξ.enable = ι,
   ν.bool = λ
 ) =>
 α ->

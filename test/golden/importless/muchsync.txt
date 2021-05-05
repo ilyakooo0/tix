@@ -1,12 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gpl2Plus = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
           platforms = ζ;
         };
@@ -17,21 +16,20 @@
       version = String;
     } ->
     ι,
-  α.unix = ζ,
-  κ.licenses = α,
-  λ.lib = κ,
-  γ.ocharles = ε,
-  μ.lib = α,
-  ν.platforms = α,
-  ξ.lib = ν
+  β.licenses = κ,
+  κ.gpl2Plus = δ,
+  λ.maintainers = μ,
+  μ.ocharles = ε,
+  ν.platforms = ξ,
+  ξ.unix = ζ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> θ;
-  notmuch = δ;
-  openssl = δ;
+  notmuch = γ;
+  openssl = γ;
   pkgconfig = η;
-  sqlite = δ;
+  sqlite = γ;
   stdenv = α;
-  xapian = δ;
-  zlib = δ;
+  xapian = γ;
+  zlib = γ;
 } ->
 ι

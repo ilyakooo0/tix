@@ -1,11 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.config = β,
   α.lib = γ,
-  β.disable = δ,
-  β.kernelPackages = ε,
-  γ.bool = ζ,
+  β.boot = δ,
+  β.hardware = ε,
   γ.mkIf =
-    δ ->
+    ζ ->
     { boot =
         { blacklistedKernelModules = [String];
           extraModulePackages = [η];
@@ -28,11 +27,12 @@
         };
     } ->
     ι,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> κ,
-  ε.bbswitch = η,
-  λ.boot = β,
-  μ.nvidiaOptimus = β,
-  ν.hardware = μ,
-  ξ.types = γ
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.kernelPackages = ν,
+  ν.bbswitch = η,
+  ε.nvidiaOptimus = ξ,
+  ξ.disable = ζ,
+  μ.bool = κ
 ) =>
-α -> {config = ι; options = {hardware = {nvidiaOptimus = {disable = κ;};};};}
+α -> {config = ι; options = {hardware = {nvidiaOptimus = {disable = λ;};};};}

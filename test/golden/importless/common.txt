@@ -5,16 +5,16 @@
     ( β.pkgs = γ,
       γ.jq = δ,
       γ.makeWrapper = ε,
-      γ.mkDerivation =
+      γ.stdenv = ζ,
+      γ.writeTextDir = String -> String -> η,
+      ζ.mkDerivation =
         { buildInputs = [ε];
           dontUnpack = Bool;
           installPhase = String;
           name = String;
           postFixup = String;
         } ->
-        δ,
-      γ.writeTextDir = String -> String -> ζ,
-      η.stdenv = γ
+        δ
     ) =>
     β ->
     { environment = {systemPackages = [δ];};

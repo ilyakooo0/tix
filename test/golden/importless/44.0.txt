@@ -1,20 +1,20 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
-( β.isWindows = Bool,
-  β.lib = γ,
+( β.hostPlatform = γ,
+  β.lib = δ,
   β.mkDerivation =
-    {buildPhase = String; installPhase = String; name = String; src = δ;} -> ε,
-  ζ.platforms = η,
-  θ.optionalString = Bool -> String -> ι,
-  κ.override = {pip = Null;} -> λ,
-  μ.override = {setuptools = Null; wheel = Null;} -> λ,
-  ν.hostPlatform = β,
-  γ.licenses = ξ,
-  γ.psfl = ο,
-  γ.zpl20 = ο,
-  π.meta = ζ,
-  ρ.strings = θ
+    {buildPhase = String; installPhase = String; name = String; src = ε;} -> ζ,
+  η.meta = θ,
+  ι.strings = κ,
+  λ.override = {pip = Null;} -> μ,
+  ν.override = {setuptools = Null; wheel = Null;} -> μ,
+  γ.isWindows = Bool,
+  δ.licenses = ξ,
+  δ.psfl = ο,
+  δ.zpl20 = ο,
+  θ.platforms = π,
+  κ.optionalString = Bool -> String -> ρ
 ) =>
-{ bootstrapped-pip = λ;
+{ bootstrapped-pip = μ;
   buildPythonPackage =
     { catchConflicts = Bool;
       doCheck = Bool;
@@ -23,14 +23,14 @@
         { description = String;
           homepage = String;
           license = [ο];
-          platforms = η;
+          platforms = π;
           priority = Integer;
         };
-      nativeBuildInputs = [λ];
+      nativeBuildInputs = [μ];
       pipInstallFlags = [String];
       pname = ∀ α. α;
-      preBuild = ι;
-      src = ε;
+      preBuild = ρ;
+      src = ζ;
       version = ∀ α. α;
     } ->
     σ;
@@ -42,11 +42,11 @@
       rev = String;
       sha256 = String;
     } ->
-    δ;
-  lib = θ;
-  pipInstallHook = κ;
-  python = ζ;
-  setuptoolsBuildHook = μ;
+    ε;
+  lib = ι;
+  pipInstallHook = λ;
+  python = η;
+  setuptoolsBuildHook = ν;
   stdenv = β;
   unzip = υ;
   wrapPython = φ;

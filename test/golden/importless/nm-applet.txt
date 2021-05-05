@@ -2,11 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  γ.members = ζ,
-  γ.mkEnableOption = String -> η,
+  β.programs = ε,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { services = {dbus = {packages = [θ];};};
       systemd =
         { user =
@@ -22,14 +21,15 @@
         };
     } ->
     ι,
+  γ.teams = κ,
   δ.gcr = θ,
-  κ.nm-applet = β,
-  λ.programs = κ,
-  μ.freedesktop = γ,
-  ν.teams = μ
+  ε.nm-applet = λ,
+  λ.enable = η,
+  κ.freedesktop = μ,
+  μ.members = ν
 ) =>
 α ->
 { config = ι;
-  meta = {maintainers = ζ;};
-  options = {programs = {nm-applet = {enable = η;};};};
+  meta = {maintainers = ν;};
+  options = {programs = {nm-applet = {enable = ζ;};};};
 }

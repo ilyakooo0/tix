@@ -2,12 +2,12 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.geary = ε,
-  δ.geary = ζ,
+  β.programs = ε,
+  δ.gnome3 = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
     θ ->
-    { environment = {systemPackages = [ζ];};
+    { environment = {systemPackages = [ι];};
       programs = {dconf = {enable = Bool;};};
       services =
         { gnome3 =
@@ -16,16 +16,16 @@
             };
         };
     } ->
-    ι,
-  γ.teams = κ,
-  ε.enable = θ,
-  λ.programs = β,
-  μ.gnome3 = δ,
-  κ.members = ν,
-  ξ.gnome = κ
+    κ,
+  γ.teams = λ,
+  ε.geary = μ,
+  μ.enable = θ,
+  ζ.geary = ι,
+  λ.gnome = ν,
+  ν.members = ξ
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = ν;};
+{ config = κ;
+  meta = {maintainers = ξ;};
   options = {programs = {geary = {enable = η;};};};
 }

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.munge = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -40,8 +40,8 @@
   γ.types = ν,
   δ.coreutils = ι,
   δ.munge = θ,
-  ε.enable = η,
-  ξ.services = β,
+  ε.munge = ξ,
+  ξ.enable = η,
   ν.path = λ
 ) =>
 α ->

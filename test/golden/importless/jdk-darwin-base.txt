@@ -1,7 +1,7 @@
 ∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( γ.packageType = String,
-  δ.lib = ε,
-  δ.maintainers = ζ,
+  δ.hostPlatform = ε,
+  δ.lib = ζ,
   δ.mkDerivation =
     { dontStrip = Integer;
       installPhase = String;
@@ -16,14 +16,13 @@
       src = κ;
     } ->
     ι,
-  δ.name = λ,
-  ε.licenses = μ,
-  ε.taku0 = θ,
-  μ.gpl2Classpath = η,
-  ν.lib = δ,
-  ξ.cpu = δ,
-  ο.parsed = ξ,
-  π.hostPlatform = ο
+  ζ.licenses = λ,
+  ζ.taku0 = θ,
+  λ.gpl2Classpath = η,
+  μ.maintainers = ν,
+  ε.parsed = ξ,
+  ξ.cpu = ο,
+  ο.name = π
 ) =>
 γ ->
 { fetchurl =

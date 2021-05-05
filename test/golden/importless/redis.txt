@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.redis = β, γ.exporters = α, δ.prometheus = γ, ε.services = δ) => { config =
+(α.services = β, β.prometheus = γ, γ.exporters = δ, δ.redis = ε) => { config =
     α;
   lib = ζ;
   options = η;

@@ -2,23 +2,23 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.maintainers = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [θ];};
-      services = {dbus = {packages = [ι];};};
-      systemd = {packages = [κ];};
+    θ ->
+    { environment = {systemPackages = [ι];};
+      services = {dbus = {packages = [κ];};};
+      systemd = {packages = [λ];};
     } ->
-    λ,
-  γ.worldofpeace = μ,
-  δ.zeitgeist = θ,
-  ν.zeitgeist = β,
-  ξ.services = ν
+    μ,
+  γ.worldofpeace = ν,
+  δ.zeitgeist = ι,
+  ε.zeitgeist = ξ,
+  ξ.enable = θ
 ) =>
 α ->
-{ config = λ;
-  meta = {maintainers = [μ];};
+{ config = μ;
+  meta = {maintainers = [ν];};
   options = {services = {zeitgeist = {enable = η;};};};
 }

@@ -16,8 +16,8 @@
       version = String;
     } ->
     δ,
-  ε.Profpatsch = β,
-  ζ.maintainers = ε
+  ε.maintainers = ζ,
+  ζ.Profpatsch = β
 ) =>
 { fetchgit = {rev = String; sha256 = String; url = String;} -> γ;
   lib = ε;

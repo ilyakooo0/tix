@@ -2,27 +2,27 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.ati_drivers_x11 = ε,
-  β.videoDrivers = ζ,
-  γ.elem = String -> ζ -> η,
+  β.boot = ε,
+  β.services = ζ,
+  γ.elem = String -> η -> θ,
   γ.mkIf =
-    η ->
-    { boot = {blacklistedKernelModules = [String]; extraModulePackages = [ε];};
-      environment = {etc = {ati = {source = String;};}; systemPackages = [ε];};
+    θ ->
+    { boot = {blacklistedKernelModules = [String]; extraModulePackages = [ι];};
+      environment = {etc = {ati = {source = String;};}; systemPackages = [ι];};
       hardware =
-        {opengl = {package = ε; package32 = θ; setLdLibraryPath = Bool;};};
+        {opengl = {package = ι; package32 = κ; setLdLibraryPath = Bool;};};
       nixpkgs = {config = {xorg = {abiCompat = String;};};};
-      services = {xserver = {drivers = ι;};};
+      services = {xserver = {drivers = λ;};};
     } ->
-    κ,
-  γ.singleton = {display = Bool; modules = [ε]; name = String;} -> ι,
-  δ.override = {kernel = Null; libsOnly = Bool;} -> θ,
-  λ.xserver = β,
-  μ.services = λ,
-  ν.kernelPackages = β,
-  ξ.boot = ν,
-  ο.ati_drivers_x11 = δ,
-  π.linuxPackages = ο,
-  ρ.pkgsi686Linux = π
+    μ,
+  γ.singleton = {display = Bool; modules = [ι]; name = String;} -> λ,
+  δ.pkgsi686Linux = ν,
+  ζ.xserver = ξ,
+  ξ.videoDrivers = η,
+  ε.kernelPackages = ο,
+  ο.ati_drivers_x11 = ι,
+  ν.linuxPackages = π,
+  π.ati_drivers_x11 = ρ,
+  ρ.override = {kernel = Null; libsOnly = Bool;} -> κ
 ) =>
-α -> {config = κ;}
+α -> {config = μ;}

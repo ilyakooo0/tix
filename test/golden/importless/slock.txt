@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.slock = ε,
+  β.programs = ε,
   γ.mkIf =
     ζ ->
     { environment = {systemPackages = [η];};
@@ -12,8 +12,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.slock = η,
-  ε.enable = ζ,
-  μ.programs = β,
+  ε.slock = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {programs = {slock = {enable = κ;};};};}

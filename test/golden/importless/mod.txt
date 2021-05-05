@@ -1,36 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.lib = β,
-  α.mkDerivation = γ -> δ,
-  ε.description = ζ,
-  ε.homepage = η,
-  ε.name = String,
-  ε.src = θ,
-  ε.version = ι,
-  κ.name = String,
-  κ.src = θ,
-  β.recursiveUpdate =
-    λ ->
+( α.src = β,
+  γ.src = δ,
+  β.?name = String,
+  δ.?name = String,
+  ε.lib = ζ,
+  ε.mkDerivation = η -> θ,
+  α.description = ι,
+  α.homepage = κ,
+  α.version = λ,
+  ζ.recursiveUpdate =
+    μ ->
     { checkTarget = String;
       configurePhase = String;
       installPhase = String;
-      meta = {description = ζ; homepage = η;};
+      meta = {description = ι; homepage = κ;};
       name = String;
       pname = String;
       postPatch = String;
       postUnpack = String;
       sourceRoot = String;
-      srcs = [θ];
-      version = ι;
+      srcs = [ν];
+      version = λ;
     } ->
-    γ,
-  μ.src = ε,
-  ν.src = κ
+    η
 ) =>
-{ engine = κ;
-  mod = ε;
-  packageAttrs = λ;
+{ engine = γ;
+  mod = α;
+  packageAttrs = μ;
   patchEngine = ξ;
-  stdenv = α;
+  stdenv = ε;
   wrapLaunchGame = ο;
 } ->
-δ
+θ

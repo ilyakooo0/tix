@@ -18,16 +18,15 @@
       version = String;
     } ->
     κ,
-  α.optionals = β -> [λ] -> [δ],
   γ.bjornfor = ζ,
-  γ.licenses = μ,
-  γ.maintainers = ν,
-  γ.platforms = ξ,
-  μ.gpl3Plus = ε,
-  ξ.linux = [η],
-  ο.darwin = [η],
-  π.lib = α,
-  ρ.lib = α
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  γ.platforms = ν,
+  λ.gpl3Plus = ε,
+  ν.linux = [η],
+  ξ.darwin = [η],
+  ο.optionals = β -> [π] -> [δ],
+  ρ.optionals = Bool -> [Null] -> [δ]
 ) =>
 { airspy = δ;
   boost = δ;
@@ -41,7 +40,7 @@
   python = Null;
   pythonSupport = Bool;
   rtl-sdr = δ;
-  soapysdr-with-plugins = λ;
+  soapysdr-with-plugins = π;
   stdenv = α;
   swig = Null;
   uhd = δ;

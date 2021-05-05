@@ -1,11 +1,9 @@
 ∀ α β γ δ ε ζ η θ ι.
 ( α.lib = β,
-  β.either = γ -> δ -> ε,
-  β.int = γ,
-  β.mkOption = {type = ε;} -> ζ,
-  β.str = δ,
-  η.types = β,
-  θ.types = β,
-  ι.types = β
+  β.mkOption = {type = γ;} -> δ,
+  β.types = ε,
+  ε.either = ζ -> η -> γ,
+  θ.int = ζ,
+  ι.str = η
 ) =>
-α -> {options = {value = ζ;};}
+α -> {options = {value = δ;};}

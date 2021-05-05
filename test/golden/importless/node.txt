@@ -1,11 +1,11 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( β.node = γ,
+( β.services = γ,
   δ.mkOption =
     {default = ∀ α. α; description = String; example = String; type = ε;} -> ζ,
   δ.types = η,
-  θ.exporters = β,
-  ι.prometheus = θ,
-  κ.services = ι,
+  γ.prometheus = θ,
+  θ.exporters = ι,
+  ι.node = κ,
   η.listOf = λ -> ε,
   μ.str = λ,
   ν.listOf = ξ -> ο,

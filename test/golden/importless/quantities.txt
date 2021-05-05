@@ -1,14 +1,14 @@
 ∀ α β γ δ ε ζ η.
-( α.maintainers = β,
-  α.mit = γ,
-  δ.licenses = α,
-  β.imuli = ε
+( α.licenses = β,
+  α.maintainers = γ,
+  β.mit = δ,
+  γ.imuli = ε
 ) =>
 { build-idris-package =
     { meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = δ;
           maintainers = [ε];
         };
       name = String;

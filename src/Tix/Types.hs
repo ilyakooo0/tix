@@ -1,5 +1,6 @@
 module Tix.Types
   ( NType (..),
+    FieldStrictness (..),
     AtomicType (..),
     DeBruijn (..),
     TypeVariable (..),
@@ -38,7 +39,10 @@ data Pred
       -- ^ y
       !NType
       -- ^ z
-  | !NType `HasField` !(Text, Scheme)
+  | HasField {- Is the field optional? -} !FieldStrictness !NType !(Text, Scheme)
+  deriving stock (Eq, Ord, Show, Generic)
+
+data FieldStrictness = OptionalField | RequiredField
   deriving stock (Eq, Ord, Show, Generic)
 
 instance MKM.Keyable Pred where
@@ -101,8 +105,8 @@ instance TraversableNTypes Scheme where
 
 instance TraversableNTypes Pred where
   traverseNTypesWith ctx f = \case
-    (HasField t (k, h)) ->
-      HasField <$> traverseNTypesWith ctx f t <*> ((k,) <$> traverseNTypesWith ctx f h)
+    (HasField r t (k, h)) ->
+      HasField r <$> traverseNTypesWith ctx f t <*> ((k,) <$> traverseNTypesWith ctx f h)
     (Update x y z) ->
       Update
         <$> traverseNTypesWith ctx f x
@@ -236,10 +240,13 @@ prettyScheme u@(cs :=> t) = do
     return $ group $ foralls <> cs' <> t'
   where
     prettyPred :: Pred -> PrettyM (Doc ann)
-    prettyPred (h `HasField` (k, v)) = do
+    prettyPred (HasField r h (k, v)) = do
       h' <- prettyNType False h
       v' <- prettyScheme v
-      return $ group $ group (h' <> nest 2 (line' <> "." <> pretty k <+> "=")) <> nest 2 (line <> v')
+      let dotOp = case r of
+            OptionalField -> ".?"
+            RequiredField -> "."
+      return $ group $ group (h' <> nest 2 (line' <> dotOp <> pretty k <+> "=")) <> nest 2 (line <> v')
     prettyPred (Update x y z) = do
       x' <- prettyNType False x
       y' <- prettyNType False y

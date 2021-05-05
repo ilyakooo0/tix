@@ -1,0 +1,59 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+( α.hostPlatform = β,
+  α.isDarwin = γ,
+  α.lib = δ,
+  α.mkDerivation =
+    { __propagatedImpureHostDeps = [String];
+      buildInputs = [ε];
+      configureFlags = [String];
+      configurePlatforms = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = ζ;
+          maintainers = [η];
+        };
+      name = String;
+      nativeBuildInputs = [θ];
+      outputs = [String];
+      passthru = {targetPrefix = ι;};
+      patches = [Path];
+      postPatch = String;
+      preInstall = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  α.targetPlatform = β,
+  δ.optionalString = Bool -> String -> ι,
+  μ.isDarwin = Bool,
+  ν.optionalString = ξ -> String -> String,
+  ο.isDarwin = ξ,
+  π.isDarwin = Bool,
+  ρ.licenses = σ,
+  σ.apsl20 = ζ,
+  τ.maintainers = υ,
+  υ.matthewbauer = η,
+  φ.optional = Bool -> String -> [String],
+  χ.optionals = Bool -> [String] -> [String],
+  ψ.optionals = γ -> [Null] -> [ε],
+  ω.optional = Bool -> α1 -> [ε]
+) =>
+{ autoconf = θ;
+  automake = θ;
+  autoreconfHook = θ;
+  enableTapiSupport = Bool;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  installShellFiles = θ;
+  libcxxabi = Null;
+  libobjc = Null;
+  libtapi = α1;
+  libtool = θ;
+  libuuid = ε;
+  maloader = Null;
+  stdenv = α;
+} ->
+λ

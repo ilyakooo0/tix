@@ -1,15 +1,15 @@
 ∀ α β γ δ ε ζ η.
-( α.agpl3 = β,
-  α.brainrape = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.agpl3 = δ,
+  γ.brainrape = ε
 ) =>
 { build-idris-package =
     { meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [γ];
+          license = δ;
+          maintainers = [ε];
         };
       name = String;
       src = ζ;

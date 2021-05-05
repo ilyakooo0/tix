@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.asl20 = β, γ.licenses = α, δ.lib = γ) => { base = ε;
+(α.lib = β, β.licenses = γ, γ.asl20 = δ) => { base = ε;
   containers = ε;
   fetchgit =
     {fetchSubmodules = Bool; rev = String; sha256 = String; url = String;} -> ζ;
@@ -9,7 +9,7 @@
       isExecutable = Bool;
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       src = ζ;
       version = String;

@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
 ( (α) // ({name = String;}) ~ (β),
   ( { NIX_CFLAGS_COMPILE = γ;
       buildInputs = [δ];
@@ -15,26 +15,25 @@
   ) ~
   ( ε
   ),
+  α.?buildInputs = [δ],
+  α.?doCheck = Bool,
+  α.?requireX = Bool,
   ζ.isDarwin = η,
-  ζ.mkDerivation = ε -> θ,
-  ζ.optionalString = η -> String -> γ,
-  ζ.optionals = Bool -> [ι] -> [δ],
-  α.buildInputs = [δ],
-  α.doCheck = Bool,
+  ζ.lib = θ,
+  ζ.mkDerivation = ε -> ι,
   α.name = String,
-  α.requireX = Bool,
-  κ.lib = ζ,
-  λ.lib = ζ,
-  μ.lib = ζ
+  θ.optionalString = η -> String -> γ,
+  κ.optionals = Bool -> [λ] -> [δ],
+  μ.optionals = ν -> [ξ] -> [δ]
 ) =>
-{ Cocoa = ν;
-  Foundation = ν;
+{ Cocoa = ξ;
+  Foundation = ξ;
   R = δ;
   gettext = δ;
-  gfortran = ν;
-  libcxx = ξ;
+  gfortran = ξ;
+  libcxx = ο;
   stdenv = ζ;
-  utillinux = ι;
-  xvfb_run = ι;
+  utillinux = λ;
+  xvfb_run = λ;
 } ->
-α -> θ
+α -> ι

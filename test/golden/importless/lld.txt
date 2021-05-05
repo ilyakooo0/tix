@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.all = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       enableParallelBuilding = Bool;
@@ -8,26 +8,25 @@
           description = String;
           homepage = String;
           license = δ;
-          platforms = β;
+          platforms = ε;
         };
-      nativeBuildInputs = [ε];
+      nativeBuildInputs = [ζ];
       outputs = [String];
       pname = String;
       postInstall = String;
-      src = ζ;
-      version = η;
+      src = η;
+      version = θ;
     } ->
-    θ,
-  α.ncsa = δ,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.platforms = α,
-  μ.lib = λ
+    ι,
+  β.licenses = κ,
+  κ.ncsa = δ,
+  λ.platforms = μ,
+  μ.all = ε
 ) =>
-{ cmake = ε;
-  fetch = String -> String -> ζ;
+{ cmake = ζ;
+  fetch = String -> String -> η;
   llvm = γ;
   stdenv = α;
-  version = η;
+  version = θ;
 } ->
-θ
+ι

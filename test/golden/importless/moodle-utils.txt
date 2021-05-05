@@ -11,16 +11,16 @@
   ) ~
   ( λ
   ),
-  μ.stdenv = ν,
-  μ.unzip = ζ,
-  ξ.buildInputs = [ζ],
-  ν.mkDerivation = λ -> ο
+  μ.?buildInputs = [ζ],
+  ν.stdenv = ξ,
+  ν.unzip = ζ,
+  ξ.mkDerivation = λ -> ο
 ) =>
-μ ->
+ν ->
 { buildMoodlePlugin =
     ∀ α β γ δ.
-    ( α.buildPhase = String,
-      α.configurePhase = String,
+    ( α.?buildPhase = String,
+      α.?configurePhase = String,
       α.name = β,
       α.pluginType = γ,
       α.src = δ

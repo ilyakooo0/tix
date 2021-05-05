@@ -3,18 +3,18 @@
   α.lib = γ,
   α.pkgs = δ,
   ε.installPhase = ζ,
-  β.singularity = η,
-  δ.overrideAttrs = (ε -> {installPhase = String;}) -> θ,
+  β.programs = η,
+  δ.singularity = θ,
   γ.mkEnableOption = String -> ι,
   γ.mkIf =
     κ ->
-    { environment = {systemPackages = [θ];};
+    { environment = {systemPackages = [λ];};
       security = {wrappers = {singularity-suid = {source = String;};};};
       systemd = {tmpfiles = {rules = [String];};};
     } ->
-    λ,
-  μ.singularity = δ,
-  η.enable = κ,
-  ν.programs = β
+    μ,
+  θ.overrideAttrs = (ε -> {installPhase = String;}) -> λ,
+  η.singularity = ν,
+  ν.enable = κ
 ) =>
-α -> {config = λ; options = {programs = {singularity = {enable = ι;};};};}
+α -> {config = μ; options = {programs = {singularity = {enable = ι;};};};}

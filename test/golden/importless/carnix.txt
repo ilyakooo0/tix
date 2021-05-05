@@ -1,11 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.attrsets = β,
   α.lists = γ,
-  δ.0.10.0 = {aho_corasick = {0.6.10 = {memchr = String;};};} -> {} -> ε,
+  δ.crates = ε,
   β.recursiveUpdate = ζ,
   γ.fold = η,
-  θ.carnix = δ,
-  ι.crates = θ
+  ε.carnix = θ,
+  θ.0.10.0 = {aho_corasick = {0.6.10 = {memchr = String;};};} -> {} -> ι
 ) =>
 { buildPlatform = κ;
   buildRustCrate = λ;
@@ -14,8 +14,8 @@
   fetchgit = ν;
   lib = α;
 } ->
-{ __all = [ε];
-  carnix = {} -> ε;
+{ __all = [ι];
+  carnix = {} -> ι;
   crates = δ;
   deps =
     { aho_corasick = {0.6.10 = {memchr = String;};};

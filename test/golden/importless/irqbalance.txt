@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.irqbalance = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -12,7 +12,7 @@
     } ->
     κ,
   δ.irqbalance = θ,
-  ε.enable = η,
-  λ.services = β
+  ε.irqbalance = λ,
+  λ.enable = η
 ) =>
 α -> {config = κ; options = {services = {irqbalance = {enable = ζ;};};};}

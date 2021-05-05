@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.espanso = ε,
+  β.services = ε,
   γ.espanso = ζ,
   γ.libnotify = ζ,
   γ.maintainers = η,
@@ -27,8 +27,8 @@
   γ.options = μ,
   γ.xclip = ζ,
   δ.espanso = ι,
-  ε.enable = θ,
-  ν.services = β,
+  ε.espanso = ν,
+  ν.enable = θ,
   μ.mkEnableOption = String -> ξ
 ) =>
 α ->

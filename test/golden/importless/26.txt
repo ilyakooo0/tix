@@ -1,34 +1,29 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.optional = Bool -> [β] -> [γ],
-  α.unfree = δ,
-  ε.fontconfig = β,
-  ε.freetype = β,
-  ε.glibc = β,
-  ε.lib = β,
-  ε.libX11 = β,
-  ε.libXext = β,
-  ε.libXrender = β,
-  ζ.freetype = β,
-  ζ.glibc = β,
-  ζ.lib = β,
-  ζ.libX11 = β,
-  ζ.libXext = β,
-  ζ.libXrender = β,
-  ζ.zlib = β,
-  η.licenses = α,
-  θ.xlibs = ε,
-  ι.xlibs = ε,
-  κ.xlibs = ε,
-  λ.fontconfig = ε,
-  μ.xlibs = ζ,
-  ν.xlibs = ζ,
-  ξ.xlibs = ζ,
-  ο.fontconfig = ζ
+( α.licenses = β,
+  α.optional = Bool -> [γ] -> [δ],
+  ε.fontconfig = γ,
+  ε.freetype = γ,
+  ε.glibc = γ,
+  ε.xlibs = ζ,
+  η.fontconfig = θ,
+  η.freetype = γ,
+  η.glibc = γ,
+  η.xlibs = ι,
+  η.zlib = γ,
+  β.unfree = κ,
+  ζ.libX11 = γ,
+  λ.libXrender = γ,
+  μ.libXext = γ,
+  ν.lib = γ,
+  ι.libX11 = γ,
+  ξ.libXrender = γ,
+  ο.libXext = γ,
+  θ.lib = γ
 ) =>
-{ autoPatchelfHook = γ;
+{ autoPatchelfHook = δ;
   deployAndroidPackage =
-    { buildInputs = [γ];
-      meta = {licenses = δ;};
+    { buildInputs = [δ];
+      meta = {licenses = κ;};
       name = String;
       os = String;
       package = π;
@@ -36,11 +31,11 @@
     } ->
     ρ;
   lib = α;
-  makeWrapper = γ;
+  makeWrapper = δ;
   os = String;
   package = π;
   pkgs = ε;
-  pkgs_i686 = ζ;
+  pkgs_i686 = η;
   postInstall = String;
 } ->
 ρ

@@ -2,10 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment =
         { etc =
             { chromium/native-messaging-hosts/ = {source = String;};
@@ -20,8 +20,8 @@
         };
       nixpkgs = {config = {firefox = {enableBrowserpass = Bool;};};};
     } ->
-    η,
-  θ.browserpass = β,
-  ι.programs = θ
+    θ,
+  ε.browserpass = ι,
+  ι.enable = η
 ) =>
-α -> {config = η; options = {programs = {browserpass = {enable = ζ;};};};}
+α -> {config = θ; options = {programs = {browserpass = {enable = ζ;};};};}

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Cabal = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { Cabal = ε;
   base = ε;
   containers = ε;
   directory = ε;
@@ -9,7 +9,7 @@
     { description = String;
       homepage = String;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       src = Path;
       testHaskellDepends = [ε];

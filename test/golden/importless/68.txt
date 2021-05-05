@@ -25,19 +25,19 @@
       version = String;
     } ->
     μ,
-  ν.cc = ζ,
-  ν.withPackages = (ξ -> [ο]) -> π,
-  ρ.llvm = κ,
-  ξ.six = ο,
-  δ.licenses = σ,
-  δ.maintainers = τ,
+  ν.python3 = ξ,
+  ν.stdenv = ο,
+  π.llvm = κ,
+  ρ.six = σ,
+  δ.licenses = τ,
+  δ.maintainers = υ,
   δ.optionals = Bool -> [String] -> [String],
-  δ.platforms = υ,
-  σ.gpl2 = η,
-  τ.abbradar = θ,
-  υ.linux = ι,
-  φ.python3 = ν,
-  χ.stdenv = ν
+  δ.platforms = φ,
+  τ.gpl2 = η,
+  υ.abbradar = θ,
+  φ.linux = ι,
+  ξ.withPackages = (ρ -> [σ]) -> χ,
+  ο.cc = ζ
 ) =>
 { autoconf213 = κ;
   buildPackages = ν;
@@ -45,7 +45,7 @@
   fetchpatch = ψ;
   fetchurl = {sha256 = String; url = String;} -> λ;
   icu = ε;
-  llvmPackages = ρ;
+  llvmPackages = π;
   perl = κ;
   pkgconfig = κ;
   python2 = κ;

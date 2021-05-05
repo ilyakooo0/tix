@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.clipmenu = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -26,9 +26,9 @@
     {default = κ; defaultText = String; description = String; type = λ;} -> μ,
   γ.types = ν,
   δ.clipmenu = κ,
-  ε.enable = η,
-  ε.package = θ,
-  ξ.services = β,
+  ε.clipmenu = ξ,
+  ξ.enable = η,
+  ξ.package = θ,
   ν.package = λ
 ) =>
 α ->

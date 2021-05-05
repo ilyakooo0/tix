@@ -2,7 +2,7 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.rxe = ζ,
+  γ.networking = ζ,
   δ.map = (η -> String) -> θ -> ι,
   δ.mkEnableOption = String -> κ,
   δ.mkIf =
@@ -29,9 +29,9 @@
     {default = ∀ α. α; description = String; example = [String]; type = ξ;} ->
     ο,
   δ.types = π,
-  ζ.enable = λ,
-  ζ.interfaces = θ,
-  ρ.networking = γ,
+  ζ.rxe = ρ,
+  ρ.enable = λ,
+  ρ.interfaces = θ,
   π.listOf = σ -> ξ,
   τ.str = σ
 ) =>

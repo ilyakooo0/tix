@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.powertop = ε,
+  β.powerManagement = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -24,7 +24,7 @@
     } ->
     ι,
   δ.kmod = θ,
-  ε.enable = η,
-  κ.powerManagement = β
+  ε.powertop = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {powerManagement = {powertop = {enable = ζ;};};};}

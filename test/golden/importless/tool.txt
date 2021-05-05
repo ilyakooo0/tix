@@ -1,36 +1,35 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν.
-( β.lgpl21Plus = γ,
-  β.linux = δ,
+( β.lib = γ,
   β.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [δ];
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = ε;
           maintainers = ∀ α. α;
-          platforms = δ;
+          platforms = ζ;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       pname = String;
       postInstall = String;
-      src = η;
+      src = θ;
       version = String;
     } ->
-    θ,
-  ι.licenses = β,
-  κ.lib = ι,
-  λ.platforms = β,
-  μ.lib = λ
+    ι,
+  γ.licenses = κ,
+  κ.lgpl21Plus = ε,
+  λ.platforms = μ,
+  μ.linux = ζ
 ) =>
-{ curl = ε;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  glib = ε;
-  libquvi = ε;
-  lua5 = ε;
+{ curl = δ;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  glib = δ;
+  libquvi = δ;
+  lua5 = δ;
   lua5_sockets = ν;
-  makeWrapper = ε;
-  pkgconfig = ζ;
-  quvi_scripts = ε;
+  makeWrapper = δ;
+  pkgconfig = η;
+  quvi_scripts = δ;
   stdenv = β;
 } ->
-θ
+ι

@@ -1,11 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-(α.agpl3 = β, γ.licenses = α, δ.lib = γ) => { CoreFoundation = ε;
+(α.lib = β, β.licenses = γ, γ.agpl3 = δ) => { CoreFoundation = ε;
   Security = ζ;
   boost = η;
   callPackage =
     Path ->
     {CoreFoundation = ε; Security = ζ; boost = η; cctools = θ; sasl = ι;} ->
-    {license = β; patches = [Path]; sha256 = String; version = String;} -> κ;
+    {license = δ; patches = [Path]; sha256 = String; version = String;} -> κ;
   cctools = θ;
   lib = λ;
   sasl = ι;

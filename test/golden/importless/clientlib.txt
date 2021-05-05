@@ -15,12 +15,11 @@
       version = String;
     } ->
     ι,
-  α.optional = β -> κ -> [η],
-  λ.lib = α,
-  γ.ehmry = ε,
-  γ.licenses = μ,
-  γ.maintainers = ν,
-  γ.platforms = ξ,
+  γ.optional = β -> κ -> [η],
+  λ.ehmry = ε,
+  λ.licenses = μ,
+  λ.maintainers = ν,
+  λ.platforms = ξ,
   μ.gpl2 = δ,
   ξ.unix = ζ
 ) =>

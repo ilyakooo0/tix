@@ -1,6 +1,6 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.gpl3Plus = β,
-  α.isx86_64 = γ,
+( α.isx86_64 = β,
+  α.lib = γ,
   α.mkDerivation =
     { NIX_CFLAGS_COMPILE = δ;
       doCheck = Bool;
@@ -8,25 +8,23 @@
         { badPlatforms = [String];
           description = String;
           homepage = String;
-          license = β;
+          license = ε;
           longDescription = String;
-          platforms = ε;
+          platforms = ζ;
         };
       name = String;
-      patches = [ζ];
-      src = η;
+      patches = [η];
+      src = θ;
     } ->
-    θ,
-  α.optionalString = γ -> String -> δ,
-  α.unix = ε,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.platforms = α,
-  μ.lib = λ,
-  ν.lib = α
+    ι,
+  γ.licenses = κ,
+  κ.gpl3Plus = ε,
+  λ.platforms = μ,
+  μ.unix = ζ,
+  ν.optionalString = β -> String -> δ
 ) =>
-{ fetchpatch = {name = String; sha256 = String; url = String;} -> ζ;
-  fetchurl = {sha256 = String; url = String;} -> η;
+{ fetchpatch = {name = String; sha256 = String; url = String;} -> η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
   stdenv = α;
 } ->
-θ
+ι

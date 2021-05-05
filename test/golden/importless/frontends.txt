@@ -17,14 +17,13 @@
       version = String;
     } ->
     ι,
-  α.optional = Bool -> Null -> [γ],
   β.licenses = κ,
   β.maintainers = λ,
   β.peti = ε,
   β.platforms = μ,
   κ.gpl2Plus = δ,
   μ.linux = ζ,
-  ν.lib = α
+  ν.optional = Bool -> Null -> [γ]
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> θ;
   gtk2 = γ;

@@ -1,8 +1,6 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( β.all = γ,
-  β.enableFeature = Bool -> String -> δ,
-  β.isDarwin = Bool,
-  β.lgpl3Plus = ε,
+( β.isDarwin = Bool,
+  β.lib = γ,
   β.mkDerivation =
     { configureFlags = [δ];
       doCheck = Bool;
@@ -14,28 +12,27 @@
           license = ε;
           longDescription = String;
           maintainers = ∀ α. α;
-          platforms = γ;
+          platforms = ζ;
         };
       name = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       outputs = [String];
-      passthru = {static = η;};
+      passthru = {static = θ;};
       preConfigure = String;
-      src = θ;
+      src = ι;
     } ->
-    ι,
-  β.optionals = κ -> [String] -> [δ],
-  ι.out = λ,
-  μ.licenses = β,
-  ν.lib = μ,
-  ξ.platforms = β,
-  ο.lib = ξ,
-  π.lib = β,
-  ρ.lib = β
+    κ,
+  κ.out = λ,
+  γ.licenses = μ,
+  μ.lgpl3Plus = ε,
+  ν.platforms = ξ,
+  ξ.all = ζ,
+  ο.enableFeature = Bool -> String -> δ,
+  π.optionals = ρ -> [String] -> [δ]
 ) =>
 { cxx = Bool;
-  fetchurl = {sha256 = String; url = String;} -> θ;
-  m4 = ζ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  m4 = η;
   stdenv = β;
 } ->
-ι
+κ

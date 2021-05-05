@@ -2,21 +2,21 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {udev = {packages = [η];};};
-      systemd = {packages = [θ];};
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {udev = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.types = μ,
-  δ.bolt = ζ,
-  ν.bolt = β,
-  ξ.hardware = ν,
-  ο.services = ξ,
-  μ.bool = κ
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  δ.bolt = η,
+  ε.hardware = ξ,
+  ξ.bolt = ο,
+  ο.enable = ζ,
+  ν.bool = λ
 ) =>
 α ->
-{config = ι; options = {services = {hardware = {bolt = {enable = λ;};};};};}
+{config = κ; options = {services = {hardware = {bolt = {enable = μ;};};};};}

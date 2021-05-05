@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.facetimehd = ε,
-  β.kernelPackages = ζ,
+  β.boot = ε,
+  β.hardware = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
     θ ->
@@ -20,11 +20,11 @@
   γ.singleton = {assertion = ν; message = String;} -> ι,
   γ.versionAtLeast = ξ -> String -> ν,
   δ.facetimehd-firmware = λ,
-  ζ.facetimehd = κ,
-  ζ.version = ξ,
-  ο.boot = β,
-  ε.enable = θ,
-  π.hardware = β,
-  ρ.kernel = ζ
+  ε.kernelPackages = ο,
+  ο.facetimehd = κ,
+  ο.kernel = π,
+  ζ.facetimehd = ρ,
+  ρ.enable = θ,
+  π.version = ξ
 ) =>
 α -> {config = μ; options = {hardware = {facetimehd = {enable = η;};};};}

@@ -1,12 +1,12 @@
 ∀ α β γ δ ε ζ η θ.
-(α.getDev = β, α.ttuegel = γ, δ.maintainers = α) => { extra-cmake-modules = ε;
+(α.getDev = β, α.maintainers = γ, γ.ttuegel = δ) => { extra-cmake-modules = ε;
   ilmbase = ζ;
   karchive = η;
   lib = α;
   mkDerivation =
     { CXXFLAGS = String;
       buildInputs = [η];
-      meta = {maintainers = [γ];};
+      meta = {maintainers = [δ];};
       name = String;
       nativeBuildInputs = [ε];
       outputs = [String];

@@ -1,15 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
 ( α.isDarwin = Bool,
-  α.isc = β,
-  α.lib = γ,
+  α.lib = β,
   α.mkDerivation =
     { configureFlags = [String];
       dontDisableStatic = Bool;
       enableParallelBuilding = Bool;
       meta =
-        { description = δ;
+        { description = γ;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
           platforms = ζ;
         };
@@ -21,12 +20,12 @@
       version = ι;
     } ->
     κ,
-  γ.all = ζ,
-  γ.maintainers = λ,
-  γ.optional = μ -> String -> [String],
-  ν.platforms = γ,
-  ξ.licenses = α,
-  ο.lib = ξ,
+  β.maintainers = λ,
+  β.optional = μ -> String -> [String],
+  β.platforms = ν,
+  ν.all = ζ,
+  ξ.licenses = ο,
+  ο.isc = δ,
   λ.Profpatsch = ε,
   λ.pmahoney = ε
 ) =>
@@ -35,7 +34,7 @@
   stdenv = α;
 } ->
 { configureFlags = [String];
-  description = δ;
+  description = γ;
   maintainers = [ε];
   outputs = [String];
   platforms = ζ;

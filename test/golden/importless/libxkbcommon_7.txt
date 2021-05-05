@@ -18,13 +18,12 @@
       src = κ;
     } ->
     λ,
-  α.optionalString = β -> String -> ι,
-  μ.lib = α,
-  γ.licenses = ν,
-  γ.maintainers = ξ,
-  γ.platforms = ο,
-  γ.ttuegel = ζ,
-  γ.unix = η,
+  γ.optionalString = β -> String -> ι,
+  μ.licenses = ν,
+  μ.maintainers = ξ,
+  μ.platforms = ο,
+  μ.ttuegel = ζ,
+  μ.unix = η,
   ν.mit = ε
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> κ;

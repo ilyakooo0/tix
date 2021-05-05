@@ -3,7 +3,7 @@
   δ.config = ε,
   δ.lib = ζ,
   δ.pkgs = η,
-  ε.java = θ,
+  ε.programs = θ,
   ζ.mkEnableOption = String -> β,
   ζ.mkIf =
     ι -> {environment = {shellInit = String; systemPackages = [κ];};} -> λ,
@@ -11,9 +11,9 @@
     {default = μ; defaultText = String; description = String; type = ν;} -> ξ,
   ζ.types = ο,
   η.jdk = μ,
-  θ.enable = ι,
-  θ.package = κ,
-  π.programs = ε,
+  θ.java = π,
+  π.enable = ι,
+  π.package = κ,
   ο.package = ν
 ) =>
 δ ->

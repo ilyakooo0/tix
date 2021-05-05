@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.throttled = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -15,9 +15,9 @@
   γ.types = μ,
   δ.throttled = θ,
   δ.writeText = String -> ν -> String,
-  ε.enable = η,
-  ε.extraConfig = String,
-  ξ.services = β,
+  ε.throttled = ξ,
+  ξ.enable = η,
+  ξ.extraConfig = String,
   μ.str = κ
 ) =>
 α ->

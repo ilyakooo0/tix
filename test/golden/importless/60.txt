@@ -26,15 +26,15 @@
       version = String;
     } ->
     ν,
-  ξ.cc = ζ,
-  δ.licenses = ο,
-  δ.maintainers = π,
+  ξ.stdenv = ο,
+  δ.licenses = π,
+  δ.maintainers = ρ,
   δ.optionals = Bool -> [String] -> [String],
-  δ.platforms = ρ,
-  ο.gpl2 = η,
-  π.abbradar = θ,
-  ρ.linux = ι,
-  σ.stdenv = ξ
+  δ.platforms = σ,
+  π.gpl2 = η,
+  ρ.abbradar = θ,
+  σ.linux = ι,
+  ο.cc = ζ
 ) =>
 { autoconf213 = κ;
   buildPackages = ξ;

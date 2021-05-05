@@ -1,26 +1,26 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
   α.utils = ε,
   ζ.fsType = η,
   θ.device = ι,
-  β.fileSystems = κ,
-  β.supportedFilesystems = λ,
+  β.boot = κ,
+  β.fileSystems = λ,
   γ.concatStrings = μ -> String,
-  γ.elem = String -> λ -> ν,
-  γ.filterAttrs = (ξ -> ζ -> Bool) -> κ -> {},
-  γ.head = ο -> π,
-  γ.mapAttrsToList = (ρ -> θ -> String) -> {} -> μ,
-  γ.mkIf = ν -> σ -> τ,
+  γ.elem = String -> ν -> ξ,
+  γ.filterAttrs = (ο -> ζ -> Bool) -> λ -> {},
+  γ.head = π -> ρ,
+  γ.mapAttrsToList = (σ -> θ -> String) -> {} -> μ,
+  γ.mkIf = ξ -> τ -> υ,
   γ.mkMerge =
-    [{boot = {kernelPackages = υ;}; system = {fsPackages = [φ];};}] -> σ,
-  γ.splitString = String -> χ -> ο,
-  δ.bcachefs-tools = φ,
-  δ.linuxPackages_testing_bcachefs = υ,
+    [{boot = {kernelPackages = φ;}; system = {fsPackages = [χ];};}] -> τ,
+  γ.splitString = String -> ψ -> π,
+  δ.bcachefs-tools = χ,
+  δ.linuxPackages_testing_bcachefs = φ,
   ε.fsNeededForBoot = ζ -> Bool,
-  ψ.boot = β,
-  ω.initrd = β,
-  α1.boot = ω
+  κ.supportedFilesystems = ν,
+  ω.initrd = α1,
+  α1.supportedFilesystems = β1
 ) =>
-α -> {config = τ;}
+α -> {config = υ;}

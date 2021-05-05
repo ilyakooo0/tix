@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
+( α.config = β,
+  α.lib = γ,
+  α.pkgs = δ,
+  β.boot = ε,
+  β.hardware = ζ,
+  β.lib = η,
+  β.services = θ,
+  γ.elem = String -> ι -> κ,
+  γ.isYes = String -> λ,
+  γ.mkIf =
+    κ ->
+    { boot =
+        { blacklistedKernelModules = [String];
+          extraModulePackages = [String];
+          kernelPackages = μ;
+        };
+      environment =
+        { etc =
+            { amd/amdapfxx.blb = {source = String;};
+              amd/amdrc = {source = String;};
+              gbm/gbm.conf = {source = String;};
+            };
+        };
+      hardware =
+        { firmware = [String];
+          opengl = {package = String; package32 = ν; setLdLibraryPath = Bool;};
+        };
+      nixpkgs = {config = {xorg = {abiCompat = String;};};};
+      services = {xserver = {drivers = ξ;};};
+      system =
+        { activationScripts = {setup-amdgpu-pro = String;};
+          requiredKernelConfig = [λ];
+        };
+    } ->
+    ο,
+  γ.optionalString = π -> String -> String,
+  γ.singleton = {display = Bool; modules = [String]; name = String;} -> ξ,
+  δ.linuxPackagesFor = ρ -> σ,
+  δ.linux_4_9 = τ,
+  δ.pkgsi686Linux = υ,
+  δ.recurseIntoAttrs = σ -> μ,
+  υ.linuxPackages = φ,
+  φ.amdgpu-pro = χ,
+  χ.override = {kernel = Null; libsOnly = Bool;} -> ν,
+  ε.kernelPackages = ψ,
+  ψ.amdgpu-pro = String,
+  ζ.opengl = ω,
+  ω.driSupport32Bit = π,
+  τ.override = {extraConfig = String;} -> ρ,
+  θ.xserver = α1,
+  α1.videoDrivers = ι,
+  η.kernelConfig = β1
+) =>
+α -> {config = ο;}

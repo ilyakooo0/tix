@@ -1,15 +1,21 @@
-∀ α β γ δ ε ζ η θ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
 ( ({}) // (α) ~ (β),
-  γ.concatLists = [δ] -> ε,
-  γ.optional = Bool -> String -> δ,
-  ζ.abi = α,
-  ζ.gcc = {},
-  ζ.is64bit = Bool,
-  ζ.isLittleEndian = Bool,
-  ζ.isPower = Bool,
-  ζ.isx86_64 = Bool,
-  ζ.libc = String,
-  η.platform = ζ,
-  θ.parsed = ζ
+  γ.?platform = δ,
+  ε.?arch = ζ,
+  η.?cpu = θ,
+  ι.?abi = κ,
+  λ.?fpu = μ,
+  ν.?float = ξ,
+  ο.?mode = π,
+  δ.?gcc = {},
+  ρ.concatLists = [σ] -> τ,
+  ρ.optional = Bool -> String -> σ,
+  γ.is64bit = Bool,
+  γ.isLittleEndian = Bool,
+  γ.isPower = Bool,
+  γ.isx86_64 = Bool,
+  γ.libc = String,
+  γ.parsed = υ,
+  υ.abi = α
 ) =>
-{lib = γ; targetPlatform = ζ;} -> ε
+{lib = ρ; targetPlatform = γ;} -> τ

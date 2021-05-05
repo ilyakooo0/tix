@@ -1,6 +1,6 @@
 ∀ γ δ ε ζ η θ ι.
-( γ.concatMapStringsSep = String -> (δ -> String) -> ε -> ζ,
-  η.lib = γ
+( γ.lib = δ,
+  δ.concatMapStringsSep = String -> (ε -> String) -> ζ -> η
 ) =>
 {file = θ; stdenv = γ; writeScript = String -> String -> ι;} ->
 { checkForRemainingFiles = ι;

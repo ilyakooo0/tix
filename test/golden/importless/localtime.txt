@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.localtime = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { environment = {systemPackages = [η];};
@@ -24,11 +24,11 @@
     ι,
   γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
   γ.types = μ,
-  δ.out = η,
-  ε.enable = ζ,
-  ν.services = β,
-  ξ.localtime = δ,
-  ο.localtime = δ,
+  δ.localtime = ν,
+  ε.localtime = ξ,
+  ξ.enable = ζ,
+  ν.out = η,
+  ο.out = θ,
   μ.bool = κ
 ) =>
 α -> {config = ι; options = {services = {localtime = {enable = λ;};};};}

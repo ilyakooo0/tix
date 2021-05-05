@@ -1,0 +1,31 @@
+∀ β γ δ ε ζ η.
+( ( β
+  ) //
+  ( { distPhase = String;
+      doDist = Bool;
+      finalPhase = String;
+      meta = ∀ α. α;
+      name = String;
+      postHook = String;
+    }
+  ) ~
+  ( γ
+  ),
+  ( { doCheck = Bool;
+      postPhases = String;
+      prefix = String;
+      showBuildStats = Bool;
+    }
+  ) //
+  ( γ
+  ) ~
+  ( δ
+  ),
+  β.meta = {},
+  β.?name = String,
+  ε.version = String,
+  β.src = ε,
+  β.stdenv = ζ,
+  ζ.mkDerivation = δ -> η
+) =>
+β -> η

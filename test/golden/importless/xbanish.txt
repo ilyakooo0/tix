@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xbanish = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -23,8 +23,8 @@
   γ.mkOption =
     {default = String; description = String; example = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = η,
-  μ.services = β,
+  ε.xbanish = μ,
+  μ.enable = η,
   λ.str = ι
 ) =>
 α ->

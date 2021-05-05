@@ -1,46 +1,44 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
 ( α.isDarwin = β,
   α.lib = γ,
-  α.optionalString = δ -> String -> ε,
-  α.optionals = β -> [ζ] -> [η],
-  θ.buildRustPackage =
+  δ.buildRustPackage =
     { RUSTC_BOOTSTRAP = Integer;
       buildAndTestSubdir = String;
-      buildInputs = [η];
+      buildInputs = [ε];
       cargoVendorDir = String;
       doCheck = Bool;
       dontUpdateAutotoolsGnuConfigScripts = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = [ι];
-          maintainers = [κ];
-          platforms = λ;
+          license = [ζ];
+          maintainers = [η];
+          platforms = θ;
         };
       name = String;
-      preFixup = ε;
-      src = μ;
-      version = ν;
+      preFixup = ι;
+      src = κ;
+      version = λ;
     } ->
-    ξ,
-  η.llvm = η,
-  η.src = μ,
-  η.version = ν,
-  ο.lib = α,
-  γ.asl20 = ι,
-  γ.basvandijk = κ,
-  γ.licenses = π,
-  γ.maintainers = ρ,
-  γ.mit = ι,
-  γ.platforms = σ,
-  σ.unix = λ,
-  τ.lib = α
+    μ,
+  ε.llvm = ε,
+  ε.src = κ,
+  ε.version = λ,
+  γ.optionals = β -> [ν] -> [ε],
+  ξ.asl20 = ζ,
+  ξ.basvandijk = η,
+  ξ.licenses = ο,
+  ξ.maintainers = π,
+  ξ.mit = ζ,
+  ξ.platforms = ρ,
+  ρ.unix = θ,
+  σ.optionalString = τ -> String -> ι
 ) =>
-{ Security = ζ;
+{ Security = ν;
   lib = υ;
   patchelf = φ;
-  rustPlatform = θ;
-  rustc = η;
+  rustPlatform = δ;
+  rustc = ε;
   stdenv = α;
 } ->
-ξ
+μ

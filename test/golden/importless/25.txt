@@ -1,40 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.optional = Bool -> [β] -> [γ],
-  α.unfree = δ,
-  ε.freetype = β,
-  ε.glibc = β,
-  ε.lib = β,
-  ε.libGL = β,
-  ε.libX11 = β,
-  ε.libXdamage = β,
-  ε.libXext = β,
-  ε.libXfixes = β,
-  ε.libXrender = β,
-  ε.libpulseaudio = β,
-  ε.libxcb = β,
-  ε.ncurses5 = β,
-  ε.zlib = β,
-  ζ.fontconfig = β,
-  ζ.freetype = β,
-  ζ.glibc = β,
-  ζ.libX11 = β,
-  ζ.libXrender = β,
-  ζ.zlib = β,
-  η.licenses = α,
-  θ.xlibs = ε,
-  ι.xlibs = ε,
-  κ.xlibs = ε,
-  λ.xlibs = ε,
-  μ.xlibs = ε,
-  ν.xlibs = ε,
-  ξ.fontconfig = ε,
-  ο.xlibs = ζ,
-  π.xlibs = ζ
+( α.licenses = β,
+  α.optional = Bool -> [γ] -> [δ],
+  ε.fontconfig = ζ,
+  ε.freetype = γ,
+  ε.glibc = γ,
+  ε.libGL = γ,
+  ε.libpulseaudio = γ,
+  ε.ncurses5 = γ,
+  ε.xlibs = η,
+  ε.zlib = γ,
+  θ.fontconfig = γ,
+  θ.freetype = γ,
+  θ.glibc = γ,
+  θ.xlibs = ι,
+  θ.zlib = γ,
+  β.unfree = κ,
+  η.libX11 = γ,
+  λ.libXext = γ,
+  μ.libXdamage = γ,
+  ν.libxcb = γ,
+  ξ.libXfixes = γ,
+  ο.libXrender = γ,
+  ζ.lib = γ,
+  ι.libX11 = γ,
+  π.libXrender = γ
 ) =>
-{ autoPatchelfHook = γ;
+{ autoPatchelfHook = δ;
   deployAndroidPackage =
-    { buildInputs = [γ];
-      meta = {licenses = δ;};
+    { buildInputs = [δ];
+      meta = {licenses = κ;};
       name = String;
       os = String;
       package = ρ;
@@ -42,11 +36,11 @@
     } ->
     σ;
   lib = α;
-  makeWrapper = γ;
+  makeWrapper = δ;
   os = String;
   package = ρ;
   pkgs = ε;
-  pkgs_i686 = ζ;
+  pkgs_i686 = θ;
   postInstall = String;
 } ->
 σ

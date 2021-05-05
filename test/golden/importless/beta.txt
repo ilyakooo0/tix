@@ -1,44 +1,42 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gpl2 = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
     { NIX_LDFLAGS = String;
-      buildInputs = [δ];
+      buildInputs = [γ];
       makeFlags = [String];
       meta =
         { description = String;
           downloadPage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
-          platforms = γ;
+          platforms = ζ;
           version = String;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       pname = String;
       preConfigure = String;
       setSourceRoot = String;
-      src = η;
+      src = θ;
       version = String;
     } ->
-    θ,
-  α.raskin = ε,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.maintainers = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    ι,
+  β.licenses = κ,
+  κ.gpl2 = δ,
+  λ.maintainers = μ,
+  μ.raskin = ε,
+  ν.platforms = ξ,
+  ξ.linux = ζ
 ) =>
-{ autoconf = ζ;
-  automake = ζ;
-  fetchgit = {rev = String; sha256 = String; url = String;} -> η;
-  libGL = δ;
-  libGLU = δ;
-  libX11 = δ;
-  perl = δ;
-  python2 = δ;
+{ autoconf = η;
+  automake = η;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> θ;
+  libGL = γ;
+  libGLU = γ;
+  libX11 = γ;
+  perl = γ;
+  python2 = γ;
   stdenv = α;
-  wxGTK = δ;
-  zlib = δ;
+  wxGTK = γ;
+  zlib = γ;
 } ->
-θ
+ι

@@ -1,13 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
 ( α.lib = β,
-  β.coercedTo = γ -> δ -> ε -> ζ,
-  β.mkOption = {default = String; type = ζ;} -> η,
-  β.s8 = ε,
-  β.str = γ,
-  β.toInt = δ,
-  θ.types = β,
-  ι.types = β,
-  κ.ints = β,
-  λ.types = κ
+  β.mkOption = {default = String; type = γ;} -> δ,
+  β.toInt = ε,
+  β.types = ζ,
+  ζ.coercedTo = η -> ε -> θ -> γ,
+  ι.str = η,
+  κ.ints = λ,
+  λ.s8 = θ
 ) =>
-α -> {options = {value = η;};}
+α -> {options = {value = δ;};}

@@ -1,14 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι.
 ( α.config = β,
   α.lib = γ,
-  β.enableEmergencyMode = δ,
+  β.systemd = δ,
   γ.mkOption = {default = Bool; description = String; type = ε;} -> ζ,
-  γ.optionals = δ -> [String] -> η,
-  γ.types = θ,
-  ι.systemd = β,
-  θ.bool = ε
+  γ.optionals = η -> [String] -> θ,
+  γ.types = ι,
+  δ.enableEmergencyMode = η,
+  ι.bool = ε
 ) =>
 α ->
-{ config = {systemd = {additionalUpstreamSystemUnits = η;};};
+{ config = {systemd = {additionalUpstreamSystemUnits = θ;};};
   options = {systemd = {enableEmergencyMode = ζ;};};
 }

@@ -20,9 +20,9 @@
         };
     } ->
     θ,
-  β.enable = η,
-  ι.waybar = β,
-  κ.programs = ι,
+  β.programs = ι,
+  ι.waybar = κ,
+  κ.enable = η,
   ε.FlorianFranzen = λ
 ) =>
 α ->

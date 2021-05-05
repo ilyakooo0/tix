@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.mailhog = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -25,9 +25,9 @@
     κ,
   γ.mkOption = {default = String; description = String; type = λ;} -> μ,
   γ.types = ν,
-  ε.enable = η,
-  ε.user = θ,
-  ξ.services = β,
+  ε.mailhog = ξ,
+  ξ.enable = η,
+  ξ.user = θ,
   ν.str = λ
 ) =>
 α -> {config = κ; options = {services = {mailhog = {enable = ζ; user = μ;};};};}

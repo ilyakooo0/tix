@@ -1,23 +1,23 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.closureInfo = {rootPaths = β;} -> γ,
-  α.mkDerivation =
-    {buildCommand = String; name = String; nativeBuildInputs = [δ];} -> ε,
-  ζ.optional = Bool -> η -> [δ],
-  θ.bin = δ,
-  ι.buildPackages = α,
-  κ.stdenv = α
+( α.buildPackages = β,
+  α.stdenv = γ,
+  δ.optional = Bool -> ε -> [ζ],
+  η.bin = ζ,
+  β.closureInfo = {rootPaths = θ;} -> ι,
+  γ.mkDerivation =
+    {buildCommand = String; name = String; nativeBuildInputs = [ζ];} -> κ
 ) =>
 { compressImage = Bool;
-  e2fsprogs = θ;
-  fakeroot = δ;
-  lib = ζ;
-  libfaketime = δ;
-  perl = δ;
+  e2fsprogs = η;
+  fakeroot = ζ;
+  lib = δ;
+  libfaketime = ζ;
+  perl = ζ;
   pkgs = α;
   populateImageCommands = String;
-  storePaths = β;
+  storePaths = θ;
   uuid = String;
   volumeLabel = λ;
-  zstd = η;
+  zstd = ε;
 } ->
-ε
+κ

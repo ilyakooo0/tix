@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.brainrape = β, γ.maintainers = α) => { SDL = δ;
+(α.maintainers = β, β.brainrape = γ) => { SDL = δ;
   SDL_gfx = δ;
   build-idris-package =
     { extraBuildInputs = [δ];
@@ -8,7 +8,7 @@
         { broken = Bool;
           description = String;
           homepage = String;
-          maintainers = [β];
+          maintainers = [γ];
         };
       name = String;
       src = ζ;

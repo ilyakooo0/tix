@@ -2,10 +2,9 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.generationsDir = ζ,
+  β.boot = ε,
   γ.mkIf =
-    ε ->
+    ζ ->
     { system =
         { boot = {loader = {id = String; kernelFile = η;};};
           build = {installBootLoader = θ;};
@@ -18,19 +17,19 @@
   δ.coreutils = ξ,
   δ.gnugrep = ξ,
   δ.gnused = ξ,
-  δ.hostPlatform = ο,
+  δ.stdenv = ο,
   δ.substituteAll =
     {bash = ν; copyKernels = π; isExecutable = Bool; path = [ξ]; src = Path;} ->
     θ,
-  ο.platform = ρ,
-  σ.stdenv = δ,
-  ρ.kernelTarget = η,
-  ζ.copyKernels = π,
-  τ.loader = β,
-  υ.boot = τ,
-  φ.generationsDir = β,
-  χ.loader = φ,
-  ψ.boot = χ,
+  ο.hostPlatform = ρ,
+  ρ.platform = σ,
+  σ.kernelTarget = η,
+  ε.loader = τ,
+  τ.generationsDir = υ,
+  υ.copyKernels = π,
+  φ.loader = χ,
+  χ.generationsDir = ψ,
+  ψ.enable = ζ,
   μ.bool = κ,
   ω.bool = α1
 ) =>

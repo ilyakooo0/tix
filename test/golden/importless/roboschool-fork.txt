@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
 ( α.isDarwin = β,
   α.isLinux = γ,
   α.lib = δ,
@@ -21,25 +21,23 @@
       version = String;
     } ->
     λ,
-  α.optionalString = μ -> String -> ι,
-  α.optionals = γ -> [ν] -> [ε],
-  ξ.lib = α,
-  ο.lib = α,
-  π.lib = α,
-  δ.licenses = ρ,
-  δ.platforms = σ,
-  ρ.zlib = ζ,
-  σ.unix = η,
-  τ.lib = α
+  δ.optionals = γ -> [μ] -> [ε],
+  ν.optionals = β -> [ξ] -> [ε],
+  ο.optionals = π -> [String] -> [String],
+  ρ.licenses = σ,
+  ρ.platforms = τ,
+  σ.zlib = ζ,
+  τ.unix = η,
+  υ.optionalString = φ -> String -> ι
 ) =>
-{ Cocoa = υ;
-  OpenGL = υ;
+{ Cocoa = ξ;
+  OpenGL = ξ;
   cmake = θ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
-  freeglut = ν;
-  libGL = ν;
-  libGLU = ν;
+  freeglut = μ;
+  libGL = μ;
+  libGLU = μ;
   stdenv = α;
 } ->
 λ

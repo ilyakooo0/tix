@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ.
-( α.licenses = β,
+( α.lib = β,
   α.mkDerivation =
     { buildFlags = [String];
       buildInputs = [String];
@@ -19,9 +19,9 @@
       version = String;
     } ->
     ε,
-  β.lgpl2 = γ,
-  β.qpl = γ,
-  ζ.lib = α
+  β.licenses = ζ,
+  ζ.lgpl2 = γ,
+  ζ.qpl = γ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> δ;
   ncurses = String;

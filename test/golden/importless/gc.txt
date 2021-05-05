@@ -18,9 +18,9 @@
   θ.maintainers = κ,
   θ.offline = δ,
   θ.rev = λ,
-  μ.platforms = ε,
+  μ.meta = ν,
   ι.asl20 = γ,
-  ν.meta = μ
+  ν.platforms = ε
 ) =>
 { coreutils = ξ;
   docker = μ;

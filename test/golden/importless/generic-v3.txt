@@ -8,8 +8,8 @@
   α.stdenv = ζ,
   α.version = η,
   α.zlib = θ,
-  ζ.bsd3 = ι,
-  ζ.isDarwin = κ,
+  ζ.isDarwin = ι,
+  ζ.lib = κ,
   ζ.mkDerivation =
     { buildInputs = [θ];
       configureFlags = [String];
@@ -19,9 +19,9 @@
       meta =
         { description = String;
           homepage = String;
-          license = ι;
+          license = λ;
           longDescription = String;
-          platforms = λ;
+          platforms = μ;
         };
       nativeBuildInputs = [Null];
       passthru = {version = η;};
@@ -30,16 +30,14 @@
       src = δ;
       version = η;
     } ->
-    μ,
-  ζ.optionalString = κ -> String -> String,
-  ζ.unix = λ,
-  ν.licenses = ζ,
-  ξ.lib = ν,
-  ο.platforms = ζ,
-  π.lib = ο,
-  ρ.lib = ζ,
-  σ.bsd3 = τ,
-  σ.isDarwin = υ,
+    ν,
+  κ.licenses = ξ,
+  ξ.bsd3 = λ,
+  ο.platforms = π,
+  π.unix = μ,
+  ρ.optionalString = ι -> String -> String,
+  σ.isDarwin = τ,
+  σ.lib = υ,
   σ.mkDerivation =
     { buildInputs = [θ];
       configureFlags = [String];
@@ -49,9 +47,9 @@
       meta =
         { description = String;
           homepage = String;
-          license = τ;
+          license = φ;
           longDescription = String;
-          platforms = φ;
+          platforms = χ;
         };
       nativeBuildInputs = [Null];
       passthru = {version = η;};
@@ -61,18 +59,15 @@
       version = η;
     } ->
     Null,
-  σ.optionalString = υ -> String -> String,
-  σ.unix = φ,
-  χ.licenses = σ,
-  ψ.lib = χ,
-  ω.platforms = σ,
-  α1.lib = ω,
-  β1.lib = σ,
+  υ.licenses = ψ,
+  ψ.bsd3 = φ,
+  ω.platforms = α1,
+  α1.unix = χ,
+  β1.optionalString = τ -> String -> String,
   ζ.buildPlatform = γ1,
   ζ.hostPlatform = γ1,
-  β.cc = Null,
-  β.stdenv = σ,
+  β.stdenv = δ1,
   β.which = Null,
-  δ1.stdenv = β
+  δ1.cc = Null
 ) =>
-α -> μ
+α -> ν

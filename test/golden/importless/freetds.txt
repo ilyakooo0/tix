@@ -2,26 +2,26 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.freetds = ε,
-  γ.attrNames = ε -> ζ,
-  γ.concatStrings = η -> θ,
-  γ.length = ζ -> Integer,
-  γ.literalExample = String -> ι,
-  γ.mapAttrsToList = (κ -> λ -> String) -> ε -> η,
+  β.environment = ε,
+  γ.attrNames = ζ -> η,
+  γ.concatStrings = θ -> ι,
+  γ.length = η -> Integer,
+  γ.literalExample = String -> κ,
+  γ.mapAttrsToList = (λ -> μ -> String) -> ζ -> θ,
   γ.mkIf =
     Bool ->
     { environment =
-        { etc = {freetds.conf = {text = θ;};};
+        { etc = {freetds.conf = {text = ι;};};
           variables =
             {FREETDS = String; FREETDSCONF = String; SYBASE = String;};
         };
     } ->
-    μ,
+    ν,
   γ.mkOption =
-    {default = {}; description = String; example = ι; type = ν;} -> ξ,
-  γ.types = ο,
-  π.environment = β,
-  ο.attrsOf = ρ -> ν,
+    {default = {}; description = String; example = κ; type = ξ;} -> ο,
+  γ.types = π,
+  ε.freetds = ζ,
+  π.attrsOf = ρ -> ξ,
   σ.str = ρ
 ) =>
-α -> {config = μ; options = {environment = {freetds = ξ;};};}
+α -> {config = ν; options = {environment = {freetds = ο;};};}

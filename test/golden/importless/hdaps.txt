@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.hdapsd = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -12,7 +12,7 @@
     } ->
     ι,
   δ.hdapsd = θ,
-  ε.enable = η,
-  κ.services = β
+  ε.hdapsd = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {services = {hdapsd = {enable = ζ;};};};}

@@ -2,8 +2,8 @@
 ( α.chardet = β,
   α.dateutil = β,
   α.gdal = β,
-  α.gpl2Plus = γ,
   α.jinja2 = β,
+  α.licenses = γ,
   α.linux = δ,
   α.lsix = ε,
   α.maintainers = ζ,
@@ -21,7 +21,7 @@
   α.sip = β,
   α.six = β,
   α.urllib3 = β,
-  θ.licenses = α
+  γ.gpl2Plus = θ
 ) =>
 { bison = ι;
   cmake = ι;
@@ -44,7 +44,7 @@
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = θ;
           maintainers = [ε];
           platforms = δ;
         };

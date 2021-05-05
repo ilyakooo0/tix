@@ -1,4 +1,4 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1.
 ( ( γ
   ) //
   ( { dontBuild = Bool;
@@ -50,9 +50,10 @@
       version = ν;
     }
   ),
-  ο.lib = π,
-  ο.makeLibraryPath = [ι] -> θ,
-  ο.mkDerivation =
+  ο.?scripts = [π],
+  ρ.?scripts = [π],
+  σ.lib = τ,
+  σ.mkDerivation =
     { buildInputs = [κ];
       cmakeFlags = String;
       meta = ∀ α. α;
@@ -66,28 +67,25 @@
       version = ν;
     } ->
     ι,
-  ο.strings = ρ,
-  σ.scripts = [τ],
-  υ.scripts = [τ],
-  ρ.baseName = τ,
-  ρ.concatStringsSep = String -> φ -> χ,
-  ρ.licenses = ψ,
-  ρ.magnetophon = ω,
-  ρ.maintainers = α1,
-  ρ.map = (β1 -> String) -> [ι] -> φ,
-  ρ.platforms = γ1,
-  ρ.pmahoney = ω,
-  ρ.src = δ,
-  ρ.version = ν,
-  ρ.wrap = λ,
-  ρ.wrapWithBuildEnv = μ,
-  δ1.lib = ο,
-  ψ.gpl2 = ε1,
-  γ1.linux = ζ1,
-  η1.lib = ο
+  τ.strings = υ,
+  υ.baseName = π,
+  υ.concatStringsSep = String -> φ -> χ,
+  υ.licenses = ψ,
+  υ.magnetophon = ω,
+  υ.maintainers = α1,
+  υ.map = (β1 -> String) -> [ι] -> φ,
+  υ.platforms = γ1,
+  υ.pmahoney = ω,
+  υ.src = δ,
+  υ.version = ν,
+  υ.wrap = λ,
+  υ.wrapWithBuildEnv = μ,
+  ψ.gpl2 = δ1,
+  γ1.linux = ε1,
+  τ.makeLibraryPath = [ι] -> θ
 ) =>
 { cmake = η;
-  coreutils = θ1;
+  coreutils = ζ1;
   emscripten = κ;
   fetchFromGitHub =
     { fetchSubmodules = Bool;
@@ -96,7 +94,7 @@
       rev = String;
       sha256 = String;
     } ->
-    ι1;
+    η1;
   gnutls = κ;
   libmicrohttpd = κ;
   libsndfile = κ;
@@ -106,7 +104,7 @@
   openssl = κ;
   p11-kit = κ;
   pkgconfig = η;
-  stdenv = ο;
+  stdenv = σ;
   vim = η;
   which = η;
 } ->

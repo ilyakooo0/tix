@@ -16,12 +16,12 @@
       version = String;
     } ->
     ι,
-  γ.platforms = ζ,
-  β.licenses = κ,
-  β.maintainers = λ,
-  κ.gpl2 = δ,
-  λ.steve-chavez = ε,
-  μ.meta = γ
+  γ.meta = κ,
+  β.licenses = λ,
+  β.maintainers = μ,
+  λ.gpl2 = δ,
+  μ.steve-chavez = ε,
+  κ.platforms = ζ
 ) =>
 { boost = γ;
   cmake = η;

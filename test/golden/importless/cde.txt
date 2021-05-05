@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xserver = ε,
+  β.services = ε,
   γ.bitmap = ζ,
   γ.listOf = η -> θ,
   γ.literalExample = String -> ι,
@@ -49,12 +49,12 @@
   γ.xwininfo = ζ,
   γ.xwud = ζ,
   δ.xorg = π,
-  ε.cde = ρ,
-  ε.enable = Bool,
-  σ.services = β,
+  ε.xserver = ρ,
+  ρ.desktopManager = σ,
   ρ.enable = Bool,
-  ρ.extraPackages = μ,
-  τ.desktopManager = ε,
+  σ.cde = τ,
+  τ.enable = Bool,
+  τ.extraPackages = μ,
   κ.gnidorah = υ
 ) =>
 α ->

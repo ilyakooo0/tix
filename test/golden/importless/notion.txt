@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.notion = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -14,10 +14,10 @@
     } ->
     ι,
   δ.notion = θ,
-  ε.enable = η,
-  κ.windowManager = β,
-  λ.xserver = κ,
-  μ.services = λ
+  ε.xserver = κ,
+  κ.windowManager = λ,
+  λ.notion = μ,
+  μ.enable = η
 ) =>
 α ->
 { config = ι;

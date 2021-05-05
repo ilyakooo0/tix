@@ -1,6 +1,6 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.lib = β,
-  α.makeLibraryPath = [γ] -> String,
+( α.hostPlatform = β,
+  α.lib = γ,
   α.mkDerivation =
     { dontPatchELF = Bool;
       dontStrip = Bool;
@@ -17,20 +17,19 @@
       version = String;
     } ->
     θ,
-  α.system = String,
-  ι.lib = α,
-  κ.hostPlatform = α,
-  λ.hostPlatform = α,
-  β.joko = ε,
-  β.licenses = μ,
-  β.maintainers = ν,
-  β.platforms = ξ,
+  γ.makeLibraryPath = [ι] -> String,
+  β.system = String,
+  κ.system = String,
+  λ.joko = ε,
+  λ.licenses = μ,
+  λ.maintainers = ν,
+  λ.platforms = ξ,
   μ.unfree = δ,
   ξ.linux = ζ
 ) =>
-{ cups = γ;
+{ cups = ι;
   fetchurl = {sha256 = String; url = String;} -> η;
-  libusb-compat-0_1 = γ;
+  libusb-compat-0_1 = ι;
   stdenv = α;
 } ->
 θ

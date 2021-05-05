@@ -2,30 +2,30 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
-      systemd = {packages = [θ];};
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.teams = μ,
-  γ.types = ν,
-  δ.evolution-data-server = ζ,
-  ξ.evolution-data-server = β,
-  ο.gnome3 = ξ,
-  π.services = ο,
-  ρ.gnome3 = δ,
-  σ.gnome3 = δ,
-  τ.gnome3 = δ,
-  μ.members = υ,
-  φ.gnome = μ,
-  ν.bool = κ
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.teams = ν,
+  γ.types = ξ,
+  δ.gnome3 = ο,
+  ε.gnome3 = π,
+  π.evolution-data-server = ρ,
+  ρ.enable = ζ,
+  ο.evolution-data-server = η,
+  σ.evolution-data-server = θ,
+  τ.evolution-data-server = ι,
+  ν.gnome = υ,
+  υ.members = φ,
+  ξ.bool = λ
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = υ;};
-  options = {services = {gnome3 = {evolution-data-server = {enable = λ;};};};};
+{ config = κ;
+  meta = {maintainers = φ;};
+  options = {services = {gnome3 = {evolution-data-server = {enable = μ;};};};};
 }

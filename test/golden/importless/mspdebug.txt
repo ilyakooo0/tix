@@ -1,0 +1,55 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1.
+( α.isDarwin = Bool,
+  α.isLinux = Bool,
+  α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      enableParallelBuilding = Bool;
+      installFlags = [String];
+      makeFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      nativeBuildInputs = [η];
+      pname = String;
+      postFixup = θ;
+      postPatch = ι;
+      runtimeDependencies = κ;
+      src = λ;
+      unameS = μ;
+      version = String;
+    } ->
+    ν,
+  β.optionalString = ξ -> String -> μ,
+  ο.optional = Bool -> Null -> κ,
+  π.optionalString = ρ -> String -> ι,
+  σ.optionalString = Bool -> String -> θ,
+  τ.optional = υ -> Null -> [η],
+  φ.optional = Bool -> χ -> [η],
+  ψ.aerialx = ε,
+  ψ.licenses = ω,
+  ψ.maintainers = α1,
+  ψ.platforms = β1,
+  ω.gpl2 = δ,
+  β1.all = ζ,
+  γ1.optional = Bool -> String -> [String],
+  δ1.optional = ε1 -> Null -> [γ],
+  ζ1.optional = Bool -> Null -> [γ]
+) =>
+{ autoPatchelfHook = χ;
+  enableMspds = Bool;
+  enableReadline = Bool;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
+  hidapi = Null;
+  libusb-compat-0_1 = γ;
+  mspds = Null;
+  pkg-config = Null;
+  readline = Null;
+  stdenv = α;
+} ->
+ν

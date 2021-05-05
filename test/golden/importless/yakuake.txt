@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.gpl2 = β,
+( α.licenses = β,
   α.maintainers = γ,
-  δ.licenses = α,
+  β.gpl2 = δ,
   γ.fridh = ε
 ) =>
 { extra-cmake-modules = ζ;
@@ -23,7 +23,7 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
         };
       name = String;

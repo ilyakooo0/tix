@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       meta =
@@ -9,24 +9,22 @@
           homepage = String;
           license = δ;
           maintainers = [ε];
-          platforms = β;
+          platforms = ζ;
           version = String;
         };
       name = String;
       postBuild = String;
       postInstall = String;
       preConfigure = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.raskin = ε,
-  α.zlib = δ,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.zlib = δ,
+  κ.maintainers = λ,
+  λ.raskin = ε,
+  μ.platforms = ν,
+  ν.linux = ζ
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ζ; stdenv = α; unzip = γ;} -> η
+{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; unzip = γ;} -> θ

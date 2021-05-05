@@ -1,6 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.linux = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
     { dontBuild = Bool;
       dontPatchELF = Bool;
@@ -9,9 +8,9 @@
       meta =
         { description = String;
           homepage = String;
-          license = δ;
-          maintainers = [ε];
-          platforms = β;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
         };
       name = String;
       patchPhase = String;
@@ -19,13 +18,12 @@
       unpackPhase = String;
     } ->
     η,
-  α.unfree = δ,
-  θ.licenses = α,
-  ι.lib = θ,
-  γ.jraygauthier = ε,
-  κ.lib = α,
-  λ.platforms = α,
-  μ.lib = λ
+  β.licenses = θ,
+  θ.unfree = γ,
+  ι.maintainers = κ,
+  κ.jraygauthier = δ,
+  λ.platforms = μ,
+  μ.linux = ε
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> ζ;
   libsaneUDevRuleNumber = String;

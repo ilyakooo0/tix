@@ -1,35 +1,35 @@
 ∀ β γ δ ε ζ η θ ι.
-( β.override =
+( β.python2Packages = γ,
+  δ.azure-mgmt-compute = ε,
+  δ.azure-mgmt-network = ε,
+  δ.azure-mgmt-resource = ε,
+  δ.azure-mgmt-storage = ε,
+  δ.azure-storage = ε,
+  γ.override =
     { overrides =
         ∀ α.
-        γ ->
+        ζ ->
         α ->
-        { azure-mgmt-compute = δ;
-          azure-mgmt-network = δ;
-          azure-mgmt-nspkg = δ;
-          azure-mgmt-resource = δ;
-          azure-mgmt-storage = δ;
-          azure-storage = δ;
+        { azure-mgmt-compute = η;
+          azure-mgmt-network = η;
+          azure-mgmt-nspkg = η;
+          azure-mgmt-resource = η;
+          azure-mgmt-storage = η;
+          azure-storage = η;
         };
     } ->
-    ε,
-  ε.azure-mgmt-compute = ζ,
-  ε.azure-mgmt-network = ζ,
-  ε.azure-mgmt-resource = ζ,
-  ε.azure-mgmt-storage = ζ,
-  ε.azure-storage = ζ,
-  η.python2Packages = β
+    δ
 ) =>
 { callPackage =
     Path ->
-    { nixopsAzurePackages = [ζ];
-      python2Packages = ε;
+    { nixopsAzurePackages = [ε];
+      python2Packages = δ;
       src = θ;
       version = String;
     } ->
     ι;
   fetchurl = {sha256 = String; url = String;} -> θ;
-  newScope = γ -> Path -> {} -> δ;
+  newScope = ζ -> Path -> {} -> η;
   pkgs = β;
 } ->
 ι

@@ -14,13 +14,13 @@
       version = String;
     } ->
     ι,
-  θ.homepage = δ,
+  θ.meta = κ,
   β.dtzWill = ζ,
-  β.licenses = κ,
-  β.maintainers = λ,
+  β.licenses = λ,
+  β.maintainers = μ,
   β.mic92 = ζ,
-  κ.gpl3 = ε,
-  μ.meta = θ
+  λ.gpl3 = ε,
+  κ.homepage = δ
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> θ;

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+(α.maintainers = β, β.ttuegel = γ) => { extra-cmake-modules = δ;
   fetchpatch = ε;
   kconfig = ζ;
   kcoreaddons = ζ;
@@ -10,7 +10,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [ζ];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [δ];
       propagatedBuildInputs = [η];

@@ -1,18 +1,17 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.asl20 = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       installPhase = String;
       meta =
-        {description = String; homepage = String; license = β; platforms = δ;};
+        {description = String; homepage = String; license = δ; platforms = ε;};
       name = String;
-      src = ε;
+      src = ζ;
     } ->
-    ζ,
-  α.unix = δ,
-  η.licenses = α,
-  θ.lib = η,
-  ι.platforms = α,
-  κ.lib = ι
+    η,
+  β.licenses = θ,
+  θ.asl20 = δ,
+  ι.platforms = κ,
+  κ.unix = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = α; unzip = γ;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> ζ; stdenv = α; unzip = γ;} -> η

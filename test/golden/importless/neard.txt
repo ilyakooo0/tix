@@ -2,17 +2,17 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
-      services = {dbus = {packages = [θ];};};
-      systemd = {packages = [ι];};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
     } ->
-    κ,
-  δ.neard = η,
-  λ.neard = β,
-  μ.services = λ
+    λ,
+  δ.neard = θ,
+  ε.neard = μ,
+  μ.enable = η
 ) =>
-α -> {config = κ; options = {services = {neard = {enable = ζ;};};};}
+α -> {config = λ; options = {services = {neard = {enable = ζ;};};};}

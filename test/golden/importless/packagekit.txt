@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.packagekit = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -19,8 +19,8 @@
   γ.mkOption = {default = String; description = String; type = λ;} -> μ,
   γ.packagekit = θ,
   γ.types = ν,
-  ε.enable = η,
-  ξ.services = β,
+  ε.packagekit = ξ,
+  ξ.enable = η,
   ν.enum = [String] -> λ
 ) =>
 α ->

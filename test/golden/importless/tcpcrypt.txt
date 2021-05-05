@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.tcpcrypt = ε,
-  β.tcpcryptd = ζ,
+  β.ids = ε,
+  β.networking = ζ,
   γ.mkIf =
     η ->
     { systemd =
@@ -19,18 +19,18 @@
                 };
             };
         };
-      users = {users = {tcpcryptd = {description = String; uid = ζ;};};};
+      users = {users = {tcpcryptd = {description = String; uid = ι;};};};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.types = μ,
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
   δ.iptables = θ,
   δ.procps = θ,
   δ.tcpcrypt = θ,
-  ε.enable = η,
-  ν.networking = β,
-  ξ.uids = β,
-  ο.ids = ξ,
-  μ.bool = κ
+  ζ.tcpcrypt = ξ,
+  ξ.enable = η,
+  ε.uids = ο,
+  ο.tcpcryptd = ι,
+  ν.bool = λ
 ) =>
-α -> {config = ι; options = {networking = {tcpcrypt = {enable = λ;};};};}
+α -> {config = κ; options = {networking = {tcpcrypt = {enable = μ;};};};}

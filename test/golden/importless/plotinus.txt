@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.plotinus = ε,
+  β.programs = ε,
   γ.mkIf =
     ζ ->
     { environment =
@@ -11,15 +11,15 @@
     η,
   γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
   γ.types = κ,
-  δ.maintainers = λ,
-  ε.enable = ζ,
-  μ.programs = β,
-  ν.meta = δ,
-  ξ.plotinus = ν,
+  δ.plotinus = λ,
+  ε.plotinus = μ,
+  μ.enable = ζ,
+  λ.meta = ν,
+  ν.maintainers = ξ,
   κ.bool = θ
 ) =>
 α ->
 { config = η;
-  meta = {doc = Path; maintainers = λ;};
+  meta = {doc = Path; maintainers = ξ;};
   options = {programs = {plotinus = {enable = ι;};};};
 }

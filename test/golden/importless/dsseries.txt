@@ -3,23 +3,23 @@
   δ.config = ε,
   δ.lib = ζ,
   δ.pkgs = η,
-  ε.enable = Bool,
+  ε.hardware = θ,
   ζ.mkEnableOption = String -> β,
   ζ.mkIf =
     Bool ->
     { boot = {kernelModules = [String];};
-      hardware = {sane = {extraBackends = [θ];};};
-      services = {udev = {packages = [ι];};};
+      hardware = {sane = {extraBackends = [ι];};};
+      services = {udev = {packages = [κ];};};
     } ->
-    κ,
-  η.dsseries = θ,
-  λ.sane = ε,
-  μ.hardware = λ,
-  ν.dsseries = ε,
-  ξ.sane = ν,
-  ο.hardware = ξ
+    λ,
+  η.dsseries = ι,
+  θ.sane = μ,
+  μ.enable = Bool,
+  ν.sane = ξ,
+  ξ.dsseries = ο,
+  ο.enable = Bool
 ) =>
 δ ->
-{ config = κ;
+{ config = λ;
   options = {hardware = {sane = {dsseries = {enable = ∀ α. α;};};};};
 }

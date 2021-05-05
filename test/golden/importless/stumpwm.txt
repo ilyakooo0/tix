@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.stumpwm = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -11,12 +11,12 @@
     } ->
     κ,
   γ.singleton = {name = String; start = String;} -> ι,
-  δ.stumpwm = θ,
-  ε.enable = η,
-  λ.windowManager = β,
-  μ.xserver = λ,
-  ν.services = μ,
-  ξ.lispPackages = δ
+  δ.lispPackages = λ,
+  ε.xserver = μ,
+  μ.windowManager = ν,
+  ν.stumpwm = ξ,
+  ξ.enable = η,
+  λ.stumpwm = θ
 ) =>
 α ->
 { config = κ;

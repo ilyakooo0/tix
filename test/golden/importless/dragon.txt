@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ.
-( α.jonathanreeve = β,
-  α.licenses = γ,
-  γ.fdl12 = δ,
-  γ.gpl2 = δ,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.fdl12 = δ,
+  β.gpl2 = δ,
+  γ.jonathanreeve = ε
 ) =>
 { baloo = ζ;
   baloo-widgets = ζ;
@@ -29,7 +29,7 @@
   kwindowsystem = ζ;
   lib = α;
   mkDerivation =
-    { meta = {description = String; license = [δ]; maintainers = [β];};
+    { meta = {description = String; license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

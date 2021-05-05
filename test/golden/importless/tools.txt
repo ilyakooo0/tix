@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-(α.asl20 = β, γ.licenses = α) => { afdko = δ;
+(α.licenses = β, β.asl20 = γ) => { afdko = δ;
   appdirs = δ;
   attrs = δ;
   bash = ε;
@@ -10,7 +10,7 @@
     { checkInputs = [ε];
       checkPhase = String;
       disabled = ζ;
-      meta = {description = String; homepage = String; license = β;};
+      meta = {description = String; homepage = String; license = γ;};
       nativeBuildInputs = [η];
       pname = String;
       postInstall = String;

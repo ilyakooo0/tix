@@ -1,10 +1,9 @@
 ∀ α β γ δ ε ζ.
 ( α.hostPlatform = β,
   α.lib = γ,
-  α.optionals = Bool -> [String] -> [String],
   α.targetPlatform = β,
   γ.optionals = Bool -> [String] -> [δ],
-  ε.lib = α
+  ε.optionals = Bool -> [String] -> [String]
 ) =>
 { crossStageStatic = Bool;
   langD = Bool;

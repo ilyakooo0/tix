@@ -3,8 +3,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.liquidsoap = ε,
-  β.streams = ζ,
+  β.ids = ε,
+  β.services = ζ,
   γ.builtins = η,
   γ.literalExample = String -> θ,
   γ.map =
@@ -25,7 +25,7 @@
     Bool ->
     { systemd = {services = ν;};
       users =
-        { groups = {liquidsoap = {gid = ε;};};
+        { groups = {liquidsoap = {gid = ξ;};};
           users =
             { liquidsoap =
                 { createHome = Bool;
@@ -33,36 +33,36 @@
                   extraGroups = [String];
                   group = String;
                   home = String;
-                  uid = ξ;
+                  uid = ο;
                 };
             };
         };
     } ->
-    ο,
+    π,
   γ.mkOption =
     { default = {};
       description = String;
-      example = {myStream1 = θ; myStream2 = π; myStream3 = ρ;};
-      type = σ;
+      example = {myStream1 = θ; myStream2 = ρ; myStream3 = σ;};
+      type = τ;
     } ->
-    τ,
-  γ.types = υ,
+    υ,
+  γ.types = φ,
   δ.wget = κ,
-  η.attrNames = ζ -> λ,
-  φ.liquidsoap = β,
-  χ.services = φ,
-  ψ.getAttr = ι -> ω -> α1,
-  β1.liquidsoap = β,
-  γ1.services = β1,
-  δ1.length = λ -> Integer,
-  ε1.listToAttrs = μ -> ν,
-  ζ1.gids = β,
-  η1.ids = ζ1,
-  θ1.uids = β,
-  ι1.ids = θ1,
-  υ.attrsOf = κ1 -> σ,
+  η.attrNames = χ -> λ,
+  ζ.liquidsoap = ψ,
+  ψ.streams = χ,
+  ω.getAttr = ι -> α1 -> β1,
+  γ1.liquidsoap = δ1,
+  δ1.streams = α1,
+  ε1.length = λ -> Integer,
+  ζ1.listToAttrs = μ -> ν,
+  ε.gids = η1,
+  η1.liquidsoap = ξ,
+  θ1.uids = ι1,
+  ι1.liquidsoap = ο,
+  φ.attrsOf = κ1 -> τ,
   λ1.either = μ1 -> ν1 -> κ1,
   ξ1.path = μ1,
   ο1.str = ν1
 ) =>
-α -> {config = ο; options = {services = {liquidsoap = {streams = τ;};};};}
+α -> {config = π; options = {services = {liquidsoap = {streams = υ;};};};}

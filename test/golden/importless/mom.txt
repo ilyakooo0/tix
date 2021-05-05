@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.mom = ε,
+  β.services = ε,
   δ.torque = ζ,
   δ.writeText = String -> String -> η,
   γ.inetutils = ζ,
@@ -34,9 +34,9 @@
   γ.procps = ζ,
   γ.types = ξ,
   γ.utillinux = ζ,
-  ε.enable = ι,
-  ο.torque = β,
-  π.services = ο,
+  ε.torque = ο,
+  ο.mom = π,
+  π.enable = ι,
   ξ.str = μ
 ) =>
 α ->

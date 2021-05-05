@@ -14,30 +14,29 @@
   β.which = γ,
   θ.cc = κ,
   θ.lib = λ,
-  θ.makeLibraryPath = [κ] -> μ,
   θ.mkDerivation =
     { installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ν;
-          maintainers = [ξ];
-          platforms = ο;
+          license = μ;
+          maintainers = [ν];
+          platforms = ξ;
         };
       nativeBuildInputs = [δ];
       pname = String;
       src = ζ;
       version = ∀ α. α;
     } ->
-    π,
-  ρ.lib = θ,
-  σ.cc = θ,
-  λ.makeBinPath = [γ] -> τ,
-  υ.cransom = ξ,
+    ο,
+  λ.makeLibraryPath = [π] -> ρ,
+  κ.cc = π,
+  σ.makeBinPath = [γ] -> τ,
+  υ.cransom = ν,
   υ.licenses = φ,
   υ.maintainers = χ,
   υ.platforms = ψ,
-  φ.asl20 = ν,
-  ψ.unix = ο
+  φ.asl20 = μ,
+  ψ.unix = ξ
 ) =>
-β -> π
+β -> ο

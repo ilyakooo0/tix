@@ -2,16 +2,16 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.kernel = ζ,
-  γ.getVersion = ζ -> η,
+  β.boot = ε,
+  β.services = ζ,
+  γ.getVersion = η -> θ,
   γ.mkIf =
-    ε ->
+    ι ->
     { systemd =
         { services =
             { klogd =
                 { description = String;
-                  path = [θ];
+                  path = [κ];
                   script = String;
                   unitConfig = {ConditionVirtualization = String;};
                   wantedBy = [String];
@@ -19,15 +19,15 @@
             };
         };
     } ->
-    ι,
-  γ.mkOption = {default = κ; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  γ.versionOlder = η -> String -> κ,
-  δ.sysklogd = θ,
-  ξ.klogd = β,
-  ο.services = ξ,
-  π.kernelPackages = β,
-  ρ.boot = π,
-  ν.bool = λ
+    λ,
+  γ.mkOption = {default = μ; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  γ.versionOlder = θ -> String -> μ,
+  δ.sysklogd = κ,
+  ζ.klogd = π,
+  π.enable = ι,
+  ε.kernelPackages = ρ,
+  ρ.kernel = η,
+  ο.bool = ν
 ) =>
-α -> {config = ι; options = {services = {klogd = {enable = μ;};};};}
+α -> {config = λ; options = {services = {klogd = {enable = ξ;};};};}

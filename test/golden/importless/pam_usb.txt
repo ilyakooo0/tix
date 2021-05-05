@@ -2,11 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.services = ε,
-  β.usb = ζ,
-  γ.any = η -> θ -> Bool,
-  γ.attrByPath = [String] -> Bool -> η,
-  γ.attrValues = ε -> θ,
+  β.security = ε,
+  γ.any = ζ -> η -> Bool,
+  γ.attrByPath = [String] -> Bool -> ζ,
+  γ.attrValues = θ -> η,
   γ.mkIf =
     Bool ->
     { environment = {systemPackages = [ι];};
@@ -19,11 +18,11 @@
   γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
   γ.types = ν,
   δ.pmount = ι,
-  ζ.enable = Bool,
-  ξ.pam = β,
-  ο.security = ξ,
-  π.pam = β,
-  ρ.security = π,
+  ε.pam = ξ,
+  ξ.usb = ο,
+  ο.enable = Bool,
+  π.pam = ρ,
+  ρ.services = θ,
   ν.bool = λ
 ) =>
 α -> {config = κ; options = {security = {pam = {usb = {enable = μ;};};};};}

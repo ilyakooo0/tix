@@ -16,15 +16,13 @@
       src = κ;
     } ->
     λ,
-  α.optionalString = Bool -> String -> η,
-  α.optionals = Bool -> [String] -> θ,
   γ.licenses = μ,
   γ.platforms = ν,
   μ.bsd2 = ε,
   ν.unix = ζ,
-  ξ.lib = α,
-  ο.lib = α,
-  π.lib = α
+  ξ.optionalString = Bool -> String -> η,
+  ο.optionalString = Bool -> String -> String,
+  π.optionals = Bool -> [String] -> θ
 ) =>
 { bison = δ;
   fetchurl = {sha256 = String; url = String;} -> κ;

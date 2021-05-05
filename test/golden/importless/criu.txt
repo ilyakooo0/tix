@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.criu = ε,
-  β.kernelConfig = ζ,
+  β.lib = ε,
+  β.programs = ζ,
   γ.isYes = String -> η,
   γ.mkIf =
     θ ->
@@ -15,9 +15,9 @@
   γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
   γ.types = ν,
   δ.criu = ι,
-  ε.enable = θ,
-  ξ.programs = β,
-  ο.lib = β,
+  ζ.criu = ξ,
+  ξ.enable = θ,
+  ε.kernelConfig = ο,
   ν.bool = λ
 ) =>
 α -> {config = κ; options = {programs = {criu = {enable = μ;};};};}

@@ -2,24 +2,24 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.programs = ε,
   γ.maintainers = ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment =
-        {systemPackages = [η]; variables = {QT_QPA_PLATFORMTHEME = String;};};
+        {systemPackages = [θ]; variables = {QT_QPA_PLATFORMTHEME = String;};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.qt5ct = η,
-  γ.types = λ,
-  μ.qt5ct = β,
-  ν.programs = μ,
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.qt5ct = θ,
+  γ.types = μ,
+  ε.qt5ct = ν,
+  ν.enable = η,
   ζ.romildo = ξ,
-  λ.bool = ι
+  μ.bool = κ
 ) =>
 α ->
-{ config = θ;
+{ config = ι;
   meta = {maintainers = [ξ];};
-  options = {programs = {qt5ct = {enable = κ;};};};
+  options = {programs = {qt5ct = {enable = λ;};};};
 }

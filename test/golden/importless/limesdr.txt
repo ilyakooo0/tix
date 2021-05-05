@@ -16,15 +16,14 @@
       version = String;
     } ->
     ι,
-  α.optionals = Bool -> [Null] -> [γ],
-  κ.lib = α,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.platforms = ν,
+  β.optionals = Bool -> [Null] -> [γ],
+  κ.licenses = λ,
+  κ.maintainers = μ,
+  κ.platforms = ν,
   λ.mit = δ,
   μ.markuskowa = ε,
   ν.linux = ζ,
-  ξ.lib = α
+  ξ.optionals = Bool -> [Null] -> [η]
 ) =>
 { boost = γ;
   cmake = η;

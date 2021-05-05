@@ -1,36 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.asl20 = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       installPhase = String;
       meta =
         { description = String;
           downloadPage = String;
           downloadURLRegexp = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
-          platforms = γ;
+          platforms = ζ;
           updateWalker = Bool;
           version = String;
         };
       name = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.raskin = ε,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.asl20 = δ,
+  κ.maintainers = λ,
+  λ.raskin = ε,
+  μ.platforms = ν,
+  ν.linux = ζ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
+{ fetchurl = {sha256 = String; url = String;} -> η;
   java = ξ;
-  makeWrapper = δ;
+  makeWrapper = γ;
   stdenv = α;
 } ->
-η
+θ

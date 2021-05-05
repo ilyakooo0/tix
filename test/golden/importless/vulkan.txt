@@ -1,43 +1,42 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.gnidorah = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
     { buildFlags = [String];
-      buildInputs = [δ];
+      buildInputs = [γ];
       enableParallelBuilding = Bool;
       makeFlags = [String];
       meta =
         { description = String;
-          homepage = ε;
+          homepage = δ;
           longDescription = String;
-          maintainers = [β];
-          platforms = γ;
+          maintainers = [ε];
+          platforms = ζ;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       pname = String;
       postFixup = String;
       preInstall = String;
       sourceRoot = String;
-      src = η;
+      src = θ;
       version = String;
     } ->
-    θ,
-  η.homepage = ε,
-  ι.maintainers = α,
-  κ.lib = ι,
-  λ.platforms = α,
-  μ.lib = λ,
-  ν.meta = η
+    ι,
+  θ.meta = κ,
+  β.maintainers = λ,
+  λ.gnidorah = ε,
+  μ.platforms = ν,
+  ν.linux = ζ,
+  κ.homepage = δ
 ) =>
-{ SDL2 = δ;
+{ SDL2 = γ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  gzip = δ;
-  libmad = δ;
-  libvorbis = δ;
-  makeWrapper = ζ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gzip = γ;
+  libmad = γ;
+  libvorbis = γ;
+  makeWrapper = η;
   stdenv = α;
-  vulkan-headers = ζ;
-  vulkan-loader = δ;
+  vulkan-headers = η;
+  vulkan-loader = γ;
 } ->
-θ
+ι

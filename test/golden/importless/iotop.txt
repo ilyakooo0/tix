@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.iotop = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -10,7 +10,7 @@
         {wrappers = {iotop = {capabilities = String; source = String;};};};
     } ->
     θ,
-  ε.enable = η,
-  ι.programs = β
+  ε.iotop = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {programs = {iotop = {enable = ζ;};};};}

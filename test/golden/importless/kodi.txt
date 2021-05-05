@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.kodi = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { environment = {systemPackages = [η];};
@@ -15,10 +15,10 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.kodi = η,
-  ε.enable = ζ,
-  μ.desktopManager = β,
-  ν.xserver = μ,
-  ξ.services = ν,
+  ε.xserver = μ,
+  μ.desktopManager = ν,
+  ν.kodi = ξ,
+  ξ.enable = ζ,
   λ.bool = ι
 ) =>
 α ->

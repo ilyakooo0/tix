@@ -2,8 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = Bool,
-  β.iwd = ε,
+  β.networking = ε,
   γ.dtzWill = ζ,
   γ.maintainers = η,
   γ.mic92 = ζ,
@@ -17,11 +16,11 @@
     } ->
     ν,
   δ.iwd = κ,
-  ε.enable = ι,
-  ξ.wireless = β,
-  ο.networking = ξ,
-  π.wireless = β,
-  ρ.networking = π
+  ε.wireless = ξ,
+  ξ.iwd = ο,
+  ο.enable = ι,
+  π.wireless = ρ,
+  ρ.enable = Bool
 ) =>
 α ->
 { config = ν;

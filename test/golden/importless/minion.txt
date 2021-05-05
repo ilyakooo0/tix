@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.minion = ε,
-  β.source = ζ,
+  β.environment = ε,
+  β.services = ζ,
   δ.writeText = String -> η -> θ,
   γ.builtins = ι,
   γ.cfg = κ,
@@ -18,7 +18,7 @@
                 { after = [String];
                   description = String;
                   path = [ξ];
-                  restartTriggers = [ζ];
+                  restartTriggers = [ο];
                   serviceConfig =
                     { ExecStart = String;
                       LimitNOFILE = Integer;
@@ -30,24 +30,24 @@
             };
         };
     } ->
-    ο,
-  γ.mkOption = {default = {}; description = String; type = π;} -> ρ,
-  γ.recursiveUpdate = {default_include = String; pki_dir = String;} -> σ -> τ,
+    π,
+  γ.mkOption = {default = {}; description = String; type = ρ;} -> σ,
+  γ.recursiveUpdate = {default_include = String; pki_dir = String;} -> τ -> υ,
   γ.salt = ν,
-  γ.types = υ,
+  γ.types = φ,
   γ.utillinux = ξ,
-  κ.configuration = σ,
-  ε.enable = μ,
-  φ.salt = β,
-  χ.services = φ,
-  ι.toJSON = τ -> η,
-  ψ.salt/minion = β,
-  ω.etc = ψ,
-  α1.environment = ω,
-  υ.attrs = π
+  κ.configuration = τ,
+  ζ.salt = χ,
+  χ.minion = ψ,
+  ψ.enable = μ,
+  ι.toJSON = υ -> η,
+  ε.etc = ω,
+  ω.salt/minion = α1,
+  α1.source = ο,
+  φ.attrs = ρ
 ) =>
 α ->
-{ config = ο;
+{ config = π;
   options =
-    {services = {salt = {minion = {configuration = ρ; enable = λ;};};};};
+    {services = {salt = {minion = {configuration = σ; enable = λ;};};};};
 }

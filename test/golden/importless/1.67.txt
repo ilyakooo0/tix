@@ -4,9 +4,9 @@
   α.fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> β,
   α.fetchurl = {sha256 = String; url = String;} -> γ,
   α.stdenv = ζ,
-  ζ.isClang = η,
-  ζ.optionals = η -> [β] -> [β],
-  θ.lib = ζ,
-  ι.cc = ζ
+  ζ.cc = η,
+  ζ.lib = θ,
+  θ.optionals = ι -> [β] -> [β],
+  η.isClang = ι
 ) =>
 α -> ε

@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.modemmanager = β,
+( α.services = β,
   γ.mkOption = {default = String; description = String; type = δ;} -> ε,
   γ.types = ζ,
-  η.exporters = α,
-  θ.prometheus = η,
-  ι.services = θ,
+  β.prometheus = η,
+  η.exporters = θ,
+  θ.modemmanager = ι,
   ζ.str = δ
 ) =>
 {config = α; lib = γ; options = κ; pkgs = λ;} ->

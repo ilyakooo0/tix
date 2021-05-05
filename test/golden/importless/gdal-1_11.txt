@@ -1,51 +1,49 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.marcweber = β,
-  α.mit = γ,
+( α.lib = β,
   α.mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
-      buildInputs = [δ];
+      buildInputs = [γ];
       configureFlags = [String];
       enableParallelBuilding = Bool;
       hardeningDisable = [String];
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [β];
-          platforms = [ε];
+          license = δ;
+          maintainers = [ε];
+          platforms = [ζ];
         };
       patches = [Path];
       pname = String;
       preBuild = String;
       preConfigure = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.platforms = θ,
-  ι.numpy = δ,
-  κ.licenses = α,
-  λ.lib = κ,
-  μ.maintainers = α,
-  ν.lib = μ,
-  θ.darwin = [ε],
-  θ.linux = [ε],
-  ξ.lib = α
+    θ,
+  ι.numpy = γ,
+  β.licenses = κ,
+  κ.mit = δ,
+  λ.maintainers = μ,
+  μ.marcweber = ε,
+  ν.platforms = ξ,
+  ξ.darwin = [ζ],
+  ξ.linux = [ζ]
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
+{ fetchurl = {sha256 = String; url = String;} -> η;
   geos = ο;
-  libgeotiff = δ;
-  libjpeg = δ;
-  libpng = δ;
-  libtiff = δ;
+  libgeotiff = γ;
+  libjpeg = γ;
+  libpng = γ;
+  libtiff = γ;
   mysql57 = π;
-  openssl = δ;
+  openssl = γ;
   postgresql = ρ;
-  proj = δ;
-  python = δ;
+  proj = γ;
+  python = γ;
   pythonPackages = ι;
   stdenv = α;
-  unzip = δ;
+  unzip = γ;
   zlib = σ;
 } ->
-η
+θ

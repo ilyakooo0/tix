@@ -1,28 +1,28 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       configureFlags = [String];
       enableParallelBuilding = Bool;
       installFlags = [String];
-      meta = {description = String; homepage = String; platforms = β;};
+      meta = {description = String; homepage = String; platforms = δ;};
       name = String;
-      nativeBuildInputs = [δ];
-      patches = [ε];
+      nativeBuildInputs = [ε];
+      patches = [ζ];
       postInstall = String;
       preConfigure = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  θ.platforms = α,
-  ι.lib = θ
+    θ,
+  β.platforms = ι,
+  ι.linux = δ
 ) =>
 { coreutils = κ;
-  fetchpatch = {excludes = [String]; sha256 = String; url = String;} -> ε;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  pkgconfig = δ;
+  fetchpatch = {excludes = [String]; sha256 = String; url = String;} -> ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  pkgconfig = ε;
   stdenv = α;
   systemd = γ;
   utillinux = λ;
 } ->
-η
+θ

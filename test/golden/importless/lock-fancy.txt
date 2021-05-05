@@ -1,41 +1,40 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.lib = β,
-  α.makeBinPath = [γ] -> δ,
   α.mkDerivation =
     { makeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = ε;
-          maintainers = [ζ];
-          platforms = η;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
         };
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [ζ];
       pname = String;
       postInstall = String;
       postPatch = String;
-      src = ι;
+      src = η;
       version = String;
     } ->
-    κ,
-  λ.lib = α,
-  β.licenses = μ,
-  β.ma27 = ζ,
-  β.maintainers = ν,
-  β.platforms = ξ,
-  μ.mit = ε,
-  ξ.linux = η
+    θ,
+  β.makeBinPath = [ι] -> κ,
+  λ.licenses = μ,
+  λ.ma27 = δ,
+  λ.maintainers = ν,
+  λ.platforms = ξ,
+  μ.mit = γ,
+  ξ.linux = ε
 ) =>
-{ coreutils = γ;
+{ coreutils = ι;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
-  fontconfig = γ;
-  gawk = γ;
-  getopt = γ;
-  grim = γ;
-  imagemagick = γ;
-  makeWrapper = θ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  fontconfig = ι;
+  gawk = ι;
+  getopt = ι;
+  grim = ι;
+  imagemagick = ι;
+  makeWrapper = ζ;
   stdenv = α;
-  swaylock = γ;
+  swaylock = ι;
 } ->
-κ
+θ

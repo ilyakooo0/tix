@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι.
-( β.all = γ,
+( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
       builder = ε;
@@ -9,14 +9,14 @@
         { description = String;
           homepage = String;
           maintainers = ∀ α. α;
-          platforms = γ;
+          platforms = η;
         };
       pname = String;
       version = String;
     } ->
-    η,
-  θ.platforms = β,
-  ι.lib = θ
+    θ,
+  γ.platforms = ι,
+  ι.all = η
 ) =>
 { dict = δ;
   fetchurl = {sha256 = String; url = String;} -> ζ;
@@ -25,4 +25,4 @@
   stdenv = β;
   writeScript = String -> String -> ε;
 } ->
-η
+θ

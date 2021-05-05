@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ.
-( α.versionAtLeast = β -> String -> Bool,
+( α.lib = β,
   γ.meta = δ,
   γ.src = ε,
-  γ.version = β,
-  ζ.lib = α
+  γ.version = ζ,
+  β.versionAtLeast = ζ -> String -> Bool
 ) =>
 { buildDunePackage =
     { buildInputs = [η];

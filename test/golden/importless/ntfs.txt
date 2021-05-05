@@ -2,10 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.supportedFilesystems = ε,
-  γ.any = (String -> Bool) -> ε -> ζ,
-  γ.mkIf = ζ -> {system = {fsPackages = [η];};} -> θ,
-  δ.ntfs3g = η,
-  ι.boot = β
+  β.boot = ε,
+  γ.any = (String -> Bool) -> ζ -> η,
+  γ.mkIf = η -> {system = {fsPackages = [θ];};} -> ι,
+  δ.ntfs3g = θ,
+  ε.supportedFilesystems = ζ
 ) =>
-α -> {config = θ;}
+α -> {config = ι;}

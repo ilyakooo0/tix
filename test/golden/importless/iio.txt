@@ -2,21 +2,21 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.hardware = ε,
   γ.iio-sensor-proxy = ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { boot = {initrd = {availableKernelModules = [String];};};
       environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];}; udev = {packages = [θ];};};
-      systemd = {packages = [ι];};
+      services = {dbus = {packages = [θ];}; udev = {packages = [ι];};};
+      systemd = {packages = [κ];};
     } ->
-    κ,
-  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  ξ.iio = β,
-  ο.sensor = ξ,
-  π.hardware = ο,
-  ν.bool = λ
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  ε.sensor = ο,
+  ο.iio = π,
+  π.enable = η,
+  ξ.bool = μ
 ) =>
-α -> {config = κ; options = {hardware = {sensor = {iio = {enable = μ;};};};};}
+α -> {config = λ; options = {hardware = {sensor = {iio = {enable = ν;};};};};}

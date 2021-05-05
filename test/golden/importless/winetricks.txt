@@ -1,39 +1,37 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.concatMapStringsSep = String -> (String -> String) -> [β] -> γ,
-  α.lgpl21 = δ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [β];
+    { buildInputs = [γ];
       doCheck = Bool;
       makeFlags = [String];
       meta =
         {description = String; homepage = String; license = δ; platforms = ε;};
       name = String;
-      pathAdd = γ;
+      pathAdd = ζ;
       postInstall = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  α.platforms = θ,
-  ι.winetricks = ζ,
-  κ.lib = α,
-  λ.licenses = α,
-  μ.lib = λ,
-  θ.linux = ε,
-  ν.lib = α
+    θ,
+  ι.winetricks = η,
+  β.concatMapStringsSep = String -> (String -> String) -> [γ] -> ζ,
+  κ.licenses = λ,
+  λ.lgpl21 = δ,
+  μ.platforms = ν,
+  ν.linux = ε
 ) =>
-{ bash = β;
-  cabextract = β;
+{ bash = γ;
+  cabextract = γ;
   callPackage = Path -> {} -> ι;
-  coreutils = β;
-  curl = β;
-  gnugrep = β;
-  gnused = β;
-  p7zip = β;
-  perl = β;
+  coreutils = γ;
+  curl = γ;
+  gnugrep = γ;
+  gnused = γ;
+  p7zip = γ;
+  perl = γ;
   stdenv = α;
-  unzip = β;
-  which = β;
-  wine = β;
-  zenity = β;
+  unzip = γ;
+  which = γ;
+  wine = γ;
+  zenity = γ;
 } ->
-η
+θ

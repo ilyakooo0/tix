@@ -1,18 +1,16 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.gpl2Plus = β,
-  α.isi686 = γ,
-  α.linux = δ,
-  α.optionalString = γ -> String -> String,
-  ε.lib = α,
-  ζ.licenses = α,
-  η.lib = ζ,
-  θ.platforms = α,
-  ι.lib = θ
+( α.isi686 = β,
+  α.lib = γ,
+  γ.optionalString = β -> String -> String,
+  δ.licenses = ε,
+  ε.gpl2Plus = ζ,
+  η.platforms = θ,
+  θ.linux = ι
 ) =>
 { buildPythonApplication =
     { checkPhase = String;
       meta =
-        {description = String; homepage = String; license = β; platforms = δ;};
+        {description = String; homepage = String; license = ζ; platforms = ι;};
       nativeBuildInputs = [κ];
       pname = String;
       postPatch = String;

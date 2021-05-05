@@ -1,10 +1,9 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = Bool,
-  β.stateVersion = ε,
-  β.xterm = ζ,
+  β.services = ε,
+  β.system = ζ,
   γ.mkIf =
     η ->
     { environment = {systemPackages = [θ];};
@@ -16,16 +15,16 @@
     μ,
   γ.singleton = {name = String; start = String;} -> ι,
   γ.types = ν,
-  γ.versionOlder = ε -> String -> Bool,
+  γ.versionOlder = ξ -> String -> Bool,
   δ.xterm = θ,
-  ξ.xserver = β,
-  ο.services = ξ,
-  ζ.enable = η,
-  π.desktopManager = β,
-  ρ.xserver = π,
-  σ.services = ρ,
-  τ.system = β,
-  υ.system = β,
+  ε.xserver = ο,
+  ο.enable = Bool,
+  π.xserver = ρ,
+  ρ.desktopManager = σ,
+  σ.xterm = τ,
+  τ.enable = η,
+  ζ.stateVersion = ξ,
+  υ.stateVersion = φ,
   ν.bool = λ
 ) =>
 α ->

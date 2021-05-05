@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ.
 ( α.licenses = β,
-  α.ttuegel = γ,
+  α.maintainers = γ,
   β.bsd3 = δ,
   β.gpl2 = δ,
   β.lgpl21 = δ,
-  ε.maintainers = α
+  γ.ttuegel = ε
 ) =>
 { extra-cmake-modules = ζ;
   kconfig = η;
@@ -14,7 +14,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [η];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
       outputs = [String];

@@ -1,8 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.all = β,
-  α.gpl2Plus = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       doCheck = Bool;
       doInstallCheck = Bool;
       dontPatchShebangs = Bool;
@@ -10,23 +9,23 @@
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = δ;
           longDescription = String;
-          platforms = β;
+          platforms = ε;
         };
       name = String;
       preCheck = String;
-      src = ε;
+      src = ζ;
     } ->
-    ζ,
-  η.licenses = α,
-  θ.lib = η,
-  ι.platforms = α,
-  κ.lib = ι
+    η,
+  β.licenses = θ,
+  θ.gpl2Plus = δ,
+  ι.platforms = κ,
+  κ.all = ε
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ε;
-  m4 = δ;
-  perl = δ;
+{ fetchurl = {sha256 = String; url = String;} -> ζ;
+  m4 = γ;
+  perl = γ;
   stdenv = α;
 } ->
-ζ
+η

@@ -1,33 +1,31 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( α.free = β,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( α.hostPlatform = β,
   α.isDarwin = γ,
+  α.lib = δ,
   α.mkDerivation =
-    { NIX_CFLAGS_COMPILE = δ;
+    { NIX_CFLAGS_COMPILE = ε;
       buildPhase = String;
       checkPhase = String;
       doCheck = Bool;
       hardeningDisable = [String];
       installPhase = String;
       meta =
-        {description = String; homepage = String; license = β; platforms = ε;};
-      nativeBuildInputs = [ζ];
+        {description = String; homepage = String; license = ζ; platforms = η;};
+      nativeBuildInputs = [θ];
       patches = [Path];
       pname = String;
       preConfigure = String;
-      src = η;
+      src = ι;
       version = String;
     } ->
-    θ,
-  α.optionalString = γ -> String -> δ,
-  α.sharedLibrary = ι,
-  α.unix = ε,
-  κ.extensions = α,
-  λ.hostPlatform = κ,
-  μ.lib = α,
-  ν.lib = α,
-  ξ.licenses = α,
-  ο.lib = ξ,
-  π.platforms = α,
-  ρ.lib = π
+    κ,
+  β.extensions = λ,
+  λ.sharedLibrary = μ,
+  δ.optionalString = γ -> String -> ε,
+  ν.optionalString = ξ -> String -> String,
+  ο.licenses = π,
+  π.free = ζ,
+  ρ.platforms = σ,
+  σ.unix = η
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> η; stdenv = α; unzip = ζ;} -> θ
+{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = α; unzip = θ;} -> κ

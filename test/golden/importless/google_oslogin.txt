@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.googleOsLogin = ε,
+  β.security = ε,
   γ.mkIf =
     ζ ->
     { environment =
@@ -38,8 +38,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.google-compute-engine-oslogin = η,
-  ε.enable = ζ,
-  μ.security = β,
+  ε.googleOsLogin = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {security = {googleOsLogin = {enable = κ;};};};}

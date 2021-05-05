@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.iproute2 = ε,
+  β.networking = ε,
   γ.fileContents = String -> ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -25,9 +25,9 @@
   γ.mkOption = {default = String; description = String; type = σ;} -> τ,
   γ.optionalString = Bool -> String -> π,
   γ.types = υ,
-  ε.enable = θ,
-  ε.rttablesExtraConfig = String,
-  φ.networking = β,
+  ε.iproute2 = φ,
+  φ.enable = θ,
+  φ.rttablesExtraConfig = String,
   υ.lines = σ
 ) =>
 α ->

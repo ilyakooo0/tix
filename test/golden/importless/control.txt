@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
-( β.majorMinor = String -> γ,
+( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
       doBuild = Bool;
@@ -19,18 +19,16 @@
       version = ∀ α. α;
     } ->
     ι,
-  β.unfree = ε,
-  β.zimbatm = ζ,
   κ.withPackages = (λ -> [μ]) -> δ,
   λ.pycairo = μ,
   λ.pygobject2 = ν,
   λ.pygtk = ξ,
-  ο.versions = β,
-  π.lib = ο,
-  ρ.licenses = β,
-  σ.lib = ρ,
-  τ.maintainers = β,
-  υ.lib = τ
+  γ.versions = ο,
+  ο.majorMinor = String -> π,
+  ρ.licenses = σ,
+  σ.unfree = ε,
+  τ.maintainers = υ,
+  υ.zimbatm = ζ
 ) =>
 { autoPatchelfHook = φ;
   dpkg = η;

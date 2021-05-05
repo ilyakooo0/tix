@@ -2,7 +2,7 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.ofono = ζ,
+  γ.services = ζ,
   δ.cfg = η,
   δ.concatMapStringsSep = String -> (θ -> String) -> ι -> κ,
   δ.literalExample = String -> λ,
@@ -21,9 +21,9 @@
   δ.types = υ,
   ε.ofono = ξ,
   η.plugins = ι,
-  ζ.enable = ν,
-  ζ.plugins = φ,
-  χ.services = γ,
+  ζ.ofono = φ,
+  φ.enable = ν,
+  φ.plugins = χ,
   υ.listOf = ψ -> σ,
   ω.package = ψ
 ) =>

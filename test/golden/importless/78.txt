@@ -26,17 +26,16 @@
       version = String;
     } ->
     ν,
-  β.optionals = Bool -> [String] -> [String],
-  ξ.cc = ζ,
-  ο.llvm = κ,
-  δ.licenses = π,
-  δ.maintainers = ρ,
-  δ.platforms = σ,
-  π.gpl2 = η,
-  ρ.abbradar = θ,
-  σ.linux = ι,
-  τ.lib = β,
-  υ.stdenv = ξ
+  ξ.stdenv = ο,
+  π.llvm = κ,
+  δ.licenses = ρ,
+  δ.maintainers = σ,
+  δ.platforms = τ,
+  ρ.gpl2 = η,
+  σ.abbradar = θ,
+  τ.linux = ι,
+  υ.optionals = Bool -> [String] -> [String],
+  ο.cc = ζ
 ) =>
 { autoconf213 = κ;
   buildPackages = ξ;
@@ -44,7 +43,7 @@
   fetchpatch = {sha256 = String; url = String;} -> λ;
   fetchurl = {sha256 = String; url = String;} -> μ;
   icu67 = ε;
-  llvmPackages = ο;
+  llvmPackages = π;
   nspr = ε;
   perl = κ;
   pkgconfig = κ;

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.fancontrol = ε,
+  β.hardware = ε,
   γ.cfg = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -25,8 +25,8 @@
   γ.types = μ,
   δ.writeText = String -> ν -> ξ,
   ζ.config = ν,
-  ε.enable = θ,
-  ο.hardware = β,
+  ε.fancontrol = ο,
+  ο.enable = θ,
   μ.nullOr = π -> κ,
   ρ.lines = π
 ) =>

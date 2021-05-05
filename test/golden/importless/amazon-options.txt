@@ -2,12 +2,12 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.stateVersion = ε,
+  β.system = ε,
   γ.mkOption = {default = ζ; description = String; internal = Bool;} -> η,
-  γ.versionAtLeast = ε -> String -> θ,
-  δ.isAarch64 = ζ,
-  ι.hostPlatform = δ,
-  κ.stdenv = ι,
-  λ.system = β
+  γ.versionAtLeast = θ -> String -> ι,
+  δ.stdenv = κ,
+  κ.hostPlatform = λ,
+  λ.isAarch64 = ζ,
+  ε.stateVersion = θ
 ) =>
 α -> {options = {ec2 = {efi = η; hvm = μ;};};}

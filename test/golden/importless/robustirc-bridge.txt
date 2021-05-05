@@ -2,7 +2,7 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.robustirc-bridge = ζ,
+  γ.services = ζ,
   δ.mkEnableOption = String -> η,
   δ.mkIf =
     θ ->
@@ -31,8 +31,8 @@
     {default = ∀ α. α; description = String; example = [String]; type = κ;} ->
     λ,
   δ.types = μ,
-  ζ.enable = θ,
-  ν.services = γ,
+  ζ.robustirc-bridge = ν,
+  ν.enable = θ,
   μ.listOf = ξ -> κ,
   ο.str = ξ
 ) =>

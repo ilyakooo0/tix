@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
       buildInputs = [γ];
@@ -9,28 +9,26 @@
           homepage = String;
           license = δ;
           maintainers = [ε];
-          platforms = β;
+          platforms = ζ;
         };
       name = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       preConfigure = String;
-      src = η;
+      src = θ;
     } ->
-    θ,
-  α.raskin = ε,
-  α.zlib = δ,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.maintainers = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    ι,
+  β.licenses = κ,
+  κ.zlib = δ,
+  λ.maintainers = μ,
+  μ.raskin = ε,
+  ν.platforms = ξ,
+  ξ.linux = ζ
 ) =>
 { SDL2 = γ;
   autoconf = γ;
   automake = γ;
   fetchFromBitbucket =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
   freetype = γ;
   libGL = γ;
   libGLU = γ;
@@ -44,8 +42,8 @@
   mpg123 = γ;
   openal = γ;
   physfs = γ;
-  pkgconfig = ζ;
+  pkgconfig = η;
   stdenv = α;
   which = γ;
 } ->
-θ
+ι

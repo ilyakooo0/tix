@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( β.majorMinor = String -> γ,
+( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
       installPhase = String;
@@ -17,15 +17,13 @@
       version = ∀ α. α;
     } ->
     ι,
-  β.unfree = ε,
-  β.zimbatm = ζ,
   κ.lib = δ,
-  λ.versions = β,
-  μ.lib = λ,
-  ν.licenses = β,
-  ξ.lib = ν,
-  ο.maintainers = β,
-  π.lib = ο
+  γ.versions = λ,
+  λ.majorMinor = String -> μ,
+  ν.licenses = ξ,
+  ξ.unfree = ε,
+  ο.maintainers = π,
+  π.zimbatm = ζ
 ) =>
 { autoPatchelfHook = η;
   dpkg = η;

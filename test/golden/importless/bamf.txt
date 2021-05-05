@@ -2,19 +2,19 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.maintainers = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ε ->
-    {services = {dbus = {packages = [θ];};}; systemd = {packages = [ι];};} -> κ,
-  γ.worldofpeace = λ,
-  δ.bamf = θ,
-  μ.bamf = β,
-  ν.services = μ
+    θ ->
+    {services = {dbus = {packages = [ι];};}; systemd = {packages = [κ];};} -> λ,
+  γ.worldofpeace = μ,
+  δ.bamf = ι,
+  ε.bamf = ν,
+  ν.enable = θ
 ) =>
 α ->
-{ config = κ;
-  meta = {maintainers = [λ];};
+{ config = λ;
+  meta = {maintainers = [μ];};
   options = {services = {bamf = {enable = η;};};};
 }

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.gpl2 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { dolphin = ζ;
+(α.licenses = β, α.maintainers = γ, β.gpl2 = δ, γ.ttuegel = ε) => { dolphin = ζ;
   extra-cmake-modules = η;
   kdelibs4support = ζ;
   kdoctools = η;
@@ -8,7 +8,7 @@
   kxmlgui = ζ;
   lib = α;
   mkDerivation =
-    { meta = {license = [β]; maintainers = [γ];};
+    { meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

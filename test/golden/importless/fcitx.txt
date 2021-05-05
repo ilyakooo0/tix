@@ -3,21 +3,19 @@
   ε.config = ζ,
   ε.lib = η,
   ε.pkgs = θ,
-  ζ.enabled = String,
-  ζ.fcitx = ι,
-  θ.fcitx-engines = κ,
-  θ.override = {plugins = λ;} -> μ,
+  ζ.i18n = ι,
+  θ.fcitx = κ,
+  θ.fcitx-engines = λ,
   η.attrByPath = [String] -> Bool -> γ -> Bool,
-  η.attrNames = ν -> ξ,
-  η.cfg = ο,
-  η.check = γ -> Bool,
-  η.concatStringsSep = String -> π -> ρ,
-  η.const = σ -> τ,
-  η.filterAttrs = τ -> κ -> ν,
-  η.isDerivation = σ,
-  η.listOf = υ -> φ,
-  η.literalExample = String -> χ,
-  η.map = (ψ -> String) -> ξ -> π,
+  η.attrNames = μ -> ν,
+  η.cfg = ξ,
+  η.concatStringsSep = String -> ο -> π,
+  η.const = ρ -> σ,
+  η.filterAttrs = σ -> λ -> μ,
+  η.isDerivation = ρ,
+  η.listOf = τ -> υ,
+  η.literalExample = String -> φ,
+  η.map = (χ -> String) -> ν -> ο,
   η.mkIf =
     Bool ->
     { environment =
@@ -27,22 +25,22 @@
               XMODIFIERS = String;
             };
         };
-      i18n = {inputMethod = {package = μ;};};
+      i18n = {inputMethod = {package = ψ;};};
       services = {xserver = {displayManager = {sessionCommands = String;};};};
     } ->
     ω,
   η.mkOption =
-    {default = ∀ α. α; description = String; example = χ; type = φ;} -> α1,
+    {default = ∀ α. α; description = String; example = φ; type = υ;} -> α1,
   η.types = β1,
-  γ1.fcitx = θ,
-  ο.engines = λ,
+  κ.override = {plugins = γ1;} -> ψ,
+  ξ.engines = γ1,
   β1.package = β,
-  δ1.package = η,
-  ε1.types = δ1,
-  ζ1.inputMethod = ζ,
-  η1.i18n = ζ1,
-  θ1.inputMethod = ζ,
-  ι1.i18n = θ1
+  δ1.package = ε1,
+  ε1.check = γ -> Bool,
+  ι.inputMethod = ζ1,
+  ζ1.fcitx = η1,
+  θ1.inputMethod = ι1,
+  ι1.enabled = String
 ) =>
 ε ->
 {config = ω; options = {i18n = {inputMethod = {fcitx = {engines = α1;};};};};}

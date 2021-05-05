@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.tzupdate = ε,
+  β.services = ε,
   γ.maintainers = ζ,
   γ.mkIf =
     η ->
@@ -21,8 +21,8 @@
     θ,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = η,
-  μ.services = β,
+  ε.tzupdate = μ,
+  μ.enable = η,
   ζ.michaelpj = ν,
   λ.bool = ι
 ) =>

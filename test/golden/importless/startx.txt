@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.startx = ε,
+  β.services = ε,
   γ.mkForce = Bool -> ζ,
   γ.mkIf =
     η ->
@@ -20,10 +20,10 @@
   γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
   γ.types = μ,
   γ.xorg = ν,
-  ε.enable = η,
-  ξ.displayManager = β,
-  ο.xserver = ξ,
-  π.services = ο,
+  ε.xserver = ξ,
+  ξ.displayManager = ο,
+  ο.startx = π,
+  π.enable = η,
   ν.xinit = θ,
   μ.bool = κ
 ) =>

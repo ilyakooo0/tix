@@ -1,6 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν.
-( β.maintainers = γ,
-  β.mit = δ,
+( β.lib = γ,
   β.mkDerivation =
     { makeFlags = [String];
       meta =
@@ -16,12 +15,11 @@
       version = String;
     } ->
     θ,
-  β.unix = ε,
-  ι.licenses = β,
-  κ.lib = ι,
-  λ.lib = β,
-  μ.platforms = β,
-  ν.lib = μ
+  γ.licenses = ι,
+  ι.mit = δ,
+  κ.maintainers = λ,
+  μ.platforms = ν,
+  ν.unix = ε
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> η;

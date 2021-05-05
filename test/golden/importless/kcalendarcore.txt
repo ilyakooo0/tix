@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ.
-(α.nyanloutre = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+(α.maintainers = β, β.nyanloutre = γ) => { extra-cmake-modules = δ;
   lib = α;
   libical = ε;
   mkDerivation =
-    { meta = {maintainers = [β];};
+    { meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [δ];
       outputs = [String];

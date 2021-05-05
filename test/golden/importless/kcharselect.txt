@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.gpl2Plus = β,
-  α.schmittlauch = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl2Plus = δ,
+  γ.schmittlauch = ε
 ) =>
 { extra-cmake-modules = ζ;
   kbookmarks = η;
@@ -18,7 +18,7 @@
   mkDerivation =
     { buildInputs = [η];
       enableParallelBuilding = Bool;
-      meta = {description = String; license = β; maintainers = [γ];};
+      meta = {description = String; license = δ; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
     } ->

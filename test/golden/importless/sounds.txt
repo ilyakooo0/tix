@@ -2,21 +2,21 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.xdg = ε,
   γ.mkIf =
-    ε -> {environment = {pathsToLink = [String]; systemPackages = [ζ];};} -> η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.teams = κ,
-  γ.types = λ,
-  δ.sound-theme-freedesktop = ζ,
-  μ.sounds = β,
-  ν.xdg = μ,
-  κ.members = ξ,
-  ο.freedesktop = κ,
-  λ.bool = θ
+    ζ -> {environment = {pathsToLink = [String]; systemPackages = [η];};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.teams = λ,
+  γ.types = μ,
+  δ.sound-theme-freedesktop = η,
+  ε.sounds = ν,
+  ν.enable = ζ,
+  λ.freedesktop = ξ,
+  ξ.members = ο,
+  μ.bool = ι
 ) =>
 α ->
-{ config = η;
-  meta = {maintainers = ξ;};
-  options = {xdg = {sounds = {enable = ι;};};};
+{ config = θ;
+  meta = {maintainers = ο;};
+  options = {xdg = {sounds = {enable = κ;};};};
 }

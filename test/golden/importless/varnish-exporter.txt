@@ -1,17 +1,17 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.maintainers = β,
-  α.mit = γ,
+( α.licenses = β,
+  α.maintainers = γ,
   δ.prometheus-exporters = ε,
-  ζ.licenses = α,
-  β.MostAwesomeDude = η,
-  β.willibutz = η,
+  β.mit = ζ,
+  γ.MostAwesomeDude = η,
+  γ.willibutz = η,
   ε.varnish = θ
 ) =>
 { buildGoModule =
     { meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = ζ;
           maintainers = [η];
         };
       nativeBuildInputs = [ι];

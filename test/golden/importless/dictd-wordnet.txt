@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ.
-( β.all = γ,
+( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
       builder = ε;
@@ -9,13 +9,13 @@
           homepage = String;
           longDescription = String;
           maintainers = ∀ α. α;
-          platforms = γ;
+          platforms = ζ;
         };
       pname = String;
       version = String;
     } ->
-    ζ,
-  η.platforms = β,
-  θ.lib = η
+    η,
+  γ.platforms = θ,
+  θ.all = ζ
 ) =>
-{python = δ; stdenv = β; wordnet = δ; writeScript = String -> String -> ε;} -> ζ
+{python = δ; stdenv = β; wordnet = δ; writeScript = String -> String -> ε;} -> η

@@ -2,32 +2,32 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.enableFontDir = ζ,
+  β.fonts = ε,
+  β.services = ζ,
   γ.mkIf =
-    ε ->
-    { assertions = η;
+    η ->
+    { assertions = θ;
       systemd =
         { services =
             { xfs =
                 { after = [String];
                   description = String;
-                  path = [θ];
+                  path = [ι];
                   script = String;
                   wantedBy = [String];
                 };
             };
         };
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.singleton = {assertion = ζ; message = String;} -> η,
-  γ.types = μ,
-  δ.xfs = θ,
-  ν.xfs = β,
-  ξ.services = ν,
-  ο.fonts = β,
-  π.xorg = δ,
-  μ.bool = κ
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.singleton = {assertion = ν; message = String;} -> θ,
+  γ.types = ξ,
+  δ.xorg = ο,
+  ζ.xfs = π,
+  π.enable = η,
+  ε.enableFontDir = ν,
+  ο.xfs = ι,
+  ξ.bool = λ
 ) =>
-α -> {config = ι; options = {services = {xfs = {enable = λ;};};};}
+α -> {config = κ; options = {services = {xfs = {enable = μ;};};};}

@@ -2,23 +2,23 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.rpc = ζ,
+  β.ids = ε,
+  β.services = ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
-        {packages = [θ]; services = {rpcbind = {wantedBy = [String];};};};
-      users = {users = {rpc = {group = String; uid = ζ;};};};
+        {packages = [ι]; services = {rpcbind = {wantedBy = [String];};};};
+      users = {users = {rpc = {group = String; uid = κ;};};};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.types = μ,
-  δ.rpcbind = η,
-  ν.rpcbind = β,
-  ξ.services = ν,
-  ο.uids = β,
-  π.ids = ο,
-  μ.bool = κ
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  δ.rpcbind = θ,
+  ζ.rpcbind = ο,
+  ο.enable = η,
+  ε.uids = π,
+  π.rpc = κ,
+  ξ.bool = μ
 ) =>
-α -> {config = ι; options = {services = {rpcbind = {enable = λ;};};};}
+α -> {config = λ; options = {services = {rpcbind = {enable = ν;};};};}

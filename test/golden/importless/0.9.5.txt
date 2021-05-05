@@ -1,18 +1,18 @@
 ∀ α β γ δ ε ζ η.
-( α.asl20 = β,
+( α.lib = β,
   γ.buildPythonPackage =
     { doCheck = Bool;
-      meta = {description = String; homepage = String; license = β;};
+      meta = {description = String; homepage = String; license = δ;};
       pname = String;
-      src = δ;
+      src = ε;
       version = String;
     } ->
-    ε,
-  ζ.licenses = α,
-  η.lib = ζ
+    ζ,
+  β.licenses = η,
+  η.asl20 = δ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> δ;
+{ fetchurl = {sha256 = String; url = String;} -> ε;
   python2Packages = γ;
   stdenv = α;
 } ->
-ε
+ζ

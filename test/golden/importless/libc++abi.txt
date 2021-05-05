@@ -1,47 +1,43 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
-( α.isDarwin = Bool,
+( α.hostPlatform = β,
+  α.isDarwin = Bool,
   α.isFreeBSD = Bool,
-  α.isMusl = β,
-  α.licenses = γ,
-  α.maintainers = δ,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = ε;
+    { buildInputs = δ;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = [ζ];
-          maintainers = [η];
-          platforms = θ;
+          license = [ε];
+          maintainers = [ζ];
+          platforms = η;
         };
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [θ];
       pname = String;
       postUnpack = String;
-      src = κ;
-      version = λ;
+      src = ι;
+      version = κ;
     } ->
-    μ,
-  α.optional = Bool -> ν -> ε,
-  α.optionalString = ξ -> String -> String,
-  α.unix = θ,
-  ο.lib = α,
-  γ.mit = ζ,
-  γ.ncsa = ζ,
-  π.lib = α,
-  δ.vlstill = η,
-  ρ.lib = α,
-  σ.platforms = α,
-  τ.lib = σ,
-  υ.lib = α,
-  φ.lib = α,
-  χ.hostPlatform = α
+    λ,
+  γ.optional = Bool -> μ -> δ,
+  ν.licenses = ξ,
+  ξ.mit = ε,
+  ξ.ncsa = ε,
+  ο.maintainers = π,
+  π.vlstill = ζ,
+  ρ.platforms = σ,
+  σ.unix = η,
+  τ.optionalString = υ -> String -> String,
+  φ.optionalString = χ -> String -> String,
+  β.isMusl = χ
 ) =>
-{ cmake = ι;
-  fetch = String -> String -> κ;
+{ cmake = θ;
+  fetch = String -> String -> ι;
   libcxx = ψ;
-  libunwind = ν;
+  libunwind = μ;
   llvm = ω;
   stdenv = α;
-  version = λ;
+  version = κ;
 } ->
-μ
+λ

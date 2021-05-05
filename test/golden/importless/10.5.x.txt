@@ -1,50 +1,49 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
 ( α.hostPlatform = β,
   α.isDarwin = Bool,
-  α.isMusl = γ,
-  α.lib = δ,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [δ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
-          maintainers = [η];
+          license = ε;
+          maintainers = [ζ];
         };
-      passthru = {tests = {smoke-test = θ;};};
+      passthru = {tests = {smoke-test = η;};};
       pname = String;
       preferLocalBuild = Bool;
-      propagatedBuildInputs = [ι];
-      src = κ;
+      propagatedBuildInputs = [θ];
+      src = ι;
       version = String;
     } ->
-    λ,
-  μ.optionalString = γ -> String -> ν,
-  μ.warn = String -> String -> String,
-  ξ.aspnetcore_3_1 = ι,
-  ο.jellyfin = θ,
+    κ,
+  λ.optionalString = μ -> String -> ν,
+  λ.warn = String -> String -> String,
+  ξ.aspnetcore_3_1 = θ,
+  ο.jellyfin = η,
   β.isAarch32 = Bool,
   β.isAarch64 = Bool,
   β.isx86_32 = Bool,
   β.isx86_64 = Bool,
-  π.hostPlatform = α,
-  δ.licenses = ρ,
-  δ.maintainers = σ,
-  δ.minijackson = η,
-  δ.nyanloutre = η,
-  ρ.gpl2 = ζ
+  π.isMusl = μ,
+  γ.licenses = ρ,
+  γ.maintainers = σ,
+  γ.minijackson = ζ,
+  γ.nyanloutre = ζ,
+  ρ.gpl2 = ε
 ) =>
 { dotnetCorePackages = ξ;
-  fetchurl = {sha256 = String; url = String;} -> κ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
   ffmpeg = τ;
   fontconfig = υ;
   freetype = φ;
-  lib = μ;
-  makeWrapper = ε;
+  lib = λ;
+  makeWrapper = δ;
   nixosTests = ο;
-  sqlite = ι;
+  sqlite = θ;
   stdenv = α;
-  unzip = ε;
+  unzip = δ;
 } ->
-λ
+κ

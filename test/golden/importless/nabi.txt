@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enabled = String,
-  δ.nabi = ε,
+  β.i18n = ε,
+  δ.nabi = ζ,
   γ.mkIf =
     Bool ->
     { environment =
@@ -13,11 +13,11 @@
               XMODIFIERS = String;
             };
         };
-      i18n = {inputMethod = {package = ε;};};
+      i18n = {inputMethod = {package = ζ;};};
       services = {xserver = {displayManager = {sessionCommands = String;};};};
     } ->
-    ζ,
-  η.inputMethod = β,
-  θ.i18n = η
+    η,
+  ε.inputMethod = θ,
+  θ.enabled = String
 ) =>
-α -> {config = ζ;}
+α -> {config = η;}

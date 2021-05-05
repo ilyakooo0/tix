@@ -2,20 +2,20 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  γ.mkIf = ε -> {system = {build = {installBootLoader = ζ;};};} -> η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  δ.bash = λ,
-  δ.coreutils = μ,
-  δ.gnugrep = μ,
-  δ.gnused = μ,
+  β.boot = ε,
+  γ.mkIf = ζ -> {system = {build = {installBootLoader = η;};};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.bash = μ,
+  δ.coreutils = ν,
+  δ.gnugrep = ν,
+  δ.gnused = ν,
   δ.substituteAll =
-    {bash = λ; isExecutable = Bool; path = [μ]; src = Path;} -> ζ,
-  ν.initScript = β,
-  ξ.loader = ν,
-  ο.boot = ξ,
-  κ.bool = θ
+    {bash = μ; isExecutable = Bool; path = [ν]; src = Path;} -> η,
+  ε.loader = ξ,
+  ξ.initScript = ο,
+  ο.enable = ζ,
+  λ.bool = ι
 ) =>
 α ->
-{config = η; options = {boot = {loader = {initScript = {enable = ι;};};};};}
+{config = θ; options = {boot = {loader = {initScript = {enable = κ;};};};};}

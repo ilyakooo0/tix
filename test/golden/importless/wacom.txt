@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.wacom = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { environment =
@@ -15,9 +15,9 @@
   γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
   γ.types = ν,
   δ.xf86_input_wacom = η,
-  ε.enable = ζ,
-  ξ.xserver = β,
-  ο.services = ξ,
+  ε.xserver = ξ,
+  ξ.wacom = ο,
+  ο.enable = ζ,
   ν.bool = λ
 ) =>
 α ->

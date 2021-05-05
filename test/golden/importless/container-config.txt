@@ -2,20 +2,20 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.isContainer = ε,
+  β.boot = ε,
   γ.mkDefault = Bool -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { documentation = {nixos = {enable = ζ;};};
       environment = {variables = {NIX_REMOTE = String;};};
-      networking = {useHostResolvConf = η;};
-      nix = {optimise = {automatic = θ;};};
-      powerManagement = {enable = ι;};
+      networking = {useHostResolvConf = θ;};
+      nix = {optimise = {automatic = ι;};};
+      powerManagement = {enable = κ;};
       security = {audit = {enable = Bool;};};
-      services = {openssh = {startWhenNeeded = κ;}; udisks2 = {enable = λ;};};
+      services = {openssh = {startWhenNeeded = λ;}; udisks2 = {enable = μ;};};
       system = {build = {installBootLoader = String;};};
     } ->
-    μ,
-  ν.boot = β
+    ν,
+  ε.isContainer = η
 ) =>
-α -> {config = μ;}
+α -> {config = ν;}

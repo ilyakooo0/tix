@@ -1,61 +1,61 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.lib = β,
+( α.hostPlatform = β,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [γ];
+    { buildInputs = [δ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = δ;
-          maintainers = [ε];
+          license = ε;
+          maintainers = [ζ];
           platforms = [String];
         };
       phases = [String];
       pname = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.system = String,
-  θ.libX11 = ι,
-  θ.libXcomposite = ι,
-  θ.libXcursor = ι,
-  θ.libXdamage = ι,
-  θ.libXext = ι,
-  θ.libXfixes = ι,
-  θ.libXi = ι,
-  θ.libXrandr = ι,
-  θ.libXrender = ι,
-  θ.libXtst = ι,
-  κ.hostPlatform = α,
-  β.licenses = λ,
-  β.maintainers = μ,
-  λ.bsd3 = δ,
-  μ.offline = ε
+    θ,
+  ι.libX11 = κ,
+  ι.libXcomposite = κ,
+  ι.libXcursor = κ,
+  ι.libXdamage = κ,
+  ι.libXext = κ,
+  ι.libXfixes = κ,
+  ι.libXi = κ,
+  ι.libXrandr = κ,
+  ι.libXrender = κ,
+  ι.libXtst = κ,
+  β.system = String,
+  γ.licenses = λ,
+  γ.maintainers = μ,
+  λ.bsd3 = ε,
+  μ.offline = ζ
 ) =>
-{ alsaLib = ι;
-  atk = ι;
+{ alsaLib = κ;
+  atk = κ;
   buildEnv =
-    {extraOutputsToInstall = [String]; name = String; paths = [ι];} -> ν;
-  cairo = ι;
-  dbus = ι;
-  expat = ι;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  fontconfig = ι;
-  freetype = ι;
-  gconf = ι;
-  gdk-pixbuf = ι;
-  glib = ι;
-  gtk2 = ι;
+    {extraOutputsToInstall = [String]; name = String; paths = [κ];} -> ν;
+  cairo = κ;
+  dbus = κ;
+  expat = κ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  fontconfig = κ;
+  freetype = κ;
+  gconf = κ;
+  gdk-pixbuf = κ;
+  glib = κ;
+  gtk2 = κ;
   lib = ξ;
-  libcap = ι;
-  libnotify = ι;
-  makeWrapper = γ;
-  nspr = ι;
-  nss = ι;
-  pango = ι;
+  libcap = κ;
+  libnotify = κ;
+  makeWrapper = δ;
+  nspr = κ;
+  nss = κ;
+  pango = κ;
   stdenv = α;
   systemd = ο;
-  xorg = θ;
+  xorg = ι;
 } ->
-η
+θ

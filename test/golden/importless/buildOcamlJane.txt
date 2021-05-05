@@ -15,11 +15,11 @@
   ) ~
   ( ε
   ),
-  α.buildInputs = [β],
-  α.hash = String,
-  α.minimumSupportedOcamlVersion = String,
-  α.name = γ,
-  α.version = String
+  α.?buildInputs = [β],
+  α.?hash = String,
+  α.?minimumSupportedOcamlVersion = String,
+  α.?version = String,
+  α.name = γ
 ) =>
 { buildOcaml = ε -> ζ;
   fetchurl = {sha256 = String; url = String;} -> δ;

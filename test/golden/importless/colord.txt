@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.colord = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -17,7 +17,7 @@
     } ->
     ν,
   δ.colord = θ,
-  ε.enable = η,
-  ξ.services = β
+  ε.colord = ξ,
+  ξ.enable = η
 ) =>
 α -> {config = ν; options = {services = {colord = {enable = ζ;};};};}

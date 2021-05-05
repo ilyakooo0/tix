@@ -1,6 +1,6 @@
 ∀ α β γ δ ε ζ.
-(α.isDarwin = β, α.optional = β -> [String] -> γ, δ.lib = α) => { qtModule =
-    {name = String; outputs = [String]; qmakeFlags = γ; qtInputs = [ε];} -> ζ;
+(α.isDarwin = β, α.lib = γ, γ.optional = β -> [String] -> δ) => { qtModule =
+    {name = String; outputs = [String]; qmakeFlags = δ; qtInputs = [ε];} -> ζ;
   qtbase = ε;
   qtmultimedia = ε;
   stdenv = α;

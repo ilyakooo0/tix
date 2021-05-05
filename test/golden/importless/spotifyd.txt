@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.spotifyd = ε,
+  β.services = ε,
   γ.cfg = ζ,
   γ.maintainers = η,
   γ.mkEnableOption = String -> θ,
@@ -31,8 +31,8 @@
   γ.types = ν,
   δ.writeText = String -> ξ -> ο,
   ζ.config = ξ,
-  ε.enable = ι,
-  π.services = β,
+  ε.spotifyd = π,
+  π.enable = ι,
   η.anderslundstedt = ρ,
   ν.lines = λ
 ) =>

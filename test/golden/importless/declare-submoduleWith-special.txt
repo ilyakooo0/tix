@@ -2,7 +2,8 @@
 ( (ζ) // ({foo = String;}) ~ (η),
   θ.lib = ζ,
   ζ.mkOption = {default = {}; type = ι;} -> κ,
-  ζ.submoduleWith =
+  ζ.types = λ,
+  λ.submoduleWith =
     { modules =
         ∀ β γ δ ε.
         (β.lib = γ, γ.foo = δ, γ.mkOption = {default = δ;} -> ε) => [ ( β ->
@@ -11,7 +12,6 @@
         ];
       specialArgs = {lib = ∀ α. α;};
     } ->
-    ι,
-  λ.types = ζ
+    ι
 ) =>
 θ -> {options = {submodule = κ;};}

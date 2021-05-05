@@ -17,20 +17,19 @@
       version = String;
     } ->
     κ,
-  α.optional = β -> λ -> [δ],
-  μ.Cocoa = λ,
+  λ.apple_sdk = μ,
   γ.amiloradovsky = ζ,
   γ.licenses = ν,
   γ.maintainers = ξ,
   γ.platforms = ο,
   ν.lgpl21 = ε,
   ο.all = η,
-  π.lib = α,
-  ρ.frameworks = μ,
-  σ.apple_sdk = ρ
+  π.optional = β -> ρ -> [δ],
+  μ.frameworks = σ,
+  σ.Cocoa = ρ
 ) =>
 { cmake = θ;
-  darwin = μ;
+  darwin = λ;
   fetchpatch = τ;
   fetchurl = {name = String; sha256 = String; url = String;} -> ι;
   libGL = δ;

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xow = ε,
+  β.services = ε,
   δ.xow = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -12,8 +12,8 @@
       systemd = {packages = [ι];};
     } ->
     κ,
-  ε.enable = θ,
-  λ.hardware = β,
-  μ.services = λ
+  ε.hardware = λ,
+  λ.xow = μ,
+  μ.enable = θ
 ) =>
 α -> {config = κ; options = {services = {hardware = {xow = {enable = η;};};};};}

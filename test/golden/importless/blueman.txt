@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.blueman = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -12,7 +12,7 @@
     } ->
     λ,
   δ.blueman = θ,
-  ε.enable = η,
-  μ.services = β
+  ε.blueman = μ,
+  μ.enable = η
 ) =>
 α -> {config = λ; options = {services = {blueman = {enable = ζ;};};};}

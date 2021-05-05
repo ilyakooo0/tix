@@ -1,7 +1,9 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.lib = β,
-  α.mkDerivation =
-    { buildInputs = [γ];
+( α.?meta = β,
+  β.?platforms = γ,
+  δ.lib = ε,
+  δ.mkDerivation =
+    { buildInputs = [α];
       buildPhase = String;
       checkPhase = String;
       configurePhase = String;
@@ -11,25 +13,23 @@
       meta =
         { description = String;
           homepage = String;
-          license = δ;
-          maintainers = [ε];
-          platforms = ζ;
+          license = ζ;
+          maintainers = [η];
+          platforms = γ;
         };
       name = String;
-      src = η;
+      src = θ;
     } ->
-    θ,
-  γ.platforms = ζ,
-  β.licenses = ι,
-  β.maintainers = κ,
-  ι.lgpl21 = δ,
-  κ.vbgl = ε,
-  λ.meta = γ
+    ι,
+  ε.licenses = κ,
+  ε.maintainers = λ,
+  κ.lgpl21 = ζ,
+  λ.vbgl = η
 ) =>
-{ fetchzip = {sha256 = String; url = String;} -> η;
-  findlib = γ;
-  ocaml = γ;
-  ocamlbuild = γ;
-  stdenv = α;
+{ fetchzip = {sha256 = String; url = String;} -> θ;
+  findlib = α;
+  ocaml = α;
+  ocamlbuild = α;
+  stdenv = δ;
 } ->
-θ
+ι

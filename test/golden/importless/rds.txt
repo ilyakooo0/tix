@@ -17,7 +17,6 @@
       version = String;
     } ->
     ι,
-  α.optionals = Bool -> [Null] -> [γ],
   β.licenses = κ,
   β.maintainers = λ,
   β.mog = ε,
@@ -25,7 +24,7 @@
   κ.gpl2Plus = δ,
   μ.linux = [ζ],
   ν.darwin = [ζ],
-  ξ.lib = α
+  ξ.optionals = Bool -> [Null] -> [γ]
 ) =>
 { boost = γ;
   cmake = γ;

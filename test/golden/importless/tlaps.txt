@@ -1,38 +1,36 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.badi = β,
-  α.bsd2 = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = δ;
           longDescription = String;
-          maintainers = [β];
-          platforms = ε;
+          maintainers = [ε];
+          platforms = ζ;
         };
       phases = [String];
       pname = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.unix = ε,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.bsd2 = δ,
+  κ.maintainers = λ,
+  λ.badi = ε,
+  μ.platforms = ν,
+  ν.unix = ζ
 ) =>
-{ cvc3 = δ;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  isabelle = δ;
-  ocaml = δ;
-  perl = δ;
+{ cvc3 = γ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  isabelle = γ;
+  ocaml = γ;
+  perl = γ;
   stdenv = α;
-  wget = δ;
-  which = δ;
+  wget = γ;
+  which = γ;
 } ->
-η
+θ

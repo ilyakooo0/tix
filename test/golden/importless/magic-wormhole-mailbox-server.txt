@@ -4,7 +4,7 @@
   α.pkgs = δ,
   ε.magic-wormhole-mailbox-server = ζ,
   ε.twisted = η,
-  β.magic-wormhole-mailbox-server = θ,
+  β.services = θ,
   γ.baseNameOf = String -> ι,
   γ.mkEnableOption = String -> κ,
   γ.mkIf =
@@ -25,10 +25,10 @@
         };
     } ->
     μ,
-  δ.withPackages = (ε -> [ζ]) -> ν,
-  ξ.python3 = δ,
-  θ.enable = λ,
-  ο.services = β
+  δ.python3 = ν,
+  ν.withPackages = (ε -> [ζ]) -> ξ,
+  θ.magic-wormhole-mailbox-server = ο,
+  ο.enable = λ
 ) =>
 α ->
 { config = μ;

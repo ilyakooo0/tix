@@ -1,47 +1,46 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
-( α.isDarwin = β,
-  α.lib = γ,
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+( α.hostPlatform = β,
+  α.isDarwin = γ,
+  α.lib = δ,
   α.mkDerivation =
-    { NIX_CFLAGS_COMPILE = δ;
-      buildInputs = [ε];
+    { NIX_CFLAGS_COMPILE = ε;
+      buildInputs = [ζ];
       makeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = [ζ];
-          maintainers = [η];
-          platforms = θ;
+          license = [η];
+          maintainers = [θ];
+          platforms = ι;
         };
       name = String;
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [κ];
       postInstall = String;
       preConfigure = String;
-      src = κ;
+      src = λ;
     } ->
-    λ,
-  α.optionalString = β -> String -> δ,
-  α.sharedLibrary = μ,
-  ε.isILP64 = Bool,
-  ν.extensions = α,
-  ξ.hostPlatform = ν,
-  ο.lib = α,
-  γ.bsd2 = ζ,
-  γ.gpl2Plus = ζ,
-  γ.lgpl21Plus = ζ,
-  γ.licenses = π,
-  γ.maintainers = ρ,
-  γ.platforms = σ,
-  γ.ttuegel = η,
-  γ.unix = θ,
-  τ.lib = α,
-  υ.lib = α
+    μ,
+  ζ.isILP64 = Bool,
+  β.extensions = ν,
+  ν.sharedLibrary = ξ,
+  δ.optionalString = γ -> String -> ε,
+  ο.bsd2 = η,
+  ο.gpl2Plus = η,
+  ο.lgpl21Plus = η,
+  ο.licenses = π,
+  ο.maintainers = ρ,
+  ο.platforms = σ,
+  ο.ttuegel = θ,
+  ο.unix = ι,
+  τ.optionalString = υ -> String -> String,
+  φ.optionalString = Bool -> String -> String
 ) =>
-{ blas = ε;
-  cudatoolkit = φ;
+{ blas = ζ;
+  cudatoolkit = χ;
   enableCuda = Bool;
-  fetchurl = {sha256 = String; url = String;} -> κ;
-  gfortran = ι;
-  lapack = ε;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  gfortran = κ;
+  lapack = ζ;
   stdenv = α;
 } ->
-λ
+μ

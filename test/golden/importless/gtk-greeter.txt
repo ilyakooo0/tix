@@ -16,14 +16,13 @@
       version = ∀ α. α;
     } ->
     λ,
-  β.optional = Bool -> String -> [String],
   γ.licenses = μ,
   γ.maintainers = ν,
   γ.ocharles = ζ,
   γ.platforms = ξ,
   μ.gpl3 = ε,
   ξ.linux = η,
-  ο.lib = β
+  ο.optional = Bool -> String -> [String]
 ) =>
 { at-spi2-core = π;
   exo = δ;

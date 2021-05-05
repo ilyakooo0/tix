@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.herbstluftwm = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -17,11 +17,11 @@
   γ.singleton = {name = String; start = String;} -> ι,
   γ.types = ο,
   δ.herbstluftwm = θ,
-  ε.configFile = Null,
-  ε.enable = η,
-  π.windowManager = β,
-  ρ.xserver = π,
-  σ.services = ρ
+  ε.xserver = π,
+  π.windowManager = ρ,
+  ρ.herbstluftwm = σ,
+  σ.configFile = Null,
+  σ.enable = η
 ) =>
 α ->
 { config = κ;

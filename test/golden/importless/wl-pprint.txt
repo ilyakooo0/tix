@@ -1,6 +1,6 @@
 ∀ α β γ δ ε.
-(α.bsd2 = β, γ.licenses = α) => { build-idris-package =
-    { meta = {description = String; homepage = String; license = β;};
+(α.licenses = β, β.bsd2 = γ) => { build-idris-package =
+    { meta = {description = String; homepage = String; license = γ;};
       name = String;
       src = δ;
       version = String;

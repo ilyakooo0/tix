@@ -1,18 +1,17 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.asl20 = β,
-  α.maintainers = γ,
-  δ.licenses = α,
-  ε.lib = δ,
-  γ.ericbmerritt = ζ,
-  γ.maggesi = ζ,
-  η.lib = α
+( α.lib = β,
+  β.licenses = γ,
+  γ.asl20 = δ,
+  ε.maintainers = ζ,
+  ζ.ericbmerritt = η,
+  ζ.maggesi = η
 ) =>
 { buildOcaml =
     { meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [ζ];
+          license = δ;
+          maintainers = [η];
         };
       minimumSupportedOcamlVersion = String;
       name = String;

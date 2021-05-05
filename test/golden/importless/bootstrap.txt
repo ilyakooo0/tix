@@ -1,37 +1,35 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.darwin = β,
-  α.free = γ,
-  α.jwiegley = δ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [γ];
       buildPhase = String;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [δ];
-          platforms = β;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
         };
       pname = String;
       postInstall = String;
-      src = ζ;
+      src = η;
       unpackPhase = String;
       version = String;
     } ->
-    η,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.free = δ,
+  κ.maintainers = λ,
+  λ.jwiegley = ε,
+  μ.platforms = ν,
+  ν.darwin = ζ
 ) =>
-{ cpio = ε;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  makeWrapper = ε;
-  rsync = ε;
+{ cpio = γ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  makeWrapper = γ;
+  rsync = γ;
   stdenv = α;
   xar = ξ;
 } ->
-η
+θ

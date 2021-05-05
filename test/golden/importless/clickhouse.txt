@@ -2,17 +2,18 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.clickhouse = ε,
-  γ.mkDefault = String -> ζ,
-  γ.mkEnableOption = String -> η,
+  β.ids = ε,
+  β.services = ζ,
+  γ.mkDefault = String -> η,
+  γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    θ ->
+    ι ->
     { environment =
         { etc =
             { clickhouse-server/config.xml = {source = String;};
               clickhouse-server/users.xml = {source = String;};
             };
-          systemPackages = [ι];
+          systemPackages = [κ];
         };
       systemd =
         { services =
@@ -31,22 +32,22 @@
                 };
             };
         };
-      time = {timeZone = ζ;};
+      time = {timeZone = η;};
       users =
-        { groups = {clickhouse = {gid = κ;};};
+        { groups = {clickhouse = {gid = λ;};};
           users =
             { clickhouse =
-                {description = String; group = String; name = String; uid = λ;};
+                {description = String; group = String; name = String; uid = μ;};
             };
         };
     } ->
-    μ,
-  δ.clickhouse = ι,
-  ε.enable = θ,
-  ν.services = β,
-  ξ.gids = β,
-  ο.ids = ξ,
-  π.uids = β,
-  ρ.ids = π
+    ν,
+  δ.clickhouse = κ,
+  ζ.clickhouse = ξ,
+  ξ.enable = ι,
+  ε.gids = ο,
+  ο.clickhouse = λ,
+  π.uids = ρ,
+  ρ.clickhouse = μ
 ) =>
-α -> {config = μ; options = {services = {clickhouse = {enable = η;};};};}
+α -> {config = ν; options = {services = {clickhouse = {enable = θ;};};};}

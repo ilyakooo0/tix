@@ -5,15 +5,14 @@
   δ.gawk = ε,
   δ.nettools = ε,
   δ.openssl = ε,
-  δ.out = ε,
   δ.procps = ε,
   δ.shadow = ε,
   δ.utillinux = ε,
   δ.which = ε,
-  δ.xauth = ε,
-  ζ.xorgserver = δ,
-  η.xorg = ζ,
-  θ.xorg = δ
+  δ.xorg = ζ,
+  ζ.xorgserver = η,
+  η.out = ε,
+  θ.xauth = ε
 ) =>
 β ->
 { config =

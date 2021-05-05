@@ -1,69 +1,71 @@
-∀ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1 λ1.
-( ω.dotlambda = α1,
-  ω.licenses = β1,
-  ω.maintainers = γ1,
-  ω.peterhoeg = α1,
-  δ1.override =
+∀ γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1 λ1 μ1 ν1 ξ1.
+( γ1.dotlambda = δ1,
+  γ1.licenses = ε1,
+  γ1.maintainers = ζ1,
+  γ1.peterhoeg = δ1,
+  η1.override =
     { packageOverrides =
-        ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
-        ( α.overridePythonAttrs = (β -> {src = γ; version = String;}) -> δ,
-          β.override = ε,
-          ζ.override = η,
-          θ.override = ι,
-          κ.override = λ,
-          μ.aiohttp-jinja2 = α,
-          ν.bcrypt = α,
-          ξ.jinja2 = α,
-          ο.yarl = α,
-          π.src = β,
-          ρ.src = ζ,
-          σ.src = θ,
-          τ.src = κ
+        ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
+        ( α.aiohttp-jinja2 = β,
+          α.bcrypt = γ,
+          α.jinja2 = δ,
+          α.yarl = ε,
+          ζ.src = η,
+          θ.src = ι,
+          κ.src = λ,
+          μ.src = ν,
+          β.overridePythonAttrs = (ζ -> {src = ξ; version = String;}) -> ο,
+          γ.overridePythonAttrs = (θ -> {src = π; version = String;}) -> ρ,
+          δ.overridePythonAttrs = (κ -> {src = σ; version = String;}) -> τ,
+          ε.overridePythonAttrs = (μ -> {src = υ; version = String;}) -> φ,
+          η.override = χ,
+          ι.override = ψ,
+          λ.override = ω,
+          ν.override = α1
         ) =>
-        υ -> α -> {aiohttp-jinja2 = δ; bcrypt = φ; jinja2 = χ; yarl = ψ;};
+        β1 -> α -> {aiohttp-jinja2 = ο; bcrypt = ρ; jinja2 = τ; yarl = φ;};
     } ->
-    ε1,
-  ε1.buildPythonApplication =
+    θ1,
+  θ1.pkgs = ι1,
+  ε1.mit = κ1,
+  ι1.buildPythonApplication =
     { doCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ζ1;
-          maintainers = [α1];
+          license = κ1;
+          maintainers = [δ1];
         };
       pname = String;
       postPatch = String;
-      propagatedBuildInputs = [η1];
-      src = θ1;
+      propagatedBuildInputs = [λ1];
+      src = μ1;
       version = String;
     } ->
-    ι1,
-  ε1.pkgs = κ1,
-  β1.mit = ζ1,
-  λ1.pkgs = ε1,
-  κ1.aiohttp = η1,
-  κ1.aiohttp-jinja2 = η1,
-  κ1.astral = η1,
-  κ1.bcrypt = η1,
-  κ1.daemonize = η1,
-  κ1.dateutil = η1,
-  κ1.deepdiff = η1,
-  κ1.feedparser = η1,
-  κ1.iso8601 = η1,
-  κ1.jinja2 = η1,
-  κ1.paho-mqtt = η1,
-  κ1.pid = η1,
-  κ1.python-socketio = η1,
-  κ1.pyyaml = η1,
-  κ1.requests = η1,
-  κ1.setuptools = η1,
-  κ1.voluptuous = η1,
-  κ1.websocket_client = η1,
-  κ1.yarl = η1
+    ν1,
+  ξ1.aiohttp = λ1,
+  ξ1.aiohttp-jinja2 = λ1,
+  ξ1.astral = λ1,
+  ξ1.bcrypt = λ1,
+  ξ1.daemonize = λ1,
+  ξ1.dateutil = λ1,
+  ξ1.deepdiff = λ1,
+  ξ1.feedparser = λ1,
+  ξ1.iso8601 = λ1,
+  ξ1.jinja2 = λ1,
+  ξ1.paho-mqtt = λ1,
+  ξ1.pid = λ1,
+  ξ1.python-socketio = λ1,
+  ξ1.pyyaml = λ1,
+  ξ1.requests = λ1,
+  ξ1.setuptools = λ1,
+  ξ1.voluptuous = λ1,
+  ξ1.websocket_client = λ1,
+  ξ1.yarl = λ1
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ1;
-  lib = ω;
-  python3 = δ1;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> μ1;
+  lib = γ1;
+  python3 = η1;
 } ->
-ι1
+ν1

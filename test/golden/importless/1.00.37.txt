@@ -1,7 +1,8 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.lib = β,
+( α.hostPlatform = β,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [γ];
+    { buildInputs = [δ];
       dontPatchELF = Bool;
       dontStrip = Bool;
       installPhase = String;
@@ -9,26 +10,25 @@
         { description = String;
           downloadPage = String;
           homepage = String;
-          license = δ;
-          platforms = ε;
+          license = ε;
+          platforms = ζ;
         };
       pname = String;
       preFixup = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.system = String,
-  θ.hostPlatform = α,
-  β.licenses = ι,
-  β.platforms = κ,
-  ι.unfree = δ,
-  κ.linux = ε
+    θ,
+  β.system = String,
+  γ.licenses = ι,
+  γ.platforms = κ,
+  ι.unfree = ε,
+  κ.linux = ζ
 ) =>
-{ cups = γ;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
-  libusb-compat-0_1 = γ;
-  libxml2 = γ;
+{ cups = δ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  libusb-compat-0_1 = δ;
+  libxml2 = δ;
   stdenv = α;
 } ->
-η
+θ

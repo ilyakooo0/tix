@@ -20,15 +20,14 @@
       src = μ;
     } ->
     ν,
-  α.optionalString = β -> String -> δ,
-  ξ.lib = α,
-  γ.licenses = ο,
-  γ.maintainers = π,
-  γ.platforms = ρ,
+  γ.optionalString = β -> String -> δ,
+  ξ.licenses = ο,
+  ξ.maintainers = π,
+  ξ.platforms = ρ,
   ο.mit = ζ,
   π.vrthra = η,
   ρ.unix = θ,
-  σ.lib = α
+  σ.optionalString = Bool -> String -> λ
 ) =>
 { customConfig = Null;
   name = ι;

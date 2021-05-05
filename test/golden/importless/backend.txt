@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.gpl3Plus = β,
+( α.licenses = β,
   α.maintainers = γ,
   δ.gtk3 = ε,
   δ.poppler_gi = ε,
-  ζ.licenses = α,
+  β.gpl3Plus = ζ,
   γ.aszlig = η,
   γ.symphorien = η
 ) =>
@@ -12,7 +12,7 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = ζ;
           maintainers = [η];
         };
       patchPhase = String;

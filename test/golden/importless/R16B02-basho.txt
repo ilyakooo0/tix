@@ -1,15 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.asl20 = β,
-  α.fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> γ,
-  α.fetchurl = {sha256 = String; url = String;} -> δ,
-  α.maintainers = ε,
-  ζ.licenses = α,
-  η.lib = ζ,
-  θ.stdenv = η,
-  ε.mdaiter = ι,
-  κ.lib = α,
-  λ.stdenv = κ
+( α.fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> β,
+  α.fetchurl = {sha256 = String; url = String;} -> γ,
+  α.stdenv = δ,
+  δ.lib = ε,
+  ε.licenses = ζ,
+  ζ.asl20 = η,
+  θ.lib = ι,
+  ι.maintainers = κ,
+  κ.mdaiter = λ
 ) =>
 { mkDerivation =
     { baseName = String;
@@ -19,14 +18,14 @@
         { description = String;
           homepage = String;
           knownVulnerabilities = [String];
-          license = β;
+          license = η;
           longDescription = String;
-          maintainers = [ι];
+          maintainers = [λ];
           platforms = [String];
         };
       postInstall = String;
       preConfigure = String;
-      src = γ;
+      src = β;
       version = String;
     } ->
     μ;

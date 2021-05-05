@@ -1,31 +1,28 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( α.concatStringsSep = String -> [String] -> β,
-  α.isUnix = γ,
-  α.isx86 = Bool,
-  α.lib = δ,
+( α.hostPlatform = β,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [δ];
       buildPhase = String;
       installPhase = String;
       meta =
-        {description = String; license = ζ; maintainers = [η]; platforms = θ;};
+        {description = String; license = ε; maintainers = [ζ]; platforms = η;};
       name = String;
       sourceRoot = String;
-      src = ι;
+      src = θ;
       version = String;
     } ->
-    κ,
-  α.optional = γ -> String -> [String],
-  λ.lib = α,
-  μ.lib = α,
-  ν.hostPlatform = α,
-  ξ.lib = α,
-  ο.hostPlatform = α,
-  δ.licenses = π,
-  δ.maintainers = ρ,
-  δ.platforms = σ,
-  δ.raskin = η,
-  π.gpl3Plus = ζ,
-  σ.linux = θ
+    ι,
+  γ.concatStringsSep = String -> [String] -> κ,
+  λ.optional = μ -> String -> [String],
+  β.isUnix = μ,
+  ν.optional = Bool -> String -> [String],
+  ξ.isx86 = Bool,
+  ο.licenses = π,
+  ο.maintainers = ρ,
+  ο.platforms = σ,
+  ο.raskin = ζ,
+  π.gpl3Plus = ε,
+  σ.linux = η
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ι; stdenv = α; unzip = ε;} -> κ
+{fetchurl = {sha256 = String; url = String;} -> θ; stdenv = α; unzip = δ;} -> ι

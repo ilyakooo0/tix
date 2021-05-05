@@ -2,29 +2,29 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.programs = ε,
   γ.lowPrio = ζ -> η,
   γ.maintainers = θ,
   γ.mkIf =
-    ε ->
+    ι ->
     { environment = {systemPackages = [η];};
-      services = {udev = {packages = [ι];};};
+      services = {udev = {packages = [κ];};};
       users = {groups = {adbusers = {};};};
     } ->
-    κ,
-  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  δ.android-udev-rules = ι,
-  δ.platform-tools = ζ,
-  ξ.adb = β,
-  ο.programs = ξ,
-  π.androidPkgs_9_0 = δ,
-  ρ.androidenv = π,
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  δ.android-udev-rules = κ,
+  δ.androidenv = ο,
+  ε.adb = π,
+  π.enable = ι,
+  ο.androidPkgs_9_0 = ρ,
+  ρ.platform-tools = ζ,
   θ.mic92 = σ,
-  ν.bool = λ
+  ξ.bool = μ
 ) =>
 α ->
-{ config = κ;
+{ config = λ;
   meta = {maintainers = [σ];};
-  options = {programs = {adb = {enable = μ;};};};
+  options = {programs = {adb = {enable = ν;};};};
 }

@@ -1,0 +1,38 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      configureFlags = [String];
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      patches = [θ];
+      src = ι;
+    } ->
+    κ,
+  γ.licenses = λ,
+  λ.gpl2 = ε,
+  μ.maintainers = ν,
+  ξ.platforms = ο,
+  ο.linux = ζ,
+  π.optional = Bool -> String -> [String],
+  ρ.optional = Bool -> Null -> [δ]
+) =>
+{ enablePython = Bool;
+  fetchpatch = {sha256 = String; url = String;} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  libgcrypt = δ;
+  libuuid = δ;
+  lvm2 = δ;
+  pkgconfig = η;
+  popt = δ;
+  python = Null;
+  stdenv = β;
+} ->
+κ

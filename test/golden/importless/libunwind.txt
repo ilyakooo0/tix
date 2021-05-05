@@ -1,22 +1,22 @@
 ∀ α β γ δ ε ζ η θ.
-( α.mkDerivation =
-    { cmakeFlags = β;
+( α.lib = β,
+  α.mkDerivation =
+    { cmakeFlags = γ;
       enableParallelBuilding = Bool;
-      nativeBuildInputs = [γ];
-      patches = [δ];
+      nativeBuildInputs = [δ];
+      patches = [ε];
       pname = String;
-      src = ε;
-      version = ζ;
+      src = ζ;
+      version = η;
     } ->
-    η,
-  α.optional = Bool -> String -> β,
-  θ.lib = α
+    θ,
+  β.optional = Bool -> String -> γ
 ) =>
-{ cmake = γ;
+{ cmake = δ;
   enableShared = Bool;
-  fetch = String -> String -> ε;
-  fetchpatch = {sha256 = String; url = String;} -> δ;
+  fetch = String -> String -> ζ;
+  fetchpatch = {sha256 = String; url = String;} -> ε;
   stdenv = α;
-  version = ζ;
+  version = η;
 } ->
-η
+θ

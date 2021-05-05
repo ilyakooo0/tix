@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.isMusl = β,
+( α.hostPlatform = β,
   α.lib = γ,
   α.mkDerivation =
     { buildInputs = [δ];
@@ -21,11 +21,10 @@
       version = String;
     } ->
     κ,
-  α.optional = β -> Path -> θ,
-  λ.lib = α,
-  μ.hostPlatform = α,
-  γ.licenses = ν,
-  γ.platforms = ξ,
+  γ.optional = λ -> Path -> θ,
+  β.isMusl = λ,
+  μ.licenses = ν,
+  μ.platforms = ξ,
   ν.lgpl2Plus = ε,
   ξ.unix = ζ
 ) =>

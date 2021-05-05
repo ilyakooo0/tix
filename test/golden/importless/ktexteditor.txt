@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.ttuegel = β, γ.maintainers = α) => { editorconfig-core-c = δ;
+(α.maintainers = β, β.ttuegel = γ) => { editorconfig-core-c = δ;
   extra-cmake-modules = ε;
   karchive = δ;
   kconfig = δ;
@@ -12,7 +12,7 @@
   libgit2 = δ;
   mkDerivation =
     { buildInputs = [δ];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [ε];
       propagatedBuildInputs = [ζ];

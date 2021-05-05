@@ -2,32 +2,31 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.npm = ε,
-  γ.lines = ζ,
-  γ.literalExample = String -> η,
-  γ.mkEnableOption = String -> θ,
+  β.programs = ε,
+  γ.literalExample = String -> ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ι ->
+    θ ->
     { environment =
-        { etc = {npmrc = {text = κ;};};
-          systemPackages = [λ];
+        { etc = {npmrc = {text = ι;};};
+          systemPackages = [κ];
           variables = {NPM_CONFIG_GLOBALCONFIG = String;};
         };
     } ->
-    μ,
+    λ,
   γ.mkOption =
-    {default = String; description = String; example = String; type = ζ;} -> ν,
+    {default = String; description = String; example = String; type = μ;} -> ν,
   γ.types = ξ,
-  δ.npm = ο,
-  ε.enable = ι,
-  ε.npmrc = κ,
-  ε.package = λ,
-  π.programs = β,
-  ρ.types = γ,
-  σ.nodePackages = δ,
-  ξ.path = τ
+  δ.nodePackages = ο,
+  ε.npm = π,
+  π.enable = θ,
+  π.npmrc = ι,
+  π.package = κ,
+  ξ.lines = μ,
+  ο.npm = ρ,
+  σ.path = τ
 ) =>
 α ->
-{ config = μ;
-  options = {programs = {npm = {enable = θ; npmrc = ν; package = υ;};};};
+{ config = λ;
+  options = {programs = {npm = {enable = η; npmrc = ν; package = υ;};};};
 }

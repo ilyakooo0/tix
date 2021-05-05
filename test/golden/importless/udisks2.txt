@@ -2,19 +2,19 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];}; udev = {packages = [θ];};};
-      systemd = {packages = [ι]; tmpfiles = {rules = [String];};};
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];}; udev = {packages = [ι];};};
+      systemd = {packages = [κ]; tmpfiles = {rules = [String];};};
     } ->
-    κ,
-  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  δ.udisks2 = ζ,
-  ξ.udisks2 = β,
-  ο.services = ξ,
-  ν.bool = λ
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  δ.udisks2 = η,
+  ε.udisks2 = ο,
+  ο.enable = ζ,
+  ξ.bool = μ
 ) =>
-α -> {config = κ; options = {services = {udisks2 = {enable = μ;};};};}
+α -> {config = λ; options = {services = {udisks2 = {enable = ν;};};};}

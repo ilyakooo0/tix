@@ -2,16 +2,16 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.enable = Bool,
-  γ.flatpak = ζ,
-  δ.literalExample = String -> η,
-  δ.mkEnableOption = String -> θ,
+  γ.services = ζ,
+  γ.xdg = η,
+  δ.literalExample = String -> θ,
+  δ.mkEnableOption = String -> ι,
   δ.mkIf =
-    ι ->
+    κ ->
     { assertions = [{assertion = Bool; message = String;}];
-      environment = {profiles = [String]; systemPackages = [κ];};
-      services = {dbus = {packages = [λ];};};
-      systemd = {packages = [μ];};
+      environment = {profiles = [String]; systemPackages = [λ];};
+      services = {dbus = {packages = [μ];};};
+      systemd = {packages = [ν];};
       users =
         { groups = {flatpak = {};};
           users =
@@ -20,30 +20,29 @@
             };
         };
     } ->
-    ν,
+    ξ,
   δ.mkOption =
     { default = ∀ α. α;
       description = String;
-      example = η;
+      example = θ;
       internal = Bool;
-      type = ξ;
+      type = ο;
     } ->
-    ο,
-  δ.types = π,
-  ε.flatpak = κ,
-  ε.maintainers = ρ,
-  ζ.enable = ι,
-  ζ.guiPackages = [κ],
-  σ.services = γ,
-  τ.portal = γ,
-  υ.xdg = τ,
-  φ.meta = ε,
-  χ.flatpak = φ,
-  π.listOf = ψ -> ξ,
+    π,
+  δ.types = ρ,
+  ε.flatpak = λ,
+  ζ.flatpak = σ,
+  σ.enable = κ,
+  σ.guiPackages = [λ],
+  η.portal = τ,
+  τ.enable = Bool,
+  υ.meta = φ,
+  φ.maintainers = χ,
+  ρ.listOf = ψ -> ο,
   ω.package = ψ
 ) =>
 β ->
-{ config = ν;
-  meta = {doc = Path; maintainers = ρ;};
-  options = {services = {flatpak = {enable = θ; guiPackages = ο;};};};
+{ config = ξ;
+  meta = {doc = Path; maintainers = χ;};
+  options = {services = {flatpak = {enable = ι; guiPackages = π;};};};
 }

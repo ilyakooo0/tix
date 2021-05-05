@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.maintainers = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       installPhase = String;
@@ -8,15 +8,14 @@
       phases = [String];
     } ->
     ζ,
-  α.unix = ε,
   η.CPANPLUS = γ,
   η.GetoptLongDescriptive = γ,
   η.LogLog4perl = γ,
   η.Readonly = γ,
-  β.eelco = δ,
-  β.rycee = δ,
-  θ.lib = α,
-  ι.platforms = α,
-  κ.lib = ι
+  β.maintainers = θ,
+  θ.eelco = δ,
+  θ.rycee = δ,
+  ι.platforms = κ,
+  κ.unix = ε
 ) =>
 {makeWrapper = γ; perl = γ; perlPackages = η; stdenv = α;} -> ζ

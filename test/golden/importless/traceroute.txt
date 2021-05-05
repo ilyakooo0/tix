@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.traceroute = ε,
+  β.programs = ε,
   γ.mkIf =
     ζ ->
     { security =
@@ -11,8 +11,8 @@
     η,
   γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
   γ.types = κ,
-  ε.enable = ζ,
-  λ.programs = β,
+  ε.traceroute = λ,
+  λ.enable = ζ,
   κ.bool = θ
 ) =>
 α -> {config = η; options = {programs = {traceroute = {enable = ι;};};};}

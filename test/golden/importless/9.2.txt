@@ -1,19 +1,17 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( β.gpl2 = γ,
-  β.linux = δ,
-  β.maintainers = ε,
-  ζ.mkDerivation =
+( β.lib = γ,
+  δ.mkDerivation =
     { alt_wrapper = Path;
-      buildInputs = [η];
+      buildInputs = [ε];
       builder = Path;
-      cctools_port = θ;
-      ldid = θ;
+      cctools_port = ζ;
+      ldid = ζ;
       meta =
         { description = String;
           hydraPlatforms = ∀ α. α;
-          license = γ;
-          maintainers = [ι];
-          platforms = δ;
+          license = η;
+          maintainers = [θ];
+          platforms = ι;
         };
       name = String;
       sdk = String;
@@ -21,25 +19,25 @@
       version = String;
     } ->
     λ,
-  μ.licenses = β,
-  ν.lib = μ,
-  ε.fxfactorial = ι,
-  ξ.lib = β,
-  ο.platforms = β,
-  π.lib = ο
+  γ.licenses = μ,
+  μ.gpl2 = η,
+  ν.maintainers = ξ,
+  ξ.fxfactorial = θ,
+  ο.platforms = π,
+  π.linux = ι
 ) =>
-{ autoconf = η;
-  automake = η;
-  clang = η;
-  clangStdenv = ζ;
+{ autoconf = ε;
+  automake = ε;
+  clang = ε;
+  clangStdenv = δ;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  git = η;
-  gnutar = η;
-  libtool = η;
-  openssl = η;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+  git = ε;
+  gnutar = ε;
+  libtool = ε;
+  openssl = ε;
   requireFile = {message = String; name = String; sha256 = String;} -> κ;
   stdenv = β;
-  xz = η;
+  xz = ε;
 } ->
 λ

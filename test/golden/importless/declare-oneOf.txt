@@ -1,14 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
 ( α.lib = β,
-  β.int = γ,
-  β.listOf = δ -> γ,
-  β.mkOption = {type = ε;} -> ζ,
-  β.oneOf = [γ] -> ε,
-  β.str = γ,
-  η.types = β,
-  θ.types = β,
-  ι.types = β,
-  κ.types = β,
-  λ.types = β
+  β.mkOption = {type = γ;} -> δ,
+  β.types = ε,
+  ε.oneOf = [ζ] -> γ,
+  η.int = ζ,
+  θ.listOf = ι -> ζ,
+  κ.int = ι,
+  λ.str = ζ
 ) =>
-α -> {options = {value = ζ;};}
+α -> {options = {value = δ;};}

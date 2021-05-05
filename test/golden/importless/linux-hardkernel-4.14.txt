@@ -11,10 +11,10 @@
   ) ~
   ( γ
   ),
-  α.argsOverride = {},
+  α.?argsOverride = {},
+  α.?extraConfig = String,
   α.buildLinux = γ -> δ,
   α.buildPackages = ε,
-  α.extraConfig = String,
   α.fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> β,
   α.libelf = ζ,

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { QuickCheck = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { QuickCheck = ε;
   base = ε;
   containers = ε;
   fetchpatch = {sha256 = String; url = String;} -> ζ;
@@ -13,7 +13,7 @@
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
       librarySystemDepends = [η];
-      license = β;
+      license = δ;
       patches = [ζ];
       pname = String;
       sha256 = String;

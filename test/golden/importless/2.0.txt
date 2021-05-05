@@ -5,14 +5,13 @@
   α.qt4 = β,
   α.stdenv = δ,
   α.xorg = ε,
-  δ.gpl2 = ζ,
-  δ.maintainers = η,
+  δ.lib = ζ,
   δ.mkDerivation =
     { buildInputs = [β];
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
+          license = η;
           maintainers = [θ];
           platforms = ι;
         };
@@ -21,13 +20,12 @@
       version = String;
     } ->
     κ,
-  δ.platforms = λ,
   ε.libXtst = β,
-  μ.licenses = δ,
-  ν.lib = μ,
-  η.qknight = θ,
-  ξ.lib = δ,
-  λ.linux = ι,
-  ο.lib = δ
+  ζ.licenses = λ,
+  λ.gpl2 = η,
+  μ.maintainers = ν,
+  ν.qknight = θ,
+  ξ.platforms = ο,
+  ο.linux = ι
 ) =>
 α -> κ

@@ -18,30 +18,26 @@
       version = κ;
     } ->
     λ,
-  α.optionals = β -> [μ] -> [δ],
-  ν.Carbon = μ,
-  ν.Cocoa = μ,
-  ν.Foundation = μ,
-  ν.bootstrap_cmds = μ,
-  ν.libobjc = μ,
-  ν.xpc = μ,
-  ξ.lib = α,
-  γ.licenses = ο,
-  γ.platforms = π,
-  ο.ncsa = ε,
-  π.all = ζ,
-  ρ.libs = ν,
-  σ.apple_sdk = ρ,
-  τ.frameworks = ν,
-  υ.apple_sdk = τ,
-  φ.frameworks = ν,
-  χ.apple_sdk = φ,
-  ψ.frameworks = ν,
-  ω.apple_sdk = ψ
+  μ.apple_sdk = ν,
+  μ.bootstrap_cmds = ξ,
+  μ.libobjc = ξ,
+  γ.optionals = β -> [ξ] -> [δ],
+  ο.licenses = π,
+  ο.platforms = ρ,
+  π.ncsa = ε,
+  ρ.all = ζ,
+  ν.libs = σ,
+  σ.xpc = ξ,
+  τ.frameworks = υ,
+  υ.Foundation = ξ,
+  φ.frameworks = χ,
+  χ.Carbon = ξ,
+  ψ.frameworks = ω,
+  ω.Cocoa = ξ
 ) =>
 { clang-unwrapped = α1;
   cmake = η;
-  darwin = ν;
+  darwin = μ;
   fetch = String -> String -> ι;
   fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> θ;
   libedit = δ;

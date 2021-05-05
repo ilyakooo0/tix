@@ -2,33 +2,32 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.initrd = ε,
-  β.squashfsStore = ζ,
-  β.storeContents = η,
-  β.toplevel = θ,
-  γ.literalExample = String -> ι,
-  γ.mkOption = {description = String; example = ι;} -> κ,
-  δ.callPackage = Path -> {storeContents = η;} -> λ,
+  β.boot = ε,
+  β.netboot = ζ,
+  β.system = η,
+  γ.literalExample = String -> θ,
+  γ.mkOption = {description = String; example = θ;} -> ι,
+  δ.callPackage = Path -> {storeContents = κ;} -> λ,
   δ.grub2 = μ,
   δ.grub2_efi = μ,
   δ.makeInitrd =
     { compressor = ν;
-      contents = [{object = ζ; symlink = String;}];
+      contents = [{object = ξ; symlink = String;}];
       prepend = [String];
     } ->
-    ξ,
+    ο,
+  δ.stdenv = π,
   δ.syslinux = μ,
-  δ.system = String,
-  δ.writeTextDir = String -> String -> ο,
-  π.hostPlatform = δ,
-  ρ.stdenv = π,
-  σ.build = β,
-  τ.system = σ,
-  ε.compressor = ν,
-  υ.boot = β,
-  φ.build = β,
-  χ.system = φ,
-  ψ.netboot = β
+  δ.writeTextDir = String -> String -> ρ,
+  π.hostPlatform = σ,
+  σ.system = String,
+  η.build = τ,
+  τ.toplevel = υ,
+  ε.initrd = φ,
+  φ.compressor = ν,
+  χ.build = ψ,
+  ψ.squashfsStore = ξ,
+  ζ.storeContents = κ
 ) =>
 α ->
 { config =
@@ -51,11 +50,11 @@
             {fsType = String; neededForBoot = Bool; options = [String];};
           /nix/store = {device = String; fsType = String; options = [String];};
         };
-      netboot = {storeContents = [θ];};
+      netboot = {storeContents = [υ];};
       system =
         { build =
-            {netbootIpxeScript = ο; netbootRamdisk = ξ; squashfsStore = λ;};
+            {netbootIpxeScript = ρ; netbootRamdisk = ο; squashfsStore = λ;};
         };
     };
-  options = {netboot = {storeContents = κ;};};
+  options = {netboot = {storeContents = ι;};};
 }

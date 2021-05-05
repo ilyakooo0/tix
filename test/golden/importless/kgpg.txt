@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.gpl2 = β,
-  α.ttuegel = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl2 = δ,
+  γ.ttuegel = ε
 ) =>
 { akonadi-contacts = ζ;
   extra-cmake-modules = η;
@@ -28,7 +28,7 @@
   makeWrapper = η;
   mkDerivation =
     { buildInputs = [ζ];
-      meta = {license = [β]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       postFixup = String;

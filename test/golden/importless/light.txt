@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.light = ε,
+  β.programs = ε,
   γ.mkIf =
     ζ ->
     { environment = {systemPackages = [η];};
@@ -12,8 +12,8 @@
   γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
   γ.types = μ,
   δ.light = η,
-  ε.enable = ζ,
-  ν.programs = β,
+  ε.light = ν,
+  ν.enable = ζ,
   μ.bool = κ
 ) =>
 α -> {config = ι; options = {programs = {light = {enable = λ;};};};}

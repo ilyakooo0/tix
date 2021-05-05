@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.fridh = β,
-  α.licenses = γ,
-  γ.gpl2 = δ,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.gpl2 = δ,
+  γ.fridh = ε
 ) =>
 { extra-cmake-modules = ζ;
   kdelibs4support = η;
@@ -11,7 +11,7 @@
   libkexiv2 = η;
   mkDerivation =
     { buildInputs = [η];
-      meta = {license = [δ]; maintainers = [β];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
     } ->

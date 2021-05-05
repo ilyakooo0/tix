@@ -18,19 +18,19 @@
       multiPkgs =
         ∀ α β γ δ ε ζ η.
         ( α.git = β,
-          α.override =
+          α.python3 = γ,
+          α.zlib = β,
+          β.pkgs = δ,
+          γ.override =
             { packageOverrides =
-                (γ.callPackage = Path -> {} -> δ) => γ ->
-                ε -> {platformio = δ;};
+                (ε.callPackage = Path -> {} -> ζ) => ε ->
+                η -> {platformio = ζ;};
             } ->
             β,
-          α.zlib = β,
-          β.pkgs = ζ,
-          ζ.bottle = β,
-          ζ.pip = β,
-          ζ.platformio = β,
-          ζ.setuptools = β,
-          η.python3 = α
+          δ.bottle = β,
+          δ.pip = β,
+          δ.platformio = β,
+          δ.setuptools = β
         ) =>
         α -> [β];
       name = String;
@@ -38,19 +38,19 @@
       targetPkgs =
         ∀ α β γ δ ε ζ η.
         ( α.git = β,
-          α.override =
+          α.python3 = γ,
+          α.zlib = β,
+          β.pkgs = δ,
+          γ.override =
             { packageOverrides =
-                (γ.callPackage = Path -> {} -> δ) => γ ->
-                ε -> {platformio = δ;};
+                (ε.callPackage = Path -> {} -> ζ) => ε ->
+                η -> {platformio = ζ;};
             } ->
             β,
-          α.zlib = β,
-          β.pkgs = ζ,
-          ζ.bottle = β,
-          ζ.pip = β,
-          ζ.platformio = β,
-          ζ.setuptools = β,
-          η.python3 = α
+          δ.bottle = β,
+          δ.pip = β,
+          δ.platformio = β,
+          δ.setuptools = β
         ) =>
         α -> [β];
     } ->

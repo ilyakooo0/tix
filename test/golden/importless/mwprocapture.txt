@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( α.config = β,
   α.lib = γ,
-  β.kernelPackages = δ,
-  β.mwProCapture = ε,
+  β.boot = δ,
+  β.hardware = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -17,11 +17,11 @@
     λ,
   γ.singleton = {assertion = μ; message = String;} -> θ,
   γ.versionAtLeast = ν -> String -> μ,
-  δ.mwprocapture = ι,
-  δ.version = ν,
-  ξ.boot = β,
-  ε.enable = η,
-  ο.hardware = β,
-  π.kernel = δ
+  δ.kernelPackages = ξ,
+  ξ.kernel = ο,
+  ξ.mwprocapture = ι,
+  ε.mwProCapture = π,
+  π.enable = η,
+  ο.version = ν
 ) =>
 α -> {config = λ; options = {hardware = {mwProCapture = {enable = ζ;};};};}

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.metacity = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -13,10 +13,10 @@
   γ.singleton = {name = String; start = String;} -> ι,
   δ.gnome3 = λ,
   λ.metacity = θ,
-  ε.enable = η,
-  μ.windowManager = β,
-  ν.xserver = μ,
-  ξ.services = ν
+  ε.xserver = μ,
+  μ.windowManager = ν,
+  ν.metacity = ξ,
+  ξ.enable = η
 ) =>
 α ->
 { config = κ;

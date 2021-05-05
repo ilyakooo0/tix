@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-( α.maintainers = β,
+( α.lib = β,
   α.mkDerivation =
     { installPhase = String;
       meta = {description = String; homepage = String; maintainers = [γ];};
@@ -9,8 +9,8 @@
     } ->
     ζ,
   η.python = δ,
-  β.matthiasbeyer = γ,
-  θ.lib = α
+  β.maintainers = θ,
+  θ.matthiasbeyer = γ
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ε;

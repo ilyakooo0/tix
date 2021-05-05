@@ -2,21 +2,21 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.interfaces = ζ,
+  γ.services = ζ,
   δ.fold = (η -> η -> η) -> String -> θ -> ι,
   δ.map =
-    ({interface = κ; method = String; password = String;} -> String) -> ζ -> θ,
+    ({interface = κ; method = String; password = String;} -> String) -> λ -> θ,
   δ.mkOption =
     { default = ∀ α. α;
       description = String;
       example = [{interface = String; method = String; password = String;}];
     } ->
-    λ,
+    μ,
   δ.throw = String -> String,
-  μ.wakeonlan = γ,
-  ν.services = μ
+  ζ.wakeonlan = ν,
+  ν.interfaces = λ
 ) =>
 β ->
 { config = {powerManagement = {powerDownCommands = ι;};};
-  options = {services = {wakeonlan = {interfaces = λ;};};};
+  options = {services = {wakeonlan = {interfaces = μ;};};};
 }

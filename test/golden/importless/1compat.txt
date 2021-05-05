@@ -1,9 +1,8 @@
 ∀ β γ δ ε ζ η θ ι.
 ( (β) // ({description = String; priority = Integer;}) ~ (γ),
   δ.mkDerivation = {builder = ε; meta = ∀ α. α; name = String;} -> ζ,
-  η.description = String,
   η.meta = β,
-  θ.meta = η
+  θ.description = String
 ) =>
 {coreutils = ι; gnupg = η; stdenv = δ; writeScript = String -> String -> ε;} ->
 ζ

@@ -5,7 +5,7 @@
   α.stdenv = ε,
   α.tcl = ζ,
   ε.isDarwin = η,
-  ε.optionals = η -> [Path] -> [Path],
-  θ.lib = ε
+  ε.lib = θ,
+  θ.optionals = η -> [Path] -> [Path]
 ) =>
 α -> δ

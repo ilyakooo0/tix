@@ -2,25 +2,25 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   δ.glib-networking = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ε ->
+    θ ->
     { environment = {variables = {GIO_EXTRA_MODULES = [String];};};
       services = {dbus = {packages = [ζ];};};
-      systemd = {packages = [θ];};
+      systemd = {packages = [ι];};
     } ->
-    ι,
-  γ.teams = κ,
-  λ.glib-networking = β,
-  μ.gnome3 = λ,
-  ν.services = μ,
-  κ.members = ξ,
-  ο.gnome = κ
+    κ,
+  γ.teams = λ,
+  ε.gnome3 = μ,
+  μ.glib-networking = ν,
+  ν.enable = θ,
+  λ.gnome = ξ,
+  ξ.members = ο
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = ξ;};
+{ config = κ;
+  meta = {maintainers = ο;};
   options = {services = {gnome3 = {glib-networking = {enable = η;};};};};
 }

@@ -16,14 +16,14 @@
       version = String;
     } ->
     ι,
-  γ.platforms = η,
-  γ.version = κ,
+  γ.meta = κ,
+  γ.version = λ,
   β.ivan = ζ,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.versionOlder = κ -> String -> δ,
-  λ.postgresql = ε,
-  ν.meta = γ
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.versionOlder = λ -> String -> δ,
+  μ.postgresql = ε,
+  κ.platforms = η
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> θ;

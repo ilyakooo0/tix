@@ -2,14 +2,15 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  γ.mkIf = ε -> {environment = {extraSetup = String;};} -> ζ,
-  γ.mkOption = {default = η; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.iconCache = β,
-  μ.gtk = λ,
-  ν.xserver = β,
-  ξ.services = ν,
-  κ.bool = θ
+  β.gtk = ε,
+  β.services = ζ,
+  γ.mkIf = η -> {environment = {extraSetup = String;};} -> θ,
+  γ.mkOption = {default = ι; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  ε.iconCache = ν,
+  ν.enable = η,
+  ζ.xserver = ξ,
+  ξ.enable = ι,
+  μ.bool = κ
 ) =>
-α -> {config = ζ; options = {gtk = {iconCache = {enable = ι;};};};}
+α -> {config = θ; options = {gtk = {iconCache = {enable = λ;};};};}

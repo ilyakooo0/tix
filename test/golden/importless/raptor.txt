@@ -1,32 +1,30 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.licenses = β,
-  α.linux = γ,
-  α.marcweber = δ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [γ];
       meta =
         { description = String;
           homepage = String;
-          license = [ζ];
-          maintainers = [δ];
-          platforms = γ;
+          license = [δ];
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
       preBuild = String;
       src = η;
     } ->
     θ,
-  β.asl20 = ζ,
-  β.lgpl21 = ζ,
-  ι.lib = α,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+  β.licenses = ι,
+  ι.asl20 = δ,
+  ι.lgpl21 = δ,
+  κ.maintainers = λ,
+  λ.marcweber = ε,
+  μ.platforms = ν,
+  ν.linux = ζ
 ) =>
-{ curl = ε;
+{ curl = γ;
   fetchurl = {sha256 = String; url = String;} -> η;
-  libxml2 = ε;
+  libxml2 = γ;
   stdenv = α;
 } ->
 θ

@@ -2,17 +2,17 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.stateVersion = ζ,
-  δ.gnome-initial-setup = η,
+  β.services = ε,
+  β.system = ζ,
+  δ.gnome3 = η,
   δ.writeScript = String -> String -> θ,
   δ.writeTextFile = {destination = String; name = String; text = String;} -> ι,
   γ.mkEnableOption = String -> κ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
+    λ ->
+    { environment = {systemPackages = [μ];};
       systemd =
-        { packages = [λ];
+        { packages = [ν];
           user =
             { targets =
                 { gnome-session = {wants = [String];};
@@ -21,21 +21,21 @@
             };
         };
     } ->
-    μ,
-  γ.optional = ν -> ι -> [η],
-  γ.teams = ξ,
-  γ.versionOlder = ζ -> String -> ν,
-  ο.gnome-initial-setup = β,
-  π.gnome3 = ο,
-  ρ.services = π,
-  σ.gnome3 = δ,
-  τ.system = β,
-  υ.gnome3 = δ,
-  ξ.members = φ,
-  χ.gnome = ξ
+    ξ,
+  γ.optional = ο -> ι -> [μ],
+  γ.teams = π,
+  γ.versionOlder = ρ -> String -> ο,
+  ε.gnome3 = σ,
+  σ.gnome-initial-setup = τ,
+  τ.enable = λ,
+  η.gnome-initial-setup = μ,
+  ζ.stateVersion = ρ,
+  υ.gnome-initial-setup = ν,
+  π.gnome = φ,
+  φ.members = χ
 ) =>
 α ->
-{ config = μ;
-  meta = {maintainers = φ;};
+{ config = ξ;
+  meta = {maintainers = χ;};
   options = {services = {gnome3 = {gnome-initial-setup = {enable = κ;};};};};
 }

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.bladeRF = ε,
+  β.hardware = ε,
   γ.mkIf =
     ζ ->
     { services = {udev = {packages = [η];};};
@@ -12,8 +12,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.libbladeRF = η,
-  ε.enable = ζ,
-  μ.hardware = β,
+  ε.bladeRF = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {hardware = {bladeRF = {enable = κ;};};};}

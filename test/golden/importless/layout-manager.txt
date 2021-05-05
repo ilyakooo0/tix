@@ -1,40 +1,39 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( β.lib = γ,
-  β.makeBinPath = [δ] -> ε,
   β.mkDerivation =
     { dontBuild = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
+          license = δ;
           maintainers = ∀ α. α;
-          platforms = η;
+          platforms = ε;
         };
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [ζ];
       pname = String;
-      src = ι;
+      src = η;
       version = String;
     } ->
-    κ,
-  λ.lib = β,
-  γ.licenses = μ,
-  γ.maintainers = ν,
-  γ.platforms = ξ,
-  μ.mit = ζ,
-  ξ.linux = η
+    θ,
+  γ.makeBinPath = [ι] -> κ,
+  λ.licenses = μ,
+  λ.maintainers = ν,
+  λ.platforms = ξ,
+  μ.mit = δ,
+  ξ.linux = ε
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
-  gawk = δ;
-  i3 = δ;
-  jq = δ;
-  libnotify = δ;
-  makeWrapper = θ;
-  rofi = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  gawk = ι;
+  i3 = ι;
+  jq = ι;
+  libnotify = ι;
+  makeWrapper = ζ;
+  rofi = ι;
   stdenv = β;
-  vim = δ;
-  xdotool = δ;
-  xrandr = δ;
+  vim = ι;
+  xdotool = ι;
+  xrandr = ι;
 } ->
-κ
+θ

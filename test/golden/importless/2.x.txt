@@ -1,40 +1,39 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.lib = β,
-  γ.buildPythonApplication =
-    { checkInputs = [δ];
+  γ.pkgs = δ,
+  β.aneeshusa = ε,
+  β.edwtjo = ε,
+  β.infinisil = ε,
+  β.licenses = ζ,
+  β.maintainers = η,
+  β.pSub = ε,
+  ζ.gpl3Plus = θ,
+  δ.buildPythonApplication =
+    { checkInputs = [ι];
       meta =
         { description = String;
           homepage = String;
-          license = ε;
+          license = θ;
           longDescription = String;
-          maintainers = [ζ];
+          maintainers = [ε];
         };
       pname = String;
       postPatch = String;
-      propagatedBuildInputs = [η];
-      src = θ;
+      propagatedBuildInputs = [κ];
+      src = λ;
       version = String;
     } ->
-    ι,
-  γ.pkgs = κ,
-  β.aneeshusa = ζ,
-  β.edwtjo = ζ,
-  β.infinisil = ζ,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.pSub = ζ,
-  λ.gpl3Plus = ε,
-  ν.pkgs = γ,
-  κ.passlib = η,
-  κ.python-dateutil = η,
-  κ.setuptools = η,
-  κ.vobject = η,
-  ξ.pytest = δ,
-  ξ.pytestrunner = δ
+    μ,
+  ν.passlib = κ,
+  ν.python-dateutil = κ,
+  ν.setuptools = κ,
+  ν.vobject = κ,
+  ξ.pytest = ι,
+  ξ.pytestrunner = ι
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
   python3 = γ;
   stdenv = α;
 } ->
-ι
+μ

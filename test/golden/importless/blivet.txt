@@ -1,11 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.lib = β,
-  α.optional = Bool -> Null -> [γ],
-  δ.lib = α,
-  β.gpl2Plus = ε,
-  β.lgpl21Plus = ε,
-  β.licenses = ζ,
-  β.platforms = η,
+  β.optional = Bool -> Null -> [γ],
+  δ.gpl2Plus = ε,
+  δ.lgpl21Plus = ε,
+  δ.licenses = ζ,
+  δ.platforms = η,
   η.linux = θ
 ) =>
 { buildPythonApplication =

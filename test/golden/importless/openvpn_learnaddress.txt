@@ -1,29 +1,28 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.mkDerivation =
-    { buildInputs = [β];
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          maintainers = [γ];
-          platforms = δ;
+          maintainers = [δ];
+          platforms = ε;
         };
       name = String;
-      src = ε;
+      src = ζ;
     } ->
-    ζ,
-  α.offline = γ,
-  α.unix = δ,
-  η.maintainers = α,
-  θ.lib = η,
-  ι.platforms = α,
-  κ.lib = ι
+    η,
+  β.maintainers = θ,
+  θ.offline = δ,
+  ι.platforms = κ,
+  κ.unix = ε
 ) =>
-{ coreutils = β;
-  fetchgit = {rev = String; sha256 = String; url = String;} -> ε;
-  gawk = β;
-  makeWrapper = β;
+{ coreutils = γ;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> ζ;
+  gawk = γ;
+  makeWrapper = γ;
   stdenv = α;
-  utillinux = β;
+  utillinux = γ;
 } ->
-ζ
+η

@@ -1,11 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.config = β,
   α.lib = γ,
-  β.hideProcessInformation = δ,
-  β.proc = ε,
+  β.ids = δ,
+  β.security = ε,
   γ.maintainers = ζ,
   γ.mkIf =
-    δ ->
+    η ->
     { boot = {specialFileSystems = {/proc = {options = [String];};};};
       systemd =
         { services =
@@ -13,19 +13,19 @@
                 {serviceConfig = {SupplementaryGroups = [String];};};
             };
         };
-      users = {groups = {proc = {gid = ε; members = [String];};};};
+      users = {groups = {proc = {gid = θ; members = [String];};};};
     } ->
-    η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  λ.security = β,
-  μ.gids = β,
-  ν.ids = μ,
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  ε.hideProcessInformation = η,
+  δ.gids = ν,
+  ν.proc = θ,
   ζ.joachifm = ξ,
-  κ.bool = θ
+  μ.bool = κ
 ) =>
 α ->
-{ config = η;
+{ config = ι;
   meta = {doc = Path; maintainers = [ξ];};
-  options = {security = {hideProcessInformation = ι;};};
+  options = {security = {hideProcessInformation = λ;};};
 }

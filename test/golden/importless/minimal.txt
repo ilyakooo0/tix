@@ -1,12 +1,12 @@
 ∀ α β γ δ ε ζ η.
 ( α.config = β,
   α.lib = γ,
-  β.defaultLocale = String,
-  γ.mkDefault = Bool -> δ,
-  ε.i18n = β
+  β.i18n = δ,
+  γ.mkDefault = Bool -> ε,
+  δ.defaultLocale = String
 ) =>
 α ->
-{ documentation = {enable = δ; nixos = {enable = ζ;};};
+{ documentation = {enable = ε; nixos = {enable = ζ;};};
   environment = {noXlibs = η;};
   i18n = {supportedLocales = [String];};
 }

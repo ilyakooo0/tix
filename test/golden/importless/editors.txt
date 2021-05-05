@@ -1,24 +1,20 @@
 ∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
-( γ.edwtjo = δ,
-  γ.gpl2 = ε,
-  γ.gpl2Plus = ε,
-  γ.lib = ζ,
-  γ.linux = η,
+( γ.lib = δ,
   γ.mkDerivation =
-    { application = θ;
-      buildInputs = [ι];
+    { application = ε;
+      buildInputs = [ζ];
       buildPhase = String;
       description = ∀ β. β;
       dontStrip = Bool;
-      editorItem = κ;
+      editorItem = η;
       exec = String;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ε;
-          maintainers = [δ];
-          platforms = η;
+          license = θ;
+          maintainers = [ι];
+          platforms = κ;
         };
       module = ∀ β. β;
       patchPhase = String;
@@ -27,26 +23,25 @@
       version = ∀ β. β;
     } ->
     λ,
-  γ.replaceChars = [String] -> [String] -> String -> String,
-  ζ.removeSuffix = String -> μ -> String,
-  ζ.toLower = ν -> μ,
-  ξ.maintainers = γ,
-  ο.lib = ξ,
-  π.platforms = γ,
-  ρ.lib = π,
-  σ.lib = γ,
-  τ.licenses = γ,
-  υ.lib = τ,
-  φ.licenses = γ,
-  χ.lib = φ
+  δ.removeSuffix = String -> μ -> String,
+  δ.toLower = ν -> μ,
+  ξ.maintainers = ο,
+  ο.edwtjo = ι,
+  π.platforms = ρ,
+  ρ.linux = κ,
+  σ.replaceChars = [String] -> [String] -> String -> String,
+  τ.licenses = υ,
+  υ.gpl2 = θ,
+  φ.licenses = χ,
+  χ.gpl2Plus = θ
 ) =>
-{ ant = ι;
+{ ant = ζ;
   fetchcvs =
     {cvsRoot = String; module = String; sha256 = String; tag = String;} -> ψ;
-  gsettings-desktop-schemas = ι;
-  gtk3 = ι;
-  jdk = ι;
-  jre = ι;
+  gsettings-desktop-schemas = ζ;
+  gtk3 = ζ;
+  jdk = ζ;
+  jre = ζ;
   makeDesktopItem =
     { categories = String;
       comment = ∀ α. α;
@@ -55,9 +50,9 @@
       genericName = String;
       name = ∀ α. α;
     } ->
-    κ;
-  makeWrapper = ι;
+    η;
+  makeWrapper = ζ;
   stdenv = γ;
-  sweethome3dApp = θ;
+  sweethome3dApp = ε;
 } ->
 {furniture-editor = λ; textures-editor = λ;}

@@ -20,19 +20,17 @@
       version = String;
     } ->
     λ,
-  α.optional = μ -> ν -> θ,
-  α.optionalString = β -> String -> ι,
-  ξ.lib = α,
-  ο.lib = α,
-  γ.darwin = [η],
-  γ.licenses = π,
-  γ.linux = [η],
-  γ.maggesi = ζ,
-  γ.maintainers = ρ,
-  γ.platforms = σ,
+  γ.optionalString = β -> String -> ι,
+  μ.optional = ν -> ξ -> θ,
+  ο.darwin = [η],
+  ο.licenses = π,
+  ο.linux = [η],
+  ο.maggesi = ζ,
+  ο.maintainers = ρ,
+  ο.platforms = σ,
   π.lgpl21 = ε
 ) =>
-{ autoreconfHook = ν;
+{ autoreconfHook = ξ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
   gmp = δ;

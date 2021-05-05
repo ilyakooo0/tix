@@ -2,24 +2,24 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.rtkit = ζ,
+  β.ids = ε,
+  β.security = ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
+    η ->
+    { environment = {systemPackages = [θ];};
       security = {polkit = {enable = Bool;};};
-      services = {dbus = {packages = [θ];};};
-      systemd = {packages = [ι];};
-      users = {users = {rtkit = {description = String; uid = ζ;};};};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
+      users = {users = {rtkit = {description = String; uid = λ;};};};
     } ->
-    κ,
-  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  δ.rtkit = η,
-  ξ.rtkit = β,
-  ο.security = ξ,
-  π.uids = β,
-  ρ.ids = π,
-  ν.bool = λ
+    μ,
+  γ.mkOption = {default = Bool; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  δ.rtkit = θ,
+  ζ.rtkit = π,
+  π.enable = η,
+  ε.uids = ρ,
+  ρ.rtkit = λ,
+  ο.bool = ν
 ) =>
-α -> {config = κ; options = {security = {rtkit = {enable = μ;};};};}
+α -> {config = μ; options = {security = {rtkit = {enable = ξ;};};};}

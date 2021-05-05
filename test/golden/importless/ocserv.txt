@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.ocserv = ε,
+  β.services = ε,
   δ.ocserv = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -30,9 +30,9 @@
     κ,
   γ.mkOption = {description = String; example = String; type = λ;} -> μ,
   γ.types = ν,
-  ε.config = ι,
-  ε.enable = θ,
-  ξ.services = β,
+  ε.ocserv = ξ,
+  ξ.config = ι,
+  ξ.enable = θ,
   ν.lines = λ
 ) =>
 α ->

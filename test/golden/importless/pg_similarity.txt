@@ -1,27 +1,27 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.gpl2 = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       buildPhase = String;
       installPhase = String;
       meta =
-        {description = String; license = β; maintainers = [δ]; platforms = ε;};
+        {description = String; license = δ; maintainers = [ε]; platforms = ζ;};
       name = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  θ.maintainers = ι,
-  γ.platforms = ε,
-  κ.licenses = α,
-  λ.lib = κ,
-  ι.danbst = δ,
-  μ.meta = γ
+    θ,
+  ι.maintainers = κ,
+  γ.meta = λ,
+  β.licenses = μ,
+  μ.gpl2 = δ,
+  κ.danbst = ε,
+  λ.platforms = ζ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
   gcc = γ;
-  lib = θ;
+  lib = ι;
   postgresql = γ;
   stdenv = α;
 } ->
-η
+θ

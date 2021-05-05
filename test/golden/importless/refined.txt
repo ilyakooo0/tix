@@ -1,16 +1,16 @@
 ∀ α β γ δ ε ζ η.
-( α.asl20 = β,
-  α.brainrape = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.asl20 = δ,
+  γ.brainrape = ε
 ) =>
 { build-idris-package =
     { ipkgName = String;
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [γ];
+          license = δ;
+          maintainers = [ε];
         };
       name = String;
       src = ζ;

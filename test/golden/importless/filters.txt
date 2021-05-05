@@ -1,51 +1,49 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gpl2 = β,
-  α.linux = γ,
-  α.makeBinPath = [δ] -> ε,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [ζ];
+    { buildInputs = [γ];
       configureFlags = [String];
       doCheck = Bool;
       enableParallelBuilding = Bool;
       makeFlags = [String];
       meta =
-        {description = String; homepage = String; license = β; platforms = γ;};
-      nativeBuildInputs = [η];
+        {description = String; homepage = String; license = δ; platforms = ε;};
+      nativeBuildInputs = [ζ];
       pname = String;
       postConfigure = String;
       postInstall = String;
-      src = θ;
+      src = η;
       version = String;
     } ->
-    ι,
-  κ.lib = α,
-  λ.licenses = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    θ,
+  β.makeBinPath = [ι] -> κ,
+  λ.licenses = μ,
+  μ.gpl2 = δ,
+  ν.platforms = ξ,
+  ξ.linux = ε
 ) =>
-{ avahi = ζ;
-  bc = δ;
-  coreutils = δ;
-  cups = ζ;
-  dbus = ζ;
-  fetchurl = {sha256 = String; url = String;} -> θ;
-  fontconfig = ζ;
-  gawk = δ;
-  ghostscript = ζ;
-  gnugrep = δ;
-  gnused = δ;
-  ijs = ζ;
-  libjpeg = ζ;
-  libpng = ζ;
-  makeWrapper = η;
-  mupdf = ζ;
-  perl = ζ;
-  pkgconfig = η;
-  poppler = ζ;
-  poppler_utils = ζ;
-  qpdf = ζ;
+{ avahi = γ;
+  bc = ι;
+  coreutils = ι;
+  cups = γ;
+  dbus = γ;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  fontconfig = γ;
+  gawk = ι;
+  ghostscript = γ;
+  gnugrep = ι;
+  gnused = ι;
+  ijs = γ;
+  libjpeg = γ;
+  libpng = γ;
+  makeWrapper = ζ;
+  mupdf = γ;
+  perl = γ;
+  pkgconfig = ζ;
+  poppler = γ;
+  poppler_utils = γ;
+  qpdf = γ;
   stdenv = α;
-  which = δ;
+  which = ι;
 } ->
-ι
+θ

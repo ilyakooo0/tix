@@ -1,35 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.bsd3 = β,
-  α.lib = γ,
-  α.mkDerivation = {buildCommand = String; name = String; src = δ;} -> ε,
-  γ.base = ζ,
-  γ.binary = ζ,
-  γ.bytestring = ζ,
-  γ.concatMapStrings = (η -> String) -> θ -> String,
-  γ.filepath = ζ,
-  γ.lessThan = η -> Integer -> ι,
-  γ.mkDerivation =
-    { buildDepends = [ζ];
+( α.lib = β,
+  α.mkDerivation = {buildCommand = String; name = String; src = γ;} -> δ,
+  β.base = ε,
+  β.binary = ε,
+  β.bytestring = ε,
+  β.concatMapStrings = (ζ -> String) -> η -> String,
+  β.filepath = ε,
+  β.lessThan = ζ -> Integer -> θ,
+  β.mkDerivation =
+    { buildDepends = [ε];
       description = String;
       isExecutable = Bool;
       isLibrary = Bool;
-      license = β;
+      license = ι;
       pname = String;
       src = κ;
       version = String;
     } ->
     λ,
-  γ.optionalString = ι -> String -> μ,
-  γ.range = Integer -> Integer -> θ,
-  γ.tar = ζ,
-  γ.toString = η -> μ,
-  ν.licenses = α,
-  ξ.lib = ν
+  β.optionalString = θ -> String -> μ,
+  β.range = Integer -> Integer -> η,
+  β.tar = ε,
+  β.toString = ζ -> μ,
+  ν.licenses = ξ,
+  ξ.bsd3 = ι
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> κ;
   haskellPackages = ο;
-  requireFile = {message = String; name = String; sha256 = String;} -> δ;
+  requireFile = {message = String; name = String; sha256 = String;} -> γ;
   stdenv = α;
   writeText = String -> String -> π;
 } ->
-ε
+δ

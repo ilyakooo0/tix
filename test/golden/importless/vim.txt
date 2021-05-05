@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.vim = ε,
+  β.programs = ε,
   γ.mkIf =
     ζ ->
     {environment = {systemPackages = [η]; variables = {EDITOR = θ;};};} -> ι,
@@ -10,8 +10,8 @@
   γ.mkOverride = Integer -> String -> θ,
   γ.types = μ,
   δ.vim = η,
-  ε.defaultEditor = ζ,
-  ν.programs = β,
+  ε.vim = ν,
+  ν.defaultEditor = ζ,
   μ.bool = κ
 ) =>
 α -> {config = ι; options = {programs = {vim = {defaultEditor = λ;};};};}

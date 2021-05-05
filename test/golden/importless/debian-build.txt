@@ -1,0 +1,32 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( ( β
+  ) //
+  ( { installExtraDebsPhase = String;
+      installPhase = String;
+      meta = ∀ α. α;
+      name = String;
+      postHook = String;
+      sysInfoPhase = String;
+    }
+  ) ~
+  ( γ
+  ),
+  ({doCheck = Bool; prePhases = String; prefix = String;}) // (γ) ~ (δ),
+  ε.?debProvides = ζ,
+  ε.?debRequires = η,
+  ε.?fsTranslation = Bool,
+  ε.meta = {},
+  ε.?name = String,
+  θ.version = String,
+  ε.checkinstall = ι,
+  ε.diskImage = κ,
+  ε.src = θ,
+  ε.stdenv = λ,
+  ε.vmTools = μ,
+  κ.name = String,
+  λ.lib = ν,
+  λ.mkDerivation = δ -> ξ,
+  μ.runInLinuxImage = ξ -> ο,
+  ν.removeAttrs = ε -> [String] -> β
+) =>
+ε -> ο

@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ ι.
 ( α.licenses = β,
-  α.ttuegel = γ,
+  α.maintainers = γ,
   β.gpl2 = δ,
   β.lgpl21 = δ,
-  ε.maintainers = α
+  γ.ttuegel = ε
 ) =>
 { exiv2 = ζ;
   extra-cmake-modules = η;
@@ -32,7 +32,7 @@
   mkDerivation =
     { CXXFLAGS = [String];
       buildInputs = [ζ];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
     } ->

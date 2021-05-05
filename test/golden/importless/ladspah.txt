@@ -1,7 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.all = β,
-  α.lgpl2 = γ,
-  α.magnetophon = δ,
+( α.lib = β,
   α.mkDerivation =
     { installPhase = String;
       meta =
@@ -10,18 +8,18 @@
           license = γ;
           longDescription = String;
           maintainers = [δ];
-          platforms = β;
+          platforms = ε;
         };
       pname = String;
-      src = ε;
+      src = ζ;
       version = String;
     } ->
-    ζ,
-  η.licenses = α,
-  θ.lib = η,
-  ι.maintainers = α,
-  κ.lib = ι,
-  λ.platforms = α,
-  μ.lib = λ
+    η,
+  β.licenses = θ,
+  θ.lgpl2 = γ,
+  ι.maintainers = κ,
+  κ.magnetophon = δ,
+  λ.platforms = μ,
+  μ.all = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = α;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> ζ; stdenv = α;} -> η

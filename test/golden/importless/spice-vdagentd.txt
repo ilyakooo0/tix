@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.spice-vdagentd = ε,
+  β.services = ε,
   δ.spice-vdagent = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -20,7 +20,7 @@
         };
     } ->
     ι,
-  ε.enable = θ,
-  κ.services = β
+  ε.spice-vdagentd = κ,
+  κ.enable = θ
 ) =>
 α -> {config = ι; options = {services = {spice-vdagentd = {enable = η;};};};}

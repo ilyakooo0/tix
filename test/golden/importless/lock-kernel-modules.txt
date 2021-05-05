@@ -3,14 +3,14 @@
   α.lib = γ,
   δ.device = ε,
   δ.fsType = ζ,
-  β.defaultUnit = String,
-  β.fileSystems = η,
-  β.lockKernelModules = θ,
-  γ.concatMap = (δ -> [String]) -> η -> ι,
-  γ.maintainers = κ,
+  β.security = η,
+  β.system = θ,
+  β.systemd = ι,
+  γ.concatMap = (δ -> [String]) -> κ -> λ,
+  γ.maintainers = μ,
   γ.mkIf =
-    θ ->
-    { boot = {kernelModules = ι;};
+    ν ->
+    { boot = {kernelModules = λ;};
       systemd =
         { services =
             { disable-kernel-module-loading =
@@ -27,18 +27,18 @@
             };
         };
     } ->
-    λ,
-  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
-  γ.types = ξ,
-  ο.security = β,
-  π.build = β,
-  ρ.system = π,
-  σ.systemd = β,
-  κ.joachifm = τ,
-  ξ.bool = μ
+    ξ,
+  γ.mkOption = {default = Bool; description = String; type = ο;} -> π,
+  γ.types = ρ,
+  η.lockKernelModules = ν,
+  θ.build = σ,
+  σ.fileSystems = κ,
+  ι.defaultUnit = String,
+  μ.joachifm = τ,
+  ρ.bool = ο
 ) =>
 α ->
-{ config = λ;
+{ config = ξ;
   meta = {maintainers = [τ];};
-  options = {security = {lockKernelModules = ν;};};
+  options = {security = {lockKernelModules = π;};};
 }

@@ -1,8 +1,8 @@
 ∀ β γ δ ε ζ η θ ι.
 ( β.licenses = γ,
-  β.rittelle = δ,
+  β.maintainers = δ,
   γ.gpl2 = ε,
-  ζ.maintainers = β
+  δ.rittelle = ζ
 ) =>
 { extra-cmake-modules = η;
   gettext = θ;
@@ -16,7 +16,7 @@
   lib = β;
   mkDerivation =
     { buildInputs = [θ];
-      meta = {license = [ε]; maintainers = [δ];};
+      meta = {license = [ε]; maintainers = [ζ];};
       name = String;
       nativeBuildInputs = [η];
       propagatedUserEnvPkgs = ∀ α. α;

@@ -2,10 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.udevil = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf = η -> {security = {wrappers = {udevil = {source = String;};};};} -> θ,
-  ε.enable = η,
-  ι.programs = β
+  ε.udevil = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {programs = {udevil = {enable = ζ;};};};}

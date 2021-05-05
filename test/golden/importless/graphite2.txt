@@ -14,11 +14,10 @@
       version = String;
     } ->
     μ,
-  α.optionals = β -> [Path] -> κ,
-  ν.lib = α,
-  γ.licenses = ξ,
-  γ.maintainers = ο,
-  γ.platforms = π,
+  γ.optionals = β -> [Path] -> κ,
+  ν.licenses = ξ,
+  ν.maintainers = ο,
+  ν.platforms = π,
   ξ.lgpl21 = ζ,
   ο.raskin = η,
   π.unix = θ

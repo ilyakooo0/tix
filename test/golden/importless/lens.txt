@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.brainrape = β,
-  α.bsd3 = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.bsd3 = δ,
+  γ.brainrape = ε
 ) =>
 { bifunctors = ζ;
   build-idris-package =
@@ -10,8 +10,8 @@
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [β];
+          license = δ;
+          maintainers = [ε];
         };
       name = String;
       src = η;

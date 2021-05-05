@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.liboping = ε,
+  β.programs = ε,
   γ.liboping = ζ,
   γ.map = (η -> {}) -> [String] -> θ,
   γ.mkEnableOption = String -> ι,
@@ -10,7 +10,7 @@
     κ ->
     {environment = {systemPackages = [ζ];}; security = {wrappers = λ;};} -> μ,
   γ.mkMerge = θ -> λ,
-  ε.enable = κ,
-  ν.programs = β
+  ε.liboping = ν,
+  ν.enable = κ
 ) =>
 α -> {config = μ; options = {programs = {liboping = {enable = ι;};};};}

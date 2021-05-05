@@ -1,0 +1,52 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
+( α.hostPlatform = β,
+  α.isAarch32 = γ,
+  α.isAarch64 = δ,
+  α.lib = ε,
+  α.mkDerivation =
+    { buildInputs = [ζ];
+      configureFlags = [String];
+      doCheck = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { broken = δ;
+          description = String;
+          homepage = String;
+          maintainers = [η];
+          platforms = θ;
+        };
+      nativeBuildInputs = [ι];
+      patchFlags = [String];
+      patches = [κ];
+      pname = String;
+      postPatch = String;
+      postUnpack = String;
+      preBuild = String;
+      preCheck = String;
+      preConfigure = String;
+      propagatedBuildInputs = [λ];
+      src = μ;
+      version = String;
+    } ->
+    ν,
+  ξ.optional = γ -> ο -> [ι],
+  ε.optionals = Bool -> [String] -> [String],
+  β.system = String,
+  π.maintainers = ρ,
+  π.platforms = σ,
+  ρ.goibhniu = η,
+  σ.linux = θ,
+  τ.optionals = υ -> [Path] -> [κ]
+) =>
+{ autoconf213 = ο;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> κ;
+  fetchurl = {sha256 = String; url = String;} -> μ;
+  lib = ξ;
+  nspr = λ;
+  perl = ζ;
+  pkgconfig = ι;
+  python2 = ζ;
+  stdenv = α;
+  zip = ζ;
+} ->
+ν

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε.
-(α.optionalString = Bool -> String -> String, β.lib = α) => { allLocales = Bool;
+(α.lib = β, β.optionalString = Bool -> String -> String) => { allLocales = Bool;
   buildPackages = γ;
   callPackage =
     Path ->

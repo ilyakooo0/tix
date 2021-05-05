@@ -2,36 +2,35 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.bin = ε,
-  β.hypervGuest = ζ,
-  β.lib = η,
-  γ.mkEnableOption = String -> θ,
+  β.boot = ε,
+  β.virtualisation = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ι ->
+    θ ->
     { boot = {initrd = {kernelModules = [String];}; kernelParams = [String];};
-      environment = {systemPackages = [ε];};
+      environment = {systemPackages = [ι];};
       security = {rngd = {enable = Bool;};};
       services = {udev = {packages = κ;};};
       systemd =
-        {packages = [η]; targets = {hyperv-daemons = {wantedBy = [String];};};};
+        {packages = [λ]; targets = {hyperv-daemons = {wantedBy = [String];};};};
     } ->
-    λ,
+    μ,
   γ.mkOption =
-    {default = String; description = String; example = String; type = μ;} -> ν,
-  γ.singleton = ξ -> κ,
-  γ.types = ο,
-  δ.writeTextFile = {destination = String; name = String; text = String;} -> ξ,
-  ζ.enable = ι,
-  π.virtualisation = β,
-  ρ.hyperv-daemons = β,
-  σ.kernelPackages = ρ,
-  τ.boot = σ,
-  υ.hyperv-daemons = β,
-  φ.kernelPackages = υ,
-  χ.boot = φ,
-  ο.str = μ
+    {default = String; description = String; example = String; type = ν;} -> ξ,
+  γ.singleton = ο -> κ,
+  γ.types = π,
+  δ.writeTextFile = {destination = String; name = String; text = String;} -> ο,
+  ζ.hypervGuest = ρ,
+  ρ.enable = θ,
+  ε.kernelPackages = σ,
+  σ.hyperv-daemons = τ,
+  τ.bin = ι,
+  υ.kernelPackages = φ,
+  φ.hyperv-daemons = χ,
+  χ.lib = λ,
+  π.str = ν
 ) =>
 α ->
-{ config = λ;
-  options = {virtualisation = {hypervGuest = {enable = θ; videoMode = ν;};};};
+{ config = μ;
+  options = {virtualisation = {hypervGuest = {enable = η; videoMode = ξ;};};};
 }

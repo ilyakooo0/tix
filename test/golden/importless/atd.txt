@@ -2,10 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.atd = ε,
-  γ.builtins = ζ,
+  β.ids = ε,
+  β.services = ζ,
+  γ.builtins = η,
   γ.map =
-    ( η ->
+    ( θ ->
       { name = String;
         value =
           { group = String;
@@ -16,16 +17,16 @@
           };
       }
     ) ->
-    [String] -> θ,
+    [String] -> ι,
   γ.mkIf =
-    ι ->
-    { environment = {systemPackages = [κ];};
-      security = {pam = {services = {atd = {};};}; wrappers = λ;};
+    κ ->
+    { environment = {systemPackages = [λ];};
+      security = {pam = {services = {atd = {};};}; wrappers = μ;};
       systemd =
         { services =
             { atd =
                 { description = String;
-                  path = [κ];
+                  path = [λ];
                   preStart = String;
                   script = String;
                   serviceConfig = {Type = String;};
@@ -34,25 +35,25 @@
             };
         };
       users =
-        { groups = {atd = {gid = μ;};};
-          users = {atd = {description = String; home = String; uid = ν;};};
+        { groups = {atd = {gid = ν;};};
+          users = {atd = {description = String; home = String; uid = ξ;};};
         };
     } ->
-    ξ,
-  γ.mkOption = {default = Bool; description = String; type = ο;} -> π,
-  γ.types = ρ,
-  δ.at = κ,
-  ε.enable = ι,
-  σ.services = β,
-  ζ.listToAttrs = θ -> λ,
-  τ.gids = β,
-  υ.ids = τ,
-  φ.uids = β,
-  χ.ids = φ,
-  ρ.bool = ο,
+    ο,
+  γ.mkOption = {default = Bool; description = String; type = π;} -> ρ,
+  γ.types = σ,
+  δ.at = λ,
+  ζ.atd = τ,
+  τ.enable = κ,
+  η.listToAttrs = ι -> μ,
+  ε.gids = υ,
+  υ.atd = ν,
+  φ.uids = χ,
+  χ.atd = ξ,
+  σ.bool = π,
   ψ.bool = ω
 ) =>
 α ->
-{ config = ξ;
-  options = {services = {atd = {allowEveryone = π; enable = α1;};};};
+{ config = ο;
+  options = {services = {atd = {allowEveryone = ρ; enable = α1;};};};
 }

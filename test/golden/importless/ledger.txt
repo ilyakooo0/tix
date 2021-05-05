@@ -2,11 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.ledger = ε,
+  β.hardware = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf = η -> {services = {udev = {packages = [θ];};};} -> ι,
   δ.ledger-udev-rules = θ,
-  ε.enable = η,
-  κ.hardware = β
+  ε.ledger = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {hardware = {ledger = {enable = ζ;};};};}

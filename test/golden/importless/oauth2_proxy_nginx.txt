@@ -1,27 +1,26 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω.
 ( α.config = β,
   α.lib = γ,
-  β.httpAddress = δ,
-  β.nginx = ε,
-  γ.hasPrefix = String -> ζ -> Bool,
-  γ.map = (η -> {}) -> θ -> [ι],
-  γ.mkIf = Bool -> {enable = Bool;} -> κ,
-  γ.mkMerge = [ι] -> λ,
-  γ.mkOption = {default = δ; description = String; type = μ;} -> ν,
-  γ.optional = Bool -> {recommendedProxySettings = Bool;} -> [ι],
+  β.services = δ,
+  γ.hasPrefix = String -> ε -> Bool,
+  γ.map = (ζ -> {}) -> η -> [θ],
+  γ.mkIf = Bool -> {enable = Bool;} -> ι,
+  γ.mkMerge = [θ] -> κ,
+  γ.mkOption = {default = λ; description = String; type = μ;} -> ν,
+  γ.optional = Bool -> {recommendedProxySettings = Bool;} -> [θ],
   γ.types = ξ,
-  ε.proxy = ζ,
-  ε.virtualHosts = ο,
-  π.oauth2_proxy = β,
-  ρ.services = π,
-  σ.oauth2_proxy = β,
-  τ.services = σ,
+  δ.oauth2_proxy = ο,
+  ο.nginx = π,
+  π.proxy = ε,
+  π.virtualHosts = ρ,
+  σ.oauth2_proxy = τ,
+  τ.httpAddress = λ,
   ξ.str = μ,
   υ.listOf = φ -> χ,
   ψ.str = φ
 ) =>
 α ->
-{ config = {services = {nginx = λ; oauth2_proxy = κ;};};
+{ config = {services = {nginx = κ; oauth2_proxy = ι;};};
   options =
     {services = {oauth2_proxy = {nginx = {proxy = ν; virtualHosts = ω;};};};};
 }

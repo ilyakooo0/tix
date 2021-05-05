@@ -1,9 +1,8 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
 ( α.lib = β,
-  α.makeLibraryPath = [γ] -> δ,
-  ε.lib = α,
-  β.licenses = ζ,
-  β.maintainers = η,
+  β.makeLibraryPath = [γ] -> δ,
+  ε.licenses = ζ,
+  ε.maintainers = η,
   ζ.unfree = θ,
   η.rittelle = ι
 ) =>

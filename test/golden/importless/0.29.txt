@@ -1,11 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( α.enableFeature = Bool -> String -> β,
-  α.isDarwin = γ,
-  α.lib = δ,
+( α.isDarwin = β,
+  α.lib = γ,
   α.mkDerivation =
     { buildInputs = [Null];
-      checkInputs = [ε];
-      configureFlags = [β];
+      checkInputs = [δ];
+      configureFlags = [ε];
       doCheck = Bool;
       meta =
         {description = String; homepage = String; license = ζ; platforms = η;};
@@ -17,24 +16,22 @@
       version = String;
     } ->
     λ,
-  α.optional = Bool -> Null -> [Null],
-  α.withFeature = Bool -> String -> β,
-  δ.optionals = γ -> [Path] -> ι,
+  γ.optionals = β -> [Path] -> ι,
   μ.licenses = ν,
   μ.platforms = ξ,
   ν.lgpl2 = ζ,
   ξ.unix = η,
-  ο.lib = α,
-  π.lib = α,
-  ρ.lib = α,
-  σ.lib = α,
-  τ.lib = α
+  ο.enableFeature = Bool -> String -> ε,
+  π.enableFeature = Bool -> String -> ε,
+  ρ.withFeature = Bool -> String -> ε,
+  σ.withFeature = Bool -> String -> ε,
+  τ.optional = Bool -> Null -> [Null]
 ) =>
 { compressionSupport = Bool;
   fetchurl = {sha256 = String; url = String;} -> κ;
   libxml2 = Null;
   openssl = Null;
-  perl = ε;
+  perl = δ;
   pkgconfig = θ;
   shared = Bool;
   sslSupport = Bool;

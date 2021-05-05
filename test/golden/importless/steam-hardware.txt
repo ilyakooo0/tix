@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.steam-hardware = ε,
+  β.hardware = ε,
   γ.mkIf =
     ζ ->
     { boot = {kernelModules = [String];};
@@ -11,10 +11,10 @@
     θ,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
-  δ.steam = η,
-  ε.enable = ζ,
-  μ.hardware = β,
-  ν.steamPackages = δ,
+  δ.steamPackages = μ,
+  ε.steam-hardware = ν,
+  ν.enable = ζ,
+  μ.steam = η,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {hardware = {steam-hardware = {enable = κ;};};};}

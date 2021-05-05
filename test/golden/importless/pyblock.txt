@@ -1,24 +1,24 @@
 ∀ α β γ δ ε ζ η.
-( α.gpl2Plus = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       makeFlags = [String];
       md5_path = String;
-      meta = {description = String; license = β;};
+      meta = {description = String; license = δ;};
       patches = [Path];
       pname = String;
       postPatch = String;
-      src = δ;
+      src = ε;
       version = String;
     } ->
-    ε,
-  ζ.licenses = α,
-  η.lib = ζ
+    ζ,
+  β.licenses = η,
+  η.gpl2Plus = δ
 ) =>
 { dmraid = γ;
-  fetchurl = {sha256 = String; url = String;} -> δ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
   lvm2 = γ;
   python = γ;
   stdenv = α;
 } ->
-ε
+ζ

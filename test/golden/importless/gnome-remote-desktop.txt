@@ -2,23 +2,23 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    {services = {pipewire = {enable = Bool;};}; systemd = {packages = [η];};} ->
-    θ,
-  γ.teams = ι,
-  δ.gnome-remote-desktop = η,
-  κ.gnome-remote-desktop = β,
-  λ.gnome3 = κ,
-  μ.services = λ,
-  ν.gnome3 = δ,
-  ι.members = ξ,
-  ο.gnome = ι
+    η ->
+    {services = {pipewire = {enable = Bool;};}; systemd = {packages = [θ];};} ->
+    ι,
+  γ.teams = κ,
+  δ.gnome3 = λ,
+  ε.gnome3 = μ,
+  μ.gnome-remote-desktop = ν,
+  ν.enable = η,
+  λ.gnome-remote-desktop = θ,
+  κ.gnome = ξ,
+  ξ.members = ο
 ) =>
 α ->
-{ config = θ;
-  meta = {maintainers = ξ;};
+{ config = ι;
+  meta = {maintainers = ο;};
   options = {services = {gnome3 = {gnome-remote-desktop = {enable = ζ;};};};};
 }

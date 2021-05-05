@@ -3,7 +3,7 @@
   γ.lib = ε,
   γ.pkgs = ζ,
   η.libPath = θ,
-  δ.memoryAllocator = ι,
+  δ.environment = ι,
   ε.attrNames =
     { graphene-hardened = {description = String; libPath = String;};
       jemalloc = {description = String; libPath = String;};
@@ -25,8 +25,8 @@
       preferLocalBuild = Bool;
     } ->
     String -> π,
-  ι.provider = String,
-  ρ.environment = δ,
+  ι.memoryAllocator = ρ,
+  ρ.provider = String,
   λ.joachifm = σ,
   ο.enum = [String] -> ν
 ) =>

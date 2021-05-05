@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.sysstat = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -49,9 +49,9 @@
     ι,
   γ.mkOption = {default = String; description = String; type = κ;} -> λ,
   γ.types = μ,
-  ε.collect-frequency = θ,
-  ε.enable = η,
-  ν.services = β,
+  ε.sysstat = ν,
+  ν.collect-frequency = θ,
+  ν.enable = η,
   μ.str = κ,
   ξ.str = ο
 ) =>

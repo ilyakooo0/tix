@@ -9,15 +9,15 @@
   ) ~
   ( δ
   ),
-  ε.mit = β,
-  α.hash = ζ,
-  α.pname = η,
-  α.version = String,
-  θ.licenses = ε
+  α.?version = String,
+  ε.licenses = ζ,
+  α.hash = η,
+  α.pname = θ,
+  ζ.mit = β
 ) =>
 { buildDunePackage = δ -> ι;
   defaultVersion = String;
-  fetchFromGitHub = {owner = String; repo = η; rev = String; sha256 = ζ;} -> γ;
+  fetchFromGitHub = {owner = String; repo = θ; rev = String; sha256 = η;} -> γ;
   lib = ε;
 } ->
 α -> ι

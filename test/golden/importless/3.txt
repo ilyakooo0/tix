@@ -1,35 +1,33 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.cecill-b = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       meta =
         { description = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
-          platforms = γ;
+          platforms = ζ;
           version = String;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       pname = String;
-      src = η;
+      src = θ;
       version = String;
     } ->
-    θ,
-  α.raskin = ε,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.maintainers = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    ι,
+  β.licenses = κ,
+  κ.cecill-b = δ,
+  λ.maintainers = μ,
+  μ.raskin = ε,
+  ν.platforms = ξ,
+  ξ.linux = ζ
 ) =>
-{ autoconf = δ;
-  automake = δ;
-  autoreconfHook = ζ;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  gmpxx = δ;
-  libtool = δ;
+{ autoconf = γ;
+  automake = γ;
+  autoreconfHook = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  gmpxx = γ;
+  libtool = γ;
   stdenv = α;
 } ->
-θ
+ι

@@ -27,14 +27,14 @@
       versionLister = ν;
     } ->
     θ,
-  ι.homepage = μ,
-  β.licenses = ξ,
-  β.maintainers = ο,
-  β.platforms = π,
-  ξ.gpl2Plus = δ,
-  ο.volth = ε,
-  π.unix = ζ,
-  ρ.meta = ι
+  ι.meta = ξ,
+  β.licenses = ο,
+  β.maintainers = π,
+  β.platforms = ρ,
+  ο.gpl2Plus = δ,
+  π.volth = ε,
+  ρ.unix = ζ,
+  ξ.homepage = μ
 ) =>
 { exo = γ;
   fetchFromGitHub =

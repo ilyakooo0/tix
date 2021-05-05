@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.platforms = β,
+( α.meta = β,
   α.version = γ,
   δ.lib = ε,
   δ.mkDerivation =
@@ -9,16 +9,16 @@
           homepage = String;
           license = ζ;
           maintainers = [η];
-          platforms = β;
+          platforms = θ;
         };
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [ι];
       pname = String;
       postFixup = String;
-      src = ι;
-      version = κ;
+      src = κ;
+      version = λ;
     } ->
-    λ,
-  μ.meta = α,
+    μ,
+  β.platforms = θ,
   ε.abbradar = η,
   ε.licenses = ν,
   ε.maintainers = ξ,
@@ -26,8 +26,8 @@
 ) =>
 α ->
 ο ->
-{ fetchFromGitHub = {owner = String; repo = String; rev = γ; sha256 = ο;} -> ι;
-  m4 = θ;
+{ fetchFromGitHub = {owner = String; repo = String; rev = γ; sha256 = ο;} -> κ;
+  m4 = ι;
   stdenv = δ;
 } ->
-λ
+μ

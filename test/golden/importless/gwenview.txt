@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι.
 ( α.getBin = β -> γ,
   α.licenses = δ,
-  α.ttuegel = ε,
+  α.maintainers = ε,
   δ.fdl12 = ζ,
   δ.gpl2 = ζ,
-  η.maintainers = α
+  ε.ttuegel = η
 ) =>
 { baloo = γ;
   exiv2 = γ;
@@ -21,7 +21,7 @@
   libkipi = γ;
   mkDerivation =
     { buildInputs = [γ];
-      meta = {license = [ζ]; maintainers = [ε];};
+      meta = {license = [ζ]; maintainers = [η];};
       name = String;
       nativeBuildInputs = [θ];
       propagatedUserEnvPkgs = [γ];

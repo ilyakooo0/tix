@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.gpl2Plus = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       configureFlags = [String];
@@ -8,24 +8,23 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           longDescription = String;
-          platforms = δ;
+          platforms = ε;
         };
       name = String;
-      propagatedBuildInputs = [ε];
-      src = ζ;
+      propagatedBuildInputs = [ζ];
+      src = η;
     } ->
-    η,
-  α.unix = δ,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.platforms = α,
-  λ.lib = κ
+    θ,
+  β.licenses = ι,
+  ι.gpl2Plus = δ,
+  κ.platforms = λ,
+  λ.unix = ε
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
+{ fetchurl = {sha256 = String; url = String;} -> η;
   gmp = γ;
-  isl = ε;
+  isl = ζ;
   stdenv = α;
 } ->
-η
+θ

@@ -3,10 +3,9 @@
   α.lib = γ,
   γ.mkIf = Bool -> δ -> ε,
   γ.mkOption = {default = Null; type = ζ;} -> η,
-  γ.nullOr = θ -> ζ,
-  γ.str = θ,
+  γ.types = θ,
   β.value = Null,
-  ι.types = γ,
-  κ.types = γ
+  θ.nullOr = ι -> ζ,
+  κ.str = ι
 ) =>
 α -> {config = {foo = ε;}; options = {value = η;};}

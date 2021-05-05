@@ -2,27 +2,27 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   δ.tracker = ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
-      systemd = {packages = [θ];};
+      services = {dbus = {packages = [θ];};};
+      systemd = {packages = [ι];};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.teams = μ,
-  γ.types = ν,
-  ξ.tracker = β,
-  ο.gnome3 = ξ,
-  π.services = ο,
-  μ.members = ρ,
-  σ.gnome = μ,
-  ν.bool = κ
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.teams = ν,
+  γ.types = ξ,
+  ε.gnome3 = ο,
+  ο.tracker = π,
+  π.enable = η,
+  ν.gnome = ρ,
+  ρ.members = σ,
+  ξ.bool = λ
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = ρ;};
-  options = {services = {gnome3 = {tracker = {enable = λ;};};};};
+{ config = κ;
+  meta = {maintainers = σ;};
+  options = {services = {gnome3 = {tracker = {enable = μ;};};};};
 }

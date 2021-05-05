@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.afterstep = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -12,10 +12,10 @@
     κ,
   γ.singleton = {name = String; start = String;} -> ι,
   δ.afterstep = θ,
-  ε.enable = η,
-  λ.windowManager = β,
-  μ.xserver = λ,
-  ν.services = μ
+  ε.xserver = λ,
+  λ.windowManager = μ,
+  μ.afterstep = ν,
+  ν.enable = η
 ) =>
 α ->
 { config = κ;

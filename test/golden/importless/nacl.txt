@@ -17,12 +17,11 @@
       version = String;
     } ->
     ι,
-  α.optionals = Bool -> [Null] -> [γ],
-  κ.lib = α,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.mog = ε,
-  β.platforms = ν,
+  β.optionals = Bool -> [Null] -> [γ],
+  κ.licenses = λ,
+  κ.maintainers = μ,
+  κ.mog = ε,
+  κ.platforms = ν,
   λ.gpl3Plus = δ,
   ν.linux = [ζ],
   ξ.darwin = [ζ]

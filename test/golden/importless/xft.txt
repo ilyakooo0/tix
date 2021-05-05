@@ -1,26 +1,26 @@
 ∀ α β γ δ ε ζ η.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       meta =
         { description = String;
           homepage = String;
           license = String;
-          platforms = β;
+          platforms = δ;
         };
       name = String;
       prePatch = String;
-      src = δ;
+      src = ε;
     } ->
-    ε,
-  ζ.platforms = α,
-  η.lib = ζ
+    ζ,
+  β.platforms = η,
+  η.linux = δ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ε;
   libXft = γ;
   libxcb = γ;
   perl = γ;
   stdenv = α;
 } ->
-ε
+ζ

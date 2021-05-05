@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.firejail = ε,
+  β.programs = ε,
   γ.literalExample = String -> ζ,
   γ.maintainers = η,
   γ.mkEnableOption = String -> θ,
@@ -20,8 +20,8 @@
   δ.runCommand =
     String ->
     {allowSubstitutes = Bool; preferLocalBuild = Bool;} -> String -> κ,
-  ε.enable = ι,
-  π.programs = β,
+  ε.firejail = π,
+  π.enable = ι,
   ο.attrsOf = ρ -> μ,
   σ.path = ρ
 ) =>

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.safeeyes = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -26,7 +26,7 @@
         };
     } ->
     θ,
-  ε.enable = η,
-  ι.services = β
+  ε.safeeyes = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {services = {safeeyes = {enable = ζ;};};};}

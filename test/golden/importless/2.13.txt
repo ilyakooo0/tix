@@ -1,31 +1,30 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.all = β,
-  α.bsd3 = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = δ;
           longDescription = String;
-          platforms = β;
+          platforms = ε;
         };
       name = String;
-      propagatedBuildInputs = [ε];
-      src = ζ;
+      propagatedBuildInputs = [ζ];
+      src = η;
     } ->
-    η,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.platforms = α,
-  λ.lib = κ
+    θ,
+  β.licenses = ι,
+  ι.bsd3 = δ,
+  κ.platforms = λ,
+  λ.all = ε
 ) =>
 { coreutils = μ;
-  fetchurl = {sha256 = String; url = String;} -> ζ;
+  fetchurl = {sha256 = String; url = String;} -> η;
   gnugrep = ν;
-  jre = ε;
-  makeWrapper = δ;
+  jre = ζ;
+  makeWrapper = γ;
   stdenv = α;
 } ->
-η
+θ

@@ -1,37 +1,36 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.lib = β,
-  α.optionals = Bool -> [γ] -> δ,
-  ε.buildPythonApplication =
+  γ.buildPythonApplication =
     { doCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
+          license = δ;
           longDescription = String;
-          maintainers = [η];
-          platforms = θ;
+          maintainers = [ε];
+          platforms = ζ;
         };
       pname = String;
-      propagatedBuildInputs = δ;
-      src = ι;
+      propagatedBuildInputs = η;
+      src = θ;
       version = String;
     } ->
-    κ,
-  ε.flup = γ,
-  ε.isPy3k = Bool,
-  ε.ldap = γ,
-  ε.sqlalchemy = γ,
-  λ.lib = α,
-  β.edwtjo = η,
-  β.licenses = μ,
-  β.maintainers = ν,
-  β.pSub = η,
-  β.platforms = ξ,
-  μ.gpl3Plus = ζ,
-  ξ.all = θ
+    ι,
+  γ.flup = κ,
+  γ.isPy3k = Bool,
+  γ.ldap = κ,
+  γ.sqlalchemy = κ,
+  β.optionals = Bool -> [κ] -> η,
+  λ.edwtjo = ε,
+  λ.licenses = μ,
+  λ.maintainers = ν,
+  λ.pSub = ε,
+  λ.platforms = ξ,
+  μ.gpl3Plus = δ,
+  ξ.all = ζ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ι;
-  pythonPackages = ε;
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  pythonPackages = γ;
   stdenv = α;
 } ->
-κ
+ι

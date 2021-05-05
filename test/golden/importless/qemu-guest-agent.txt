@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.qemuGuest = ε,
+  β.services = ε,
   γ.mkIf = ζ -> η -> θ,
   γ.mkMerge =
     [ { services = {udev = {extraRules = String;};};
@@ -23,8 +23,8 @@
     η,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = ζ,
-  μ.services = β,
+  ε.qemuGuest = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {services = {qemuGuest = {enable = κ;};};};}

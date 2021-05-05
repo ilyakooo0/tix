@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.fvwm = ε,
+  β.services = ε,
   γ.cfg = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
@@ -14,13 +14,13 @@
   γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
   γ.singleton = {name = String; start = String;} -> κ,
   γ.types = ξ,
-  δ.override = {gestures = ο;} -> ι,
-  π.fvwm = δ,
-  ζ.gestures = ο,
-  ε.enable = θ,
-  ρ.windowManager = β,
-  σ.xserver = ρ,
-  τ.services = σ,
+  δ.fvwm = ο,
+  ο.override = {gestures = π;} -> ι,
+  ζ.gestures = π,
+  ε.xserver = ρ,
+  ρ.windowManager = σ,
+  σ.fvwm = τ,
+  τ.enable = θ,
   ξ.bool = μ
 ) =>
 α ->

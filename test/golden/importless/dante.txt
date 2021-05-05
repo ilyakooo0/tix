@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.dante = ε,
+  β.services = ε,
   γ.arobyn = ζ,
   γ.maintainers = η,
   γ.mkEnableOption = String -> θ,
@@ -36,9 +36,9 @@
   γ.mkOption = {description = String; type = λ;} -> μ,
   γ.types = ν,
   δ.writeText = String -> String -> ξ,
-  ε.config = String,
-  ε.enable = ι,
-  ο.services = β,
+  ε.dante = ο,
+  ο.config = String,
+  ο.enable = ι,
   ν.lines = λ
 ) =>
 α ->

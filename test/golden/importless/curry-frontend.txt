@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Cabal = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { Cabal = ε;
   base = ε;
   bytestring = ε;
   containers = ε;
@@ -16,7 +16,7 @@
       isExecutable = Bool;
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       src = Path;
       testHaskellDepends = [ε];

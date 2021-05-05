@@ -3,7 +3,7 @@
   α.lib = γ,
   α.pkgs = δ,
   ε.mininet-python = ζ,
-  β.mininet = η,
+  β.programs = η,
   γ.ethtool = θ,
   γ.iperf = θ,
   γ.iproute = θ,
@@ -17,12 +17,12 @@
     ν,
   γ.socat = θ,
   δ.makeWrapper = ξ,
+  δ.python = ο,
+  δ.pythonPackages = π,
   δ.runCommand = String -> {buildInputs = [ξ];} -> String -> μ,
-  δ.withPackages = (ε -> [ζ]) -> ο,
-  δ.wrapPython = ξ,
-  π.python = δ,
-  ρ.pythonPackages = δ,
-  η.enable = λ,
-  σ.programs = β
+  ο.withPackages = (ε -> [ζ]) -> ρ,
+  π.wrapPython = ξ,
+  η.mininet = σ,
+  σ.enable = λ
 ) =>
 α -> {config = ν; options = {programs = {mininet = {enable = κ;};};};}

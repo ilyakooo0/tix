@@ -16,16 +16,7 @@
   ) ~
   ( ο
   ),
-  π.agpl3Only = ε,
-  π.fdl11Only = ζ,
-  π.fdl12Only = η,
-  π.fdl13Only = θ,
-  π.gpl1Only = ι,
-  π.gpl2Only = κ,
-  π.gpl3Only = λ,
-  π.lgpl21Only = ν,
-  π.lgpl2Only = μ,
-  π.lgpl3Only = ξ,
+  π.licenses = ρ,
   π.mapAttrs =
     (β -> α -> γ) ->
     { abstyles = {fullName = String; spdxId = String; url = String;};
@@ -188,15 +179,15 @@
       zpl21 = {fullName = String; spdxId = String; url = String;};
     } ->
     δ,
-  ρ.licenses = π,
-  σ.licenses = π,
-  τ.licenses = π,
-  υ.licenses = π,
-  φ.licenses = π,
-  χ.licenses = π,
-  ψ.licenses = π,
-  ω.licenses = π,
-  α1.licenses = π,
-  β1.licenses = π
+  ρ.agpl3Only = ε,
+  σ.fdl11Only = ζ,
+  τ.fdl12Only = η,
+  υ.fdl13Only = θ,
+  φ.gpl1Only = ι,
+  χ.gpl2Only = κ,
+  ψ.gpl3Only = λ,
+  ω.lgpl2Only = μ,
+  α1.lgpl21Only = ν,
+  β1.lgpl3Only = ξ
 ) =>
 {lib = π;} -> ο

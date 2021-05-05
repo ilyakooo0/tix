@@ -24,22 +24,21 @@
       version = String;
     } ->
     μ,
-  β.optional = δ -> ν -> [ζ],
-  ξ.cc = η,
+  ν.stdenv = ξ,
   ε.maintainers = ο,
   ε.optionals = Bool -> [String] -> [String],
   ε.platforms = π,
   ο.abbradar = θ,
   π.unix = ι,
-  ρ.lib = β,
-  σ.stdenv = ξ
+  ρ.optional = δ -> σ -> [ζ],
+  ξ.cc = η
 ) =>
-{ buildPackages = ξ;
+{ buildPackages = ν;
   fetchurl = {sha256 = String; url = String;} -> λ;
   gnused_422 = κ;
   icu = ζ;
   libffi = ζ;
-  libobjc = ν;
+  libobjc = σ;
   perl = κ;
   pkgconfig = κ;
   python2 = κ;

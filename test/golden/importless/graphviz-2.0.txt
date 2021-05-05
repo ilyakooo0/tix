@@ -1,5 +1,6 @@
 ∀ α β γ δ ε ζ η θ.
-( α.mkDerivation =
+( α.lib = β,
+  α.mkDerivation =
     { buildInputs = [Null];
       configureFlags = [String];
       hardeningDisable = [String];
@@ -7,21 +8,19 @@
         { branch = String;
           description = String;
           homepage = String;
-          platforms = β;
+          platforms = γ;
         };
       name = String;
-      nativeBuildInputs = [γ];
-      src = δ;
+      nativeBuildInputs = [δ];
+      src = ε;
     } ->
-    ε,
-  α.optional = Bool -> String -> [String],
-  α.unix = β,
-  ζ.platforms = α,
-  η.lib = ζ,
-  θ.lib = α
+    ζ,
+  β.platforms = η,
+  η.unix = γ,
+  θ.optional = Bool -> String -> [String]
 ) =>
 { expat = Null;
-  fetchurl = {sha256 = String; url = String;} -> δ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
   fontconfig = Null;
   gd = Null;
   libXaw = Null;
@@ -30,9 +29,9 @@
   libtool = Null;
   libwebp = Null;
   pango = Null;
-  pkgconfig = γ;
+  pkgconfig = δ;
   stdenv = α;
   xlibsWrapper = Null;
   yacc = Null;
 } ->
-ε
+ζ

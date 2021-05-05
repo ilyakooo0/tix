@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.licenses = β, α.rittelle = γ, β.gpl2 = δ, ε.maintainers = α) => { akonadi =
+(α.licenses = β, α.maintainers = γ, β.gpl2 = δ, γ.rittelle = ε) => { akonadi =
     ζ;
   akonadi-contacts = ζ;
   akonadi-mime = ζ;
@@ -40,7 +40,7 @@
   messagelib = ζ;
   mkDerivation =
     { buildInputs = [ζ];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
       propagatedUserEnvPkgs = [η];

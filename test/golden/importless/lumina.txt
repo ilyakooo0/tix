@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xserver = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { environment = {pathsToLink = [String]; systemPackages = [η];};
@@ -11,16 +11,14 @@
     ι,
   γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
   γ.types = μ,
-  δ.corePackages = [η],
-  δ.lumina = θ,
-  δ.preRequisitePackages = [η],
-  ε.lumina = ν,
-  ξ.services = β,
-  ν.enable = ζ,
-  ο.desktopManager = ε,
-  π.lumina = δ,
-  ρ.lumina = δ,
-  σ.lumina = δ,
+  δ.lumina = ν,
+  ε.xserver = ξ,
+  ξ.desktopManager = ο,
+  ο.lumina = π,
+  π.enable = ζ,
+  ν.preRequisitePackages = [η],
+  ρ.corePackages = [η],
+  σ.lumina = θ,
   μ.bool = κ
 ) =>
 α ->

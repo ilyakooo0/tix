@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.uinput = ε,
+  β.hardware = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -11,7 +11,7 @@
       users = {groups = {uinput = {};};};
     } ->
     θ,
-  ε.enable = η,
-  ι.hardware = β
+  ε.uinput = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {hardware = {uinput = {enable = ζ;};};};}

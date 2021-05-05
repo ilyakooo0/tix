@@ -4,8 +4,8 @@
   γ.licenses = ζ,
   γ.teams = η,
   ζ.asl20 = θ,
-  η.members = ι,
-  κ.matrix = η,
+  η.matrix = ι,
+  ι.members = κ,
   ε.platforms = λ
 ) =>
 { electron_9 = δ;
@@ -32,7 +32,7 @@
         { description = String;
           homepage = String;
           license = θ;
-          maintainers = ι;
+          maintainers = κ;
           platforms = λ;
         };
       name = String;

@@ -1,61 +1,53 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
-λ1.
+λ1 μ1.
 ( α.hostPlatform = β,
-  α.isAarch32 = γ,
-  α.isDarwin = δ,
-  α.isMusl = ε,
-  α.isWasm = Bool,
-  α.libc = String,
+  β.?useLLVM = Bool,
+  α.isDarwin = γ,
+  α.lib = δ,
   α.mkDerivation =
     { NIX_CFLAGS_COMPILE = [String];
-      buildInputs = ζ;
+      buildInputs = ε;
       cmakeFlags = [String];
       enableParallelBuilding = Bool;
-      nativeBuildInputs = [η];
+      nativeBuildInputs = [ζ];
       outputs = [String];
       patches = [Path];
       pname = String;
-      postInstall = θ;
-      postPatch = ι;
-      src = κ;
-      version = λ;
+      postInstall = η;
+      postPatch = θ;
+      src = ι;
+      version = κ;
     } ->
-    μ,
-  α.name = String,
-  α.optional = δ -> ν -> ζ,
-  α.optionalString = Bool -> String -> θ,
-  α.optionals = Bool -> [String] -> [String],
-  α.useLLVM = Bool,
-  ξ.hostPlatform = α,
-  β.isMusl = Bool,
-  ο.kernel = α,
-  π.parsed = ο,
-  ρ.hostPlatform = π,
-  σ.lib = α,
-  τ.hostPlatform = α,
-  υ.lib = α,
-  φ.lib = α,
-  χ.lib = α,
-  ψ.lib = α,
-  ω.lib = α,
-  α1.hostPlatform = α,
-  β1.lib = α,
-  γ1.hostPlatform = α,
-  δ1.lib = α,
-  ε1.hostPlatform = α,
-  ζ1.lib = α,
-  η1.hostPlatform = α,
-  θ1.hostPlatform = α,
-  ι1.lib = α,
-  κ1.lib = α,
-  λ1.lib = α
+    λ,
+  μ.isMusl = Bool,
+  ν.parsed = ξ,
+  ξ.kernel = ο,
+  ο.name = String,
+  δ.optional = π -> ρ -> ε,
+  σ.isDarwin = π,
+  τ.optionals = Bool -> [String] -> [String],
+  υ.optionals = Bool -> [String] -> [String],
+  φ.optionals = Bool -> [String] -> [String],
+  χ.optionals = Bool -> [String] -> [String],
+  ψ.optional = ω -> Path -> [Path],
+  α1.isMusl = ω,
+  β1.optional = Bool -> Path -> [Path],
+  γ1.libc = String,
+  δ1.optional = ε1 -> Path -> [Path],
+  ζ1.isAarch32 = ε1,
+  η1.optionalString = Bool -> String -> η,
+  θ1.isDarwin = Bool,
+  ι1.isWasm = Bool,
+  κ1.optionalString = Bool -> String -> η,
+  λ1.optionalString = γ -> String -> θ,
+  μ1.optionalString = Bool -> String -> θ
 ) =>
-{ cmake = η;
-  fetch = String -> String -> κ;
-  libcxxabi = ν;
-  llvm = η;
-  python3 = η;
+{ cmake = ζ;
+  fetch = String -> String -> ι;
+  libcxxabi = ρ;
+  llvm = ζ;
+  python3 = ζ;
   stdenv = α;
-  version = λ;
+  version = κ;
 } ->
-μ
+λ

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.urserver = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -31,7 +31,7 @@
         };
     } ->
     θ,
-  ε.enable = η,
-  ι.services = β
+  ε.urserver = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {services = {urserver = {enable = ζ;};};};}

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { HUnit = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { HUnit = ε;
   QuickCheck = ε;
   ansi-terminal = ε;
   ansi-wl-pprint = ε;
@@ -22,7 +22,7 @@
       isExecutable = Bool;
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       postPatch = String;
       src = ζ;

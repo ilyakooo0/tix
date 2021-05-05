@@ -2,23 +2,22 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
-      services = {dbus = {packages = [θ];};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
     } ->
-    ι,
-  δ.hamster = η,
-  δ.maintainers = κ,
-  λ.hamster = β,
-  μ.programs = λ,
-  ν.meta = δ,
-  ξ.hamster = ν
+    κ,
+  δ.hamster = θ,
+  ε.hamster = λ,
+  λ.enable = η,
+  μ.meta = ν,
+  ν.maintainers = ξ
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = κ;};
+{ config = κ;
+  meta = {maintainers = ξ;};
   options = {programs = {hamster = {enable = ζ;};};};
 }

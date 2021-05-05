@@ -2,20 +2,20 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.hardware = ε,
   γ.mkIf =
-    ε ->
+    ζ ->
     { environment = {etc = {usb_modeswitch.d = {source = String;};};};
-      services = {udev = {packages = [ζ];};};
-      systemd = {packages = [η];};
+      services = {udev = {packages = [η];};};
+      systemd = {packages = [θ];};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  γ.usb-modeswitch = η,
-  γ.usb-modeswitch-data = ζ,
-  μ.usbWwan = β,
-  ν.hardware = μ,
-  λ.bool = ι
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  γ.usb-modeswitch = θ,
+  γ.usb-modeswitch-data = η,
+  ε.usbWwan = ν,
+  ν.enable = ζ,
+  μ.bool = κ
 ) =>
-α -> {config = θ; options = {hardware = {usbWwan = {enable = κ;};};};}
+α -> {config = ι; options = {hardware = {usbWwan = {enable = λ;};};};}

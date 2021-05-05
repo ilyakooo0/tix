@@ -1,38 +1,36 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.lgpl21Plus = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       meta =
         { description = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
-          platforms = γ;
+          platforms = ζ;
           version = String;
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       pname = String;
-      src = η;
+      src = θ;
       version = String;
     } ->
-    θ,
-  α.raskin = ε,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.maintainers = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    ι,
+  β.licenses = κ,
+  κ.lgpl21Plus = δ,
+  λ.maintainers = μ,
+  μ.raskin = ε,
+  ν.platforms = ξ,
+  ξ.linux = ζ
 ) =>
-{ autoconf = ζ;
-  automake = ζ;
-  autoreconfHook = ζ;
+{ autoconf = η;
+  automake = η;
+  autoreconfHook = η;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  gettext = ζ;
-  gmp = δ;
-  libtool = ζ;
-  mpfr = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
+  gettext = η;
+  gmp = γ;
+  libtool = η;
+  mpfr = γ;
   stdenv = α;
 } ->
-θ
+ι

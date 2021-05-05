@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.server = ε,
+  β.services = ε,
   δ.torque = ζ,
   γ.inetutils = ζ,
   γ.mkEnableOption = String -> η,
@@ -50,9 +50,9 @@
     κ,
   γ.procps = ζ,
   γ.utillinux = ζ,
-  ε.enable = θ,
-  λ.torque = β,
-  μ.services = λ
+  ε.torque = λ,
+  λ.server = μ,
+  μ.enable = θ
 ) =>
 α ->
 {config = κ; options = {services = {torque = {server = {enable = η;};};};};}

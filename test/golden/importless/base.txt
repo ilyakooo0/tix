@@ -2,7 +2,6 @@
 ( α.lib = β,
   α.pkgs = γ,
   β.mkDefault = String -> δ,
-  γ.bin = ε,
   γ.ccrypt = ε,
   γ.cryptsetup = ε,
   γ.ddrescue = ε,
@@ -31,8 +30,9 @@
   γ.usbutils = ε,
   γ.vim = ε,
   γ.w3m-nographics = ε,
+  γ.xfsprogs = ζ,
   γ.zip = ε,
-  ζ.xfsprogs = γ
+  ζ.bin = ε
 ) =>
 α ->
 { boot = {supportedFilesystems = [String];};

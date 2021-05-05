@@ -2,10 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.sabnzbd = ε,
-  γ.mkEnableOption = String -> ζ,
+  β.ids = ε,
+  β.services = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    η ->
+    θ ->
     { systemd =
         { services =
             { sabnzbd =
@@ -23,32 +24,32 @@
             };
         };
       users =
-        { groups = {sabnzbd = {gid = θ;};};
+        { groups = {sabnzbd = {gid = ι;};};
           users =
             { sabnzbd =
                 { createHome = Bool;
                   description = String;
                   group = String;
                   home = String;
-                  uid = ι;
+                  uid = κ;
                 };
             };
         };
     } ->
-    κ,
-  γ.mkOption = {default = String; description = String;} -> λ,
-  δ.sabnzbd = μ,
-  ε.enable = η,
-  ν.services = β,
-  ξ.gids = β,
-  ο.ids = ξ,
-  π.uids = β,
-  ρ.ids = π
+    λ,
+  γ.mkOption = {default = String; description = String;} -> μ,
+  δ.sabnzbd = ν,
+  ζ.sabnzbd = ξ,
+  ξ.enable = θ,
+  ε.gids = ο,
+  ο.sabnzbd = ι,
+  π.uids = ρ,
+  ρ.sabnzbd = κ
 ) =>
 α ->
-{ config = κ;
+{ config = λ;
   options =
     { services =
-        {sabnzbd = {configFile = λ; enable = ζ; group = σ; user = τ;};};
+        {sabnzbd = {configFile = μ; enable = η; group = σ; user = τ;};};
     };
 }

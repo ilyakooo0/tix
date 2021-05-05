@@ -2,8 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.usePostgreSQL = Bool,
+  β.services = ε,
   γ.coreutils = ζ,
   γ.gawk = ζ,
   γ.gnugrep = ζ,
@@ -11,8 +10,8 @@
   γ.jre = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ε ->
-    { assertions = θ;
+    θ ->
+    { assertions = ι;
       systemd =
         { services =
             { openfire =
@@ -25,24 +24,24 @@
             };
         };
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
   γ.openfire = ζ,
-  γ.optional = μ -> String -> [String],
-  γ.singleton = {assertion = Bool; message = String;} -> θ,
-  γ.types = ν,
+  γ.optional = ν -> String -> [String],
+  γ.singleton = {assertion = Bool; message = String;} -> ι,
+  γ.types = ξ,
   γ.which = ζ,
-  ξ.openfire = β,
-  ο.services = ξ,
-  π.openfire = β,
-  ρ.services = π,
-  σ.postgresql = β,
-  τ.services = σ,
-  υ.openfire = β,
-  φ.services = υ,
-  ν.bool = κ
+  ε.openfire = ο,
+  ο.enable = θ,
+  π.openfire = ρ,
+  ρ.usePostgreSQL = Bool,
+  σ.postgresql = τ,
+  τ.enable = Bool,
+  υ.openfire = φ,
+  φ.usePostgreSQL = ν,
+  ξ.bool = λ
 ) =>
 α ->
-{ config = ι;
-  options = {services = {openfire = {enable = η; usePostgreSQL = λ;};};};
+{ config = κ;
+  options = {services = {openfire = {enable = η; usePostgreSQL = μ;};};};
 }

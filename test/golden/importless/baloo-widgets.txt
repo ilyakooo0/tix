@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.lgpl21 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { baloo = ζ;
+(α.licenses = β, α.maintainers = γ, β.lgpl21 = δ, γ.ttuegel = ε) => { baloo = ζ;
   extra-cmake-modules = η;
   kconfig = ζ;
   kdelibs4support = ζ;
@@ -10,7 +10,7 @@
   kservice = ζ;
   lib = α;
   mkDerivation =
-    { meta = {license = [β]; maintainers = [γ];};
+    { meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

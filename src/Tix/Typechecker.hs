@@ -143,10 +143,10 @@ instance Free NType where
 instance Free Pred where
   free = \case
     Update x y z -> free x <> free y <> free z
-    x `HasField` (_, y) -> free x <> free y
+    HasField _ x (_, y) -> free x <> free y
   sub s = \case
     Update x y z -> Update (sub s x) (sub s y) (sub s z)
-    HasField t (f, v) -> HasField (sub s t) (f, sub s v)
+    HasField r t (f, v) -> HasField r (sub s t) (f, sub s v)
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
@@ -404,7 +404,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     let listt = List t
     lhst ~~ listt
     rhst ~~ listt
-    return $ listt
+    return listt
   NBinary NEq lhs rhs -> equality lhs rhs
   NBinary NNEq lhs rhs -> equality lhs rhs
   NBinary NLt lhs rhs -> comparison lhs rhs
@@ -421,16 +421,16 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NSelect r path' def -> do
     setT <- infer r
     let path = getPath path'
+        strictness = case def of
+          Nothing -> RequiredField
+          Just _ -> OptionalField
     resT <-
       NTypeVariable <$> case path of
-        Just p -> do
-          (_, var) <- lookupAttrSet setT p
-          return var
+        Just p -> lookupAttrSet strictness setT p
         Nothing -> fresh
     case def of
       Nothing -> return ()
       Just defR -> do
-        -- this should infer optional type
         defT <- infer defR
         defT ~~ resT
     return resT
@@ -441,8 +441,10 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     localVariablesMap bindingsT $ infer body
   NHasAttr attrSet path -> do
     setT <- infer attrSet
-    -- this should infer optional type
-    return setT
+    case getPath path of
+      Just p -> void $ lookupAttrSet OptionalField setT p
+      Nothing -> pure ()
+    return $ NAtomic Bool
   NAbs param body -> do
     (paramT, varMap :: VariableMap) <- case param of
       Param name -> do
@@ -456,7 +458,10 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
               setBindings <-
                 M.fromList <$> set
                   `for` ( \(name, def) -> do
-                            (_, NTypeVariable -> t) <- lookupAttrSet setT (pure name)
+                            let r = case def of
+                                  Nothing -> RequiredField
+                                  Just _ -> OptionalField
+                            (NTypeVariable -> t) <- lookupAttrSet r setT (pure name)
                             case def of
                               Nothing -> pure ()
                               Just def' -> infer def' >>= (t ~~)
@@ -492,28 +497,9 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
             lookupVar var >>= \case
               Just t -> pure $ Just t
               Nothing -> do
-                (_, res) <- lookupAttrSet other (pure var)
+                res <- lookupAttrSet RequiredField other (pure var)
                 pure $ Just . scheme $ NTypeVariable res
-
     f $ infer body
-  --   -- TODO: implement fallback variable lookup -> specify that the set should have the key.
-  --   setT <- infer set
-  --   vars <- expectAttrSet setT
-  --   withBindings vars $ infer body
-  --   where
-  --     -- Deprecated
-  --     expectAttrSet ::
-  --       Members '[Reader SrcSpan, Writer (SrcSpan, Errors)] r =>
-  --       Scheme ->
-  --       Eff r VariableMap
-  --     expectAttrSet (_ :=> NAttrSet x) = return x
-  --     expectAttrSet g = do
-  --       throwSrc
-  --         UnexpectedType
-  --           { expected = scheme $ NAttrSet M.empty,
-  --             got = g
-  --           }
-  --       return M.empty
   NAssert cond body -> do
     condT <- infer cond
     condT ~~ NAtomic Bool
@@ -816,24 +802,31 @@ solveConstraints ::
   Eff effs [Pred]
 solveConstraints _ [] = pure []
 solveConstraints range (p : ps) = case p of
-  HasField (NAttrSet ts) (f, t) -> case M.lookup f ts of
+  HasField r (NAttrSet ts) (f, t) -> case M.lookup f ts of
     Nothing -> do
-      tell $ KeyNotPresent f (NAttrSet ts)
+      case r of
+        OptionalField -> pure ()
+        RequiredField -> tell $ KeyNotPresent f (NAttrSet ts)
       solveConstraints range ps
     Just t' -> do
       x <- instantiate t
       y <- instantiate t'
       x ~~ y
       solveConstraints range ps
-  HasField tv@(NTypeVariable _) (k, v) -> do
-    let sameAttrSet :: Pred -> Either Scheme Pred
+  HasField r tv@(NTypeVariable _) (k, v) -> do
+    let sameAttrSet :: Pred -> Either (FieldStrictness, Scheme) Pred
         sameAttrSet = \case
-          HasField t (k', v') | t == tv, k == k' -> Left v'
+          HasField r' t (k', v') | t == tv, k == k' -> Left (r', v')
           x -> Right x
-        (same, different) = partitionWith sameAttrSet ps
-    (unifyScheme range v) `traverse_` same
-    (p :) <$> solveConstraints range different
-  HasField t _ -> do
+        raiseStrictness :: FieldStrictness -> FieldStrictness -> FieldStrictness
+        raiseStrictness RequiredField _ = RequiredField
+        raiseStrictness _ RequiredField = RequiredField
+        raiseStrictness OptionalField OptionalField = OptionalField
+        (unzip -> (strictnesses, same), different) = partitionWith sameAttrSet ps
+        strictness = foldr raiseStrictness r strictnesses
+    unifyScheme range v `traverse_` same
+    (HasField strictness tv (k, v) :) <$> solveConstraints range different
+  HasField _ t _ -> do
     tell $ NotAnAttributeSet t
     solveConstraints range ps
   (Update (NAttrSet a) (NAttrSet b) t) -> do
@@ -921,19 +914,20 @@ lookupAttrSet ::
        Fresh
      ]
     r =>
+  FieldStrictness ->
   NType ->
   AttrSetPath ->
-  Eff r (NType, TypeVariable)
-lookupAttrSet n = \case
+  Eff r TypeVariable
+lookupAttrSet r n = \case
   (NESingle p) -> do
     var <- getSubTV n
-    tell (HasField n (p, scheme . NTypeVariable $ var))
-    return (n, var)
+    tell (HasField r n (p, scheme . NTypeVariable $ var))
+    return var
   (p :|| ps) -> do
-    (innerSet, var) <- lookupAttrSet n ps
     set <- NTypeVariable <$> getSubTV n
-    tell $ HasField set (p, scheme innerSet)
-    return (set, var)
+    var <- lookupAttrSet r set ps
+    tell $ HasField r n (p, scheme set)
+    return var
   where
     getSubTV (NTypeVariable tv) = freshSub tv
     getSubTV _ = fresh

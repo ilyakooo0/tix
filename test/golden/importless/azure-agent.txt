@@ -2,15 +2,15 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.agent = ε,
-  β.enable = Bool,
-  γ.coreutils = ζ,
-  γ.findutils = ζ,
-  γ.gawk = ζ,
-  γ.gnugrep = ζ,
-  γ.makeWrapper = η,
+  β.networking = ε,
+  β.virtualisation = ζ,
+  γ.coreutils = η,
+  γ.findutils = η,
+  γ.gawk = η,
+  γ.gnugrep = η,
+  γ.makeWrapper = θ,
   γ.mkIf =
-    θ ->
+    ι ->
     { assertions = [{assertion = Bool; message = String;}];
       boot = {initrd = {kernelModules = [String];};};
       environment = {etc = {waagent.conf = {text = String;};};};
@@ -20,14 +20,14 @@
         };
       services =
         { logrotate = {config = String; enable = Bool;};
-          udev = {packages = [ι];};
+          udev = {packages = [κ];};
         };
       systemd =
         { services =
             { consume-hypervisor-entropy =
                 { before = [String];
                   description = String;
-                  path = [κ];
+                  path = [λ];
                   script = String;
                   serviceConfig =
                     { RemainAfterExit = Bool;
@@ -40,7 +40,7 @@
               waagent =
                 { after = [String];
                   description = String;
-                  path = [λ];
+                  path = [μ];
                   serviceConfig = {ExecStart = String; Type = String;};
                   unitConfig = {ConditionPathExists = String;};
                   wantedBy = [String];
@@ -50,55 +50,54 @@
           targets = {provisioned = {description = String;};};
         };
     } ->
-    μ,
-  γ.mkOption = {default = Bool; description = String;} -> ν,
-  γ.nettools = ζ,
-  γ.openssh = ζ,
-  γ.openssl = ζ,
-  γ.parted = ζ,
-  γ.procps = ζ,
-  γ.python = η,
-  γ.pythonPackages = ξ,
-  γ.shadow = ζ,
-  γ.stdenv = ο,
-  γ.utillinux = ζ,
-  δ.bash = λ,
-  δ.coreutils = κ,
-  δ.e2fsprogs = λ,
+    ν,
+  γ.mkOption = {default = Bool; description = String;} -> ξ,
+  γ.nettools = η,
+  γ.openssh = η,
+  γ.openssl = η,
+  γ.parted = η,
+  γ.procps = η,
+  γ.python = θ,
+  γ.pythonPackages = ο,
+  γ.shadow = η,
+  γ.stdenv = π,
+  γ.utillinux = η,
+  δ.bash = μ,
+  δ.coreutils = λ,
+  δ.e2fsprogs = μ,
   δ.fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> π,
-  δ.isi686 = Bool,
-  δ.isx86_64 = Bool,
-  δ.writeScript = String -> String -> ρ,
-  ο.mkDerivation =
-    { buildInputs = [η];
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ρ,
+  δ.stdenv = σ,
+  δ.writeScript = String -> String -> τ,
+  π.mkDerivation =
+    { buildInputs = [θ];
       buildPhase = Bool;
       configurePhase = Bool;
       installPhase = String;
       name = String;
       patches = [Path];
-      pythonPath = [σ];
-      runtimeDeps = [ζ];
-      src = π;
+      pythonPath = [υ];
+      runtimeDeps = [η];
+      src = ρ;
     } ->
-    ι,
-  ξ.pyasn1 = σ,
-  τ.wrapPython = η,
-  ε.enable = θ,
-  υ.azure = β,
-  φ.virtualisation = υ,
-  χ.stdenv = δ,
-  ψ.stdenv = δ,
-  ω.networkmanager = β,
-  α1.networking = ω
+    κ,
+  ο.pyasn1 = υ,
+  φ.wrapPython = θ,
+  ζ.azure = χ,
+  χ.agent = ψ,
+  ψ.enable = ι,
+  σ.isi686 = Bool,
+  ω.isx86_64 = Bool,
+  ε.networkmanager = α1,
+  α1.enable = Bool
 ) =>
 α ->
-{ config = μ;
+{ config = ν;
   options =
     { virtualisation =
         { azure =
             { agent =
-                {enable = ν; mountResourceDisk = β1; verboseLogging = γ1;};
+                {enable = ξ; mountResourceDisk = β1; verboseLogging = γ1;};
             };
         };
     };

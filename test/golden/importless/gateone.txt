@@ -2,60 +2,61 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.gateone = ε,
-  γ.coreutils = ζ,
-  γ.gateone = η,
-  γ.mkEnableOption = String -> θ,
+  β.ids = ε,
+  β.services = ζ,
+  γ.coreutils = η,
+  γ.gateone = θ,
+  γ.mkEnableOption = String -> ι,
   γ.mkIf =
-    ι ->
-    { environment = {systemPackages = [η];};
+    κ ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { services =
             { gateone =
                 { description = String;
-                  path = [ζ];
+                  path = [η];
                   preStart = String;
                   requires = [String];
                   serviceConfig =
                     { ExecStart = String;
                       Group = String;
                       User = String;
-                      WorkingDirectory = κ;
+                      WorkingDirectory = λ;
                     };
                   wantedBy = [String];
                 };
             };
         };
       users =
-        { groups = {gateone = {gid = λ;};};
-          users = {gateone = {description = String; home = μ; uid = ν;};};
+        { groups = {gateone = {gid = μ;};};
+          users = {gateone = {description = String; home = ν; uid = ξ;};};
         };
     } ->
-    ξ,
-  γ.mkOption = {default = String; description = String; type = ο;} -> π,
-  γ.nix = ζ,
-  γ.openssh = ζ,
-  γ.procps = ζ,
-  γ.pythonPackages = ρ,
-  γ.types = σ,
-  δ.cacert = η,
-  δ.coreutils = η,
-  δ.openssh = η,
-  δ.procps = η,
-  δ.pythonPackages = τ,
-  ε.enable = ι,
-  ε.settingsDir = κ,
-  υ.services = β,
-  ρ.gateone = ζ,
-  φ.gids = β,
-  χ.ids = φ,
-  ψ.uids = β,
-  ω.ids = ψ,
-  σ.path = ο,
+    ο,
+  γ.mkOption = {default = String; description = String; type = π;} -> ρ,
+  γ.nix = η,
+  γ.openssh = η,
+  γ.procps = η,
+  γ.pythonPackages = σ,
+  γ.types = τ,
+  δ.cacert = θ,
+  δ.coreutils = θ,
+  δ.openssh = θ,
+  δ.procps = θ,
+  δ.pythonPackages = υ,
+  ζ.gateone = φ,
+  φ.enable = κ,
+  φ.settingsDir = λ,
+  σ.gateone = η,
+  ε.gids = χ,
+  χ.gateone = μ,
+  ψ.uids = ω,
+  ω.gateone = ξ,
+  τ.path = π,
   α1.path = β1
 ) =>
 α ->
-{ config = ξ;
+{ config = ο;
   options =
-    {services = {gateone = {enable = θ; pidDir = π; settingsDir = γ1;};};};
+    {services = {gateone = {enable = ι; pidDir = ρ; settingsDir = γ1;};};};
 }

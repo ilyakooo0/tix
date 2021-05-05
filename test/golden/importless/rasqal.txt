@@ -1,41 +1,39 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.licenses = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
-      checkInputs = [ε];
+    { buildInputs = [γ];
+      checkInputs = [δ];
       doCheck = Bool;
       doInstallCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = [ζ];
-          maintainers = [η];
-          platforms = θ;
+          license = [ε];
+          maintainers = [ζ];
+          platforms = η;
         };
       name = String;
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [θ];
       postInstall = String;
-      propagatedBuildInputs = [κ];
-      src = λ;
+      propagatedBuildInputs = [ι];
+      src = κ;
     } ->
-    μ,
-  α.unix = θ,
-  β.asl20 = ζ,
-  β.lgpl21 = ζ,
-  ν.lib = α,
-  γ.marcweber = η,
-  ξ.lib = α,
-  ο.platforms = α,
-  π.lib = ο
+    λ,
+  β.licenses = μ,
+  μ.asl20 = ε,
+  μ.lgpl21 = ε,
+  ν.maintainers = ξ,
+  ξ.marcweber = ζ,
+  ο.platforms = π,
+  π.unix = η
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> λ;
-  gmp = δ;
-  librdf_raptor2 = κ;
-  libxml2 = δ;
-  pcre = δ;
-  perl = ε;
-  pkgconfig = ι;
+{ fetchurl = {sha256 = String; url = String;} -> κ;
+  gmp = γ;
+  librdf_raptor2 = ι;
+  libxml2 = γ;
+  pcre = γ;
+  perl = δ;
+  pkgconfig = θ;
   stdenv = α;
 } ->
-μ
+λ

@@ -1,12 +1,12 @@
 ∀ α β γ δ ε ζ.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { base = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { base = ε;
   concatenative = ε;
   mkDerivation =
     { description = String;
       doCheck = Bool;
       homepage = String;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       sha256 = String;
       version = String;

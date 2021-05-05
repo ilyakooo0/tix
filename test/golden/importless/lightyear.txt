@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η θ.
-( α.bsd2 = β,
+( α.licenses = β,
   α.maintainers = γ,
-  δ.licenses = α,
+  β.bsd2 = δ,
   γ.brainrape = ε,
   γ.siddharthist = ε
 ) =>
@@ -10,7 +10,7 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
         };
       name = String;

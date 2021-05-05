@@ -1,11 +1,11 @@
 ∀ α β γ δ ε ζ.
-(α.ttuegel = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+(α.maintainers = β, β.ttuegel = γ) => { extra-cmake-modules = δ;
   kcoreaddons = ε;
   kwidgetsaddons = ε;
   lib = α;
   mkDerivation =
     { buildInputs = [ε];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [δ];
     } ->

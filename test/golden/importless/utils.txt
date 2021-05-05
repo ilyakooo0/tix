@@ -1,37 +1,37 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1.
 ( γ.lib = δ,
   ε.mountPoint = ζ,
   ε.neededForBoot = η,
   θ.device = ι,
   θ.mountPoint = κ,
-  δ.attrNames = Bool -> λ,
-  δ.concatStringsSep = String -> μ -> String,
+  δ.attrNames = λ -> μ,
+  δ.concatStringsSep = String -> ν -> String,
   δ.elem = ζ -> [String] -> Bool,
-  δ.flatten = ν -> ξ,
+  δ.flatten = ξ -> ο,
   δ.hasPrefix = String -> κ -> Bool,
-  δ.imap0 = (ο -> Bool -> ν) -> Bool -> ν,
-  δ.imap1 = (π -> ρ -> String) -> σ -> μ,
-  δ.isAttrs = Bool -> Bool,
-  δ.isList = Bool -> Bool,
-  δ.listToAttrs = ξ -> τ,
-  δ.map = (String -> ν) -> λ -> ν,
-  δ.nameValuePair = String -> υ -> ν,
-  δ.removePrefix = String -> φ -> χ,
-  δ.replaceChars = [String] -> [String] -> χ -> ψ,
+  δ.imap0 = (π -> λ -> ξ) -> λ -> ξ,
+  δ.imap1 = (ρ -> σ -> String) -> τ -> ν,
+  δ.isAttrs = λ -> Bool,
+  δ.isList = λ -> Bool,
+  δ.listToAttrs = ο -> υ,
+  δ.map = (String -> ξ) -> μ -> ξ,
+  δ.nameValuePair = String -> φ -> ξ,
+  δ.removePrefix = String -> χ -> ψ,
+  δ.replaceChars = [String] -> [String] -> ψ -> ω,
   δ.throw = String -> String,
-  δ.types = ω,
-  ω.check = String -> Bool,
-  α1.shellPackage = ω,
+  δ.types = α1,
+  α1.shellPackage = β1,
   β1.check = String -> Bool,
-  γ1.package = β1
+  γ1.package = δ1,
+  δ1.check = String -> Bool
 ) =>
 γ ->
-{ escapeSystemdPath = φ -> ψ;
+{ escapeSystemdPath = χ -> ω;
   fsBefore = ∀ α β. (α.mountPoint = β) => α -> θ -> Bool;
   fsNeededForBoot = ε -> Bool;
-  genJqSecretsReplacementSnippet = ∀ α. Bool -> α -> String;
-  genJqSecretsReplacementSnippet' = ∀ α β. α -> Bool -> β -> String;
+  genJqSecretsReplacementSnippet = ∀ α. λ -> α -> String;
+  genJqSecretsReplacementSnippet' = ∀ α β. α -> λ -> β -> String;
   pathsNeededForBoot = [String];
-  recursiveGetAttrWithJqPrefix = ∀ α. Bool -> α -> τ;
+  recursiveGetAttrWithJqPrefix = ∀ α. λ -> α -> υ;
   toShellPath = String -> String;
 }

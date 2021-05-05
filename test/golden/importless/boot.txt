@@ -1,16 +1,15 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.darwin = β,
-  α.maintainers = γ,
+( α.lib = β,
+  β.maintainers = γ,
   γ.gridaphobe = δ,
-  ε.lib = α,
-  ζ.platforms = α,
-  η.lib = ζ
+  ε.platforms = ζ,
+  ζ.darwin = η
 ) =>
 { appleDerivation =
     { buildInputs = [θ];
       buildPhase = String;
       installPhase = String;
-      meta = {maintainers = [δ]; platforms = β;};
+      meta = {maintainers = [δ]; platforms = η;};
       nativeBuildInputs = [θ];
       outputs = [String];
       patchPhase = String;

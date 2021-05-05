@@ -4,21 +4,21 @@
   α.maintainers = ζ,
   α.nixType = δ -> String,
   α.offline = η,
-  α.substring = Integer -> Integer -> String -> θ,
+  α.strings = θ,
   ι.buildNodePackage =
     { deps = ε;
       meta = {description = String; homepage = String; maintainers = [η];};
       name = String;
       rev = String;
       src = κ;
-      version = θ;
+      version = λ;
     } ->
-    λ,
+    μ,
   ι.override = {generated = Path; self = β;} -> β,
-  μ.strings = α
+  θ.substring = Integer -> Integer -> String -> λ
 ) =>
 { fetchgit = {rev = String; sha256 = String; url = String;} -> κ;
   lib = α;
   nodePackages = ι;
 } ->
-λ
+μ

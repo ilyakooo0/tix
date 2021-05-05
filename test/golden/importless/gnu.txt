@@ -23,10 +23,10 @@
   γ.texinfo = η,
   γ.types = μ,
   γ.zile = η,
-  δ.isAarch32 = Bool,
-  ν.stdenv = δ,
-  λ.optional = Bool -> ζ -> [η],
-  ξ.lib = λ,
+  δ.stdenv = ν,
+  ν.isAarch32 = Bool,
+  λ.lib = ξ,
+  ξ.optional = Bool -> ζ -> [η],
   ο.isAarch32 = Bool,
   μ.bool = ι
 ) =>

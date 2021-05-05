@@ -2,44 +2,44 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.hardware = ε,
   γ.licenses = ζ,
   γ.maintainers = η,
   γ.mkEnableOption = String -> θ,
   γ.mkIf =
-    ε ->
+    ι ->
     { boot =
         { initrd =
             {availableKernelModules = [String]; kernelModules = [String];};
         };
-      environment = {systemPackages = [ι];};
+      environment = {systemPackages = [κ];};
     } ->
-    κ,
-  γ.volth = λ,
-  δ.dpkg = μ,
-  δ.fetchurl = {sha256 = String; url = String;} -> ν,
-  δ.mkDerivation =
+    λ,
+  γ.volth = μ,
+  δ.dpkg = ν,
+  δ.fetchurl = {sha256 = String; url = String;} -> ξ,
+  δ.stdenv = ο,
+  ο.mkDerivation =
     { dontStrip = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ξ;
-          maintainers = [λ];
+          license = π;
+          maintainers = [μ];
           platforms = [String];
         };
-      nativeBuildInputs = [μ];
+      nativeBuildInputs = [ν];
       pname = String;
-      src = ν;
+      src = ξ;
       unpackPhase = String;
       version = String;
     } ->
-    ι,
-  ο.stdenv = δ,
-  ζ.unfreeRedistributable = ξ,
-  π.HPSmartArray = β,
-  ρ.raid = π,
-  σ.hardware = ρ
+    κ,
+  ζ.unfreeRedistributable = π,
+  ε.raid = ρ,
+  ρ.HPSmartArray = σ,
+  σ.enable = ι
 ) =>
 α ->
-{config = κ; options = {hardware = {raid = {HPSmartArray = {enable = θ;};};};};}
+{config = λ; options = {hardware = {raid = {HPSmartArray = {enable = θ;};};};};}

@@ -1,23 +1,23 @@
 ∀ α β γ δ ε ζ η.
-( α.mips = β,
+( α.lib = β,
   α.mkDerivation =
     { configurePhase = String;
       dontStrip = Bool;
       installPhase = String;
       makeFlags = [String];
-      meta = {platforms = β;};
+      meta = {platforms = γ;};
       name = String;
       patchPhase = String;
       preBuild = String;
-      src = γ;
-      srcPatches = δ;
+      src = δ;
+      srcPatches = ε;
     } ->
-    ε,
-  ζ.platforms = α,
-  η.lib = ζ
+    ζ,
+  β.platforms = η,
+  η.mips = γ
 ) =>
-{ fetchgit = {rev = String; sha256 = String; url = String;} -> δ;
-  fetchurl = {sha256 = String; url = String;} -> γ;
+{ fetchgit = {rev = String; sha256 = String; url = String;} -> ε;
+  fetchurl = {sha256 = String; url = String;} -> δ;
   stdenv = α;
 } ->
-ε
+ζ

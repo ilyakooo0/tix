@@ -1,0 +1,12 @@
+∀ α β γ δ ε ζ η θ.
+( α.bintools = β,
+  α.override = {bintools = γ; extraBuildCommands = String; libc = δ;} -> ε,
+  β.override = {libc = δ;} -> γ
+) =>
+{ clang = α;
+  gcc32 = ζ;
+  gcc64 = η;
+  glibc_multi = θ;
+  runCommand = String -> {} -> String -> δ;
+} ->
+ε

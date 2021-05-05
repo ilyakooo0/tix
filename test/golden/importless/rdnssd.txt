@@ -2,11 +2,12 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.rdnssd = ζ,
+  β.ids = ε,
+  β.networking = ζ,
+  β.services = η,
   γ.mkIf =
-    ε ->
-    { assertions = [{assertion = η; message = String;}];
+    θ ->
+    { assertions = [{assertion = ι; message = String;}];
       systemd =
         { services =
             { rdnssd =
@@ -20,18 +21,18 @@
                 };
             };
         };
-      users = {users = {rdnssd = {description = String; uid = ζ;};};};
+      users = {users = {rdnssd = {description = String; uid = κ;};};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  δ.writeScript = String -> String -> μ,
-  ν.rdnssd = β,
-  ξ.services = ν,
-  ο.resolvconf = β,
-  π.networking = ο,
-  ρ.uids = β,
-  σ.ids = ρ,
-  λ.bool = ι
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.types = ξ,
+  δ.writeScript = String -> String -> ο,
+  η.rdnssd = π,
+  π.enable = θ,
+  ζ.resolvconf = ρ,
+  ρ.enable = ι,
+  ε.uids = σ,
+  σ.rdnssd = κ,
+  ξ.bool = μ
 ) =>
-α -> {config = θ; options = {services = {rdnssd = {enable = κ;};};};}
+α -> {config = λ; options = {services = {rdnssd = {enable = ν;};};};}

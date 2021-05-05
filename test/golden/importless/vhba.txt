@@ -1,28 +1,27 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.lib = β,
-  α.maintainers = γ,
   α.mkDerivation =
     { hardeningDisable = [String];
       makeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = δ;
-          maintainers = [ε];
-          platforms = ζ;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
         };
-      nativeBuildInputs = η;
+      nativeBuildInputs = ζ;
       pname = String;
-      src = θ;
+      src = η;
       version = String;
     } ->
-    ι,
-  κ.moduleBuildDependencies = η,
-  β.bendlas = ε,
-  β.licenses = λ,
-  β.platforms = μ,
-  λ.gpl2Plus = δ,
-  ν.lib = α,
-  μ.linux = ζ
+    θ,
+  ι.moduleBuildDependencies = ζ,
+  β.bendlas = δ,
+  β.licenses = κ,
+  β.platforms = λ,
+  κ.gpl2Plus = γ,
+  μ.maintainers = ν,
+  λ.linux = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> θ; kernel = κ; stdenv = α;} -> ι
+{fetchurl = {sha256 = String; url = String;} -> η; kernel = ι; stdenv = α;} -> θ

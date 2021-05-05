@@ -1,19 +1,17 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( α.all = β,
-  α.bsd3 = γ,
-  α.isDarwin = Bool,
-  α.isLinux = δ,
-  α.maintainers = ε,
+( α.isDarwin = Bool,
+  α.isLinux = β,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [ζ];
+    { buildInputs = [δ];
       cmakeFlags = [String];
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [η];
-          platforms = β;
+          license = ε;
+          maintainers = [ζ];
+          platforms = η;
         };
       pname = String;
       postBuild = String;
@@ -23,27 +21,26 @@
       version = String;
     } ->
     κ,
-  α.optional = Bool -> String -> [String],
-  λ.optional = δ -> μ -> [ζ],
-  ν.lib = α,
-  ξ.licenses = α,
-  ο.lib = ξ,
-  ε.thoughtpolice = η,
-  π.lib = α,
-  ρ.platforms = α,
-  σ.lib = ρ
+  λ.optional = β -> μ -> [δ],
+  γ.optional = Bool -> String -> [String],
+  ν.licenses = ξ,
+  ξ.bsd3 = ε,
+  ο.maintainers = π,
+  π.thoughtpolice = ζ,
+  ρ.platforms = σ,
+  σ.all = η
 ) =>
-{ cmake = ζ;
+{ cmake = δ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
-  groff = ζ;
+  groff = δ;
   lib = λ;
   libbfd = τ;
-  libffi = ζ;
-  libxml2 = ζ;
+  libffi = δ;
+  libxml2 = δ;
   ncurses = θ;
-  perl = ζ;
-  python2 = ζ;
+  perl = δ;
+  python2 = δ;
   stdenv = α;
   valgrind = μ;
   zlib = θ;

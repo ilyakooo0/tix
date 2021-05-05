@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.teamviewer = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -29,7 +29,7 @@
     } ->
     ι,
   δ.teamviewer = θ,
-  ε.enable = η,
-  κ.services = β
+  ε.teamviewer = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {services = {teamviewer = {enable = ζ;};};};}

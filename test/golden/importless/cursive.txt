@@ -1,39 +1,38 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
 ( α.isDarwin = β,
   α.lib = γ,
-  α.optionals = β -> [δ] -> [ε],
-  ζ.buildRustPackage =
+  δ.buildRustPackage =
     { buildInputs = [ε];
       cargoBuildFlags = [String];
       cargoSha256 = String;
       meta =
         { description = String;
           homepage = String;
-          license = η;
-          maintainers = [θ];
-          platforms = ι;
+          license = ζ;
+          maintainers = [η];
+          platforms = θ;
         };
       nativeBuildInputs = [ε];
       patches = [Path];
       pname = String;
       preFixup = String;
-      src = κ;
+      src = ι;
       version = String;
     } ->
-    λ,
-  ζ.licenses = μ,
-  ζ.maintainers = ν,
-  ζ.platforms = ξ,
-  ζ.sgo = θ,
-  ο.libxcb = ε,
-  π.lib = α,
-  μ.gpl3 = η,
-  ξ.unix = ι
+    κ,
+  δ.licenses = λ,
+  δ.maintainers = μ,
+  δ.platforms = ν,
+  δ.sgo = η,
+  ξ.libxcb = ε,
+  ο.optionals = β -> [π] -> [ε],
+  λ.gpl3 = ζ,
+  ν.unix = θ
 ) =>
-{ AppKit = δ;
-  Security = δ;
+{ AppKit = π;
+  Security = π;
   fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
   gpgme = ε;
   lib = ρ;
   libgpgerror = ε;
@@ -41,8 +40,8 @@
   openssl = ε;
   pkgconfig = ε;
   python3 = ε;
-  rustPlatform = ζ;
+  rustPlatform = δ;
   stdenv = α;
-  xorg = ο;
+  xorg = ξ;
 } ->
-λ
+κ

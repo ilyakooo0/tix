@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.bkchr = β,
-  α.licenses = γ,
-  γ.lgpl21 = δ,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.lgpl21 = δ,
+  γ.bkchr = ε
 ) =>
 { extra-cmake-modules = ζ;
   kcalendarcore = η;
@@ -13,7 +13,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [η];
-      meta = {license = [δ]; maintainers = [β];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
       outputs = [String];

@@ -1,4 +1,4 @@
-∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1.
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1.
 ( ( γ
   ) //
   ( { dontBuild = Bool;
@@ -45,8 +45,10 @@
       version = μ;
     }
   ),
-  ξ.lib = ο,
-  ξ.mkDerivation =
+  ξ.?scripts = [ο],
+  π.?scripts = [ο],
+  ρ.lib = σ,
+  ρ.mkDerivation =
     { buildInputs = [η];
       meta = ∀ α. α;
       passthru = {wrap = κ; wrapWithBuildEnv = λ;};
@@ -58,29 +60,26 @@
       version = μ;
     } ->
     ι,
-  ξ.strings = π,
-  ρ.scripts = [σ],
-  τ.scripts = [σ],
-  π.baseName = σ,
-  π.concatStringsSep = String -> υ -> φ,
-  π.licenses = χ,
-  π.magnetophon = ψ,
-  π.maintainers = ω,
-  π.map = (α1 -> String) -> [ι] -> υ,
-  π.platforms = β1,
-  π.pmahoney = ψ,
-  π.src = δ,
-  π.version = μ,
-  π.wrap = κ,
-  π.wrapWithBuildEnv = λ,
-  γ1.lib = ξ,
-  χ.gpl2 = δ1,
-  β1.linux = ε1
+  σ.strings = τ,
+  τ.baseName = ο,
+  τ.concatStringsSep = String -> υ -> φ,
+  τ.licenses = χ,
+  τ.magnetophon = ψ,
+  τ.maintainers = ω,
+  τ.map = (α1 -> String) -> [ι] -> υ,
+  τ.platforms = β1,
+  τ.pmahoney = ψ,
+  τ.src = δ,
+  τ.version = μ,
+  τ.wrap = κ,
+  τ.wrapWithBuildEnv = λ,
+  χ.gpl2 = γ1,
+  β1.linux = δ1
 ) =>
-{ coreutils = ζ1;
-  fetchurl = {sha256 = String; url = String;} -> η1;
+{ coreutils = ε1;
+  fetchurl = {sha256 = String; url = String;} -> ζ1;
   makeWrapper = η;
   pkgconfig = θ;
-  stdenv = ξ;
+  stdenv = ρ;
 } ->
 ι

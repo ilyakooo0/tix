@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.server = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -20,9 +20,9 @@
     θ,
   γ.mkOption = {description = String; example = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = η,
-  μ.go-shadowsocks2 = β,
-  ν.services = μ,
+  ε.go-shadowsocks2 = μ,
+  μ.server = ν,
+  ν.enable = η,
   λ.str = ι
 ) =>
 α ->

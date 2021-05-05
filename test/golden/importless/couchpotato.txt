@@ -2,10 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.couchpotato = ε,
-  γ.mkEnableOption = String -> ζ,
+  β.ids = ε,
+  β.services = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    η ->
+    θ ->
     { systemd =
         { services =
             { couchpotato =
@@ -24,19 +25,19 @@
             };
         };
       users =
-        { groups = {couchpotato = {gid = θ;};};
+        { groups = {couchpotato = {gid = ι;};};
           users =
             { couchpotato =
-                {description = String; group = String; home = String; uid = ι;};
+                {description = String; group = String; home = String; uid = κ;};
             };
         };
     } ->
-    κ,
-  ε.enable = η,
-  λ.services = β,
-  μ.gids = β,
-  ν.ids = μ,
-  ξ.uids = β,
-  ο.ids = ξ
+    λ,
+  ζ.couchpotato = μ,
+  μ.enable = θ,
+  ε.gids = ν,
+  ν.couchpotato = ι,
+  ξ.uids = ο,
+  ο.couchpotato = κ
 ) =>
-α -> {config = κ; options = {services = {couchpotato = {enable = ζ;};};};}
+α -> {config = λ; options = {services = {couchpotato = {enable = η;};};};}

@@ -1,43 +1,41 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( α.gpl3 = β,
-  α.lib = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       dontBuild = Bool;
       fixupPhase = String;
       installPhase = String;
       meta =
-        {description = String; homepage = String; license = β; platforms = ε;};
+        {description = String; homepage = String; license = δ; platforms = ε;};
       pname = String;
       src = ζ;
       version = String;
       wrapperPath = η;
     } ->
     θ,
-  α.platforms = ι,
-  κ.withExtensions = (λ -> [μ]) -> ν,
-  λ.pass-otp = μ,
-  γ.makeBinPath = [ν] -> η,
-  ξ.licenses = α,
-  ο.lib = ξ,
-  ι.linux = ε,
-  π.lib = α
+  ι.withExtensions = (κ -> [λ]) -> μ,
+  κ.pass-otp = λ,
+  β.makeBinPath = [μ] -> η,
+  ν.licenses = ξ,
+  ξ.gpl3 = δ,
+  ο.platforms = π,
+  π.linux = ε
 ) =>
-{ coreutils = ν;
+{ coreutils = μ;
   fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  findutils = ν;
-  gawk = ν;
-  gnugrep = ν;
-  gnused = ν;
-  libnotify = ν;
-  makeWrapper = δ;
-  pass = κ;
-  pwgen = ν;
-  rofi = ν;
+  findutils = μ;
+  gawk = μ;
+  gnugrep = μ;
+  gnused = μ;
+  libnotify = μ;
+  makeWrapper = γ;
+  pass = ι;
+  pwgen = μ;
+  rofi = μ;
   stdenv = α;
-  utillinux = ν;
-  xclip = ν;
-  xdotool = ν;
+  utillinux = μ;
+  xclip = μ;
+  xdotool = μ;
 } ->
 θ

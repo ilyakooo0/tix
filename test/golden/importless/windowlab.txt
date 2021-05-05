@@ -13,11 +13,11 @@
     } ->
     θ,
   δ.windowlab = η,
-  β.windowlab = ι,
-  ι.enable = ζ,
-  κ.windowManager = β,
-  λ.xserver = κ,
-  μ.services = λ
+  β.services = ι,
+  ι.xserver = κ,
+  κ.windowManager = λ,
+  λ.windowlab = μ,
+  μ.enable = ζ
 ) =>
 α ->
 { config = θ;

@@ -1,0 +1,79 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1.
+( α.isDarwin = Bool,
+  α.lib = β,
+  α.mkDerivation =
+    { NIX_LDFLAGS = γ;
+      buildInputs = [δ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ε;
+          maintainers = [ζ];
+          platforms = [η];
+        };
+      outputs = [String];
+      passthru =
+        { apr = θ;
+          aprutil = ι;
+          ldapSupport = Bool;
+          proxySupport = Bool;
+          sslSupport = Bool;
+        };
+      pname = String;
+      postInstall = String;
+      prePatch = String;
+      setOutputFlags = Bool;
+      src = κ;
+      stripDebugList = [String];
+      version = String;
+    } ->
+    λ,
+  ι.ldapSupport = Bool,
+  ι.sslSupport = Bool,
+  β.optional = Bool -> Null -> [δ],
+  μ.licenses = ν,
+  μ.lovek323 = ζ,
+  μ.maintainers = ξ,
+  μ.peti = ζ,
+  ν.asl20 = ε,
+  ο.platforms = π,
+  π.linux = [η],
+  ρ.platforms = σ,
+  σ.darwin = [η],
+  τ.enableFeature = Bool -> String -> String,
+  υ.enableFeature = Bool -> String -> String,
+  φ.withFeatureAs = Bool -> String -> String -> String,
+  χ.enableFeature = Bool -> String -> String,
+  ψ.withFeatureAs = Bool -> String -> Null -> String,
+  ω.enableFeature = Bool -> String -> String,
+  α1.withFeature = Bool -> String -> String,
+  β1.enableFeature = Bool -> String -> String,
+  γ1.withFeatureAs = Bool -> String -> δ1 -> String,
+  ε1.optionalString = Bool -> String -> γ
+) =>
+{ apr = θ;
+  aprutil = ι;
+  brotli = Null;
+  brotliSupport = Bool;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  http2Support = Bool;
+  ldapSupport = Bool;
+  libiconv = Null;
+  libxml2 = Null;
+  libxml2Support = Bool;
+  lua5 = δ1;
+  luaSupport = Bool;
+  lynx = ζ1;
+  nghttp2 = Null;
+  openldap = Null;
+  openssl = Null;
+  pcre = η1;
+  perl = δ;
+  proxySupport = Bool;
+  sslSupport = Bool;
+  stdenv = α;
+  zlib = θ1;
+} ->
+λ

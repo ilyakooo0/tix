@@ -1,31 +1,29 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.gpl2 = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
     { NIX_LDFLAGS = String;
-      buildInputs = [δ];
+      buildInputs = [γ];
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = δ;
           maintainers = [ε];
-          platforms = γ;
+          platforms = ζ;
         };
       name = String;
       postInstall = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  α.wmertens = ε,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.gpl2 = δ,
+  κ.maintainers = λ,
+  λ.wmertens = ε,
+  μ.platforms = ν,
+  ν.linux = ζ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
-  libdvdcss = δ;
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  libdvdcss = γ;
   stdenv = α;
 } ->
-η
+θ

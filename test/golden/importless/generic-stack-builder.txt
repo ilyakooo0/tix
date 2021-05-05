@@ -20,29 +20,29 @@
   ) ~
   ( ζ
   ),
-  η.libc = String,
-  η.mkDerivation = ζ -> θ,
-  ι.makeLibraryPath = [δ] -> β,
-  ι.optional = Bool -> κ -> [δ],
-  α.LD_LIBRARY_PATH = [δ],
-  α.buildInputs = [δ],
-  α.buildPhase = String,
-  α.checkPhase = String,
-  α.doCheck = Bool,
-  α.extraArgs = γ,
-  α.ghc = ε,
-  α.installPhase = String,
-  α.nativeBuildInputs = [ε],
-  α.stack = ε,
-  λ.hostPlatform = η
+  α.?LD_LIBRARY_PATH = [δ],
+  α.?buildInputs = [δ],
+  α.?buildPhase = String,
+  α.?checkPhase = String,
+  α.?doCheck = Bool,
+  α.?extraArgs = γ,
+  α.?ghc = ε,
+  α.?installPhase = String,
+  α.?nativeBuildInputs = [ε],
+  α.?stack = ε,
+  η.hostPlatform = θ,
+  η.mkDerivation = ζ -> ι,
+  κ.makeLibraryPath = [δ] -> β,
+  κ.optional = Bool -> λ -> [δ],
+  θ.libc = String
 ) =>
 { cacert = μ;
   ghc = ε;
-  glibcLocales = κ;
-  lib = ι;
+  glibcLocales = λ;
+  lib = κ;
   makeSetupHook = {} -> Path -> ε;
   pkgconfig = ε;
   stack = ε;
   stdenv = η;
 } ->
-α -> θ
+α -> ι

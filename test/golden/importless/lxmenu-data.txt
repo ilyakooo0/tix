@@ -1,19 +1,18 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.gpl2 = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       meta =
-        {description = String; homepage = String; license = β; platforms = γ;};
+        {description = String; homepage = String; license = δ; platforms = ε;};
       pname = String;
-      src = ε;
+      src = ζ;
       version = String;
     } ->
-    ζ,
-  η.licenses = α,
-  θ.lib = η,
-  ι.platforms = α,
-  κ.lib = ι
+    η,
+  β.licenses = θ,
+  θ.gpl2 = δ,
+  ι.platforms = κ,
+  κ.linux = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; intltool = δ; stdenv = α;} ->
-ζ
+{fetchurl = {sha256 = String; url = String;} -> ζ; intltool = γ; stdenv = α;} ->
+η

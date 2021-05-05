@@ -6,38 +6,37 @@
   α.platforms = ι,
   α.primeos = κ,
   λ.override = {packageOverrides = ζ;} -> μ,
-  μ.buildPythonPackage =
+  μ.pkgs = ν,
+  η.gpl3Plus = ξ,
+  ι.linux = ο,
+  ν.buildPythonPackage =
     { doCheck = Bool;
       dontWrapQtApps = Bool;
       meta =
         { changelog = String;
           description = String;
           homepage = String;
-          license = ν;
+          license = ξ;
           longDescription = String;
           maintainers = [κ];
-          platforms = ξ;
+          platforms = ο;
         };
       name = String;
-      nativeBuildInputs = [ο];
+      nativeBuildInputs = [π];
       pname = String;
       postFixup = String;
-      propagatedBuildInputs = [π];
-      src = ρ;
+      propagatedBuildInputs = [ρ];
+      src = σ;
     } ->
-    σ,
-  μ.pkgs = τ,
-  η.gpl3Plus = ν,
-  ι.linux = ξ,
-  υ.pkgs = μ,
-  τ.distro = π,
-  τ.jsonschema = π,
-  τ.psutil = π,
-  τ.pyqt5 = φ,
-  τ.sentry-sdk = π,
-  τ.setuptools = π,
-  τ.sip = π,
-  φ.override = {withWebSockets = Bool;} -> π
+    τ,
+  υ.distro = ρ,
+  υ.jsonschema = ρ,
+  υ.psutil = ρ,
+  υ.pyqt5 = φ,
+  υ.sentry-sdk = ρ,
+  υ.setuptools = ρ,
+  υ.sip = ρ,
+  φ.override = {withWebSockets = Bool;} -> ρ
 ) =>
 { branch = χ;
   commonOverrides = [ε];
@@ -47,9 +46,9 @@
   version = β1;
 } ->
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = ω;} -> ρ;
+    {owner = String; repo = String; rev = String; sha256 = ω;} -> σ;
   lib = α;
   python3 = λ;
-  wrapQtAppsHook = ο;
+  wrapQtAppsHook = π;
 } ->
-σ
+τ

@@ -1,0 +1,49 @@
+∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1.
+( γ.autoconf = δ,
+  γ.automake = δ,
+  γ.autoreconfHook = ε,
+  γ.buildEmscriptenPackage =
+    { buildInputs = [ζ];
+      buildPhase = String;
+      checkPhase = String;
+      configurePhase = String;
+      installPhase = String;
+      nativeBuildInputs = [η];
+      outputs = [String];
+      pname = String;
+      src = θ;
+      version = String;
+    } ->
+    ι,
+  γ.emscriptenStdenv = κ,
+  γ.fetchgit = {rev = String; sha256 = String; url = String;} -> θ,
+  γ.gnumake = ζ,
+  γ.json_c = λ,
+  γ.libtool = ζ,
+  γ.libxml2 = μ,
+  γ.nodejs = ζ,
+  γ.openjdk = ζ,
+  γ.pkgconfig = ν,
+  γ.stdenv = ξ,
+  γ.zlib = ο,
+  π.overrideDerivation = ρ,
+  σ.overrideDerivation = τ,
+  υ.buildInputs = [ν],
+  φ.overrideDerivation = χ,
+  ψ.buildInputs = [ν],
+  ω.buildInputs = [ν],
+  α1.buildInputs = [β1],
+  γ1.buildInputs = [δ],
+  ο.override = {stdenv = κ;} -> π,
+  ξ.lib = δ1,
+  δ1.optionalString = ε1 -> String -> ζ1,
+  η1.isDarwin = ε1,
+  μ.override = {pythonSupport = Bool; stdenv = θ1;} -> σ,
+  λ.override = {stdenv = ι1;} -> φ
+) =>
+{pkgs = γ;} ->
+{ json_c = ∀ α β. (α.buildInputs = [δ]) => β;
+  libxml2 = ∀ α β. (α.buildInputs = [β1]) => β;
+  xmlmirror = ι;
+  zlib = ∀ α β. (α.buildInputs = [ν]) => β;
+}

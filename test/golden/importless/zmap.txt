@@ -3,7 +3,7 @@
   α.lib = γ,
   α.pkgs = δ,
   δ.zmap = ε,
-  β.zmap = ζ,
+  β.programs = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
     θ ->
@@ -16,7 +16,7 @@
         };
     } ->
     ι,
-  ζ.enable = θ,
-  κ.programs = β
+  ζ.zmap = κ,
+  κ.enable = θ
 ) =>
 α -> {config = ι; options = {programs = {zmap = {enable = η;};};};}

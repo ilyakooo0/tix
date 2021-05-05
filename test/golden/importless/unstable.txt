@@ -1,39 +1,36 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( α.bsd2 = β,
-  α.epitrochoid = γ,
-  α.linux = δ,
-  α.meisternu = γ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [γ];
       buildPhase = String;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [γ];
-          platforms = δ;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.maintainers = α,
-  ν.lib = μ,
-  ξ.platforms = α,
-  ο.lib = ξ
+    θ,
+  β.licenses = ι,
+  ι.bsd2 = δ,
+  κ.maintainers = λ,
+  λ.meisternu = ε,
+  μ.maintainers = ν,
+  ν.epitrochoid = ε,
+  ξ.platforms = ο,
+  ο.linux = ζ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  libXinerama = ε;
-  libxcb = ε;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  libXinerama = γ;
+  libxcb = γ;
   stdenv = α;
-  xcbutil = ε;
-  xcbutilkeysyms = ε;
-  xcbutilwm = ε;
+  xcbutil = γ;
+  xcbutilkeysyms = γ;
+  xcbutilwm = γ;
 } ->
-η
+θ

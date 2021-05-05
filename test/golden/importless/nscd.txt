@@ -3,9 +3,9 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.nscd = ε,
-  β.path = ζ,
-  β.source = η,
+  β.environment = ε,
+  β.services = ζ,
+  β.system = η,
   γ.builtins = θ,
   γ.mkIf =
     ι ->
@@ -14,8 +14,8 @@
         { services =
             { nscd =
                 { description = String;
-                  environment = {LD_LIBRARY_PATH = ζ;};
-                  restartTriggers = [η];
+                  environment = {LD_LIBRARY_PATH = λ;};
+                  restartTriggers = [μ];
                   serviceConfig =
                     { DynamicUser = Bool;
                       ExecReload = [String];
@@ -30,33 +30,33 @@
             };
         };
     } ->
-    λ,
-  γ.mkOption = {default = μ; description = String; type = ν;} -> ξ,
-  γ.types = ο,
-  δ.bin = π,
-  δ.libc = String,
-  ρ.nssModules = β,
-  σ.system = ρ,
-  τ.hostPlatform = δ,
-  υ.stdenv = τ,
-  φ.libc = δ,
-  χ.cc = φ,
-  ψ.stdenv = χ,
-  ω.glibc = δ,
-  ε.config = κ,
-  ε.enable = ι,
-  α1.services = β,
-  β1.hosts = β,
-  γ1.etc = β1,
-  δ1.environment = γ1,
-  ε1.nsswitch.conf = β,
-  ζ1.etc = ε1,
-  η1.environment = ζ1,
-  θ1.nscd.conf = β,
-  ι1.etc = θ1,
-  κ1.environment = ι1,
-  θ.readFile = Path -> μ,
-  ο.lines = ν,
+    ν,
+  γ.mkOption = {default = ξ; description = String; type = ο;} -> π,
+  γ.types = ρ,
+  δ.glibc = σ,
+  δ.stdenv = τ,
+  η.nssModules = υ,
+  υ.path = λ,
+  τ.hostPlatform = φ,
+  φ.libc = String,
+  χ.cc = ψ,
+  ψ.libc = ω,
+  ω.bin = α1,
+  σ.bin = α1,
+  ζ.nscd = β1,
+  β1.config = κ,
+  β1.enable = ι,
+  ε.etc = γ1,
+  γ1.hosts = δ1,
+  δ1.source = μ,
+  ε1.etc = ζ1,
+  ζ1.nsswitch.conf = η1,
+  η1.source = μ,
+  θ1.etc = ι1,
+  ι1.nscd.conf = κ1,
+  κ1.source = μ,
+  θ.readFile = Path -> ξ,
+  ρ.lines = ο,
   λ1.bool = μ1
 ) =>
-α -> {config = λ; options = {services = {nscd = {config = ξ; enable = ν1;};};};}
+α -> {config = ν; options = {services = {nscd = {config = π; enable = ν1;};};};}

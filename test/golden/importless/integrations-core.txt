@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
 ( ( α
   ) //
   ( { doCheck = Bool;
@@ -15,7 +15,6 @@
   θ.fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> β,
   θ.lib = ι,
-  κ.buildPythonPackage = γ -> ε,
   κ.pkgs = λ,
   κ.withPackages = (μ -> ν) -> ζ,
   ι.attrValues = δ -> ν,
@@ -28,6 +27,6 @@
   ι.simplejson = ρ,
   ι.uptime = ρ,
   ι.uuid = ρ,
-  σ.pkgs = κ
+  λ.buildPythonPackage = γ -> ε
 ) =>
 {extraIntegrations = {}; pkgs = θ; python = κ;} -> η

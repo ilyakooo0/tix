@@ -1,12 +1,13 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1.
-( β.arch = String,
+( β.?hostPlatform = γ,
+  γ.?platform = δ,
+  δ.?gcc = ε,
+  ε.?arch = String,
   β.isDarwin = Bool,
-  β.lib = γ,
-  β.maintainers = δ,
-  β.mit = ε,
+  β.lib = ζ,
   β.mkDerivation =
-    { LD_LIBRARY_PATH = ζ;
-      buildInputs = [η];
+    { LD_LIBRARY_PATH = η;
+      buildInputs = [θ];
       checkTarget = String;
       doCheck = Bool;
       enableParallelBuilding = Bool;
@@ -15,11 +16,11 @@
         { broken = Bool;
           description = String;
           homepage = String;
-          license = ε;
-          maintainers = [θ];
+          license = ι;
+          maintainers = [κ];
           platforms = [String];
         };
-      nativeBuildInputs = [ι];
+      nativeBuildInputs = [λ];
       passthru =
         { maintenanceVersion = String;
           majorVersion = String;
@@ -33,58 +34,54 @@
       preBuild = String;
       preCheck = String;
       prePatch = String;
-      src = κ;
+      src = μ;
       version = ∀ α. α;
     } ->
-    λ,
-  β.optionals = μ -> [ν] -> [η],
+    ν,
   β.system = ξ,
-  η.dev = η,
-  η.isILP64 = Bool,
-  γ.garrison = θ,
-  γ.head = ο -> π,
-  γ.makeLibraryPath = [η] -> ζ,
-  γ.raskin = θ,
-  γ.rob = θ,
-  γ.splitString = String -> ξ -> ο,
-  γ.throw = String -> ρ,
-  σ.licenses = β,
-  τ.lib = σ,
-  υ.lib = β,
-  φ.gcc = β,
-  χ.platform = φ,
-  ψ.hostPlatform = χ,
-  ω.lib = β
+  θ.dev = θ,
+  θ.isILP64 = Bool,
+  ζ.garrison = κ,
+  ζ.head = ο -> π,
+  ζ.makeLibraryPath = [θ] -> η,
+  ζ.raskin = κ,
+  ζ.rob = κ,
+  ζ.splitString = String -> ξ -> ο,
+  ζ.throw = String -> ρ,
+  σ.licenses = τ,
+  τ.mit = ι,
+  υ.maintainers = φ,
+  χ.optionals = ψ -> [ω] -> [θ]
 ) =>
-{ ApplicationServices = ν;
-  CoreServices = ν;
-  arpack = η;
-  blas = η;
+{ ApplicationServices = ω;
+  CoreServices = ω;
+  arpack = θ;
+  blas = θ;
   cmake = α1;
-  curl = ι;
+  curl = λ;
   fetchFromGitHub = β1;
   fetchurl = γ1;
-  fetchzip = {sha256 = String; url = String;} -> κ;
-  fftw = η;
-  fftwSinglePrec = η;
-  gfortran = ι;
-  gmp = η;
-  lapack = η;
-  libgit2 = η;
-  libunwind = η;
-  m4 = ι;
-  makeWrapper = ι;
-  mpfr = η;
-  openlibm = η;
-  openspecfun = η;
-  patchelf = ι;
-  pcre2 = η;
-  perl = ι;
-  python2 = ι;
-  readline = η;
+  fetchzip = {sha256 = String; url = String;} -> μ;
+  fftw = θ;
+  fftwSinglePrec = θ;
+  gfortran = λ;
+  gmp = θ;
+  lapack = θ;
+  libgit2 = θ;
+  libunwind = θ;
+  m4 = λ;
+  makeWrapper = λ;
+  mpfr = θ;
+  openlibm = θ;
+  openspecfun = θ;
+  patchelf = λ;
+  pcre2 = θ;
+  perl = λ;
+  python2 = λ;
+  readline = θ;
   stdenv = β;
-  utf8proc = η;
-  which = ι;
-  zlib = η;
+  utf8proc = θ;
+  which = λ;
+  zlib = θ;
 } ->
-λ
+ν

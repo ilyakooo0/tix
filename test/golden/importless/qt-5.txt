@@ -1,28 +1,26 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
 ( α.lib = β,
-  α.maintainers = γ,
   α.mkDerivation =
-    { meta = {description = String; maintainers = [δ]; platforms = ε;};
+    { meta = {description = String; maintainers = [γ]; platforms = δ;};
       name = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [ε];
       outputs = [String];
       postFixup = String;
-      propagatedBuildInputs = [η];
-      src = θ;
+      propagatedBuildInputs = [ζ];
+      src = η;
     } ->
-    ι,
-  α.platforms = κ,
-  β.linux = ε,
-  β.ttuegel = δ,
-  λ.lib = α,
-  μ.lib = α
+    θ,
+  β.linux = δ,
+  β.ttuegel = γ,
+  ι.maintainers = κ,
+  λ.platforms = μ
 ) =>
-{ cmake = ζ;
-  fetchurl = {sha256 = String; url = String;} -> θ;
-  glib = η;
-  pkgconfig = ζ;
-  polkit = η;
-  qtbase = η;
+{ cmake = ε;
+  fetchurl = {sha256 = String; url = String;} -> η;
+  glib = ζ;
+  pkgconfig = ε;
+  polkit = ζ;
+  qtbase = ζ;
   stdenv = α;
 } ->
-ι
+θ

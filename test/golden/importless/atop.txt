@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.config = β,
   α.lib = γ,
-  β.atop = δ,
+  β.programs = δ,
   γ.concatStrings = ε -> ζ,
   γ.mapAttrsToList = (η -> θ -> String) -> ι -> ε,
   γ.mkIf = Bool -> {environment = {etc = {atoprc = {text = ζ;};};};} -> κ,
@@ -13,8 +13,8 @@
     } ->
     μ,
   γ.types = ν,
-  δ.settings = {},
-  ξ.programs = β,
+  δ.atop = ξ,
+  ξ.settings = {},
   ν.attrs = λ
 ) =>
 α -> {config = κ; options = {programs = {atop = {settings = μ;};};};}

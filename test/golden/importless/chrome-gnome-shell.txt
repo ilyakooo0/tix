@@ -2,10 +2,10 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
+    η ->
     { environment =
         { etc =
             { chromium/native-messaging-hosts/org.gnome.chrome_gnome_shell.json =
@@ -13,22 +13,22 @@
               opt/chrome/native-messaging-hosts/org.gnome.chrome_gnome_shell.json =
                 {source = String;};
             };
-          systemPackages = [η];
+          systemPackages = [θ];
         };
       nixpkgs = {config = {firefox = {enableGnomeExtensions = Bool;};};};
-      services = {dbus = {packages = [θ];};};
+      services = {dbus = {packages = [ι];};};
     } ->
-    ι,
-  γ.teams = κ,
-  δ.chrome-gnome-shell = η,
-  λ.chrome-gnome-shell = β,
-  μ.gnome3 = λ,
-  ν.services = μ,
-  κ.members = ξ,
-  ο.gnome = κ
+    κ,
+  γ.teams = λ,
+  δ.chrome-gnome-shell = θ,
+  ε.gnome3 = μ,
+  μ.chrome-gnome-shell = ν,
+  ν.enable = η,
+  λ.gnome = ξ,
+  ξ.members = ο
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = ξ;};
+{ config = κ;
+  meta = {maintainers = ο;};
   options = {services = {gnome3 = {chrome-gnome-shell = {enable = ζ;};};};};
 }

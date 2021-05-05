@@ -1,8 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
 ( α.isDarwin = β,
   α.lib = γ,
-  α.optionals = β -> [δ] -> [ε],
-  ζ.buildRustPackage =
+  δ.buildRustPackage =
     { RUSTC_BOOTSTRAP = Integer;
       buildAndTestSubdir = String;
       buildInputs = [ε];
@@ -13,44 +12,44 @@
       meta =
         { description = String;
           homepage = String;
-          license = [η];
-          maintainers = [θ];
-          platforms = ι;
+          license = [ζ];
+          maintainers = [η];
+          platforms = θ;
         };
       name = String;
-      nativeBuildInputs = [κ];
-      passthru = {rustc = λ;};
+      nativeBuildInputs = [ι];
+      passthru = {rustc = κ;};
       postInstall = String;
-      src = μ;
-      version = ν;
+      src = λ;
+      version = μ;
     } ->
-    ξ,
-  λ.src = μ,
-  λ.version = ν,
-  ο.lib = α,
-  γ.licenses = π,
-  γ.maintainers = ρ,
-  γ.platforms = σ,
-  γ.retrry = θ,
-  π.mit = η,
-  τ.asl20 = η,
-  σ.unix = ι
+    ν,
+  κ.src = λ,
+  κ.version = μ,
+  γ.optionals = β -> [ξ] -> [ε],
+  ο.licenses = π,
+  ο.maintainers = ρ,
+  ο.platforms = σ,
+  ο.retrry = η,
+  π.mit = ζ,
+  τ.asl20 = ζ,
+  σ.unix = θ
 ) =>
-{ CoreFoundation = δ;
-  Security = δ;
+{ CoreFoundation = ξ;
+  Security = ξ;
   cacert = ε;
-  cmake = κ;
+  cmake = ι;
   curl = ε;
   file = ε;
-  installShellFiles = κ;
-  libiconv = δ;
-  makeWrapper = κ;
+  installShellFiles = ι;
+  libiconv = ξ;
+  makeWrapper = ι;
   openssl = ε;
-  pkgconfig = κ;
+  pkgconfig = ι;
   python3 = ε;
-  rustPlatform = ζ;
-  rustc = λ;
+  rustPlatform = δ;
+  rustc = κ;
   stdenv = α;
   zlib = ε;
 } ->
-ξ
+ν

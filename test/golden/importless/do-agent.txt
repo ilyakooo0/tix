@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.do-agent = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -18,7 +18,7 @@
     } ->
     ι,
   δ.do-agent = θ,
-  ε.enable = η,
-  κ.services = β
+  ε.do-agent = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {services = {do-agent = {enable = ζ;};};};}

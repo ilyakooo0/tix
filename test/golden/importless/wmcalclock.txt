@@ -1,36 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.bstrik = β,
-  α.gpl2 = γ,
-  α.linux = δ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [γ];
       buildPhase = String;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [β];
-          platforms = δ;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       postUnpack = String;
-      src = η;
+      src = θ;
     } ->
-    θ,
-  ι.licenses = α,
-  κ.lib = ι,
-  λ.maintainers = α,
-  μ.lib = λ,
-  ν.platforms = α,
-  ξ.lib = ν
+    ι,
+  β.licenses = κ,
+  κ.gpl2 = δ,
+  λ.maintainers = μ,
+  μ.bstrik = ε,
+  ν.platforms = ξ,
+  ξ.linux = ζ
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> η;
-  libX11 = ε;
-  libXext = ε;
-  libXpm = ε;
-  pkgconfig = ζ;
+{ fetchurl = {sha256 = String; url = String;} -> θ;
+  libX11 = γ;
+  libXext = γ;
+  libXpm = γ;
+  pkgconfig = η;
   stdenv = α;
 } ->
-θ
+ι

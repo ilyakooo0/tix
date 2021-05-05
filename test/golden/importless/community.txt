@@ -1,0 +1,88 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
+λ1 μ1 ν1.
+( α.cc = β,
+  α.isDarwin = γ,
+  α.isLinux = Bool,
+  α.lib = δ,
+  α.mkDerivation =
+    { NIX_CFLAGS_COMPILE = ε;
+      NIX_LDFLAGS = ζ;
+      buildInputs = [η];
+      checkPhase = String;
+      cmakeFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = θ;
+          longDescription = String;
+          maintainers = [ι];
+          platforms = [κ];
+        };
+      nativeBuildInputs = [λ];
+      patches = [Path];
+      pname = String;
+      postPatch = μ;
+      preFixup = ν;
+      src = ξ;
+      version = String;
+    } ->
+    ο,
+  π.apple_sdk = ρ,
+  δ.jonafato = ι,
+  δ.licenses = σ,
+  δ.maintainers = τ,
+  δ.optional = Bool -> String -> [String],
+  δ.optionalString = γ -> String -> ν,
+  δ.platforms = υ,
+  δ.turion = ι,
+  φ.optionalString = χ -> String -> μ,
+  σ.gpl2 = θ,
+  υ.linux = [κ],
+  ψ.darwin = [κ],
+  ω.optional = Bool -> α1 -> [η],
+  β1.optional = γ1 -> δ1 -> [η],
+  ε1.optional = Bool -> ζ1 -> [η],
+  η1.optionalString = θ1 -> String -> ζ,
+  ι1.optionalString = κ1 -> [String] -> ε,
+  β.isClang = κ1,
+  ρ.frameworks = λ1,
+  λ1.LocalAuthentication = ζ1
+) =>
+{ asciidoctor = η;
+  cmake = λ;
+  curl = η;
+  darwin = π;
+  fetchFromGitHub =
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ξ;
+  fetchpatch = μ1;
+  glibcLocales = η;
+  libXi = η;
+  libXtst = η;
+  libargon2 = η;
+  libgcrypt = η;
+  libgpgerror = η;
+  libsodium = η;
+  libyubikey = η;
+  makeWrapper = ν1;
+  pkg-config = η;
+  qrencode = η;
+  qtbase = η;
+  qtmacextras = δ1;
+  qtsvg = η;
+  qttools = λ;
+  qtx11extras = η;
+  quazip = α1;
+  stdenv = α;
+  withKeePassBrowser = Bool;
+  withKeePassFDOSecrets = Bool;
+  withKeePassKeeShare = Bool;
+  withKeePassKeeShareSecure = Bool;
+  withKeePassNetworking = Bool;
+  withKeePassSSHAgent = Bool;
+  withKeePassTouchID = Bool;
+  wrapQtAppsHook = λ;
+  yubikey-personalization = η;
+  zlib = η;
+} ->
+ο

@@ -2,25 +2,25 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  γ.mkEnableOption = String -> ζ,
-  γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
-      services = {udev = {packages = [θ];};};
+  β.programs = ε,
+  γ.maintainers = ζ,
+  γ.modules = η,
+  γ.options = θ,
+  δ.clickshare-csc1 = ι,
+  η.mkIf =
+    κ ->
+    { environment = {systemPackages = [ι];};
+      services = {udev = {packages = [λ];};};
       users = {groups = {clickshare = {};};};
     } ->
-    ι,
-  γ.yarny = κ,
-  δ.clickshare-csc1 = η,
-  λ.modules = γ,
-  μ.clickshare-csc1 = β,
-  ν.programs = μ,
-  ξ.maintainers = γ,
-  ο.options = γ
+    μ,
+  ε.clickshare-csc1 = ν,
+  ν.enable = κ,
+  ζ.yarny = ξ,
+  θ.mkEnableOption = String -> ο
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = [κ];};
-  options = {programs = {clickshare-csc1 = {enable = ζ;};};};
+{ config = μ;
+  meta = {maintainers = [ξ];};
+  options = {programs = {clickshare-csc1 = {enable = ο;};};};
 }

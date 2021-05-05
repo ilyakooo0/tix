@@ -2,20 +2,20 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.supportedFilesystems = ε,
-  γ.any = (String -> Bool) -> ε -> ζ,
+  β.boot = ε,
+  γ.any = (String -> Bool) -> ζ -> η,
   γ.mkIf =
-    ζ ->
+    η ->
     { security =
         { wrappers =
             { mount.ecryptfs_private = {source = String;};
               umount.ecryptfs_private = {source = String;};
             };
         };
-      system = {fsPackages = [η];};
+      system = {fsPackages = [θ];};
     } ->
-    θ,
-  δ.ecryptfs = η,
-  ι.boot = β
+    ι,
+  δ.ecryptfs = θ,
+  ε.supportedFilesystems = ζ
 ) =>
-α -> {config = θ;}
+α -> {config = ι;}

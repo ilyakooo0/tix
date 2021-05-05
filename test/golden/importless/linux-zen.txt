@@ -10,13 +10,13 @@
   ) ~
   ( δ
   ),
-  α.argsOverride = {},
+  α.?argsOverride = {},
   α.buildLinux = δ -> ε,
   α.fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> γ,
   α.stdenv = ζ,
-  ζ.maintainers = η,
-  η.atemu = β,
-  θ.lib = ζ
+  ζ.lib = η,
+  η.maintainers = θ,
+  θ.atemu = β
 ) =>
 α -> ε

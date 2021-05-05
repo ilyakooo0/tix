@@ -1,11 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( α.gpl2Plus = β,
-  α.lib = γ,
+( α.lib = β,
   α.mkDerivation =
     { meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = γ;
           maintainers = [δ];
           platforms = ε;
           repositories = {git = String;};
@@ -16,10 +15,10 @@
       version = String;
     } ->
     θ,
-  γ.maintainers = ι,
-  γ.platforms = κ,
-  λ.licenses = α,
-  μ.lib = λ,
+  β.maintainers = ι,
+  β.platforms = κ,
+  λ.licenses = μ,
+  μ.gpl2Plus = γ,
   ι.titanous = δ,
   κ.linux = ε
 ) =>

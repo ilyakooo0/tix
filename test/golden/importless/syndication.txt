@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ.
-(α.bkchr = β, γ.maintainers = α) => { extra-cmake-modules = δ;
+(α.maintainers = β, β.bkchr = γ) => { extra-cmake-modules = δ;
   kcodecs = ε;
   lib = α;
   mkDerivation =
     { buildInputs = [ε];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [δ];
     } ->

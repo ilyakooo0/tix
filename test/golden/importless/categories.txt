@@ -1,6 +1,6 @@
 ∀ α β γ δ ε.
-(α.brainrape = β, γ.maintainers = α) => { build-idris-package =
-    { meta = {description = String; homepage = String; maintainers = [β];};
+(α.maintainers = β, β.brainrape = γ) => { build-idris-package =
+    { meta = {description = String; homepage = String; maintainers = [γ];};
       name = String;
       src = δ;
       version = String;

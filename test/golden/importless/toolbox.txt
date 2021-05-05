@@ -1,31 +1,30 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
 ( α.licenses = β,
-  γ.badi = δ,
-  γ.linux = ε,
+  γ.lib = δ,
   γ.mkDerivation =
-    { buildInputs = [ζ];
+    { buildInputs = [ε];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = [η];
+          license = [ζ];
           longDescription = String;
-          maintainers = [δ];
-          platforms = ε;
+          maintainers = [η];
+          platforms = θ;
         };
       phases = [String];
       pname = String;
-      src = θ;
+      src = ι;
       version = String;
     } ->
-    ι,
-  β.mit = η,
-  κ.maintainers = γ,
-  λ.lib = κ,
-  μ.platforms = γ,
-  ν.lib = μ
+    κ,
+  β.mit = ζ,
+  δ.maintainers = λ,
+  λ.badi = η,
+  μ.platforms = ν,
+  ν.linux = θ
 ) =>
-{ fetchzip = {sha256 = String; url = String;} -> θ;
+{ fetchzip = {sha256 = String; url = String;} -> ι;
   glib = ξ;
   gtk = ο;
   lib = α;
@@ -41,8 +40,8 @@
       name = String;
     } ->
     ρ;
-  makeWrapper = ζ;
+  makeWrapper = ε;
   stdenv = γ;
   zlib = σ;
 } ->
-ι
+κ

@@ -2,31 +2,31 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  β.mutableUsers = Bool,
+  β.services = ε,
+  β.users = ζ,
   γ.mkIf =
-    ε ->
-    { environment = {pathsToLink = [String]; systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
-      systemd = {packages = [θ]; services = {accounts-daemon = ι;};};
+    η ->
+    { environment = {pathsToLink = [String]; systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ]; services = {accounts-daemon = λ;};};
     } ->
-    κ,
-  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
-  γ.optionalAttrs = Bool -> {environment = {NIXOS_USERS_PURE = String;};} -> ν,
+    μ,
+  γ.mkOption = {default = Bool; description = String; type = ν;} -> ξ,
+  γ.optionalAttrs = Bool -> {environment = {NIXOS_USERS_PURE = String;};} -> ο,
   γ.recursiveUpdate =
-    {environment = {XDG_DATA_DIRS = String;}; wantedBy = [String];} -> ν -> ι,
-  γ.teams = ξ,
-  γ.types = ο,
-  δ.accountsservice = ζ,
-  π.accounts-daemon = β,
-  ρ.services = π,
-  σ.users = β,
-  ξ.members = τ,
-  υ.freedesktop = ξ,
-  ο.bool = λ
+    {environment = {XDG_DATA_DIRS = String;}; wantedBy = [String];} -> ο -> λ,
+  γ.teams = π,
+  γ.types = ρ,
+  δ.accountsservice = θ,
+  ε.accounts-daemon = σ,
+  σ.enable = η,
+  ζ.mutableUsers = Bool,
+  π.freedesktop = τ,
+  τ.members = υ,
+  ρ.bool = ν
 ) =>
 α ->
-{ config = κ;
-  meta = {maintainers = τ;};
-  options = {services = {accounts-daemon = {enable = μ;};};};
+{ config = μ;
+  meta = {maintainers = υ;};
+  options = {services = {accounts-daemon = {enable = ξ;};};};
 }

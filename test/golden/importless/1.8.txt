@@ -1,57 +1,54 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
 ( α.buildPlatform = β,
   α.hostPlatform = β,
-  α.lgpl2Plus = γ,
-  α.ludo = δ,
+  α.lib = γ,
   α.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [δ];
       configureFlags = [String];
-      depsBuildBuild = [ζ];
+      depsBuildBuild = [ε];
       doCheck = Bool;
       doInstallCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = ζ;
           longDescription = String;
-          maintainers = [δ];
-          platforms = η;
+          maintainers = [η];
+          platforms = θ;
         };
       name = String;
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [ι];
       outputs = [String];
       patches = [Path];
       postInstall = String;
       preBuild = String;
-      propagatedBuildInputs = [ε];
+      propagatedBuildInputs = [δ];
       setOutputFlags = Bool;
       setupHook = Path;
-      src = ι;
+      src = κ;
     } ->
-    κ,
-  α.optional = Bool -> λ -> [ζ],
-  α.unix = η,
-  μ.guile_1_8 = λ,
-  ν.cc = ζ,
-  ξ.licenses = α,
-  ο.lib = ξ,
-  π.maintainers = α,
-  ρ.lib = π,
-  σ.platforms = α,
-  τ.lib = σ,
-  υ.lib = α,
-  φ.lib = α,
-  χ.stdenv = ν
+    λ,
+  μ.guile_1_8 = ν,
+  ξ.stdenv = ο,
+  γ.licenses = π,
+  π.lgpl2Plus = ζ,
+  ρ.maintainers = σ,
+  σ.ludo = η,
+  τ.platforms = υ,
+  υ.unix = θ,
+  φ.optional = Bool -> ν -> [ε],
+  χ.optional = Bool -> String -> [String],
+  ο.cc = ε
 ) =>
-{ buildPackages = ν;
-  fetchurl = {sha256 = String; url = String;} -> ι;
-  gawk = θ;
-  gmp = ε;
-  libtool = ε;
-  makeWrapper = θ;
-  pkgconfig = θ;
+{ buildPackages = ξ;
+  fetchurl = {sha256 = String; url = String;} -> κ;
+  gawk = ι;
+  gmp = δ;
+  libtool = δ;
+  makeWrapper = ι;
+  pkgconfig = ι;
   pkgsBuildBuild = μ;
-  readline = ε;
+  readline = δ;
   stdenv = α;
 } ->
-κ
+λ

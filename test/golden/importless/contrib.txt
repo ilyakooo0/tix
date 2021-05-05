@@ -21,11 +21,10 @@
       version = λ;
     } ->
     μ,
-  ν.maintainers = η,
-  ν.meta = β,
+  ν.meta = ξ,
   ν.src = κ,
   ν.version = λ,
-  ξ.buildPythonApplication =
+  ο.buildPythonApplication =
     { dontBuild = Bool;
       dontConfigure = Bool;
       format = String;
@@ -33,19 +32,19 @@
       lname = String;
       meta = ∀ α. α;
       pname = String;
-      propagatedBuildInputs = [ο];
-      src = π;
-      version = ρ;
+      propagatedBuildInputs = [π];
+      src = ρ;
+      version = σ;
     } ->
-    σ,
-  ξ.i3ipc = ο,
+    τ,
+  ο.i3ipc = π,
   ε.evils = η,
-  ε.licenses = τ,
-  ε.maintainers = υ,
-  ε.platforms = φ,
-  τ.mit = ζ,
-  φ.all = θ,
-  χ.meta = ν
+  ε.licenses = υ,
+  ε.maintainers = φ,
+  ε.platforms = χ,
+  υ.mit = ζ,
+  χ.all = θ,
+  ξ.maintainers = η
 ) =>
 { coreutils = ψ;
   fetchurl = ω;
@@ -54,10 +53,10 @@
   jq = β1;
   libnotify = γ1;
   makeWrapper = ι;
-  python3Packages = ξ;
+  python3Packages = ο;
   slurp = δ1;
   stdenv = δ;
   sway-unwrapped = ν;
   wl-clipboard = ε1;
 } ->
-{grimshot = μ; inactive-windows-transparency = σ;}
+{grimshot = μ; inactive-windows-transparency = τ;}

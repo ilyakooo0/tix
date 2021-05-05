@@ -19,15 +19,14 @@
   β.stdenv = μ,
   β.zlib = δ,
   μ.isDarwin = ν,
-  μ.optional = ξ -> κ -> ο,
-  μ.optionals = ν -> [κ] -> [δ],
-  ε.frameworks = π,
+  μ.lib = ξ,
+  ε.apple_sdk = ο,
+  ο.frameworks = π,
   π.Security = κ,
-  ρ.apple_sdk = ε,
+  ρ.frameworks = σ,
   σ.CoreFoundation = κ,
-  τ.apple_sdk = ε,
-  υ.lib = μ,
-  φ.lib = μ
+  ξ.optionals = ν -> [κ] -> [δ],
+  τ.optional = υ -> κ -> φ
 ) =>
 β ->
 { cairo-rs = ∀ α. α -> {buildInputs = [γ];};
@@ -59,7 +58,7 @@
     ∀ α.
     α -> {buildInputs = [ι]; crateBin = [{name = String; path = String;}];};
   security-framework-sys = ∀ α. α -> {propagatedBuildInputs = [κ];};
-  serde_derive = ∀ α. α -> {buildInputs = ο;};
+  serde_derive = ∀ α. α -> {buildInputs = φ;};
   thrussh-libsodium = ∀ α. α -> {buildInputs = [δ];};
   xcb = ∀ α. α -> {buildInputs = [λ];};
 }

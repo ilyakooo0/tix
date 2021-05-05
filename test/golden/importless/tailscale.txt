@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.tailscale = ε,
+  β.services = ε,
   γ.danderson = ζ,
   γ.maintainers = η,
   γ.mbaillie = ζ,
@@ -37,8 +37,8 @@
     κ,
   γ.mkOption = {default = Integer; description = String; type = λ;} -> μ,
   γ.types = ν,
-  ε.enable = ι,
-  ξ.services = β,
+  ε.tailscale = ξ,
+  ξ.enable = ι,
   ν.port = λ
 ) =>
 α ->

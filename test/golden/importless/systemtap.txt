@@ -1,23 +1,24 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( α.config = β,
   α.lib = γ,
-  β.kernelConfig = δ,
-  β.systemtap = ε,
-  γ.isYes = String -> ζ,
+  β.boot = δ,
+  β.lib = ε,
+  β.programs = ζ,
+  γ.isYes = String -> η,
   γ.mkIf =
-    η ->
+    θ ->
     { boot = {kernel = {features = {debug = Bool;};};};
-      environment = {systemPackages = [θ];};
-      system = {requiredKernelConfig = [ζ];};
+      environment = {systemPackages = [ι];};
+      system = {requiredKernelConfig = [η];};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.types = μ,
-  ε.enable = η,
-  ν.programs = β,
-  ξ.kernelPackages = β,
-  ο.boot = ξ,
-  π.lib = β,
-  μ.bool = κ
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.types = ν,
+  ζ.systemtap = ξ,
+  ξ.enable = θ,
+  δ.kernelPackages = ο,
+  ο.systemtap = ι,
+  ε.kernelConfig = π,
+  ν.bool = λ
 ) =>
-α -> {config = ι; options = {programs = {systemtap = {enable = λ;};};};}
+α -> {config = κ; options = {programs = {systemtap = {enable = μ;};};};}

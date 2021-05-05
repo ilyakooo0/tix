@@ -13,11 +13,11 @@
     } ->
     θ,
   δ.openbox = η,
-  β.openbox = ι,
-  ι.enable = ζ,
-  κ.windowManager = β,
-  λ.xserver = κ,
-  μ.services = λ
+  β.services = ι,
+  ι.xserver = κ,
+  κ.windowManager = λ,
+  λ.openbox = μ,
+  μ.enable = ζ
 ) =>
 α ->
 { config = θ;

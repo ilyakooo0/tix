@@ -2,15 +2,15 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.updateMicrocode = ε,
-  γ.mkIf = ε -> {boot = {initrd = {prepend = ζ;};};} -> η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.mkOrder = Integer -> [String] -> ζ,
-  γ.types = κ,
-  λ.amd = β,
-  μ.cpu = λ,
-  ν.hardware = μ,
-  κ.bool = θ
+  β.hardware = ε,
+  γ.mkIf = ζ -> {boot = {initrd = {prepend = η;};};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.mkOrder = Integer -> [String] -> η,
+  γ.types = λ,
+  ε.cpu = μ,
+  μ.amd = ν,
+  ν.updateMicrocode = ζ,
+  λ.bool = ι
 ) =>
 α ->
-{config = η; options = {hardware = {cpu = {amd = {updateMicrocode = ι;};};};};}
+{config = θ; options = {hardware = {cpu = {amd = {updateMicrocode = κ;};};};};}

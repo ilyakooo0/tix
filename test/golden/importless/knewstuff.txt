@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.ttuegel = β, γ.maintainers = α) => { attica = δ;
+(α.maintainers = β, β.ttuegel = γ) => { attica = δ;
   extra-cmake-modules = ε;
   fetchpatch = {revert = Bool; sha256 = String; url = String;} -> ζ;
   karchive = η;
@@ -19,7 +19,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [η];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [ε];
       patches = [ζ];

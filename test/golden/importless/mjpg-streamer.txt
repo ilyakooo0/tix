@@ -2,49 +2,50 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.mjpg-streamer = ε,
-  γ.mkEnableOption = String -> ζ,
+  β.ids = ε,
+  β.services = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    η ->
+    θ ->
     { systemd =
         { services =
             { mjpg-streamer =
                 { description = String;
                   script = String;
                   serviceConfig =
-                    { Group = θ;
+                    { Group = ι;
                       Restart = String;
                       RestartSec = Integer;
-                      User = ι;
+                      User = κ;
                     };
                   wantedBy = [String];
                 };
             };
         };
-      users = {users = κ;};
+      users = {users = λ;};
     } ->
-    λ,
-  γ.mkOption = {default = String; description = String; type = μ;} -> ν,
-  γ.optionalAttrs = Bool -> {mjpg-streamer = {group = ξ; uid = ο;};} -> κ,
-  γ.types = π,
-  ε.enable = η,
-  ε.group = θ,
-  ε.user = ι,
-  ρ.services = β,
-  σ.uids = β,
-  τ.ids = σ,
-  π.str = μ,
+    μ,
+  γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  γ.optionalAttrs = Bool -> {mjpg-streamer = {group = ο; uid = π;};} -> λ,
+  γ.types = ρ,
+  ζ.mjpg-streamer = σ,
+  σ.enable = θ,
+  σ.group = ι,
+  σ.user = κ,
+  ε.uids = τ,
+  τ.mjpg-streamer = π,
+  ρ.str = ν,
   υ.str = φ,
   χ.str = ψ,
   ω.str = α1
 ) =>
 α ->
-{ config = λ;
+{ config = μ;
   options =
     { services =
         { mjpg-streamer =
-            { enable = ζ;
-              group = ν;
+            { enable = η;
+              group = ξ;
               inputPlugin = β1;
               outputPlugin = γ1;
               user = δ1;

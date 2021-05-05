@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.isc = β,
-  α.vbgl = γ,
-  δ.licenses = α,
-  ε.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  β.isc = δ,
+  γ.vbgl = ε
 ) =>
 { buildDunePackage =
     { buildInputs = [ζ];
@@ -10,8 +10,8 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [γ];
+          license = δ;
+          maintainers = [ε];
         };
       minimumOCamlVersion = String;
       pname = String;

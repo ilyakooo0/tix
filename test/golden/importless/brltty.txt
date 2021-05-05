@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.brltty = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { systemd =
@@ -38,8 +38,8 @@
     η,
   γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
   γ.types = κ,
-  ε.enable = ζ,
-  λ.services = β,
+  ε.brltty = λ,
+  λ.enable = ζ,
   κ.bool = θ
 ) =>
 α -> {config = η; options = {services = {brltty = {enable = ι;};};};}

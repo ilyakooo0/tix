@@ -1,14 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.lgpl21 = β,
-  α.vbgl = γ,
+( α.licenses = β,
+  α.maintainers = γ,
   δ.meta = ε,
-  ζ.licenses = α,
-  η.maintainers = α,
+  β.lgpl21 = ζ,
+  γ.vbgl = η,
   ε.homepage = θ
 ) =>
 { buildDunePackage =
     { meta =
-        {description = String; homepage = θ; license = β; maintainers = [γ];};
+        {description = String; homepage = θ; license = ζ; maintainers = [η];};
       minimumOCamlVersion = String;
       pname = String;
       preBuild = String;

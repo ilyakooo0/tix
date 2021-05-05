@@ -1,12 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.gpl2Plus = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [Null];
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = γ;
           maintainers = [δ];
           platforms = ε;
         };
@@ -16,15 +15,13 @@
       src = η;
     } ->
     θ,
-  α.optional = Bool -> Null -> [Null],
-  α.platforms = ι,
-  κ.licenses = α,
-  λ.lib = κ,
-  γ.peti = δ,
-  μ.lib = α,
-  ι.linux = ε,
-  ν.lib = α,
-  ξ.lib = α
+  β.licenses = ι,
+  ι.gpl2Plus = γ,
+  κ.maintainers = λ,
+  λ.peti = δ,
+  μ.platforms = ν,
+  ν.linux = ε,
+  ξ.optional = Bool -> Null -> [Null]
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> η;
   gimp = Null;

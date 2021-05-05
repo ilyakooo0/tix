@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ.
-( β.mit = γ,
+( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
       dontUnpack = Bool;
@@ -7,20 +7,20 @@
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = ε;
           maintainers = ∀ α. α;
         };
       pname = String;
-      sources10Zip = ε;
-      sources20Zip = ε;
-      sources30Zip = ε;
-      sources40Zip = ε;
-      sources50Zip = ε;
-      sources60Zip = ε;
+      sources10Zip = ζ;
+      sources20Zip = ζ;
+      sources30Zip = ζ;
+      sources40Zip = ζ;
+      sources50Zip = ζ;
+      sources60Zip = ζ;
       version = String;
     } ->
-    ζ,
-  η.licenses = β,
-  θ.lib = η
+    η,
+  γ.licenses = θ,
+  θ.mit = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; stdenv = β; unzip = δ;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> ζ; stdenv = β; unzip = δ;} -> η

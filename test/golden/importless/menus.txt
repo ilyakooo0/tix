@@ -1,19 +1,19 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.config = β,
   α.lib = γ,
-  β.enable = δ,
-  γ.mkIf = δ -> {environment = {pathsToLink = [String];};} -> ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.teams = θ,
-  γ.types = ι,
-  κ.menus = β,
-  λ.xdg = κ,
-  θ.members = μ,
-  ν.freedesktop = θ,
-  ι.bool = ζ
+  β.xdg = δ,
+  γ.mkIf = ε -> {environment = {pathsToLink = [String];};} -> ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.teams = ι,
+  γ.types = κ,
+  δ.menus = λ,
+  λ.enable = ε,
+  ι.freedesktop = μ,
+  μ.members = ν,
+  κ.bool = η
 ) =>
 α ->
-{ config = ε;
-  meta = {maintainers = μ;};
-  options = {xdg = {menus = {enable = η;};};};
+{ config = ζ;
+  meta = {maintainers = ν;};
+  options = {xdg = {menus = {enable = θ;};};};
 }

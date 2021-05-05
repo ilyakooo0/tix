@@ -1,19 +1,19 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.mit = β,
-  α.optional = Bool -> γ -> δ,
-  α.vbgl = ε,
-  ζ.licenses = α,
-  η.maintainers = α
+( α.licenses = β,
+  α.maintainers = γ,
+  α.optional = Bool -> δ -> ε,
+  β.mit = ζ,
+  γ.vbgl = η
 ) =>
-{ alcotest = γ;
+{ alcotest = δ;
   buildDunePackage =
-    { checkInputs = δ;
+    { checkInputs = ε;
       doCheck = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [ε];
+          license = ζ;
+          maintainers = [η];
         };
       minimumOCamlVersion = String;
       nativeBuildInputs = [θ];

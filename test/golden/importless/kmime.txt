@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.lgpl21 = β,
+( α.licenses = β,
   α.versionOlder = γ -> String -> δ,
   ε.version = γ,
-  ζ.licenses = α
+  β.lgpl21 = ζ
 ) =>
 { extra-cmake-modules = η;
   kcodecs = ε;
@@ -11,7 +11,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [ε];
-      meta = {broken = δ; license = [β]; maintainers = θ;};
+      meta = {broken = δ; license = [ζ]; maintainers = θ;};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

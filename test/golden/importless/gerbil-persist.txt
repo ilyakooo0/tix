@@ -1,7 +1,7 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( β.asl20 = γ,
+( β.licenses = γ,
   β.maintainers = δ,
-  β.unix = ε,
+  β.platforms = ε,
   ζ.gerbilPackage =
     { buildInputs = ∀ α. α;
       gambit-params = η;
@@ -12,32 +12,32 @@
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [κ];
-          platforms = ε;
+          license = κ;
+          maintainers = [λ];
+          platforms = μ;
         };
       pname = String;
       softwareName = String;
-      src = λ;
+      src = ν;
       version = String;
       version-path = String;
     } ->
-    μ,
-  ζ.gerbilPackages-unstable = ν,
-  ξ.unstable-params = η,
-  ο.licenses = β,
-  δ.fare = κ,
-  π.platforms = β,
-  ν.gerbil-crypto = ι,
-  ν.gerbil-poo = ι,
-  ν.gerbil-utils = ι
+    ξ,
+  ζ.gerbilPackages-unstable = ο,
+  π.unstable-params = η,
+  γ.asl20 = κ,
+  δ.fare = λ,
+  ε.unix = μ,
+  ο.gerbil-crypto = ι,
+  ο.gerbil-poo = ι,
+  ο.gerbil-utils = ι
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> λ;
-  gambit-support = ξ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> ν;
+  gambit-support = π;
   gerbil-support = ζ;
   gerbil-unstable = θ;
   lib = β;
   pkgs = ρ;
 } ->
-μ
+ξ

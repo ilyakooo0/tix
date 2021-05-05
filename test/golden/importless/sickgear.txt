@@ -1,34 +1,33 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
 ( α.lib = β,
-  α.maintainers = γ,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       doCheck = Bool;
       dontBuild = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = ε;
-          maintainers = [ζ];
+          license = δ;
+          maintainers = [ε];
         };
-      nativeBuildInputs = [η];
+      nativeBuildInputs = [ζ];
       pname = String;
-      src = θ;
+      src = η;
       version = String;
     } ->
-    ι,
-  κ.withPackages = (λ -> [μ]) -> δ,
-  λ.cheetah = μ,
-  β.licenses = ν,
-  β.rembo10 = ζ,
-  ν.gpl3 = ε,
-  ξ.lib = α
+    θ,
+  ι.withPackages = (κ -> [λ]) -> γ,
+  κ.cheetah = λ,
+  β.licenses = μ,
+  β.rembo10 = ε,
+  μ.gpl3 = δ,
+  ν.maintainers = ξ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  makeWrapper = η;
-  python2 = κ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  makeWrapper = ζ;
+  python2 = ι;
   stdenv = α;
 } ->
-ι
+θ

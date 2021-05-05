@@ -1,4 +1,4 @@
-∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( ( β
   ) //
   ( { sdk =
@@ -14,34 +14,33 @@
   ),
   ζ.sdkVer = δ,
   ζ.xcodePlatform = γ,
-  η.optionalString = Bool -> String -> String,
-  θ.libraries = ι,
-  κ.lib = η,
-  λ.lib = η
+  η.lib = θ,
+  ι.libraries = κ,
+  θ.optionalString = Bool -> String -> String
 ) =>
-{ binutils-unwrapped = μ;
-  buildIosSdk = ν;
-  clang-unwrapped = ξ;
-  lib = ο;
-  runCommand = String -> {passthru = {sdk = ν;};} -> String -> π;
+{ binutils-unwrapped = λ;
+  buildIosSdk = μ;
+  clang-unwrapped = ν;
+  lib = ξ;
+  runCommand = String -> {passthru = {sdk = μ;};} -> String -> ο;
   stdenv = η;
-  targetIosSdkPkgs = θ;
+  targetIosSdkPkgs = ι;
   targetPlatform = ζ;
   wrapBintoolsWith =
-    {bintools = μ; extraBuildCommands = String; libc = ι;} -> ρ;
+    {bintools = λ; extraBuildCommands = String; libc = κ;} -> π;
   wrapCCWith =
-    { bintools = ρ;
-      cc = ξ;
+    { bintools = π;
+      cc = ν;
       extraBuildCommands = String;
       extraPackages = [String];
-      libc = ι;
+      libc = κ;
     } ->
     β;
   xcode = String;
 } ->
-{ binutils = ρ;
+{ binutils = π;
   clang = ∀ α. α;
-  libraries = π;
+  libraries = ο;
   sdk =
     { name = String;
       outPath = String;

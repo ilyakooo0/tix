@@ -4,9 +4,9 @@
   α.knairda = γ,
   α.lgpl21 = β,
   α.licenses = δ,
-  α.linux = ε,
-  α.maintainers = ζ,
-  η.platforms = α
+  α.maintainers = ε,
+  α.platforms = ζ,
+  ζ.linux = η
 ) =>
 { boost = θ;
   extra-cmake-modules = ι;
@@ -26,7 +26,7 @@
           homepage = String;
           license = [β];
           maintainers = [γ];
-          platforms = ε;
+          platforms = η;
         };
       name = String;
       nativeBuildInputs = [ι];

@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-( α.keylight = β,
-  γ.exporters = α,
-  δ.prometheus = γ,
-  ε.services = δ
+( α.services = β,
+  β.prometheus = γ,
+  γ.exporters = δ,
+  δ.keylight = ε
 ) =>
 {config = α; lib = ζ; options = η; pkgs = θ;} ->
 {port = Integer; serviceOpts = {serviceConfig = {ExecStart = String;};};}

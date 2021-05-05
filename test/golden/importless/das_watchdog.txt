@@ -2,11 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
+    η ->
+    { environment = {systemPackages = [θ];};
       systemd =
         { services =
             { das_watchdog =
@@ -23,9 +23,9 @@
             };
         };
     } ->
-    θ,
-  δ.das_watchdog = η,
-  ι.das_watchdog = β,
-  κ.services = ι
+    ι,
+  δ.das_watchdog = θ,
+  ε.das_watchdog = κ,
+  κ.enable = η
 ) =>
-α -> {config = θ; options = {services = {das_watchdog = {enable = ζ;};};};}
+α -> {config = ι; options = {services = {das_watchdog = {enable = ζ;};};};}

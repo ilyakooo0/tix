@@ -1,36 +1,34 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.getVersion = β -> γ,
-  α.lib = δ,
-  α.mkDerivation =
-    { buildInputs = [β];
+( α.?meta = β,
+  β.?platforms = γ,
+  δ.lib = ε,
+  δ.mkDerivation =
+    { buildInputs = [α];
       createFindlibDestdir = Bool;
       makeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = ε;
-          maintainers = [ζ];
-          platforms = η;
+          license = ζ;
+          maintainers = [η];
+          platforms = γ;
         };
       name = String;
       preBuild = String;
       src = θ;
     } ->
     ι,
-  α.versionAtLeast = γ -> String -> Bool,
-  β.platforms = η,
-  κ.lib = α,
-  λ.lib = α,
-  δ.licenses = μ,
-  δ.maintainers = ν,
-  μ.bsd3 = ε,
-  ν.vbgl = ζ,
-  ξ.meta = β
+  ε.versionAtLeast = κ -> String -> Bool,
+  λ.getVersion = α -> κ,
+  μ.licenses = ν,
+  μ.maintainers = ξ,
+  ν.bsd3 = ζ,
+  ξ.vbgl = η
 ) =>
-{ easy-format = β;
+{ easy-format = α;
   fetchurl = {sha256 = String; url = String;} -> θ;
-  findlib = β;
-  ocaml = β;
-  stdenv = α;
+  findlib = α;
+  ocaml = α;
+  stdenv = δ;
 } ->
 ι

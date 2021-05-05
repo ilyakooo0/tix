@@ -13,11 +13,10 @@
       src = η;
     } ->
     θ,
-  α.optionalString = Bool -> String -> String,
   γ.api_version = Integer,
-  ι.lib = α,
-  β.licenses = κ,
-  β.platforms = λ,
+  β.optionalString = Bool -> String -> String,
+  ι.licenses = κ,
+  ι.platforms = λ,
   κ.gpl3Plus = δ,
   λ.linux = ε
 ) =>

@@ -16,29 +16,29 @@
   ) ~
   ( η
   ),
-  θ.licenses = ι,
-  θ.maintainers = κ,
-  θ.platforms = λ,
-  μ.qmake = γ,
-  β.meta = {},
-  β.name = ν,
-  β.nativeBuildInputs = [γ],
-  β.outputs = [String],
-  β.patches = δ,
-  β.propagatedBuildInputs = [ε],
+  β.?meta = {},
+  β.?nativeBuildInputs = [γ],
+  β.?outputs = [String],
+  β.?patches = δ,
+  β.?propagatedBuildInputs = [ε],
+  β.?setOutputFlags = Bool,
+  β.?src = ζ,
+  β.?version = θ,
+  ι.licenses = κ,
+  ι.maintainers = λ,
+  ι.platforms = μ,
+  ν.qmake = γ,
+  β.name = ξ,
   β.qtInputs = [ε],
-  β.setOutputFlags = Bool,
-  β.src = ζ,
-  β.version = ξ,
-  λ.unix = ο,
-  κ.bkchr = π,
-  κ.periklis = π,
-  κ.qknight = π,
-  κ.ttuegel = π,
-  ι.fdl13 = ρ,
-  ι.gpl2 = ρ,
-  ι.lgpl21 = ρ,
-  ι.lgpl3 = ρ
+  μ.unix = ο,
+  λ.bkchr = π,
+  λ.periklis = π,
+  λ.qknight = π,
+  λ.ttuegel = π,
+  κ.fdl13 = ρ,
+  κ.gpl2 = ρ,
+  κ.lgpl21 = ρ,
+  κ.lgpl3 = ρ
 ) =>
-{lib = θ; mkDerivation = η -> σ; perl = γ;} ->
-{patches = τ; self = μ; srcs = υ;} -> β -> σ
+{lib = ι; mkDerivation = η -> σ; perl = γ;} ->
+{patches = τ; self = ν; srcs = υ;} -> β -> σ

@@ -17,8 +17,6 @@
       version = String;
     } ->
     κ,
-  α.optionalString = Bool -> String -> γ,
-  α.optionals = Bool -> [String] -> [String],
   β.ekleog = ζ,
   β.gebner = ζ,
   β.licenses = λ,
@@ -26,15 +24,15 @@
   β.platforms = ν,
   λ.isc = ε,
   ν.linux = η,
-  ξ.lib = α,
-  ο.lib = α,
-  π.lib = α,
-  ρ.lib = α,
-  σ.lib = α,
-  τ.lib = α,
-  υ.lib = α,
-  φ.lib = α,
-  χ.lib = α
+  ξ.optionals = Bool -> [String] -> [String],
+  ο.optionals = Bool -> [String] -> [String],
+  π.optionals = Bool -> [String] -> [String],
+  ρ.optionals = Bool -> [String] -> [String],
+  σ.optionals = Bool -> [String] -> [String],
+  τ.optionals = Bool -> [String] -> [String],
+  υ.optionals = Bool -> [String] -> [String],
+  φ.optionalString = Bool -> String -> γ,
+  χ.optionalString = Bool -> String -> γ
 ) =>
 { enableLua = Bool;
   enableMysql = Bool;

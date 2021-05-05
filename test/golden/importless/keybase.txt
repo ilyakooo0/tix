@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.keybase = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { environment = {systemPackages = [η];};
@@ -30,8 +30,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.keybase = η,
-  ε.enable = ζ,
-  μ.services = β,
+  ε.keybase = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {services = {keybase = {enable = κ;};};};}

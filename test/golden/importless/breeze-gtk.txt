@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.getLib = β, γ.pycairo = γ, δ.pkgs = γ) => { breeze-qt5 = γ;
+(α.getLib = β, γ.pkgs = δ, δ.pycairo = γ) => { breeze-qt5 = γ;
   extra-cmake-modules = γ;
   gtk2 = ε;
   lib = α;

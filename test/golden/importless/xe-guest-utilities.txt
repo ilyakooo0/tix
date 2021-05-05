@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.xe-guest-utilities = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -48,8 +48,8 @@
   δ.gnused = κ,
   δ.iproute = ι,
   δ.xe-guest-utilities = θ,
-  ε.enable = η,
-  μ.services = β
+  ε.xe-guest-utilities = μ,
+  μ.enable = η
 ) =>
 α ->
 {config = λ; options = {services = {xe-guest-utilities = {enable = ζ;};};};}

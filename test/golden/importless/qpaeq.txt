@@ -1,16 +1,16 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
 ( α.withPackages = (β -> [γ]) -> δ,
-  ε.lgpl2Plus = ζ,
+  ε.licenses = ζ,
   ε.maintainers = η,
-  ε.unix = θ,
+  ε.platforms = θ,
   ι.src = κ,
   ι.version = λ,
   β.dbus-python = μ,
   β.pyqt5 = γ,
-  ν.licenses = ε,
+  ζ.lgpl2Plus = ν,
   η.lovek323 = ξ,
   η.mkg20001 = ξ,
-  ο.platforms = ε
+  θ.unix = ο
 ) =>
 { fetchurl = π;
   lib = ε;
@@ -32,9 +32,9 @@
       meta =
         { description = String;
           homepage = String;
-          license = ζ;
+          license = ν;
           maintainers = [ξ];
-          platforms = θ;
+          platforms = ο;
         };
       pname = String;
       preFixup = String;

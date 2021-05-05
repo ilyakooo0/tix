@@ -1,22 +1,21 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       meta =
         { description = String;
           longDescription = String;
           maintainers = [δ];
-          platforms = β;
+          platforms = ε;
         };
       name = String;
       preConfigure = String;
-      src = ε;
+      src = ζ;
     } ->
-    ζ,
-  α.raskin = δ,
-  η.maintainers = α,
-  θ.lib = η,
-  ι.platforms = α,
-  κ.lib = ι
+    η,
+  β.maintainers = θ,
+  θ.raskin = δ,
+  ι.platforms = κ,
+  κ.linux = ε
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> ε; lvm2 = γ; stdenv = α;} -> ζ
+{fetchurl = {sha256 = String; url = String;} -> ζ; lvm2 = γ; stdenv = α;} -> η

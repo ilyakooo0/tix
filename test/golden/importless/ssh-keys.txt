@@ -1,6 +1,6 @@
 ∀ α β γ δ.
-( α.concatStrings = [String] -> β,
+( α.lib = β,
   α.writeText = String -> String -> γ,
-  δ.lib = α
+  β.concatStrings = [String] -> δ
 ) =>
-α -> {snakeOilPrivateKey = γ; snakeOilPublicKey = β;}
+α -> {snakeOilPrivateKey = γ; snakeOilPublicKey = δ;}

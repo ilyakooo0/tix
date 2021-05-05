@@ -2,18 +2,19 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.sysdig = ε,
-  γ.mkEnableOption = String -> ζ,
+  β.boot = ε,
+  β.programs = ζ,
+  γ.mkEnableOption = String -> η,
   γ.mkIf =
-    η ->
-    { boot = {extraModulePackages = [θ];};
-      environment = {systemPackages = [ι];};
+    θ ->
+    { boot = {extraModulePackages = [ι];};
+      environment = {systemPackages = [κ];};
     } ->
-    κ,
-  δ.sysdig = ι,
-  ε.enable = η,
-  λ.programs = β,
-  μ.kernelPackages = β,
-  ν.boot = μ
+    λ,
+  δ.sysdig = κ,
+  ζ.sysdig = μ,
+  μ.enable = θ,
+  ε.kernelPackages = ν,
+  ν.sysdig = ι
 ) =>
-α -> {config = κ; options = {programs = {sysdig = {enable = ζ;};};};}
+α -> {config = λ; options = {programs = {sysdig = {enable = η;};};};}

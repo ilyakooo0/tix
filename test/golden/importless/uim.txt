@@ -2,8 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enabled = String,
-  β.uim = ε,
+  β.i18n = ε,
   δ.uim = ζ,
   γ.mkIf =
     Bool ->
@@ -21,10 +20,10 @@
   γ.mkOption =
     {default = String; description = String; example = String; type = θ;} -> ι,
   γ.types = κ,
-  λ.inputMethod = β,
-  μ.i18n = λ,
-  ν.inputMethod = β,
-  ξ.i18n = ν,
+  ε.inputMethod = λ,
+  λ.uim = μ,
+  ν.inputMethod = ξ,
+  ξ.enabled = String,
   κ.enum = [String] -> θ
 ) =>
 α -> {config = η; options = {i18n = {inputMethod = {uim = {toolbar = ι;};};};};}

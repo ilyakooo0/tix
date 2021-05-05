@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.kbdlight = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -11,7 +11,7 @@
     } ->
     ι,
   δ.kbdlight = θ,
-  ε.enable = η,
-  κ.programs = β
+  ε.kbdlight = κ,
+  κ.enable = η
 ) =>
 α -> {config = ι; options = {programs = {kbdlight = {enable = ζ;};};};}

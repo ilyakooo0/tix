@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.vnstat = ε,
+  β.services = ε,
   γ.mkIf =
     ζ ->
     { systemd =
@@ -48,8 +48,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.coreutils = η,
-  ε.enable = ζ,
-  μ.services = β,
+  ε.vnstat = μ,
+  μ.enable = ζ,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {services = {vnstat = {enable = κ;};};};}

@@ -1,8 +1,8 @@
 ∀ γ δ ε ζ η θ.
-(γ.free = δ, ε.licenses = γ) => { callPackage =
+(γ.licenses = δ, δ.free = ε) => { callPackage =
     ( { elpaBuild =
           { ename = String;
-            meta = {homepage = String; license = δ;};
+            meta = {homepage = String; license = ε;};
             packageRequires = ∀ α. α;
             pname = String;
             src = ζ;
@@ -16,4 +16,4 @@
     ) ->
     {} -> θ;
 } ->
-{org = θ; org-plus-contrib = ∀ β. (γ.free = δ, β.licenses = γ) => θ;}
+{org = θ; org-plus-contrib = ∀ β. (γ.licenses = β, β.free = ε) => θ;}

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.lxcfs = ε,
+  β.virtualisation = ε,
   γ.maintainers = ζ,
   γ.mkIf =
     η ->
@@ -27,9 +27,9 @@
     θ,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = η,
-  μ.lxc = β,
-  ν.virtualisation = μ,
+  ε.lxc = μ,
+  μ.lxcfs = ν,
+  ν.enable = η,
   ζ.mic92 = ξ,
   λ.bool = ι
 ) =>

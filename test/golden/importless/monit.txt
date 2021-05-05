@@ -2,8 +2,8 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.monit = ε,
-  β.source = ζ,
+  β.environment = ε,
+  β.services = ζ,
   δ.monit = η,
   γ.mkEnableOption = String -> θ,
   γ.mkIf =
@@ -15,7 +15,7 @@
             { monit =
                 { after = [String];
                   description = String;
-                  restartTriggers = [ζ];
+                  restartTriggers = [λ];
                   serviceConfig =
                     { ExecReload = String;
                       ExecStart = String;
@@ -28,15 +28,15 @@
             };
         };
     } ->
-    λ,
-  γ.mkOption = {default = String; description = String; type = μ;} -> ν,
-  γ.types = ξ,
-  ε.config = κ,
-  ε.enable = ι,
-  ο.services = β,
-  π.monitrc = β,
-  ρ.etc = π,
-  σ.environment = ρ,
-  ξ.lines = μ
+    μ,
+  γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
+  γ.types = ο,
+  ζ.monit = π,
+  π.config = κ,
+  π.enable = ι,
+  ε.etc = ρ,
+  ρ.monitrc = σ,
+  σ.source = λ,
+  ο.lines = ν
 ) =>
-α -> {config = λ; options = {services = {monit = {config = ν; enable = θ;};};};}
+α -> {config = μ; options = {services = {monit = {config = ξ; enable = θ;};};};}

@@ -2,9 +2,9 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.guest = ε,
-  β.kernelPackages = ζ,
-  β.vboxsf = η,
+  β.boot = ε,
+  β.ids = ζ,
+  β.virtualisation = η,
   γ.mkIf = θ -> ι -> κ,
   γ.mkMerge =
     [ { assertions = [{assertion = Bool; message = String;}];
@@ -27,30 +27,29 @@
                   };
               };
           };
-        users = {groups = {vboxsf = {gid = η;};};};
+        users = {groups = {vboxsf = {gid = ν;};};};
       }
     ] ->
     ι,
-  γ.mkOption = {default = Bool; description = String; type = ν;} -> ξ,
-  γ.mkOverride = Integer -> [String] -> ο,
-  γ.types = π,
-  δ.isi686 = Bool,
-  δ.isx86_64 = Bool,
-  ζ.virtualboxGuestAdditions = λ,
-  ρ.boot = β,
-  ε.enable = θ,
-  ε.x11 = σ,
-  τ.virtualbox = β,
-  υ.virtualisation = τ,
-  φ.stdenv = δ,
-  χ.stdenv = δ,
-  ψ.gids = β,
-  ω.ids = ψ,
-  π.bool = ν,
+  γ.mkOption = {default = Bool; description = String; type = ξ;} -> ο,
+  γ.mkOverride = Integer -> [String] -> π,
+  γ.types = ρ,
+  δ.stdenv = σ,
+  ε.kernelPackages = τ,
+  τ.virtualboxGuestAdditions = λ,
+  η.virtualbox = υ,
+  υ.guest = φ,
+  φ.enable = θ,
+  φ.x11 = χ,
+  σ.isi686 = Bool,
+  ψ.isx86_64 = Bool,
+  ζ.gids = ω,
+  ω.vboxsf = ν,
+  ρ.bool = ξ,
   α1.bool = β1
 ) =>
 α ->
 { config = κ;
   options =
-    {virtualisation = {virtualbox = {guest = {enable = ξ; x11 = γ1;};};};};
+    {virtualisation = {virtualbox = {guest = {enable = ο; x11 = γ1;};};};};
 }

@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ.
 ( α.licenses = β,
-  α.ttuegel = γ,
+  α.maintainers = γ,
   β.fdl12 = δ,
   β.gpl2 = δ,
-  ε.maintainers = α
+  γ.ttuegel = ε
 ) =>
 { baloo = ζ;
   baloo-widgets = ζ;
@@ -30,7 +30,7 @@
   lib = α;
   mkDerivation =
     { cmakeFlags = [String];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

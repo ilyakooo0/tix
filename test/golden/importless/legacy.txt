@@ -1,6 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.gpl2 = β,
-  α.maintainers = γ,
+( α.lib = β,
   α.mkDerivation =
     { hardeningDisable = [String];
       installPhase = String;
@@ -9,7 +8,7 @@
         { broken = Bool;
           description = String;
           homepage = String;
-          license = β;
+          license = γ;
           maintainers = [δ];
           platforms = ε;
         };
@@ -19,13 +18,12 @@
       src = η;
     } ->
     θ,
-  α.platforms = ι,
-  κ.licenses = α,
-  λ.lib = κ,
-  γ.raskin = δ,
-  μ.lib = α,
-  ι.linux = ε,
-  ν.lib = α
+  β.licenses = ι,
+  ι.gpl2 = γ,
+  κ.maintainers = λ,
+  λ.raskin = δ,
+  μ.platforms = ν,
+  ν.linux = ε
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> η;
   gcj = ζ;

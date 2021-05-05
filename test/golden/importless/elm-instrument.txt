@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Cabal = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { Cabal = ε;
   HUnit = ε;
   QuickCheck = ε;
   ansi-terminal = ε;
@@ -24,7 +24,7 @@
       isExecutable = Bool;
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       setupHaskellDepends = [ε];
       src = ζ;

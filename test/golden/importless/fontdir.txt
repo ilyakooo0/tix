@@ -2,13 +2,13 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enableFontDir = ε,
+  β.fonts = ε,
   γ.mkIf =
-    ε -> {environment = {pathsToLink = [String]; systemPackages = [ζ];};} -> η,
-  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
-  γ.types = κ,
-  δ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ζ,
-  λ.fonts = β,
-  κ.bool = θ
+    ζ -> {environment = {pathsToLink = [String]; systemPackages = [η];};} -> θ,
+  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  δ.runCommand = String -> {preferLocalBuild = Bool;} -> String -> η,
+  ε.enableFontDir = ζ,
+  λ.bool = ι
 ) =>
-α -> {config = η; options = {fonts = {enableFontDir = ι;};};}
+α -> {config = θ; options = {fonts = {enableFontDir = κ;};};}

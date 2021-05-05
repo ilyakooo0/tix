@@ -1,29 +1,27 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
-( α.mit = β,
+( α.lib = β,
   α.mkDerivation =
     { cmakeFlags = [String];
       meta =
         { description = String;
           downloadPage = String;
           homepage = String;
-          license = β;
-          maintainers = [γ];
-          platforms = δ;
+          license = γ;
+          maintainers = [δ];
+          platforms = ε;
           version = String;
         };
-      nativeBuildInputs = [ε];
+      nativeBuildInputs = [ζ];
       pname = String;
-      src = ζ;
+      src = η;
       version = String;
     } ->
-    η,
-  α.raskin = γ,
-  α.unix = δ,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ
+    θ,
+  β.licenses = ι,
+  ι.mit = γ,
+  κ.maintainers = λ,
+  λ.raskin = δ,
+  μ.platforms = ν,
+  ν.unix = ε
 ) =>
-{cmake = ε; fetchzip = {sha256 = String; url = String;} -> ζ; stdenv = α;} -> η
+{cmake = ζ; fetchzip = {sha256 = String; url = String;} -> η; stdenv = α;} -> θ

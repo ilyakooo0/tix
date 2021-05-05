@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ.
 ( α.licenses = β,
-  α.rongcuid = γ,
+  α.maintainers = γ,
   β.fdl12 = δ,
   β.gpl2 = δ,
   β.lgpl21 = δ,
-  ε.maintainers = α
+  γ.rongcuid = ε
 ) =>
 { alsaLib = ζ;
   extra-cmake-modules = η;
@@ -19,7 +19,7 @@
   mkDerivation =
     { buildInputs = [ζ];
       cmakeFlags = [String];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
     } ->

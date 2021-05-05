@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.ttuegel = β, γ.maintainers = α) => { epoxy = δ;
+(α.maintainers = β, β.ttuegel = γ) => { epoxy = δ;
   extra-cmake-modules = ε;
   kconfig = ζ;
   kglobalaccel = δ;
@@ -13,7 +13,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [δ];
-      meta = {maintainers = [β];};
+      meta = {maintainers = [γ];};
       name = String;
       nativeBuildInputs = [ε];
       propagatedBuildInputs = [ζ];

@@ -1,38 +1,37 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ.
-( β.all = γ,
-  β.bsd3 = δ,
+( β.lib = γ,
   β.mkDerivation =
-    { buildInputs = [ε];
+    { buildInputs = [δ];
       makeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = δ;
+          license = ε;
           maintainers = ∀ α. α;
-          platforms = γ;
+          platforms = ζ;
         };
       name = String;
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [η];
       preBuild = String;
-      src = η;
+      src = θ;
     } ->
-    θ,
-  ι.licenses = β,
-  κ.lib = ι,
-  λ.platforms = β,
-  μ.lib = λ
+    ι,
+  γ.licenses = κ,
+  κ.bsd3 = ε,
+  λ.platforms = μ,
+  μ.all = ζ
 ) =>
-{ alsaLib = ε;
-  asciidoc = ζ;
-  docbook_xml_dtd_45 = ζ;
-  docbook_xsl = ζ;
-  fetchurl = {sha256 = String; url = String;} -> η;
-  libconfuse = ε;
-  libnl = ε;
-  libpulseaudio = ε;
-  pkgconfig = ζ;
+{ alsaLib = δ;
+  asciidoc = η;
+  docbook_xml_dtd_45 = η;
+  docbook_xsl = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  libconfuse = δ;
+  libnl = δ;
+  libpulseaudio = δ;
+  pkgconfig = η;
   stdenv = β;
-  xmlto = ζ;
-  yajl = ε;
+  xmlto = η;
+  yajl = δ;
 } ->
-θ
+ι

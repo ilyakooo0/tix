@@ -1,16 +1,15 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
 ( α.isDarwin = β,
   α.lib = γ,
-  α.optionals = β -> [δ] -> ε,
-  ζ.lib = α,
-  γ.RaghavSood = η,
-  γ.adisbladis = η,
-  γ.gpl3 = θ,
-  γ.lgpl3 = θ,
-  γ.licenses = ι,
-  γ.lionello = η,
-  γ.maintainers = κ,
-  γ.xrelkd = η
+  γ.optionals = β -> [δ] -> ε,
+  ζ.RaghavSood = η,
+  ζ.adisbladis = η,
+  ζ.gpl3 = θ,
+  ζ.lgpl3 = θ,
+  ζ.licenses = ι,
+  ζ.lionello = η,
+  ζ.maintainers = κ,
+  ζ.xrelkd = η
 ) =>
 { IOKit = δ;
   buildGoModule =

@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ.
-(α.lgpl21 = β, γ.licenses = α) => { extra-cmake-modules = δ;
+(α.licenses = β, β.lgpl21 = γ) => { extra-cmake-modules = δ;
   kcodecs = ε;
   kconfig = ε;
   kcoreaddons = ε;
@@ -7,7 +7,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [ε];
-      meta = {license = [β];};
+      meta = {license = [γ];};
       name = String;
       nativeBuildInputs = [δ];
       outputs = [String];

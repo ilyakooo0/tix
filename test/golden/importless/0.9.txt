@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ.
-( α.mit = β,
+( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
       buildPhase = String;
@@ -10,27 +10,26 @@
       meta =
         { description = String;
           homepage = String;
-          license = β;
-          maintainers = [δ];
+          license = δ;
+          maintainers = [ε];
         };
       name = String;
       patches = [Path];
       postPatch = String;
-      src = ε;
+      src = ζ;
       version = String;
     } ->
-    ζ,
-  α.roconnor = δ,
-  η.licenses = α,
-  θ.lib = η,
-  ι.maintainers = α,
-  κ.lib = ι
+    η,
+  β.licenses = θ,
+  θ.mit = δ,
+  ι.maintainers = κ,
+  κ.roconnor = ε
 ) =>
 { expat = γ;
-  fetchurl = {sha256 = String; url = String;} -> ε;
+  fetchurl = {sha256 = String; url = String;} -> ζ;
   findlib = γ;
   ocaml = γ;
   ounit = γ;
   stdenv = α;
 } ->
-ζ
+η

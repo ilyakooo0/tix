@@ -1,32 +1,31 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.bstrik = β,
-  α.gpl2 = γ,
+( α.lib = β,
   α.mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
-      buildInputs = [δ];
+      buildInputs = [γ];
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
-          maintainers = [β];
+          license = δ;
+          maintainers = [ε];
         };
       name = String;
-      nativeBuildInputs = [ε];
+      nativeBuildInputs = [ζ];
       postUnpack = String;
-      src = ζ;
+      src = η;
     } ->
-    η,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.maintainers = α,
-  λ.lib = κ
+    θ,
+  β.licenses = ι,
+  ι.gpl2 = δ,
+  κ.maintainers = λ,
+  λ.bstrik = ε
 ) =>
-{ fetchurl = {sha256 = String; url = String;} -> ζ;
-  libX11 = δ;
-  libXext = δ;
-  libXpm = δ;
-  pkgconfig = ε;
+{ fetchurl = {sha256 = String; url = String;} -> η;
+  libX11 = γ;
+  libXext = γ;
+  libXpm = γ;
+  pkgconfig = ζ;
   stdenv = α;
 } ->
-η
+θ

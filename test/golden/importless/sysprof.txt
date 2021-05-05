@@ -2,24 +2,23 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
-      services = {dbus = {packages = [θ];};};
-      systemd = {packages = [ι];};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
+      systemd = {packages = [κ];};
     } ->
-    κ,
-  δ.maintainers = λ,
-  δ.sysprof = η,
-  μ.sysprof = β,
-  ν.services = μ,
-  ξ.meta = δ,
-  ο.sysprof = ξ
+    λ,
+  δ.sysprof = θ,
+  ε.sysprof = μ,
+  μ.enable = η,
+  ν.meta = ξ,
+  ξ.maintainers = ο
 ) =>
 α ->
-{ config = κ;
-  meta = {maintainers = λ;};
+{ config = λ;
+  meta = {maintainers = ο;};
   options = {services = {sysprof = {enable = ζ;};};};
 }

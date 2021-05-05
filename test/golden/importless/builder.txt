@@ -12,15 +12,15 @@
   ) ~
   ( β
   ),
+  α.?buildPhase = String,
+  α.?checkPhase = String,
+  α.?configurePhase = String,
+  α.?installPhase = String,
+  α.?modRoot = String,
+  α.?pname = String,
   γ.mkDerivation = β -> δ,
   ε.elem = String -> [String] -> Bool,
-  α.buildPhase = String,
-  α.checkPhase = String,
-  α.configurePhase = String,
-  α.installPhase = String,
   α.modName = ζ,
-  α.modRoot = String,
-  α.pname = String,
   α.src = η,
   α.version = θ
 ) =>

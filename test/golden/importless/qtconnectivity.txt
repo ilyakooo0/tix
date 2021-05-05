@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η.
-(α.isLinux = β, α.optional = β -> γ -> δ, ε.lib = α) => { bluez = γ;
+(α.isLinux = β, α.lib = γ, γ.optional = β -> δ -> ε) => { bluez = δ;
   qtModule =
-    {buildInputs = δ; name = String; outputs = [String]; qtInputs = [ζ];} -> η;
+    {buildInputs = ε; name = String; outputs = [String]; qtInputs = [ζ];} -> η;
   qtbase = ζ;
   qtdeclarative = ζ;
   stdenv = α;

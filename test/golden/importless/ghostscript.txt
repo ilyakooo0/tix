@@ -2,11 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enableGhostscriptFonts = ε,
-  γ.mkIf = ε -> {fonts = {fonts = [String];};} -> ζ,
-  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
-  γ.types = ι,
-  κ.fonts = β,
-  ι.bool = η
+  β.fonts = ε,
+  γ.mkIf = ζ -> {fonts = {fonts = [String];};} -> η,
+  γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
+  γ.types = κ,
+  ε.enableGhostscriptFonts = ζ,
+  κ.bool = θ
 ) =>
-α -> {config = ζ; options = {fonts = {enableGhostscriptFonts = θ;};};}
+α -> {config = η; options = {fonts = {enableGhostscriptFonts = ι;};};}

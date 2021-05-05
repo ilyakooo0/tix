@@ -1,8 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
 ( α.isDarwin = β,
   α.lib = γ,
-  α.optional = β -> δ -> ε,
-  ζ.buildRustPackage =
+  δ.buildRustPackage =
     { CFG_RELEASE = String;
       CFG_RELEASE_CHANNEL = String;
       RUSTC_BOOTSTRAP = Integer;
@@ -13,25 +12,25 @@
       meta =
         { description = String;
           homepage = String;
-          license = [η];
-          maintainers = [θ];
+          license = [ζ];
+          maintainers = [η];
         };
       pname = String;
-      src = ι;
-      version = κ;
+      src = θ;
+      version = ι;
     } ->
-    λ,
-  ζ.rustc = μ,
-  γ.asl20 = η,
-  γ.basvandijk = θ,
-  γ.globin = θ,
-  γ.licenses = ν,
-  γ.maintainers = ξ,
-  γ.mit = η,
-  ο.lib = α,
-  μ.version = κ,
-  π.rust = ζ,
-  ρ.src = ι,
-  σ.rust = ζ
+    κ,
+  δ.rust = λ,
+  γ.asl20 = ζ,
+  γ.basvandijk = η,
+  γ.globin = η,
+  γ.licenses = μ,
+  γ.maintainers = ν,
+  γ.mit = ζ,
+  ξ.optional = β -> ο -> ε,
+  λ.rustc = π,
+  π.version = ι,
+  ρ.rustc = σ,
+  σ.src = θ
 ) =>
-{Security = δ; rustPlatform = ζ; stdenv = α;} -> λ
+{Security = ο; rustPlatform = δ; stdenv = α;} -> κ

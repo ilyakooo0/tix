@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Cabal = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { Cabal = ε;
   Glob = ε;
   QuickCheck = ε;
   aeson = ε;
@@ -37,7 +37,7 @@
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
       libraryToolDepends = [η];
-      license = β;
+      license = δ;
       pname = String;
       prePatch = String;
       src = ζ;

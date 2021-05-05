@@ -1,46 +1,40 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( α.filter = (Null -> Bool) -> [Null] -> β,
-  α.gpl2 = γ,
-  α.makeBinPath = β -> δ,
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = ε;
+    { buildInputs = γ;
       doCheck = Bool;
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = γ;
+          license = δ;
           longDescription = String;
-          maintainers = [ζ];
-          platforms = η;
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
       patches = [Path];
       postInstall = String;
-      src = θ;
+      src = η;
       version = String;
     } ->
-    ι,
-  α.optionalString = Bool -> String -> String,
-  α.optionals = Bool -> [Path] -> [Path],
-  α.peti = ζ,
-  α.unix = η,
-  κ.lib = α,
-  λ.lib = α,
-  μ.lib = α,
-  ν.licenses = α,
-  ξ.lib = ν,
-  ο.maintainers = α,
-  π.lib = ο,
-  ρ.platforms = α,
-  σ.lib = ρ,
-  τ.lib = α,
-  υ.lib = α
+    θ,
+  β.makeBinPath = ι -> κ,
+  λ.filter = (Null -> Bool) -> [Null] -> ι,
+  μ.filter = (Null -> Bool) -> [Null] -> γ,
+  ν.licenses = ξ,
+  ξ.gpl2 = δ,
+  ο.maintainers = π,
+  π.peti = ε,
+  ρ.platforms = σ,
+  σ.unix = ζ,
+  τ.optionals = Bool -> [Path] -> [Path],
+  υ.optionalString = Bool -> String -> String
 ) =>
 { ecl = Null;
   ecl-fasl = Bool;
   fetchpatch = {sha256 = String; url = String;} -> Path;
-  fetchurl = {sha256 = String; url = String;} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> η;
   gnuplot = Null;
   makeWrapper = Null;
   perl = Null;
@@ -51,4 +45,4 @@
   texinfo = Null;
   tk = Null;
 } ->
-ι
+θ

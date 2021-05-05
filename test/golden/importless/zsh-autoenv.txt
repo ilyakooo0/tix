@@ -2,16 +2,16 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.zsh-autoenv = ε,
+  β.programs = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf = η -> {programs = {zsh = {interactiveShellInit = String;};};} -> θ,
   γ.mkOption =
     {default = ι; defaultText = String; description = String; type = κ;} -> λ,
   γ.types = μ,
   δ.zsh-autoenv = ι,
-  ε.enable = η,
-  ν.zsh = β,
-  ξ.programs = ν,
+  ε.zsh = ν,
+  ν.zsh-autoenv = ξ,
+  ξ.enable = η,
   μ.package = κ
 ) =>
 α ->

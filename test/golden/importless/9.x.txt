@@ -1,69 +1,67 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
 ( α.isDarwin = β,
   α.isLinux = γ,
   α.lib = δ,
-  α.optionalString = ε,
-  α.optionals = β -> [ζ] -> η,
-  δ.licenses = θ,
-  δ.maintainers = ι,
-  δ.optional = Bool -> [Null] -> [κ],
+  δ.licenses = ε,
+  δ.maintainers = ζ,
+  δ.optional = Bool -> [Null] -> [η],
   δ.optionals = Bool -> [String] -> [String],
-  δ.platforms = λ,
-  δ.tfmoraes = μ,
-  δ.unix = ν,
-  ξ.lib = α,
-  ο.lib = α,
-  π.lib = α,
-  θ.bsd3 = ρ
+  δ.platforms = θ,
+  δ.tfmoraes = ι,
+  δ.unix = κ,
+  λ.optionalString = μ,
+  ν.optionals = β -> [ξ] -> ο,
+  π.optionalString = ρ -> String -> σ,
+  ε.bsd3 = τ
 ) =>
-{ ApplicationServices = σ;
-  CFNetwork = σ;
-  Cocoa = σ;
-  CoreServices = σ;
-  CoreText = σ;
-  DiskArbitration = σ;
-  GLUT = σ;
-  IOKit = σ;
-  IOSurface = σ;
-  ImageIO = σ;
-  OpenGL = σ;
-  Security = σ;
-  cmake = τ;
+{ ApplicationServices = υ;
+  CFNetwork = υ;
+  Cocoa = υ;
+  CoreServices = υ;
+  CoreText = υ;
+  DiskArbitration = υ;
+  GLUT = υ;
+  IOKit = υ;
+  IOSurface = υ;
+  ImageIO = υ;
+  OpenGL = υ;
+  Security = υ;
+  cmake = φ;
   enablePython = Bool;
   enableQt = Bool;
-  fetchpatch = υ;
-  fetchurl = {sha256 = String; url = String;} -> φ;
-  libGL = χ;
-  libGLU = χ;
-  libX11 = χ;
-  libXt = χ;
-  libobjc = ζ;
-  libtiff = κ;
+  fetchpatch = χ;
+  fetchurl = {sha256 = String; url = String;} -> ψ;
+  libGL = ω;
+  libGLU = ω;
+  libX11 = ω;
+  libXt = ω;
+  libobjc = ξ;
+  libtiff = η;
   mkDerivation =
-    { buildInputs = [κ];
+    { buildInputs = [η];
       cmakeFlags = [String];
       enableParallelBuilding = Bool;
       meta =
         { description = String;
           homepage = String;
-          license = ρ;
-          maintainers = [μ];
-          platforms = ν;
+          license = τ;
+          maintainers = [ι];
+          platforms = κ;
         };
       name = String;
-      nativeBuildInputs = [τ];
-      postPatch = ψ;
+      nativeBuildInputs = [φ];
+      postPatch = σ;
       preBuild = String;
-      propagatedBuildInputs = η;
-      src = φ;
+      propagatedBuildInputs = ο;
+      src = ψ;
     } ->
-    ω;
+    α1;
   python = Null;
-  qtbase = α1;
-  qttools = α1;
-  qtx11extras = α1;
+  qtbase = β1;
+  qttools = β1;
+  qtx11extras = β1;
   stdenv = α;
-  xorgproto = χ;
-  xpc = σ;
+  xorgproto = ω;
+  xpc = υ;
 } ->
-ω
+α1

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.twm = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -11,12 +11,12 @@
     } ->
     κ,
   γ.singleton = {name = String; start = String;} -> ι,
-  δ.twm = θ,
-  ε.enable = η,
-  λ.windowManager = β,
-  μ.xserver = λ,
-  ν.services = μ,
-  ξ.xorg = δ
+  δ.xorg = λ,
+  ε.xserver = μ,
+  μ.windowManager = ν,
+  ν.twm = ξ,
+  ξ.enable = η,
+  λ.twm = θ
 ) =>
 α ->
 { config = κ;

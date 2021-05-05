@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.owamp = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -34,7 +34,7 @@
         };
     } ->
     θ,
-  ε.enable = η,
-  ι.services = β
+  ε.owamp = ι,
+  ι.enable = η
 ) =>
 α -> {config = θ; options = {services = {owamp = {enable = ζ;};};};}

@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.autorandr = ε,
+  β.services = ε,
   γ.gnidorah = ζ,
   γ.maintainers = η,
   γ.mkEnableOption = String -> θ,
@@ -31,8 +31,8 @@
   γ.mkOption = {default = String; description = String; type = ν;} -> ξ,
   γ.types = ο,
   δ.autorandr = κ,
-  ε.enable = ι,
-  π.services = β,
+  ε.autorandr = π,
+  π.enable = ι,
   ο.str = ν
 ) =>
 α ->

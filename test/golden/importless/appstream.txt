@@ -1,11 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι.
 ( α.config = β,
   α.lib = γ,
-  β.enable = δ,
-  γ.mkIf = δ -> {environment = {pathsToLink = [String];};} -> ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.types = θ,
-  ι.appstream = β,
-  θ.bool = ζ
+  β.appstream = δ,
+  γ.mkIf = ε -> {environment = {pathsToLink = [String];};} -> ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.types = ι,
+  δ.enable = ε,
+  ι.bool = η
 ) =>
-α -> {config = ε; options = {appstream = {enable = η;};};}
+α -> {config = ζ; options = {appstream = {enable = θ;};};}

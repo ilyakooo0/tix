@@ -1,8 +1,9 @@
-∀ α β γ δ ε.
-( α.config = β,
-  α.lib = γ,
-  γ.mkIf = Bool -> String -> δ,
-  γ.mkOption = {default = Bool;} -> ε,
-  β.value = Bool
+∀ α β γ δ ε ζ η.
+( α.?foo = β,
+  γ.config = δ,
+  γ.lib = ε,
+  ε.mkIf = Bool -> String -> ζ,
+  ε.mkOption = {default = Bool;} -> η,
+  δ.value = α
 ) =>
-α -> {config = {value = {foo = δ;};}; options = {conditionalWorks = ε;};}
+γ -> {config = {value = {foo = ζ;};}; options = {conditionalWorks = η;};}

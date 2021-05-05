@@ -1,8 +1,8 @@
 ∀ α β γ δ ε.
-( α.mkDerivation =
-    {buildCommand = String; meta = {platforms = β;}; name = String;} -> γ,
-  α.x86_64 = β,
-  δ.platforms = α,
-  ε.lib = δ
+( α.lib = β,
+  α.mkDerivation =
+    {buildCommand = String; meta = {platforms = γ;}; name = String;} -> δ,
+  β.platforms = ε,
+  ε.x86_64 = γ
 ) =>
-{stdenv = α;} -> γ
+{stdenv = α;} -> δ

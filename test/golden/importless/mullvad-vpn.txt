@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.mullvad-vpn = ε,
+  β.services = ε,
   γ.maintainers = ζ,
   γ.mkIf =
     η ->
@@ -30,8 +30,8 @@
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
   δ.iproute = String,
-  ε.enable = η,
-  μ.services = β,
+  ε.mullvad-vpn = μ,
+  μ.enable = η,
   ζ.xfix = ν,
   λ.bool = ι
 ) =>

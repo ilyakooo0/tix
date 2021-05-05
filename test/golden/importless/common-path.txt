@@ -1,6 +1,6 @@
 ∀ α β γ δ.
 ( α.bash = β,
-  α.bin = β,
+  α.bzip2 = γ,
   α.coreutils = β,
   α.diffutils = β,
   α.findutils = β,
@@ -11,7 +11,8 @@
   α.gnutar = β,
   α.gzip = β,
   α.patch = β,
-  γ.bzip2 = α,
-  δ.xz = α
+  α.xz = δ,
+  γ.bin = β,
+  δ.bin = β
 ) =>
 {pkgs = α;} -> [β]

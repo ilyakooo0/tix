@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.rngd = ε,
+  β.security = ε,
   γ.mkIf =
     ζ ->
     { systemd =
@@ -29,9 +29,9 @@
   γ.mkOption = {default = Bool; description = String; type = θ;} -> ι,
   γ.optionalString = κ -> String -> String,
   γ.types = λ,
-  ε.debug = κ,
-  ε.enable = ζ,
-  μ.security = β,
+  ε.rngd = μ,
+  μ.debug = κ,
+  μ.enable = ζ,
   λ.bool = θ,
   ν.bool = ξ
 ) =>

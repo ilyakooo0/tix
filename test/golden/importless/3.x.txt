@@ -2,8 +2,10 @@
 ( α.dotlambda = β,
   α.licenses = γ,
   α.maintainers = δ,
-  ε.buildPythonApplication =
-    { checkInputs = [ζ];
+  ε.pkgs = ζ,
+  γ.gpl3Plus = η,
+  ζ.buildPythonApplication =
+    { checkInputs = [θ];
       meta =
         { description = String;
           homepage = String;
@@ -11,29 +13,26 @@
           maintainers = [β];
         };
       pname = String;
-      propagatedBuildInputs = [θ];
-      src = ι;
+      propagatedBuildInputs = [ι];
+      src = κ;
       version = String;
     } ->
-    κ,
-  ε.pkgs = λ,
-  γ.gpl3Plus = η,
-  μ.pkgs = ε,
-  λ.defusedxml = θ,
-  λ.passlib = θ,
-  λ.python-dateutil = θ,
-  λ.setuptools = θ,
-  λ.vobject = θ,
-  ν.pytest = ζ,
-  ν.pytest-flake8 = ζ,
-  ν.pytest-isort = ζ,
-  ν.pytestcov = ζ,
-  ν.pytestrunner = ζ,
-  ν.waitress = ζ
+    λ,
+  μ.defusedxml = ι,
+  μ.passlib = ι,
+  μ.python-dateutil = ι,
+  μ.setuptools = ι,
+  μ.vobject = ι,
+  ν.pytest = θ,
+  ν.pytest-flake8 = θ,
+  ν.pytest-isort = θ,
+  ν.pytestcov = θ,
+  ν.pytestrunner = θ,
+  ν.waitress = θ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ι;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
   lib = α;
   python3 = ε;
 } ->
-κ
+λ

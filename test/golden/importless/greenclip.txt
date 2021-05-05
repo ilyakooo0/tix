@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.greenclip = ε,
+  β.services = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
     η ->
@@ -25,11 +25,11 @@
   γ.mkOption =
     {default = κ; defaultText = String; description = String; type = λ;} -> μ,
   γ.types = ν,
-  δ.greenclip = κ,
-  ε.enable = η,
-  ε.package = θ,
-  ξ.services = β,
-  ο.haskellPackages = δ,
+  δ.haskellPackages = ξ,
+  ε.greenclip = ο,
+  ο.enable = η,
+  ο.package = θ,
+  ξ.greenclip = κ,
   ν.package = λ
 ) =>
 α ->

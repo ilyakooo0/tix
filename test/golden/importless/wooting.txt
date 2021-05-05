@@ -2,17 +2,17 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.hardware = ε,
   γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
-      services = {udev = {packages = [θ];};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {udev = {packages = [ι];};};
     } ->
-    ι,
-  δ.wootility = η,
-  δ.wooting-udev-rules = θ,
-  κ.wooting = β,
-  λ.hardware = κ
+    κ,
+  δ.wootility = θ,
+  δ.wooting-udev-rules = ι,
+  ε.wooting = λ,
+  λ.enable = η
 ) =>
-α -> {config = ι; options = {hardware = {wooting = {enable = ζ;};};};}
+α -> {config = κ; options = {hardware = {wooting = {enable = ζ;};};};}

@@ -1,30 +1,28 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.darwin = [β],
-  α.lgpl3 = γ,
-  α.linux = [β],
+( α.lib = β,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       configurePhase = String;
       installPhase = String;
       meta =
-        {description = String; homepage = ε; license = γ; platforms = [β];};
+        {description = String; homepage = δ; license = ε; platforms = [ζ];};
       name = String;
       patches = [Path];
-      src = ζ;
+      src = η;
     } ->
-    η,
-  ζ.homepage = ε,
-  θ.licenses = α,
-  ι.lib = θ,
-  κ.platforms = α,
-  λ.lib = κ,
-  μ.platforms = α,
-  ν.lib = μ,
-  ξ.meta = ζ
+    θ,
+  η.meta = ι,
+  β.licenses = κ,
+  κ.lgpl3 = ε,
+  λ.platforms = μ,
+  μ.linux = [ζ],
+  ν.platforms = ξ,
+  ξ.darwin = [ζ],
+  ι.homepage = δ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> ζ;
-  pixie = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  pixie = γ;
   stdenv = α;
 } ->
-η
+θ

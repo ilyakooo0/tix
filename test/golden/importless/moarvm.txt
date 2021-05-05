@@ -17,19 +17,18 @@
       version = String;
     } ->
     ι,
-  α.optionals = β -> [κ] -> [δ],
-  γ.licenses = λ,
-  γ.maintainers = μ,
-  γ.platforms = ν,
+  γ.licenses = κ,
+  γ.maintainers = λ,
+  γ.platforms = μ,
   γ.sgo = ζ,
   γ.thoughtpolice = ζ,
   γ.vrthra = ζ,
-  λ.artistic2 = ε,
-  ν.unix = η,
-  ξ.lib = α
+  κ.artistic2 = ε,
+  μ.unix = η,
+  ν.optionals = β -> [ξ] -> [δ]
 ) =>
-{ ApplicationServices = κ;
-  CoreServices = κ;
+{ ApplicationServices = ξ;
+  CoreServices = ξ;
   fetchurl = {sha256 = String; url = String;} -> θ;
   perl = δ;
   stdenv = α;

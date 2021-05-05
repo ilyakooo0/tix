@@ -2,20 +2,20 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.malcontent = ζ,
   γ.malcontent-ui = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
-    ε ->
+    θ ->
     { environment = {systemPackages = [ζ];};
       services =
-        {accounts-daemon = {enable = Bool;}; dbus = {packages = [θ];};};
+        {accounts-daemon = {enable = Bool;}; dbus = {packages = [ι];};};
     } ->
-    ι,
-  δ.out = θ,
-  κ.malcontent = β,
-  λ.services = κ,
-  μ.malcontent = δ
+    κ,
+  δ.malcontent = λ,
+  ε.malcontent = μ,
+  μ.enable = θ,
+  λ.out = ι
 ) =>
-α -> {config = ι; options = {services = {malcontent = {enable = η;};};};}
+α -> {config = κ; options = {services = {malcontent = {enable = η;};};};}

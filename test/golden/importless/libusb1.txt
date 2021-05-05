@@ -1,4 +1,4 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ.
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ.
 ( α.isDarwin = β,
   α.isLinux = γ,
   α.lib = δ,
@@ -15,22 +15,19 @@
       src = μ;
     } ->
     ν,
-  α.optional = γ -> Null -> [λ],
-  α.optionalString = ξ -> String -> κ,
-  α.optionals = β -> [ο] -> [λ],
-  π.lib = α,
-  ρ.lib = α,
-  σ.lib = α,
-  δ.licenses = τ,
-  δ.platforms = υ,
+  δ.optional = γ -> Null -> [λ],
+  ξ.optionals = β -> [ο] -> [λ],
+  π.optionalString = ρ -> String -> κ,
+  σ.licenses = τ,
+  σ.platforms = υ,
   τ.lgpl21 = η,
   υ.unix = θ,
-  φ.lib = α
+  φ.optionalString = χ -> String -> ε
 ) =>
 { IOKit = ο;
   fetchpatch = {name = String; sha256 = String; url = String;} -> ι;
   fetchurl = {sha256 = String; url = String;} -> μ;
-  lib = χ;
+  lib = ψ;
   libobjc = ο;
   pkgconfig = ζ;
   stdenv = α;

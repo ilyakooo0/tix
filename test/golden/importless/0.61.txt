@@ -1,55 +1,55 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( α.isClang = β,
+( α.cc = β,
+  α.lib = γ,
   α.mkDerivation =
-    { CXXFLAGS = γ;
-      buildInputs = [δ];
+    { CXXFLAGS = δ;
+      buildInputs = [ε];
       cmakeFlags = [String];
       meta =
         { description = String;
           homepage = String;
-          license = ε;
+          license = ζ;
           longDescription = String;
-          maintainers = [ζ];
-          platforms = η;
+          maintainers = [η];
+          platforms = θ;
         };
       name = String;
-      nativeBuildInputs = [θ];
+      nativeBuildInputs = [ι];
       outputs = [String];
       patches = [Path];
-      propagatedBuildInputs = [ι];
-      src = κ;
+      propagatedBuildInputs = [κ];
+      src = λ;
     } ->
-    λ,
-  α.optionalString = β -> String -> γ,
-  μ.licenses = ν,
-  μ.maintainers = ξ,
-  μ.optional = Bool -> Null -> [ι],
-  μ.optionals = Bool -> [ο] -> [ι],
-  μ.platforms = π,
-  μ.ttuegel = ζ,
-  ρ.lib = α,
-  σ.cc = α,
-  ν.gpl2 = ε,
-  π.all = η
+    μ,
+  ν.licenses = ξ,
+  ν.maintainers = ο,
+  ν.optional = Bool -> Null -> [κ],
+  ν.optionals = Bool -> [π] -> [κ],
+  ν.platforms = ρ,
+  ν.ttuegel = η,
+  γ.optionalString = σ -> String -> δ,
+  β.isClang = σ,
+  ξ.gpl2 = ζ,
+  ρ.all = θ
 ) =>
-{ cairo = ο;
-  cmake = θ;
-  curl = ο;
+{ cairo = π;
+  cmake = ι;
+  curl = π;
   fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
-  fetchurl = {sha256 = String; url = String;} -> κ;
-  fontconfig = ι;
-  freetype = ι;
+  fetchurl = {sha256 = String; url = String;} -> λ;
+  fontconfig = κ;
+  freetype = κ;
   gobject-introspection = Null;
   introspectionSupport = Bool;
-  lcms = ο;
-  lib = μ;
-  libiconv = δ;
-  libintl = δ;
-  libjpeg = ι;
+  lcms = π;
+  lib = ν;
+  libiconv = ε;
+  libintl = ε;
+  libjpeg = κ;
   minimal = Bool;
-  ninja = θ;
-  openjpeg = ι;
-  pkgconfig = θ;
+  ninja = ι;
+  openjpeg = κ;
+  pkgconfig = ι;
   poppler_data = τ;
   qt5Support = Bool;
   qtbase = Null;
@@ -57,6 +57,6 @@
   suffix = String;
   utils = Bool;
   withData = Bool;
-  zlib = ι;
+  zlib = κ;
 } ->
-λ
+μ

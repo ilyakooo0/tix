@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { aeson = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { aeson = ε;
   base = ε;
   binary = ε;
   bytestring = ε;
@@ -17,7 +17,7 @@
       isLibrary = Bool;
       libraryHaskellDepends = [ε];
       libraryToolDepends = [η];
-      license = β;
+      license = δ;
       pname = String;
       prePatch = String;
       src = ζ;

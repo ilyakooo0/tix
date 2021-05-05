@@ -1,8 +1,8 @@
 ∀ α β γ δ ε.
 ( α.lib = β,
-  β.bool = γ,
   β.mkOption =
     {default = Bool; description = String; example = Bool; type = γ;} -> δ,
-  ε.types = β
+  β.types = ε,
+  ε.bool = γ
 ) =>
 α -> {options = {set = {enable = δ;};};}

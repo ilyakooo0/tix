@@ -2,18 +2,18 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {packages = [θ];};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  δ.dleyna-server = ζ,
-  μ.dleyna-server = β,
-  ν.services = μ,
-  λ.bool = ι
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.dleyna-server = η,
+  ε.dleyna-server = ν,
+  ν.enable = ζ,
+  μ.bool = κ
 ) =>
-α -> {config = θ; options = {services = {dleyna-server = {enable = κ;};};};}
+α -> {config = ι; options = {services = {dleyna-server = {enable = λ;};};};}

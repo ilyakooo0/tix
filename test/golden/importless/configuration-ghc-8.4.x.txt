@@ -1,0 +1,86 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1 λ1
+μ1 ν1 ξ1 ο1 π1 ρ1 σ1 τ1 υ1 φ1 χ1 ψ1 ω1 α2 β2.
+( β.fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> γ,
+  β.llvmPackages_5 = δ,
+  ε.addBuildDepend = ζ -> η -> θ,
+  ε.appendPatch = ι -> γ -> κ,
+  ε.doJailbreak = λ -> μ,
+  ε.dontCheck = ν -> ξ,
+  ε.dontHaddock = ο -> π,
+  ρ.Cabal_2_4_1_0 = σ,
+  ρ.Cabal_3_2_0_0 = τ,
+  ρ.contravariant = η,
+  ρ.ghc-lib-parser = υ,
+  ρ.hackage-security = φ,
+  ρ.hpack = χ,
+  ρ.resolv_0_1_1_2 = ψ,
+  ω.aeson = ζ,
+  ω.base-compat-batteries = α1,
+  ω.cabal-install = β1,
+  ω.enclosed-exceptions = ν,
+  ω.fast-logger = ο,
+  ω.ghc-lib-parser-ex = γ1,
+  ω.hadoop-rpc = ι,
+  ω.hinotify_0_3_9 = λ,
+  ω.jailbreak-cabal = δ1,
+  ω.purescript = ε1,
+  ω.stack = ζ1,
+  ω.xmobar = η1,
+  θ1.Cabal_3_2_0_0 = ι1,
+  κ1.override = λ1,
+  μ1.hinotify_0_3_9 = ν1,
+  φ.override = {Cabal = ξ1;} -> ο1,
+  χ.override = {Cabal = π1;} -> ρ1,
+  β1.overrideScope = (θ1 -> σ1 -> {Cabal = ι1;}) -> τ1,
+  δ1.override = {Cabal = τ;} -> υ1,
+  η1.overrideScope = (μ1 -> φ1 -> {hinotify = ν1;}) -> χ1
+) =>
+{haskellLib = ε; pkgs = β;} ->
+ρ ->
+ω ->
+{ Cabal = Null;
+  aeson = θ;
+  array = Null;
+  base = Null;
+  base-compat-batteries = ψ1;
+  binary = Null;
+  bytestring = Null;
+  cabal-install = τ1;
+  containers = Null;
+  deepseq = Null;
+  directory = Null;
+  enclosed-exceptions = ξ;
+  fast-logger = π;
+  filepath = Null;
+  ghc-boot = Null;
+  ghc-boot-th = Null;
+  ghc-compact = Null;
+  ghc-heap = Null;
+  ghc-lib-parser-ex = ω1;
+  ghc-prim = Null;
+  ghci = Null;
+  hadoop-rpc = κ;
+  haskeline = Null;
+  hinotify_0_3_9 = α2;
+  hpc = Null;
+  integer-gmp = Null;
+  jailbreak-cabal = υ1;
+  llvmPackages = δ;
+  mtl = Null;
+  parsec = Null;
+  pretty = Null;
+  process = Null;
+  purescript = β2;
+  resolv = ψ;
+  rts = Null;
+  stack = ∀ α. α;
+  stm = Null;
+  template-haskell = Null;
+  terminfo = Null;
+  text = Null;
+  time = Null;
+  transformers = Null;
+  unix = Null;
+  xhtml = Null;
+  xmobar = χ1;
+}

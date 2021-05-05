@@ -1,20 +1,20 @@
 ∀ α β γ δ ε ζ η.
-( α.mkDerivation =
-    { buildInputs = [β];
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
       installPhase = String;
-      meta = {description = String; homepage = String; license = γ;};
+      meta = {description = String; homepage = String; license = δ;};
       phases = [String];
       pname = String;
-      src = δ;
+      src = ε;
       version = String;
     } ->
-    ε,
-  α.unfree = γ,
-  ζ.licenses = α,
-  η.lib = ζ
+    ζ,
+  β.licenses = η,
+  η.unfree = δ
 ) =>
-{ b43FirmwareCutter = β;
-  fetchurl = {sha256 = String; url = String;} -> δ;
+{ b43FirmwareCutter = γ;
+  fetchurl = {sha256 = String; url = String;} -> ε;
   stdenv = α;
 } ->
-ε
+ζ

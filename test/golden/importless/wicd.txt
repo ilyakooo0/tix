@@ -2,11 +2,11 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.networking = ε,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {enable = Bool; packages = [η];};};
+    ζ ->
+    { environment = {systemPackages = [η];};
+      services = {dbus = {enable = Bool; packages = [θ];};};
       systemd =
         { services =
             { wicd =
@@ -19,12 +19,12 @@
             };
         };
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.types = λ,
-  δ.wicd = ζ,
-  μ.wicd = β,
-  ν.networking = μ,
-  λ.bool = ι
+    ι,
+  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
+  γ.types = μ,
+  δ.wicd = η,
+  ε.wicd = ν,
+  ν.enable = ζ,
+  μ.bool = κ
 ) =>
-α -> {config = θ; options = {networking = {wicd = {enable = κ;};};};}
+α -> {config = ι; options = {networking = {wicd = {enable = λ;};};};}

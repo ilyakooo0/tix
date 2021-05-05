@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ η θ.
-(α.gpl2Plus = β, γ.licenses = α, δ.lib = γ) => { buildPythonApplication =
+(α.lib = β, β.licenses = γ, γ.gpl2Plus = δ) => { buildPythonApplication =
     { checkPhase = String;
       md5_path = String;
-      meta = {description = String; homepage = String; license = β;};
+      meta = {description = String; homepage = String; license = δ;};
       pname = String;
       postPatch = String;
       propagatedBuildInputs = [ε];

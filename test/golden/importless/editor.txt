@@ -1,11 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
 ( α.lib = β,
-  α.toLower = String -> γ,
-  δ.lib = α,
-  β.licenses = ε,
-  β.maintainers = ζ,
-  β.platforms = η,
-  β.tadeokondrak = θ,
+  β.toLower = String -> γ,
+  δ.licenses = ε,
+  δ.maintainers = ζ,
+  δ.platforms = η,
+  δ.tadeokondrak = θ,
   ε.mit = ι,
   η.all = κ
 ) =>

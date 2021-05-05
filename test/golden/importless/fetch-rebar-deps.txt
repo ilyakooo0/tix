@@ -12,9 +12,8 @@
       phases = [String];
     } ->
     ε,
-  α.proxyImpureEnvVars = γ,
-  ζ.fetchers = α,
-  η.lib = ζ
+  ζ.fetchers = η,
+  η.proxyImpureEnvVars = γ
 ) =>
 {rebar3 = θ; stdenv = α;} ->
 {meta = {}; name = ι; sha256 = δ; src = κ; version = λ;} -> ε

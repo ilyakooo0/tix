@@ -6,7 +6,7 @@
   δ.udevil = ε,
   δ.udisks2 = ε,
   δ.which = ε,
-  β.devmon = ζ,
+  β.services = ζ,
   γ.mkEnableOption = String -> η,
   γ.mkIf =
     θ ->
@@ -25,7 +25,7 @@
         };
     } ->
     ι,
-  ζ.enable = θ,
-  κ.services = β
+  ζ.devmon = κ,
+  κ.enable = θ
 ) =>
 α -> {config = ι; options = {services = {devmon = {enable = η;};};};}

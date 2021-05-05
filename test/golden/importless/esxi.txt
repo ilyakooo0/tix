@@ -1,28 +1,27 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
 ( α.lib = β,
-  α.replaceStrings = [String] -> [String] -> String -> γ,
-  δ.buildPythonApplication =
+  γ.buildPythonApplication =
     { doCheck = Bool;
       dontBuild = Bool;
       installPhase = String;
       meta =
-        {broken = Bool; homepage = String; license = ε; maintainers = [ζ];};
+        {broken = Bool; homepage = String; license = δ; maintainers = [ε];};
       name = String;
-      propagatedBuildInputs = [η];
-      src = θ;
+      propagatedBuildInputs = [ζ];
+      src = η;
       version = String;
     } ->
-    ι,
-  δ.pywbem = η,
-  κ.lib = α,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.peterhoeg = ζ,
-  λ.gpl2 = ε
+    θ,
+  γ.pywbem = ζ,
+  β.replaceStrings = [String] -> [String] -> String -> ι,
+  κ.licenses = λ,
+  κ.maintainers = μ,
+  κ.peterhoeg = ε,
+  λ.gpl2 = δ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> θ;
-  python2Packages = δ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
+  python2Packages = γ;
   stdenv = α;
 } ->
-ι
+θ

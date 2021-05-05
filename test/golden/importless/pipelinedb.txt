@@ -18,14 +18,14 @@
       version = String;
     } ->
     ι,
-  γ.platforms = η,
-  γ.version = κ,
-  β.licenses = λ,
-  β.maintainers = μ,
-  β.versionOlder = κ -> String -> δ,
-  λ.asl20 = ε,
-  μ.marsam = ζ,
-  ν.meta = γ
+  γ.meta = κ,
+  γ.version = λ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.versionOlder = λ -> String -> δ,
+  μ.asl20 = ε,
+  ν.marsam = ζ,
+  κ.platforms = η
 ) =>
 { fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> θ;

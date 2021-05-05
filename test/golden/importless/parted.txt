@@ -1,0 +1,42 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
+( β.lib = γ,
+  β.mkDerivation =
+    { buildInputs = [δ];
+      checkInputs = [ε];
+      configureFlags = [String];
+      doCheck = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = ζ;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms = η;
+        };
+      name = String;
+      patches = [θ];
+      src = ι;
+    } ->
+    κ,
+  γ.licenses = λ,
+  λ.gpl3Plus = ζ,
+  μ.platforms = ν,
+  ν.linux = η,
+  ξ.optional = Bool -> String -> [String],
+  ο.optional = Bool -> String -> [String],
+  π.optional = Bool -> Null -> [δ],
+  ρ.optional = Bool -> Null -> [δ],
+  σ.optional = Bool -> Null -> [δ]
+) =>
+{ check = ε;
+  enableStatic = Bool;
+  fetchpatch = {sha256 = String; url = String;} -> θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  gettext = Null;
+  libuuid = δ;
+  lvm2 = Null;
+  readline = Null;
+  stdenv = β;
+  utillinux = ε;
+} ->
+κ

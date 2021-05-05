@@ -19,12 +19,11 @@
       src = ι;
     } ->
     κ,
-  α.optionals = Bool -> [String] -> η,
   γ.licenses = λ,
   γ.platforms = μ,
   λ.bsd2 = δ,
   μ.unix = ε,
-  ν.lib = α
+  ν.optionals = Bool -> [String] -> η
 ) =>
 { autoreconfHook = ζ;
   bison = ζ;

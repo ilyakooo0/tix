@@ -18,12 +18,12 @@
       version = String;
     } ->
     ι,
-  γ.platforms = ζ,
+  γ.meta = κ,
   β.DerTim1 = ε,
-  β.licenses = κ,
-  β.maintainers = λ,
-  κ.postgresql = δ,
-  μ.meta = γ
+  β.licenses = λ,
+  β.maintainers = μ,
+  λ.postgresql = δ,
+  κ.platforms = ζ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> θ;
   groonga = γ;

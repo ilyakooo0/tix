@@ -1,8 +1,8 @@
 ∀ α β γ δ ε ζ.
 ( α.lib = β,
   β.mkOption = {type = γ;} -> δ,
-  β.positive = γ,
-  ε.ints = β,
-  ζ.types = ε
+  β.types = ε,
+  ε.ints = ζ,
+  ζ.positive = γ
 ) =>
 α -> {options = {value = δ;};}

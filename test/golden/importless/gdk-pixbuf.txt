@@ -2,7 +2,7 @@
 ( β.config = γ,
   β.lib = δ,
   β.pkgs = ε,
-  γ.gdk-pixbuf = ζ,
+  γ.services = ζ,
   δ.cfg = η,
   δ.mkIf =
     Bool ->
@@ -13,9 +13,9 @@
   ε.gdk-pixbuf = μ,
   ε.runCommand = String -> {preferLocalBuild = Bool;} -> String -> ξ,
   η.modulePackages = [μ],
-  ζ.modulePackages = ο,
-  π.xserver = γ,
-  ρ.services = π,
+  ζ.xserver = ο,
+  ο.gdk-pixbuf = π,
+  π.modulePackages = ρ,
   λ.listOf = σ -> ι,
   τ.package = σ
 ) =>

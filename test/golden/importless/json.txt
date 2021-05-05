@@ -1,10 +1,10 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
-( α.json = β,
+( α.services = β,
   γ.mkOption = {description = String; type = δ;} -> ε,
   γ.types = ζ,
-  η.exporters = α,
-  θ.prometheus = η,
-  ι.services = θ,
+  β.prometheus = η,
+  η.exporters = θ,
+  θ.json = ι,
   ζ.path = δ,
   κ.str = λ
 ) =>

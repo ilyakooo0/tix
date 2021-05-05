@@ -1,33 +1,32 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.lib = β,
-  α.licenses = γ,
   α.mkDerivation =
-    { buildInputs = [δ];
+    { buildInputs = [γ];
       meta =
         { description = String;
           homepage = String;
-          license = [ε];
+          license = [δ];
           longDescription = String;
-          maintainers = [ζ];
-          platforms = η;
+          maintainers = [ε];
+          platforms = ζ;
         };
       name = String;
-      nativeBuildInputs = [θ];
-      src = ι;
+      nativeBuildInputs = [η];
+      src = θ;
     } ->
-    κ,
-  β.lgpl2Plus = ε,
-  β.maintainers = λ,
-  β.platforms = μ,
-  ν.lib = α,
-  λ.ambrop72 = ζ,
-  μ.linux = η
+    ι,
+  β.lgpl2Plus = δ,
+  β.maintainers = κ,
+  β.platforms = λ,
+  μ.licenses = ν,
+  κ.ambrop72 = ε,
+  λ.linux = ζ
 ) =>
-{ cmake = θ;
-  extra-cmake-modules = θ;
-  fetchurl = {sha256 = String; url = String;} -> ι;
-  pkgconfig = θ;
-  qtbase = δ;
+{ cmake = η;
+  extra-cmake-modules = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  pkgconfig = η;
+  qtbase = γ;
   stdenv = α;
 } ->
-κ
+ι

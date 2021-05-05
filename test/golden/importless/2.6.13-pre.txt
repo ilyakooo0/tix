@@ -1,0 +1,45 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
+( β.cc = γ,
+  δ.?libc = ε,
+  β.lib = ζ,
+  β.mkDerivation =
+    { buildInputs = [η];
+      configureFlags = [String];
+      hardeningDisable = [String];
+      meta = {description = String; maintainers = [θ]; platforms = ι;};
+      patches = ∀ α. α;
+      pname = String;
+      postPatch = String;
+      sourceRoot = String;
+      src = κ;
+      version = String;
+    } ->
+    λ,
+  μ.isGNU = Bool,
+  ν.libc = Null,
+  ζ.maintainers = ξ,
+  ξ.raskin = θ,
+  ο.platforms = π,
+  π.linux = ι
+) =>
+{ binutils = η;
+  emacs = η;
+  fetchgit = {rev = String; sha256 = String; url = String;} -> κ;
+  gmp = η;
+  libX11 = η;
+  libXaw = η;
+  libXext = η;
+  libXi = η;
+  libXmu = η;
+  libXt = η;
+  m4 = η;
+  mpfr = η;
+  readline = η;
+  stdenv = β;
+  strace = η;
+  texinfo = η;
+  which = η;
+  xorgproto = η;
+  zlib = η;
+} ->
+λ

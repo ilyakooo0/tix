@@ -1,30 +1,30 @@
 ∀ α β γ δ ε ζ η.
-( α.linux = β,
+( α.lib = β,
   α.mkDerivation =
     { buildPhase = String;
       dbName = String;
       installPhase = String;
       locale = String;
-      meta = {description = String; platforms = β;};
+      meta = {description = String; platforms = γ;};
       name = String;
-      src = γ;
+      src = δ;
       unpackPhase = String;
     } ->
-    δ,
-  ε.platforms = α,
-  ζ.lib = ε
+    ε,
+  β.platforms = ζ,
+  ζ.linux = γ
 ) =>
 { callPackage = Path -> {} -> η;
-  fetchurl = {sha256 = String; url = String;} -> γ;
+  fetchurl = {sha256 = String; url = String;} -> δ;
   stdenv = α;
 } ->
-{ deu2eng = δ;
-  eng2deu = δ;
-  eng2fra = δ;
-  eng2nld = δ;
-  eng2rus = δ;
-  fra2eng = δ;
-  mueller_eng2rus_pkg = δ;
+{ deu2eng = ε;
+  eng2deu = ε;
+  eng2fra = ε;
+  eng2nld = ε;
+  eng2rus = ε;
+  fra2eng = ε;
+  mueller_eng2rus_pkg = ε;
   mueller_enru_abbr =
     {dbName = String; locale = String; name = String; outPath = String;};
   mueller_enru_base =
@@ -35,7 +35,7 @@
     {dbName = String; locale = String; name = String; outPath = String;};
   mueller_enru_names =
     {dbName = String; locale = String; name = String; outPath = String;};
-  nld2eng = δ;
+  nld2eng = ε;
   wiktionary = η;
   wordnet = η;
 }

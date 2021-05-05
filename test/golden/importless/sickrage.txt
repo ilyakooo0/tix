@@ -1,6 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
 ( α.lib = β,
-  γ.buildPythonApplication =
+  γ.pkgs = δ,
+  β.licenses = ε,
+  β.maintainers = ζ,
+  β.sterfield = η,
+  ε.gpl3 = θ,
+  δ.buildPythonApplication =
     { buildInputs = [γ];
       doCheck = Bool;
       dontBuild = Bool;
@@ -8,26 +13,21 @@
       meta =
         { description = String;
           homepage = String;
-          license = δ;
+          license = θ;
           longDescription = String;
-          maintainers = [ε];
+          maintainers = [η];
         };
-      nativeBuildInputs = [ζ];
+      nativeBuildInputs = [ι];
       pname = String;
-      src = η;
+      src = κ;
       version = String;
     } ->
-    θ,
-  β.licenses = ι,
-  β.maintainers = κ,
-  β.sterfield = ε,
-  ι.gpl3 = δ,
-  λ.pkgs = γ
+    λ
 ) =>
 { fetchFromGitHub =
-    {owner = String; repo = String; rev = String; sha256 = String;} -> η;
-  makeWrapper = ζ;
+    {owner = String; repo = String; rev = String; sha256 = String;} -> κ;
+  makeWrapper = ι;
   python2 = γ;
   stdenv = α;
 } ->
-θ
+λ

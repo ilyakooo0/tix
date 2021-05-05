@@ -1,27 +1,27 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.config = β,
   α.lib = γ,
-  β.enable = δ,
+  β.xdg = δ,
   γ.mkIf =
-    δ ->
+    ε ->
     { environment =
         { pathsToLink = [String];
           profileRelativeSessionVariables = {XCURSOR_PATH = [String];};
           sessionVariables = {XCURSOR_PATH = [String];};
         };
     } ->
-    ε,
-  γ.mkOption = {default = Bool; description = String; type = ζ;} -> η,
-  γ.teams = θ,
-  γ.types = ι,
-  κ.icons = β,
-  λ.xdg = κ,
-  θ.members = μ,
-  ν.freedesktop = θ,
-  ι.bool = ζ
+    ζ,
+  γ.mkOption = {default = Bool; description = String; type = η;} -> θ,
+  γ.teams = ι,
+  γ.types = κ,
+  δ.icons = λ,
+  λ.enable = ε,
+  ι.freedesktop = μ,
+  μ.members = ν,
+  κ.bool = η
 ) =>
 α ->
-{ config = ε;
-  meta = {maintainers = μ;};
-  options = {xdg = {icons = {enable = η;};};};
+{ config = ζ;
+  meta = {maintainers = ν;};
+  options = {xdg = {icons = {enable = θ;};};};
 }

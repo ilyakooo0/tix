@@ -14,23 +14,21 @@
       src = θ;
     } ->
     ι,
-  α.optional = Bool -> κ -> [γ],
-  α.optionals = Bool -> [String] -> [String],
-  β.licenses = λ,
-  β.platforms = μ,
-  λ.asl20 = δ,
-  μ.unix = ε,
-  ν.lib = α,
-  ξ.lib = α,
-  ο.lib = α,
-  π.lib = α,
-  ρ.lib = α
+  β.licenses = κ,
+  β.platforms = λ,
+  κ.asl20 = δ,
+  λ.unix = ε,
+  μ.optionals = Bool -> [String] -> [String],
+  ν.optional = Bool -> ξ -> [γ],
+  ο.optional = Bool -> π -> [γ],
+  ρ.optional = Bool -> σ -> [γ],
+  τ.optional = Bool -> υ -> [γ]
 ) =>
 { curl = γ;
-  db = σ;
+  db = υ;
   fetchurl = {sha256 = String; url = String;} -> θ;
   gmp = γ;
-  libmysqlclient = κ;
+  libmysqlclient = ξ;
   librdf_rasqal = η;
   libxml2 = γ;
   libxslt = γ;
@@ -38,8 +36,8 @@
   pcre = γ;
   perl = ζ;
   pkgconfig = ζ;
-  postgresql = τ;
-  sqlite = υ;
+  postgresql = σ;
+  sqlite = π;
   stdenv = α;
   withBdb = Bool;
   withMysql = Bool;

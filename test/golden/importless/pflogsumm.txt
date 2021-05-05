@@ -1,15 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι κ λ.
-( α.gpl2Plus = β,
-  α.maintainers = γ,
-  δ.DateCalc = ε,
-  δ.buildPerlPackage =
-    { buildInputs = [ε];
+( α.lib = β,
+  γ.DateCalc = δ,
+  γ.buildPerlPackage =
+    { buildInputs = [δ];
       doCheck = Bool;
       installPhase = String;
       meta =
         { description = String;
           homepage = String;
-          license = β;
+          license = ε;
           maintainers = [ζ];
         };
       outputs = [String];
@@ -19,13 +18,13 @@
       version = String;
     } ->
     θ,
-  ι.licenses = α,
-  κ.lib = ι,
-  γ.schneefux = ζ,
-  λ.lib = α
+  β.licenses = ι,
+  ι.gpl2Plus = ε,
+  κ.maintainers = λ,
+  λ.schneefux = ζ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> η;
-  perlPackages = δ;
+  perlPackages = γ;
   stdenv = α;
 } ->
 θ

@@ -2,13 +2,13 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.acpilight = ε,
+  β.hardware = ε,
   γ.acpilight = ζ,
   γ.mkIf = η -> {services = {udev = {packages = [ζ];};};} -> θ,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
   γ.types = λ,
-  ε.enable = η,
-  μ.hardware = β,
+  ε.acpilight = μ,
+  μ.enable = η,
   λ.bool = ι
 ) =>
 α -> {config = θ; options = {hardware = {acpilight = {enable = κ;};};};}

@@ -2,28 +2,28 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
-  δ.gnome-online-miners = ζ,
+  β.services = ε,
+  δ.gnome3 = ζ,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [ζ];};
-      services = {dbus = {packages = [η];};};
+    η ->
+    { environment = {systemPackages = [θ];};
+      services = {dbus = {packages = [ι];};};
     } ->
-    θ,
-  γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.teams = λ,
-  γ.types = μ,
-  ν.gnome-online-miners = β,
-  ξ.gnome3 = ν,
-  ο.services = ξ,
-  π.gnome3 = δ,
-  ρ.gnome3 = δ,
-  λ.members = σ,
-  τ.gnome = λ,
-  μ.bool = ι
+    κ,
+  γ.mkOption = {default = Bool; description = String; type = λ;} -> μ,
+  γ.teams = ν,
+  γ.types = ξ,
+  ε.gnome3 = ο,
+  ο.gnome-online-miners = π,
+  π.enable = η,
+  ζ.gnome-online-miners = θ,
+  ρ.gnome-online-miners = ι,
+  ν.gnome = σ,
+  σ.members = τ,
+  ξ.bool = λ
 ) =>
 α ->
-{ config = θ;
-  meta = {maintainers = σ;};
-  options = {services = {gnome3 = {gnome-online-miners = {enable = κ;};};};};
+{ config = κ;
+  meta = {maintainers = τ;};
+  options = {services = {gnome3 = {gnome-online-miners = {enable = μ;};};};};
 }

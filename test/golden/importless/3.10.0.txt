@@ -1,6 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι.
-( α.licenses = β,
-  α.linux = γ,
+( α.lib = β,
   α.mkDerivation =
     { buildFlags = [String];
       buildInputs = [String];
@@ -9,8 +8,8 @@
       meta =
         { description = String;
           homepage = String;
-          license = [δ];
-          platforms = γ;
+          license = [γ];
+          platforms = δ;
         };
       patchPhase = String;
       pname = String;
@@ -20,11 +19,11 @@
       version = String;
     } ->
     ζ,
-  β.lgpl2 = δ,
-  β.qpl = δ,
-  η.lib = α,
-  θ.platforms = α,
-  ι.lib = θ
+  β.licenses = η,
+  η.lgpl2 = γ,
+  η.qpl = γ,
+  θ.platforms = ι,
+  ι.linux = δ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> ε;
   ncurses = String;

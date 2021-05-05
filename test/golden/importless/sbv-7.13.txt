@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.bsd3 = β, γ.licenses = α, δ.lib = γ) => { Glob = ε;
+(α.lib = β, β.licenses = γ, γ.bsd3 = δ) => { Glob = ε;
   QuickCheck = ε;
   array = ε;
   async = ε;
@@ -19,7 +19,7 @@
       enableSeparateDataOutput = Bool;
       homepage = String;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       sha256 = String;
       testHaskellDepends = [ε];

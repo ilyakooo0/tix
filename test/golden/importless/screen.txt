@@ -2,7 +2,7 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.screen = ε,
+  β.programs = ε,
   γ.mkIf =
     Bool ->
     { environment = {etc = {screenrc = {text = ζ;};}; systemPackages = [η];};
@@ -13,7 +13,7 @@
   γ.types = λ,
   δ.screen = η,
   λ.lines = ι,
-  ε.screenrc = String,
-  μ.programs = β
+  ε.screen = μ,
+  μ.screenrc = String
 ) =>
 α -> {config = θ; options = {programs = {screen = {screenrc = κ;};};};}

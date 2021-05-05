@@ -1,9 +1,9 @@
 ∀ α β γ δ ε ζ η θ.
 ( α.licenses = β,
-  α.orivej = γ,
+  α.maintainers = γ,
   β.fdl12 = δ,
   β.gpl2Plus = δ,
-  ε.maintainers = α
+  γ.orivej = ε
 ) =>
 { extra-cmake-modules = ζ;
   kcrash = η;
@@ -16,7 +16,7 @@
   lib = α;
   mkDerivation =
     { buildInputs = [η];
-      meta = {license = [δ]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [ζ];
     } ->

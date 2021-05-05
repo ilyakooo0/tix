@@ -2,36 +2,36 @@
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
-  β.enable = ε,
+  β.services = ε,
   δ.gcr = ζ,
-  δ.gnome-keyring = η,
+  δ.gnome3 = η,
   γ.mkIf =
-    ε ->
-    { environment = {systemPackages = [η];};
+    θ ->
+    { environment = {systemPackages = [ι];};
       security =
         { pam = {services = {login = {enableGnomeKeyring = Bool;};};};
           wrappers =
             {gnome-keyring-daemon = {capabilities = String; source = String;};};
         };
       services = {dbus = {packages = [ζ];};};
-      xdg = {portal = {extraPortals = [θ];};};
+      xdg = {portal = {extraPortals = [κ];};};
     } ->
-    ι,
-  γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.teams = μ,
-  γ.types = ν,
-  ξ.gnome-keyring = β,
-  ο.gnome3 = ξ,
-  π.services = ο,
-  ρ.gnome3 = δ,
-  σ.gnome3 = δ,
-  τ.gnome3 = δ,
-  μ.members = υ,
-  φ.gnome = μ,
-  ν.bool = κ
+    λ,
+  γ.mkOption = {default = Bool; description = String; type = μ;} -> ν,
+  γ.teams = ξ,
+  γ.types = ο,
+  ε.gnome3 = π,
+  π.gnome-keyring = ρ,
+  ρ.enable = θ,
+  η.gnome-keyring = ι,
+  σ.gnome-keyring = ζ,
+  τ.gnome-keyring = κ,
+  ξ.gnome = υ,
+  υ.members = φ,
+  ο.bool = μ
 ) =>
 α ->
-{ config = ι;
-  meta = {maintainers = υ;};
-  options = {services = {gnome3 = {gnome-keyring = {enable = λ;};};};};
+{ config = λ;
+  meta = {maintainers = φ;};
+  options = {services = {gnome3 = {gnome-keyring = {enable = ν;};};};};
 }

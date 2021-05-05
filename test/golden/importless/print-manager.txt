@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι.
-(α.gpl2 = β, α.ttuegel = γ, δ.licenses = α, ε.maintainers = α) => { cups = ζ;
+(α.licenses = β, α.maintainers = γ, β.gpl2 = δ, γ.ttuegel = ε) => { cups = ζ;
   extra-cmake-modules = η;
   kcmutils = θ;
   kconfig = θ;
@@ -16,7 +16,7 @@
   mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
       buildInputs = [ζ];
-      meta = {license = [β]; maintainers = [γ];};
+      meta = {license = [δ]; maintainers = [ε];};
       name = String;
       nativeBuildInputs = [η];
       outputs = [String];

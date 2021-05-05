@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-(α.mit = β, γ.licenses = α, δ.lib = γ) => { HUnit = ε;
+(α.lib = β, β.licenses = γ, γ.mit = δ) => { HUnit = ε;
   QuickCheck = ε;
   aeson = ε;
   array = ε;
@@ -20,7 +20,7 @@
     { description = String;
       homepage = String;
       libraryHaskellDepends = [ε];
-      license = β;
+      license = δ;
       pname = String;
       src = ζ;
       testHaskellDepends = [ε];
