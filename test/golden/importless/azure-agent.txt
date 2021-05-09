@@ -16,7 +16,7 @@
       environment = {etc = {waagent.conf = {text = String;};};};
       networking =
         { dhcpcd = {persistent = Bool;};
-          firewall = {allowedUDPPorts = [Integer];};
+          firewall = {allowedUDPPorts = [Number];};
         };
       services =
         { logrotate = {config = String; enable = Bool;};

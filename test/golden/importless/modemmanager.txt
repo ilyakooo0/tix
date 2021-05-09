@@ -9,7 +9,7 @@
 ) =>
 {config = α; lib = γ; options = κ; pkgs = λ;} ->
 { extraOpts = {refreshRate = ε;};
-  port = Integer;
+  port = Number;
   serviceOpts =
     {serviceConfig = {ExecStart = String; SupplementaryGroups = String;};};
 }

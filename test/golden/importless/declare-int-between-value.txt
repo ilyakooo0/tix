@@ -3,6 +3,6 @@
   β.mkOption = {type = γ;} -> δ,
   β.types = ε,
   ε.ints = ζ,
-  ζ.between = Integer -> Integer -> γ
+  ζ.between = Number -> Number -> γ
 ) =>
 α -> {options = {value = δ;};}

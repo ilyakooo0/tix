@@ -5,7 +5,7 @@
   β.environment = ε,
   γ.attrNames = ζ -> η,
   γ.concatStrings = θ -> ι,
-  γ.length = η -> Integer,
+  γ.length = η -> Number,
   γ.literalExample = String -> κ,
   γ.mapAttrsToList = (λ -> μ -> String) -> ζ -> θ,
   γ.mkIf =

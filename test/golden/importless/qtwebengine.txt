@@ -58,7 +58,7 @@
     { extraPrefix = String;
       name = String;
       sha256 = String;
-      stripLen = Integer;
+      stripLen = Number;
       url = String;
     } ->
     μ1;

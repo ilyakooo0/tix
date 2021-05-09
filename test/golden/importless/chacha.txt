@@ -12,7 +12,7 @@
           license = δ;
           maintainers = [ε];
           platforms = [String];
-          priority = Integer;
+          priority = Number;
         };
       nativeBuildInputs = [ζ];
       outputs = [String];

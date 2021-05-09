@@ -5,7 +5,7 @@
   β.hardware = ε,
   γ.mkIf = ζ -> {boot = {initrd = {prepend = η;};};} -> θ,
   γ.mkOption = {default = Bool; description = String; type = ι;} -> κ,
-  γ.mkOrder = Integer -> [String] -> η,
+  γ.mkOrder = Number -> [String] -> η,
   γ.types = λ,
   ε.cpu = μ,
   μ.intel = ν,

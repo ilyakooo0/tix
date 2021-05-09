@@ -3,7 +3,7 @@
   δ.hostPlatform = ε,
   δ.lib = ζ,
   δ.mkDerivation =
-    { dontStrip = Integer;
+    { dontStrip = Number;
       installPhase = String;
       meta =
         { description = String;

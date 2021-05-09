@@ -24,7 +24,7 @@
           homepage = String;
           license = [ο];
           platforms = π;
-          priority = Integer;
+          priority = Number;
         };
       nativeBuildInputs = [μ];
       pipInstallFlags = [String];

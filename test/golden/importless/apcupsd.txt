@@ -10,6 +10,6 @@
 ) =>
 {config = α; lib = γ; options = μ; pkgs = ν;} ->
 { extraOpts = {apcupsdAddress = ε; apcupsdNetwork = ξ;};
-  port = Integer;
+  port = Number;
   serviceOpts = {serviceConfig = {ExecStart = String;};};
 }

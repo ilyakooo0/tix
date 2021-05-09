@@ -18,7 +18,7 @@
                       Group = String;
                       PIDFile = String;
                       Restart = String;
-                      RestartSec = Integer;
+                      RestartSec = Number;
                       Type = String;
                       User = String;
                     };
@@ -38,7 +38,7 @@
         };
     } ->
     κ,
-  γ.mkOption = {default = Integer; description = String; type = λ;} -> μ,
+  γ.mkOption = {default = Number; description = String; type = λ;} -> μ,
   γ.types = ν,
   ζ.tvheadend = ξ,
   ξ.enable = θ,

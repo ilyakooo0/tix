@@ -15,7 +15,7 @@
                     { ExecStart = String;
                       IOSchedulingClass = String;
                       InaccessibleDirectories = String;
-                      Nice = Integer;
+                      Nice = Number;
                       NoNewPrivileges = String;
                       PrivateNetwork = String;
                       PrivateTmp = String;

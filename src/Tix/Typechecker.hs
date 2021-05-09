@@ -359,8 +359,8 @@ infer :: NExprLoc -> InferM' NType
 infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NConstant a -> return . NAtomic $ case a of
     NURI {} -> URI
-    NInt {} -> Integer
-    NFloat {} -> Float
+    NInt {} -> Number
+    NFloat {} -> Number
     NBool {} -> Bool
     NNull {} -> Null
   NLiteralPath {} -> return . NAtomic $ Path

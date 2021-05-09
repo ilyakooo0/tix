@@ -128,8 +128,7 @@ data NType
   deriving stock (Eq, Ord, Show, Generic)
 
 data AtomicType
-  = Integer
-  | Float
+  = Number
   | Bool
   | String
   | Path

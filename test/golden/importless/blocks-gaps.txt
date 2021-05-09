@@ -20,7 +20,7 @@
     ι,
   β.carlsverre = ε,
   β.intersectLists = [String] -> [String] -> κ,
-  β.length = κ -> Integer,
+  β.length = κ -> Number,
   β.licenses = λ,
   β.maintainers = μ,
   β.optional = Bool -> ν -> γ,

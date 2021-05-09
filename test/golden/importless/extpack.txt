@@ -5,7 +5,7 @@
   α.maintainers = ε,
   α.sander = γ,
   ζ.version = η,
-  β.stringLength = String -> Integer,
+  β.stringLength = String -> Number,
   δ.virtualbox-puel = θ
 ) =>
 { fetchurl =

@@ -32,7 +32,7 @@
     ] ->
     ι,
   γ.mkOption = {default = Bool; description = String; type = ξ;} -> ο,
-  γ.mkOverride = Integer -> [String] -> π,
+  γ.mkOverride = Number -> [String] -> π,
   γ.types = ρ,
   δ.stdenv = σ,
   ε.kernelPackages = τ,

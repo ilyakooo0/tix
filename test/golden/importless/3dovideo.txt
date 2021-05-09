@@ -6,7 +6,7 @@
   β.bytestring = ε,
   β.concatMapStrings = (ζ -> String) -> η -> String,
   β.filepath = ε,
-  β.lessThan = ζ -> Integer -> θ,
+  β.lessThan = ζ -> Number -> θ,
   β.mkDerivation =
     { buildDepends = [ε];
       description = String;
@@ -19,7 +19,7 @@
     } ->
     λ,
   β.optionalString = θ -> String -> μ,
-  β.range = Integer -> Integer -> η,
+  β.range = Number -> Number -> η,
   β.tar = ε,
   β.toString = ζ -> μ,
   ν.licenses = ξ,

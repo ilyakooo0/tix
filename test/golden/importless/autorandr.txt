@@ -18,8 +18,8 @@
                   serviceConfig =
                     { ExecStart = String;
                       RemainAfterExit = Bool;
-                      StartLimitBurst = Integer;
-                      StartLimitInterval = Integer;
+                      StartLimitBurst = Number;
+                      StartLimitInterval = Number;
                       Type = String;
                     };
                   wantedBy = [String];

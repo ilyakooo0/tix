@@ -13,15 +13,15 @@
                   description = String;
                   serviceConfig =
                     { ExecStart = String;
-                      Nice = Integer;
-                      OOMScoreAdjust = Integer;
+                      Nice = Number;
+                      OOMScoreAdjust = Number;
                       ProtectHome = String;
                       ProtectSystem = String;
                       Restart = String;
-                      RestartSec = Integer;
+                      RestartSec = Number;
                       SystemCallArchitectures = String;
-                      TimeoutStartSec = Integer;
-                      TimeoutStopSec = Integer;
+                      TimeoutStartSec = Number;
+                      TimeoutStopSec = Number;
                       Type = String;
                     };
                   unitConfig =

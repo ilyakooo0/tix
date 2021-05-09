@@ -42,7 +42,7 @@
             { terminal-server =
                 { before = [String];
                   description = String;
-                  socketConfig = {Accept = Bool; ListenStream = Integer;};
+                  socketConfig = {Accept = Bool; ListenStream = Number;};
                   wantedBy = [String];
                 };
             };

@@ -21,7 +21,7 @@
                   restartTriggers = [ο];
                   serviceConfig =
                     { ExecStart = String;
-                      LimitNOFILE = Integer;
+                      LimitNOFILE = Number;
                       NotifyAccess = String;
                       Type = String;
                     };

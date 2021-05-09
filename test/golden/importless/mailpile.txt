@@ -19,7 +19,7 @@
                     { ExecStart = String;
                       KillMode = String;
                       KillSignal = String;
-                      TimeoutSec = Integer;
+                      TimeoutSec = Number;
                       User = String;
                     };
                   wantedBy = [String];

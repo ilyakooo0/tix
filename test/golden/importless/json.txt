@@ -10,6 +10,6 @@
 ) =>
 {config = α; lib = γ; options = μ; pkgs = ν;} ->
 { extraOpts = {configFile = ε; listenAddress = {}; url = ξ;};
-  port = Integer;
+  port = Number;
   serviceOpts = {serviceConfig = {ExecStart = String;};};
 }

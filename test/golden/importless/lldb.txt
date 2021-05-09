@@ -39,7 +39,7 @@
   cmake = η;
   darwin = μ;
   fetch = String -> String -> ι;
-  fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> θ;
+  fetchpatch = {sha256 = String; stripLen = Number; url = String;} -> θ;
   libedit = δ;
   libxml2 = δ;
   llvm = δ;

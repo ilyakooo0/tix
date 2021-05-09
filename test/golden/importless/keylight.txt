@@ -5,4 +5,4 @@
   δ.keylight = ε
 ) =>
 {config = α; lib = ζ; options = η; pkgs = θ;} ->
-{port = Integer; serviceOpts = {serviceConfig = {ExecStart = String;};};}
+{port = Number; serviceOpts = {serviceConfig = {ExecStart = String;};};}

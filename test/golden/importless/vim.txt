@@ -7,7 +7,7 @@
     ζ ->
     {environment = {systemPackages = [η]; variables = {EDITOR = θ;};};} -> ι,
   γ.mkOption = {default = Bool; description = String; type = κ;} -> λ,
-  γ.mkOverride = Integer -> String -> θ,
+  γ.mkOverride = Number -> String -> θ,
   γ.types = μ,
   δ.vim = η,
   ε.vim = ν,

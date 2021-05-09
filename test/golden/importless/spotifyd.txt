@@ -18,7 +18,7 @@
                       DynamicUser = Bool;
                       ExecStart = String;
                       Restart = String;
-                      RestartSec = Integer;
+                      RestartSec = Number;
                       SupplementaryGroups = [String];
                     };
                   wantedBy = [String];

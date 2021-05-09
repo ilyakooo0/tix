@@ -33,6 +33,6 @@
           postfix = {enable = Bool;};
         };
       time = {timeZone = String;};
-      virtualisation = {memorySize = Integer;};
+      virtualisation = {memorySize = Number;};
     };
 }

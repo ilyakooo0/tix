@@ -3,7 +3,7 @@
     { testConfig =
         { environment = {systemPackages = [β];};
           services = {flatpak = {enable = Bool;};};
-          virtualisation = {diskSize = Integer;};
+          virtualisation = {diskSize = Number;};
           xdg = {portal = {enable = Bool;};};
         };
       testRunnerFlags = String;

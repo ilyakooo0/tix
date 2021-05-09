@@ -16,9 +16,9 @@
                   serviceConfig =
                     { ExecStart = String;
                       Restart = String;
-                      RestartSec = Integer;
-                      StartLimitBurst = Integer;
-                      StartLimitIntervalSec = Integer;
+                      RestartSec = Number;
+                      StartLimitBurst = Number;
+                      StartLimitIntervalSec = Number;
                     };
                   wantedBy = [String];
                   wants = [String];

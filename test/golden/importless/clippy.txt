@@ -2,7 +2,7 @@
 ( α.isDarwin = β,
   α.lib = γ,
   δ.buildRustPackage =
-    { RUSTC_BOOTSTRAP = Integer;
+    { RUSTC_BOOTSTRAP = Number;
       buildAndTestSubdir = String;
       buildInputs = [ε];
       cargoVendorDir = String;

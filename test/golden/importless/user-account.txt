@@ -6,7 +6,7 @@
             { description = String;
               isNormalUser = Bool;
               password = String;
-              uid = Integer;
+              uid = Number;
             };
           bob = {description = String; isNormalUser = Bool; password = String;};
         };

@@ -16,18 +16,16 @@
                   description = String;
                   serviceConfig =
                     { CacheDirectory = String;
-                      CacheDirectoryMode = Integer;
+                      CacheDirectoryMode = Number;
                       ExecStart = String;
                       Restart = String;
                       RuntimeDirectory = String;
-                      RuntimeDirectoryMode = Integer;
+                      RuntimeDirectoryMode = Number;
                       StateDirectory = String;
-                      StateDirectoryMode = Integer;
+                      StateDirectoryMode = Number;
                     };
                   unitConfig =
-                    { StartLimitBurst = Integer;
-                      StartLimitIntervalSec = Integer;
-                    };
+                    {StartLimitBurst = Number; StartLimitIntervalSec = Number;};
                   wantedBy = [String];
                   wants = [String];
                 };
@@ -35,7 +33,7 @@
         };
     } ->
     κ,
-  γ.mkOption = {default = Integer; description = String; type = λ;} -> μ,
+  γ.mkOption = {default = Number; description = String; type = λ;} -> μ,
   γ.types = ν,
   ε.tailscale = ξ,
   ξ.enable = ι,

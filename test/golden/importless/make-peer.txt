@@ -14,9 +14,9 @@
           { interfaces =
               { eth1 =
                   { ipv4 =
-                      {addresses = [{address = γ; prefixLength = Integer;}];};
+                      {addresses = [{address = γ; prefixLength = Number;}];};
                     ipv6 =
-                      {addresses = [{address = δ; prefixLength = Integer;}];};
+                      {addresses = [{address = δ; prefixLength = Number;}];};
                   };
               };
             useDHCP = Bool;
@@ -39,10 +39,8 @@
       networking =
         { interfaces =
             { eth1 =
-                { ipv4 =
-                    {addresses = [{address = γ; prefixLength = Integer;}];};
-                  ipv6 =
-                    {addresses = [{address = δ; prefixLength = Integer;}];};
+                { ipv4 = {addresses = [{address = γ; prefixLength = Number;}];};
+                  ipv6 = {addresses = [{address = δ; prefixLength = Number;}];};
                 };
             };
           useDHCP = Bool;

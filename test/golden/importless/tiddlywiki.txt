@@ -31,7 +31,7 @@
   γ.mkOption =
     { default = {};
       description = String;
-      example = {credentials = String; port = Integer; readers = String;};
+      example = {credentials = String; port = Number; readers = String;};
       type = ο;
     } ->
     π,

@@ -13,7 +13,7 @@
       src = η;
     } ->
     θ,
-  γ.api_version = Integer,
+  γ.api_version = Number,
   β.optionalString = Bool -> String -> String,
   ι.licenses = κ,
   ι.platforms = λ,

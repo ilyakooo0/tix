@@ -9,7 +9,7 @@
 ) =>
 {config = α; lib = γ; options = κ; pkgs = λ;} ->
 { extraOpts = {modemAddress = ε;};
-  port = Integer;
+  port = Number;
   serviceOpts =
     { description = String;
       serviceConfig = {ExecStart = String;};

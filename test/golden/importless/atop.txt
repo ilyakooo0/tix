@@ -8,7 +8,7 @@
   γ.mkOption =
     { default = {};
       description = String;
-      example = {flags = String; interval = Integer;};
+      example = {flags = String; interval = Number;};
       type = λ;
     } ->
     μ,

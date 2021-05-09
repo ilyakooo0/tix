@@ -15,7 +15,7 @@
                   serviceConfig =
                     { Group = ι;
                       Restart = String;
-                      RestartSec = Integer;
+                      RestartSec = Number;
                       User = κ;
                     };
                   wantedBy = [String];

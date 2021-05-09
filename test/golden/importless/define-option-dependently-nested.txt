@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ.
-( ({value = Integer;}) // (β) ~ (γ),
+( ({value = Number;}) // (β) ~ (γ),
   δ.?set = ε,
   ε.?enable = ζ,
   η.?enable = θ,

@@ -1,1 +1,1 @@
-∀ α. {f = Integer -> String -> α;} -> α
+∀ α. {f = Number -> String -> α;} -> α

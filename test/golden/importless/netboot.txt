@@ -34,7 +34,7 @@
     { boot =
         { initrd =
             {availableKernelModules = [String]; kernelModules = [String];};
-          loader = {grub = {enable = Bool;}; timeout = Integer;};
+          loader = {grub = {enable = Bool;}; timeout = Number;};
           postBootCommands = String;
         };
       environment = {systemPackages = [μ];};

@@ -13,7 +13,7 @@
                     serviceConfig =
                       { ExecStart = String;
                         Restart = String;
-                        RestartSec = Integer;
+                        RestartSec = Number;
                       };
                   };
               };

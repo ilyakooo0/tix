@@ -2,7 +2,7 @@
 α ->
 { boot =
     { initrd = {kernelModules = [String];};
-      loader = {grub = {device = String; version = Integer;};};
+      loader = {grub = {device = String; version = Number;};};
     };
   services = {syslogd = {tty = String;}; timesyncd = {enable = Bool;};};
 }

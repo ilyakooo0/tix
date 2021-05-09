@@ -1,1 +1,1 @@
-{a = Integer; b = Integer; f = ∀ α β. (α.a = β, α.b = β) => α -> β;}
+{a = Number; b = Number; f = ∀ α β. (α.a = β, α.b = β) => α -> β;}

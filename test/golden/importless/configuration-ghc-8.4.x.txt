@@ -1,6 +1,6 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1 λ1
 μ1 ν1 ξ1 ο1 π1 ρ1 σ1 τ1 υ1 φ1 χ1 ψ1 ω1 α2 β2.
-( β.fetchpatch = {sha256 = String; stripLen = Integer; url = String;} -> γ,
+( β.fetchpatch = {sha256 = String; stripLen = Number; url = String;} -> γ,
   β.llvmPackages_5 = δ,
   ε.addBuildDepend = ζ -> η -> θ,
   ε.appendPatch = ι -> γ -> κ,

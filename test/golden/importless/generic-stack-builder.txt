@@ -5,7 +5,7 @@
       LANG = String;
       LD_LIBRARY_PATH = β;
       STACK_IN_NIX_EXTRA_ARGS = γ;
-      STACK_IN_NIX_SHELL = Integer;
+      STACK_IN_NIX_SHELL = Number;
       STACK_PLATFORM_VARIANT = String;
       __noChroot = Bool;
       buildInputs = [δ];

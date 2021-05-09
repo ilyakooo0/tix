@@ -2,7 +2,7 @@
 ( α.hasPrefix = String -> β -> Bool,
   α.removePrefix = String -> γ -> Null,
   α.replaceStrings = [String] -> [String] -> Null -> δ,
-  α.stringLength = δ -> Integer,
+  α.stringLength = δ -> Number,
   α.throw = String -> String,
   α.versionAtLeast = String -> String -> Bool
 ) =>

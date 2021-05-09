@@ -6,7 +6,7 @@
   γ.grub2 = ζ,
   γ.mkIf =
     ε ->
-    { boot = {loader = {grub = {enable = Bool; version = Integer;};};};
+    { boot = {loader = {grub = {enable = Bool; version = Number;};};};
       environment = {systemPackages = [η];};
       programs = {ssh = {startAgent = Bool;};};
       services =

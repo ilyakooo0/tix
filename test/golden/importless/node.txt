@@ -13,7 +13,7 @@
 ) =>
 {config = β; lib = δ; options = ρ; pkgs = σ;} ->
 { extraOpts = {disabledCollectors = ζ; enabledCollectors = τ;};
-  port = Integer;
+  port = Number;
   serviceOpts =
     { serviceConfig =
         {DynamicUser = Bool; ExecStart = String; RuntimeDirectory = String;};

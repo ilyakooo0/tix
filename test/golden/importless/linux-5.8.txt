@@ -19,7 +19,7 @@
   θ.lib = ι,
   ι.concatStringsSep = String -> κ -> Null,
   ι.splitVersion = String -> λ,
-  ι.take = Integer -> λ -> κ,
+  ι.take = Number -> λ -> κ,
   ι.versions = μ,
   μ.majorMinor = String -> β
 ) =>

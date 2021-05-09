@@ -1,1 +1,1 @@
-{f = Integer -> Integer; foo = Integer;}
+{f = Number -> Number; foo = Number;}

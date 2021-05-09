@@ -1,1 +1,1 @@
-∀ α. {a = α; b = α;} -> {bar = [α]; baz = Integer;}
+∀ α. {a = α; b = α;} -> {bar = [α]; baz = Number;}

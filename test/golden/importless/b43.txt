@@ -5,7 +5,7 @@
   β.boot = ε,
   β.networking = ζ,
   γ.builtins = η,
-  γ.lessThan = Integer -> θ -> ι,
+  γ.lessThan = Number -> θ -> ι,
   γ.mkIf = κ -> {assertions = λ; hardware = {firmware = [μ];};} -> ν,
   γ.mkOption = {default = Bool; description = String; type = ξ;} -> ο,
   γ.singleton = {assertion = ι; message = String;} -> λ,

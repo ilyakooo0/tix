@@ -4,7 +4,7 @@
   δ.buildRustPackage =
     { CFG_RELEASE = String;
       CFG_RELEASE_CHANNEL = String;
-      RUSTC_BOOTSTRAP = Integer;
+      RUSTC_BOOTSTRAP = Number;
       buildAndTestSubdir = String;
       buildInputs = ε;
       cargoVendorDir = String;

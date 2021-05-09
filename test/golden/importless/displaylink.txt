@@ -25,7 +25,7 @@
                     { ExecStart = String;
                       LogsDirectory = String;
                       Restart = String;
-                      RestartSec = Integer;
+                      RestartSec = Number;
                     };
                 };
             };
