@@ -32,7 +32,8 @@
   τ.optionals = Bool -> [String] -> [String],
   υ.optionals = Bool -> [String] -> [String],
   φ.optionalString = Bool -> String -> γ,
-  χ.optionalString = Bool -> String -> γ
+  χ.optionalString = Bool -> String -> γ,
+  (String | Number) ~ γ
 ) =>
 { enableLua = Bool;
   enableMysql = Bool;

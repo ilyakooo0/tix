@@ -1,1 +1,1 @@
-{a = Number; b = Number; f = ∀ α. α -> α -> α;}
+{a = Number; b = Number; f = ∀ α. ((String | Number) ~ α) => α -> α -> α;}

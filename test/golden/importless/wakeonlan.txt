@@ -14,7 +14,8 @@
     μ,
   δ.throw = String -> String,
   ζ.wakeonlan = ν,
-  ν.interfaces = λ
+  ν.interfaces = λ,
+  (String | Number) ~ η
 ) =>
 β ->
 { config = {powerManagement = {powerDownCommands = ι;};};

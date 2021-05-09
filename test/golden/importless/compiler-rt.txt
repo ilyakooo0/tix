@@ -40,7 +40,9 @@
   ι1.isWasm = Bool,
   κ1.optionalString = Bool -> String -> η,
   λ1.optionalString = γ -> String -> θ,
-  μ1.optionalString = Bool -> String -> θ
+  μ1.optionalString = Bool -> String -> θ,
+  (String | Number) ~ η,
+  (String | Number) ~ θ
 ) =>
 { cmake = ζ;
   fetch = String -> String -> ι;

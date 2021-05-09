@@ -144,9 +144,11 @@ instance Free Pred where
   free = \case
     Update x y z -> free x <> free y <> free z
     HasField _ x (_, y) -> free x <> free y
+    StringOrNumber x -> free x
   sub s = \case
     Update x y z -> Update (sub s x) (sub s y) (sub s z)
     HasField r t (f, v) -> HasField r (sub s t) (f, sub s v)
+    StringOrNumber x -> StringOrNumber $ sub s x
 
 instance Free Scheme where
   free (x :=> y) = free x <> free y
@@ -275,6 +277,7 @@ data UnifyingError
 data PredicateError
   = KeyNotPresent Text NType
   | NotAnAttributeSet NType
+  | NotAddable NType
   deriving stock (Eq, Show)
 
 data InferError
@@ -378,13 +381,12 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
       y : _ -> return $ List y
   NUnary NNeg y -> do
     t <- infer y
-    -- TODO: Infer either Float or Integer
-    -- tell $ t :~ (normalType . NAtomic $ )
-    return t
+    t ~~ NAtomic Number
+    return $ NAtomic Number
   NUnary NNot y -> do
     t <- infer y
     t ~~ NAtomic Bool
-    return t
+    return $ NAtomic Bool
   NBinary NUpdate lhs rhs -> do
     lhsT <- infer lhs
     rhsT <- infer rhs
@@ -411,7 +413,12 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NBinary NLte lhs rhs -> comparison lhs rhs
   NBinary NGt lhs rhs -> comparison lhs rhs
   NBinary NGte lhs rhs -> comparison lhs rhs
-  NBinary NPlus lhs rhs -> math lhs rhs
+  NBinary NPlus lhs rhs -> do
+    lhst <- infer lhs
+    rhst <- infer rhs
+    lhst ~~ rhst
+    tell $ StringOrNumber lhst
+    return lhst
   NBinary NMinus lhs rhs -> math lhs rhs
   NBinary NMult lhs rhs -> math lhs rhs
   NBinary NDiv lhs rhs -> math lhs rhs
@@ -514,21 +521,23 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     comparison lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      -- TODO: Infer lhst and rhst are either Integer or Double or String
+      tell (StringOrNumber lhst)
       lhst ~~ rhst
       return $ NAtomic Bool
     math lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      -- TODO: Infer lhst and rhst are either Integer or Double
-      lhst ~~ rhst
-      return lhst
+      let t = NAtomic Number
+      lhst ~~ t
+      rhst ~~ t
+      return t
     logic lhs rhs = do
       lhst <- infer lhs
       rhst <- infer rhs
-      rhst ~~ NAtomic Bool
-      lhst ~~ NAtomic Bool
-      return $ NAtomic Bool
+      let t = NAtomic Bool
+      rhst ~~ t
+      lhst ~~ t
+      return t
 
 type NormalizedBinding' = F.Free (Map VarName)
 
@@ -788,6 +797,7 @@ solveAndClose range (cs :=> t) = evalState @Substitution mempty $ do
       solveAndClose newRange $ sub s $ (collectedPreds <> solvedPreds) :=> t
 
 solveConstraints ::
+  forall effs.
   Members
     '[ Fresh,
        Writer Pred,
@@ -802,6 +812,15 @@ solveConstraints ::
   Eff effs [Pred]
 solveConstraints _ [] = pure []
 solveConstraints range (p : ps) = case p of
+  -- StringOrNumber
+  StringOrNumber (NTypeVariable _) -> (p :) <$> solveConstraints range ps
+  StringOrNumber t -> do
+    case t of
+      NAtomic String -> pure ()
+      NAtomic Number -> pure ()
+      other -> tell $ NotAddable other
+    solveConstraints range ps
+  -- HasField
   HasField r (NAttrSet ts) (f, t) -> case M.lookup f ts of
     Nothing -> do
       case r of
@@ -829,10 +848,19 @@ solveConstraints range (p : ps) = case p of
   HasField _ t _ -> do
     tell $ NotAnAttributeSet t
     solveConstraints range ps
+  -- Update
   (Update (NAttrSet a) (NAttrSet b) t) -> do
     (NAttrSet $ b <> a) ~~ t
     solveConstraints range ps
-  _ -> (p :) <$> solveConstraints range ps
+  (Update a b _) -> do
+    allGood <- check `traverse` ([a, b] :: [NType])
+    (if and allGood then (p :) else id) <$> solveConstraints range ps
+    where
+      check :: NType -> Eff effs Bool
+      check = \case
+        NTypeVariable _ -> pure True
+        NAttrSet _ -> pure True
+        other -> tell (NotAnAttributeSet other) >> pure False
 
 partitionWith :: (a -> Either b c) -> [a] -> ([b], [c])
 partitionWith f = partitionEithers . map f

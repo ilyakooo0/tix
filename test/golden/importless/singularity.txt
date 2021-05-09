@@ -15,6 +15,7 @@
     μ,
   θ.overrideAttrs = (ε -> {installPhase = String;}) -> λ,
   η.singularity = ν,
-  ν.enable = κ
+  ν.enable = κ,
+  (String | Number) ~ ζ
 ) =>
 α -> {config = μ; options = {programs = {singularity = {enable = ι;};};};}

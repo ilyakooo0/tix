@@ -39,7 +39,9 @@ data Pred
       -- ^ y
       !NType
       -- ^ z
-  | HasField {- Is the field optional? -} !FieldStrictness !NType !(Text, Scheme)
+  | HasField !FieldStrictness !NType !(Text, Scheme)
+  | -- | supports '+' operator (strings and numbers)
+    StringOrNumber !NType
   deriving stock (Eq, Ord, Show, Generic)
 
 data FieldStrictness = OptionalField | RequiredField
@@ -112,6 +114,7 @@ instance TraversableNTypes Pred where
         <$> traverseNTypesWith ctx f x
         <*> traverseNTypesWith ctx f y
         <*> traverseNTypesWith ctx f z
+    (StringOrNumber x) -> StringOrNumber <$> traverseNTypesWith ctx f x
   {-# INLINE traverseNTypesWith #-}
 
 traverseNTypes :: TraversableNTypes s => Traversal' s TerminalNType
@@ -251,6 +254,9 @@ prettyScheme u@(cs :=> t) = do
       y' <- prettyNType False y
       z' <- prettyNType False z
       return $ group $ paren x' <+> "//" <> line <> paren y' <+> "~" <> line <> paren z'
+    prettyPred (StringOrNumber x) = do
+      x' <- prettyNType False x
+      return $ "(String | Number)" <+> "~" <+> x'
     paren = bracketed "(" ")"
 
 -- | Returns the set of all De Bruijn type variables relative to the outermost

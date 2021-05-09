@@ -23,7 +23,8 @@
   β.tar = ε,
   β.toString = ζ -> μ,
   ν.licenses = ξ,
-  ξ.bsd3 = ι
+  ξ.bsd3 = ι,
+  (String | Number) ~ μ
 ) =>
 { fetchurl = {sha256 = String; url = String;} -> κ;
   haskellPackages = ο;

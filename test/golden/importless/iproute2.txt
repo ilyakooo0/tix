@@ -28,7 +28,8 @@
   ε.iproute2 = φ,
   φ.enable = θ,
   φ.rttablesExtraConfig = String,
-  υ.lines = σ
+  υ.lines = σ,
+  (String | Number) ~ π
 ) =>
 α ->
 { config = ρ;

@@ -3,7 +3,8 @@
   α.versionOlder = γ -> String -> Bool,
   δ.is64bit = Bool,
   δ.isDarwin = ε,
-  δ.isSunOS = Bool
+  δ.isSunOS = Bool,
+  (String | Number) ~ β
 ) =>
 { gnatboot = Null;
   hostPlatform = δ;
