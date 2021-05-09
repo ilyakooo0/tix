@@ -33,9 +33,9 @@
 
 \begin{otherlanguage}{russian}
 
-\begin{abstract}
-Настройка и сборка даже самых простых программных проектов часто бывает непростой задачей -- для этого требуется загрузить и установить большое количество необходимого программного обеспечения. Это часто делает проблематичным воспроизведение сборок проекта на разных компьютерах. Менеджер пакетов Nix стремится решить эту проблему, предоставляя единый язык для описания пакетов программного обеспечения чисто функциональным способом. Этот язык называется языком Nix Expression Language. Поскольку вся сложность конфигурации программного обеспечения должна быть выражена на языке Nix Expression Language, сами выражения часто становятся довольно сложными, что затрудняет понимание и расширение существующих выражений без ошибок. Широко распространенным инструментом для облегчения понимания и проверки корректности выражений на других языках является статическая проверка типов. В этой статье будут рассмотрены методы, которые можно использовать для добавления статической проверки типов в язык выражений Nix Expression Language.
-\end{abstract}
+  \begin{abstract}
+    Настройка и сборка даже самых простых программных проектов часто бывает непростой задачей -- для этого требуется загрузить и установить большое количество необходимого программного обеспечения. Это часто делает проблематичным воспроизведение сборок проекта на разных компьютерах. Менеджер пакетов Nix стремится решить эту проблему, предоставляя единый язык для описания пакетов программного обеспечения чисто функциональным способом. Этот язык называется языком Nix Expression Language. Поскольку вся сложность конфигурации программного обеспечения должна быть выражена на языке Nix Expression Language, сами выражения часто становятся довольно сложными, что затрудняет понимание и расширение существующих выражений без ошибок. Широко распространенным инструментом для облегчения понимания и проверки корректности выражений на других языках является статическая проверка типов. В этой статье будут рассмотрены методы, которые можно использовать для добавления статической проверки типов в язык выражений Nix Expression Language.
+  \end{abstract}
 
 \end{otherlanguage}
 
@@ -196,6 +196,22 @@ An attribute set is internally implemented as a hashmap with strings as keys whe
   \label{lst:attrSet}
 \end{Listing}
 
+\subsection{Attribute set updates} \label{sec:update}
+
+There is a binary \emph{update} operator that takes two \emph{attribute sets} as operands and ``merges'' them in a shallow manner, preferring values from the right operand. The operator is written as two forward slashes \texttt{//}. This has the effect of updating the left operand with values from the right operand. An example is shown in listing~\ref{lst:update}.
+
+\begin{Listing}
+  \begin{minipage}{\textwidth}
+    \begin{verbatim}
+{x = {a = 1;}; y = 2;} // {x = "hello"; z = 1.5;}
+
+{ x = "hello"; y = 2; z = 1.5; }
+    \end{verbatim}
+  \end{minipage}
+  \caption{Nix Expression Language attribute set updates.}
+  \label{lst:update}
+\end{Listing}
+
 \subsection{Recursive attribute sets} \label{sec:recAttrSet}
 
 While ordinary \emph{attribute sets} from discussed in section~\ref{sec:attrSet} can only reference values defined outside of the attribute set literal, \emph{recursive attribute sets} can also reference values defined in the attribute set literal itself. The keys of the attribute set are essentially available in scope of the attribute set values. An example of \emph{recursive attribute set} are given in listing~\ref{lst:recAttrSet}. Note that it is syntactically distiguished form normal \emph{attribute set} literals by the \texttt{rec} key word at the beginning.
@@ -318,16 +334,6 @@ Even if all of the information necessary for detailed error messages is collecte
 
 Hughes introduced a general-purpose algebraic pretty-printer~\cite{hughes1995design}, which was later improved upon~\cite{wadler2003prettier}, to solve precisely this problem. Using one of the pretty-printers based on that research is the industry standard and will be used by our type checker.
 
-% \subsection{Language Server Architecture}
-
-% A Language Server is a server providing language-specific code analysis. It communicates with various code editors using the Language Server Protocol\footnote{\url{https://microsoft.github.io/language-server-protocol/}}.
-
-% Language Servers have received wide adoption across a large variety of programming languages. Integrating the developed type checker into a Language Server with ``go-to-definition'' and ``show types on hover'' support would significantly improve the experience of developing in the Nix Expression Language.
-
-% One of the actively developed language servers is the Haskell Language Server\footnote{\url{https://github.com/haskell/haskell-language-server}}. To manage the complexities of tracking changes in files and dependencies between them, the Haskell Language Server employs the Shake library~\cite{mitchell2012shake}. It is described as an alternative to Make\footnote{\url{https://www.gnu.org/software/make/}} embedded as a DSL into Haskell with the ability to dynamically update the dependency tree, among other improvements.
-
-% As it is already tested as the basis for a Language Server implementation, building our Language Server on top of the Shake library seems like the correct architectural decision.
-
 \section{Architecture}
 
 \subsection{Effect system}
@@ -350,7 +356,7 @@ As mentioned above, we have opted to use the Damas-Milner type system as a basis
 
 \subsection{Polymorphism} \label{sec:polymorphism}
 
-Dynamic languages have potenitally limitless polymorphism – you can pass anything of any types to any function and it can potentially work without errors – it is in principal possible to check the ``types'' of passed values at runtime. This leads to the fact that there is really no way to know which ``types'' are acceptable in which positions without executing the program.
+Dynamic languages have potenitally limitless polymorphism – you can pass anything of any type to any function and it can potentially work without errors – it is in principal possible to check the ``types'' of passed values at runtime. This leads to the fact that there is really no way to know which ``types'' are acceptable in which positions without executing the program.
 
 The Nix community, just like with any other language, has developed idiomatic ways of solving problems. Some of these idioms are heavily based on polymorphic behavior at runtime. We should strive to develop a type system which supports as much of idiomatic behavior as possible (and where not possible, similar behavior should be expressible within the type system).
 
@@ -383,7 +389,25 @@ Recursive definitions pose a challenge for type inference without developer-supp
 
 While the last approach would allow us to in theory type more programs, we feel that tasking the user with configuring the typechecker would make the barrier to entry higher than it needs, and in practice the second approach would be useful enough (and faster), so that is the approach we chose to go with.
 
-\subsection{Row-polymorphism}
+\subsection{Row polymorphism}
+
+Nix has first-class hashmaps with strings as keys called \emph{attribute sets} as discussed in section~\ref{sec:attrSet} which are in practice used as structures in much the same way it is done in JavaScript\footnote{\url{https://www.javascript.com}}. This happens because the languages are dynamic and don't afford the programmer the ability to explicitly define custom structure types. Of course, there is the ability to not only create \emph{attribute sets}, but you can also modify existing \emph{attribute sets} as discussed in section~\ref{sec:update}.
+
+Of course, since \emph{attribute sets} are used as structures, their internal structure (keys and types of values) has significance and should be tracked in types just like objects and structures are tracked in most statically typed programming languages. Even though it is in most cases implemented as a mechanism that allows the programmer to introduce new types which correspond to a static set of field names and types, and the type system is presented in terms of those types, this is not significantly different from tracking keys directly. In fact, the \emph{Go}\footnote{\url{https://golang.org}} programming language has a notion of \emph{protocols} which bridges the gap between the two paradigms.
+
+This leads to a non-trivial typechecking case where modifying a structure leads to the resulting type depending on the type of the input structure as shown in listing~\ref{lst:update_ex}. The listing shows a lambda expression which receives an \emph{attribute set} as input, and updates the field \texttt{a} with the value of \texttt{1}. It quickly becomes problematic to derive a type for this expression if we decide to track fields at the type level: we can say that the lambda takes a value of type \texttt{\{\}} and returns a value of type \texttt{\{a = Integer;\}} (type of functions will later be written as \texttt{<input type> -> <output type>}). This might seem a natural type to derive, however it is obviously not correct. Calling it with a values of type \texttt{\{b = String;\}} and \texttt{\{b = Float; a = Bool;\}} would both be very much valid, and would both produce different resulting types: \texttt{\{a = Integer; b = String;\}} and \texttt{\{a = Integer; b = Float;\}}. As stated above, the output type of a lambda expression like this depends on the input type.
+
+\begin{Listing}
+  \begin{minipage}{\textwidth}
+    \begin{verbatim}
+x: x // {a = 1;}
+    \end{verbatim}
+  \end{minipage}
+  \caption{A lambda expression which updates an input set.}
+  \label{lst:update_ex}
+\end{Listing}
+
+This problem is widely known as \emph{row polymorphism} – the term \emph{row} refers to a single key-value type pair. Thus, \emph{row polymorphism} is the polymorphism of key-value pairs. This fields has already received some research attention: a recent paper on the topic was written by Morris and McKinna~\cite{morris2019abstracting}.
 
 \section{Implementation} \label{sec:implementation}
 
