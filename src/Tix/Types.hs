@@ -39,6 +39,7 @@ data Pred
       -- ^ y
       !NType
       -- ^ z
+      -- | 'x.a ~ y'
   | HasField !FieldStrictness !NType !(Text, Scheme)
   | -- | supports '+' operator (strings and numbers)
     StringOrNumber !NType

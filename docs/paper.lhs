@@ -196,6 +196,22 @@ An attribute set is internally implemented as a hashmap with strings as keys whe
   \label{lst:attrSet}
 \end{Listing}
 
+Fields (keys) of an attribute set can be accessed through the \emph{dot} (\texttt{.}) operator as shown in listing~\ref{lst:attrSetAccess}. Accessing an absent field yields a runtime error.
+
+\begin{Listing}
+  \begin{minipage}{\textwidth}
+    \begin{verbatim}
+{ a = 42;
+  b = 6 + 9;
+}.b
+
+15
+    \end{verbatim}
+  \end{minipage}
+  \caption{Nix Expression Language attribute set field accessing.}
+  \label{lst:attrSetAccess}
+\end{Listing}
+
 \subsection{Attribute set updates} \label{sec:update}
 
 There is a binary \emph{update} operator that takes two \emph{attribute sets} as operands and ``merges'' them in a shallow manner, preferring values from the right operand. The operator is written as two forward slashes \texttt{//}. This has the effect of updating the left operand with values from the right operand. An example is shown in listing~\ref{lst:update}.
@@ -407,7 +423,135 @@ x: x // {a = 1;}
   \label{lst:update_ex}
 \end{Listing}
 
-This problem is widely known as \emph{row polymorphism} – the term \emph{row} refers to a single key-value type pair. Thus, \emph{row polymorphism} is the polymorphism of key-value pairs. This fields has already received some research attention: a recent paper on the topic was written by Morris and McKinna~\cite{morris2019abstracting}.
+This problem is widely known as \emph{row polymorphism}~\cite{wand1991type} – the term \emph{row} refers to a single key-value type pair. Thus, \emph{row polymorphism} is the polymorphism of key-value pairs. This fields has already received some research attention: a recent paper on the topic was written by Morris and McKinna~\cite{morris2019abstracting}. In the paper the authors introduce the \emph{Rose}\footnote{The name is a pun on ``rows'' referring to row polymorphism.} programming language which supports \emph{row polymorphism}.
+
+\subsubsection{Rose} \label{sec:rose}
+
+In \emph{Rose} row polymorphism is implemented by introducing two predicates on types. The first one denotes a \emph{combination} of two ``record'' types:
+
+\begin{equation} \label{eq:combination}
+  \alpha \odot \beta \sim \gamma
+\end{equation}
+
+
+where $\alpha$ and $\beta$ are the two types that are being combined and $\gamma$ is the resulting type. The semantics of what \emph{combination} is depend on the semantics of the language itself. Examples include:
+
+\begin{enumerate}
+  \item The two types can not have overlapping rows (combining types with overlapping rows is considered an error), and the resulting type is the union of the rows from the two types.
+  \item The two types can have overlapping rows, and the resulting type is either a left-biased or right-biased union of the rows from the two types.
+\end{enumerate}
+
+\def\clt{\mathrel{\mathrlap{\bigcirc}\!<\:}}
+
+The second predicate is:
+
+\begin{equation}
+  \alpha \clt \beta
+\end{equation}
+
+where all rows from $\alpha$ are present in $\beta$. This predicate isn't strictly necessary, and can be expressed through predicate~\ref{eq:combination}:
+
+\begin{equation}
+  \alpha \clt \gamma = \exists \beta. \; \alpha \odot \beta \sim \gamma
+\end{equation}
+
+Nevertheless, this predicate was still introduced as it closely matches the language term syntax and simplifies further processing of type.
+
+\subsubsection{Row polymophism in Nix} \label{sec:nixRowPoly}
+
+When deciding how to represent row polymorphism in Nix it is helpful to examine the base operators which would conjure row-related predicates during type inference. They include:
+
+\begin{enumerate}
+  \item Attribute set field accessing (the \texttt{.} operator) as discussed in section~\ref{sec:attrSet}
+  \item Attribute set field accessing with a default value (\texttt{\{a = 1;\}.b or 8})
+  \item Attribute set field presence check (\texttt{\{a = 1;\} ? a})
+  \item Attribute set updates (the \texttt{//} operator) as discussed in section~\ref{sec:attrSet}
+\end{enumerate}
+
+In terms of the predicates described in section~\ref{sec:rose} the expression \texttt{x: x.a}, which is a lambda expression which return the field \texttt{a} from the attribute set supplied as the argument, would have the following type:
+
+\begin{equation}
+  \forall \alpha \beta. \; (\{ a = \beta; \} \clt \alpha) \Rightarrow \alpha \rightarrow \beta
+\end{equation}
+
+Analogously, the expression \texttt{x: y: x // {a = y;}}, which returns the attribute set supplied as the argument updated with the field \texttt{a} supplied as the second argument, would have the following type:
+
+\begin{equation}
+  \forall \alpha \beta \gamma. \; (\alpha \odot \{ a = \beta; \} \sim \gamma) \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
+\end{equation}
+
+The types of the other two expressions are not fully expressible with the predicates from \emph{Rose}. This is due to the \emph{Rose} type system not having support for working with missing (optional) rows as it is very dynamic in nature. Nix, on the other hand, being a dynamic language, has full support for introspecting values at runtime, including branching on the presence of a key in an \emph{attribute set} as mentioned before.
+
+\subsubsection{Nix row predicates}
+
+When deciding how to model the four base row-related operations we decided to derive the predicates from the operations themselves. This would yield simpler types, and having simpler types for base operations leads to simpler types overall. Furthermore, the type system would in all likelihood be easier for Nix developers to use and understand if it is expressed in terms of familiar operations.
+
+We will not describe the row predicates we have chosen for Nix. Note the analogy with the enumeration from section~\ref{sec:nixRowPoly}.
+
+\newcommand{\update}{\mathbin{/\!\!/}}
+\newcommand{\optDot}{.\!?}
+
+\paragraph{Attribute set field predicate}
+
+\begin{equation} \label{eq:fieldPred}
+  \alpha. \text{x} = \beta
+\end{equation}
+
+The type $\alpha$ should be an attribute set and it should contain a field $x$ of the type $\beta$. This predicate arises from the use of the \emph{dot operator} (\texttt{.}) as discussed in section~\ref{sec:attrSet}. The syntax was chosen to be analogous to that of the Nix term syntax.
+
+The term \texttt{x: x.y} would field the following type:
+
+\begin{equation}
+  \forall \alpha \beta. \; \alpha.\text{y} = \beta \Rightarrow \alpha \rightarrow \beta
+\end{equation}
+
+\paragraph{Optional attribute set field predicate}
+
+\begin{equation} \label{eq:optFieldPred}
+  \alpha \optDot \text{x} = \beta
+\end{equation}
+
+The type $\alpha$ should be an attribute set and if it contains the field $x$, then the type of the field should be $\beta$. This predicate arises from the combination of the \emph{dot operator} (\texttt{.}) and the \emph{or operator} (\texttt{or}) which is used to supply a fallback value if the attribute set does not contain the required field. The syntax was chosen to be analogous to that of the Nix term syntax.
+
+The term \texttt{x: x.y or 1} would field the following type:
+
+\begin{equation}
+  \forall \alpha. \; \alpha \optDot \text{y} = \text{Number} \Rightarrow \alpha \rightarrow \text{Number}
+\end{equation}
+
+This predicate also arises from the use of the \emph{attribute set field presence check operator} (\texttt{?}). In that case the
+
+The term \texttt{x: x ? y} would field the following type:
+
+\begin{equation}
+  \forall \alpha \beta. \; \alpha \optDot \text{y} = \beta \Rightarrow \alpha \rightarrow \text{Bool}
+\end{equation}
+
+\paragraph{Record update predicate}
+
+\begin{equation} \label{eq:upatePred}
+  \alpha \update \beta \sim \gamma
+\end{equation}
+
+All $\alpha$, $\beta$ and $\gamma$ should be \emph{attribute sets}. The \emph{attribute set} $\gamma$ should contain all fields from both $\alpha$ and $\beta$, preferring the types from $\beta$ if they happen to overlap. That is, if $\alpha$ and $\beta$ both contain a field with the same name, then $\gamma$ should contain the same field with the type from $\beta$. This behaviour matches the way the \emph{update operator} (\texttt{//}) works as discussed in section~\ref{sec:update}.
+
+The term \texttt{x: x ? y} would field the following type:
+
+\begin{equation}
+  \forall \alpha \beta. \; \alpha \optDot \text{y} = \beta \Rightarrow \alpha \rightarrow \text{Bool}
+\end{equation}
+
+\subsubsection{Making predicates more user-friendly}
+
+The reader might observe that, although the predicates have a parallel with the Nix term syntax, visually parsing predicates and mentally applying them to the specified type variables can be difficult even in such simple examples. Here we will explore a technique that can be used to make these predicates easier for the programmer to work with.
+
+Note that all of what follows is only concerned with syntactic constructs. It does in no way alter the semantic of the predicates described above.
+
+We would like to point out that all of the predicates have an operand which is the ``result'' of the predicate -- a single type variable which is said to be equivalent to a more complex expression. That is $\beta$ in predicates \ref{eq:fieldPred} and \ref{eq:optFieldPred}, and $\gamma$ in predicate \ref{eq:upatePred}.
+
+The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is it natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands, and, as such, can be replaced with their definitions.
+
+Of course, this all breaks down once the ``result'' of the predicate is ``defined'' in more than one predicate, and it is not applicable to those cases.
 
 \section{Implementation} \label{sec:implementation}
 
