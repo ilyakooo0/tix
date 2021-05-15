@@ -381,7 +381,7 @@ A drawback of monad transformers is their somewhat rigid nature – every behavi
 
 Recently a ne aprproach to effect systems has been getting more attention – \emph{free monads algebraic effects}~\cite{kiselyov2015freer, ploeg2014reflection, kiselyov2013extensible}. This approach solves the problems with monad transformers mentioned above. Rather than being transformers, effects are described as \emph{functors}. The composability problem is resolved due to functors being in general composable. Contrary to how monad transformers operate, effects (or their carriers) in \emph{free monads algebraic effects} (we will from now on refer to them as just \emph{algebraic effects}) don't have any particulare inrpretation of the effect associated with them. Effects are interpreted in an ad-hoc way at the call site. Furthermore this allows us to dynamically modify the behavior of effects without changing the types or implementations of functions we wish to change the behavior of. How we use \emph{algebraic effects} will be discussed in more detail in section~\ref{sec:implementation}.
 
-\subsection{Type system}
+\section{Type system}
 
 As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not to just add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developer typechecker processes a program without errors, then the program should have no type errors during execution.
 
@@ -406,7 +406,7 @@ Traditionally in languages similar to \emph{simply-typed lambda calculus} genera
   \label{fig:closing}
 \end{figure}
 
-Apart from \emph{let expression} Nix also has \emph{attribute sets} discussed in section~\ref{sec:attrSet}, definitions in which are semantically similar to those in \emph{let expressions}. \emph{Attribute set} definitions also seem like a good point for \emph{generalization}.
+Apart from \emph{let expressions} Nix also has \emph{attribute sets} discussed in section~\ref{sec:attrSet}, definitions in which are semantically similar to those in \emph{let expressions}. \emph{Attribute set} definitions also seem like a good point for \emph{generalization}.
 
 \subsection{Inferring recursive types}
 
@@ -556,6 +556,10 @@ The term \texttt{x: y: x // y} would field the following type:
   \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
 \end{equation}
 
+\section{Implementation} \label{sec:implementation}
+
+\section{Possible improvements}
+
 \subsection{Making predicates more user-friendly}
 
 \subsubsection{A novel technique}
@@ -600,8 +604,6 @@ Complexity of types should also be used as a heuristic in cases where there are 
 The technique is not in applicable if the ``result'' of a predicate is not a type variable like in type \ref{eq:optFieldPredExample2}.
 
 Another limitation is that we can not remove predicates if their ``result'' type variable is not present in the head of the type like in type \ref{eq:optFieldPredExample}, since we would be losing typing information by doing so.
-
-\section{Implementation} \label{sec:implementation}
 
 \section{Conclusion}
 
