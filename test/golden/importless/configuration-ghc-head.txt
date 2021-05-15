@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1 κ1
 λ1 μ1 ν1 ξ1 ο1 π1 ρ1.
 ( α.llvmPackages_6 = β,
-  γ.appendPatch = δ -> Path -> ε,
+  γ.appendPatch = δ -> String -> ε,
   γ.doJailbreak = ζ -> η,
   γ.dontCheck = θ -> ι,
   κ.Diff = θ,

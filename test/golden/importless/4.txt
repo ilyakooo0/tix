@@ -1,10 +1,10 @@
 ∀ α β γ.
 { Foundation = α;
   callPackage =
-    Path ->
+    String ->
     { Foundation = α;
       enableParallelBuilding = Bool;
-      extraPatches = [Path];
+      extraPatches = [String];
       libobjc = β;
       sha256 = String;
       version = String;

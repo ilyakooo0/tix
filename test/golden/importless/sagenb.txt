@@ -8,7 +8,7 @@
 { buildPythonPackage =
     { doCheck = Bool;
       meta = {description = String; license = ζ; maintainers = [ε];};
-      patches = [Path];
+      patches = [String];
       pname = String;
       postInstall = String;
       propagatedBuildInputs = [η];

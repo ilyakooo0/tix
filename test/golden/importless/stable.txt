@@ -1,3 +1,4 @@
 ∀ α β.
-(α.callPackage = Path -> α -> {sha256 = String; version = String;} -> β) => α ->
-β
+( α.callPackage = String -> α -> {sha256 = String; version = String;} -> β
+) =>
+α -> β

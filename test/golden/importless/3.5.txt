@@ -1,7 +1,7 @@
 ∀ α β γ δ ε.
 ( (α) // ({src = β; version = String;}) ~ (γ),
   α.autoreconfHook = δ,
-  α.callPackage = Path -> γ -> ε,
+  α.callPackage = String -> γ -> ε,
   α.fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> β
 ) =>

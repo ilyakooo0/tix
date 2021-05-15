@@ -7,7 +7,7 @@
       firmware = γ;
       isExecutable = Bool;
       path = [ζ];
-      src = Path;
+      src = String;
     } ->
     η,
   β.bash = δ,

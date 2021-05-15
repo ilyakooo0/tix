@@ -2,7 +2,7 @@
 ( α.pkgs = β,
   β.isPy27 = Bool,
   γ.buildPythonPackage =
-    { patches = [Path];
+    { patches = [String];
       pname = String;
       postFixup = String;
       postInstall = String;

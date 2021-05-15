@@ -4,6 +4,6 @@
   α.gnugrep = γ,
   α.gnused = γ,
   α.substituteAll =
-    {bash = β; isExecutable = Bool; path = [γ]; src = Path;} -> δ
+    {bash = β; isExecutable = Bool; path = [γ]; src = String;} -> δ
 ) =>
 {pkgs = α;} -> δ

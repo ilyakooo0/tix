@@ -4,8 +4,8 @@
     { installPhase = String;
       meta = {license = γ; platforms = δ;};
       name = String;
-      patches = [Path];
-      src = Path;
+      patches = [String];
+      src = String;
     } ->
     ε,
   β.licenses = ζ,
@@ -13,4 +13,4 @@
   ζ.gpl2 = γ,
   η.unix = δ
 ) =>
-{fetchurl = {sha256 = String; url = String;} -> Path; stdenv = α;} -> ε
+{fetchurl = {sha256 = String; url = String;} -> String; stdenv = α;} -> ε

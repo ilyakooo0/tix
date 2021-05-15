@@ -21,7 +21,7 @@
       version = String;
     } ->
     κ,
-  γ.optional = λ -> Path -> θ,
+  γ.optional = λ -> String -> θ,
   β.isMusl = λ,
   μ.licenses = ν,
   μ.platforms = ξ,

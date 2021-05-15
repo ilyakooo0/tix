@@ -1,15 +1,15 @@
 ∀ α β γ δ ε ζ η θ ι κ.
 ( α.isDarwin = β,
   α.lib = γ,
-  γ.optionals = β -> [Path] -> [Path]
+  γ.optionals = β -> [String] -> [String]
 ) =>
 { CoreFoundation = δ;
   Security = ε;
   boost = ζ;
   callPackage =
-    Path ->
+    String ->
     {CoreFoundation = δ; Security = ε; boost = ζ; cctools = η; sasl = θ;} ->
-    {patches = [Path]; sha256 = String; version = String;} -> ι;
+    {patches = [String]; sha256 = String; version = String;} -> ι;
   cctools = η;
   lib = κ;
   sasl = θ;

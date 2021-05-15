@@ -14,7 +14,7 @@
           maintainers = [ε];
         };
       name = String;
-      patches = [Path];
+      patches = [String];
       postPatch = String;
       src = ζ;
       version = String;

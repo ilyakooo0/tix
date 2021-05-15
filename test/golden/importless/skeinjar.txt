@@ -8,7 +8,7 @@
     } ->
     δ
 ) =>
-{ callPackage = Path -> {src = ε; version = ζ;} -> η;
+{ callPackage = String -> {src = ε; version = ζ;} -> η;
   maven = γ;
   src = ε;
   stdenv = β;

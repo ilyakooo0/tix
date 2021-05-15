@@ -16,7 +16,7 @@
       version = String;
     } ->
     λ,
-  γ.optionals = β -> [Path] -> ι,
+  γ.optionals = β -> [String] -> ι,
   μ.licenses = ν,
   μ.platforms = ξ,
   ν.lgpl2 = ζ,

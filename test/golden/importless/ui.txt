@@ -12,7 +12,7 @@
         };
       nativeBuildInputs = [η];
       outputs = [String];
-      patches = [Path];
+      patches = [String];
       pname = String;
       propagatedBuildInputs = [θ];
       src = ι;

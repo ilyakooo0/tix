@@ -13,7 +13,7 @@
           platforms = ζ;
         };
       name = String;
-      patches = [Path];
+      patches = [String];
       postInstall = String;
       src = η;
       version = String;
@@ -28,12 +28,12 @@
   π.peti = ε,
   ρ.platforms = σ,
   σ.unix = ζ,
-  τ.optionals = Bool -> [Path] -> [Path],
+  τ.optionals = Bool -> [String] -> [String],
   υ.optionalString = Bool -> String -> String
 ) =>
 { ecl = Null;
   ecl-fasl = Bool;
-  fetchpatch = {sha256 = String; url = String;} -> Path;
+  fetchpatch = {sha256 = String; url = String;} -> String;
   fetchurl = {sha256 = String; url = String;} -> η;
   gnuplot = Null;
   makeWrapper = Null;

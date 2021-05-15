@@ -4,7 +4,7 @@
     { installPhase = String;
       name = γ;
       preferLocalBuild = Bool;
-      setupHook = Path;
+      setupHook = String;
       src = δ;
     } ->
     ε,

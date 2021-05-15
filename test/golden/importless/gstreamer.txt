@@ -12,7 +12,7 @@
           platforms = η;
         };
       nativeBuildInputs = [θ];
-      patches = [Path];
+      patches = [String];
       pname = String;
       src = ι;
       version = String;

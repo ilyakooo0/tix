@@ -14,7 +14,7 @@
 ) =>
 { buildGoPackage =
     { buildFlagsArray = String;
-      goDeps = Path;
+      goDeps = String;
       goPackagePath = String;
       meta =
         { description = String;

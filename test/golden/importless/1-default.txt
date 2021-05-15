@@ -13,7 +13,7 @@
         };
       name = String;
       nativeBuildInputs = [η];
-      patches = [Path];
+      patches = [String];
       postPatch = String;
       preConfigure = String;
       src = θ;

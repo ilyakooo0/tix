@@ -2,7 +2,7 @@
 ( α.mkDerivation =
     { allowMissing = Bool;
       allowedReferences = [String];
-      builder = Path;
+      builder = String;
       firmware = β;
       kernel = γ;
       name = String;

@@ -19,7 +19,7 @@
       nativeBuildInputs = [θ];
       outputs = [String];
       passthru = {targetPrefix = ι;};
-      patches = [Path];
+      patches = [String];
       postPatch = String;
       preInstall = String;
       src = κ;

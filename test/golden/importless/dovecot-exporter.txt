@@ -11,7 +11,7 @@
   ζ.homepage = μ
 ) =>
 { buildGoPackage =
-    { goDeps = Path;
+    { goDeps = String;
       goPackagePath = String;
       meta =
         {description = String; homepage = μ; license = κ; maintainers = [η];};

@@ -1,9 +1,9 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
 ( β.lib = γ,
   δ.mkDerivation =
-    { alt_wrapper = Path;
+    { alt_wrapper = String;
       buildInputs = [ε];
-      builder = Path;
+      builder = String;
       cctools_port = ζ;
       ldid = ζ;
       meta =

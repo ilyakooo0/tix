@@ -14,4 +14,4 @@
   π.description = String,
   ν.version = ξ
 ) =>
-{callPackage = Path -> {} -> λ; stdenv = η; wineUnstable = ι;} -> γ
+{callPackage = String -> {} -> λ; stdenv = η; wineUnstable = ι;} -> γ

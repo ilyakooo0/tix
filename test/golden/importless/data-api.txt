@@ -14,7 +14,7 @@
       version = λ;
     } ->
     μ,
-  ι.override = {generated = Path; self = β;} -> β,
+  ι.override = {generated = String; self = β;} -> β,
   θ.substring = Number -> Number -> String -> λ
 ) =>
 { fetchgit = {rev = String; sha256 = String; url = String;} -> κ;

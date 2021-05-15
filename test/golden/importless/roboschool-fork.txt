@@ -14,7 +14,7 @@
           platforms = η;
         };
       nativeBuildInputs = [θ];
-      patches = [Path];
+      patches = [String];
       pname = String;
       postPatch = ι;
       src = κ;

@@ -4,7 +4,7 @@
     { config =
         { packageOverrides =
             ∀ α β.
-            (α.callPackage = Path -> {} -> β) => α ->
+            (α.callPackage = String -> {} -> β) => α ->
             {hello-world-container = β;};
         };
     };

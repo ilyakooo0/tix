@@ -361,13 +361,13 @@ instantiate s = do
 infer :: NExprLoc -> InferM' NType
 infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
   NConstant a -> return . NAtomic $ case a of
-    NURI {} -> URI
+    NURI {} -> String
     NInt {} -> Number
     NFloat {} -> Number
     NBool {} -> Bool
     NNull {} -> Null
-  NLiteralPath {} -> return . NAtomic $ Path
-  NEnvPath {} -> return . NAtomic $ Path
+  NLiteralPath {} -> return . NAtomic $ String
+  NEnvPath {} -> return . NAtomic $ String
   NStr {} -> return $ NAtomic String
   NSym var ->
     lookupVar var

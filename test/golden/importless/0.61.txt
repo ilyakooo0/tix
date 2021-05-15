@@ -16,7 +16,7 @@
       name = String;
       nativeBuildInputs = [ι];
       outputs = [String];
-      patches = [Path];
+      patches = [String];
       propagatedBuildInputs = [κ];
       src = λ;
     } ->
@@ -35,7 +35,7 @@
 { cairo = π;
   cmake = ι;
   curl = π;
-  fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> String;
   fetchurl = {sha256 = String; url = String;} -> λ;
   fontconfig = κ;
   freetype = κ;

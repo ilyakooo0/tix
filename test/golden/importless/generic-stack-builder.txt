@@ -40,7 +40,7 @@
   ghc = ε;
   glibcLocales = λ;
   lib = κ;
-  makeSetupHook = {} -> Path -> ε;
+  makeSetupHook = {} -> String -> ε;
   pkgconfig = ε;
   stack = ε;
   stdenv = η;

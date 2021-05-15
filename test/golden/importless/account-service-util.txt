@@ -11,7 +11,7 @@
       name = String;
       nativeBuildInputs = [η];
       propagatedBuildInputs = [θ];
-      src = Path;
+      src = String;
       strictDeps = Bool;
     } ->
     ι,

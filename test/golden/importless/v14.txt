@@ -1,6 +1,6 @@
 ∀ α β γ.
 { callPackage =
-    Path ->
+    String ->
     {openssl = α; python = β;} ->
     {enableNpm = Bool; sha256 = String; version = String;} -> γ;
   enableNpm = Bool;

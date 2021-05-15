@@ -22,7 +22,7 @@
           maintainers = [ζ];
         };
       nativeBuildInputs = ε;
-      patches = [Path];
+      patches = [String];
       pname = String;
       postInstall = String;
       preBuild = String;

@@ -16,9 +16,9 @@
         };
       name = String;
       nativeBuildInputs = [γ];
-      patches = [Path];
+      patches = [String];
       preCheck = String;
-      setupHook = Path;
+      setupHook = String;
       src = ζ;
     } ->
     η,

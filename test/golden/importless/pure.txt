@@ -3,7 +3,7 @@
     { buildInputs = [β];
       buildPhase = String;
       installPhase = String;
-      patches = [Path];
+      patches = [String];
       pname = String;
       src = γ;
       version = String;

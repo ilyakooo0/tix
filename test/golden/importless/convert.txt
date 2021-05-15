@@ -9,7 +9,7 @@
           maintainers = [β];
         };
       passthru = {scriptName = String;};
-      patches = [Path];
+      patches = [String];
       pname = String;
       postPatch = String;
       src = γ;

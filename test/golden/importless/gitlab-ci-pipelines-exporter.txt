@@ -7,7 +7,7 @@
 ) =>
 { buildGoPackage =
     { doCheck = Bool;
-      goDeps = Path;
+      goDeps = String;
       goPackagePath = String;
       meta =
         { description = String;

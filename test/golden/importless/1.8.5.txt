@@ -36,7 +36,7 @@
   π.platforms = σ,
   ρ.goibhniu = η,
   σ.linux = θ,
-  τ.optionals = υ -> [Path] -> [κ]
+  τ.optionals = υ -> [String] -> [κ]
 ) =>
 { autoconf213 = ο;
   fetchpatch = {name = String; sha256 = String; url = String;} -> κ;

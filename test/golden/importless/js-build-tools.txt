@@ -14,7 +14,7 @@
       meta = {description = String; license = ε; maintainers = [ζ];};
       minimumSupportedOcamlVersion = String;
       name = String;
-      patches = [Path];
+      patches = [String];
       src = θ;
       version = String;
     } ->

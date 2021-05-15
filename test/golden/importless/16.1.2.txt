@@ -12,7 +12,7 @@
           version = String;
         };
       name = String;
-      patches = [Path];
+      patches = [String];
       postInstall = String;
       propagatedBuildInputs = [η];
       src = θ;
@@ -31,7 +31,7 @@
 { autoconf = γ;
   automake = γ;
   boehmgc = Null;
-  fetchpatch = {name = String; sha256 = String; url = String;} -> Path;
+  fetchpatch = {name = String; sha256 = String; url = String;} -> String;
   fetchurl = {sha256 = String; url = String;} -> θ;
   gcc = η;
   gmp = η;

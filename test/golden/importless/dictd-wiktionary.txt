@@ -3,7 +3,7 @@
   β.mkDerivation =
     { buildInputs = [δ];
       builder = ε;
-      convert = Path;
+      convert = String;
       data = ζ;
       meta =
         { description = String;

@@ -26,6 +26,6 @@
 ) =>
 α ->
 { config = ι;
-  meta = {doc = Path; maintainers = [ξ];};
+  meta = {doc = String; maintainers = [ξ];};
   options = {security = {hideProcessInformation = λ;};};
 }

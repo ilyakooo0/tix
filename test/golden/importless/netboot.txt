@@ -7,7 +7,7 @@
   β.system = η,
   γ.literalExample = String -> θ,
   γ.mkOption = {description = String; example = θ;} -> ι,
-  δ.callPackage = Path -> {storeContents = κ;} -> λ,
+  δ.callPackage = String -> {storeContents = κ;} -> λ,
   δ.grub2 = μ,
   δ.grub2_efi = μ,
   δ.makeInitrd =

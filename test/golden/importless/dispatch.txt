@@ -15,7 +15,7 @@
           maintainers = [ε];
         };
       nativeBuildInputs = δ;
-      patches = [Path];
+      patches = [String];
       pname = String;
       preBuild = String;
       propagatedBuildInputs = [γ];

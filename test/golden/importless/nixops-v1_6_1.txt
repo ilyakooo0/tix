@@ -21,7 +21,7 @@
     δ
 ) =>
 { callPackage =
-    Path ->
+    String ->
     { nixopsAzurePackages = [ε];
       python2Packages = δ;
       src = θ;
@@ -29,7 +29,7 @@
     } ->
     ι;
   fetchurl = {sha256 = String; url = String;} -> θ;
-  newScope = ζ -> Path -> {} -> η;
+  newScope = ζ -> String -> {} -> η;
   pkgs = β;
 } ->
 ι

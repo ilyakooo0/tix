@@ -12,7 +12,7 @@
       meta =
         {description = String; homepage = String; license = ζ; platforms = η;};
       nativeBuildInputs = [θ];
-      patches = [Path];
+      patches = [String];
       pname = String;
       preConfigure = String;
       src = ι;

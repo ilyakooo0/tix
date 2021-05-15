@@ -2,10 +2,10 @@
 ( α.lib = β,
   α.mkDerivation =
     { buildFlags = [String];
-      builder = Path;
+      builder = String;
       checkTarget = [String];
       configureFlags = [String];
-      configureScript = Path;
+      configureScript = String;
       dontAddPrefix = String;
       meta = {platforms = γ;};
       pname = String;

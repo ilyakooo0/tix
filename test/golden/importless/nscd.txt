@@ -55,7 +55,7 @@
   θ1.etc = ι1,
   ι1.nscd.conf = κ1,
   κ1.source = μ,
-  θ.readFile = Path -> ξ,
+  θ.readFile = String -> ξ,
   ρ.lines = ο,
   λ1.bool = μ1
 ) =>

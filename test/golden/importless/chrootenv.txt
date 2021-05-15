@@ -23,7 +23,7 @@
           β.pkgs = δ,
           γ.override =
             { packageOverrides =
-                (ε.callPackage = Path -> {} -> ζ) => ε ->
+                (ε.callPackage = String -> {} -> ζ) => ε ->
                 η -> {platformio = ζ;};
             } ->
             β,
@@ -43,7 +43,7 @@
           β.pkgs = δ,
           γ.override =
             { packageOverrides =
-                (ε.callPackage = Path -> {} -> ζ) => ε ->
+                (ε.callPackage = String -> {} -> ζ) => ε ->
                 η -> {platformio = ζ;};
             } ->
             β,

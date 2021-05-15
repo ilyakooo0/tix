@@ -1,0 +1,43 @@
+∀ β γ δ ε ζ η θ ι κ λ.
+( β.licenses = γ,
+  β.optional = Bool -> String -> [String],
+  β.platforms = δ,
+  γ.gpl2 = ε,
+  δ.all = ζ
+) =>
+{ buildPythonPackage =
+    { cmakeFlags = η;
+      enableParallelBuilding = Bool;
+      format = String;
+      meta =
+        { broken = Bool;
+          description = String;
+          homepage = String;
+          license = ε;
+          maintainers = ∀ α. α;
+          platforms = ζ;
+        };
+      nativeBuildInputs = [θ];
+      patches = [String];
+      pname = String;
+      preConfigure = String;
+      src = ι;
+      version = String;
+    } ->
+    κ;
+  cmake = θ;
+  fetchurl = {sha256 = String; url = String;} -> ι;
+  isPy35 = Bool;
+  isPy36 = Bool;
+  isPy37 = Bool;
+  isPy3k = λ;
+  lib = β;
+  libxml2 = θ;
+  libxslt = θ;
+  pysideApiextractor = θ;
+  pysideGeneratorrunner = θ;
+  python = θ;
+  qt4 = θ;
+  sphinx = θ;
+} ->
+κ

@@ -1,6 +1,6 @@
 ∀ α β γ δ ε ζ.
 ( (α) // ({src = β; version = String;}) ~ (γ),
-  α.callPackage = Path -> γ -> δ,
+  α.callPackage = String -> γ -> δ,
   α.fetchpatch = ε,
   α.fetchurl = {sha256 = String; urls = [String];} -> β,
   α.stdenv = ζ

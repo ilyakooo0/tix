@@ -5,7 +5,7 @@
       makeFlags = [String];
       md5_path = String;
       meta = {description = String; license = δ;};
-      patches = [Path];
+      patches = [String];
       pname = String;
       postPatch = String;
       src = ε;

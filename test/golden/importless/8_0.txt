@@ -1,7 +1,7 @@
 ∀ α β γ.
 ( ( α
   ) //
-  ( { extraPatches = [Path];
+  ( { extraPatches = [String];
       extraPostInstall = String;
       sha256 = String;
       version = String;
@@ -9,6 +9,6 @@
   ) ~
   ( β
   ),
-  α.callPackage = Path -> β -> γ
+  α.callPackage = String -> β -> γ
 ) =>
 α -> γ

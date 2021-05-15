@@ -1,0 +1,49 @@
+∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
+( α.lib = β,
+  α.mkDerivation =
+    { buildInputs = [γ];
+      configureFlags = [String];
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = δ;
+          maintainers = [ε];
+          platforms = ζ;
+        };
+      name = String;
+      nativeBuildInputs = [η];
+      patches = [String];
+      postUnpack = String;
+      sourceRoot = String;
+      srcs = [θ];
+    } ->
+    ι,
+  α.targetPlatform = κ,
+  λ.src = θ,
+  β.licenses = μ,
+  β.maintainers = ν,
+  β.platforms = ξ,
+  β.ris = ε,
+  β.throw = String -> String,
+  κ.system = String,
+  ο.system = String,
+  μ.gpl2Plus = δ,
+  ξ.linux = ζ
+) =>
+{ aflplusplus = λ;
+  autoconf = η;
+  bison = η;
+  fetchurl = {sha256 = String; url = String;} -> θ;
+  flex = η;
+  glib = γ;
+  libuuid = γ;
+  perl = η;
+  pixman = γ;
+  pkgconfig = η;
+  python2 = η;
+  stdenv = α;
+  texinfo = η;
+  zlib = γ;
+} ->
+ι

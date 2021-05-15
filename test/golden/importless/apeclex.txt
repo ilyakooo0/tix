@@ -1,7 +1,7 @@
 ∀ α β γ δ ε ζ η.
 (α.lib = β, β.licenses = γ, γ.lgpl3 = δ, ε.gpl3 = δ) => { attemptoClex = ζ;
   callPackage =
-    Path ->
+    String ->
     { description = String;
       lexiconPath = String;
       license = [δ];

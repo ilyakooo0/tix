@@ -10,7 +10,7 @@
           maintainers = [ε];
           platforms = ζ;
         };
-      patches = [Path];
+      patches = [String];
       pname = String;
       src = η;
       version = String;

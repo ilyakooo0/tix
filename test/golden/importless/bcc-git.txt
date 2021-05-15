@@ -11,7 +11,7 @@
           maintainers = [δ];
         };
       name = String;
-      patches = [Path];
+      patches = [String];
       src = ε;
     } ->
     ζ,

@@ -8,7 +8,7 @@
         {description = String; homepage = String; license = δ; platforms = ε;};
       name = String;
       nativeBuildInputs = [ζ];
-      patches = [Path];
+      patches = [String];
       postPatch = String;
       src = η;
     } ->

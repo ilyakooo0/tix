@@ -10,7 +10,7 @@
         };
       name = String;
       nativeBuildInputs = [ε];
-      patches = [Path];
+      patches = [String];
       src = ζ;
     } ->
     η,

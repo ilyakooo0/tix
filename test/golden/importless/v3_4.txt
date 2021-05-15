@@ -3,9 +3,9 @@
   Security = ζ;
   boost = η;
   callPackage =
-    Path ->
+    String ->
     {CoreFoundation = ε; Security = ζ; boost = η; cctools = θ; sasl = ι;} ->
-    {license = δ; patches = [Path]; sha256 = String; version = String;} -> κ;
+    {license = δ; patches = [String]; sha256 = String; version = String;} -> κ;
   cctools = θ;
   lib = λ;
   sasl = ι;

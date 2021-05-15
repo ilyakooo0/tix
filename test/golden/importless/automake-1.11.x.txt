@@ -2,7 +2,7 @@
 ( α.lib = β,
   α.mkDerivation =
     { buildInputs = [γ];
-      builder = Path;
+      builder = String;
       doCheck = Bool;
       dontPatchShebangs = Bool;
       enableParallelBuilding = Bool;
@@ -15,9 +15,9 @@
           platforms = ε;
         };
       name = String;
-      patches = [Path];
+      patches = [String];
       preCheck = String;
-      setupHook = Path;
+      setupHook = String;
       src = ζ;
     } ->
     η,

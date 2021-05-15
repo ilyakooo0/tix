@@ -20,7 +20,7 @@
           platforms = [κ];
         };
       nativeBuildInputs = [λ];
-      patches = [Path];
+      patches = [String];
       pname = String;
       postPatch = μ;
       preFixup = ν;

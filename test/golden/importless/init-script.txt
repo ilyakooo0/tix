@@ -11,7 +11,7 @@
   δ.gnugrep = ν,
   δ.gnused = ν,
   δ.substituteAll =
-    {bash = μ; isExecutable = Bool; path = [ν]; src = Path;} -> η,
+    {bash = μ; isExecutable = Bool; path = [ν]; src = String;} -> η,
   ε.loader = ξ,
   ξ.initScript = ο,
   ο.enable = ζ,

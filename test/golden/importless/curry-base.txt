@@ -11,7 +11,7 @@
       libraryHaskellDepends = [ε];
       license = δ;
       pname = String;
-      src = Path;
+      src = String;
       testHaskellDepends = [ε];
       version = String;
     } ->

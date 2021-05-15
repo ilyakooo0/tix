@@ -13,7 +13,7 @@
           platforms = [η];
         };
       nativeBuildInputs = θ;
-      patches = [Path];
+      patches = [String];
       pname = String;
       prePatch = ι;
       src = κ;

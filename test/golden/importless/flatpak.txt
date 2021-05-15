@@ -43,6 +43,6 @@
 ) =>
 β ->
 { config = ξ;
-  meta = {doc = Path; maintainers = χ;};
+  meta = {doc = String; maintainers = χ;};
   options = {services = {flatpak = {enable = ι; guiPackages = π;};};};
 }

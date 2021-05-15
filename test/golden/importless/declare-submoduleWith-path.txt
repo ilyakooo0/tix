@@ -2,6 +2,6 @@
 ( α.lib = β,
   β.mkOption = {default = {}; type = γ;} -> δ,
   β.types = ε,
-  ε.submoduleWith = {modules = [Path];} -> γ
+  ε.submoduleWith = {modules = [String];} -> γ
 ) =>
-α -> {config = {submodule = Path;}; options = {submodule = δ;};}
+α -> {config = {submodule = String;}; options = {submodule = δ;};}

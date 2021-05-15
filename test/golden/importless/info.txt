@@ -1,6 +1,6 @@
 ∀ α β.
 { callPackage =
-    Path ->
+    String ->
     {} ->
     { buildInputs = [α];
       buildPhase = String;

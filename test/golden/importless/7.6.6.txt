@@ -1,0 +1,46 @@
+∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
+( β.optional = γ -> String -> [δ],
+  ε.buildPlatform = ζ,
+  ε.hostPlatform = η,
+  ε.isLinux = θ,
+  ε.lib = ι,
+  ε.mkDerivation =
+    { buildInputs = [κ];
+      configureFlags = [String];
+      doCheck = Bool;
+      dontStrip = Bool;
+      enableParallelBuilding = Bool;
+      meta =
+        { description = String;
+          homepage = String;
+          license = String;
+          longDescription = String;
+          maintainers = ∀ α. α;
+          platforms = λ;
+        };
+      nativeBuildInputs = [μ];
+      outputs = [String];
+      patches = [δ];
+      pname = String;
+      preConfigure = ν;
+      separateDebugInfo = θ;
+      src = ξ;
+      version = String;
+    } ->
+    ο,
+  ι.optionalString = Bool -> String -> ν,
+  η.libc = String,
+  π.isRiscV = γ,
+  ρ.platforms = σ,
+  σ.all = λ,
+  τ.libc = String
+) =>
+{ enableLargeConfig = Bool;
+  fetchpatch = {sha256 = String; url = String;} -> δ;
+  fetchurl = {sha256 = String; urls = [String];} -> ξ;
+  lib = β;
+  libatomic_ops = κ;
+  pkgconfig = μ;
+  stdenv = ε;
+} ->
+ο

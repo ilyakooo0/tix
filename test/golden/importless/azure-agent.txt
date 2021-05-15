@@ -75,7 +75,7 @@
       configurePhase = Bool;
       installPhase = String;
       name = String;
-      patches = [Path];
+      patches = [String];
       pythonPath = [υ];
       runtimeDeps = [η];
       src = ρ;

@@ -19,12 +19,12 @@
       name = String;
       nativeBuildInputs = [ι];
       outputs = [String];
-      patches = [Path];
+      patches = [String];
       postInstall = String;
       preBuild = String;
       propagatedBuildInputs = [δ];
       setOutputFlags = Bool;
-      setupHook = Path;
+      setupHook = String;
       src = κ;
     } ->
     λ,

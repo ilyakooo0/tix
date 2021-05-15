@@ -31,7 +31,7 @@
       mlt = δ;
       name = String;
       nativeBuildInputs = [ε];
-      patches = [Path];
+      patches = [String];
       postPatch = String;
       preFixup = String;
       qtWrapperArgs = [String];

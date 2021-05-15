@@ -19,7 +19,12 @@
   δ.gnused = ξ,
   δ.stdenv = ο,
   δ.substituteAll =
-    {bash = ν; copyKernels = π; isExecutable = Bool; path = [ξ]; src = Path;} ->
+    { bash = ν;
+      copyKernels = π;
+      isExecutable = Bool;
+      path = [ξ];
+      src = String;
+    } ->
     θ,
   ο.hostPlatform = ρ,
   ρ.platform = σ,

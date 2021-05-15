@@ -212,6 +212,6 @@
   ξ4.zeavim-vim = η4,
   ο4.hasAttr = μ4 -> ξ4 -> Bool,
   π4.fromJSON = ρ4 -> σ4,
-  τ4.readFile = Path -> ρ4
+  τ4.readFile = String -> ρ4
 ) =>
 λ4 -> ξ4 -> ν4

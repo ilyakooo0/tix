@@ -20,6 +20,6 @@
 ) =>
 α ->
 { config = η;
-  meta = {doc = Path; maintainers = ξ;};
+  meta = {doc = String; maintainers = ξ;};
   options = {programs = {plotinus = {enable = ι;};};};
 }

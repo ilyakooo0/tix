@@ -7,7 +7,7 @@
       meta =
         {description = String; homepage = δ; license = ε; platforms = [ζ];};
       name = String;
-      patches = [Path];
+      patches = [String];
       src = η;
     } ->
     θ,

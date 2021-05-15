@@ -5,7 +5,7 @@
       nativeBuildInputs = [ε];
       pname = String;
       prePatch = String;
-      setupHook = Path;
+      setupHook = String;
       src = ζ;
       version = String;
     } ->

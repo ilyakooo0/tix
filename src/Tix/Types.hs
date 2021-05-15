@@ -135,9 +135,7 @@ data AtomicType
   = Number
   | Bool
   | String
-  | Path
   | Null
-  | URI
   deriving stock (Eq, Ord, Show, Generic)
 
 instance Pretty AtomicType where

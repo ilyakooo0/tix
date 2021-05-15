@@ -13,4 +13,4 @@
     η,
   α.fix' = η -> θ
 ) =>
-{lib = α; newScope = δ -> Path -> {} -> ζ; overrides = β -> γ -> {};} -> θ
+{lib = α; newScope = δ -> String -> {} -> ζ; overrides = β -> γ -> {};} -> θ

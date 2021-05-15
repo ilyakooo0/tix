@@ -7,7 +7,7 @@
   ζ.json = θ
 ) =>
 { buildGoPackage =
-    { goDeps = Path;
+    { goDeps = String;
       goPackagePath = String;
       meta =
         { description = String;

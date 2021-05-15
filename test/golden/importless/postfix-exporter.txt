@@ -17,7 +17,7 @@
     { buildFlags = ρ;
       buildInputs = σ;
       extraSrcs = ν;
-      goDeps = Path;
+      goDeps = String;
       goPackagePath = String;
       meta =
         {description = String; homepage = π; license = ξ; maintainers = [η];};

@@ -21,7 +21,7 @@
 ) =>
 { bash = γ;
   cabextract = γ;
-  callPackage = Path -> {} -> ι;
+  callPackage = String -> {} -> ι;
   coreutils = γ;
   curl = γ;
   gnugrep = γ;

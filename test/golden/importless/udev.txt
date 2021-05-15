@@ -16,6 +16,6 @@
   θ.linux = δ
 ) =>
 { stdenv = α;
-  substituteAll = {isExecutable = Bool; shell = ζ; src = Path;} -> ι;
+  substituteAll = {isExecutable = Bool; shell = ζ; src = String;} -> ι;
 } ->
 ε

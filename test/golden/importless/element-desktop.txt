@@ -37,10 +37,10 @@
         };
       name = String;
       nativeBuildInputs = [ο];
-      packageJSON = Path;
+      packageJSON = String;
       src = ∀ α. α;
       version = ∀ α. α;
-      yarnNix = Path;
+      yarnNix = String;
     } ->
     π;
   stdenv = β;

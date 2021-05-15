@@ -2,10 +2,10 @@
 (α.lib = β, β.optionalString = Bool -> String -> String) => { allLocales = Bool;
   buildPackages = γ;
   callPackage =
-    Path ->
+    String ->
     {stdenv = α;} ->
     { buildPhase = String;
-      builder = Path;
+      builder = String;
       installPhase = String;
       meta = {description = String;};
       name = String;

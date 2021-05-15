@@ -4,7 +4,7 @@
   δ.meta = β
 ) =>
 { callPackage =
-    Path -> {fetchurl = ε; jre = ζ; makeWrapper = η; stdenv = α;} -> δ;
+    String -> {fetchurl = ε; jre = ζ; makeWrapper = η; stdenv = α;} -> δ;
   fetchurl = ε;
   jre = ζ;
   makeWrapper = η;
