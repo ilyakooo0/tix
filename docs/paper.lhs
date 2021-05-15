@@ -4,6 +4,7 @@
 \usepackage{mathtools}
 \usepackage{hyperref}
 \usepackage{microtype}
+\usepackage{trfrac}
 % \usepackage{caption}
 % \usepackage[main=english,russian]{babel}
 
@@ -40,6 +41,8 @@
 
 \begin{document}
 \maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
 
 \begin{abstract}
   Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become quite complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language.
@@ -556,7 +559,89 @@ The term \texttt{x: y: x // y} would field the following type:
   \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
 \end{equation}
 
+\subsection{Typing rules}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1:\tau \quad \cdots \quad \Gamma \vdash e_n:\tau}
+  {\Gamma \vdash [e_1 \; \cdots \; e_n ] : [\tau]}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_3:\tau \qquad \Gamma \vdash e_1 \update e_2 \sim e_3}
+  {\Gamma \vdash (e_2 \update e_2) : \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1:\tau_1 \rightarrow \tau_2 \qquad \Gamma \vdash e_2 : \tau_1}
+  {\Gamma \vdash (e_1 \; e_2) : \tau_2}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1:[\tau] \qquad \Gamma \vdash e_2 : [\tau]}
+  {\Gamma \vdash (e_1 +\!\!+ \: e_2) : [\tau]}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1:\tau \qquad \Gamma \vdash e_2 : \tau \qquad \Gamma \vdash (\text{String} || \text{Number}) \sim \tau}
+  {\Gamma \vdash (e_1 + e_2) : \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e.\text{x} = \tau}
+  {\Gamma \vdash (e.\text{x}) : \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e.\text{x} = \tau}
+  {\Gamma \vdash (e \optDot \text{x}) = \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_2 : \tau \qquad \Gamma \vdash e_1 \optDot \text{x} = \tau}
+  {\Gamma \vdash (e.\text{x} \; \text{or} \; e_2) : \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e \optDot \text{x} = \tau}
+  {\Gamma \vdash (e \; \text{?} \; \text{x}) : Bool}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1 : \tau_1 \qquad \Gamma, (\text{x}: \forall \{\text{ftv}(\tau_1) - \text{ftv}(\Gamma)\}. \; \tau_1) \vdash e_2 : \tau_2}
+  {\Gamma \vdash (\text{let} \; \text{x = } e_1; \; \text{in} \; e_2) : \tau_2}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e : \forall \alpha. \; \tau_1}
+  {\Gamma \vdash e: [\alpha \rightarrow \tau_2] \tau_1}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma, \text{x}: \tau_1 \vdash e : \tau_2}
+  {\Gamma \vdash (\text{x: } e) : \tau_1 \rightarrow \tau_2}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1 : \text{Bool} \qquad \Gamma \vdash e_2 : \tau \qquad \Gamma \vdash e_3 : \tau}
+  {\Gamma \vdash (\text{if} \; e_1 \; \text{then} \; e_2 \; \text{else} \; e_3) : \tau}
+\end{equation}
+
 \section{Implementation} \label{sec:implementation}
+
+\cite{github-source}
 
 \section{Possible improvements}
 

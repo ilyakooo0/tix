@@ -35,6 +35,6 @@ builtins.listToAttrs (map
   [
     { file = ./tech_spec.tex; }
     { file = ./project_proposal.tex; }
-    { file = ./paper.lhs; extraFiles = [ ./bibl.bib ]; }
+    { file = ./paper.lhs; extraFiles = [ ./bibl.bib ./trfrac.sty ]; }
   ]
 )
