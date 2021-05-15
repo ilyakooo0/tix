@@ -27,15 +27,7 @@ builtins.listToAttrs (map
         # , compressBlanksInIndex ? true
         # , packages ? [ ]
         texPackages = {
-          myPackages = {
-            pkgs = [
-              (
-                pkgs.runCommand "gost"
-                  { passthru = { tlType = "run"; pname = "gost"; }; }
-                  "mkdir $out; cp -r ${sources.GOST + "/bibtex"} $out"
-              )
-            ] ++ (builtins.filter (x: x.pname != "gost") pkgs.texlive.scheme-full.pkgs);
-          };
+          inherit (pkgs.texlive) scheme-full;
         };
         # , copySources ? false
       };
@@ -43,6 +35,6 @@ builtins.listToAttrs (map
   [
     { file = ./tech_spec.tex; }
     { file = ./project_proposal.tex; }
-    { file = ./paper.lhs; extraFiles = [ (sources.TechDoc + "/TechDoc.cls") ./bibl.bib ]; }
+    { file = ./paper.lhs; extraFiles = [ ./bibl.bib ]; }
   ]
 )

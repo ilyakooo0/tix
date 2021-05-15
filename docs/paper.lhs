@@ -1,28 +1,42 @@
-\PassOptionsToPackage{main=english,russian}{babel}
+\documentclass[a4paper,conference]{IEEEtran}
 
-\documentclass[]{TechDoc}
-
-\usepackage{float}
+% \usepackage{float}
 \usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{microtype}
+% \usepackage{caption}
+% \usepackage[main=english,russian]{babel}
 
-\selectlanguage{english}
+% \selectlanguage{english}
 
-\sectionsAreChapters
+% \sectionsAreChapters
 
-\floatstyle{boxed}
-\newfloat{Listing}{hbp}{lst}
-
-\newcommand{\parr}[1]{\medskip\textbf{#1}\hspace{0.6cm}}
 
 %include polycode.fmt
 
-\year{2021}
-\title{Static analyzer for the Nix Expression Language}
-\author{Student, BSE174}{I. I. Kostyuchenko}
-\academicTeacher{Associate Professor, PhD}{V. V. Kuliamin}
 
-\documentTitle{Explanatory note}
-\documentCode{RU.17701729.04.05-01 ПЗ 01-1}
+% \floatstyle{boxed}
+% \newfloat{figure}{hbp}{lst}
+
+\newcommand{\parr}[1]{\medskip\textbf{#1}\hspace{0.6cm}}
+
+
+% \year{2021}
+\title{Static analyzer for the Nix Expression Language}
+% \author{Student, BSE174}{I. I. Kostyuchenko}
+% \academicTeacher{Associate Professor, PhD}{V. V. Kuliamin}
+
+% \documentTitle{Explanatory note}
+% \documentCode{RU.17701729.04.05-01 ПЗ 01-1}
+
+\author{
+  \IEEEauthorblockN{Kostyuchenko Ilya}
+  \IEEEauthorblockA{
+    Faculty of Computer Science,\\
+    Higher School of Economics,\\
+    Moscow, Russia
+  }
+}
 
 \begin{document}
 \maketitle
@@ -31,19 +45,19 @@
   Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become quite complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language.
 \end{abstract}
 
-\begin{otherlanguage}{russian}
+% \begin{otherlanguage}{russian}
 
-  \begin{abstract}
-    Настройка и сборка даже самых простых программных проектов часто бывает непростой задачей -- для этого требуется загрузить и установить большое количество необходимого программного обеспечения. Это часто делает проблематичным воспроизведение сборок проекта на разных компьютерах. Менеджер пакетов Nix стремится решить эту проблему, предоставляя единый язык для описания пакетов программного обеспечения чисто функциональным способом. Этот язык называется языком Nix Expression Language. Поскольку вся сложность конфигурации программного обеспечения должна быть выражена на языке Nix Expression Language, сами выражения часто становятся довольно сложными, что затрудняет понимание и расширение существующих выражений без ошибок. Широко распространенным инструментом для облегчения понимания и проверки корректности выражений на других языках является статическая проверка типов. В этой статье будут рассмотрены методы, которые можно использовать для добавления статической проверки типов в язык выражений Nix Expression Language.
-  \end{abstract}
+%   \begin{abstract}
+%     Настройка и сборка даже самых простых программных проектов часто бывает непростой задачей -- для этого требуется загрузить и установить большое количество необходимого программного обеспечения. Это часто делает проблематичным воспроизведение сборок проекта на разных компьютерах. Менеджер пакетов Nix стремится решить эту проблему, предоставляя единый язык для описания пакетов программного обеспечения чисто функциональным способом. Этот язык называется языком Nix Expression Language. Поскольку вся сложность конфигурации программного обеспечения должна быть выражена на языке Nix Expression Language, сами выражения часто становятся довольно сложными, что затрудняет понимание и расширение существующих выражений без ошибок. Широко распространенным инструментом для облегчения понимания и проверки корректности выражений на других языках является статическая проверка типов. В этой статье будут рассмотрены методы, которые можно использовать для добавления статической проверки типов в язык выражений Nix Expression Language.
+%   \end{abstract}
 
-\end{otherlanguage}
+% \end{otherlanguage}
 
 \parr{Source code} \url{https://github.com/ilyakooo0/tix}
 
-\newpage
+% \newpage
 
-\tableofcontents
+% \tableofcontents
 
 \section*{Introduction}
 
@@ -101,7 +115,8 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
 
 \begin{table}[hbp]
   \centering
-  \begin{tabular}{ ||c||p{6cm}||p{6cm}|| } \hline
+  \caption{Table of atomic Nix Expression Language types}
+  \begin{tabular}{ ||c||p{2cm}||p{4cm}|| } \hline
     \textbf{Atomic type} & \textbf{Description}                                                                      & \textbf{Example terms}                 \\ \hline
     URI                  & A string literal representing a URI. Does not require quoting.                            & \texttt{https://example.com}           \\ \hline
     Path literal         & A path literal referring to either a relative or absolute path. Does not require quoting. & \texttt{../../directory/file.txt}      \\ \hline
@@ -110,7 +125,6 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
     Bool                 & Boolean values.                                                                           & \texttt{true} \newline \texttt{false}  \\ \hline
     Null                 & A type with a single value.                                                               & \texttt{null}                          \\ \hline
   \end{tabular}
-  \caption{Table of atomic Nix Expression Language types}
   \label{tab:atomicTypes}
 \end{table}
 
@@ -120,7 +134,7 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
 
 Double quoted string literals are string literals just like in many other programming languages. It can contain esaped newline character literals \texttt{\\n} which will be preserved as shown in listing~\ref{lst:newlineString}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 "Sampel\nPalnet"
@@ -128,13 +142,13 @@ Double quoted string literals are string literals just like in many other progra
   \end{minipage}
   \caption{Nix Expression Language double quoted string literal example}
   \label{lst:newlineString}
-\end{Listing}
+\end{figure}
 
 \subsubsection{Multiline string literals}
 
 Multiline string literals are enclosed by pairs of single quotes (\texttt{''} as opposed to \texttt{"}). Newlines are preserved and indentation is stripped from the beginning of the literal. An example multiline string literal is shown in listing~\ref{lst:multilineString}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 ''
@@ -146,43 +160,43 @@ Palnet''
   \end{minipage}
   \caption{Nix Expression Language multiline string literal example and an equivalent double quoted string literal}
   \label{lst:multilineString}
-\end{Listing}
+\end{figure}
 
-\subsubsection{String interpolation}
+% \subsubsection{String interpolation}
 
-The Nix Expression Language also allows for arbitrary expressions of the language to be interpolated in string using the following syntax: \texttt{\$\{ <expression> \}} where \texttt{<expression>} is a Nix expression.An example of string interpolation is show in listing~\ref{lst:stringInterpolation}.
+% The Nix Expression Language also allows for arbitrary expressions of the language to be interpolated in string using the following syntax: \texttt{\$\{ <expression> \}} where \texttt{<expression>} is a Nix expression.An example of string interpolation is show in listing~\ref{lst:stringInterpolation}.
 
-\begin{Listing}
-  \begin{minipage}{\textwidth}
-    \begin{verbatim}
-"one is ${ if 1 == 2 then "equal" else "not equal" } to two."
+% \begin{figure}
+%   \begin{minipage}{\textwidth}
+%     \begin{verbatim}
+% "one is ${ if 1 == 2 then "equal" else "not equal" } to two."
 
-"one is not equal to two."
-    \end{verbatim}
-  \end{minipage}
-  \caption{Nix Expression Language string interpolation example with the resulting string.}
-  \label{lst:stringInterpolation}
-\end{Listing}
+% "one is not equal to two."
+%     \end{verbatim}
+%   \end{minipage}
+%   \caption{Nix Expression Language string interpolation example with the resulting string.}
+%   \label{lst:stringInterpolation}
+% \end{figure}
 
 \subsection{Lists}
 
 Nix support a list type. List literals are enclosed by square brackets \texttt{[]} and the elements are separated by whitespace. Examples of list literals are shown in listing~\ref{lst:list}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
-[1 2 "hello" ../../file.txt https://example.com]
+[1 2 "hello" ../../file.txt]
     \end{verbatim}
   \end{minipage}
   \caption{Nix Expression Language List literals.}
   \label{lst:list}
-\end{Listing}
+\end{figure}
 
 \subsection{Attribute sets} \label{sec:attrSet}
 
 An attribute set is internally implemented as a hashmap with strings as keys where values can be arbitrary expressions. An example attribute set literal is shown in listing~\ref{lst:attrSet}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 { a = 42;
@@ -194,11 +208,11 @@ An attribute set is internally implemented as a hashmap with strings as keys whe
   \end{minipage}
   \caption{Nix Expression Language attribute set literals.}
   \label{lst:attrSet}
-\end{Listing}
+\end{figure}
 
 Fields (keys) of an attribute set can be accessed through the \emph{dot} (\texttt{.}) operator as shown in listing~\ref{lst:attrSetAccess}. Accessing an absent field yields a runtime error.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 { a = 42;
@@ -210,29 +224,30 @@ Fields (keys) of an attribute set can be accessed through the \emph{dot} (\textt
   \end{minipage}
   \caption{Nix Expression Language attribute set field accessing.}
   \label{lst:attrSetAccess}
-\end{Listing}
+\end{figure}
 
 \subsection{Attribute set updates} \label{sec:update}
 
 There is a binary \emph{update} operator that takes two \emph{attribute sets} as operands and ``merges'' them in a shallow manner, preferring values from the right operand. The operator is written as two forward slashes \texttt{//}. This has the effect of updating the left operand with values from the right operand. An example is shown in listing~\ref{lst:update}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
-{x = {a = 1;}; y = 2;} // {x = "hello"; z = 1.5;}
+{x = {a = 1;}; y = 2;}
+  // {x = "hello"; z = 1.5;}
 
 { x = "hello"; y = 2; z = 1.5; }
     \end{verbatim}
   \end{minipage}
   \caption{Nix Expression Language attribute set updates.}
   \label{lst:update}
-\end{Listing}
+\end{figure}
 
 \subsection{Recursive attribute sets} \label{sec:recAttrSet}
 
 While ordinary \emph{attribute sets} from discussed in section~\ref{sec:attrSet} can only reference values defined outside of the attribute set literal, \emph{recursive attribute sets} can also reference values defined in the attribute set literal itself. The keys of the attribute set are essentially available in scope of the attribute set values. An example of \emph{recursive attribute set} are given in listing~\ref{lst:recAttrSet}. Note that it is syntactically distiguished form normal \emph{attribute set} literals by the \texttt{rec} key word at the beginning.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 rec {
@@ -245,13 +260,13 @@ rec {
   \end{minipage}
   \caption{Nix Expression Language recursive attribute set literals.}
   \label{lst:recAttrSet}
-\end{Listing}
+\end{figure}
 
 \subsection{Let expressions} \label{sec:let}
 
 A \emph{let expression} has two parts: the \emph{declarations} and the \emph{body}. The format can be roughly described like so: \texttt{let <definitions> in <body>}. A \emph{let expression} allows us to define values in the \emph{declarations} that can be reused in the \emph{body} of the expression. Just like \emph{recursive attribute sets} from section~\ref{sec:recAttrSet} all declared values are available in scope in the defined expressions. An example of \emph{let expressions} is available in listing~\ref{lst:let}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 let
@@ -262,13 +277,13 @@ in d
   \end{minipage}
   \caption{Nix Expression Language \emph{let} expression literals.}
   \label{lst:let}
-\end{Listing}
+\end{figure}
 
 \subsection{With expression}
 
 \emph{With expressions} are a way to bring all values from an \emph{attribute set} into scope. It is conceptually very similar to \emph{let expressions} discussed in section~\ref{sec:let}. The syntax can be roughly describe like so: \texttt{with <set>; <body>} where \texttt{<set>} is an expression which evaluates to an \emph{attribute set} and all values from the set are available as definitions in the \texttt{<body>} expression. An example of a \emph{with expression} can be found in listing~\ref{lst:with}.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 let
@@ -279,7 +294,7 @@ in d
   \end{minipage}
   \caption{Nix Expression Language \emph{with} expression literals.}
   \label{lst:with}
-\end{Listing}
+\end{figure}
 
 \section{Existing typecheckers}
 
@@ -413,7 +428,7 @@ Of course, since \emph{attribute sets} are used as structures, their internal st
 
 This leads to a non-trivial typechecking case where modifying a structure leads to the resulting type depending on the type of the input structure as shown in listing~\ref{lst:update_ex}. The listing shows a lambda expression which receives an \emph{attribute set} as input, and updates the field \texttt{a} with the value of \texttt{1}. It quickly becomes problematic to derive a type for this expression if we decide to track fields at the type level: we can say that the lambda takes a value of type \texttt{\{\}} and returns a value of type \texttt{\{a = Integer;\}} (type of functions will later be written as \texttt{<input type> -> <output type>}). This might seem a natural type to derive, however it is obviously not correct. Calling it with a values of type \texttt{\{b = String;\}} and \texttt{\{b = Float; a = Bool;\}} would both be very much valid, and would both produce different resulting types: \texttt{\{a = Integer; b = String;\}} and \texttt{\{a = Integer; b = Float;\}}. As stated above, the output type of a lambda expression like this depends on the input type.
 
-\begin{Listing}
+\begin{figure}
   \begin{minipage}{\textwidth}
     \begin{verbatim}
 x: x // {a = 1;}
@@ -421,7 +436,7 @@ x: x // {a = 1;}
   \end{minipage}
   \caption{A lambda expression which updates an input set.}
   \label{lst:update_ex}
-\end{Listing}
+\end{figure}
 
 This problem is widely known as \emph{row polymorphism}~\cite{wand1991type} – the term \emph{row} refers to a single key-value type pair. Thus, \emph{row polymorphism} is the polymorphism of key-value pairs. This fields has already received some research attention: a recent paper on the topic was written by Morris and McKinna~\cite{morris2019abstracting}. In the paper the authors introduce the \emph{Rose}\footnote{The name is a pun on ``rows'' referring to row polymorphism.} programming language which supports \emph{row polymorphism}.
 
@@ -563,9 +578,9 @@ Even though the developed type checker will need to check code for an existing d
 
 \newpage
 
-\bibliographystyle{gost2008}
+\bibliographystyle{IEEEtran}
 \bibliography{bibl}
 
-\registrationList
+% \registrationList
 
 \end{document}
