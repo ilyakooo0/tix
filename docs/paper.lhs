@@ -516,7 +516,7 @@ The type $\alpha$ should be an attribute set and it should contain a field $x$ o
 
 The term \texttt{x: x.y} would field the following type:
 
-\begin{equation}
+\begin{equation} \label{eq:dotExample}
   \forall \alpha \beta. \; \alpha.\text{y} = \beta \Rightarrow \alpha \rightarrow \beta
 \end{equation}
 
@@ -530,7 +530,7 @@ The type $\alpha$ should be an attribute set and if it contains the field $x$, t
 
 The term \texttt{x: x.y or 1} would field the following type:
 
-\begin{equation}
+\begin{equation} \label{eq:optFieldPredExample}
   \forall \alpha. \; \alpha \optDot \text{y} = \text{Number} \Rightarrow \alpha \rightarrow \text{Number}
 \end{equation}
 
@@ -538,7 +538,7 @@ This predicate also arises from the use of the \emph{attribute set field presenc
 
 The term \texttt{x: x ? y} would field the following type:
 
-\begin{equation}
+\begin{equation} \label{eq:optFieldPredExample2}
   \forall \alpha \beta. \; \alpha \optDot \text{y} = \beta \Rightarrow \alpha \rightarrow \text{Bool}
 \end{equation}
 
@@ -550,15 +550,24 @@ The term \texttt{x: x ? y} would field the following type:
 
 All $\alpha$, $\beta$ and $\gamma$ should be \emph{attribute sets}. The \emph{attribute set} $\gamma$ should contain all fields from both $\alpha$ and $\beta$, preferring the types from $\beta$ if they happen to overlap. That is, if $\alpha$ and $\beta$ both contain a field with the same name, then $\gamma$ should contain the same field with the type from $\beta$. This behaviour matches the way the \emph{update operator} (\texttt{//}) works as discussed in section~\ref{sec:update}.
 
-The term \texttt{x: x ? y} would field the following type:
+The term \texttt{x: y: x // y} would field the following type:
 
-\begin{equation}
-  \forall \alpha \beta. \; \alpha \optDot \text{y} = \beta \Rightarrow \alpha \rightarrow \text{Bool}
+\begin{equation} \label{eq:updatePredExample}
+  \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
 \end{equation}
 
-\subsubsection{Making predicates more user-friendly}
+\subsection{Making predicates more user-friendly}
+
+\subsubsection{A novel technique}
 
 The reader might observe that, although the predicates have a parallel with the Nix term syntax, visually parsing predicates and mentally applying them to the specified type variables can be difficult even in such simple examples. Here we will explore a technique that can be used to make these predicates easier for the programmer to work with.
+
+The technique is based on the fact that a type variable by itself can only convey the following information:
+
+\begin{enumerate}
+  \item positional information -- a specific position in a type
+  \item identity information -- the type variable is equivalent to other type variable with the same name within the scope where it is declared
+\end{enumerate}
 
 Note that all of what follows is only concerned with syntactic constructs. It does in no way alter the semantic of the predicates described above.
 
@@ -566,7 +575,31 @@ We would like to point out that all of the predicates have an operand which is t
 
 The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is it natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands, and, as such, can be replaced with their definitions.
 
-Of course, this all breaks down once the ``result'' of the predicate is ``defined'' in more than one predicate, and it is not applicable to those cases.
+This means that we can syntactically replace \emph{type variables} with a portion of a predicate -- replace the variable with the definition. If we apply this technique to the type~\ref{eq:dotExample} we get the following type:
+
+\begin{equation}
+  \forall \alpha. \; \alpha \rightarrow \alpha.\text{y}
+\end{equation}
+
+When applied to the type~\ref{eq:updatePredExample} it yields:
+
+\begin{equation}
+  \forall \alpha \beta. \; \alpha \rightarrow \beta \rightarrow (\alpha \update \beta)
+\end{equation}
+
+We believe the derived type above are a lot easier to understand than their initial counterparts.
+
+\subsubsection{Implementation notes}
+
+For practical reasons, when applying the technique, there should be a threshold that limits the syntactic complexity of types that can be ``inlined''. This is due to the types being potentially as big as literals in the source expressions.
+
+Complexity of types should also be used as a heuristic in cases where there are multiple potential ``definitions'' for the same type variable – it is preferable to use the ``definitions'' with the lowest syntactic complexity as it leads to simpler types.
+
+\subsubsection{Limitations}
+
+The technique is not in applicable if the ``result'' of a predicate is not a type variable like in type \ref{eq:optFieldPredExample2}.
+
+Another limitation is that we can not remove predicates if their ``result'' type variable is not present in the head of the type like in type \ref{eq:optFieldPredExample}, since we would be losing typing information by doing so.
 
 \section{Implementation} \label{sec:implementation}
 
