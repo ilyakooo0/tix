@@ -120,7 +120,7 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
   \centering
   \caption{Table of atomic Nix Expression Language types}
   \begin{tabular}{ ||c||p{2cm}||p{4cm}|| } \hline
-    \textbf{Atomic type} & \textbf{Description}                                                                      & \textbf{Example terms}                 \\ \hline
+    \textbf{Atomic type} & \textbf{Description}                                                                      & \textbf{Example terms}                 \\ \hline \hline
     URI                  & A string literal representing a URI. Does not require quoting.                            & \texttt{https://example.com}           \\ \hline
     Path literal         & A path literal referring to either a relative or absolute path. Does not require quoting. & \texttt{../../directory/file.txt}      \\ \hline
     Integer              & The current C implementation of Nix allows values of 64-bit signed integers.              & \texttt{69} \newline \texttt{-42}      \\ \hline
@@ -559,6 +559,45 @@ The term \texttt{x: y: x // y} would field the following type:
   \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
 \end{equation}
 
+\subsection{Atmoic types}
+
+Nix is a dynamic language, and as such, allows dynamic coercions between certain types. This means that we can not use the dynamic types from the interpreter to perform static type checking -- if we did that we would reject \emph{a lot} of valid programs.\footnote{``Valid'' not just in the sense that they would not produce runtime errors, but ``valid'' in the sense that the programmer would judge the program as being ``correct''.}
+
+For this reason, we will have to define a smaller set of static types that will be employed in our type system. The static types along with the corresponding dynamic types from table~\ref{tab:atomicTypes} are shown in table~\ref{tbl:staticTypes}.
+
+\begin{table}[hbp]
+  \centering
+  \caption{Mapping from static types to dynamic types}
+  \begin{tabular}{ ||c||c|| } \hline
+    \textbf{Static type} & \textbf{Dynamic types}    \\ \hline \hline
+    String               & URI, Path literal, String \\ \hline
+    Number               & Integer, Float            \\ \hline
+    Bool                 & Bool                      \\ \hline
+    Null                 & Null                      \\ \hline
+  \end{tabular}
+  \label{tbl:staticTypes}
+\end{table}
+
+\subsection{Addition}
+
+Among all operators, addition (\texttt{+}) has semantics that stand out from the rest: addition can be applied to wither two \texttt{Number} operands or two \texttt{String} operands. All other operands are monomorphic in that they can only be applied to two operands of a predefined type. In that sense addition in polymorphic.
+
+Since our current implementation does not support sum types (see section~\ref{sec:sumTypes} for more detail), it is non-trivial to encode the type of addition in our current type system. We wanted to encode the type without having to resort to extending the type system too much (without implementing sum types).
+
+The simplest approach is to introduce a simple predicate which is satisfied only if the argument is either of type \texttt{Number} or \texttt{String}:
+
+\newcommand{\strOrNum}{(\text{String} || \text{Number})}
+
+\begin{equation}
+  \strOrNum \sim \alpha
+\end{equation}
+
+With this predicate the type of the addition operator (\texttt{+}) now becomes:
+
+\begin{equation}
+  \forall \alpha. \; \strOrNum \sim \alpha \Rightarrow \alpha \rightarrow \alpha \rightarrow \alpha
+\end{equation}
+
 \subsection{Typing rules}
 
 \begin{equation}
@@ -612,7 +651,7 @@ The term \texttt{x: y: x // y} would field the following type:
 \begin{equation}
   \trfrac
   {\Gamma \vdash e \optDot \text{x} = \tau}
-  {\Gamma \vdash (e \; \text{?} \; \text{x}) : Bool}
+  {\Gamma \vdash (e \; \text{?} \; \text{x}) : \text{Bool}}
 \end{equation}
 
 \begin{equation}
@@ -637,6 +676,24 @@ The term \texttt{x: y: x // y} would field the following type:
   \trfrac
   {\Gamma \vdash e_1 : \text{Bool} \qquad \Gamma \vdash e_2 : \tau \qquad \Gamma \vdash e_3 : \tau}
   {\Gamma \vdash (\text{if} \; e_1 \; \text{then} \; e_2 \; \text{else} \; e_3) : \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e : \tau \qquad \{\text{x} = e;\} \in \xi}
+  {\Gamma \vdash (\Pi \xi).\text{x} = \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\text{x} \notin \xi}
+  {(\Pi \xi) \optDot \text{x} = \tau}
+\end{equation}
+
+\begin{equation}
+  \trfrac
+  {\Gamma, \xi \vdash e : \tau}
+  {\Gamma \vdash (\text{with } (\Pi \xi)\text{; } e) : \tau}
 \end{equation}
 
 \section{Implementation} \label{sec:implementation}
@@ -689,6 +746,10 @@ Complexity of types should also be used as a heuristic in cases where there are 
 The technique is not in applicable if the ``result'' of a predicate is not a type variable like in type \ref{eq:optFieldPredExample2}.
 
 Another limitation is that we can not remove predicates if their ``result'' type variable is not present in the head of the type like in type \ref{eq:optFieldPredExample}, since we would be losing typing information by doing so.
+
+\subsection{Type hints}
+
+\subsection{Sum types} \label{sec:sumTypes}
 
 \section{Conclusion}
 
