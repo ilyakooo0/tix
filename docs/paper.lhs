@@ -1055,7 +1055,30 @@ Another limitation is that we can not remove predicates if their ``result'' type
 
 \subsection{Type hints}
 
+Dynamic types in Nix contain more information than our static type system can convey. A usability improvement to provide more utility to the programmer might be to allow extra information to be tagged onto type information and propagated during type inference. This information would not influence the typechecking algorithm in any way. It would only provide utility to the person reading the resulting types or to external tools.
+
+Some information that might be useful as type hints:
+
+\begin{enumerate}
+  \item The dynamic type of strings (URI, Path, etc.) – useful information for the programmer
+  \item Programmer-supplied annotations. When writing nix expressions it is common practice to have a program in some other programming language embedded in Nix as a string literal. It would be useful to propagate information about the underlying programming language to aid IDEs -- they could enable special syntax highlighting and linting based on the programming language.
+\end{enumerate}
+
 \subsection{Sum types} \label{sec:sumTypes}
+
+In our static type system we introduced a ``special case'' for the \emph{addition operator} as it could be applied to a number of different types.
+
+The idea of this improvement is to generalize the case and allow the type system to handle arbitrary sums of arbitrary types. This can be implemented as a predicate stating that a type variable can be a certain type:
+
+\begin{equation}
+  \alpha \lessdot \beta
+\end{equation}
+
+where $\beta$ can be the type $\alpha$. With this predicate, our ``String or Number'' predicate can be expressed as so:
+
+\begin{equation}
+  \strOrNum \sim \alpha = (\text{String} \lessdot \alpha, \text{Number} \lessdot \alpha)
+\end{equation}
 
 \section{Conclusion}
 
