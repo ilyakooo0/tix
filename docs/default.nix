@@ -27,7 +27,7 @@ builtins.listToAttrs (map
         # , compressBlanksInIndex ? true
         # , packages ? [ ]
         texPackages = {
-          inherit (pkgs.texlive) scheme-medium IEEEtran polytable lazylist;
+          inherit (pkgs.texlive) scheme-medium IEEEtran polytable lazylist multirow;
         };
         # , copySources ? false
       };

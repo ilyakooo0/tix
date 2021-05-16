@@ -5,6 +5,7 @@
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{trfrac}
+\usepackage{multirow}
 % \usepackage{caption}
 % \usepackage[main=english,russian]{babel}
 
@@ -20,6 +21,7 @@
 % \newfloat{figure}{hbp}{lst}
 
 \newcommand{\parr}[1]{\medskip\textbf{#1}\hspace{0.6cm}}
+\newcommand{\strOrNum}{(\text{String} || \text{Number})}
 
 
 % \year{2021}
@@ -282,7 +284,7 @@ in d
   \label{lst:let}
 \end{figure}
 
-\subsection{With expression}
+\subsection{With expression} \label{sec:withExp}
 
 \emph{With expressions} are a way to bring all values from an \emph{attribute set} into scope. It is conceptually very similar to \emph{let expressions} discussed in section~\ref{sec:let}. The syntax can be roughly describe like so: \texttt{with <set>; <body>} where \texttt{<set>} is an expression which evaluates to an \emph{attribute set} and all values from the set are available as definitions in the \texttt{<body>} expression. An example of a \emph{with expression} can be found in listing~\ref{lst:with}.
 
@@ -411,7 +413,7 @@ Traditionally in languages similar to \emph{simply-typed lambda calculus} genera
 
 Apart from \emph{let expressions} Nix also has \emph{attribute sets} discussed in section~\ref{sec:attrSet}, definitions in which are semantically similar to those in \emph{let expressions}. \emph{Attribute set} definitions also seem like a good point for \emph{generalization}.
 
-\subsection{Inferring recursive types}
+\subsection{Inferring recursive types} \label{sec:recLet}
 
 Recursive definitions pose a challenge for type inference without developer-supplied type annotations (which will be the case for the vast majority of code). There are three major approaches to inferring types of recursive definitions:
 
@@ -509,7 +511,7 @@ We will not describe the row predicates we have chosen for Nix. Note the analogy
 \newcommand{\update}{\mathbin{/\!\!/}}
 \newcommand{\optDot}{.\!?}
 
-\paragraph{Attribute set field predicate}
+\paragraph{Attribute set field predicate} \label{sec:attrSetPred}
 
 \begin{equation} \label{eq:fieldPred}
   \alpha. \text{x} = \beta
@@ -569,24 +571,51 @@ For this reason, we will have to define a smaller set of static types that will 
   \centering
   \caption{Mapping from static types to dynamic types}
   \begin{tabular}{ ||c||c|| } \hline
-    \textbf{Static type} & \textbf{Dynamic types}    \\ \hline \hline
-    String               & URI, Path literal, String \\ \hline
-    Number               & Integer, Float            \\ \hline
-    Bool                 & Bool                      \\ \hline
-    Null                 & Null                      \\ \hline
+    \textbf{Static type}    & \textbf{Dynamic types} \\ \hline \hline
+    \multirow{3}{*}{String} & URI                    \\ \cline{2-2}
+                            & Path literal           \\ \cline{2-2}
+                            & String                 \\ \hline \hline
+    \multirow{2}{*}{Number} & Integer                \\ \cline{2-2}
+                            & Float                  \\ \hline \hline
+    Bool                    & Bool                   \\ \hline \hline
+    Null                    & Null                   \\ \hline
   \end{tabular}
   \label{tbl:staticTypes}
 \end{table}
 
-\subsection{Addition}
+\begin{table*}[hbp]
+  \centering
+  \caption{Table of Nix Expression Language operators and their static types}
+  \begin{tabular}{||c||c||c||c||} \hline
+    \textbf{Operator} & \textbf{Operator description} & \textbf{Static type}                                                                                                         \\ \hline \hline
+    \texttt{-}        & Numeric negation              & $\text{Number} \rightarrow \text{Number}$                                                                                    \\ \hline
+    \texttt{!}        & Boolean negation              & $\text{Bool} \rightarrow \text{Bool}$                                                                                        \\ \hline
+    \texttt{++}       & List concatenation            & $\forall \alpha. \; [\alpha] \rightarrow [\alpha] \rightarrow [\alpha]$                                                      \\ \hline
+    \texttt{==}       & Equality                      & $\forall \alpha. \; \alpha \rightarrow \alpha \rightarrow \text{Bool}$                                                       \\ \hline
+    \texttt{!=}       & Not equality                  & $\forall \alpha. \; \alpha \rightarrow \alpha \rightarrow \text{Bool}$                                                       \\ \hline
+    \texttt{<}        & Less than                     & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Bool}$                                                            \\ \hline
+    \texttt{<=}       & Less than or equal            & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Bool}$                                                            \\ \hline
+    \texttt{>}        & Greater than                  & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Bool}$                                                            \\ \hline
+    \texttt{>=}       & Greater than or equal         & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Bool}$                                                            \\ \hline
+    \texttt{+}        & Addition                      & $\forall \alpha. \; \strOrNum \sim \alpha \Rightarrow \alpha \rightarrow \alpha \rightarrow \alpha$                          \\ \hline
+    \texttt{-}        & Subtraction                   & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Number}$                                                          \\ \hline
+    \texttt{*}        & Multiplication                & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Number}$                                                          \\ \hline
+    \texttt{/}        & Division                      & $\text{Number} \rightarrow \text{Number} \rightarrow \text{Number}$                                                          \\ \hline
+    \texttt{\&\&}     & Boolean ``and''               & $\text{Bool} \rightarrow \text{Bool} \rightarrow \text{Bool}$                                                                \\ \hline
+    \texttt{||||}     & Boolean ``and''               & $\text{Bool} \rightarrow \text{Bool} \rightarrow \text{Bool}$                                                                \\ \hline
+    \texttt{->}       & Implication                   & $\text{Bool} \rightarrow \text{Bool} \rightarrow \text{Bool}$                                                                \\ \hline
+    \texttt{//}       & Attribute set update          & $  \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma$ \\ \hline
+  \end{tabular}
+  \label{tbl:allOperators}
+\end{table*}
+
+\subsection{Addition} \label{sec:addition}
 
 Among all operators, addition (\texttt{+}) has semantics that stand out from the rest: addition can be applied to wither two \texttt{Number} operands or two \texttt{String} operands. All other operands are monomorphic in that they can only be applied to two operands of a predefined type. In that sense addition in polymorphic.
 
 Since our current implementation does not support sum types (see section~\ref{sec:sumTypes} for more detail), it is non-trivial to encode the type of addition in our current type system. We wanted to encode the type without having to resort to extending the type system too much (without implementing sum types).
 
 The simplest approach is to introduce a simple predicate which is satisfied only if the argument is either of type \texttt{Number} or \texttt{String}:
-
-\newcommand{\strOrNum}{(\text{String} || \text{Number})}
 
 \begin{equation}
   \strOrNum \sim \alpha
@@ -600,6 +629,12 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
 
 \subsection{Typing rules}
 
+What follows is a formal description of the developed type system. For brevity we have omitted rules for typing literal constant values described in tables \ref{tab:atomicTypes} and \ref{tbl:staticTypes}, and most operators described in table~\ref{tbl:allOperators} as these rules are trivial.
+
+\subsubsection{Lists}
+
+After doing an informal analysis of existing Nix codebases we have concluded that it is not idiomatic to have heterogeneous lists in Nix. Thus, we have chosen to enforce homogenous lists in our static type system:
+
 \begin{equation}
   \trfrac
   {\Gamma \vdash e_1:\tau \quad \cdots \quad \Gamma \vdash e_n:\tau}
@@ -608,9 +643,13 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
 
 \begin{equation}
   \trfrac
-  {\Gamma \vdash e_3:\tau \qquad \Gamma \vdash e_1 \update e_2 \sim e_3}
-  {\Gamma \vdash (e_2 \update e_2) : \tau}
+  {\Gamma \vdash e_1:[\tau] \qquad \Gamma \vdash e_2 : [\tau]}
+  {\Gamma \vdash (e_1 +\!\!+ \: e_2) : [\tau]}
 \end{equation}
+
+\subsubsection{Lambda abstractions}
+
+Typing rules for both lambda abstraction definitions and application is common among type system derived from Hindley-Milner:
 
 \begin{equation}
   \trfrac
@@ -620,9 +659,13 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
 
 \begin{equation}
   \trfrac
-  {\Gamma \vdash e_1:[\tau] \qquad \Gamma \vdash e_2 : [\tau]}
-  {\Gamma \vdash (e_1 +\!\!+ \: e_2) : [\tau]}
+  {\Gamma, \text{x}: \tau_1 \vdash e : \tau_2}
+  {\Gamma \vdash (\text{x: } e) : \tau_1 \rightarrow \tau_2}
 \end{equation}
+
+\subsubsection{Addition}
+
+The rational for having a special case for the addition operator is layed out in section~\ref{sec:addition}:
 
 \begin{equation}
   \trfrac
@@ -630,16 +673,60 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
   {\Gamma \vdash (e_1 + e_2) : \tau}
 \end{equation}
 
+\subsubsection{Conditional expressions}
+
+Conditionals are also very similar to what is described in the Hindley–Milner type system:
+
 \begin{equation}
   \trfrac
-  {\Gamma \vdash e.\text{x} = \tau}
-  {\Gamma \vdash (e.\text{x}) : \tau}
+  {\Gamma \vdash e_1 : \text{Bool} \qquad \Gamma \vdash e_2 : \tau \qquad \Gamma \vdash e_3 : \tau}
+  {\Gamma \vdash (\text{if} \; e_1 \; \text{then} \; e_2 \; \text{else} \; e_3) : \tau}
+\end{equation}
+
+\subsubsection{\texttt{let}-generalization}
+
+Just like in many functional type systems, our type system will support let-generalization -- constants bound in a \texttt{let} expression are generalized as much as possible. All free type variables that were defined while inferring an expression are closed over.
+
+A simple version of rule is as follows:
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1 : \tau_1 \qquad \Gamma, (\text{x}: \forall \{\text{ftv}(\tau_1) - \text{ftv}(\Gamma)\}. \; \tau_1) \vdash e_2 : \tau_2}
+  {\Gamma \vdash (\text{let} \; \text{x = } e_1; \; \text{in} \; e_2) : \tau_2}
+\end{equation}
+
+where $\text{fvt}(\alpha)$ is the set of all free variables that occur in $\alpha$.
+
+Of course, this does not cover all possible syntactic constructs -- it is only concerned with inferring a single declaration. It is trivially extendable to a series of independent declarations. Inferring recursive declarations is discussed in section~\ref{sec:recLet}.
+
+Inferring \emph{let expressions} trivially extends to inferring fields of \emph{attribute sets} and is omitted for brevity.
+
+\subsubsection{Instantiation}
+
+When using expressions with generalized types, we need to instantiate theme to concrete types:
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e : \forall \alpha. \; \tau_1}
+  {\Gamma \vdash e: [\alpha \rightarrow \tau_2] \tau_1}
+\end{equation}
+
+where $[\alpha \rightarrow \beta]\gamma$ denotes the result of substituting all free occurrences of $\alpha$ in $\gamma$ with $\beta$.
+
+\subsubsection{Attribute sets}
+
+Basic \emph{attribute set} operations are now trivially expressible through the predicate defined in section~\ref{sec:attrSetPred}:
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1 : \tau_1 \qquad \Gamma \vdash e_2 : \tau_2 \qquad \Gamma \vdash \tau_1 \update \tau_2 \sim \tau_3}
+  {\Gamma \vdash (e_1 \update e_2) : \tau_3}
 \end{equation}
 
 \begin{equation}
   \trfrac
   {\Gamma \vdash e.\text{x} = \tau}
-  {\Gamma \vdash (e \optDot \text{x}) = \tau}
+  {\Gamma \vdash (e.\text{x}) : \tau}
 \end{equation}
 
 \begin{equation}
@@ -654,34 +741,18 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
   {\Gamma \vdash (e \; \text{?} \; \text{x}) : \text{Bool}}
 \end{equation}
 
-\begin{equation}
-  \trfrac
-  {\Gamma \vdash e_1 : \tau_1 \qquad \Gamma, (\text{x}: \forall \{\text{ftv}(\tau_1) - \text{ftv}(\Gamma)\}. \; \tau_1) \vdash e_2 : \tau_2}
-  {\Gamma \vdash (\text{let} \; \text{x = } e_1; \; \text{in} \; e_2) : \tau_2}
-\end{equation}
+When defining typing rules for \emph{attribute sets} we will use the notion of rows similar to what is used in the \emph{Rose} paper~\cite{morris2019abstracting}: for typing purposes an attribute set will be defined as a product of a set of \emph{rows} – key-value pairs: $\Pi \xi$ where $\xi$ is a set of \emph{rows}.
+
+A key-value pair will be denoted as $\text{x} = \alpha$ where `x' is the name of a field and $\alpha$ is the type of the field.
+
+Of course, a \emph{set of rows} can not contain multiple \emph{rows} with the same key.
+
+With that we can define how those predicate are actually satisfied:
 
 \begin{equation}
   \trfrac
-  {\Gamma \vdash e : \forall \alpha. \; \tau_1}
-  {\Gamma \vdash e: [\alpha \rightarrow \tau_2] \tau_1}
-\end{equation}
-
-\begin{equation}
-  \trfrac
-  {\Gamma, \text{x}: \tau_1 \vdash e : \tau_2}
-  {\Gamma \vdash (\text{x: } e) : \tau_1 \rightarrow \tau_2}
-\end{equation}
-
-\begin{equation}
-  \trfrac
-  {\Gamma \vdash e_1 : \text{Bool} \qquad \Gamma \vdash e_2 : \tau \qquad \Gamma \vdash e_3 : \tau}
-  {\Gamma \vdash (\text{if} \; e_1 \; \text{then} \; e_2 \; \text{else} \; e_3) : \tau}
-\end{equation}
-
-\begin{equation}
-  \trfrac
-  {\Gamma \vdash e : \tau \qquad \{\text{x} = e;\} \in \xi}
-  {\Gamma \vdash (\Pi \xi).\text{x} = \tau}
+  {(\text{x} = \tau) \in \xi}
+  {(\Pi \xi).\text{x} = \tau}
 \end{equation}
 
 \begin{equation}
@@ -692,9 +763,40 @@ With this predicate the type of the addition operator (\texttt{+}) now becomes:
 
 \begin{equation}
   \trfrac
-  {\Gamma, \xi \vdash e : \tau}
-  {\Gamma \vdash (\text{with } (\Pi \xi)\text{; } e) : \tau}
+  {\Gamma \vdash e.\text{x} = \tau}
+  {\Gamma \vdash (e \optDot \text{x}) = \tau}
 \end{equation}
+
+where $(\text{x} = \tau) \in \xi$ denotes the presence of the \emph{row} $(\text{x} = \tau)$ in the \emph{set} $\xi$, and $\text{x} \notin \xi$ denotes the absence of a \emph{row} with the key `x' in the \emph{set} $\xi$.
+
+The definition of the ``update'' predicate uses standard set comprehension notation:
+
+\begin{equation}
+  \trfrac
+  {}
+  {\Pi \xi_1 \update \Pi \xi_2 \sim \Pi (\xi_2 \cup \{a = \tau || (a = \tau) \leftarrow \xi_1, a \notin \xi_2\})}
+\end{equation}
+
+\subsubsection{with expressions}
+
+\emph{with expressions} discussed in section~\ref{sec:withExp} are not difficult to define a typing rule for:
+
+\begin{equation}
+  \trfrac
+  {\Gamma \vdash e_1: \Pi \xi \qquad \Gamma, \xi \vdash e_2 : \tau}
+  {\Gamma \vdash (\text{with } e_1\text{; } e_2) : \tau}
+\end{equation}
+
+\emph{with expressions} do, however, pose a particularly hard problem when implementing the type system – we can't always statically know the fields in $e_1$ -- it can be passed in as a function argument. This means that the typing environment of a function can depend on its argument. Implementing this in a wholistic manner would require our type system support a form of dependent types. That is not a direction we want to pursue -- introducing dependent types would greatly complicate the type system to a point where automated type inference would not practical and the type system would be a lot harder to work with.
+
+Instead, we opted to define a heuristic which in our testing was proven to cover most practical cases: when encountering a variable in the body of a with expression:
+
+\begin{enumerate}
+  \item if a variable was defined in the body of the with expression and is in scope, return that type
+  \item if the \emph{attribute set} from the \emph{with expression} is statically known and defined a key with the appropriate name then return that types
+  \item if the \emph{attribute set} from the \emph{with expression} is not statically known and the outer context of the \emph{with expression} contains a variable with the appropriate name, return that type
+  \item else, create a constraint that the first operand in the \emph{with expression} contains a field with the appropriate name and type
+\end{enumerate}
 
 \section{Implementation} \label{sec:implementation}
 
