@@ -6,6 +6,7 @@
 \usepackage{microtype}
 \usepackage{trfrac}
 \usepackage{multirow}
+\usepackage{textcomp}
 % \usepackage{caption}
 % \usepackage[main=english,russian]{babel}
 
@@ -16,6 +17,26 @@
 
 %include polycode.fmt
 
+%format forall = "\forall"
+%format a = "\alpha"
+%format a'
+%format b = "\beta"
+%format b'
+%format c = "\gamma"
+%format c'
+%format d = "\delta"
+%format d'
+%format s = "\sigma"
+%format m = "\mu"
+%format r = "\psi"
+%format x = "\eta"
+%format x'
+%format y = "\zeta"
+%format y'
+%format ^ =  " "
+%format ^^ =  "\;"
+%format !!  = "{\;}''\!\!"
+%format <> = "\diamond"
 
 % \floatstyle{boxed}
 % \newfloat{figure}{hbp}{lst}
@@ -58,7 +79,7 @@
 
 % \end{otherlanguage}
 
-\parr{Source code} \url{https://github.com/ilyakooo0/tix}
+% \parr{Source code} \url{https://github.com/ilyakooo0/tix}
 
 % \newpage
 
@@ -689,7 +710,7 @@ Just like in many functional type systems, our type system will support let-gene
 
 A simple version of rule is as follows:
 
-\begin{equation}
+\begin{equation} \label{eq:letGeneralization}
   \trfrac
   {\Gamma \vdash e_1 : \tau_1 \qquad \Gamma, (\text{x}: \forall \{\text{ftv}(\tau_1) - \text{ftv}(\Gamma)\}. \; \tau_1) \vdash e_2 : \tau_2}
   {\Gamma \vdash (\text{let} \; \text{x = } e_1; \; \text{in} \; e_2) : \tau_2}
@@ -777,7 +798,7 @@ The definition of the ``update'' predicate uses standard set comprehension notat
   {\Pi \xi_1 \update \Pi \xi_2 \sim \Pi (\xi_2 \cup \{a = \tau || (a = \tau) \leftarrow \xi_1, a \notin \xi_2\})}
 \end{equation}
 
-\subsubsection{with expressions}
+\subsubsection{with expressions} \label{sec:withExprType}
 
 \emph{with expressions} discussed in section~\ref{sec:withExp} are not difficult to define a typing rule for:
 
@@ -800,7 +821,190 @@ Instead, we opted to define a heuristic which in our testing was proven to cover
 
 \section{Implementation} \label{sec:implementation}
 
-\cite{github-source}
+In this section we will explore the techniques employed in our implementation~\cite{github-source} of our type system. It is implemented in the \emph{Haskell}\footnote{\url{https://www.haskell.org}} programming language.
+
+% \subsubsection{Effects}
+
+% Our implementation uses the \emph{freer-simple}\footnote{\url{https://github.com/lexi-lambda/freer-simple}} library as the effects system.
+
+% The
+
+% \begin{code}
+% type InferEffs =
+%   !! [  Fresh,
+%        Reader SrcSpan,
+%        Writer (SrcSpan, Errors),
+%        Writer PredicateError,
+%        Writer Pred,
+%        State (MKM.Map Pred),
+%        VariableMapEff,
+%        Writer UnifyingError,
+%        Writer InferError,
+%        State Substitution,
+%        TreeTracer
+%   ]
+% \end{code}
+
+\subsection{Substitutions}
+
+\subsubsection{Substitutions in other implementations}
+
+In most typechecker implementations a substitution is a mapping from \emph{type variables} to \emph{types}. These substitutions are usually generated during the unification of type constraints and are, in general, applied to types as soon as they are available.
+
+The notion of substitution composition is usually taken to mean a binary operation which produces a new substitution that when applied (|sub|) to a type would produce the same result as sequentially applying the two source substitutions:
+
+\begin{code}
+sub (s1 . s2) = sub s1 . sub s2
+\end{code}
+
+\subsubsection{Substitutions in our implementation}
+
+In our implementation the application of substitutions is delayed as much as possible. They are applied in exactly two cases:
+
+\begin{enumerate}
+  \item Right before unifying a constraint
+  \item Right before closing over a type
+\end{enumerate}
+
+This choice has several implications. Firstly, we can never have conflicting ``keys'' in substitutions (which is not the case in other implementations). Using this information we can define stronger substitution composition:
+
+\begin{code}
+newtype Substitution =
+  Substitution {unSubstitution :: Map TypeVariable NType}
+
+instance Semigroup Substitution where
+  a'@(Substitution a) <> b'@(Substitution b) =
+    Substitution $ M.unionWith undefined
+      (fmap (sub b') a)
+      (fmap (sub a') b)
+\end{code}
+
+
+This means that the order of composition does no longer matter, and applying the composition of substitutions yields more information than applying them sequentially.
+
+Another consequence of the decision to delay substitutions is that now the role of the |infer| step of typechecking only does the following tree things:
+
+\begin{enumerate}
+  \item returns a type variable that represents the type of the expression being inferred
+  \item emits constraints generated during inferring
+  \item emits predicates generated during inferring
+\end{enumerate}
+
+\subsection{Typing context}
+
+The typing context in our implementation in essence consists of two distinct data structures:
+
+\begin{enumerate}
+  \item the types of variables currently in scope
+  \item the predicates which are applicable to those types
+\end{enumerate}
+
+\subsubsection{Variables in scope}
+
+Note that in practice it only needs to contain type variables since we apply substitutions as late as possible.
+
+In actual fact, due to the heuristics described in section~\ref{sec:withExprType} the types of variables in scope can not be represented as static data structure, but rather is implemented as a scoped effect\footnote{Effects in our case are implemented using the \emph{freer-simple} library: \url{https://github.com/lexi-lambda/freer-simple}}:
+
+\begin{code}
+data VariableMapEff x where
+  LookupVariable
+    :: VarName -> VariableMapEff (Maybe Scheme)
+
+lookupVar
+  :: Member VariableMapEff eff
+  => VarName -> Eff eff (Maybe Scheme)
+lookupVar = send . LookupVariable
+\end{code}
+
+This allows us to dynamically redefine what it means to lookup a variable in terms of its implementation in the outer context.
+
+\subsubsection{Predicates}
+
+Predicates can, on the other hand, be stored as a static data structure. The only non-standard behavior is that the set of predicates needs to be queried and manipulated based on the types that they contain, rather than on the predicates themselves.
+
+For this reason we have developed a data structure we call ``multi-keyed map''.
+
+\begin{code}
+class (Ord (Key t), Ord t) => Keyable t where
+  type Key t  :: Type
+  getKeys     :: t -> [Key t]
+
+data MultiKeyedMap t = MultiKeyedMap
+  (M.Map (Key t) (S.Set t)) (S.Set t)
+\end{code}
+
+The data structure contains is the product of two other data structures:
+
+\begin{enumerate}
+  \item A map, mapping possible keys of the stored |t| to a set of values the contains the given key
+  \item A set which contains the values that don't contain any keys
+\end{enumerate}
+
+The |Keyable| typeclass is used to extract the keys from the values that need to be stored.
+
+The union of two maps is defined trivially -- by taking the union of the inner structures:
+
+\begin{code}
+instance (Ord (Key t), Ord t)
+  => Semigroup (MultiKeyedMap t) where
+  (MultiKeyedMap x x') <> (MultiKeyedMap y y') =
+    MultiKeyedMap
+      (M.unionWith S.union x y) (x' <> y')
+\end{code}
+
+Creating a singleton map from a single values is defined like this:
+
+\begin{code}
+singleton :: Keyable t => t -> MultiKeyedMap t
+singleton t = case getKeys t of
+  [] -> MultiKeyedMap M.empty (S.singleton t)
+  ks@(_ : _) -> MultiKeyedMap
+    (M.fromList $ fmap (,s) ks) S.empty
+  where
+    s = S.singleton t
+\end{code}
+
+With these operations defining the |insert| operation becomes trivial:
+
+\begin{code}
+insert
+  :: Keyable t
+  => t -> MultiKeyedMap t -> MultiKeyedMap t
+insert t m = m <> singleton t
+\end{code}
+
+Now we come to the lookup operation. Not that the algorithmic complexity of querying the predicates by a type they contain is now the cost of an ordinary map lookup -- $O(log(n))$ where $n$ is the number of values contained in the map (in our case thw number of all types referenced from within the predicates):
+
+\begin{code}
+lookup
+  :: Keyable t
+  => Key t -> MultiKeyedMap t -> S.Set t
+lookup k (MultiKeyedMap m _) =
+  fromMaybe S.empty $ M.lookup k m
+\end{code}
+
+\subsection{Closing over type variables}
+
+An observation we can make is the following: it only makes sense to close over the type variables that were generated during the inference of the type we are closing over. Any other type variables either:
+
+\begin{enumerate}
+  \item are not present in the type
+  \item are used in an outer lexical scope (environment)
+\end{enumerate}
+
+This greatly simplifies implementing the typing rule~\ref{eq:letGeneralization} since instead of having to calculate a set of free type variables of the whole context, we only need to obtain a predicate which identifies if a type variable was introduced during the inference of an expression. This is made even easier if type variables are internally represented as integers, as they often are.
+
+In our case this is complicated by the fact that we need to introduce type variables which are fields of an \emph{attribute set} from an outer lexical scope. This is problematic because while the type variable is can be defined during inference, it is actually logically defined at the same position as the initial \emph{attribute set} it has the same lexical scope as the \emph{attribute set}. So the lexical scope of a type variable can not be derived from the inference context of an expression.
+
+A solution we came up with is two have two ways a type variable can be constructed -- as an ordinary type variable backed by a single integer, or as a sub-type variable which has the same lexical scope as another type variable:
+
+\begin{code}
+data TypeVariable
+  =    TypeVariable     Int
+  |    SubTypeVariable  Int Int
+\end{code}
+
+This way, when applying a predicate to check the lexical scope of a type variable we can always restrict ourselves to the first integer.
 
 \section{Possible improvements}
 

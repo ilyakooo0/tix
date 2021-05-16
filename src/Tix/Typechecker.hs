@@ -185,7 +185,7 @@ prettySubstitution :: Substitution -> A.Value
 prettySubstitution = A.toJSON . M.mapKeysMonotonic (TL.pack . show) . fmap renderPretty . unSubstitution
 
 instance Semigroup Substitution where
-  x'@(Substitution x) <> y'@(Substitution y) = Substitution (M.unionWithKey (error "invariant") (fmap (sub y') x) (fmap (sub x') y))
+  x'@(Substitution x) <> y'@(Substitution y) = Substitution (M.unionWith (error "invariant") (fmap (sub y') x) (fmap (sub x') y))
 
 instance Monoid Substitution where
   mempty = Substitution mempty

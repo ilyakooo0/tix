@@ -11,5 +11,12 @@
     "-A",
     "%DOCFILE%"
   ],
-  "nixEnvSelector.suggestion": false
+  "nixEnvSelector.suggestion": false,
+  "latex-workshop.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '%INDENT%'",
+    "-l"
+  ]
 }
