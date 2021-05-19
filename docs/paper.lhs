@@ -393,23 +393,6 @@ There has been some research conducted in the field of type systems with row-pol
 
 % Hughes introduced a general-purpose algebraic pretty-printer~\cite{hughes1995design}, which was later improved upon~\cite{wadler2003prettier}, to solve precisely this problem. Using one of the pretty-printers based on that research is the industry standard and will be used by our type checker.
 
-\section{Architecture}
-
-\subsection{Effect system}
-
-\subsubsection{Monad transformers}
-
-Developing a typechecker requires working with a large amount of non-trivial algorithms which influence each other in complex ways. A widespread way of dealing with such situations is introducing a common computational environment through which different parts of the program can interact (instead of ``manually'' passing state around). A well-established way of handling state in purely functional programming languages is the \emph{Monad} abstraction~\cite{moggi1988computational}.
-
-It is natural to want to abstract the underlying monad – explicitly declare what features a function actually needs the monad to have. Furthermore, it is desireable to decompose the features of the a monad not only in function definitions, but also at the call site – it is desireable to be able to conjure up monads with desireable traits in an ad-hoc manner. This has been achieved a while ago with \emph{monad transformers}~\cite{liang1995monad}.
-
-A drawback of monad transformers is their somewhat rigid nature – every behavior a monad needs to have needs to be defined as a distinct transformer with appropriate instances. The instances need to not only implement the desired behavior, but also explicitly ``pass through'' \emph{all} other effects that it might be used in combination with. This means that adding extra behavior leads to a large amount of boilerplate. Furthermore, monads themselves (monad transformers) are not in general composable, leading to a whole other set of problems. In addition, it is cumbersome to locally change parts of the underlying implementation of a monad dynamically – it might be useful to tweak some behavior in only a part of an algorithm, leaving the rest to the abstract implementation; monad transformers don't really have such capabilities.
-
-\subsubsection{Free monad extensible effects}
-
-Recently a new approach to effect systems has been getting more attention – \emph{free monads algebraic effects}~\cite{kiselyov2015freer, ploeg2014reflection, kiselyov2013extensible}. This approach solves the problems with monad transformers mentioned above. Rather than being transformers, effects are described as \emph{functors}. The composability problem is resolved due to functors being in general composable. Contrary to how monad transformers operate, effects (or their carriers) in \emph{free monads algebraic effects} (we will from now on refer to them as just \emph{algebraic effects}) don't have any particular interpretation of the effect associated with them. Effects are interpreted in an ad-hoc manner at the call site. Furthermore, this allows us to dynamically modify the behavior of effects without changing the types or implementations of functions we wish to change the behavior of.
-% How we use \emph{algebraic effects} will be discussed in more detail in section~\ref{sec:implementation}.
-
 \section{Type system}
 
 As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not to just add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developed typechecker processes a program without errors, then the program should have no type errors during execution.
@@ -847,6 +830,21 @@ In this section we will explore the techniques employed in our implementation~\c
 %        TreeTracer
 %   ]
 % \end{code}
+
+\subsection{Effect system}
+
+\subsubsection{Monad transformers}
+
+Developing a typechecker requires working with a large amount of non-trivial algorithms which influence each other in complex ways. A widespread way of dealing with such situations is introducing a common computational environment through which different parts of the program can interact (instead of ``manually'' passing state around). A well-established way of handling state in purely functional programming languages is the \emph{Monad} abstraction~\cite{moggi1988computational}.
+
+It is natural to want to abstract the underlying monad – explicitly declare what features a function actually needs the monad to have. Furthermore, it is desireable to decompose the features of the a monad not only in function definitions, but also at the call site – it is desireable to be able to conjure up monads with desireable traits in an ad-hoc manner. This has been achieved a while ago with \emph{monad transformers}~\cite{liang1995monad}.
+
+A drawback of monad transformers is their somewhat rigid nature – every behavior a monad needs to have needs to be defined as a distinct transformer with appropriate instances. The instances need to not only implement the desired behavior, but also explicitly ``pass through'' \emph{all} other effects that it might be used in combination with. This means that adding extra behavior leads to a large amount of boilerplate. Furthermore, monads themselves (monad transformers) are not in general composable, leading to a whole other set of problems. In addition, it is cumbersome to locally change parts of the underlying implementation of a monad dynamically – it might be useful to tweak some behavior in only a part of an algorithm, leaving the rest to the abstract implementation; monad transformers don't really have such capabilities.
+
+\subsubsection{Free monad extensible effects}
+
+Recently a new approach to effect systems has been getting more attention – \emph{free monads algebraic effects}~\cite{kiselyov2015freer, ploeg2014reflection, kiselyov2013extensible}. This approach solves the problems with monad transformers mentioned above. Rather than being transformers, effects are described as \emph{functors}. The composability problem is resolved due to functors being in general composable. Contrary to how monad transformers operate, effects (or their carriers) in \emph{free monads algebraic effects} (we will from now on refer to them as just \emph{algebraic effects}) don't have any particular interpretation of the effect associated with them. Effects are interpreted in an ad-hoc manner at the call site. Furthermore, this allows us to dynamically modify the behavior of effects without changing the types or implementations of functions we wish to change the behavior of.
+% How we use \emph{algebraic effects} will be discussed in more detail in section~\ref{sec:implementation}.
 
 \subsection{Substitutions}
 
