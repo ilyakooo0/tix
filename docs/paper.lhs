@@ -1027,7 +1027,7 @@ Note that all of what follows is only concerned with syntactic constructs. It do
 
 We would like to point out that all of the predicates have an operand which is the ``result'' of the predicate -- a single type variable which is said to be equivalent to a more complex expression. That is $\beta$ in predicates \ref{eq:fieldPred} and \ref{eq:optFieldPred}, and $\gamma$ in predicate \ref{eq:upatePred}.
 
-The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is it natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands, and, as such, can be replaced with their definitions.
+The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is a natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands, and, as such, can be replaced with their definitions.
 
 This means that we can syntactically replace \emph{type variables} with a portion of a predicate -- replace the variable with the definition. If we apply this technique to the type~\ref{eq:dotExample} we get the following type:
 
