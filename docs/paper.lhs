@@ -1,4 +1,4 @@
-\documentclass[a4paper,conference]{IEEEtran}
+\documentclass[a4paper,journal,compsoc]{IEEEtran}
 
 % \usepackage{float}
 \usepackage{mathtools}
