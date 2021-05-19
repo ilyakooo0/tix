@@ -1008,6 +1008,16 @@ data TypeVariable
 
 This way, when applying a predicate to check the lexical scope of a type variable we can always restrict ourselves to the first integer.
 
+\section{Evaluation of our implementation}
+
+To evaluate our typechecker implementation~\cite{github-source} we collected \emph{Nix} source files from the larges \emph{Nix} package repository – \emph{nixpkgs}\footnote{\url{https://github.com/NixOS/nixpkgs}}. Due to our current implementation not supporting file imports (file imports are the responsibility of the system calling the typechecker, not the type checker itself) the files were filtered down to those that do not contain import statements.
+
+Running our typechecker on the test set of \emph{Nix} source files results in \emph{1963} out of \emph{2948} (67\%) typechecking with no type errors.
+
+We believe this is a very good result since the files were not prepared in any way and were taken as-is from the package repository. Furthermore, it is important to note that rejecting a portion of ``valid'' programs is an unavoidable property of static typecheckers.
+
+We would also like to point out that even in those cases, when type errors were encountered during typechecking, the typechecker still produces output types which can be useful to the developer and can be used for further typechecking of larger expressions (though, providing less guarantees).
+
 \section{Possible improvements}
 
 \subsection{Making predicates more user-friendly}
