@@ -10,7 +10,7 @@
           homepage = String;
           license = δ;
           longDescription = String;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
           platforms = ε;
         };
       nativeBuildInputs = [ζ];

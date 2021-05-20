@@ -20,7 +20,7 @@
   app = Null;
   avdHomeDir = Null;
   enableGPU = Bool;
-  extraAVDFiles = θ;
+  extraAVDFiles = [θ];
   name = β;
   package = Null;
   platformVersion = String;

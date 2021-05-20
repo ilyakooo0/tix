@@ -7,7 +7,7 @@
         { broken = Bool;
           description = String;
           homepage = String;
-          hydraPlatforms = ∀ α. α;
+          hydraPlatforms = ∀ α. [α];
           license = [ε];
           platforms = ζ;
         };

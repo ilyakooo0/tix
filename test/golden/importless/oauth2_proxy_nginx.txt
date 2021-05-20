@@ -12,7 +12,7 @@
   δ.oauth2_proxy = ο,
   ο.nginx = π,
   π.proxy = ε,
-  π.virtualHosts = ρ,
+  π.virtualHosts = [ρ],
   σ.oauth2_proxy = τ,
   τ.httpAddress = λ,
   ξ.str = μ,

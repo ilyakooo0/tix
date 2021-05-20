@@ -3,7 +3,7 @@
     ( { elpaBuild =
           { ename = String;
             meta = {homepage = String; license = ε;};
-            packageRequires = ∀ α. α;
+            packageRequires = ∀ α. [α];
             pname = String;
             src = ζ;
             version = String;

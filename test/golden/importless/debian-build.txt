@@ -12,8 +12,8 @@
   ( γ
   ),
   ({doCheck = Bool; prePhases = String; prefix = String;}) // (γ) ~ (δ),
-  ε.?debProvides = ζ,
-  ε.?debRequires = η,
+  ε.?debProvides = [ζ],
+  ε.?debRequires = [η],
   ε.?fsTranslation = Bool,
   ε.meta = {},
   ε.?name = String,

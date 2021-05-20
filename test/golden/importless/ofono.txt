@@ -17,13 +17,13 @@
     } ->
     ρ,
   δ.mkOption =
-    {default = ∀ α. α; description = String; example = λ; type = σ;} -> τ,
+    {default = ∀ α. [α]; description = String; example = λ; type = σ;} -> τ,
   δ.types = υ,
   ε.ofono = ξ,
   η.plugins = ι,
   ζ.ofono = φ,
   φ.enable = ν,
-  φ.plugins = χ,
+  φ.plugins = [χ],
   υ.listOf = ψ -> σ,
   ω.package = ψ
 ) =>

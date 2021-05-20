@@ -14,7 +14,7 @@
         };
       name = ι;
       nativeBuildInputs = [ε];
-      patches = κ;
+      patches = [κ];
       postPatch = λ;
       prePatch = String;
       src = μ;
@@ -32,7 +32,7 @@
 { customConfig = Null;
   name = ι;
   ncurses = ε;
-  patches = κ;
+  patches = [κ];
   src = μ;
   stdenv = α;
 } ->

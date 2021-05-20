@@ -8,7 +8,7 @@
           homepage = String;
           license = ζ;
           longDescription = String;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
           platforms = η;
         };
       name = String;

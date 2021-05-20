@@ -6,9 +6,9 @@
   δ.literalExample = String -> ι,
   δ.mkIf = Bool -> {environment = {etc = {odbcinst.ini = {text = θ;};};};} -> κ,
   δ.mkOption =
-    {default = ∀ α. α; description = String; example = ι; type = λ;} -> μ,
+    {default = ∀ α. [α]; description = String; example = ι; type = λ;} -> μ,
   δ.types = ν,
-  ε.unixODBCDrivers = ξ,
+  ε.unixODBCDrivers = [ξ],
   ο.unixODBCDrivers = η,
   ν.listOf = π -> λ,
   ρ.package = π

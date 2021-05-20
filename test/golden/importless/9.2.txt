@@ -8,7 +8,7 @@
       ldid = ζ;
       meta =
         { description = String;
-          hydraPlatforms = ∀ α. α;
+          hydraPlatforms = ∀ α. [α];
           license = η;
           maintainers = [θ];
           platforms = ι;

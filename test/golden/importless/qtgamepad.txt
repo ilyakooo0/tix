@@ -1,7 +1,7 @@
 ∀ β γ δ.
 { pkgconfig = β;
   qtModule =
-    { buildInputs = ∀ α. α;
+    { buildInputs = ∀ α. [α];
       name = String;
       nativeBuildInputs = [β];
       outputs = [String];

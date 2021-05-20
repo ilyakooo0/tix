@@ -1,0 +1,14 @@
+∀ ζ η θ.
+( ζ.eggDerivation = ∀ ε. {buildInputs = ∀ β. [β]; name = String; src = η;} -> ε,
+  ζ.fetchegg = {name = String; sha256 = String; version = String;} -> η
+) =>
+{pkgs = ζ; stdenv = θ;} ->
+{ args = δ;
+  eggDerivation = ∀ γ. {buildInputs = ∀ α. [α]; name = String; src = η;} -> γ;
+  fetchegg = {name = String; sha256 = String; version = String;} -> η;
+  matchable = δ;
+  srfi-1 = δ;
+  srfi-13 = δ;
+  srfi-14 = δ;
+  srfi-37 = δ;
+}

@@ -6,7 +6,7 @@
         { description = String;
           homepage = String;
           license = δ;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
           platforms = ε;
         };
       pname = String;

@@ -2,7 +2,7 @@
 ( β.lib = γ,
   β.mkDerivation =
     { buildInputs = [δ];
-      configureFlags = ∀ α. α;
+      configureFlags = ∀ α. [α];
       dontAddPrefix = Bool;
       installFlags = ε;
       meta = {broken = Bool;};

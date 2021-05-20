@@ -29,7 +29,7 @@
     } ->
     ν,
   δ.mkOption =
-    {default = ∀ α. α; description = String; example = [String]; type = ξ;} ->
+    {default = ∀ α. [α]; description = String; example = [String]; type = ξ;} ->
     ο,
   δ.types = π,
   ε.lldpd = λ,

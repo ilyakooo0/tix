@@ -6,6 +6,6 @@
   comp = String;
   squashfsTools = β;
   stdenv = α;
-  storeContents = ε;
+  storeContents = [ε];
 } ->
 γ

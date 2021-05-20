@@ -6,7 +6,7 @@
 ) =>
 { buildDunePackage =
     { buildInputs = [η];
-      configurePlatforms = ∀ α. α;
+      configurePlatforms = ∀ α. [α];
       meta =
         { description = String;
           homepage = String;

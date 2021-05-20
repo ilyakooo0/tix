@@ -3,7 +3,7 @@
   β.mkDerivation =
     { NIX_CFLAGS_COMPILE = String;
       buildInputs = [δ];
-      meta = {description = String; maintainers = ∀ α. α; platforms = ε;};
+      meta = {description = String; maintainers = ∀ α. [α]; platforms = ε;};
       pname = String;
       src = ζ;
       version = String;

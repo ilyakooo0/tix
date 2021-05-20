@@ -3,7 +3,7 @@
   β.mkDerivation =
     { buildInputs = [δ];
       luaver = ε;
-      meta = {homepage = String; hydraPlatforms = ζ; maintainers = ∀ α. α;};
+      meta = {homepage = String; hydraPlatforms = ζ; maintainers = ∀ α. [α];};
       patchPhase = String;
       pname = String;
       src = η;

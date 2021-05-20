@@ -377,7 +377,7 @@ infer (Fix (Compose (Ann src x))) = local (const src) $ case x of
     xs' <- traverse infer xs
     traverse_ tell . fmap (uncurry (:~)) $ zip xs' (tail xs')
     case xs' of
-      [] -> NTypeVariable <$> fresh
+      [] -> List . NTypeVariable <$> fresh
       y : _ -> return $ List y
   NUnary NNeg y -> do
     t <- infer y

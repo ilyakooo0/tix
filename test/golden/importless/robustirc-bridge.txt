@@ -28,7 +28,7 @@
     } ->
     ι,
   δ.mkOption =
-    {default = ∀ α. α; description = String; example = [String]; type = κ;} ->
+    {default = ∀ α. [α]; description = String; example = [String]; type = κ;} ->
     λ,
   δ.types = μ,
   ζ.robustirc-bridge = ν,

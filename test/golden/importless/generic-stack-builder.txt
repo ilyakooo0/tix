@@ -4,7 +4,7 @@
   ( { GIT_SSL_CAINFO = String;
       LANG = String;
       LD_LIBRARY_PATH = β;
-      STACK_IN_NIX_EXTRA_ARGS = γ;
+      STACK_IN_NIX_EXTRA_ARGS = [γ];
       STACK_IN_NIX_SHELL = Number;
       STACK_PLATFORM_VARIANT = String;
       __noChroot = Bool;
@@ -25,7 +25,7 @@
   α.?buildPhase = String,
   α.?checkPhase = String,
   α.?doCheck = Bool,
-  α.?extraArgs = γ,
+  α.?extraArgs = [γ],
   α.?ghc = ε,
   α.?installPhase = String,
   α.?nativeBuildInputs = [ε],

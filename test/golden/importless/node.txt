@@ -1,7 +1,8 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
 ( β.services = γ,
   δ.mkOption =
-    {default = ∀ α. α; description = String; example = String; type = ε;} -> ζ,
+    {default = ∀ α. [α]; description = String; example = String; type = ε;} ->
+    ζ,
   δ.types = η,
   γ.prometheus = θ,
   θ.exporters = ι,

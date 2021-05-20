@@ -7,7 +7,7 @@
   δ.map =
     ({interface = κ; method = String; password = String;} -> String) -> λ -> θ,
   δ.mkOption =
-    { default = ∀ α. α;
+    { default = ∀ α. [α];
       description = String;
       example = [{interface = String; method = String; password = String;}];
     } ->

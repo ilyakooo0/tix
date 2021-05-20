@@ -1,2 +1,3 @@
 ∀ β.
-{qtModule = {name = String; outputs = [String]; qtInputs = ∀ α. α;} -> β;} -> β
+{qtModule = {name = String; outputs = [String]; qtInputs = ∀ α. [α];} -> β;} ->
+β

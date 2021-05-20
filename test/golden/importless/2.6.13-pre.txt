@@ -7,7 +7,7 @@
       configureFlags = [String];
       hardeningDisable = [String];
       meta = {description = String; maintainers = [θ]; platforms = ι;};
-      patches = ∀ α. α;
+      patches = ∀ α. [α];
       pname = String;
       postPatch = String;
       sourceRoot = String;

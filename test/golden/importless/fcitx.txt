@@ -30,7 +30,7 @@
     } ->
     ω,
   η.mkOption =
-    {default = ∀ α. α; description = String; example = φ; type = υ;} -> α1,
+    {default = ∀ α. [α]; description = String; example = φ; type = υ;} -> α1,
   η.types = β1,
   κ.override = {plugins = γ1;} -> ψ,
   ξ.engines = γ1,

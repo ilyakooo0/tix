@@ -10,7 +10,7 @@
     ε
 ) =>
 {dotnetfx = β; stdenv = α;} ->
-{ assemblyInputs = ζ;
+{ assemblyInputs = [ζ];
   baseDir = String;
   mainClassFile = Null;
   modifyPublicMain = Bool;

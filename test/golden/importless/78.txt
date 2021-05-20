@@ -5,7 +5,7 @@
   β.mkDerivation =
     { buildInputs = [ε];
       configureFlags = [String];
-      configurePlatforms = ∀ α. α;
+      configurePlatforms = ∀ α. [α];
       depsBuildBuild = [ζ];
       enableParallelBuilding = Bool;
       meta =

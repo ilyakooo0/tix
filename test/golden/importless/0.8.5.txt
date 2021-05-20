@@ -1,6 +1,6 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν.
 ( α.?meta = β,
-  β.?platforms = γ,
+  β.?platforms = [γ],
   δ.lib = ε,
   δ.mkDerivation =
     { buildInputs = [α];
@@ -10,7 +10,7 @@
           homepage = String;
           license = ζ;
           maintainers = [η];
-          platforms = γ;
+          platforms = [γ];
         };
       patches = [θ];
       pname = String;

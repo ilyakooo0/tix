@@ -12,7 +12,7 @@
           platforms = ζ;
         };
       nativeBuildInputs = [η];
-      patches = θ;
+      patches = [θ];
       pname = String;
       postInstall = String;
       postPatch = String;
@@ -39,7 +39,7 @@
   libxslt = γ;
   makeWrapper = γ;
   pango = γ;
-  patches = θ;
+  patches = [θ];
   pkgconfig = η;
   rev = ο;
   sha256 = π;

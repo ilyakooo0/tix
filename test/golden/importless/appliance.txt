@@ -1,6 +1,6 @@
 ∀ β.
 { fetchzip =
-    { meta = {hydraPlatforms = ∀ α. α;};
+    { meta = {hydraPlatforms = ∀ α. [α];};
       name = String;
       sha256 = String;
       url = String;

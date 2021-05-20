@@ -22,7 +22,7 @@
     } ->
     ξ,
   δ.mkOption =
-    { default = ∀ α. α;
+    { default = ∀ α. [α];
       description = String;
       example = θ;
       internal = Bool;

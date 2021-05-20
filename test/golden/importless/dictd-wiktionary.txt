@@ -8,7 +8,7 @@
       meta =
         { description = String;
           homepage = String;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
           platforms = η;
         };
       pname = String;

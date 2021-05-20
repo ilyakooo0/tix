@@ -5,7 +5,7 @@
       name = String;
       nativeBuildInputs = [γ];
       outputs = [String];
-      patches = δ;
+      patches = [δ];
       postFixup = String;
       preConfigure = String;
       preHook = String;
@@ -19,7 +19,7 @@
   β.?meta = {},
   β.?nativeBuildInputs = [γ],
   β.?outputs = [String],
-  β.?patches = δ,
+  β.?patches = [δ],
   β.?propagatedBuildInputs = [ε],
   β.?setOutputFlags = Bool,
   β.?src = ζ,

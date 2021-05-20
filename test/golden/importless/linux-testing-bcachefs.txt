@@ -4,7 +4,7 @@
   ( { extraConfig = String;
       extraMeta =
         { branch = String;
-          hydraPlatforms = ∀ α. α;
+          hydraPlatforms = ∀ α. [α];
           maintainers = [γ];
           platforms = [String];
         };

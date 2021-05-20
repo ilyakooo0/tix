@@ -3,7 +3,7 @@
   β.maintainers = δ,
   β.platforms = ε,
   ζ.gerbilPackage =
-    { buildInputs = ∀ α. α;
+    { buildInputs = ∀ α. [α];
       gambit-params = η;
       gerbil = θ;
       gerbil-package = String;

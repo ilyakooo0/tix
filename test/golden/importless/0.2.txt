@@ -42,7 +42,7 @@
   gst_all_1 = μ;
   libjack2 = ε;
   libva = ε;
-  makeFontsConf = {fontDirectories = ∀ α. α;} -> δ;
+  makeFontsConf = {fontDirectories = ∀ α. [α];} -> δ;
   meson = ι;
   ninja = ι;
   pkgconfig = ι;

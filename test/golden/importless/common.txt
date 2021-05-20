@@ -19,7 +19,7 @@
     β ->
     { environment = {systemPackages = [δ];};
       nix =
-        { binaryCaches = ∀ α. α;
+        { binaryCaches = ∀ α. [α];
           buildMachines = [{hostName = String; systems = [ι];}];
           distributedBuilds = Bool;
         };

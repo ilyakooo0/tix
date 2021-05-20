@@ -5,7 +5,7 @@
       installPhase = String;
       meta =
         { description = String;
-          hydraPlatforms = ∀ α. α;
+          hydraPlatforms = ∀ α. [α];
           license = ε;
           maintainers = [ζ];
           platforms = η;

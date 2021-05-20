@@ -14,7 +14,7 @@
       nativeBuildInputs = [θ];
       pname = String;
       preConfigure = String;
-      pythonPath = ∀ α. α;
+      pythonPath = ∀ α. [α];
       src = ι;
       version = String;
     } ->

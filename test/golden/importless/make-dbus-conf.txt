@@ -7,11 +7,11 @@
       allowSubstitutes = Bool;
       nativeBuildInputs = [β];
       preferLocalBuild = Bool;
-      serviceDirectories = ε;
+      serviceDirectories = [ε];
       suidHelper = String;
     } ->
     String -> ζ;
-  serviceDirectories = ε;
+  serviceDirectories = [ε];
   suidHelper = String;
   writeText = String -> String -> δ;
 } ->

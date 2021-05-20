@@ -9,7 +9,7 @@
       meta =
         { description = String;
           license = ε;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
           platforms = ζ;
         };
       name = String;

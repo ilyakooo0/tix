@@ -8,7 +8,7 @@
         { description = String;
           homepage = String;
           license = ε;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
         };
       pname = String;
       sources10Zip = ζ;

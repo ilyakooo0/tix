@@ -5,9 +5,9 @@
       meta =
         { description = String;
           homepage = String;
-          hydraPlatforms = ∀ α. α;
+          hydraPlatforms = ∀ α. [α];
           license = ε;
-          maintainers = ∀ α. α;
+          maintainers = ∀ α. [α];
         };
       pname = String;
       propagatedBuildInputs = [ζ];

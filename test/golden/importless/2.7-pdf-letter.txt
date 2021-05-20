@@ -1,7 +1,7 @@
 ∀ β γ δ ε.
 ( β.mkDerivation =
     { installPhase = String;
-      meta = {maintainers = ∀ α. α;};
+      meta = {maintainers = ∀ α. [α];};
       name = String;
       src = γ;
     } ->

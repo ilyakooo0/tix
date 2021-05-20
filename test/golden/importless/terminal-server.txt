@@ -20,7 +20,7 @@
         { xserver =
             { displayManager = {gdm = {enable = Bool;};};
               enable = Bool;
-              videoDrivers = ∀ α. α;
+              videoDrivers = ∀ α. [α];
             };
         };
       systemd =

@@ -7,7 +7,7 @@
   δ.mkIf =
     Bool ->
     {environment = {variables = {GDK_PIXBUF_MODULE_FILE = String;};};} -> θ,
-  δ.mkOption = {default = ∀ α. α; description = String; type = ι;} -> κ,
+  δ.mkOption = {default = ∀ α. [α]; description = String; type = ι;} -> κ,
   δ.types = λ,
   δ.unique = [μ] -> ν,
   ε.gdk-pixbuf = μ,
@@ -15,7 +15,7 @@
   η.modulePackages = [μ],
   ζ.xserver = ο,
   ο.gdk-pixbuf = π,
-  π.modulePackages = ρ,
+  π.modulePackages = [ρ],
   λ.listOf = σ -> ι,
   τ.package = σ
 ) =>

@@ -8,7 +8,7 @@
   lib = β;
   mkDerivation =
     { buildInputs = [η];
-      meta = {license = [ε]; maintainers = ∀ α. α;};
+      meta = {license = [ε]; maintainers = ∀ α. [α];};
       name = String;
       nativeBuildInputs = [ζ];
       postPatch = String;

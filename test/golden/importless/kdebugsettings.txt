@@ -19,7 +19,7 @@
       meta = {license = [ε]; maintainers = [ζ];};
       name = String;
       nativeBuildInputs = [η];
-      propagatedUserEnvPkgs = ∀ α. α;
+      propagatedUserEnvPkgs = ∀ α. [α];
     } ->
     ι;
   python = θ;
