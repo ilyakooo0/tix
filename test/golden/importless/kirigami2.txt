@@ -1,0 +1,15 @@
+∀ α β γ δ.
+(α.version = β) => { extra-cmake-modules = γ;
+  mkDerivation =
+    { buildInputs = [α];
+      meta = {broken = Bool;};
+      name = String;
+      nativeBuildInputs = [γ];
+      outputs = [String];
+    } ->
+    δ;
+  qtbase = α;
+  qtquickcontrols2 = α;
+  qttranslations = α;
+} ->
+δ

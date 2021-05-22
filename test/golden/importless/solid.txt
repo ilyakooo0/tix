@@ -1,0 +1,20 @@
+∀ α β γ δ ε ζ η θ.
+(α.maintainers = β, γ.version = δ, β.ttuegel = ε) => { bison = ζ;
+  extra-cmake-modules = ζ;
+  flex = ζ;
+  lib = α;
+  media-player-info = ζ;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {broken = Bool; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedBuildInputs = [γ];
+      propagatedUserEnvPkgs = [ζ];
+    } ->
+    θ;
+  qtbase = γ;
+  qtdeclarative = η;
+  qttools = η;
+} ->
+θ

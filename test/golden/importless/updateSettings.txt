@@ -1,0 +1,12 @@
+∀ α β γ δ ε.
+(α.optionalString = Bool -> String -> β) => { jq = γ;
+  lib = α;
+  writeShellScriptBin = String -> δ -> ε;
+} ->
+{ createIfDoesNotExists = Bool;
+  settings = {};
+  symlinkFromUserSetting = Bool;
+  userSettingsFolder = String;
+  vscodeSettingsFile = String;
+} ->
+ε

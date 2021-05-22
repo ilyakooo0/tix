@@ -1,0 +1,19 @@
+∀ α β γ δ ε ζ η θ ι.
+(α.maintainers = β, γ.version = δ, β.ttuegel = ε) => { extra-cmake-modules = ζ;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {broken = Bool; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      propagatedBuildInputs = [γ];
+      setupHook = θ;
+    } ->
+    ι;
+  plasma-wayland-protocols = η;
+  propagateBin = θ;
+  qtbase = γ;
+  wayland = η;
+  wayland-protocols = η;
+} ->
+ι

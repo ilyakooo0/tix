@@ -52,6 +52,7 @@ import Data.Traversable
 import Nix.Atoms
 import Nix.Expr
 import Nix.Pretty
+import Tix.Builtins (builtins)
 import Tix.Types
 import Prelude as P
 
@@ -63,6 +64,7 @@ getType r =
           . evalState @(MKM.Map Pred) mempty
           . interpret @(Writer Pred) (\(Tell x) -> modify (<> MKM.singleton x))
           . runVariableMapEff
+          . localVariablesMap builtins
           . evalState @Substitution mempty
           . runState @[(TypeVariable, SrcSpan)] []
           . interpret @(Writer (TypeVariable, SrcSpan)) (\(Tell x) -> modify (x :))

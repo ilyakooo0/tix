@@ -1,12 +1,11 @@
-∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ.
+∀ α β γ δ ε ζ η θ ι κ λ μ.
 ( α.config = β,
   α.lib = γ,
   α.pkgs = δ,
   β.services = ε,
-  γ.builtins = ζ,
-  γ.mkEnableOption = String -> η,
+  γ.mkEnableOption = String -> ζ,
   γ.mkIf =
-    θ ->
+    η ->
     { systemd =
         { services =
             { squeezelite =
@@ -15,7 +14,7 @@
                   serviceConfig =
                     { DynamicUser = Bool;
                       ExecStart = String;
-                      StateDirectory = ι;
+                      StateDirectory = String;
                       SupplementaryGroups = String;
                     };
                   wantedBy = [String];
@@ -23,15 +22,14 @@
             };
         };
     } ->
-    κ,
-  γ.mkOption = {default = String; description = String; type = λ;} -> μ,
-  γ.types = ν,
-  ε.squeezelite = ξ,
-  ξ.enable = θ,
-  ζ.baseNameOf = String -> ι,
-  ν.str = λ
+    θ,
+  γ.mkOption = {default = String; description = String; type = ι;} -> κ,
+  γ.types = λ,
+  ε.squeezelite = μ,
+  μ.enable = η,
+  λ.str = ι
 ) =>
 α ->
-{ config = κ;
-  options = {services = {squeezelite = {enable = η; extraArguments = μ;};};};
+{ config = θ;
+  options = {services = {squeezelite = {enable = ζ; extraArguments = κ;};};};
 }

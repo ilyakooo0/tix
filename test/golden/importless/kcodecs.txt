@@ -1,0 +1,17 @@
+∀ α β γ δ ε ζ η θ.
+(α.maintainers = β, γ.version = δ, β.ttuegel = ε) => { extra-cmake-modules = ζ;
+  gperf = η;
+  lib = α;
+  mkDerivation =
+    { buildInputs = [η];
+      meta = {broken = Bool; maintainers = [ε];};
+      name = String;
+      nativeBuildInputs = [ζ];
+      outputs = [String];
+      propagatedBuildInputs = [γ];
+    } ->
+    θ;
+  qtbase = γ;
+  qttools = η;
+} ->
+θ
