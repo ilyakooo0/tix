@@ -1,14 +1,11 @@
 ∀ α β γ.
-( ( α
-  ) //
-  ( { extraPatches = [String];
-      extraPostInstall = String;
-      sha256 = String;
-      version = String;
-    }
-  ) ~
-  ( β
-  ),
+( α //
+  { extraPatches = [String];
+    extraPostInstall = String;
+    sha256 = String;
+    version = String;
+  } ~
+  β,
   α.callPackage = String -> β -> γ
 ) =>
 α -> γ

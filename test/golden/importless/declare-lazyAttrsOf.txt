@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ.
-( (α) // ({emptyValue = {value = String;};}) ~ (β),
+( α // {emptyValue = {value = String;};} ~ β,
   γ.lib = δ,
   δ.mkOption = {default = {}; type = ε;} -> ζ,
   δ.types = η,

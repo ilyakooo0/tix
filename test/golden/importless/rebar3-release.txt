@@ -1,23 +1,20 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ.
-( (β) // (γ) ~ ({buildInputs = [δ]; name = String;}),
-  ( { buildInputs = [ε];
-      buildPhase = String;
-      configurePhase = String;
-      dontStrip = Bool;
-      installPhase = String;
-      meta = ∀ α. α;
-      name = String;
-      passthru = {env = ζ; packageName = η;};
-      propagatedBuildInputs = [Null];
-      setupHook = θ;
-      src = ι;
-      version = κ;
-    }
-  ) //
-  ( λ
-  ) ~
-  ( γ
-  ),
+( β // γ ~ {buildInputs = [δ]; name = String;},
+  { buildInputs = [ε];
+    buildPhase = String;
+    configurePhase = String;
+    dontStrip = Bool;
+    installPhase = String;
+    meta = ∀ α. α;
+    name = String;
+    passthru = {env = ζ; packageName = η;};
+    propagatedBuildInputs = [Null];
+    setupHook = θ;
+    src = ι;
+    version = κ;
+  } //
+  λ ~
+  γ,
   β.?buildInputs = [ε],
   β.?buildPhase = Null,
   β.?checkouts = Null,

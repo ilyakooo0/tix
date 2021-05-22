@@ -1,15 +1,12 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1.
-( ( { newgidmap = {source = String;};
-      newgrp = {source = String;};
-      newuidmap = {source = String;};
-      sg = {source = String;};
-      su = {source = String;};
-    }
-  ) //
-  ( β
-  ) ~
-  ( γ
-  ),
+( { newgidmap = {source = String;};
+    newgrp = {source = String;};
+    newuidmap = {source = String;};
+    sg = {source = String;};
+    su = {source = String;};
+  } //
+  β ~
+  γ,
   δ.config = ε,
   δ.lib = ζ,
   δ.pkgs = η,

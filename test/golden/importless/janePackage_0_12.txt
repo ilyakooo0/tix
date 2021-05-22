@@ -1,14 +1,11 @@
 ∀ α β γ δ ε ζ η θ ι.
-( ( α
-  ) //
-  ( { meta = {homepage = String; license = β;};
-      minimumOCamlVersion = String;
-      src = γ;
-      version = String;
-    }
-  ) ~
-  ( δ
-  ),
+( α //
+  { meta = {homepage = String; license = β;};
+    minimumOCamlVersion = String;
+    src = γ;
+    version = String;
+  } ~
+  δ,
   α.?version = String,
   ε.licenses = ζ,
   α.hash = η,

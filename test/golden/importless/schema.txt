@@ -1,5 +1,5 @@
 ∀ β γ.
-((β) // ({meta = {hydraPlatforms = ∀ α. [α];};}) ~ (γ)) => { fetchFromGitHub =
+(β // {meta = {hydraPlatforms = ∀ α. [α];};} ~ γ) => { fetchFromGitHub =
     { name = String;
       owner = String;
       repo = String;

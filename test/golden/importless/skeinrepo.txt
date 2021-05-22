@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ.
-( (β) // (γ) ~ (δ),
+( β // γ ~ δ,
   ε.optional = ζ -> η -> [θ],
   ε.optionalAttrs = ι -> {dontAutoPatchelf = Bool;} -> γ,
   κ.isLinux = Bool,

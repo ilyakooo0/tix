@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ.
-( (β) // ({license = γ; maintainers = [δ]; platforms = ε;}) ~ (ζ),
+( β // {license = γ; maintainers = [δ]; platforms = ε;} ~ ζ,
   η.lib = θ,
   η.mkDerivation =
     { desktopItem = ι;

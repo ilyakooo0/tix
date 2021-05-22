@@ -1,16 +1,13 @@
 ∀ ε ζ η θ ι κ λ μ ν ξ ο.
-( ( ε
-  ) //
-  ( { buildInputs = [ζ];
-      buildPhase = η;
-      configurePhase = θ;
-      installPhase = String;
-      name = ι;
-      pluginType = κ;
-    }
-  ) ~
-  ( λ
-  ),
+( ε //
+  { buildInputs = [ζ];
+    buildPhase = η;
+    configurePhase = θ;
+    installPhase = String;
+    name = ι;
+    pluginType = κ;
+  } ~
+  λ,
   μ.?buildInputs = [ζ],
   ν.stdenv = ξ,
   ν.unzip = ζ,

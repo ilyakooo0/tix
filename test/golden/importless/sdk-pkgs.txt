@@ -1,17 +1,14 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( ( β
-  ) //
-  ( { sdk =
-        { name = String;
-          outPath = String;
-          platform = γ;
-          type = String;
-          version = δ;
-        };
-    }
-  ) ~
-  ( ε
-  ),
+( β //
+  { sdk =
+      { name = String;
+        outPath = String;
+        platform = γ;
+        type = String;
+        version = δ;
+      };
+  } ~
+  ε,
   ζ.sdkVer = δ,
   ζ.xcodePlatform = γ,
   η.lib = θ,

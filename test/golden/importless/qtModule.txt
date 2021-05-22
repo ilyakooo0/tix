@@ -1,21 +1,18 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ.
-( ( β
-  ) //
-  ( { meta = ∀ α. α;
-      name = String;
-      nativeBuildInputs = [γ];
-      outputs = [String];
-      patches = [δ];
-      postFixup = String;
-      preConfigure = String;
-      preHook = String;
-      propagatedBuildInputs = [ε];
-      setOutputFlags = Bool;
-      src = ζ;
-    }
-  ) ~
-  ( η
-  ),
+( β //
+  { meta = ∀ α. α;
+    name = String;
+    nativeBuildInputs = [γ];
+    outputs = [String];
+    patches = [δ];
+    postFixup = String;
+    preConfigure = String;
+    preHook = String;
+    propagatedBuildInputs = [ε];
+    setOutputFlags = Bool;
+    src = ζ;
+  } ~
+  η,
   β.?meta = {},
   β.?nativeBuildInputs = [γ],
   β.?outputs = [String],

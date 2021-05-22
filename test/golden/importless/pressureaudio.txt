@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι.
-( (β) // ({description = String; longDescription = String;}) ~ (γ),
+( β // {description = String; longDescription = String;} ~ γ,
   δ.mkDerivation =
     { buildPhase = String;
       dontConfigure = Bool;

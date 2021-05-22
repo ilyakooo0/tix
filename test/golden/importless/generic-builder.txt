@@ -1,20 +1,17 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( (α) // ({name = String;}) ~ (β),
-  ( { NIX_CFLAGS_COMPILE = γ;
-      buildInputs = [δ];
-      buildPhase = String;
-      checkPhase = String;
-      configurePhase = String;
-      installFlags = [String];
-      installPhase = String;
-      postFixup = String;
-      rCommand = String;
-    }
-  ) //
-  ( β
-  ) ~
-  ( ε
-  ),
+( α // {name = String;} ~ β,
+  { NIX_CFLAGS_COMPILE = γ;
+    buildInputs = [δ];
+    buildPhase = String;
+    checkPhase = String;
+    configurePhase = String;
+    installFlags = [String];
+    installPhase = String;
+    postFixup = String;
+    rCommand = String;
+  } //
+  β ~
+  ε,
   α.?buildInputs = [δ],
   α.?doCheck = Bool,
   α.?requireX = Bool,

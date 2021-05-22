@@ -1,6 +1,6 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( (β) // ({meta = ∀ α. α;}) ~ (γ),
-  (δ) // ({description = String;}) ~ (ε),
+( β // {meta = ∀ α. α;} ~ γ,
+  δ // {description = String;} ~ ε,
   ζ.?postPatch = String,
   η.lib = θ,
   ι.meta = δ,

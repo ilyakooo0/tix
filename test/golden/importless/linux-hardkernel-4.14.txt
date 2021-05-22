@@ -1,16 +1,13 @@
 ∀ α β γ δ ε ζ η θ ι.
-( ( α
-  ) //
-  ( { defconfig = String;
-      extraConfig = String;
-      extraMeta = {branch = String; platforms = [String];};
-      modDirVersion = String;
-      src = β;
-      version = String;
-    }
-  ) ~
-  ( γ
-  ),
+( α //
+  { defconfig = String;
+    extraConfig = String;
+    extraMeta = {branch = String; platforms = [String];};
+    modDirVersion = String;
+    src = β;
+    version = String;
+  } ~
+  γ,
   α.?argsOverride = {},
   α.?extraConfig = String,
   α.buildLinux = γ -> δ,

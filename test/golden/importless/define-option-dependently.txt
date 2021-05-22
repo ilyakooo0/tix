@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η.
-( ({value = Number;}) // (β) ~ (γ),
+( {value = Number;} // β ~ γ,
   δ.?enable = ε,
   ζ.lib = η,
   ζ.options = δ,

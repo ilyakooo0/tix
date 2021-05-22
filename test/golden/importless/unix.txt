@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ.
-( (β) // ({description = String;}) ~ (γ),
+( β // {description = String;} ~ γ,
   δ.optional = Bool -> ε -> ζ,
   η.meta = β,
   η.src = θ,

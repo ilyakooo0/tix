@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η.
-( (α) // ({extraMeta = {branch = String;}; src = β; version = String;}) ~ (γ),
+( α // {extraMeta = {branch = String;}; src = β; version = String;} ~ γ,
   α.?argsOverride = {},
   α.buildLinux = γ -> δ,
   α.buildPackages = ε,

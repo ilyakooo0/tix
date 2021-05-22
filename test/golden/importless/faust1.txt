@@ -1,50 +1,41 @@
 ∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1.
-( ( γ
-  ) //
-  ( { dontBuild = Bool;
-      installPhase = String;
-      meta = ∀ β. β;
-      name = String;
-      postInstall = String;
-      src = δ;
-    }
-  ) ~
-  ( ε
-  ),
-  ( ζ
-  ) //
-  ( { buildInputs = [η];
-      nativeBuildInputs = [θ];
-      postFixup = String;
-      propagatedBuildInputs = [ι];
-    }
-  ) ~
-  ( { buildInputs = [η];
-      meta = ∀ β. β;
-      passthru = {wrap = κ; wrapWithBuildEnv = λ;};
-      pname = String;
-      postFixup = String;
-      postInstall = String;
-      preConfigure = String;
-      src = δ;
-      version = μ;
-    }
-  ),
-  ( ν
-  ) //
-  ( {buildInputs = [η]; postFixup = String;}
-  ) ~
-  ( { buildInputs = [η];
-      meta = ∀ β. β;
-      passthru = {wrap = κ; wrapWithBuildEnv = λ;};
-      pname = String;
-      postFixup = String;
-      postInstall = String;
-      preConfigure = String;
-      src = δ;
-      version = μ;
-    }
-  ),
+( γ //
+  { dontBuild = Bool;
+    installPhase = String;
+    meta = ∀ β. β;
+    name = String;
+    postInstall = String;
+    src = δ;
+  } ~
+  ε,
+  ζ //
+  { buildInputs = [η];
+    nativeBuildInputs = [θ];
+    postFixup = String;
+    propagatedBuildInputs = [ι];
+  } ~
+  { buildInputs = [η];
+    meta = ∀ β. β;
+    passthru = {wrap = κ; wrapWithBuildEnv = λ;};
+    pname = String;
+    postFixup = String;
+    postInstall = String;
+    preConfigure = String;
+    src = δ;
+    version = μ;
+  },
+  ν //
+  {buildInputs = [η]; postFixup = String;} ~
+  { buildInputs = [η];
+    meta = ∀ β. β;
+    passthru = {wrap = κ; wrapWithBuildEnv = λ;};
+    pname = String;
+    postFixup = String;
+    postInstall = String;
+    preConfigure = String;
+    src = δ;
+    version = μ;
+  },
   ξ.?scripts = [ο],
   π.?scripts = [ο],
   ρ.lib = σ,

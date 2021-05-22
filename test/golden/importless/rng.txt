@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ.
-( (β) // ({description = String;}) ~ (γ),
+( β // {description = String;} ~ γ,
   δ.meta = β,
   δ.minimumOCamlVersion = ε,
   δ.src = ζ,

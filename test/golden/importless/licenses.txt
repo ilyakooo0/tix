@@ -1,21 +1,18 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1.
-( (α) // ({shortName = β;}) ~ (γ),
-  ( δ
-  ) //
-  ( { agpl3 = ε;
-      fdl11 = ζ;
-      fdl12 = η;
-      fdl13 = θ;
-      gpl1 = ι;
-      gpl2 = κ;
-      gpl3 = λ;
-      lgpl2 = μ;
-      lgpl21 = ν;
-      lgpl3 = ξ;
-    }
-  ) ~
-  ( ο
-  ),
+( α // {shortName = β;} ~ γ,
+  δ //
+  { agpl3 = ε;
+    fdl11 = ζ;
+    fdl12 = η;
+    fdl13 = θ;
+    gpl1 = ι;
+    gpl2 = κ;
+    gpl3 = λ;
+    lgpl2 = μ;
+    lgpl21 = ν;
+    lgpl3 = ξ;
+  } ~
+  ο,
   π.licenses = ρ,
   π.mapAttrs =
     (β -> α -> γ) ->

@@ -1,17 +1,14 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ.
-( ( α
-  ) //
-  ( { doCheck = Bool;
-      name = String;
-      postPatch = String;
-      sourceRoot = String;
-      src = β;
-      version = String;
-    }
-  ) ~
-  ( γ
-  ),
-  (δ) // ({datadog_checks_base = ε; python = ζ;}) ~ (η),
+( α //
+  { doCheck = Bool;
+    name = String;
+    postPatch = String;
+    sourceRoot = String;
+    src = β;
+    version = String;
+  } ~
+  γ,
+  δ // {datadog_checks_base = ε; python = ζ;} ~ η,
   θ.fetchFromGitHub =
     {owner = String; repo = String; rev = String; sha256 = String;} -> β,
   θ.lib = ι,

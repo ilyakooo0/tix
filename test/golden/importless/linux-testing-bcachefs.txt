@@ -1,20 +1,17 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ.
-( ( β
-  ) //
-  ( { extraConfig = String;
-      extraMeta =
-        { branch = String;
-          hydraPlatforms = ∀ α. [α];
-          maintainers = [γ];
-          platforms = [String];
-        };
-      modDirVersion = String;
-      src = δ;
-      version = String;
-    }
-  ) ~
-  ( ε
-  ),
+( β //
+  { extraConfig = String;
+    extraMeta =
+      { branch = String;
+        hydraPlatforms = ∀ α. [α];
+        maintainers = [γ];
+        platforms = [String];
+      };
+    modDirVersion = String;
+    src = δ;
+    version = String;
+  } ~
+  ε,
   β.?argsOverride = {},
   β.buildLinux = ε -> ζ,
   β.buildPackages = η,

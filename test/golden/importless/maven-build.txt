@@ -1,24 +1,21 @@
 ∀ α β γ δ ε ζ.
-( ( { finalPhase = String;
-      mvnAssembly = String;
-      mvnCheckstyle = String;
-      mvnCompile = String;
-      mvnJar = String;
-      mvnJavadoc = String;
-      mvnRelease = String;
-      mvnTest = String;
-      mvnTestCompile = String;
-      mvnTestJar = String;
-      name = α;
-      phases = String;
-      setupPhase = String;
-      src = β;
-    }
-  ) //
-  ( γ
-  ) ~
-  ( δ
-  ),
+( { finalPhase = String;
+    mvnAssembly = String;
+    mvnCheckstyle = String;
+    mvnCompile = String;
+    mvnJar = String;
+    mvnJavadoc = String;
+    mvnRelease = String;
+    mvnTest = String;
+    mvnTestCompile = String;
+    mvnTestJar = String;
+    name = α;
+    phases = String;
+    setupPhase = String;
+    src = β;
+  } //
+  γ ~
+  δ,
   γ.?doCheckstyle = Bool,
   γ.?doJavadoc = Bool,
   γ.?doRelease = Bool,

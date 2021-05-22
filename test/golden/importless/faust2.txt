@@ -1,55 +1,46 @@
 ∀ γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1.
-( ( γ
-  ) //
-  ( { dontBuild = Bool;
-      installPhase = String;
-      meta = ∀ β. β;
-      name = String;
-      postInstall = String;
-      src = δ;
-    }
-  ) ~
-  ( ε
-  ),
-  ( ζ
-  ) //
-  ( { buildInputs = [η];
-      libPath = θ;
-      nativeBuildInputs = [η];
-      postFixup = String;
-      propagatedBuildInputs = [ι];
-    }
-  ) ~
-  ( { buildInputs = [κ];
-      cmakeFlags = String;
-      meta = ∀ β. β;
-      nativeBuildInputs = [η];
-      passthru = {wrap = λ; wrapWithBuildEnv = μ;};
-      pname = String;
-      postFixup = String;
-      postInstall = String;
-      preConfigure = String;
-      src = δ;
-      version = ν;
-    }
-  ),
-  ( ξ
-  ) //
-  ( {buildInputs = [η]; postFixup = String;}
-  ) ~
-  ( { buildInputs = [κ];
-      cmakeFlags = String;
-      meta = ∀ β. β;
-      nativeBuildInputs = [η];
-      passthru = {wrap = λ; wrapWithBuildEnv = μ;};
-      pname = String;
-      postFixup = String;
-      postInstall = String;
-      preConfigure = String;
-      src = δ;
-      version = ν;
-    }
-  ),
+( γ //
+  { dontBuild = Bool;
+    installPhase = String;
+    meta = ∀ β. β;
+    name = String;
+    postInstall = String;
+    src = δ;
+  } ~
+  ε,
+  ζ //
+  { buildInputs = [η];
+    libPath = θ;
+    nativeBuildInputs = [η];
+    postFixup = String;
+    propagatedBuildInputs = [ι];
+  } ~
+  { buildInputs = [κ];
+    cmakeFlags = String;
+    meta = ∀ β. β;
+    nativeBuildInputs = [η];
+    passthru = {wrap = λ; wrapWithBuildEnv = μ;};
+    pname = String;
+    postFixup = String;
+    postInstall = String;
+    preConfigure = String;
+    src = δ;
+    version = ν;
+  },
+  ξ //
+  {buildInputs = [η]; postFixup = String;} ~
+  { buildInputs = [κ];
+    cmakeFlags = String;
+    meta = ∀ β. β;
+    nativeBuildInputs = [η];
+    passthru = {wrap = λ; wrapWithBuildEnv = μ;};
+    pname = String;
+    postFixup = String;
+    postInstall = String;
+    preConfigure = String;
+    src = δ;
+    version = ν;
+  },
   ο.?scripts = [π],
   ρ.?scripts = [π],
   σ.lib = τ,

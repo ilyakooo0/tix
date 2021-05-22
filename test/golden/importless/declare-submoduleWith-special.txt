@@ -1,5 +1,5 @@
 ∀ ζ η θ ι κ λ.
-( (ζ) // ({foo = String;}) ~ (η),
+( ζ // {foo = String;} ~ η,
   θ.lib = ζ,
   ζ.mkOption = {default = {}; type = ι;} -> κ,
   ζ.types = λ,

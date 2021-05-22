@@ -1,17 +1,14 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο.
-( ( β
-  ) //
-  ( { installExtraDebsPhase = String;
-      installPhase = String;
-      meta = ∀ α. α;
-      name = String;
-      postHook = String;
-      sysInfoPhase = String;
-    }
-  ) ~
-  ( γ
-  ),
-  ({doCheck = Bool; prePhases = String; prefix = String;}) // (γ) ~ (δ),
+( β //
+  { installExtraDebsPhase = String;
+    installPhase = String;
+    meta = ∀ α. α;
+    name = String;
+    postHook = String;
+    sysInfoPhase = String;
+  } ~
+  γ,
+  {doCheck = Bool; prePhases = String; prefix = String;} // γ ~ δ,
   ε.?debProvides = [ζ],
   ε.?debRequires = [η],
   ε.?fsTranslation = Bool,

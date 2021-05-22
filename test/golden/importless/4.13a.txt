@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι.
-( (β) // ({branch = String;}) ~ (γ),
+( β // {branch = String;} ~ γ,
   δ.mkDerivation =
     { buildInputs = [ε];
       meta = ∀ α. α;

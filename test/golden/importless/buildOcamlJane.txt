@@ -1,20 +1,17 @@
 ∀ α β γ δ ε ζ.
-( ( α
-  ) //
-  ( { buildInputs = [β];
-      buildPhase = String;
-      configurePhase = String;
-      dontAddPrefix = Bool;
-      hasSharedObjects = Bool;
-      installPhase = String;
-      minimumSupportedOcamlVersion = String;
-      name = γ;
-      src = δ;
-      version = String;
-    }
-  ) ~
-  ( ε
-  ),
+( α //
+  { buildInputs = [β];
+    buildPhase = String;
+    configurePhase = String;
+    dontAddPrefix = Bool;
+    hasSharedObjects = Bool;
+    installPhase = String;
+    minimumSupportedOcamlVersion = String;
+    name = γ;
+    src = δ;
+    version = String;
+  } ~
+  ε,
   α.?buildInputs = [β],
   α.?hash = String,
   α.?minimumSupportedOcamlVersion = String,

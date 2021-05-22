@@ -1,5 +1,5 @@
 ∀ α β γ δ.
-( (α) // ({patches = [String]; src = β; version = String;}) ~ (γ),
+( α // {patches = [String]; src = β; version = String;} ~ γ,
   α.callPackage = String -> γ -> δ,
   α.fetchurl = {sha256 = String; url = String;} -> β
 ) =>

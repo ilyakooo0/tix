@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1 β1 γ1 δ1 ε1 ζ1 η1 θ1 ι1.
-( (β) // ({check = γ -> Bool; name = String;}) ~ (δ),
+( β // {check = γ -> Bool; name = String;} ~ δ,
   ε.config = ζ,
   ε.lib = η,
   ε.pkgs = θ,

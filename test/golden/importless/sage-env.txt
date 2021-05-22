@@ -1,5 +1,5 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω α1.
-( (α) // ({lib = β;}) ~ (γ),
+( α // {lib = β;} ~ γ,
   δ.cc = String,
   ε.makeBinPath = [String] -> ζ,
   η.bintools = String,

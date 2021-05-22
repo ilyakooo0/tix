@@ -1,5 +1,5 @@
 ∀ α β γ δ ε.
-( (α) // ({src = β; version = String;}) ~ (γ),
+( α // {src = β; version = String;} ~ γ,
   α.autoreconfHook = δ,
   α.callPackage = String -> γ -> ε,
   α.fetchFromGitHub =

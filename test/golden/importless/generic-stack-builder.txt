@@ -1,25 +1,22 @@
 ∀ α β γ δ ε ζ η θ ι κ λ μ.
-( ( α
-  ) //
-  ( { GIT_SSL_CAINFO = String;
-      LANG = String;
-      LD_LIBRARY_PATH = β;
-      STACK_IN_NIX_EXTRA_ARGS = [γ];
-      STACK_IN_NIX_SHELL = Number;
-      STACK_PLATFORM_VARIANT = String;
-      __noChroot = Bool;
-      buildInputs = [δ];
-      buildPhase = String;
-      checkPhase = String;
-      doCheck = Bool;
-      installPhase = String;
-      nativeBuildInputs = [ε];
-      preConfigure = String;
-      preferLocalBuild = Bool;
-    }
-  ) ~
-  ( ζ
-  ),
+( α //
+  { GIT_SSL_CAINFO = String;
+    LANG = String;
+    LD_LIBRARY_PATH = β;
+    STACK_IN_NIX_EXTRA_ARGS = [γ];
+    STACK_IN_NIX_SHELL = Number;
+    STACK_PLATFORM_VARIANT = String;
+    __noChroot = Bool;
+    buildInputs = [δ];
+    buildPhase = String;
+    checkPhase = String;
+    doCheck = Bool;
+    installPhase = String;
+    nativeBuildInputs = [ε];
+    preConfigure = String;
+    preferLocalBuild = Bool;
+  } ~
+  ζ,
   α.?LD_LIBRARY_PATH = [δ],
   α.?buildInputs = [δ],
   α.?buildPhase = String,

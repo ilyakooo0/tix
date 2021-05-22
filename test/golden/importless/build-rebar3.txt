@@ -1,26 +1,23 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ.
-( (β) // (γ) ~ ({buildInputs = [δ]; name = String;}),
-  ( { buildInputs = [ε];
-      buildPhase = String;
-      buildPlugins = [ζ];
-      compilePorts = Bool;
-      configurePhase = String;
-      dontStrip = Bool;
-      installPhase = String;
-      meta = ∀ α. α;
-      name = String;
-      passthru = {beamDeps = [ζ]; env = η; packageName = θ;};
-      postPatch = String;
-      propagatedBuildInputs = ι;
-      setupHook = κ;
-      src = λ;
-      version = μ;
-    }
-  ) //
-  ( ν
-  ) ~
-  ( γ
-  ),
+( β // γ ~ {buildInputs = [δ]; name = String;},
+  { buildInputs = [ε];
+    buildPhase = String;
+    buildPlugins = [ζ];
+    compilePorts = Bool;
+    configurePhase = String;
+    dontStrip = Bool;
+    installPhase = String;
+    meta = ∀ α. α;
+    name = String;
+    passthru = {beamDeps = [ζ]; env = η; packageName = θ;};
+    postPatch = String;
+    propagatedBuildInputs = ι;
+    setupHook = κ;
+    src = λ;
+    version = μ;
+  } //
+  ν ~
+  γ,
   β.?beamDeps = [ζ],
   β.?buildInputs = [ε],
   β.?buildPhase = Null,

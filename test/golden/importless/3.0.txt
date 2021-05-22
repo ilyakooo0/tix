@@ -1,5 +1,5 @@
 ∀ α β γ.
-( (α) // ({sha256 = String; version = String;}) ~ (β),
+( α // {sha256 = String; version = String;} ~ β,
   α.callPackage = String -> β -> γ
 ) =>
 α -> γ

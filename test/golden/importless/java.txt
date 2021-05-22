@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι κ λ μ ν ξ ο π.
-( (β) // ({description = String;}) ~ (γ),
+( β // {description = String;} ~ γ,
   δ.config = ε,
   δ.lib = ζ,
   δ.pkgs = η,

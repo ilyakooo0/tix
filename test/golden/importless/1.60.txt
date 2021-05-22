@@ -1,5 +1,5 @@
 ∀ α β γ δ ε.
-( (α) // ({src = β; version = String;}) ~ (γ),
+( α // {src = β; version = String;} ~ γ,
   α.callPackage = String -> γ -> δ,
   α.fetchurl = {sha256 = String; url = String;} -> β,
   α.stdenv = ε

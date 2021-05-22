@@ -1,5 +1,5 @@
 ∀ β γ δ ε ζ η θ ι.
-( (β) // ({description = String; priority = Number;}) ~ (γ),
+( β // {description = String; priority = Number;} ~ γ,
   δ.mkDerivation = {builder = ε; meta = ∀ α. α; name = String;} -> ζ,
   η.meta = β,
   θ.description = String

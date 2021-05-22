@@ -1,16 +1,13 @@
 ∀ α β γ δ.
-( ( α
-  ) //
-  ( { archive = String;
-      edition = String;
-      pname = String;
-      src = β;
-      suiteName = String;
-      version = String;
-    }
-  ) ~
-  ( γ
-  ),
+( α //
+  { archive = String;
+    edition = String;
+    pname = String;
+    src = β;
+    suiteName = String;
+    version = String;
+  } ~
+  γ,
   α.?officeVersion = {edition = String; sha256 = String; version = String;},
   α.callPackage = String -> γ -> δ,
   α.fetchurl = {sha256 = String; url = String;} -> β

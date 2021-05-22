@@ -1,17 +1,14 @@
 ∀ α β γ δ ε ζ η θ.
-( ( α
-  ) //
-  ( { buildPhase = String;
-      checkPhase = String;
-      configurePhase = String;
-      installPhase = String;
-      modRoot = String;
-      passthru = {forCurses = Bool; forTiles = Bool;};
-      pname = String;
-    }
-  ) ~
-  ( β
-  ),
+( α //
+  { buildPhase = String;
+    checkPhase = String;
+    configurePhase = String;
+    installPhase = String;
+    modRoot = String;
+    passthru = {forCurses = Bool; forTiles = Bool;};
+    pname = String;
+  } ~
+  β,
   α.?buildPhase = String,
   α.?checkPhase = String,
   α.?configurePhase = String,

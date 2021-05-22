@@ -252,7 +252,7 @@ prettyScheme u@(cs :=> t) = do
       x' <- prettyNType False x
       y' <- prettyNType False y
       z' <- prettyNType False z
-      return $ group $ paren x' <+> "//" <> line <> paren y' <+> "~" <> line <> paren z'
+      return $ group $ x' <+> "//" <> line <> y' <+> "~" <> line <> z'
     prettyPred (StringOrNumber x) = do
       x' <- prettyNType False x
       return $ "(String | Number)" <+> "~" <+> x'

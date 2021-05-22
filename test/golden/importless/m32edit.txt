@@ -1,15 +1,12 @@
 ∀ α β γ.
-( ( α
-  ) //
-  ( { brand = String;
-      homepage = String;
-      sha256 = String;
-      type = String;
-      version = String;
-    }
-  ) ~
-  ( β
-  ),
+( α //
+  { brand = String;
+    homepage = String;
+    sha256 = String;
+    type = String;
+    version = String;
+  } ~
+  β,
   α.callPackage = String -> β -> γ
 ) =>
 α -> γ
