@@ -322,7 +322,7 @@ in d
   \label{lst:with}
 \end{figure}
 
-\section{Existing typecheckers}
+\section{Existing typecheckers implementations}
 
 In this section we will examine existing attempts at developing a typechecker for the Nix Expression Language, determine the features of the implemented type systems and assess how well maintained the implementations are.
 
@@ -345,7 +345,7 @@ haskell-nix/hnix\footnote{\url{https://github.com/haskell-nix/hnix}} is primaril
 \parr{Status} Last time the typechecker was modified in any substantial way was in 2019. It does not appear to be actively developed. Furthermore, there is no description of the implemented type system.
 
 
-\section{Existing Approaches}
+\section{Existing type system research}
 
 In this section we will explore existing techniques used to develop typecheckers, and explore how they can be applicable to our implementation.
 
@@ -393,7 +393,7 @@ There has been some research conducted in the field of type systems with row-pol
 
 % Hughes introduced a general-purpose algebraic pretty-printer~\cite{hughes1995design}, which was later improved upon~\cite{wadler2003prettier}, to solve precisely this problem. Using one of the pretty-printers based on that research is the industry standard and will be used by our type checker.
 
-\section{Type system}
+\section{Our Nix type system}
 
 As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not to just add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developed typechecker processes a program without errors, then the program should have no type errors during execution.
 
@@ -1010,6 +1010,10 @@ This way, when applying a predicate to check the lexical scope of a type variabl
 
 \section{Evaluation of our implementation}
 
+In this section we will examine how our implementation of the typechecker behaves on real input.
+
+\subsection{Evaluating nixpkgs}
+
 To evaluate our typechecker implementation~\cite{github-source} we collected \emph{Nix} source files from the larges \emph{Nix} package repository – \emph{nixpkgs}\footnote{\url{https://github.com/NixOS/nixpkgs}}. Due to our current implementation not supporting file imports (file imports are the responsibility of the system calling the typechecker, not the type checker itself) the files were filtered down to those that do not contain import statements.
 
 Running our typechecker on the test set of \emph{Nix} source files results in \emph{1963} out of \emph{2948} (67\%) typechecking with no type errors.
@@ -1017,6 +1021,111 @@ Running our typechecker on the test set of \emph{Nix} source files results in \e
 We believe this is a very good result since the files were not prepared in any way and were taken as-is from the package repository. Furthermore, it is important to note that rejecting a portion of ``valid'' programs is an unavoidable property of static typecheckers.
 
 We would also like to point out that even in those cases, when type errors were encountered during typechecking, the typechecker still produces output types which can be useful to the developer and can be used for further typechecking of larger expressions (though, providing less guarantees).
+
+\subsection{Evaluating common expressions}
+
+We will now examine a few language constructs to see how our typechecker handles them, and what errors it can detect.
+
+\subsubsection{Script interpreters}
+
+In listing~\ref{lst:interpreters} we present a sample script which demonstrates our type inference algorithm.
+
+The function \texttt{getScriptInterpreters} takes a single ``package'' structure and returns a list of interpreters used in the scripts of the package. Out type inference algorithm correctly infers the following type of the function:
+
+\begin{equation}
+  \forall \alpha \beta \gamma. \; (\alpha. \text{scripts} = [\beta], \beta. \text{interpreter} = \gamma) \Rightarrow \alpha \rightarrow [\gamma]
+\end{equation}
+
+The constant \texttt{package} contains a sample ``package'' structure with three scripts. In real code the structure would be a lot more complex, but it is simplified for brevity.
+
+The result of the whole expression (applying \texttt{getScriptInterpreters} to \texttt{package}) is correctly inferred by our type checker to have the type:
+
+\begin{equation}
+  [\text{String}]
+\end{equation}
+
+\begin{figure}
+  \begin{minipage}{\textwidth}
+    \begin{verbatim}
+let getScriptInterpreters = x:
+      builtins.map
+        (y: y.interpreter)
+        x.scripts;
+    package = {
+      scripts = [
+        {interpreter = "bash";}
+        {interpreter = "zsh";}
+        {interpreter = "fish";}
+      ];
+    };
+in getScriptInterpreters package
+\end{verbatim}
+  \end{minipage}
+  \caption{A sample nix program which gathers all interpreters used by a script in a package.}
+  \label{lst:interpreters}
+\end{figure}
+
+If a programmer makes a certain class of mistakes when developing the program, our typechecker would report an error. For example, the programmer might forget to access the ``scripts'' field of the package, and pass whole package by accident:
+
+\begin{verbatim}
+getScriptInterpreters =
+  x: builtins.map (y: y.interpreter) x;
+\end{verbatim}
+
+In that case, when evaluating the whole expression from listing~\ref{lst:interpreters} he would receive the following error from the typechecker: ``could not match list with type \texttt{\{scripts = [{interpreter = String;}]\}}''. This error is a result of trying to \texttt{map} over an attribute set.
+
+\subsubsection{Haskell packages}
+
+In listing~\ref{lst:haskellPackages} we defined a function \texttt{haskellPackage} which takes parameters for a haskell package and returns a configuration which might describe how to build the package. Out tool correctly infers the type of the function:
+
+\begin{equation}
+  \begin{aligned}
+    \forall \alpha \beta. \; &
+    \\ ( & \alpha \optDot \text{compilerFlags} = [\text{String}],
+    \\ & \alpha \optDot \text{compilerVersion} = \text{String},
+    \\ & \alpha.\text{src} = \beta)
+    \\ \Rightarrow & \alpha
+    \\ \rightarrow & \{ \text{compiler} = \text{String};
+    \\ & \text{compilerFlags} = [\text{String}];
+    \\ & \text{src} = \beta; \}
+  \end{aligned}
+\end{equation}
+
+By the derived type of the function we can clearly see that the \texttt{compilerFlags} and \texttt{compilerVersion} fields of the input attribute set are optional.
+
+The result of the whole expression is a list of applications of the \texttt{haskellPackage} function to multiple configurations. Ou implementation correctly infers the following type:
+
+\begin{equation}
+  [{\text{compiler} = \text{String}; \text{compilerFlags} = [\text{String}]; \text{src} = \text{String};}]
+\end{equation}
+
+\begin{figure}
+  \begin{minipage}{\textwidth}
+    \begin{verbatim}
+let haskellPackage = x: {
+  compiler = "ghc" + (x.compilerVersion or "900");
+  inherit (x) src;
+  compilerFlags = x.compilerFlags or ["-O3" "-j"];
+};
+in [
+  (haskellPackage {
+    src = ./project-m36;
+    compilerVersion = "865";
+  })
+  (haskellPackage {
+    src = ./pandoc;
+    compilerFlags = ["-static"];
+  })
+]
+  \end{verbatim}
+  \end{minipage}
+  \caption{A sample nix program which defined several haskell packages..}
+  \label{lst:haskellPackages}
+\end{figure}
+
+A mistake that is easy to make here is to forget to quote the \texttt{compilerVersion} field, leading to the type being `Number' instead of `String'. In that case out implementation will convey exactly that in an error.
+
+Another common mistake is specifying the \texttt{compilerFlags} field as a single `String' instead of a list. In that case our implementation will emit an appropriate error without the need to execute the expression.
 
 \section{Possible improvements}
 
@@ -1092,11 +1201,9 @@ where $\beta$ can be the type $\alpha$. With this predicate, our ``String or Num
   \strOrNum \sim \alpha = (\text{String} \lessdot \alpha, \text{Number} \lessdot \alpha)
 \end{equation}
 
-\section{Conclusion}
+\section*{Conclusion}
 
-Nix is a rapidly growing ecosystem. At the time of writing, nixpkgs, the Nix package registry, contains over 60000 packages\footnote{\url{https://github.com/NixOS/nixpkgs}} that can be either installed or used as dependencies in other projects. There is much interest in the approach used by Nix, and making the ever-growing codebase of configurations easier to manage and extend would be a welcome development.
-
-Even though the developed type checker will need to check code for an existing dynamic language, and no type checker can cover all of the valid cases, producing false negatives, covering most of the cases encountered in practice would be useful enough to be worth using. Furthermore, plenty of research has already been conducted on which the Nix Expression Language type checker can be based.
+In this paper we have examined the existing approaches which have been used in developing type systems for functional programming languages. We have then adapted the existing approaches and developed a new static type system for the Nix Expression Language. We have also developed a preliminary implementation of you type system which we tested on an existing code base. We have also outlined further practical improvements to our implementation which could improve the developer experience.
 
 \newpage
 
