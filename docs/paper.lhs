@@ -395,7 +395,7 @@ There has been some research conducted in the field of type systems with row-pol
 
 \section{Our Nix type system}
 
-As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not to just add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developed typechecker processes a program without errors, then the program should have no type errors during execution.
+As mentioned above, we have opted to use the Damas-Milner type system as a basis for our implementation. Our goal is not just to add types for the sake of types, but give additional reassurance to the developer, and reject as many potentially ``invalid'' programs as possible. If the developed typechecker processes a program without errors, then the program should have no type errors during execution.
 
 \subsection{Polymorphism} \label{sec:polymorphism}
 
@@ -568,7 +568,7 @@ The term \texttt{x: y: x // y} would yield the following type:
   \forall \alpha \beta \gamma. \; \alpha \update \beta \sim \gamma \Rightarrow \alpha \rightarrow \beta \rightarrow \gamma
 \end{equation}
 
-\subsection{Atmoic types}
+\subsection{Atomic types}
 
 Nix is a dynamic language, and as such, allows dynamic coercions between certain types. This means that we can not use the dynamic types from the interpreter to perform static type checking -- if we did that we would reject \emph{a lot} of valid programs.\footnote{``Valid'' not just in the sense that they would not produce runtime errors, but ``valid'' in the sense that the programmer would judge the program as being ``correct''.}
 
@@ -1123,7 +1123,7 @@ in [
   \label{lst:haskellPackages}
 \end{figure}
 
-A mistake that is easy to make here is to forget to quote the \texttt{compilerVersion} field, leading to the type being `Number' instead of `String'. In that case out implementation will convey exactly that in an error.
+A mistake that is easy to make here is to forget to quote the \texttt{compilerVersion} field, leading to the type being `Number' instead of `String'. In that case our implementation will convey exactly that in an error.
 
 Another common mistake is specifying the \texttt{compilerFlags} field as a single `String' instead of a list. In that case our implementation will emit an appropriate error without the need to execute the expression.
 
@@ -1203,7 +1203,7 @@ where $\beta$ can be the type $\alpha$. With this predicate, our ``String or Num
 
 \section*{Conclusion}
 
-In this paper we have examined the existing approaches which have been used in developing type systems for functional programming languages. We have then adapted the existing approaches and developed a new static type system for the Nix Expression Language. We have also developed a preliminary implementation of you type system which we tested on an existing code base. We have also outlined further practical improvements to our implementation which could improve the developer experience.
+In this paper we have examined the existing approaches which have been used in developing type systems for functional programming languages. We have then adapted the existing approaches and developed a new static type system for the Nix Expression Language. We have also developed a preliminary implementation of our type system which we tested on an existing code base. We have also outlined further practical improvements to our implementation which could improve the developer experience.
 
 \newpage
 
