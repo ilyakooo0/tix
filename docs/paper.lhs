@@ -68,7 +68,7 @@
 \pagestyle{plain}
 
 \begin{abstract}
-  Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become quite complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language.
+  Configuring and building even the most straightforward software projects is often not simple -- it requires downloading and installing copious amounts of prerequisite software. This often makes reproducing builds of a project on different machines problematic. The Nix package manager aims to address this problem by providing a unified language for describing software packages in a purely functional way. This language is called the Nix Expression Language. Since all of the complexity of software configuration needs to be expressed in the Nix Expression Language, the expressions themselves often become pretty complicated, making it difficult to understand and extend existing expressions without introducing errors. A widespread tool for easing the understandability and correctness of expressions in other languages is static type checking. This paper will explore the techniques that can be used to add static type checking to the Nix Expression Language.
 \end{abstract}
 
 % \begin{otherlanguage}{russian}
@@ -87,11 +87,11 @@
 
 \section*{Introduction}
 
-Today developing software is riddled with large amounts of complexity -- newer software is built on top of older software, dragging the whole stack below as dependencies. As a result, building software requires a large number of dependencies to be preinstalled. Modern build systems like Gradle\footnote{\url{https://gradle.org}}, Maven\footnote{\url{https://maven.apache.org}}, and Stack\footnote{\url{https://docs.haskellstack.org/en/stable/README/}} try to mitigate the issue by automatically downloading and installing the required dependencies. However, in most cases, such tools can only manage language-level dependencies, requiring the user to install additional libraries and tools manually.
+Today developing software is riddled with large amounts of complexity -- newer software is built on top of older software, dragging the whole stack below as dependencies. As a result, building software requires a large number of dependencies to be preinstalled. Modern build systems like Gradle\footnote{\url{https://gradle.org}}, Maven\footnote{\url{https://maven.apache.org}}, and Stack\footnote{\url{https://docs.haskellstack.org/en/stable/README/}} try to mitigate the issue by automatically downloading and installing the required dependencies. However, in most cases, such tools can only manage language-level dependencies, requiring the user to manually install additional libraries and tools.
 
 Such manual dependency management leads to several problems. Firstly, when a user wants to work on a project he has not encountered before, he will have to install the required dependencies, leading to additional tedious work. Furthermore, the required versions of project dependencies might conflict with the versions that another project requires. The user will have to manually switch the versions of executables and libraries when switching between projects.
 
-This problem is partially solved by so-called virtual environment tools. A virtual environment is a way of restricting and customizing the available external tools (usually compilers) with the ability to dynamically switch between them. These tools can generally be split into one of two categories:
+So-called virtual environment tools partially solve this problem. A virtual environment is a way of restricting and customizing the available external tools (usually compilers) with the ability to switch between them dynamically. These tools can generally be split into one of two categories:
 
 \begin{enumerate}
   \item \emph{language-specific tools} which simplify installing and switching between different versions of some tools (usually compilers). Examples of such tools are:
@@ -109,7 +109,7 @@ This problem is partially solved by so-called virtual environment tools. A virtu
         \end{enumerate}
 \end{enumerate}
 
-Even so, such tools still require explicit user action: the user needs to explicitly switch between (or install) the necessary tools when switching projects in the case of  \emph{language-specific tools}, the user needs to explicitly install the required tools in some other way for them to be imported by \emph{general-purpose tools}.
+Such tools still require explicit user action: the user needs to explicitly switch between (or install) the necessary tools when switching projects in the case of  \emph{language-specific tools}, the user needs to explicitly install the required tools in some other way for them to be imported by \emph{general-purpose tools}.
 
 Secondly, manual dependency management impedes the reproducibility of the project builds -- building the same project on multiple machines will, in all likelihood, produce different results since the machines will likely differ in many ways that impact the build, such as having slightly different versions\footnote{``Version'' here refers to actual variations on the bit level, and not just version numbers.} of libraries and executables.
 
@@ -127,13 +127,13 @@ Refactoring existing code is also tricky since the generated expressions are onl
 
 A widespread tool for easing development and alleviate the aforementioned problems in other languages is static type checking -- the process of analyzing the types of expressions and detecting type errors in programs without evaluating them.
 
-Even though static type checking in most mainstream programming languages does not influence the semantics of the programs, it is nonetheless widely used. This is an indication of the usefulness of static type checking during development. Type checking helps detect likely ``incorrect'' programs without evaluating them (very helpful during refactoring), and aids in understanding existing code since types often expose some semantics of expressions (this is especially true for purely functional programs).
+Even though static type checking in most mainstream programming languages does not influence the semantics of the programs, it is nonetheless widely used. This is an indication of the usefulness of static type checking during development. Type checking helps detect likely ``incorrect'' programs without evaluating them (very helpful during refactoring) and aids in understanding existing code since types often expose some semantics of expressions (this is especially true for purely functional programs).
 
 The Nix Expression Language does not currently support static type checking of any kind. Of course, retrofitting a static type checker onto an existing dynamic programming language will reject programs that will not produce errors at runtime. However, this is still a goal worth pursuing because even with all of the situations when the type checker produces false negatives, inferring types for existing expressions, as mentioned above, will aid in understanding existing code and surface potentially problematic areas of code to the developer.
 
 \section{Nix Expression Language}
 
-In this chapter we will examine the semantics of major terms of the Nix Expression Language. We will from now on abbreviate \emph{Nix Expression Language} as \emph{Nix} as it is in most cases clear from the context what is being referred to: the language or the system as a whole.
+In this chapter, we will examine the semantics of major terms of the Nix Expression Language. We will, from now on abbreviate \emph{Nix Expression Language} as \emph{Nix} as it is in most cases clear from the context what is being referred to: the language or the system as a whole.
 
 \subsection{Atomic types}
 
@@ -158,7 +158,7 @@ Atomic types are described in table~\ref{tab:atomicTypes}.
 
 \subsubsection{Double quoted string literals}
 
-Double quoted string literals are string literals just like in many other programming languages. It can contain esaped newline character literals \texttt{\textbackslash n} which will be preserved as shown in figure~\ref{lst:newlineString}.
+Double quoted string literals are string literals, just like in many other programming languages. It can contain escaped newline character literals \texttt{\textbackslash n} which will be preserved as shown in figure~\ref{lst:newlineString}.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -172,7 +172,7 @@ Double quoted string literals are string literals just like in many other progra
 
 \subsubsection{Multiline string literals}
 
-Multiline string literals are enclosed by pairs of single quotes (\texttt{''} as opposed to \texttt{"}). Newlines are preserved and indentation is stripped from the beginning of the literal. An example multiline string literal is shown in figure~\ref{lst:multilineString}.
+Multiline string literals are enclosed by pairs of single quotes (\texttt{''} as opposed to \texttt{"}). Newlines are preserved, and indentation is stripped from the beginning of the literal. An example multiline string literal is shown in figure~\ref{lst:multilineString}.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -206,7 +206,7 @@ Palnet''
 
 \subsection{Lists}
 
-Nix supports a list type. List literals are enclosed by square brackets \texttt{[]} and the elements are separated by whitespace. Examples of list literals are shown in figure~\ref{lst:list}.
+Nix supports a list type. List literals are enclosed by square brackets \texttt{[]}, and the elements are separated by whitespace. Examples of list literals are shown in figure~\ref{lst:list}.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -236,7 +236,7 @@ An attribute set is internally implemented as a hashmap with strings as keys whe
   \label{lst:attrSet}
 \end{figure}
 
-Fields (keys) of an attribute set can be accessed through the \emph{dot} (\texttt{.}) operator as shown in figure~\ref{lst:attrSetAccess}. Accessing an absent field yields a runtime error.
+Fields (keys) of an attribute set can be accessed through the \emph{dot} (\texttt{.}) operator, as shown in figure~\ref{lst:attrSetAccess}. Accessing an absent field yields a runtime error.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -271,7 +271,7 @@ There is a binary \emph{update} operator that takes two \emph{attribute sets} as
 
 \subsection{Recursive attribute sets} \label{sec:recAttrSet}
 
-While ordinary \emph{attribute sets} discussed in section~\ref{sec:attrSet} can only reference values defined outside of the attribute set literal, \emph{recursive attribute sets} can also reference values defined in the attribute set literal itself. The keys of the attribute set are available in the scopes of the attribute set values. An example \emph{recursive attribute set} is given in figure~\ref{lst:recAttrSet}. Note that it is syntactically distinguished form normal \emph{attribute set} literals by the \texttt{rec} key word at the beginning.
+While ordinary \emph{attribute sets} discussed in section~\ref{sec:attrSet} can only reference values defined outside of the attribute set literal, \emph{recursive attribute sets} can also reference values defined in the attribute set literal itself. The keys of the attribute set are available in the scopes of the attribute set values. An example \emph{recursive attribute set} is given in figure~\ref{lst:recAttrSet}. Note that it is syntactically distinguished from normal \emph{attribute set} literals by the \texttt{rec} keyword at the beginning.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -307,7 +307,7 @@ in d
 
 \subsection{With expression} \label{sec:withExp}
 
-\emph{With expressions} are a way of bringing all values from an \emph{attribute set} into scope. It is conceptually very similar to \emph{let expressions} discussed in section~\ref{sec:let}. The syntax can be roughly describe like so: \texttt{with <set>; <body>} where \texttt{<set>} is an expression which evaluates to an \emph{attribute set} and all values from the set are available as definitions in the \texttt{<body>} expression. An example of a \emph{with expression} can be found in figure~\ref{lst:with}.
+\emph{With expressions} are a way of bringing all values from an \emph{attribute set} into scope. It is conceptually very similar to \emph{let expressions} discussed in section~\ref{sec:let}. The syntax can be roughly described like so: \texttt{with <set>; <body>} where \texttt{<set>} is an expression which evaluates to an \emph{attribute set} and all values from the set are available as definitions in the \texttt{<body>} expression. An example of a \emph{with expression} can be found in figure~\ref{lst:with}.
 
 \begin{figure}
   \begin{minipage}{\textwidth}
@@ -883,7 +883,7 @@ instance Semigroup Substitution where
 
 This means that the order of composition does no longer matter, and applying the composition of substitutions yields more information than applying them sequentially.
 
-Another consequence of the decision to delay substitutions is that now the role of the |infer| step of typechecking only does the following tree things:
+Another consequence of the decision to delay substitutions is that now the role of the |infer| step of typechecking only does the following three things:
 
 \begin{enumerate}
   \item returns a type variable that represents the type of the expression being inferred
@@ -893,7 +893,7 @@ Another consequence of the decision to delay substitutions is that now the role 
 
 \subsection{Typing context}
 
-The typing context in our implementation in essence consists of two distinct data structures:
+The typing context in our implementation, in essence, consists of two distinct data structures:
 
 \begin{enumerate}
   \item the types of variables currently in scope
@@ -902,9 +902,9 @@ The typing context in our implementation in essence consists of two distinct dat
 
 \subsubsection{Variables in scope}
 
-Note that in practice the ``variables in scope'' data structure only needs to contain type variables since we apply substitutions as late as possible.
+Note that in practice, the ``variables in scope'' data structure only needs to contain type variables since we apply substitutions as late as possible.
 
-In actual fact, due to the heuristics described in section~\ref{sec:withExprType} the types of variables in scope can not be represented as static data structure, but rather is implemented as a scoped effect\footnote{Effects in our case are implemented using the \emph{freer-simple} library: \url{https://github.com/lexi-lambda/freer-simple}}:
+In actual fact, due to the heuristics described in section~\ref{sec:withExprType}, the types of variables in scope can not be represented as a static data structure but rather is implemented as a scoped effect\footnote{Effects in our case are implemented using the \emph{freer-simple} library: \url{https://github.com/lexi-lambda/freer-simple}}:
 
 \begin{code}
 data VariableMapEff x where
@@ -918,13 +918,13 @@ lookupVar
 lookupVar = send . LookupVariable
 \end{code}
 
-This allows us to dynamically redefine what it means to lookup a variable in terms of its implementation in the outer context.
+This allows us to dynamically redefine what it means to look up a variable in terms of its implementation in the outer context.
 
 \subsubsection{Predicates}
 
-Predicates can, on the other hand, be stored as a static data structure. The only non-standard behavior is that the set of predicates needs to be queried and manipulated based on the types that they contain, rather than on the predicates themselves.
+Predicates can, on the other hand, be stored as a static data structure. The only non-standard behavior is that the set of predicates needs to be queried and manipulated based on the types that they contain rather than on the predicates themselves.
 
-For this reason we have developed a data structure we call ``multi-keyed map''.
+For this reason, we have developed a data structure we call ``multi-keyed map''.
 
 \begin{code}
 class (Ord (Key t), Ord t) => Keyable t where
@@ -938,8 +938,8 @@ data MultiKeyedMap t = MultiKeyedMap
 The data structure is the product of two other data structures:
 
 \begin{enumerate}
-  \item A map, mapping possible keys of the stored |t| to a set of values the contain the given key
-  \item A set which contains the values that don't contain any keys
+  \item A map, mapping possible keys of the stored |t| to a set of values that contain the given key
+  \item A set that contains the values that don't contain any keys
 \end{enumerate}
 
 The |Keyable| typeclass is used to extract the keys from the values that need to be stored.
@@ -994,11 +994,11 @@ An observation we can make is the following: it only makes sense to close over t
   \item are used in an outer lexical scope (environment)
 \end{enumerate}
 
-This greatly simplifies implementing the typing rule~\ref{eq:letGeneralization} since instead of having to calculate a set of free type variables of the whole context, we only need to obtain a predicate which identifies if a type variable was introduced during the inference of an expression. This is made even easier if type variables are internally represented as integers, as they often are.
+This greatly simplifies implementing the typing rule~\ref{eq:letGeneralization} since instead of having to calculate a set of free type variables of the whole context, we only need to obtain a predicate that identifies if a type variable was introduced during the inference of an expression. This is made even easier if type variables are internally represented as integers, as they often are.
 
-In our case this is complicated by the fact that we need to introduce type variables which are fields of an \emph{attribute set} from an outer lexical scope. This is problematic because while the type variable can be defined during inference, it is actually logically defined at the same position as the initial \emph{attribute set}; it has the same lexical scope as the \emph{attribute set}. So, the lexical scope of a type variable can not be derived from the inference context of an expression.
+In our case, this is complicated by the fact that we need to introduce type variables which are fields of an \emph{attribute set} from an outer lexical scope. This is problematic because while the type variable can be defined during inference, it is actually logically defined at the same position as the initial \emph{attribute set}; it has the same lexical scope as the \emph{attribute set}. So, the lexical scope of a type variable can not be derived from the inference context of an expression.
 
-A solution we came up with is to have two ways a type variable can be constructed -- as an ordinary type variable backed by a single integer, or as a sub-type variable which has the same lexical scope as another type variable:
+A solution we came up with is to have two ways a type variable can be constructed -- as an ordinary type variable backed by a single integer or as a sub-type variable that has the same lexical scope as another type variable:
 
 \begin{code}
 data TypeVariable
@@ -1006,29 +1006,29 @@ data TypeVariable
   |    SubTypeVariable  Int Int
 \end{code}
 
-This way, when applying a predicate to check the lexical scope of a type variable we can always restrict ourselves to the first integer.
+This way, when applying a predicate to check the lexical scope of a type variable, we can always restrict ourselves to the first integer.
 
 \section{Evaluation of our implementation}
 
-In this section we will examine how our implementation of the typechecker behaves on real input.
+In this section, we will examine how our implementation of the typechecker behaves on real input.
 
 \subsection{Evaluating nixpkgs}
 
-To evaluate our typechecker implementation~\cite{github-source} we collected \emph{Nix} source files from the larges \emph{Nix} package repository – \emph{nixpkgs}\footnote{\url{https://github.com/NixOS/nixpkgs}}. Due to our current implementation not supporting file imports (file imports are the responsibility of the system calling the typechecker, not the type checker itself) the files were filtered down to those that do not contain import statements.
+To evaluate our typechecker implementation~\cite{github-source}, we collected \emph{Nix} source files from the largest \emph{Nix} package repository – \emph{nixpkgs}\footnote{\url{https://github.com/NixOS/nixpkgs}}. Due to our current implementation not supporting file imports (file imports are the responsibility of the system calling the typechecker, not the type checker itself), the files were filtered down to those that do not contain import statements.
 
 Running our typechecker on the test set of \emph{Nix} source files results in \emph{1963} out of \emph{2948} (67\%) typechecking with no type errors.
 
 We believe this is a very good result since the files were not prepared in any way and were taken as-is from the package repository. Furthermore, it is important to note that rejecting a portion of ``valid'' programs is an unavoidable property of static typecheckers.
 
-We would also like to point out that even in those cases, when type errors were encountered during typechecking, the typechecker still produces output types which can be useful to the developer and can be used for further typechecking of larger expressions (though, providing less guarantees).
+We would also like to point out that even in those cases when type errors were encountered during typechecking, the typechecker still produces output types that can be useful to the developer and can be used for further typechecking of larger expressions (though providing fewer guarantees).
 
 \subsection{Evaluating common expressions}
 
-We will now examine a few language constructs to see how our typechecker handles them, and what errors it can detect.
+We will now examine a few language constructs to see how our typechecker handles them and what errors it can detect.
 
 \subsubsection{Script interpreters}
 
-In listing~\ref{lst:interpreters} we present a sample script which demonstrates our type inference algorithm.
+In listing~\ref{lst:interpreters} we present a sample script that demonstrates our type inference algorithm.
 
 The function \texttt{getScriptInterpreters} takes a single ``package'' structure and returns a list of interpreters used in the scripts of the package. Out type inference algorithm correctly infers the following type of the function:
 
@@ -1036,7 +1036,7 @@ The function \texttt{getScriptInterpreters} takes a single ``package'' structure
   \forall \alpha \beta \gamma. \; (\alpha. \text{scripts} = [\beta], \beta. \text{interpreter} = \gamma) \Rightarrow \alpha \rightarrow [\gamma]
 \end{equation}
 
-The constant \texttt{package} contains a sample ``package'' structure with three scripts. In real code the structure would be a lot more complex, but it is simplified for brevity.
+The constant \texttt{package} contains a sample ``package'' structure with three scripts. In real code, the structure would be a lot more complex, but it is simplified for brevity.
 
 The result of the whole expression (applying \texttt{getScriptInterpreters} to \texttt{package}) is correctly inferred by our type checker to have the type:
 
@@ -1065,18 +1065,18 @@ in getScriptInterpreters package
   \label{lst:interpreters}
 \end{figure}
 
-If a programmer makes a certain class of mistakes when developing the program, our typechecker would report an error. For example, the programmer might forget to access the ``scripts'' field of the package, and pass whole package by accident:
+If a programmer makes a certain class of mistakes when developing the program, our typechecker would report an error. For example, the programmer might forget to access the ``scripts'' field of the package and pass the whole package by accident:
 
 \begin{verbatim}
 getScriptInterpreters =
   x: builtins.map (y: y.interpreter) x;
 \end{verbatim}
 
-In that case, when evaluating the whole expression from listing~\ref{lst:interpreters} he would receive the following error from the typechecker: ``could not match list with type \texttt{\{scripts = [{interpreter = String;}]\}}''. This error is a result of trying to \texttt{map} over an attribute set.
+In that case, when evaluating the whole expression from listing~\ref{lst:interpreters}, he would receive the following error from the typechecker: ``could not match list with type \texttt{\{scripts = [{interpreter = String;}]\}}''. This error is a result of trying to \texttt{map} over an attribute set.
 
 \subsubsection{Haskell packages}
 
-In listing~\ref{lst:haskellPackages} we defined a function \texttt{haskellPackage} which takes parameters for a haskell package and returns a configuration which might describe how to build the package. Out tool correctly infers the type of the function:
+In listing~\ref{lst:haskellPackages}, we defined a function \texttt{haskellPackage} that takes parameters for a Haskell package and returns a configuration that might describe how to build the package. Out tool correctly infers the type of the function:
 
 \begin{equation}
   \begin{aligned}
@@ -1091,7 +1091,7 @@ In listing~\ref{lst:haskellPackages} we defined a function \texttt{haskellPackag
   \end{aligned}
 \end{equation}
 
-By the derived type of the function we can clearly see that the \texttt{compilerFlags} and \texttt{compilerVersion} fields of the input attribute set are optional.
+By the derived type of the function, we can clearly see that the \texttt{compilerFlags} and \texttt{compilerVersion} fields of the input attribute set are optional.
 
 The result of the whole expression is a list of applications of the \texttt{haskellPackage} function to multiple configurations. Ou implementation correctly infers the following type:
 
@@ -1123,9 +1123,9 @@ in [
   \label{lst:haskellPackages}
 \end{figure}
 
-A mistake that is easy to make here is to forget to quote the \texttt{compilerVersion} field, leading to the type being `Number' instead of `String'. In that case our implementation will convey exactly that in an error.
+A mistake that is easy to make here is to forget to quote the \texttt{compilerVersion} field, leading to the type being `Number' instead of `String'. In that case, our implementation will convey exactly that in an error.
 
-Another common mistake is specifying the \texttt{compilerFlags} field as a single `String' instead of a list. In that case our implementation will emit an appropriate error without the need to execute the expression.
+Another common mistake is specifying the \texttt{compilerFlags} field as a single `String' instead of a list. In that case, our implementation will emit an appropriate error without the need to execute the expression.
 
 \section{Possible improvements}
 
@@ -1139,22 +1139,22 @@ The technique is based on the fact that a type variable by itself can only conve
 
 \begin{enumerate}
   \item positional information -- a specific position in a type
-  \item identity information -- the type variable is equivalent to other type variable with the same name within the scope where it is declared
+  \item identity information -- the type variable is equivalent to other type variables with the same name within the scope where it is declared
 \end{enumerate}
 
 Note that all of what follows is only concerned with syntactic constructs. It does in no way alter the semantic of the predicates described above.
 
-We would like to point out that all of the predicates have an operand which is the ``result'' of the predicate -- a single type variable which is said to be equivalent to a more complex expression. That is $\beta$ in predicates \ref{eq:fieldPred} and \ref{eq:optFieldPred}, and $\gamma$ in predicate \ref{eq:upatePred}.
+We would like to point out that all of the predicates have an operand which is the ``result'' of the predicate -- a single type variable that is said to be equivalent to a more complex expression. That is $\beta$ in predicates \ref{eq:fieldPred} and \ref{eq:optFieldPred}, and $\gamma$ in predicate \ref{eq:upatePred}.
 
-The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is a natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands, and, as such, can be replaced with their definitions.
+The observation we need to make is that \emph{referential transparency}\footnote{\url{https://en.wikipedia.org/wiki/Referential_transparency}} is a natural notion in functional programming languages like Nix, and it is natural to replace variables with their definitions. In some sense, the ``results'' of predicates described above can be interpreted as being ``defined'' by the predicate to be ``equal'' to the combination of the other operands and, as such, can be replaced with their definitions.
 
-This means that we can syntactically replace \emph{type variables} with a portion of a predicate -- replace the variable with the definition. If we apply this technique to the type~\ref{eq:dotExample} we get the following type:
+This means that we can syntactically replace \emph{type variables} with a portion of a predicate -- replace the variable with the definition. If we apply this technique to the type~\ref{eq:dotExample}, we get the following type:
 
 \begin{equation}
   \forall \alpha. \; \alpha \rightarrow \alpha.\text{y}
 \end{equation}
 
-When applied to the type~\ref{eq:updatePredExample} it yields:
+When applied to the type~\ref{eq:updatePredExample}, it yields:
 
 \begin{equation}
   \forall \alpha \beta. \; \alpha \rightarrow \beta \rightarrow (\alpha \update \beta)
@@ -1166,11 +1166,11 @@ We believe the derived types above are a lot easier to understand than their ini
 
 For practical reasons, when applying the technique, there should be a threshold that limits the syntactic complexity of types that can be ``inlined''. This is due to the types being potentially as big as literals in the source expressions.
 
-Complexity of types should also be used as a heuristic in cases where there are multiple potential ``definitions'' for the same type variable – it is preferable to use the ``definitions'' with the lowest syntactic complexity as it leads to simpler types.
+The complexity of types should also be used as a heuristic in cases where there are multiple potential ``definitions'' for the same type variable – it is preferable to use the ``definitions'' with the lowest syntactic complexity as it leads to simpler types.
 
 \subsubsection{Limitations}
 
-The technique is not in applicable if the ``result'' of a predicate is not a type variable like in type \ref{eq:optFieldPredExample2}.
+The technique is not applicable if the ``result'' of a predicate is not a type variable like in type \ref{eq:optFieldPredExample2}.
 
 Another limitation is that we can not remove predicates if their ``result'' type variable is not present in the head of the type like in type \ref{eq:optFieldPredExample}, since we would be losing typing information by doing so.
 
@@ -1182,12 +1182,12 @@ Some information that might be useful as type hints:
 
 \begin{enumerate}
   \item The dynamic type of strings (URI, Path, etc.) – useful information for the programmer
-  \item Programmer-supplied annotations. When writing nix expressions it is common practice to have a program in some other programming language embedded in Nix as a string literal. It would be useful to propagate information about the underlying programming language to aid IDEs -- they could enable special syntax highlighting and linting based on the programming language.
+  \item Programmer-supplied annotations. When writing nix expressions, it is common practice to have a program in some other programming language embedded in Nix as a string literal. It would be useful to propagate information about the underlying programming language to aid IDEs -- they could enable special syntax highlighting and linting based on the programming language.
 \end{enumerate}
 
 \subsection{Sum types} \label{sec:sumTypes}
 
-In our static type system we introduced a ``special case'' for the \emph{addition operator} as it could be applied to a number of different types.
+In our static type system, we introduced a ``special case'' for the \emph{addition operator} as it could be applied to a number of different types.
 
 The idea of this improvement is to generalize the case and allow the type system to handle arbitrary sums of arbitrary types. This can be implemented as a predicate stating that a type variable can be a certain type:
 
@@ -1203,7 +1203,7 @@ where $\beta$ can be the type $\alpha$. With this predicate, our ``String or Num
 
 \section*{Conclusion}
 
-In this paper we have examined the existing approaches which have been used in developing type systems for functional programming languages. We have then adapted the existing approaches and developed a new static type system for the Nix Expression Language. We have also developed a preliminary implementation of our type system which we tested on an existing code base. We have also outlined further practical improvements to our implementation which could improve the developer experience.
+In this paper, we have examined the existing approaches which have been used in developing type systems for functional programming languages. We have then adapted the existing approaches and developed a new static type system for the Nix Expression Language. We have also developed a preliminary implementation of our type system, which we tested on an existing codebase. We have also outlined further practical improvements to our implementation, which could improve the developer experience.
 
 \newpage
 
