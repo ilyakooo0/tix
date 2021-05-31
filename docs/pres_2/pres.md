@@ -20,8 +20,9 @@ _Supervisor:_ Victor Kuliamin, Associate Professor, PhD
 
 ---
 
-> Nix is a powerful package manager that makes package management reliable and reproducible.
--- [nixos.org](https://nixos.org)
+## Nix is a powerful package manager that makes package management reliable and reproducible.
+
+#### – [nixos.org](https://nixos.org)
 
 ---
 
@@ -102,14 +103,14 @@ Adding static typing would:
 - Increase reliability of code
 - Lower costs of development (resolving issue earlier is cheaper)
 
-_The typechecker should help find issues in existing code_
+<!-- _The typechecker should help find issues in existing code_ -->
 
 ---
 
 # The goal
 
-1. Develop a type static system for the existing Nix expression language
-2. Develop a type checker for this type system
+1. Develop a static type system for the existing Nix expression language
+2. Develop a type checker for this static type system
 
 ---
 
@@ -129,31 +130,48 @@ The Hindley–Milner type system_[1]_ is a simple, but well-studied type system 
 
 ---
 
-# Functional requirements
+# Methods and algorithms
 
-- The system should perform type checking on expression.
+The developed type system is heavily influenced by the Hindley–Milner_[1]_ type system.
 
-- The system should analyze the types and presence of attributes in attribute sets.
-
-- The system should report encountered typechecking.
-
-- The system should report the use of undefined terms.
-
-- The system should report the resulting types of expressions to the user.
 
 ---
 
-[.text: text-scale(0.85)]
+# Methods and algorithms
+
+The developed type system supports parametric polymorphism to support code that does not require a specific type.
+
+```nix
+x: y: x ++ y
+```
+
+```
+∀ α. [α] -> [α] -> [α]
+```
+
+---
 
 # Methods and algorithms
 
-The type system will be heavily influenced by the Hindley–Milner_[1]_ type system.
+The developed type system implements row polymorphism to work with attribute sets.
 
-The type system will implement parametric polymorphism to support code that does not require a specific type.
+```nix
+x: x.v + 69
+```
 
-The type system will implement arbitrary-ranked polymorphism_[3]_ with deep instantiation to disambiguate types in existing untyped code.
+```
+∀ α. (α.v = Number) => α -> Number
+```
 
-The type system will implement row polymorphism to work with attribute sets.
+<br />
+
+```nix
+x: x // {v = "hello";}
+```
+
+```
+∀ α β. (α // {v = String;} ~ β) => α -> β
+```
 
 ---
 
@@ -177,49 +195,28 @@ The typechecker is implemented in a two-step architecture:
 
 ---
 
-# Current results
+# Results
 
-A typechecker executable that successfully typechecks _most_ of the selected files from _nixpkgs_.
+- Theoretical
+  - A static type system for the Nix Expression Language
 
-The typechecker currently has some support for all language constructs.
+- Practical
+
+  - A typechecker executable that successfully typechecks _most_ of the selected files from _nixpkgs_.
+
+  - The typechecker supports all language constructs.
 
 ![.right .fit](img/ter.png)
-
----
-
-[.build-lists: false]
-
-# Current results
-
-## Paper status
-
-1. Nix Expression Language (80%)
-2. Existing typecheckers (100%)
-3. Existing approaches (100%)
-4. Architecture (20%)
-5. Implementation (0%)
-6. Conclusion (60%)
-
-![.right .fit](img/paper.png)
-
----
-
-# What is left
-
-- Better type rendering (predicates)
-- Subsumption
-- A lot of minor big fixes in type inference
-- Add type information about built-in functions
 
 ---
 
 # Potential future developments
 
 - Add support for user-supplied type annotations.
-  - Fork parser
-  - Bidirectional type inference_[4]_
 - Type holes
 - Language Server Integration
+- Better type rendering
+- Sum types
 
 ---
 
@@ -228,9 +225,10 @@ The typechecker currently has some support for all language constructs.
 
 # References
 
-1. Damas L., Milner R. Principal type-schemes for functional programs //Proceedings of the 9th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. – 1982. – С. 207-212.
-2. Jones S. P. et al. Practical type inference for arbitrary-rank types //Journal of functional programming. – 2007. – Т. 17. – №. 1. – С. 1-82. MLA
-3. Stuckey P. J., Sulzmann M., Wazny J. Improved inference for checking type annotations //arXiv preprint cs/0507036. – 2005. MLA
+1. L. Damas and R. Milner, “Principal type-schemes for functional pro- grams,” in Proceedings of the 9th ACM SIGPLAN-SIGACT symposium on Principles of programming languages, 1982, pp. 207–212.
+2. E. Dolstra and A. Lo ̈h, “Nixos: A purely functional linux dis- tribution,” in Proceedings of the 13th ACM SIGPLAN international conference on Functional programming, 2008, pp. 367–378.
+3. J. G. Morris and J. McKinna, “Abstracting extensible data types: or, rows by any other name,” Proceedings of the ACM on Programming Languages, vol. 3, no. POPL, pp. 1–28, 2019.
+4. D. Leijen, “Extensible records with scoped labels.” Trends in Functional Programming, vol. 6, pp. 179–194, 2005.
 
 ---
 
@@ -347,7 +345,7 @@ let f = x: x.a; in f {b = "hello";}
 ```
 
 ```
-Error: key "a" NotPresent in { b = String; }
+Error: key "a" not present in { b = String; }
 ```
 
 ---
