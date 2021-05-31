@@ -66,9 +66,11 @@ in derivation {
 
 ---
 
-[.text: text-scale(0.75)]
+[.text: text-scale(0.55)]
 
 # Terms and definitions
+
+**Type** – an attribute of data which tells the compiler or interpreter how the programmer intends to use the data
 
 **Type system** – a logical system comprising a set of rules that assigns a property called a type to the various constructs of a computer program
 
@@ -226,7 +228,7 @@ The typechecker is implemented in a two-step architecture:
 # References
 
 1. L. Damas and R. Milner, “Principal type-schemes for functional pro- grams,” in Proceedings of the 9th ACM SIGPLAN-SIGACT symposium on Principles of programming languages, 1982, pp. 207–212.
-2. E. Dolstra and A. Lo ̈h, “Nixos: A purely functional linux dis- tribution,” in Proceedings of the 13th ACM SIGPLAN international conference on Functional programming, 2008, pp. 367–378.
+2. E. Dolstra and A. Loh, “Nixos: A purely functional linux distribution,” in Proceedings of the 13th ACM SIGPLAN international conference on Functional programming, 2008, pp. 367–378.
 3. J. G. Morris and J. McKinna, “Abstracting extensible data types: or, rows by any other name,” Proceedings of the ACM on Programming Languages, vol. 3, no. POPL, pp. 1–28, 2019.
 4. D. Leijen, “Extensible records with scoped labels.” Trends in Functional Programming, vol. 6, pp. 179–194, 2005.
 
